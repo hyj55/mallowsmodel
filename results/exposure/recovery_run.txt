@@ -1,0 +1,128 @@
+small n=8 r=2 N=2 DGP=SM
+small n=8 r=2 N=2 DGP=PL
+small n=8 r=2 N=4 DGP=SM
+small n=8 r=2 N=4 DGP=PL
+small n=8 r=2 N=8 DGP=SM
+small n=8 r=2 N=8 DGP=PL
+small n=8 r=2 N=16 DGP=SM
+small n=8 r=2 N=16 DGP=PL
+small n=8 r=2 N=28 DGP=SM
+small n=8 r=2 N=28 DGP=PL
+small n=8 r=2 N=56 DGP=SM
+small n=8 r=2 N=56 DGP=PL
+small n=8 r=2 N=112 DGP=SM
+small n=8 r=2 N=112 DGP=PL
+small n=8 r=4 N=1 DGP=SM
+small n=8 r=4 N=1 DGP=PL
+small n=8 r=4 N=2 DGP=SM
+small n=8 r=4 N=2 DGP=PL
+small n=8 r=4 N=4 DGP=SM
+small n=8 r=4 N=4 DGP=PL
+small n=8 r=4 N=8 DGP=SM
+small n=8 r=4 N=8 DGP=PL
+small n=8 r=4 N=16 DGP=SM
+small n=8 r=4 N=16 DGP=PL
+small n=8 r=4 N=64 DGP=SM
+small n=8 r=4 N=64 DGP=PL
+small n=8 r=8 N=1 DGP=SM
+small n=8 r=8 N=1 DGP=PL
+small n=8 r=8 N=2 DGP=SM
+small n=8 r=8 N=2 DGP=PL
+small n=8 r=8 N=8 DGP=SM
+small n=8 r=8 N=8 DGP=PL
+small n=8 r=8 N=32 DGP=SM
+small n=8 r=8 N=32 DGP=PL
+coverage n=64 r=2 N=60 DGP=SM
+coverage n=64 r=2 N=60 DGP=PL
+coverage n=64 r=2 N=605 DGP=SM
+coverage n=64 r=2 N=605 DGP=PL
+coverage n=64 r=2 N=2016 DGP=SM
+coverage n=64 r=2 N=2016 DGP=PL
+coverage n=64 r=2 N=6048 DGP=SM
+coverage n=64 r=2 N=6048 DGP=PL
+coverage n=64 r=8 N=2 DGP=SM
+coverage n=64 r=8 N=2 DGP=PL
+coverage n=64 r=8 N=22 DGP=SM
+coverage n=64 r=8 N=22 DGP=PL
+coverage n=64 r=8 N=72 DGP=SM
+coverage n=64 r=8 N=72 DGP=PL
+coverage n=64 r=8 N=216 DGP=SM
+coverage n=64 r=8 N=216 DGP=PL
+coverage n=64 r=32 N=1 DGP=SM
+coverage n=64 r=32 N=1 DGP=PL
+coverage n=64 r=32 N=1 DGP=SM
+coverage n=64 r=32 N=1 DGP=PL
+coverage n=64 r=32 N=4 DGP=SM
+coverage n=64 r=32 N=4 DGP=PL
+coverage n=64 r=32 N=12 DGP=SM
+coverage n=64 r=32 N=12 DGP=PL
+real beans N=2 rep=0
+real beans N=5 rep=0
+real beans N=10 rep=0
+real beans N=14 rep=0
+real beans N=30 rep=0
+real beans N=100 rep=0
+real beans N=2 rep=1
+real beans N=5 rep=1
+real beans N=10 rep=1
+real beans N=14 rep=1
+real beans N=30 rep=1
+real beans N=100 rep=1
+real beans N=2 rep=2
+real beans N=5 rep=2
+real beans N=10 rep=2
+real beans N=14 rep=2
+real beans N=30 rep=2
+real beans N=100 rep=2
+real beans N=2 rep=3
+real beans N=5 rep=3
+real beans N=10 rep=3
+real beans N=14 rep=3
+real beans N=30 rep=3
+real beans N=100 rep=3
+real beans N=2 rep=4
+real beans N=5 rep=4
+real beans N=10 rep=4
+real beans N=14 rep=4
+real beans N=30 rep=4
+real beans N=100 rep=4
+real sushi_b N=5 rep=0
+real sushi_b N=10 rep=0
+real sushi_b N=25 rep=0
+real sushi_b N=50 rep=0
+real sushi_b N=100 rep=0
+real sushi_b N=300 rep=0
+real sushi_b N=5 rep=1
+real sushi_b N=10 rep=1
+real sushi_b N=25 rep=1
+real sushi_b N=50 rep=1
+real sushi_b N=100 rep=1
+real sushi_b N=300 rep=1
+real sushi_b N=5 rep=2
+real sushi_b N=10 rep=2
+real sushi_b N=25 rep=2
+real sushi_b N=50 rep=2
+real sushi_b N=100 rep=2
+real sushi_b N=300 rep=2
+real sushi_b N=5 rep=3
+real sushi_b N=10 rep=3
+real sushi_b N=25 rep=3
+real sushi_b N=50 rep=3
+real sushi_b N=100 rep=3
+real sushi_b N=300 rep=3
+real sushi_b N=5 rep=4
+real sushi_b N=10 rep=4
+real sushi_b N=25 rep=4
+real sushi_b N=50 rep=4
+real sushi_b N=100 rep=4
+real sushi_b N=300 rep=4
+tennis 2010: n=461 N=1530 test=1020
+tennis 2011: n=469 N=1593 test=1059
+tennis 2012: n=454 N=1636 test=999
+tennis 2013: n=455 N=1581 test=945
+tennis 2014: n=452 N=1589 test=949
+tennis 2015: n=423 N=1578 test=989
+tennis 2016: n=427 N=1555 test=975
+tennis 2017: n=426 N=1497 test=1020
+tennis 2018: n=434 N=1493 test=1031
+tennis 2019: n=418 N=1444 test=1095
