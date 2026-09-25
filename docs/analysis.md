@@ -63,9 +63,10 @@ globally optimal. A follow-up cutting-plane audit bounded one N = 3,000 instance
 by **44,724 ≤ D_opt ≤ 44,736**. The gap of at most 12 concerns training D; it is
 not a bound on test NLL. See [algorithm details and sources](algorithms.md).
 
-The manuscript's sharp estimator is not a likelihood optimizer and is not
-implemented here. Small report count N does not reduce the n! center search
-space. Neither exact optimization nor these simulations establishes that the
+The manuscript's sharp estimator is not a likelihood optimizer. It was not
+part of this original benchmark; the [exposure extension](exposure_analysis.md)
+now implements its exact sieve for small blocks. Small N does not reduce the
+n! center search space. Neither exact optimization nor these simulations establishes that the
 MLE attains the manuscript's sharp minimax risk lower bound.
 
 ## Fair comparison and uncertainty

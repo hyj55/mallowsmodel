@@ -2,7 +2,7 @@
 
 ## Status and scope
 
-The local extension completed 1,740 independent simulated datasets, 60 small-budget real-data training fits, and ten ATP seasons. Twelve checks passed; 58 representative simulation replicates and all saved real fits were reconstructed, with maximum NLL discrepancy 1.42e-14. The workspace disconnected during upload. **This report preserves the verified findings; the full extension files are being recovered separately.** The original benchmark remains intact.
+The local extension completed 1,740 independent simulated datasets, 60 small-budget real-data training fits, and ten ATP seasons. Twelve checks passed; 58 representative simulation replicates and all saved real fits were reconstructed, with maximum NLL discrepancy 1.42e-14. The workspace disconnected during upload. **The restored pipeline was subsequently rerun in GitHub Actions; regenerated results and validation records are saved in this repository.** The original benchmark remains intact. [Successful recovery run](https://github.com/hyj55/mallowsmodel/actions/runs/36158776900); [validation record](../results/exposure/validation.json); [results and commands](../results/exposure/README.md).
 
 ## Sports data identified
 
@@ -44,6 +44,8 @@ Numeric sparsity does **not** establish independent uniform subsets, beta>=beta0
 Exact sieve enumeration was limited to blocks of at most eight items. Larger exact sieves were explicitly unavailable, not replaced by MLE.
 
 **Every executed Section 3 fit had depth zero and equaled exposure-normalized Borda.** With the proof threshold A=256 this necessarily happens at n<=256 in the sparse regime; tennis also had small lambda*n. The hierarchy was implemented and its offset logic checked, but these results do not establish a benefit from active refinement. For lambda>1, starting resolution was capped at 1 as a labeled empirical extension.
+
+![Small-catalog center recovery](../figures/exposure_small_centers.png)
 
 ## Center recovery: retain MLE
 
@@ -87,6 +89,8 @@ Intervals use paired independent simulation replicates. Raw profiled and shrunk 
 
 The coverage grid also uses r=2 and 32. Changing r changes both coverage and within-report signal, so it does not isolate a causal effect of mu. At n=64,r=32 one report already gives lambda=.246; smaller target lambda values are unattainable. Two rounded targets coincide at N=1 and contribute 60 independent replicates per DGP.
 
+![Exposure and coverage](../figures/exposure_coverage.png)
+
 ## Chronological tennis results
 
 Each year's catalog is fixed from the previous season. January–June trains; July–December tests. January–March / April–June is the inner tuning split. Whole tournaments remain together because the date field is a tournament start date. Invalid matches, walkovers, retirements, defaults and abandoned matches are excluded. No chronological shuffle is used.
@@ -108,6 +112,8 @@ Equal-weight mean over ten seasons:
 The same-order check is exploratory. It removes a difference in fitted ordering, yet PL still predicts better. In bins defined by training PL strength gaps, favored players win about 56% of the closest matches and 83% of the widest-gap matches. PL predicts about 55% and 88%; common-upset SM about 61–64%. Within a season SM's correct-order probability is constant; pooled-bin differences reflect season composition. PL is overconfident at large gaps but captures meaningful heterogeneity.
 
 Per-season intervals resample held-out tournaments. Aggregate intervals are t intervals across annual differences. They condition on fits; repeated players and serial dependence remain limitations. This prediction result does not refute the cited article's different marginal-likelihood comparison.
+
+![Tennis probability structure and chronological prediction](../figures/exposure_tennis.png)
 
 ## A sensitivity that changes the interpretation
 

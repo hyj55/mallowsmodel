@@ -11,7 +11,7 @@ for it; Borda and PosEst are score-based center estimators and initializers,
 not direct global minimizers. Their comparison in the appendix is an
 optimization audit, not six different probability models.
 
-## Final algorithm selection (2026-09-25)
+## Original predictive benchmark
 
 - Beans, Sushi A, and the n=10 simulations: exact subset DP only for the main
   SM fit. There is no reason to substitute a less accurate optimizer here.
@@ -39,8 +39,8 @@ train/test splitting and bootstrap all use whole reports.
 | Equal-reliability greedy MAL | Yes for strict subset orders, with common reliability | No general exactness guarantee | Benchmark specialization of Raman & Joachims |
 | Eight-start insertion search | Yes; optimizes the correct objective | No | Our generic heuristic implementation, not a new theoretical estimator |
 | FKS localization + bounded-displacement DP | Same selective model | Conditional on the localization event | Reviewed, not implemented; small n permits an unconditional exact DP |
-| Manuscript efficient hierarchy | Uniform independent subsets, supplied signal lower bound | No | Different statistical target; not needed to remove optimization bias in this comparison |
-| Manuscript sharp estimator | Uniform selective design; local pair extraction and permutation sieve | No | A minimax-risk construction, not a full-data likelihood optimizer |
+| Manuscript efficient hierarchy | Uniform independent subsets, supplied signal lower bound | No | Implemented in exposure extension; all executed fits have depth zero |
+| Manuscript sharp estimator | Uniform selective design; local pair extraction and permutation sieve | No | Exact greedy sieve implemented for blocks up to eight items; larger exact blocks unavailable |
 
 FKS's literal `>=` majority rule counts a missing pair as an empirical tie.
 We retain this published convention and use seeded random final tie-breaking;

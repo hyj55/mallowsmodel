@@ -1,12 +1,5 @@
 name: Recover exposure experiments
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'run_exposure.py'
-      - 'run_exposure_followup.py'
-      - 'src/manuscript_estimators.py'
-      - '.github/workflows/exposure.yml'
   workflow_dispatch:
 permissions:
   contents: write

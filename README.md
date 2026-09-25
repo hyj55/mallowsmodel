@@ -157,7 +157,9 @@ python make_exposure_figures.py
 python validate_exposure.py
 ~~~
 
-The recovery workflow rebuilds result files after a workspace disconnect;
-results/exposure/validation.json records completed reconstruction checks.
+The extension was regenerated successfully in GitHub Actions after a workspace
+disconnect. results/exposure/validation.json records 58 replayed designs, all
+60 real fits, ten seasons and matching pre-interruption results. The workflow
+is now manual: Actions → Recover exposure experiments → Run workflow.
 ATP raw data are downloaded separately from an immutable archive of Jeff
 Sackmann's CC BY-NC-SA 4.0 data. Raw Sushi observations remain excluded.
