@@ -1,0 +1,161 @@
+{
+  "items": [
+    "CSW18",
+    "DBW17",
+    "DPW621-50",
+    "HD2824",
+    "HD2932",
+    "HD2985",
+    "HI1563",
+    "HP1633",
+    "HW2045",
+    "K0307",
+    "K9107",
+    "PBW343",
+    "PBW502",
+    "PBW550",
+    "RAJ4120",
+    "WR544"
+  ],
+  "models": {
+    "pl": {
+      "status": "ok",
+      "order": [
+        10,
+        0,
+        11,
+        1,
+        5,
+        2,
+        4,
+        12,
+        13,
+        14,
+        3,
+        7,
+        15,
+        8,
+        6,
+        9
+      ],
+      "beta": NaN,
+      "theta": [
+        2.1031213383636134,
+        1.1023709744536556,
+        -0.006736681766804864,
+        -0.8049384959875656,
+        -0.3256742024200254,
+        0.07402194409180085,
+        -1.0160696932628976,
+        -0.80538028870681,
+        -0.8506566496609533,
+        -1.0832579408603111,
+        2.552304588230297,
+        1.8083729042540402,
+        -0.5408782829623533,
+        -0.6287408579598965,
+        -0.7635483233973108,
+        -0.8143103324084775
+      ],
+      "metadata": {
+        "algorithm": "Hunter_2004_equation_30",
+        "components": 1,
+        "tolerance": 1e-10,
+        "max_iterations": 100000,
+        "penalty": 0.0,
+        "pseudo_comparisons": 0,
+        "iterations": 147,
+        "max_log_change": 9.327116856638895e-11,
+        "gradient_per_report": 2.1495483359381145e-11,
+        "monotonic_error": 0.0,
+        "training_nll": 1.3604539837348857
+      }
+    },
+    "mle": {
+      "status": "ok",
+      "order": [
+        10,
+        11,
+        0,
+        1,
+        5,
+        2,
+        13,
+        15,
+        12,
+        3,
+        4,
+        14,
+        7,
+        8,
+        6,
+        9
+      ],
+      "beta": 0.9393485694301379,
+      "theta": null,
+      "metadata": {
+        "lambda": 7.375,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "branch": "exact_subset_dp",
+        "certified": true,
+        "training_distance": 216,
+        "beta_boundary": "interior"
+      }
+    },
+    "sharp": {
+      "status": "exact_sieve_unavailable",
+      "order": null,
+      "beta": NaN,
+      "theta": null,
+      "metadata": {
+        "lambda": 7.375,
+        "beta0": 0.1,
+        "tie_seed": 93847
+      }
+    },
+    "efficient": {
+      "status": "outside_schedule_domain",
+      "order": null,
+      "beta": NaN,
+      "theta": null,
+      "metadata": {
+        "lambda": 7.375,
+        "beta0": 0.1,
+        "tie_seed": 93847
+      }
+    },
+    "borda": {
+      "status": "ok",
+      "order": [
+        10,
+        0,
+        11,
+        1,
+        5,
+        2,
+        4,
+        13,
+        12,
+        14,
+        15,
+        8,
+        3,
+        7,
+        9,
+        6
+      ],
+      "beta": 0.8479530433177436,
+      "theta": null,
+      "metadata": {
+        "lambda": 7.375,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "branch": "published_global_clipped_borda",
+        "depth": 0,
+        "training_distance": 234,
+        "beta_boundary": "interior"
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "file": "breadwheat.rda",
+    "url": "https://raw.githubusercontent.com/AgrDataSci/gosset/bb5eb75c08fe3ab0f28931c093dcb66dea7c4185/data/breadwheat.rda",
+    "sha256": "cef54fd4688dcaa330f2c5b1477cab5f235b3777ff0f9db795ae480ebbd06302"
+  },
+  {
+    "file": "breadwheat.R",
+    "url": "https://raw.githubusercontent.com/AgrDataSci/gosset/bb5eb75c08fe3ab0f28931c093dcb66dea7c4185/R/breadwheat.R",
+    "sha256": "17939bb7931848164ff4a2ffba62e1abe35bcb8b746b52d7446c48998323dc23"
+  },
+  {
+    "file": "SP_Rank_Dataset.csv",
+    "url": "https://raw.githubusercontent.com/amrit19/SP-Rank-Dataset/d9ceab3386ac04aca7791fd83da8508851f87dc9/SP_Rank_Dataset.csv",
+    "sha256": "4f756f7d9c4ab5279c4a6934966d6e4da928697828ae93ebc70db4ab78ffe08d"
+  },
+  {
+    "file": "sp_README.md",
+    "url": "https://raw.githubusercontent.com/amrit19/SP-Rank-Dataset/d9ceab3386ac04aca7791fd83da8508851f87dc9/README.md",
+    "sha256": "34ace09b89962dae93c049aa87029b39defcb813720ca28764f293c432e664d6"
+  }
+]

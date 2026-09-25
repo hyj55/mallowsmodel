@@ -11,6 +11,8 @@ dispersion estimation and the probability structure within a ranking.
 
 ## Start here
 
+- **[New: original wheat and SP-Rank context follow-up](docs/context_followup.md)** — 493 intact wheat reports; context effect remains unresolved; all six SP-Rank tasks lack the targeted objective-gap contrast.
+
 - **[Strict feature-transition study: completed analysis](docs/strict_feature_analysis.md)**
 - [Strict-study results, source audit and reproduction](results/strict_features/README.md)
 

@@ -1,0 +1,7 @@
+cohort,domain,reports,participants,invalid,displays,seen_items,pairs,varying_objective_gap_pairs,fits,decision
+five,1,576,252,0,12,36,84,0,0,not_informative_for_objective_gap_context_contrast
+five,2,576,252,0,12,36,84,0,0,not_informative_for_objective_gap_context_contrast
+five,3,576,252,0,12,36,84,0,0,not_informative_for_objective_gap_context_contrast
+four,1,1200,499,0,20,41,81,0,0,not_informative_for_objective_gap_context_contrast
+four,2,1200,502,0,20,41,81,0,0,not_informative_for_objective_gap_context_contrast
+four,3,1200,493,0,20,41,81,0,0,not_informative_for_objective_gap_context_contrast

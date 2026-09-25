@@ -1,0 +1,24 @@
+{
+  "reports": 493,
+  "n": 16,
+  "r": 3,
+  "N": 295,
+  "lambda_": 7.375,
+  "mu": 55.3125,
+  "distinct_displays": 418,
+  "known_villages": 14,
+  "bootstrap_blocks": 15,
+  "missing_village": 113,
+  "reports_dropped": 0,
+  "missing_village_per_split": {
+    "fit": 69,
+    "discovery": 22,
+    "confirmation": 22
+  },
+  "villages_per_split": {
+    "fit": 14,
+    "discovery": 15,
+    "confirmation": 13
+  },
+  "unseen_training_items": 0
+}
