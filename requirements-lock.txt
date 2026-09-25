@@ -1,0 +1,6 @@
+numpy==2.3.5
+scipy==1.17.0
+pandas==2.2.3
+matplotlib==3.10.8
+rdata==1.1.0
+pytest==9.1.1

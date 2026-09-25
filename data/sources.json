@@ -1,0 +1,18 @@
+[
+  {
+    "file": "beans.rda",
+    "url": "https://raw.githubusercontent.com/hturner/PlackettLuce/ea031f7b129910c518daabf7c3e769aa499ea639/data/beans.rda",
+    "sha256": "bdf799913727b3d0e75c5a4276f77fe8e0abdc9605707c7755ccb04e33ef9b6c",
+    "bytes": 8852,
+    "bundled": true,
+    "terms_url": "https://github.com/hturner/PlackettLuce/blob/ea031f7b129910c518daabf7c3e769aa499ea639/DESCRIPTION"
+  },
+  {
+    "file": "sushi3-2016.zip",
+    "url": "https://www.kamishima.net/asset/sushi3-2016.zip",
+    "sha256": "4f8bbf3acd6f796cb3d0add6c73c394664982c57d3b48e75e92014e5278558a8",
+    "bytes": 222176,
+    "bundled": false,
+    "terms_url": "https://www.kamishima.net/sushi/"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "unit_tests_passed": 5,
+  "unit_test_command": "python -m pytest -q",
+  "checks": [
+    "DP, MILP and cutting-plane agree with exhaustive search at n=3,5,7",
+    "SM and PL probabilities normalize over all 5-item permutations",
+    "Profile-beta score equation recovers a known beta",
+    "PL analytic gradient matches finite differences; finite fit with an unseen item",
+    "Insertion search is monotone and terminates at an insertion local optimum",
+    "Direct r=2 subset sampler has the correct reversal rate for globally distant items",
+    "72 real-data fits and 360 independent-replicate simulation fits completed",
+    "All small-n main fits have zero certified Kemeny objective gap",
+    "Primary protocol SHA256 matches the pre-run file"
+  ],
+  "large_n_caveat": "No global optimality certificate was obtained for the Sushi B centers",
+  "PL_optimizer_successes": 72,
+  "PL_max_absolute_gradient": 0.0009642085018037
+}

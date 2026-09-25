@@ -1,0 +1,29 @@
+{
+  "date": "2026-09-25",
+  "python": "3.12.14",
+  "scope": "English repository packaging; the full primary fitting pipeline was not rerun",
+  "unit_tests_passed": 5,
+  "unit_test_command": "python -m pytest -q",
+  "source_download_and_sha256_verification": "passed for both source files",
+  "corrupted_input_rejected": true,
+  "primary_fits_reconstructed": 72,
+  "primary_scores_and_ci_max_absolute_error": 1.7763568394002505e-15,
+  "diagnostic_rerun_command": "python run_diagnostics.py --same-center",
+  "diagnostic_tables_matched_at_tolerance_1e_minus_12": [
+    "shell_decomposition.csv",
+    "pair_diagnostics.csv",
+    "context_effects.csv",
+    "context_replicates.csv",
+    "adjacent_pair_bins.csv",
+    "diagnostic_coverage.csv",
+    "diagnostic_bin_cutoffs.csv",
+    "diagnostic_controls.csv",
+    "shell_same_center_sensitivity.csv"
+  ],
+  "primary_figures_regenerated": true,
+  "scientific_model_solver_and_diagnostic_modules_unchanged": true,
+  "original_protocols_preserved_byte_for_byte": true,
+  "relative_documentation_links": "all resolved",
+  "restricted_sushi_data_excluded_from_git": true,
+  "same_order_followup_reproduced_without_private_cache": true
+}
