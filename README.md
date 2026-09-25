@@ -3,7 +3,7 @@
 Reproducible Python experiments comparing **direct subset Mallows** (SM) and
 **Plackett–Luce** (PL) on complete rankings of displayed subsets. The repository
 contains the implemented estimators, data access and validation, saved fitted
-parameters, aggregate results, figures, and an English analysis.
+parameters, aggregate results, figures, and an analysis.
 
 **Main finding:** neither model wins across all tasks. Exact SM fitting removes
 an optimization confound at small item counts. Prediction also depends on
