@@ -1,9 +1,6 @@
 name: Recover strict feature study
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths: ['.github/workflows/strict_features.yml']
 permissions:
   contents: write
 concurrency:

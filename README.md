@@ -11,6 +11,9 @@ dispersion estimation and the probability structure within a ranking.
 
 ## Start here
 
+- **[Strict feature-transition study: completed analysis](docs/strict_feature_analysis.md)**
+- [Strict-study results, source audit and reproduction](results/strict_features/README.md)
+
 - **[Exposure regimes, manuscript estimators and ATP tennis](docs/exposure_analysis.md)**
 - [New results and reproduction commands](results/exposure/README.md)
 
@@ -21,7 +24,39 @@ dispersion estimation and the probability structure within a ranking.
 - [Reproduction and uncertainty conventions](docs/reproducibility.md)
 - [References](docs/references.md) and [BibTeX](docs/references.bib)
 
-## What has been run
+## Strict feature study (25 September 2026)
+
+Completed **4,760 independent synthetic training datasets** and **16 new real
+tasks (8,763 original reports)**. Protocols were frozen before their respective
+fits; the diagnostic-budget follow-up is explicitly exploratory.
+
+Changing probabilities within the same Kendall-distance shell reverses the
+predictive winner even when every shell mass remains fixed. Puzzle 2 provides
+a tentative SM-favorable example; two 2024 partial-dots tasks favor PL.
+The specific real-data SM context effect remains unconfirmed.
+
+Strict fits use exact/certified SM centers, uncapped dispersion, the literal
+sharp/efficient estimators in their computational domains, and Hunter MM for PL.
+No penalty, probability floor, report repair, item deletion or heuristic MLE
+replacement is used. Larger sharp sieves are unavailable; all executed Section 3
+fits have depth zero. All nine additional agricultural candidates failed the
+frozen whole-task eligibility rule; every exclusion is documented.
+
+![Strict feature transitions](figures/strict_features/feature_transitions.png)
+
+See the [English report](docs/strict_feature_analysis.md) and
+[reproduction commands](results/strict_features/README.md#reproduce).
+After a workspace disconnect during publication, the same experiments were
+successfully replayed in GitHub Actions. All recorded real-task deltas, primary
+simulation summaries and diagnostic-budget accuracies matched. See the
+[run status](results/strict_features/recovery_status.json) and
+[validation](results/strict_features/validation.json). The replay adds no
+independent experimental evidence.
+
+Earlier results below are separate historical experiments with their original
+regularization and heuristic choices.
+
+## Historical base experiments
 
 - Three real-data tasks: Beans, Sushi A, and Sushi B; **72 primary paired fits**.
 - Three generating mechanisms × four sample sizes × 30 independent repeats:
@@ -47,7 +82,7 @@ uncertainty. NLL magnitudes should not be compared across different report lengt
 
 ![Real-data learning curves](figures/real_learning_curves.png)
 
-## Models and fitting
+## Historical models and fitting
 
 SM generates a ranking **directly on the displayed set**, around the restriction
 of one global center. It does not generate a full ranking and then delete items.
@@ -65,7 +100,7 @@ its centers have **no global optimality certificate**. The exposure extension no
 eight items, plus the proof-constant Section 3 estimator. Larger exact sieves
 are explicitly unavailable; all executed Section 3 fits have depth zero. These experiments do not establish minimax optimality of the MLE.
 
-## Quick reproduction
+## Historical pipeline reproduction
 
 Run commands from the repository root. Python **3.12** is recommended.
 `requirements-lock.txt` records the versions used for the saved experiments.
@@ -110,6 +145,9 @@ See [reproducibility notes](docs/reproducibility.md) for selective runs and chec
 
 | Path | Contents |
 |---|---|
+| `src/strict_models.py`, `src/strict_features.py` | Strict published-estimator fits and controlled feature interventions |
+| `run_strict_*.py`, `validate_strict_features.py` | Strict experiments, follow-ups and replay validation |
+| `download_strict_*.py`, `make_strict_figures.py` | Pinned sources, eligibility audit and strict-study figures |
 | `src/models.py` | Likelihoods, center solvers, dispersion/PL fits, direct-subset samplers |
 | `src/cutting_plane.py` | Additional Kemeny lower/upper-bound solver |
 | `src/data.py` | Verified data acquisition, strict ranking parsing, exposure audits |
@@ -132,7 +170,7 @@ the downloader retrieves the original archive and verifies its SHA256 hash.
 Raw Sushi files, processed respondent-level data, and private loss caches are
 excluded from Git. No unpublished manuscript is included.
 
-Real datasets have no known true central ranking. Sushi A and B share
+Beans and Sushi have no known true central ranking. Sushi A and B share
 respondents and use aligned splits; they are not independent participant
 samples. Beans has no assessor identifier. Real subset designs are not assumed
 uniform; the synthetic design is uniform and independent. See
