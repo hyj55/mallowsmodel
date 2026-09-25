@@ -9,3 +9,5 @@ data/raw/*
 data/processed/
 results/private/
 .DS_Store
+
+results/exposure/tennis_predictions.csv

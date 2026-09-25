@@ -76,3 +76,17 @@ commit the archive, extracted rankings, or respondent-level loss caches.
 Simulated reports are generated directly by `src/models.py` using the recorded
 seeds and settings; synthetic source observations are regenerated, not stored.
 Aggregate simulated results are included under `results/`.
+
+## ATP tennis extension
+
+src/tennis.py downloads Sackmann's 2009–2019 main-tour singles files from
+archive commit 83733587353df8a41f2fd4f516147d5aa83f5a8d. The first year defines
+the initial prior-season catalog; evaluation covers 2010–2019. Immutable URLs,
+byte counts and SHA256 hashes are recorded in data/tennis_sources.json.
+Raw CSVs are excluded from Git. The source date denotes tournament starts,
+not exact match times; chronological splits preserve tournaments. Invalid or
+incomplete matches and out-of-catalog players are excluded and counted.
+
+No real dataset has a supplied true center or a verified uniform display
+design. Numeric lambda<1 is available from ATP and small report subsets of
+Beans/Sushi B. See [the exposure report](../docs/exposure_analysis.md).

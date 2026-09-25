@@ -21,8 +21,9 @@ optimization audit, not six different probability models.
   separate SM-versus-PL competitors in the main results.
 - Existing baseline results remain for reproducibility in the appendix.
   No algorithm is selected by held-out predictive performance.
-- The efficient hierarchy and sharp estimator concern statistical risk, and
-  are outside the current predictive-fit comparison. No minimax claim is made.
+- The [exposure extension](exposure_analysis.md) now implements the literal
+  sharp sieve and score hierarchy, with explicit computational limitations.
+  No minimax claim follows from these finite experiments.
 
 Pair counts are sufficient for this objective; using them is not an assumption
 that the pairs within a report are independent. Likelihood evaluation,
@@ -57,8 +58,8 @@ guarantee to unrestricted Kemeny fitting (§2.5, following Lemma 2.11).
 
 For a fixed positive beta, exact DP gives a global center MLE. Profiling beta
 gives the joint MLE when the dispersion solution is interior. Our preset
-[0,10] bound also defines finite predictions at boundary cases. No real-data
-fit reached 10. A validation multiplier below 1 changes the fitted dispersion,
+[0,10] bound also defines finite predictions at boundary cases. No original primary real-data
+fit reached 10; the new tiny-sample extension often reaches this cap. A validation multiplier below 1 changes the fitted dispersion,
 so that calibrated predictor is explicitly **not the joint MLE**.
 
 Small sample size N does not make the n! search space small. DP costs
@@ -91,3 +92,12 @@ This is a training-objective bound, not a bound on test NLL.
 Generic Mallows software for a latent full ranking with missing positions is
 not automatically an implementation of this direct subset law. This project
 does not claim an exhaustive survey of every partial-ranking algorithm.
+
+## Manuscript estimators in the exposure extension
+
+src/manuscript_estimators.py implements Algorithms 2.1, 3.1 and 3.2,
+including proof constants, fresh batches, accumulated offsets, and exact
+Lemma 2.11 sieve packing. It refuses unavailable exact blocks above eight
+items. Every executed Section 3 fit has depth zero and equals Borda; this
+is reported rather than described as active hierarchy refinement. See the
+[extension report](exposure_analysis.md) and [protocol](protocols/EXPOSURE_PROTOCOL.md).

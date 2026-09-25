@@ -11,6 +11,9 @@ dispersion estimation and the probability structure within a ranking.
 
 ## Start here
 
+- **[Exposure regimes, manuscript estimators and ATP tennis](docs/exposure_analysis.md)**
+- [New results and reproduction commands](results/exposure/README.md)
+
 - [Analysis and conclusions](docs/analysis.md)
 - [Mechanism diagnostics and formal definitions](docs/diagnostics.md)
 - [Algorithms, sources, and exactness guarantees](docs/algorithms.md)
@@ -58,9 +61,9 @@ of one global center. It does not generate a full ranking and then delete items.
 | Small-sample sensitivity | Validation-selected multiplicative shrinkage of SM β |
 
 Beans, Sushi A, and all main simulations have n = 10. Sushi B has n = 100;
-its centers have **no global optimality certificate**. The sharp estimator is
-not implemented: its minimax-risk objective is different from likelihood
-optimization. These experiments do not establish minimax optimality of the MLE.
+its centers have **no global optimality certificate**. The exposure extension now implements the exact sharp sieve for blocks up to
+eight items, plus the proof-constant Section 3 estimator. Larger exact sieves
+are explicitly unavailable; all executed Section 3 fits have depth zero. These experiments do not establish minimax optimality of the MLE.
 
 ## Quick reproduction
 
@@ -138,3 +141,23 @@ uniform; the synthetic design is uniform and independent. See
 Research and data sources are credited in [References](docs/references.md).
 Third-party data retain their own terms; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 No project-wide open-source license has been assigned to the original research code.
+
+## Exposure extension
+
+The new Python files are src/manuscript_estimators.py, src/tennis.py,
+run_exposure.py, run_exposure_followup.py, make_exposure_figures.py and
+validate_exposure.py. They add the manuscript estimators, actual lambda/mu
+coverage audits, uniform-design simulations, and chronological ATP seasons.
+The report separates center recovery, prediction, and regularization effects.
+
+~~~bash
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python run_exposure.py --part all
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python run_exposure_followup.py
+python make_exposure_figures.py
+python validate_exposure.py
+~~~
+
+The recovery workflow rebuilds result files after a workspace disconnect;
+results/exposure/validation.json records completed reconstruction checks.
+ATP raw data are downloaded separately from an immutable archive of Jeff
+Sackmann's CC BY-NC-SA 4.0 data. Raw Sushi observations remain excluded.

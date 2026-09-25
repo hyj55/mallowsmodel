@@ -1,0 +1,65 @@
+name: Recover exposure experiments
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'run_exposure.py'
+      - 'run_exposure_followup.py'
+      - 'src/manuscript_estimators.py'
+      - '.github/workflows/exposure.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: exposure-recovery
+  cancel-in-progress: false
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MPLBACKEND: Agg
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - name: Install locked scientific dependencies
+        run: python -m pip install -r requirements-lock.txt
+      - name: Check estimator implementations
+        run: |
+          mkdir -p results/exposure
+          python -m pytest -q 2>&1 | tee results/exposure/recovery_checks.txt
+      - name: Run all exposure experiments
+        run: python -u run_exposure.py --part all 2>&1 | tee results/exposure/recovery_run.txt
+      - name: Run explanatory follow-ups
+        run: python -u run_exposure_followup.py 2>&1 | tee results/exposure/recovery_followup.txt
+      - name: Reconstruct scores and export figures
+        run: |
+          python validate_exposure.py 2>&1 | tee results/exposure/recovery_validation.txt
+          python make_exposure_figures.py
+      - name: Preserve run status and generated files
+        if: always()
+        env:
+          RUN_OUTCOME: ${{ job.status }}
+        run: |
+          mkdir -p results/exposure
+          python - <<'PY'
+          import json,os,pathlib
+          p=pathlib.Path('results/exposure/recovery_status.json')
+          p.write_text(json.dumps({
+              'status':os.environ['RUN_OUTCOME'],
+              'run_id':os.environ['GITHUB_RUN_ID'],
+              'source_commit':os.environ['GITHUB_SHA'],
+              'workflow_url':'https://github.com/'+os.environ['GITHUB_REPOSITORY']+'/actions/runs/'+os.environ['GITHUB_RUN_ID']
+          },indent=2)+'\n')
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A -- results/exposure data figures
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Recover exposure experiment outputs ($RUN_OUTCOME)"
+          git pull --rebase origin main
+          git push origin HEAD:main

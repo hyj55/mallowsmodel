@@ -32,3 +32,19 @@ Based on Order Responses*, KDD. The downloaded archive includes its own README.
 Git excludes the Sushi archive, processed respondent data, and private
 per-report output caches. The repository contains aggregate analyses and fitted
 model parameters, not copies of respondents' rankings.
+
+## ATP tennis
+
+Data author: **Jeff Sackmann**, ATP Tennis Rankings, Results, and Stats,
+https://github.com/JeffSackmann/tennis_atp. Data retain CC BY-NC-SA 4.0 terms.
+The original endpoint was unavailable; source files are retrieved from
+https://github.com/Aneeshers/tennis-sackmann-archive at commit
+83733587353df8a41f2fd4f516147d5aa83f5a8d. Its original attribution and license
+are preserved by the downloader. No source data ownership is claimed.
+
+Raw annual CSVs and the per-match prediction cache are excluded from Git.
+The repository distributes aggregate analyses and fitted parameters; any
+source-derived material subject to the upstream license retains those terms.
+Filtering and chronological splits are our analysis choices, not the source
+paper's exact preprocessing. See data/tennis_sources.json and the original
+license saved as data/licenses/ATP-CC-BY-NC-SA-4.0.txt after download.

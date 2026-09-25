@@ -50,3 +50,18 @@ It is not included in the distributable repository.
     Used for direct subset PL modeling and finite regularized estimates. Our Python fit uses the manuscript's ridge objective, not the R package's default pseudo-rankings.
 
 Data bytes, source URLs, seeds and software versions are recorded under `results/`.
+
+11. Cantwell, G. T., & Moore, C. (2022). **Belief propagation for permutations,
+    rankings, and partial orders.** Physical Review E 105, L052303.
+    [Paper](https://arxiv.org/abs/2110.00513),
+    [DOI](https://doi.org/10.1103/PhysRevE.105.L052303),
+    [code](https://github.com/gcant/pairwise-comparison-BP).
+    Page 5 and reference 27 identify ATP 2010–2019 and Sackmann's source.
+12. Sackmann, J. **ATP Tennis Rankings, Results, and Stats.**
+    [Original repository](https://github.com/JeffSackmann/tennis_atp).
+    Original README and data dictionary define annual files and tournament dates.
+    License: CC BY-NC-SA 4.0.
+13. Aneeshers. **Tennis Sackmann archive.**
+    [Pinned mirror](https://github.com/Aneeshers/tennis-sackmann-archive/tree/83733587353df8a41f2fd4f516147d5aa83f5a8d).
+    Used because the original endpoint returned 404; original authorship stays
+    with Jeff Sackmann. Accessed 2026-09-25.
