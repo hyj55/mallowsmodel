@@ -1,0 +1,8 @@
+{
+  "part": "coverage",
+  "seed": 202609251,
+  "repetitions": 40,
+  "independent_datasets": 360,
+  "seconds": 7.451015949249268,
+  "protocol_sha256": "7bbc69eb3111f4460a427bf86c12ae25552f667679ba38b1d57c03df4c4a4b5b"
+}

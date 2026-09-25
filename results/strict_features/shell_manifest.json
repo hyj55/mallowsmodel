@@ -1,0 +1,8 @@
+{
+  "part": "shell",
+  "seed": 202609251,
+  "repetitions": 40,
+  "independent_datasets": 1200,
+  "seconds": 19.935515880584717,
+  "protocol_sha256": "7bbc69eb3111f4460a427bf86c12ae25552f667679ba38b1d57c03df4c4a4b5b"
+}

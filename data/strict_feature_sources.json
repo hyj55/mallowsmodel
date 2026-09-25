@@ -1,0 +1,222 @@
+[
+  {
+    "file": "00024-00000001.soc",
+    "repository": "PrefLib/PrefLib-Data",
+    "commit": "1a8e9a9d0ad02a2a2d7473e813d1ac3057264f80",
+    "path": "datasets/00024 - dots/00024-00000001.soc",
+    "role": "data",
+    "url": "https://raw.githubusercontent.com/PrefLib/PrefLib-Data/1a8e9a9d0ad02a2a2d7473e813d1ac3057264f80/datasets/00024%20-%20dots/00024-00000001.soc",
+    "bytes": 675,
+    "sha256": "95a1d29822963329402195694cc62a2046fae8f5e3cf2e7e431df6f4456b58e0"
+  },
+  {
+    "file": "00024-00000002.soc",
+    "repository": "PrefLib/PrefLib-Data",
+    "commit": "1a8e9a9d0ad02a2a2d7473e813d1ac3057264f80",
+    "path": "datasets/00024 - dots/00024-00000002.soc",
+    "role": "data",
+    "url": "https://raw.githubusercontent.com/PrefLib/PrefLib-Data/1a8e9a9d0ad02a2a2d7473e813d1ac3057264f80/datasets/00024%20-%20dots/00024-00000002.soc",
+    "bytes": 674,
+    "sha256": "53d9b9ab0593c4de58bdf764168fe19fb3196a82b43ccc44310ff0fd7e2d3f44"
+  },
+  {
+    "file": "00024-00000003.soc",
+    "repository": "PrefLib/PrefLib-Data",
+    "commit": "1a8e9a9d0ad02a2a2d7473e813d1ac3057264f80",
+    "path": "datasets/00024 - dots/00024-00000003.soc",
+    "role": "data",
+    "url": "https://raw.githubusercontent.com/PrefLib/PrefLib-Data/1a8e9a9d0ad02a2a2d7473e813d1ac3057264f80/datasets/00024%20-%20dots/00024-00000003.soc",
+    "bytes": 676,
+    "sha256": "b9c231aa7ce860ec33d05aed44dd328e364f7926c90fb480bc49412e923debd4"
+  },
+  {
+    "file": "00024-00000004.soc",
+    "repository": "PrefLib/PrefLib-Data",
+    "commit": "1a8e9a9d0ad02a2a2d7473e813d1ac3057264f80",
+    "path": "datasets/00024 - dots/00024-00000004.soc",
+    "role": "data",
+    "url": "https://raw.githubusercontent.com/PrefLib/PrefLib-Data/1a8e9a9d0ad02a2a2d7473e813d1ac3057264f80/datasets/00024%20-%20dots/00024-00000004.soc",
+    "bytes": 673,
+    "sha256": "206ec157fb68e02d168db26942ebabeedb8cbe0454e507d0706709716a600d7b"
+  },
+  {
+    "file": "00025-00000001.soc",
+    "repository": "PrefLib/PrefLib-Data",
+    "commit": "1a8e9a9d0ad02a2a2d7473e813d1ac3057264f80",
+    "path": "datasets/00025 - puzzle/00025-00000001.soc",
+    "role": "data",
+    "url": "https://raw.githubusercontent.com/PrefLib/PrefLib-Data/1a8e9a9d0ad02a2a2d7473e813d1ac3057264f80/datasets/00025%20-%20puzzle/00025-00000001.soc",
+    "bytes": 677,
+    "sha256": "62770ce91cd8590a8868698b5ece97f4c561d58fb4c101054d1d11fcfa83b49f"
+  },
+  {
+    "file": "00025-00000002.soc",
+    "repository": "PrefLib/PrefLib-Data",
+    "commit": "1a8e9a9d0ad02a2a2d7473e813d1ac3057264f80",
+    "path": "datasets/00025 - puzzle/00025-00000002.soc",
+    "role": "data",
+    "url": "https://raw.githubusercontent.com/PrefLib/PrefLib-Data/1a8e9a9d0ad02a2a2d7473e813d1ac3057264f80/datasets/00025%20-%20puzzle/00025-00000002.soc",
+    "bytes": 672,
+    "sha256": "7240de0ab792121e79eb761c14b244ea8ddbd6e63e84a08d4a19964382ae1fd9"
+  },
+  {
+    "file": "00025-00000003.soc",
+    "repository": "PrefLib/PrefLib-Data",
+    "commit": "1a8e9a9d0ad02a2a2d7473e813d1ac3057264f80",
+    "path": "datasets/00025 - puzzle/00025-00000003.soc",
+    "role": "data",
+    "url": "https://raw.githubusercontent.com/PrefLib/PrefLib-Data/1a8e9a9d0ad02a2a2d7473e813d1ac3057264f80/datasets/00025%20-%20puzzle/00025-00000003.soc",
+    "bytes": 674,
+    "sha256": "92d333140144c062c582d9728fbbc35729d4b6f2860f07b550fdd62939bcaa66"
+  },
+  {
+    "file": "00025-00000004.soc",
+    "repository": "PrefLib/PrefLib-Data",
+    "commit": "1a8e9a9d0ad02a2a2d7473e813d1ac3057264f80",
+    "path": "datasets/00025 - puzzle/00025-00000004.soc",
+    "role": "data",
+    "url": "https://raw.githubusercontent.com/PrefLib/PrefLib-Data/1a8e9a9d0ad02a2a2d7473e813d1ac3057264f80/datasets/00025%20-%20puzzle/00025-00000004.soc",
+    "bytes": 676,
+    "sha256": "3309fb582e483b4a8aab3063fa9c64b536b20058dc1db5f44e4199c7c385fa9e"
+  },
+  {
+    "file": "06-08-2021ratingsrankingsA1.json",
+    "repository": "ryankemmer/simpleRatingRanking",
+    "commit": "8bc1331abea2fdbfb4ce75cd453565bda83f4dc7",
+    "path": "dataOperations/06-08-2021ratingsrankingsA1.json",
+    "role": "data",
+    "url": "https://raw.githubusercontent.com/ryankemmer/simpleRatingRanking/8bc1331abea2fdbfb4ce75cd453565bda83f4dc7/dataOperations/06-08-2021ratingsrankingsA1.json",
+    "bytes": 37870,
+    "sha256": "c9ce7c813e5fb53d0c371bee99ab138f1d6134f0f75c13aff34bfa4d05c7e2a6"
+  },
+  {
+    "file": "06-08-2021ratingsrankingsA2.json",
+    "repository": "ryankemmer/simpleRatingRanking",
+    "commit": "8bc1331abea2fdbfb4ce75cd453565bda83f4dc7",
+    "path": "dataOperations/06-08-2021ratingsrankingsA2.json",
+    "role": "data",
+    "url": "https://raw.githubusercontent.com/ryankemmer/simpleRatingRanking/8bc1331abea2fdbfb4ce75cd453565bda83f4dc7/dataOperations/06-08-2021ratingsrankingsA2.json",
+    "bytes": 37902,
+    "sha256": "f0d7699c2f6eb191011703c6c1f550837033a9d05c9174e73d31cfc2a8ed316b"
+  },
+  {
+    "file": "06-08-2021ratingsrankingsA3.json",
+    "repository": "ryankemmer/simpleRatingRanking",
+    "commit": "8bc1331abea2fdbfb4ce75cd453565bda83f4dc7",
+    "path": "dataOperations/06-08-2021ratingsrankingsA3.json",
+    "role": "data",
+    "url": "https://raw.githubusercontent.com/ryankemmer/simpleRatingRanking/8bc1331abea2fdbfb4ce75cd453565bda83f4dc7/dataOperations/06-08-2021ratingsrankingsA3.json",
+    "bytes": 37878,
+    "sha256": "5e259823696befaa3b9eb0902eb30d9f1f93193e58ceca21b2fdeacdeef51779"
+  },
+  {
+    "file": "06-08-2021ratingsrankingsA4.json",
+    "repository": "ryankemmer/simpleRatingRanking",
+    "commit": "8bc1331abea2fdbfb4ce75cd453565bda83f4dc7",
+    "path": "dataOperations/06-08-2021ratingsrankingsA4.json",
+    "role": "data",
+    "url": "https://raw.githubusercontent.com/ryankemmer/simpleRatingRanking/8bc1331abea2fdbfb4ce75cd453565bda83f4dc7/dataOperations/06-08-2021ratingsrankingsA4.json",
+    "bytes": 37903,
+    "sha256": "50c16b871da6ac44b95fd79269e6004d3487142ab041eb1eba4f6929aefa7888"
+  },
+  {
+    "file": "06-08-2021ratingsrankingsA5.json",
+    "repository": "ryankemmer/simpleRatingRanking",
+    "commit": "8bc1331abea2fdbfb4ce75cd453565bda83f4dc7",
+    "path": "dataOperations/06-08-2021ratingsrankingsA5.json",
+    "role": "data",
+    "url": "https://raw.githubusercontent.com/ryankemmer/simpleRatingRanking/8bc1331abea2fdbfb4ce75cd453565bda83f4dc7/dataOperations/06-08-2021ratingsrankingsA5.json",
+    "bytes": 37896,
+    "sha256": "26b74c5171b9da9d679363dcd06c98b2dc3c1c58f29819506c13abe2aaa2e344"
+  },
+  {
+    "file": "A_dataOperations_data_to_json.py",
+    "repository": "ryankemmer/simpleRatingRanking",
+    "commit": "8bc1331abea2fdbfb4ce75cd453565bda83f4dc7",
+    "path": "dataOperations/data_to_json.py",
+    "role": "encoding_provenance",
+    "url": "https://raw.githubusercontent.com/ryankemmer/simpleRatingRanking/8bc1331abea2fdbfb4ce75cd453565bda83f4dc7/dataOperations/data_to_json.py",
+    "bytes": 2229,
+    "sha256": "07db9b26a2ddab0a3138923d453413636199c7013afd322b333c756283bee1e0"
+  },
+  {
+    "file": "A_public_javascripts_rankings.js",
+    "repository": "ryankemmer/simpleRatingRanking",
+    "commit": "8bc1331abea2fdbfb4ce75cd453565bda83f4dc7",
+    "path": "public/javascripts/rankings.js",
+    "role": "encoding_provenance",
+    "url": "https://raw.githubusercontent.com/ryankemmer/simpleRatingRanking/8bc1331abea2fdbfb4ce75cd453565bda83f4dc7/public/javascripts/rankings.js",
+    "bytes": 11080,
+    "sha256": "93dc56b243d84ecf5dcdc952e6e5a2ace2d8ddbd7e2f07e8f16bc93a96f9c01e"
+  },
+  {
+    "file": "06-08-2021ratingsrankingsB1.json",
+    "repository": "ryankemmer/simpleRatingRanking",
+    "commit": "e133bec2eb766cef2f0741d4e7d175f89a4719f4",
+    "path": "dataOperations/06-08-2021ratingsrankingsB1.json",
+    "role": "data",
+    "url": "https://raw.githubusercontent.com/ryankemmer/simpleRatingRanking/e133bec2eb766cef2f0741d4e7d175f89a4719f4/dataOperations/06-08-2021ratingsrankingsB1.json",
+    "bytes": 37922,
+    "sha256": "fc1bd663e013e191740c2a35b2b5241547e533c6943c6ceda5c6dc9211e42009"
+  },
+  {
+    "file": "06-08-2021ratingsrankingsB2.json",
+    "repository": "ryankemmer/simpleRatingRanking",
+    "commit": "e133bec2eb766cef2f0741d4e7d175f89a4719f4",
+    "path": "dataOperations/06-08-2021ratingsrankingsB2.json",
+    "role": "data",
+    "url": "https://raw.githubusercontent.com/ryankemmer/simpleRatingRanking/e133bec2eb766cef2f0741d4e7d175f89a4719f4/dataOperations/06-08-2021ratingsrankingsB2.json",
+    "bytes": 37969,
+    "sha256": "65ff4ed53059c11b84b64721322c975310ebfef89603e8c13d3843b0101b8579"
+  },
+  {
+    "file": "06-14-2021ratingsrankingsB3.json",
+    "repository": "ryankemmer/simpleRatingRanking",
+    "commit": "e133bec2eb766cef2f0741d4e7d175f89a4719f4",
+    "path": "dataOperations/06-14-2021ratingsrankingsB3.json",
+    "role": "data",
+    "url": "https://raw.githubusercontent.com/ryankemmer/simpleRatingRanking/e133bec2eb766cef2f0741d4e7d175f89a4719f4/dataOperations/06-14-2021ratingsrankingsB3.json",
+    "bytes": 37928,
+    "sha256": "5bcd196c7ba00d1f0ee35e4bbe199ae5ab5b9a3b22f8be0fb483fd587e52bbb6"
+  },
+  {
+    "file": "06-14-2021ratingsrankingsB4.json",
+    "repository": "ryankemmer/simpleRatingRanking",
+    "commit": "e133bec2eb766cef2f0741d4e7d175f89a4719f4",
+    "path": "dataOperations/06-14-2021ratingsrankingsB4.json",
+    "role": "data",
+    "url": "https://raw.githubusercontent.com/ryankemmer/simpleRatingRanking/e133bec2eb766cef2f0741d4e7d175f89a4719f4/dataOperations/06-14-2021ratingsrankingsB4.json",
+    "bytes": 37911,
+    "sha256": "005d48b223bef93f4bf028eeed6ae4bc252fb73a11200c45bf0fc98c3a233e10"
+  },
+  {
+    "file": "06-08-2021ratingsrankingsB5.json",
+    "repository": "ryankemmer/simpleRatingRanking",
+    "commit": "e133bec2eb766cef2f0741d4e7d175f89a4719f4",
+    "path": "dataOperations/06-08-2021ratingsrankingsB5.json",
+    "role": "data",
+    "url": "https://raw.githubusercontent.com/ryankemmer/simpleRatingRanking/e133bec2eb766cef2f0741d4e7d175f89a4719f4/dataOperations/06-08-2021ratingsrankingsB5.json",
+    "bytes": 37910,
+    "sha256": "3601b8b5269092e931cc6850d0b19d3334a2bfed6829425416536bd3640a6de1"
+  },
+  {
+    "file": "B_dataOperations_data_to_json.py",
+    "repository": "ryankemmer/simpleRatingRanking",
+    "commit": "e133bec2eb766cef2f0741d4e7d175f89a4719f4",
+    "path": "dataOperations/data_to_json.py",
+    "role": "encoding_provenance",
+    "url": "https://raw.githubusercontent.com/ryankemmer/simpleRatingRanking/e133bec2eb766cef2f0741d4e7d175f89a4719f4/dataOperations/data_to_json.py",
+    "bytes": 2212,
+    "sha256": "bcab4f8f40d67c61abef3c1bbe403295bf852ea74605a541ee63fd73f92b66d8"
+  },
+  {
+    "file": "B_public_javascripts_rankings.js",
+    "repository": "ryankemmer/simpleRatingRanking",
+    "commit": "e133bec2eb766cef2f0741d4e7d175f89a4719f4",
+    "path": "public/javascripts/rankings.js",
+    "role": "encoding_provenance",
+    "url": "https://raw.githubusercontent.com/ryankemmer/simpleRatingRanking/e133bec2eb766cef2f0741d4e7d175f89a4719f4/public/javascripts/rankings.js",
+    "bytes": 11078,
+    "sha256": "e74f1cf6b164f15923c225f2d2df4c573a47a886ec80c8517a7df0bcb01a0eca"
+  }
+]

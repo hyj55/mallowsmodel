@@ -1,0 +1,17 @@
+dataset,title,n,r,reports,N,discovery,confirmation,lambda_,mu,unseen,item_min,item_max,observed_pairs,distinct_sets,grouping,objective_truth_available,reports_dropped
+00024-00000001,all_200x3,4,4,795,477,159,159,477.0,477.0,0,477,477,6,1,anonymous_upstream_aggregated_records,True,0
+00024-00000002,all_200x5,4,4,794,476,159,159,476.0,476.0,0,476,476,6,1,anonymous_upstream_aggregated_records,True,0
+00024-00000003,all_200x7,4,4,800,480,160,160,480.0,480.0,0,480,480,6,1,anonymous_upstream_aggregated_records,True,0
+00024-00000004,all_200x9,4,4,794,476,159,159,476.0,476.0,0,476,476,6,1,anonymous_upstream_aggregated_records,True,0
+00025-00000001,all_11_14_17_20,4,4,793,475,159,159,475.0,475.0,0,475,475,6,1,anonymous_upstream_aggregated_records,True,0
+00025-00000002,all_5_8_11_14,4,4,795,477,159,159,477.0,477.0,0,477,477,6,1,anonymous_upstream_aggregated_records,True,0
+00025-00000003,all_7_10_13_16,4,4,795,477,159,159,477.0,477.0,0,477,477,6,1,anonymous_upstream_aggregated_records,True,0
+00025-00000004,all_9_12_15_18,4,4,797,478,159,160,478.0,478.0,0,478,478,6,1,anonymous_upstream_aggregated_records,True,0
+dots2024_A_r2,"2024 dots arm A, r=2",30,2,300,180,60,60,0.41379310344827586,12.0,0,8,16,152,214,source_export_participant_blocks,True,0
+dots2024_A_r3,"2024 dots arm A, r=3",30,3,300,180,60,60,1.2413793103448276,18.0,0,13,23,308,294,source_export_participant_blocks,True,0
+dots2024_A_r5,"2024 dots arm A, r=5",30,5,300,180,60,60,4.137931034482759,30.0,0,23,36,431,300,source_export_participant_blocks,True,0
+dots2024_A_r6,"2024 dots arm A, r=6",30,6,300,180,60,60,6.206896551724138,36.0,0,26,46,435,298,source_export_participant_blocks,True,0
+dots2024_B_r2,"2024 dots arm B, r=2",30,2,300,180,60,60,0.41379310344827586,12.0,0,8,16,150,221,source_export_participant_blocks,True,0
+dots2024_B_r3,"2024 dots arm B, r=3",30,3,300,180,60,60,1.2413793103448276,18.0,0,12,24,315,290,source_export_participant_blocks,True,0
+dots2024_B_r5,"2024 dots arm B, r=5",30,5,300,180,60,60,4.137931034482759,30.0,0,21,37,431,300,source_export_participant_blocks,True,0
+dots2024_B_r6,"2024 dots arm B, r=6",30,6,300,180,60,60,6.206896551724138,36.0,0,29,47,434,299,source_export_participant_blocks,True,0

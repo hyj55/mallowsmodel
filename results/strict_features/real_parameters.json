@@ -1,0 +1,2525 @@
+{
+  "00024-00000001": {
+    "pl": {
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "theta": [
+        0.3613528458748103,
+        0.014967166009920652,
+        -0.02955601686318987,
+        -0.3467639950215413
+      ],
+      "beta": "nan",
+      "status": "ok",
+      "metadata": {
+        "algorithm": "Hunter_2004_equation_30",
+        "components": 1,
+        "tolerance": 1e-10,
+        "max_iterations": 100000,
+        "penalty": 0.0,
+        "pseudo_comparisons": 0,
+        "iterations": 17,
+        "max_log_change": 3.165978590402574e-11,
+        "gradient_per_report": 7.168825049076788e-12,
+        "monotonic_error": 0.0,
+        "training_nll": 3.101518834726727
+      }
+    },
+    "mle": {
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "theta": null,
+      "beta": 0.27957324074903694,
+      "status": "ok",
+      "metadata": {
+        "lambda": 477.0,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "branch": "exact_subset_dp",
+        "certified": true,
+        "training_distance": 1147,
+        "beta_boundary": "interior"
+      }
+    },
+    "sharp": {
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "theta": null,
+      "beta": 0.27957324074903694,
+      "status": "ok",
+      "metadata": {
+        "lambda": 477.0,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "depth": 0,
+        "branch": "exact_sieve",
+        "pilot_reports": 0,
+        "sieve_size": 24,
+        "pairs": 477,
+        "blocks": [
+          {
+            "sieve_size": 24,
+            "pairs": 477,
+            "radius": 0.050314465408805034
+          }
+        ],
+        "training_distance": 1147,
+        "beta_boundary": "interior"
+      }
+    },
+    "efficient": {
+      "order": null,
+      "theta": null,
+      "beta": "nan",
+      "status": "outside_schedule_domain",
+      "metadata": {
+        "lambda": 477.0,
+        "beta0": 0.1,
+        "tie_seed": 93847
+      }
+    },
+    "borda": {
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "theta": null,
+      "beta": 0.27957324074903694,
+      "status": "ok",
+      "metadata": {
+        "lambda": 477.0,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "branch": "published_global_clipped_borda",
+        "depth": 0,
+        "training_distance": 1147,
+        "beta_boundary": "interior"
+      }
+    }
+  },
+  "00024-00000002": {
+    "pl": {
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "theta": [
+        0.47810240044615027,
+        0.18241599697374933,
+        -0.21180069748747,
+        -0.4487176999324298
+      ],
+      "beta": "nan",
+      "status": "ok",
+      "metadata": {
+        "algorithm": "Hunter_2004_equation_30",
+        "components": 1,
+        "tolerance": 1e-10,
+        "max_iterations": 100000,
+        "penalty": 0.0,
+        "pseudo_comparisons": 0,
+        "iterations": 18,
+        "max_log_change": 9.02102836874974e-11,
+        "gradient_per_report": 2.4847380922162738e-11,
+        "monotonic_error": 0.0,
+        "training_nll": 3.030198920706129
+      }
+    },
+    "mle": {
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "theta": null,
+      "beta": 0.4027262745991099,
+      "status": "ok",
+      "metadata": {
+        "lambda": 476.0,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "branch": "exact_subset_dp",
+        "certified": true,
+        "training_distance": 1027,
+        "beta_boundary": "interior"
+      }
+    },
+    "sharp": {
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "theta": null,
+      "beta": 0.4027262745991099,
+      "status": "ok",
+      "metadata": {
+        "lambda": 476.0,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "depth": 0,
+        "branch": "exact_sieve",
+        "pilot_reports": 0,
+        "sieve_size": 24,
+        "pairs": 476,
+        "blocks": [
+          {
+            "sieve_size": 24,
+            "pairs": 476,
+            "radius": 0.05042016806722689
+          }
+        ],
+        "training_distance": 1027,
+        "beta_boundary": "interior"
+      }
+    },
+    "efficient": {
+      "order": null,
+      "theta": null,
+      "beta": "nan",
+      "status": "outside_schedule_domain",
+      "metadata": {
+        "lambda": 476.0,
+        "beta0": 0.1,
+        "tie_seed": 93847
+      }
+    },
+    "borda": {
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "theta": null,
+      "beta": 0.4027262745991099,
+      "status": "ok",
+      "metadata": {
+        "lambda": 476.0,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "branch": "published_global_clipped_borda",
+        "depth": 0,
+        "training_distance": 1027,
+        "beta_boundary": "interior"
+      }
+    }
+  },
+  "00024-00000003": {
+    "pl": {
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "theta": [
+        0.7478752085623671,
+        0.19809137912234132,
+        -0.32076041683998047,
+        -0.6252061708447281
+      ],
+      "beta": "nan",
+      "status": "ok",
+      "metadata": {
+        "algorithm": "Hunter_2004_equation_30",
+        "components": 1,
+        "tolerance": 1e-10,
+        "max_iterations": 100000,
+        "penalty": 0.0,
+        "pseudo_comparisons": 0,
+        "iterations": 23,
+        "max_log_change": 4.127231889583527e-11,
+        "gradient_per_report": 1.722651650955716e-11,
+        "monotonic_error": 0.0,
+        "training_nll": 2.8859333063287425
+      }
+    },
+    "mle": {
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "theta": null,
+      "beta": 0.5491956650206302,
+      "status": "ok",
+      "metadata": {
+        "lambda": 480.0,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "branch": "exact_subset_dp",
+        "certified": true,
+        "training_distance": 904,
+        "beta_boundary": "interior"
+      }
+    },
+    "sharp": {
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "theta": null,
+      "beta": 0.5491956650206302,
+      "status": "ok",
+      "metadata": {
+        "lambda": 480.0,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "depth": 0,
+        "branch": "exact_sieve",
+        "pilot_reports": 0,
+        "sieve_size": 24,
+        "pairs": 480,
+        "blocks": [
+          {
+            "sieve_size": 24,
+            "pairs": 480,
+            "radius": 0.05
+          }
+        ],
+        "training_distance": 904,
+        "beta_boundary": "interior"
+      }
+    },
+    "efficient": {
+      "order": null,
+      "theta": null,
+      "beta": "nan",
+      "status": "outside_schedule_domain",
+      "metadata": {
+        "lambda": 480.0,
+        "beta0": 0.1,
+        "tie_seed": 93847
+      }
+    },
+    "borda": {
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "theta": null,
+      "beta": 0.5491956650206302,
+      "status": "ok",
+      "metadata": {
+        "lambda": 480.0,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "branch": "published_global_clipped_borda",
+        "depth": 0,
+        "training_distance": 904,
+        "beta_boundary": "interior"
+      }
+    }
+  },
+  "00024-00000004": {
+    "pl": {
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "theta": [
+        0.744403093167878,
+        0.2977844895694144,
+        -0.2699389617285637,
+        -0.7722486210087287
+      ],
+      "beta": "nan",
+      "status": "ok",
+      "metadata": {
+        "algorithm": "Hunter_2004_equation_30",
+        "components": 1,
+        "tolerance": 1e-10,
+        "max_iterations": 100000,
+        "penalty": 0.0,
+        "pseudo_comparisons": 0,
+        "iterations": 23,
+        "max_log_change": 9.492073793637701e-11,
+        "gradient_per_report": 3.2518376413639343e-11,
+        "monotonic_error": 0.0,
+        "training_nll": 2.8390517158762747
+      }
+    },
+    "mle": {
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "theta": null,
+      "beta": 0.6206739829886343,
+      "status": "ok",
+      "metadata": {
+        "lambda": 476.0,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "branch": "exact_subset_dp",
+        "certified": true,
+        "training_distance": 837,
+        "beta_boundary": "interior"
+      }
+    },
+    "sharp": {
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "theta": null,
+      "beta": 0.6206739829886343,
+      "status": "ok",
+      "metadata": {
+        "lambda": 476.0,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "depth": 0,
+        "branch": "exact_sieve",
+        "pilot_reports": 0,
+        "sieve_size": 24,
+        "pairs": 476,
+        "blocks": [
+          {
+            "sieve_size": 24,
+            "pairs": 476,
+            "radius": 0.05042016806722689
+          }
+        ],
+        "training_distance": 837,
+        "beta_boundary": "interior"
+      }
+    },
+    "efficient": {
+      "order": null,
+      "theta": null,
+      "beta": "nan",
+      "status": "outside_schedule_domain",
+      "metadata": {
+        "lambda": 476.0,
+        "beta0": 0.1,
+        "tie_seed": 93847
+      }
+    },
+    "borda": {
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "theta": null,
+      "beta": 0.6206739829886343,
+      "status": "ok",
+      "metadata": {
+        "lambda": 476.0,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "branch": "published_global_clipped_borda",
+        "depth": 0,
+        "training_distance": 837,
+        "beta_boundary": "interior"
+      }
+    }
+  },
+  "00025-00000001": {
+    "pl": {
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "theta": [
+        0.4818105792676617,
+        0.04830999370764877,
+        -0.16985074971329928,
+        -0.3602698232620114
+      ],
+      "beta": "nan",
+      "status": "ok",
+      "metadata": {
+        "algorithm": "Hunter_2004_equation_30",
+        "components": 1,
+        "tolerance": 1e-10,
+        "max_iterations": 100000,
+        "penalty": 0.0,
+        "pseudo_comparisons": 0,
+        "iterations": 18,
+        "max_log_change": 5.921829693278369e-11,
+        "gradient_per_report": 1.631238582807495e-11,
+        "monotonic_error": 0.0,
+        "training_nll": 3.0630213656927836
+      }
+    },
+    "mle": {
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "theta": null,
+      "beta": 0.34401253997231146,
+      "status": "ok",
+      "metadata": {
+        "lambda": 475.0,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "branch": "exact_subset_dp",
+        "certified": true,
+        "training_distance": 1080,
+        "beta_boundary": "interior"
+      }
+    },
+    "sharp": {
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "theta": null,
+      "beta": 0.34401253997231146,
+      "status": "ok",
+      "metadata": {
+        "lambda": 475.0,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "depth": 0,
+        "branch": "exact_sieve",
+        "pilot_reports": 0,
+        "sieve_size": 24,
+        "pairs": 475,
+        "blocks": [
+          {
+            "sieve_size": 24,
+            "pairs": 475,
+            "radius": 0.05052631578947368
+          }
+        ],
+        "training_distance": 1080,
+        "beta_boundary": "interior"
+      }
+    },
+    "efficient": {
+      "order": null,
+      "theta": null,
+      "beta": "nan",
+      "status": "outside_schedule_domain",
+      "metadata": {
+        "lambda": 475.0,
+        "beta0": 0.1,
+        "tie_seed": 93847
+      }
+    },
+    "borda": {
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "theta": null,
+      "beta": 0.34401253997231146,
+      "status": "ok",
+      "metadata": {
+        "lambda": 475.0,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "branch": "published_global_clipped_borda",
+        "depth": 0,
+        "training_distance": 1080,
+        "beta_boundary": "interior"
+      }
+    }
+  },
+  "00025-00000002": {
+    "pl": {
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "theta": [
+        0.7383977766806317,
+        0.2372474114302896,
+        -0.33359073100445436,
+        -0.6420544571064668
+      ],
+      "beta": "nan",
+      "status": "ok",
+      "metadata": {
+        "algorithm": "Hunter_2004_equation_30",
+        "components": 1,
+        "tolerance": 1e-10,
+        "max_iterations": 100000,
+        "penalty": 0.0,
+        "pseudo_comparisons": 0,
+        "iterations": 23,
+        "max_log_change": 4.9783066558006794e-11,
+        "gradient_per_report": 2.0453978133857918e-11,
+        "monotonic_error": 0.0,
+        "training_nll": 2.8823666421658194
+      }
+    },
+    "mle": {
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "theta": null,
+      "beta": 0.585161623573183,
+      "status": "ok",
+      "metadata": {
+        "lambda": 477.0,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "branch": "exact_subset_dp",
+        "certified": true,
+        "training_distance": 868,
+        "beta_boundary": "interior"
+      }
+    },
+    "sharp": {
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "theta": null,
+      "beta": 0.585161623573183,
+      "status": "ok",
+      "metadata": {
+        "lambda": 477.0,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "depth": 0,
+        "branch": "exact_sieve",
+        "pilot_reports": 0,
+        "sieve_size": 24,
+        "pairs": 477,
+        "blocks": [
+          {
+            "sieve_size": 24,
+            "pairs": 477,
+            "radius": 0.050314465408805034
+          }
+        ],
+        "training_distance": 868,
+        "beta_boundary": "interior"
+      }
+    },
+    "efficient": {
+      "order": null,
+      "theta": null,
+      "beta": "nan",
+      "status": "outside_schedule_domain",
+      "metadata": {
+        "lambda": 477.0,
+        "beta0": 0.1,
+        "tie_seed": 93847
+      }
+    },
+    "borda": {
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "theta": null,
+      "beta": 0.585161623573183,
+      "status": "ok",
+      "metadata": {
+        "lambda": 477.0,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "branch": "published_global_clipped_borda",
+        "depth": 0,
+        "training_distance": 868,
+        "beta_boundary": "interior"
+      }
+    }
+  },
+  "00025-00000003": {
+    "pl": {
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "theta": [
+        0.8166978725084546,
+        0.2100526589403342,
+        -0.38057643330883884,
+        -0.64617409813995
+      ],
+      "beta": "nan",
+      "status": "ok",
+      "metadata": {
+        "algorithm": "Hunter_2004_equation_30",
+        "components": 1,
+        "tolerance": 1e-10,
+        "max_iterations": 100000,
+        "penalty": 0.0,
+        "pseudo_comparisons": 0,
+        "iterations": 24,
+        "max_log_change": 5.291278526442511e-11,
+        "gradient_per_report": 2.2260216497952817e-11,
+        "monotonic_error": 0.0,
+        "training_nll": 2.843517180741194
+      }
+    },
+    "mle": {
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "theta": null,
+      "beta": 0.577981961902152,
+      "status": "ok",
+      "metadata": {
+        "lambda": 477.0,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "branch": "exact_subset_dp",
+        "certified": true,
+        "training_distance": 874,
+        "beta_boundary": "interior"
+      }
+    },
+    "sharp": {
+      "order": [
+        0,
+        1,
+        3,
+        2
+      ],
+      "theta": null,
+      "beta": 0.5091401544489191,
+      "status": "ok",
+      "metadata": {
+        "lambda": 477.0,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "depth": 0,
+        "branch": "exact_sieve",
+        "pilot_reports": 0,
+        "sieve_size": 24,
+        "pairs": 477,
+        "blocks": [
+          {
+            "sieve_size": 24,
+            "pairs": 477,
+            "radius": 0.050314465408805034
+          }
+        ],
+        "training_distance": 933,
+        "beta_boundary": "interior"
+      }
+    },
+    "efficient": {
+      "order": null,
+      "theta": null,
+      "beta": "nan",
+      "status": "outside_schedule_domain",
+      "metadata": {
+        "lambda": 477.0,
+        "beta0": 0.1,
+        "tie_seed": 93847
+      }
+    },
+    "borda": {
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "theta": null,
+      "beta": 0.577981961902152,
+      "status": "ok",
+      "metadata": {
+        "lambda": 477.0,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "branch": "published_global_clipped_borda",
+        "depth": 0,
+        "training_distance": 874,
+        "beta_boundary": "interior"
+      }
+    }
+  },
+  "00025-00000004": {
+    "pl": {
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "theta": [
+        0.5598847370768661,
+        0.08320985631969546,
+        -0.16300758016030525,
+        -0.4800870132362567
+      ],
+      "beta": "nan",
+      "status": "ok",
+      "metadata": {
+        "algorithm": "Hunter_2004_equation_30",
+        "components": 1,
+        "tolerance": 1e-10,
+        "max_iterations": 100000,
+        "penalty": 0.0,
+        "pseudo_comparisons": 0,
+        "iterations": 19,
+        "max_log_change": 8.926370753670199e-11,
+        "gradient_per_report": 2.812893014748495e-11,
+        "monotonic_error": 0.0,
+        "training_nll": 3.014135261235191
+      }
+    },
+    "mle": {
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "theta": null,
+      "beta": 0.4095140480936163,
+      "status": "ok",
+      "metadata": {
+        "lambda": 478.0,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "branch": "exact_subset_dp",
+        "certified": true,
+        "training_distance": 1025,
+        "beta_boundary": "interior"
+      }
+    },
+    "sharp": {
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "theta": null,
+      "beta": 0.4095140480936163,
+      "status": "ok",
+      "metadata": {
+        "lambda": 478.0,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "depth": 0,
+        "branch": "exact_sieve",
+        "pilot_reports": 0,
+        "sieve_size": 24,
+        "pairs": 478,
+        "blocks": [
+          {
+            "sieve_size": 24,
+            "pairs": 478,
+            "radius": 0.0502092050209205
+          }
+        ],
+        "training_distance": 1025,
+        "beta_boundary": "interior"
+      }
+    },
+    "efficient": {
+      "order": null,
+      "theta": null,
+      "beta": "nan",
+      "status": "outside_schedule_domain",
+      "metadata": {
+        "lambda": 478.0,
+        "beta0": 0.1,
+        "tie_seed": 93847
+      }
+    },
+    "borda": {
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "theta": null,
+      "beta": 0.4095140480936163,
+      "status": "ok",
+      "metadata": {
+        "lambda": 478.0,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "branch": "published_global_clipped_borda",
+        "depth": 0,
+        "training_distance": 1025,
+        "beta_boundary": "interior"
+      }
+    }
+  },
+  "dots2024_A_r2": {
+    "pl": {
+      "order": null,
+      "theta": null,
+      "beta": "nan",
+      "status": "no_unique_finite_mle",
+      "metadata": {
+        "algorithm": "Hunter_2004_equation_30",
+        "components": 2,
+        "tolerance": 1e-10,
+        "max_iterations": 100000,
+        "penalty": 0.0,
+        "pseudo_comparisons": 0
+      }
+    },
+    "mle": {
+      "order": [
+        5,
+        4,
+        8,
+        1,
+        12,
+        14,
+        24,
+        7,
+        0,
+        17,
+        21,
+        16,
+        19,
+        2,
+        9,
+        20,
+        3,
+        11,
+        25,
+        6,
+        29,
+        10,
+        28,
+        22,
+        15,
+        13,
+        26,
+        27,
+        23,
+        18
+      ],
+      "theta": null,
+      "beta": 2.0243817644968085,
+      "status": "ok",
+      "metadata": {
+        "lambda": 0.41379310344827586,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "solver_status": 0,
+        "solver_message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "certified": true,
+        "time_limit": 120.0,
+        "lower_bound": 21,
+        "upper_bound": 21,
+        "branch": "exact_integer_formulation",
+        "training_distance": 21,
+        "beta_boundary": "interior"
+      }
+    },
+    "sharp": {
+      "order": null,
+      "theta": null,
+      "beta": "nan",
+      "status": "exact_sieve_unavailable",
+      "metadata": {
+        "lambda": 0.41379310344827586,
+        "beta0": 0.1,
+        "tie_seed": 93847
+      }
+    },
+    "efficient": {
+      "order": [
+        4,
+        1,
+        14,
+        0,
+        5,
+        8,
+        2,
+        7,
+        3,
+        11,
+        24,
+        16,
+        13,
+        17,
+        12,
+        6,
+        21,
+        9,
+        19,
+        25,
+        15,
+        10,
+        27,
+        26,
+        28,
+        29,
+        22,
+        20,
+        18,
+        23
+      ],
+      "theta": null,
+      "beta": 1.457246097092175,
+      "status": "ok",
+      "metadata": {
+        "lambda": 0.41379310344827586,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "depth": 0,
+        "eta": 0.41379310344827586,
+        "pilot_reports": 0,
+        "terminal_blocks": 1,
+        "branch": "hierarchy",
+        "outside_lambda": false,
+        "training_distance": 34,
+        "beta_boundary": "interior"
+      }
+    },
+    "borda": {
+      "order": [
+        4,
+        1,
+        14,
+        0,
+        5,
+        8,
+        2,
+        7,
+        3,
+        11,
+        24,
+        16,
+        13,
+        17,
+        12,
+        6,
+        21,
+        9,
+        19,
+        25,
+        15,
+        10,
+        27,
+        26,
+        28,
+        29,
+        22,
+        20,
+        18,
+        23
+      ],
+      "theta": null,
+      "beta": 1.457246097092175,
+      "status": "ok",
+      "metadata": {
+        "lambda": 0.41379310344827586,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "branch": "published_global_clipped_borda",
+        "depth": 0,
+        "training_distance": 34,
+        "beta_boundary": "interior"
+      }
+    }
+  },
+  "dots2024_A_r3": {
+    "pl": {
+      "order": [
+        0,
+        1,
+        7,
+        5,
+        2,
+        4,
+        8,
+        11,
+        3,
+        6,
+        9,
+        10,
+        18,
+        13,
+        12,
+        19,
+        14,
+        16,
+        22,
+        15,
+        21,
+        27,
+        24,
+        17,
+        20,
+        26,
+        23,
+        28,
+        25,
+        29
+      ],
+      "theta": [
+        2.446860596916288,
+        2.115139311319341,
+        1.7052480725132098,
+        1.2164305609264985,
+        1.6223905530021998,
+        1.941502304691356,
+        1.1384483685102595,
+        1.9512943571151236,
+        1.5990461064322865,
+        0.7529970813424556,
+        0.6575207284627647,
+        1.4654380555996536,
+        0.08102928377767782,
+        0.35967517584675734,
+        -0.274404627745529,
+        -0.9051312443235568,
+        -0.4275109630499152,
+        -1.3760082386053485,
+        0.4377353488878568,
+        -0.08724897675856536,
+        -1.577158072104174,
+        -0.9167547909588682,
+        -0.6520220957201701,
+        -1.8205533896053687,
+        -1.2159096855155784,
+        -2.1635003658043983,
+        -1.809586146308189,
+        -1.1770570708839578,
+        -1.8693351403826153,
+        -3.218575097577503
+      ],
+      "beta": "nan",
+      "status": "ok",
+      "metadata": {
+        "algorithm": "Hunter_2004_equation_30",
+        "components": 1,
+        "tolerance": 1e-10,
+        "max_iterations": 100000,
+        "penalty": 0.0,
+        "pseudo_comparisons": 0,
+        "iterations": 147,
+        "max_log_change": 9.492806540833953e-11,
+        "gradient_per_report": 1.1051406703346502e-11,
+        "monotonic_error": 0.0,
+        "training_nll": 1.1647593541968946
+      }
+    },
+    "mle": {
+      "order": [
+        8,
+        0,
+        1,
+        10,
+        7,
+        5,
+        4,
+        11,
+        3,
+        9,
+        2,
+        6,
+        13,
+        18,
+        19,
+        16,
+        12,
+        14,
+        15,
+        27,
+        26,
+        22,
+        21,
+        28,
+        25,
+        20,
+        24,
+        23,
+        29,
+        17
+      ],
+      "theta": null,
+      "beta": 1.479768602881553,
+      "status": "ok",
+      "metadata": {
+        "lambda": 1.2413793103448276,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "solver_status": 0,
+        "solver_message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "certified": true,
+        "time_limit": 120.0,
+        "lower_bound": 80,
+        "upper_bound": 80,
+        "branch": "exact_integer_formulation",
+        "training_distance": 80,
+        "beta_boundary": "interior"
+      }
+    },
+    "sharp": {
+      "order": null,
+      "theta": null,
+      "beta": "nan",
+      "status": "exact_sieve_unavailable",
+      "metadata": {
+        "lambda": 1.2413793103448276,
+        "beta0": 0.1,
+        "tie_seed": 93847
+      }
+    },
+    "efficient": {
+      "order": null,
+      "theta": null,
+      "beta": "nan",
+      "status": "outside_schedule_domain",
+      "metadata": {
+        "lambda": 1.2413793103448276,
+        "beta0": 0.1,
+        "tie_seed": 93847
+      }
+    },
+    "borda": {
+      "order": [
+        0,
+        5,
+        1,
+        7,
+        2,
+        11,
+        8,
+        4,
+        3,
+        9,
+        6,
+        10,
+        13,
+        18,
+        19,
+        22,
+        14,
+        16,
+        12,
+        21,
+        15,
+        26,
+        20,
+        24,
+        28,
+        17,
+        27,
+        23,
+        25,
+        29
+      ],
+      "theta": null,
+      "beta": 1.1904628252166785,
+      "status": "ok",
+      "metadata": {
+        "lambda": 1.2413793103448276,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "branch": "published_global_clipped_borda",
+        "depth": 0,
+        "training_distance": 105,
+        "beta_boundary": "interior"
+      }
+    }
+  },
+  "dots2024_A_r5": {
+    "pl": {
+      "order": [
+        1,
+        4,
+        2,
+        3,
+        8,
+        0,
+        5,
+        7,
+        6,
+        10,
+        9,
+        13,
+        12,
+        11,
+        18,
+        16,
+        14,
+        24,
+        17,
+        19,
+        23,
+        15,
+        21,
+        22,
+        20,
+        26,
+        27,
+        28,
+        25,
+        29
+      ],
+      "theta": [
+        1.132314852411855,
+        1.8615834044547066,
+        1.7198153575012904,
+        1.3861176705345661,
+        1.7408133523029417,
+        1.1009217368864053,
+        0.9162323066047011,
+        1.0608494258642036,
+        1.3585290411298323,
+        0.6081052962487417,
+        0.8005108694937939,
+        0.19320215981788547,
+        0.33703250957991715,
+        0.3573389515012728,
+        -0.12426365341683265,
+        -0.9983004420120567,
+        -0.029686134602865177,
+        -0.543595438042054,
+        0.12956486903975328,
+        -0.8045553645277854,
+        -1.023876255111956,
+        -1.0098012695828293,
+        -1.013040160393258,
+        -0.969291775709209,
+        -0.3821494006683368,
+        -1.7377707003731047,
+        -1.2664456805299347,
+        -1.396744660815882,
+        -1.5835959202650471,
+        -1.8198149473207215
+      ],
+      "beta": "nan",
+      "status": "ok",
+      "metadata": {
+        "algorithm": "Hunter_2004_equation_30",
+        "components": 1,
+        "tolerance": 1e-10,
+        "max_iterations": 100000,
+        "penalty": 0.0,
+        "pseudo_comparisons": 0,
+        "iterations": 65,
+        "max_log_change": 9.00373109402608e-11,
+        "gradient_per_report": 1.366772374290627e-11,
+        "monotonic_error": 0.0,
+        "training_nll": 3.78659551496411
+      }
+    },
+    "mle": {
+      "order": [
+        1,
+        8,
+        2,
+        5,
+        4,
+        3,
+        0,
+        10,
+        18,
+        7,
+        9,
+        6,
+        11,
+        17,
+        13,
+        16,
+        12,
+        14,
+        24,
+        22,
+        19,
+        15,
+        23,
+        26,
+        20,
+        21,
+        27,
+        25,
+        29,
+        28
+      ],
+      "theta": null,
+      "beta": 0.8206940793478174,
+      "status": "ok",
+      "metadata": {
+        "lambda": 4.137931034482759,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "solver_status": 0,
+        "solver_message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "certified": true,
+        "time_limit": 120.0,
+        "lower_bound": 386,
+        "upper_bound": 386,
+        "branch": "exact_integer_formulation",
+        "training_distance": 386,
+        "beta_boundary": "interior"
+      }
+    },
+    "sharp": {
+      "order": null,
+      "theta": null,
+      "beta": "nan",
+      "status": "exact_sieve_unavailable",
+      "metadata": {
+        "lambda": 4.137931034482759,
+        "beta0": 0.1,
+        "tie_seed": 93847
+      }
+    },
+    "efficient": {
+      "order": null,
+      "theta": null,
+      "beta": "nan",
+      "status": "outside_schedule_domain",
+      "metadata": {
+        "lambda": 4.137931034482759,
+        "beta0": 0.1,
+        "tie_seed": 93847
+      }
+    },
+    "borda": {
+      "order": [
+        1,
+        2,
+        4,
+        3,
+        8,
+        0,
+        7,
+        5,
+        6,
+        10,
+        9,
+        11,
+        12,
+        13,
+        18,
+        16,
+        14,
+        24,
+        17,
+        20,
+        23,
+        22,
+        26,
+        15,
+        21,
+        19,
+        29,
+        27,
+        28,
+        25
+      ],
+      "theta": null,
+      "beta": 0.7398151375553608,
+      "status": "ok",
+      "metadata": {
+        "lambda": 4.137931034482759,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "branch": "published_global_clipped_borda",
+        "depth": 0,
+        "training_distance": 423,
+        "beta_boundary": "interior"
+      }
+    }
+  },
+  "dots2024_A_r6": {
+    "pl": {
+      "order": [
+        0,
+        1,
+        4,
+        2,
+        10,
+        3,
+        5,
+        8,
+        9,
+        6,
+        7,
+        12,
+        13,
+        11,
+        14,
+        18,
+        16,
+        17,
+        15,
+        23,
+        22,
+        24,
+        21,
+        19,
+        20,
+        26,
+        27,
+        28,
+        25,
+        29
+      ],
+      "theta": [
+        2.148960006006863,
+        1.8533986452361901,
+        1.4809152795974212,
+        1.3002402326432367,
+        1.635878236050421,
+        1.0907399529063473,
+        0.6164185206719748,
+        0.5790572761851052,
+        0.9775794646427713,
+        0.7111246821629544,
+        1.3011140952325388,
+        0.13639967525344954,
+        0.5766985871684711,
+        0.5654126606889558,
+        0.037564499613345514,
+        -0.5425375707442583,
+        -0.418987912472204,
+        -0.4305177803944895,
+        -0.035944311566777465,
+        -0.9808337895033876,
+        -1.1154278654486331,
+        -0.9714845777233849,
+        -0.8214098856065313,
+        -0.6583120409784557,
+        -0.8532123414764774,
+        -1.7865686835044468,
+        -1.2331960149059427,
+        -1.5489907621928012,
+        -1.7557239094045443,
+        -1.8583543681377357
+      ],
+      "beta": "nan",
+      "status": "ok",
+      "metadata": {
+        "algorithm": "Hunter_2004_equation_30",
+        "components": 1,
+        "tolerance": 1e-10,
+        "max_iterations": 100000,
+        "penalty": 0.0,
+        "pseudo_comparisons": 0,
+        "iterations": 60,
+        "max_log_change": 9.667644462751923e-11,
+        "gradient_per_report": 1.2698425027540199e-11,
+        "monotonic_error": 1.1368683772161603e-13,
+        "training_nll": 5.242250064323515
+      }
+    },
+    "mle": {
+      "order": [
+        1,
+        0,
+        4,
+        2,
+        3,
+        10,
+        6,
+        12,
+        5,
+        8,
+        13,
+        7,
+        9,
+        18,
+        11,
+        14,
+        16,
+        17,
+        15,
+        19,
+        22,
+        23,
+        26,
+        21,
+        20,
+        24,
+        29,
+        28,
+        27,
+        25
+      ],
+      "theta": null,
+      "beta": 0.7237110899354138,
+      "status": "ok",
+      "metadata": {
+        "lambda": 6.206896551724138,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "solver_status": 0,
+        "solver_message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "certified": true,
+        "time_limit": 120.0,
+        "lower_bound": 586,
+        "upper_bound": 586,
+        "branch": "exact_integer_formulation",
+        "training_distance": 586,
+        "beta_boundary": "interior"
+      }
+    },
+    "sharp": {
+      "order": null,
+      "theta": null,
+      "beta": "nan",
+      "status": "exact_sieve_unavailable",
+      "metadata": {
+        "lambda": 6.206896551724138,
+        "beta0": 0.1,
+        "tie_seed": 93847
+      }
+    },
+    "efficient": {
+      "order": null,
+      "theta": null,
+      "beta": "nan",
+      "status": "outside_schedule_domain",
+      "metadata": {
+        "lambda": 6.206896551724138,
+        "beta0": 0.1,
+        "tie_seed": 93847
+      }
+    },
+    "borda": {
+      "order": [
+        0,
+        1,
+        2,
+        4,
+        10,
+        3,
+        5,
+        6,
+        8,
+        12,
+        9,
+        13,
+        7,
+        11,
+        14,
+        18,
+        16,
+        24,
+        17,
+        23,
+        15,
+        21,
+        22,
+        20,
+        19,
+        26,
+        27,
+        28,
+        25,
+        29
+      ],
+      "theta": null,
+      "beta": 0.6590797105886226,
+      "status": "ok",
+      "metadata": {
+        "lambda": 6.206896551724138,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "branch": "published_global_clipped_borda",
+        "depth": 0,
+        "training_distance": 635,
+        "beta_boundary": "interior"
+      }
+    }
+  },
+  "dots2024_B_r2": {
+    "pl": {
+      "order": [
+        0,
+        1,
+        5,
+        3,
+        8,
+        17,
+        9,
+        6,
+        13,
+        4,
+        7,
+        11,
+        25,
+        2,
+        14,
+        21,
+        19,
+        10,
+        16,
+        12,
+        20,
+        15,
+        26,
+        24,
+        23,
+        29,
+        22,
+        27,
+        18,
+        28
+      ],
+      "theta": [
+        2.1199425696701377,
+        1.8762667969703806,
+        0.1498515026472087,
+        1.1233419169187249,
+        0.3521562270783716,
+        1.75026346251015,
+        0.42156906301161223,
+        0.3414522841901335,
+        1.0653041675997001,
+        0.5112383947226404,
+        -0.1996921417890407,
+        0.26303348665204407,
+        -0.3210672546453024,
+        0.41305492890220785,
+        0.10387997602864063,
+        -0.4599997194198968,
+        -0.2674146634696042,
+        0.7197796090653159,
+        -2.1294468075640482,
+        -0.1562031426031707,
+        -0.3544110489099417,
+        0.062410931840272355,
+        -1.0788811239131153,
+        -0.6520004116849254,
+        -0.647619836973611,
+        0.15043220904080767,
+        -0.5354017058920268,
+        -1.6666584159390583,
+        -2.16584948211906,
+        -0.7893317719255695
+      ],
+      "beta": "nan",
+      "status": "ok",
+      "metadata": {
+        "algorithm": "Hunter_2004_equation_30",
+        "components": 1,
+        "tolerance": 1e-10,
+        "max_iterations": 100000,
+        "penalty": 0.0,
+        "pseudo_comparisons": 0,
+        "iterations": 160,
+        "max_log_change": 8.987921518155417e-11,
+        "gradient_per_report": 5.035567025086291e-12,
+        "monotonic_error": 0.0,
+        "training_nll": 0.5351145505144111
+      }
+    },
+    "mle": {
+      "order": [
+        1,
+        17,
+        0,
+        5,
+        9,
+        14,
+        2,
+        19,
+        8,
+        7,
+        13,
+        6,
+        4,
+        3,
+        25,
+        12,
+        21,
+        20,
+        16,
+        29,
+        15,
+        10,
+        22,
+        24,
+        28,
+        27,
+        26,
+        23,
+        18,
+        11
+      ],
+      "theta": null,
+      "beta": 1.5314763709643884,
+      "status": "ok",
+      "metadata": {
+        "lambda": 0.41379310344827586,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "solver_status": 0,
+        "solver_message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "certified": true,
+        "time_limit": 120.0,
+        "lower_bound": 32,
+        "upper_bound": 32,
+        "branch": "exact_integer_formulation",
+        "training_distance": 32,
+        "beta_boundary": "interior"
+      }
+    },
+    "sharp": {
+      "order": null,
+      "theta": null,
+      "beta": "nan",
+      "status": "exact_sieve_unavailable",
+      "metadata": {
+        "lambda": 0.41379310344827586,
+        "beta0": 0.1,
+        "tie_seed": 93847
+      }
+    },
+    "efficient": {
+      "order": [
+        1,
+        0,
+        5,
+        3,
+        8,
+        9,
+        7,
+        25,
+        17,
+        21,
+        2,
+        14,
+        4,
+        6,
+        24,
+        13,
+        19,
+        10,
+        20,
+        23,
+        11,
+        16,
+        29,
+        15,
+        26,
+        22,
+        12,
+        28,
+        18,
+        27
+      ],
+      "theta": null,
+      "beta": 1.01160091167848,
+      "status": "ok",
+      "metadata": {
+        "lambda": 0.41379310344827586,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "depth": 0,
+        "eta": 0.41379310344827586,
+        "pilot_reports": 0,
+        "terminal_blocks": 1,
+        "branch": "hierarchy",
+        "outside_lambda": false,
+        "training_distance": 48,
+        "beta_boundary": "interior"
+      }
+    },
+    "borda": {
+      "order": [
+        1,
+        0,
+        5,
+        3,
+        8,
+        9,
+        7,
+        25,
+        17,
+        21,
+        2,
+        14,
+        4,
+        6,
+        24,
+        13,
+        19,
+        10,
+        20,
+        23,
+        11,
+        16,
+        29,
+        15,
+        26,
+        22,
+        12,
+        28,
+        18,
+        27
+      ],
+      "theta": null,
+      "beta": 1.01160091167848,
+      "status": "ok",
+      "metadata": {
+        "lambda": 0.41379310344827586,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "branch": "published_global_clipped_borda",
+        "depth": 0,
+        "training_distance": 48,
+        "beta_boundary": "interior"
+      }
+    }
+  },
+  "dots2024_B_r3": {
+    "pl": {
+      "order": [
+        2,
+        4,
+        0,
+        6,
+        10,
+        7,
+        5,
+        8,
+        12,
+        9,
+        1,
+        15,
+        11,
+        21,
+        3,
+        13,
+        17,
+        20,
+        22,
+        19,
+        16,
+        14,
+        26,
+        18,
+        24,
+        27,
+        25,
+        28,
+        29,
+        23
+      ],
+      "theta": [
+        1.165695922313819,
+        0.5005621713584683,
+        1.854931878376346,
+        0.13446371426669312,
+        1.4951176773966557,
+        0.6320377464963611,
+        0.8986852562992631,
+        0.8299789614479232,
+        0.588426174396957,
+        0.5740602109951491,
+        0.8713280330244828,
+        0.22609263741634944,
+        0.583325914693273,
+        -0.15106020273301368,
+        -0.5547557077240275,
+        0.4180734724705326,
+        -0.463002853842267,
+        -0.18267644697615903,
+        -0.7490310857456204,
+        -0.331394874594356,
+        -0.21615324536188707,
+        0.20845973858301559,
+        -0.21790533463795736,
+        -1.892046142711147,
+        -0.7596565723615387,
+        -1.0061081103616778,
+        -0.720268500390715,
+        -0.9369813817517678,
+        -1.3180574195030288,
+        -1.4821416308401232
+      ],
+      "beta": "nan",
+      "status": "ok",
+      "metadata": {
+        "algorithm": "Hunter_2004_equation_30",
+        "components": 1,
+        "tolerance": 1e-10,
+        "max_iterations": 100000,
+        "penalty": 0.0,
+        "pseudo_comparisons": 0,
+        "iterations": 86,
+        "max_log_change": 8.974132548189573e-11,
+        "gradient_per_report": 9.570931701495687e-12,
+        "monotonic_error": 0.0,
+        "training_nll": 1.47552341192796
+      }
+    },
+    "mle": {
+      "order": [
+        5,
+        7,
+        4,
+        3,
+        6,
+        2,
+        10,
+        8,
+        0,
+        17,
+        15,
+        21,
+        1,
+        13,
+        12,
+        9,
+        22,
+        24,
+        11,
+        19,
+        20,
+        26,
+        25,
+        16,
+        27,
+        29,
+        28,
+        18,
+        14,
+        23
+      ],
+      "theta": null,
+      "beta": 1.0350684847014073,
+      "status": "ok",
+      "metadata": {
+        "lambda": 1.2413793103448276,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "solver_status": 0,
+        "solver_message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "certified": true,
+        "time_limit": 120.0,
+        "lower_bound": 121,
+        "upper_bound": 121,
+        "branch": "exact_integer_formulation",
+        "training_distance": 121,
+        "beta_boundary": "interior"
+      }
+    },
+    "sharp": {
+      "order": null,
+      "theta": null,
+      "beta": "nan",
+      "status": "exact_sieve_unavailable",
+      "metadata": {
+        "lambda": 1.2413793103448276,
+        "beta0": 0.1,
+        "tie_seed": 93847
+      }
+    },
+    "efficient": {
+      "order": null,
+      "theta": null,
+      "beta": "nan",
+      "status": "outside_schedule_domain",
+      "metadata": {
+        "lambda": 1.2413793103448276,
+        "beta0": 0.1,
+        "tie_seed": 93847
+      }
+    },
+    "borda": {
+      "order": [
+        2,
+        4,
+        10,
+        0,
+        7,
+        6,
+        5,
+        1,
+        15,
+        9,
+        8,
+        3,
+        11,
+        12,
+        21,
+        13,
+        22,
+        17,
+        20,
+        16,
+        19,
+        26,
+        18,
+        27,
+        24,
+        25,
+        14,
+        28,
+        29,
+        23
+      ],
+      "theta": null,
+      "beta": 0.7368910803812997,
+      "status": "ok",
+      "metadata": {
+        "lambda": 1.2413793103448276,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "branch": "published_global_clipped_borda",
+        "depth": 0,
+        "training_distance": 157,
+        "beta_boundary": "interior"
+      }
+    }
+  },
+  "dots2024_B_r5": {
+    "pl": {
+      "order": [
+        1,
+        0,
+        2,
+        10,
+        4,
+        6,
+        3,
+        12,
+        8,
+        11,
+        7,
+        5,
+        13,
+        14,
+        9,
+        16,
+        22,
+        18,
+        15,
+        21,
+        17,
+        19,
+        24,
+        25,
+        27,
+        23,
+        20,
+        29,
+        26,
+        28
+      ],
+      "theta": [
+        0.9914771556553053,
+        1.8410524722541928,
+        0.9673254218336709,
+        0.5715071992998237,
+        0.8784305055673634,
+        0.25244878971308804,
+        0.6644821234324194,
+        0.2704317238341396,
+        0.5404235741376757,
+        -0.07977093179151984,
+        0.9569869446440098,
+        0.45940762529723367,
+        0.568853577812571,
+        0.17303938222885495,
+        0.03639952578016681,
+        -0.23531738830348115,
+        -0.16722324256237808,
+        -0.34409976624229666,
+        -0.20827189264232793,
+        -0.3789111477563467,
+        -0.8845079213129554,
+        -0.29843327890992155,
+        -0.20760399058513324,
+        -0.8367967797367242,
+        -0.37923559084688074,
+        -0.7163623688918714,
+        -1.1708910485776927,
+        -0.8071321729616856,
+        -1.4780154551935483,
+        -0.9796930451757464
+      ],
+      "beta": "nan",
+      "status": "ok",
+      "metadata": {
+        "algorithm": "Hunter_2004_equation_30",
+        "components": 1,
+        "tolerance": 1e-10,
+        "max_iterations": 100000,
+        "penalty": 0.0,
+        "pseudo_comparisons": 0,
+        "iterations": 51,
+        "max_log_change": 8.991163369387323e-11,
+        "gradient_per_report": 1.1727606540211532e-11,
+        "monotonic_error": 1.1368683772161603e-13,
+        "training_nll": 4.227773319827902
+      }
+    },
+    "mle": {
+      "order": [
+        0,
+        1,
+        10,
+        8,
+        2,
+        4,
+        3,
+        6,
+        12,
+        5,
+        11,
+        7,
+        13,
+        14,
+        9,
+        15,
+        24,
+        18,
+        21,
+        16,
+        17,
+        22,
+        23,
+        19,
+        26,
+        20,
+        29,
+        27,
+        25,
+        28
+      ],
+      "theta": null,
+      "beta": 0.6104309288521195,
+      "status": "ok",
+      "metadata": {
+        "lambda": 4.137931034482759,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "solver_status": 0,
+        "solver_message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "certified": true,
+        "time_limit": 120.0,
+        "lower_bound": 489,
+        "upper_bound": 489,
+        "branch": "exact_integer_formulation",
+        "training_distance": 489,
+        "beta_boundary": "interior"
+      }
+    },
+    "sharp": {
+      "order": null,
+      "theta": null,
+      "beta": "nan",
+      "status": "exact_sieve_unavailable",
+      "metadata": {
+        "lambda": 4.137931034482759,
+        "beta0": 0.1,
+        "tie_seed": 93847
+      }
+    },
+    "efficient": {
+      "order": null,
+      "theta": null,
+      "beta": "nan",
+      "status": "outside_schedule_domain",
+      "metadata": {
+        "lambda": 4.137931034482759,
+        "beta0": 0.1,
+        "tie_seed": 93847
+      }
+    },
+    "borda": {
+      "order": [
+        1,
+        0,
+        2,
+        10,
+        4,
+        8,
+        12,
+        6,
+        3,
+        11,
+        7,
+        5,
+        13,
+        18,
+        9,
+        14,
+        15,
+        24,
+        21,
+        22,
+        16,
+        17,
+        19,
+        25,
+        27,
+        23,
+        20,
+        29,
+        26,
+        28
+      ],
+      "theta": null,
+      "beta": 0.5322964730621432,
+      "status": "ok",
+      "metadata": {
+        "lambda": 4.137931034482759,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "branch": "published_global_clipped_borda",
+        "depth": 0,
+        "training_distance": 533,
+        "beta_boundary": "interior"
+      }
+    }
+  },
+  "dots2024_B_r6": {
+    "pl": {
+      "order": [
+        0,
+        2,
+        8,
+        3,
+        7,
+        5,
+        13,
+        1,
+        4,
+        10,
+        6,
+        9,
+        16,
+        18,
+        15,
+        12,
+        24,
+        14,
+        23,
+        17,
+        26,
+        11,
+        20,
+        19,
+        22,
+        21,
+        27,
+        28,
+        25,
+        29
+      ],
+      "theta": [
+        1.3943568182927621,
+        0.5816347524296543,
+        1.28760706835629,
+        0.8180970981984999,
+        0.5698057340138569,
+        0.7002400098702712,
+        0.37095016607991704,
+        0.7042777758563243,
+        0.8625587085929425,
+        0.2107180511050024,
+        0.5089759484827079,
+        -0.4626270899872642,
+        -0.005302962685914014,
+        0.6279715834627035,
+        -0.1924995608660245,
+        0.05979560806033435,
+        0.15129555073405276,
+        -0.3758179256751628,
+        0.06969308447569977,
+        -0.5401062468359816,
+        -0.47577288689976616,
+        -0.7694961942710359,
+        -0.6450239553154082,
+        -0.3067130368479103,
+        -0.13274345477430982,
+        -1.0804176206001124,
+        -0.40742346991165856,
+        -0.8630040781833577,
+        -1.0043544309045744,
+        -1.6566750442525189
+      ],
+      "beta": "nan",
+      "status": "ok",
+      "metadata": {
+        "algorithm": "Hunter_2004_equation_30",
+        "components": 1,
+        "tolerance": 1e-10,
+        "max_iterations": 100000,
+        "penalty": 0.0,
+        "pseudo_comparisons": 0,
+        "iterations": 39,
+        "max_log_change": 6.170841615471545e-11,
+        "gradient_per_report": 7.652545264136279e-12,
+        "monotonic_error": 0.0,
+        "training_nll": 5.9322150886743605
+      }
+    },
+    "mle": {
+      "order": [
+        0,
+        2,
+        1,
+        3,
+        5,
+        13,
+        4,
+        6,
+        9,
+        7,
+        8,
+        10,
+        12,
+        18,
+        14,
+        20,
+        23,
+        16,
+        24,
+        11,
+        15,
+        17,
+        26,
+        19,
+        21,
+        22,
+        27,
+        25,
+        28,
+        29
+      ],
+      "theta": null,
+      "beta": 0.492609278975741,
+      "status": "ok",
+      "metadata": {
+        "lambda": 6.206896551724138,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "solver_status": 0,
+        "solver_message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "certified": true,
+        "time_limit": 120.0,
+        "lower_bound": 780,
+        "upper_bound": 780,
+        "branch": "exact_integer_formulation",
+        "training_distance": 780,
+        "beta_boundary": "interior"
+      }
+    },
+    "sharp": {
+      "order": null,
+      "theta": null,
+      "beta": "nan",
+      "status": "exact_sieve_unavailable",
+      "metadata": {
+        "lambda": 6.206896551724138,
+        "beta0": 0.1,
+        "tie_seed": 93847
+      }
+    },
+    "efficient": {
+      "order": null,
+      "theta": null,
+      "beta": "nan",
+      "status": "outside_schedule_domain",
+      "metadata": {
+        "lambda": 6.206896551724138,
+        "beta0": 0.1,
+        "tie_seed": 93847
+      }
+    },
+    "borda": {
+      "order": [
+        0,
+        2,
+        8,
+        3,
+        1,
+        7,
+        5,
+        6,
+        13,
+        10,
+        4,
+        9,
+        18,
+        12,
+        16,
+        15,
+        24,
+        23,
+        14,
+        17,
+        11,
+        26,
+        19,
+        20,
+        22,
+        21,
+        25,
+        27,
+        28,
+        29
+      ],
+      "theta": null,
+      "beta": 0.44657822503438277,
+      "status": "ok",
+      "metadata": {
+        "lambda": 6.206896551724138,
+        "beta0": 0.1,
+        "tie_seed": 93847,
+        "branch": "published_global_clipped_borda",
+        "depth": 0,
+        "training_distance": 825,
+        "beta_boundary": "interior"
+      }
+    }
+  }
+}

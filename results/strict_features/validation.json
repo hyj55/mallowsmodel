@@ -1,0 +1,110 @@
+{
+  "strict_feature_sources.json": 22,
+  "strict_tricot_sources.json": 9,
+  "independent_algorithm_checks": [
+    "test_mm_matches_independent_likelihood_optimization",
+    "test_boundary_and_domain_outcomes_are_not_repaired",
+    "test_declared_noise_and_shell_controls",
+    "test_pair_marginals_and_integer_certificate"
+  ],
+  "real_tasks": 16,
+  "real_fit_rows": 80,
+  "source_reports": 8763,
+  "reports_dropped": 0,
+  "independent_synthetic_training_datasets": 4760,
+  "reused_training_datasets_in_budget_followup": 200,
+  "agricultural_candidates_all_reported": 9,
+  "agricultural_fits": 0,
+  "pre_disconnect_real_deltas": {
+    "00024-00000001": {
+      "recorded_rounded": -0.026219,
+      "reproduced": -0.0262188262473656,
+      "matches_to_rounding": true
+    },
+    "00024-00000002": {
+      "recorded_rounded": -0.005448,
+      "reproduced": -0.0054480904150423,
+      "matches_to_rounding": true
+    },
+    "00024-00000003": {
+      "recorded_rounded": -0.034527,
+      "reproduced": -0.034527307062918,
+      "matches_to_rounding": true
+    },
+    "00024-00000004": {
+      "recorded_rounded": -0.049548,
+      "reproduced": -0.0495482512457266,
+      "matches_to_rounding": true
+    },
+    "00025-00000001": {
+      "recorded_rounded": 0.015911,
+      "reproduced": 0.0159110131329867,
+      "matches_to_rounding": true
+    },
+    "00025-00000002": {
+      "recorded_rounded": -0.077022,
+      "reproduced": -0.0770220699752957,
+      "matches_to_rounding": true
+    },
+    "00025-00000003": {
+      "recorded_rounded": -0.040099,
+      "reproduced": -0.0400985625847641,
+      "matches_to_rounding": true
+    },
+    "00025-00000004": {
+      "recorded_rounded": -0.010547,
+      "reproduced": -0.0105470792933063,
+      "matches_to_rounding": true
+    },
+    "dots2024_A_r3": {
+      "recorded_rounded": 0.05592,
+      "reproduced": 0.0559201059693671,
+      "matches_to_rounding": true
+    },
+    "dots2024_A_r5": {
+      "recorded_rounded": 0.203438,
+      "reproduced": 0.2034384907225641,
+      "matches_to_rounding": true
+    },
+    "dots2024_A_r6": {
+      "recorded_rounded": 0.349638,
+      "reproduced": 0.3496375179443929,
+      "matches_to_rounding": true
+    },
+    "dots2024_B_r2": {
+      "recorded_rounded": 0.088686,
+      "reproduced": 0.0886860395864202,
+      "matches_to_rounding": true
+    },
+    "dots2024_B_r3": {
+      "recorded_rounded": 0.289975,
+      "reproduced": 0.2899754185198357,
+      "matches_to_rounding": true
+    },
+    "dots2024_B_r5": {
+      "recorded_rounded": 0.153208,
+      "reproduced": 0.1532083006452455,
+      "matches_to_rounding": true
+    },
+    "dots2024_B_r6": {
+      "recorded_rounded": -0.126071,
+      "reproduced": -0.1260713176558731,
+      "matches_to_rounding": true
+    }
+  },
+  "pre_disconnect_primary_simulation_deltas_match": true,
+  "pre_disconnect_budget_accuracies_match": true,
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "pandas": "2.2.3",
+    "matplotlib": "3.10.8"
+  },
+  "protocol_hashes": {
+    "STRICT_FEATURE_PROTOCOL.md": "7bbc69eb3111f4460a427bf86c12ae25552f667679ba38b1d57c03df4c4a4b5b",
+    "STRICT_SOURCE_ADDENDUM.md": "289ab46439bf10bf1f1cf9e20ebec2c0dabc7c95df2170c3575f61aad82a9751",
+    "STRICT_FEATURE_FOLLOWUP.md": "3cb161e34d15c10498fc669761d92165dc9865a3339602d9c91e6a2c698c5afb"
+  },
+  "status": "passed"
+}
