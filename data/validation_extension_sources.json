@@ -1,0 +1,74 @@
+[
+  {
+    "file": "beach_preferences.rda",
+    "url": "https://raw.githubusercontent.com/ocbe-uio/BayesMallows/a26cf89d3142ea3499489730e7c2b3ef9a26bfb2/data/beach_preferences.rda",
+    "sha256": "54a0015fb9a4793115dd26651b38fe2ffdbe21b72dcbdc04554c1c081b3dd335",
+    "bytes": 1884
+  },
+  {
+    "file": "sounds.rda",
+    "url": "https://raw.githubusercontent.com/ocbe-uio/BayesMallows/a26cf89d3142ea3499489730e7c2b3ef9a26bfb2/data/sounds.rda",
+    "sha256": "091b8e7c7cf074ef9256059c912105a20306d4fd74e364d708ffdfd8e4d82d49",
+    "bytes": 1726
+  },
+  {
+    "file": "generate_beach_data.R",
+    "url": "https://raw.githubusercontent.com/ocbe-uio/BayesMallows/a26cf89d3142ea3499489730e7c2b3ef9a26bfb2/data-raw/generate_beach_data.R",
+    "sha256": "e597a74b4062c4f121369fcce4236785ff599c7365f7434a8e23e7680b9cd31f",
+    "bytes": 381
+  },
+  {
+    "file": "generate_sounds_data.R",
+    "url": "https://raw.githubusercontent.com/ocbe-uio/BayesMallows/a26cf89d3142ea3499489730e7c2b3ef9a26bfb2/data-raw/generate_sounds_data.R",
+    "sha256": "9cefa7e314ffb549ab94f21a5a1e18bc91af95da8e4ef62304eab657d6414a2d",
+    "bytes": 117
+  },
+  {
+    "file": "beach_preferences.Rd",
+    "url": "https://raw.githubusercontent.com/ocbe-uio/BayesMallows/a26cf89d3142ea3499489730e7c2b3ef9a26bfb2/man/beach_preferences.Rd",
+    "sha256": "869e367874172603bf418b44b865f0ac100fbd0ae11a3a0ac9b092857a7c6df1",
+    "bytes": 677
+  },
+  {
+    "file": "sounds.Rd",
+    "url": "https://raw.githubusercontent.com/ocbe-uio/BayesMallows/a26cf89d3142ea3499489730e7c2b3ef9a26bfb2/man/sounds.Rd",
+    "sha256": "55d75c85e9b86879978dfe5902e3106d3da0ef90ae342dc61c168e29f24108d7",
+    "bytes": 1046
+  },
+  {
+    "file": "REFERENCES.bib",
+    "url": "https://raw.githubusercontent.com/ocbe-uio/BayesMallows/a26cf89d3142ea3499489730e7c2b3ef9a26bfb2/inst/REFERENCES.bib",
+    "sha256": "ad0c32a4863f6d787c2a48598992c816ecadf32a29a1482f1fc1de6a8bf0fe40",
+    "bytes": 15997
+  },
+  {
+    "file": "00034-00000001.soi",
+    "url": "https://raw.githubusercontent.com/PrefLib/PrefLib-Data/1a8e9a9d0ad02a2a2d7473e813d1ac3057264f80/datasets/00034%20-%20cities/00034-00000001.soi",
+    "sha256": "4099eae979a1d81cad5e7b8d2a4978c221a08e0060938618ea5f1c5dffb6bb89",
+    "bytes": 8645
+  },
+  {
+    "file": "00034-00000002.soi",
+    "url": "https://raw.githubusercontent.com/PrefLib/PrefLib-Data/1a8e9a9d0ad02a2a2d7473e813d1ac3057264f80/datasets/00034%20-%20cities/00034-00000002.soi",
+    "sha256": "787186f4809e3e51437aa17fde39597d72976456faab188b2563a768f8f47e2c",
+    "bytes": 9149
+  },
+  {
+    "file": "patras_info.txt",
+    "url": "https://raw.githubusercontent.com/PrefLib/PrefLib-Data/1a8e9a9d0ad02a2a2d7473e813d1ac3057264f80/datasets/00034%20-%20cities/info.txt",
+    "sha256": "16e0671bf40bc08687f2508c6a00920d91281dad9fc48f42e08dc6e11b0c199e",
+    "bytes": 2079
+  },
+  {
+    "file": "Beaches_data.Rdata",
+    "url": "https://raw.githubusercontent.com/ocbe-uio/BayesMallows/a26cf89d3142ea3499489730e7c2b3ef9a26bfb2/data-raw/Beaches_data.Rdata",
+    "sha256": "06617406a50f559343ff3dfe50201bcb1be6f114027bb596e4b8f5c91c73660a",
+    "bytes": 12473
+  },
+  {
+    "file": "Sounds.RData",
+    "url": "https://raw.githubusercontent.com/ocbe-uio/BayesMallows/a26cf89d3142ea3499489730e7c2b3ef9a26bfb2/data-raw/Sounds.RData",
+    "sha256": "fd381450bc773384d661e132d543d11ca86d2cf79b6851e84682e38000e3e99a",
+    "bytes": 5670
+  }
+]

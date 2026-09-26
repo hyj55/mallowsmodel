@@ -1,0 +1,15 @@
+{
+  "seed": 202609260,
+  "independent_training_datasets": 1400,
+  "repetitions": 200,
+  "bootstrap_draws": 499,
+  "diagnostic_rows": 8400,
+  "nested_budgets": [
+    60,
+    200,
+    1000
+  ],
+  "new_estimator_definitions": 0,
+  "seconds": 88.54419897400294,
+  "protocol_sha256": "984f42df509ba31d3fdef30659592cd9393ab5f738d2d9d61267578ba5179e8e"
+}

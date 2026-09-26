@@ -1,0 +1,5 @@
+dataset,reports,assessors,n,r,distinct_displays,eligible,unit,objective_reference_available,status,fits,N,N_discovery,N_confirmation,confirmation_units,lambda_,mu,observed_training_pairs,reports_dropped,unseen_training_items
+beach_preferences,1442,60,15,2,105,False,source_assessor_id,False,excluded_upstream_response_filtering,0,,,,,,,,,
+sounds,1380,46,12,2,66,True,source_assessor_id,False,included,5,810.0,270.0,300.0,10.0,12.272727272727273,135.0,66.0,0.0,0.0
+patras_cost,392,392,36,6,80,True,documented_one_report_per_volunteer,True,included,5,235.0,78.0,79.0,79.0,5.595238095238095,39.166666666666664,538.0,0.0,0.0
+patras_population,392,392,48,6,80,True,documented_one_report_per_volunteer,True,included,5,235.0,78.0,79.0,79.0,3.125,29.375,790.0,0.0,0.0

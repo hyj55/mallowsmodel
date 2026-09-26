@@ -42,6 +42,15 @@ are not redistributed here. Attribution and immutable versions appear in
 The tricot source declares CC BY-SA 4.0. Upstream terms continue to apply to
 source-derived material. No ownership of these sources is claimed.
 
+The additional Sounds/Beaches audit uses BayesMallows commit
+`a26cf89d3142ea3499489730e7c2b3ef9a26bfb2`; PatrasIQ uses PrefLib dataset
+00034 at commit `1a8e9a9d0ad02a2a2d7473e813d1ac3057264f80`. Original response
+files and upstream R objects are downloaded directly, checksum-verified and
+excluded from this repository. See the [extension references](docs/validation_extension.md)
+for Crispino et al. (2019), Barrett and Crispino (2018), Vitelli et al. (2018)
+and Caragiannis et al. (2017). The synthetic draw archive contains generated
+observations only, not participant responses.
+
 ## Historical ATP analysis
 
 The retired ATP pipeline credited Jeff Sackmann and retained CC BY-NC-SA 4.0

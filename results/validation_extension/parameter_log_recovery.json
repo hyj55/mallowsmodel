@@ -1,0 +1,55 @@
+{
+  "status": "passed",
+  "original_parameter_records": 1390,
+  "recovered_records": 10,
+  "missing_cell_rep": [
+    [
+      6,
+      190
+    ],
+    [
+      6,
+      191
+    ],
+    [
+      6,
+      192
+    ],
+    [
+      6,
+      193
+    ],
+    [
+      6,
+      194
+    ],
+    [
+      6,
+      195
+    ],
+    [
+      6,
+      196
+    ],
+    [
+      6,
+      197
+    ],
+    [
+      6,
+      198
+    ],
+    [
+      6,
+      199
+    ]
+  ],
+  "method": "Replay original frozen seeds using unchanged estimator and diagnostic code; append only after all recorded outputs match",
+  "fitted_rows_matched": 20,
+  "diagnostic_rows_matched": 60,
+  "absolute_tolerance": 1e-12,
+  "fit_and_diagnostic_result_tables_changed": false,
+  "new_independent_experiments": 0,
+  "original_parameter_sha256": "421d468cae931bd82936a2d8a924d0fdb74e514502af5186e8d9479067ee2daa",
+  "complete_parameter_sha256": "eefceef1f8e3bb6beb86948d76b2f0e81e80879faccd95840edddab0f2416d7d"
+}

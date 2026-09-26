@@ -1,0 +1,9 @@
+candidate,decision,rationale,source,scope
+Sounds,included,Direct original pair reports with assessor IDs; retain nontransitive across-report patterns,https://github.com/ocbe-uio/BayesMallows/blob/a26cf89d3142ea3499489730e7c2b3ef9a26bfb2/man/sounds.Rd,Prefit source audit and actual fits
+PatrasIQ cost of living,included,392 original strict six-item reports; documented one per volunteer,https://preflib.github.io/PrefLib-Jekyll/dataset/00034,Prefit source audit and actual fits
+PatrasIQ population,included,392 original strict six-item reports; same volunteer study as cost task,https://preflib.github.io/PrefLib-Jekyll/dataset/00034,Prefit source audit and actual fits
+Beaches,excluded_upstream_response_filtering,Original paper drops nontransitive patterns; no verified unfiltered response table recovered,https://jmlr.org/papers/volume18/15-481/15-481.pdf,Source amendment committed before any new fits
+Potato visual,not_selected_for_current_question,12 assessors and fixed 20-item display; limited relevance to changed-display diagnostic,https://ocbe-uio.github.io/BayesMallows/articles/BayesMallows.html,Metadata screen only; not an intrinsic SM incompatibility
+Potato weighing,not_selected_for_current_question,Same small-assessor fixed-display design; not an independent large context study,https://ocbe-uio.github.io/BayesMallows/articles/BayesMallows.html,Metadata screen only; not an intrinsic SM incompatibility
+Breakfast items,not_selected_for_current_question,21 households and fixed item display across six meal scenarios; different kind of context,https://preflib.github.io/PrefLib-Jekyll/dataset/00035,Metadata screen only
+Seshadri et al. 2019 context-choice study,background_only,No new eligible complete-ranking release verified in this round; do not turn single choices into full rankings,https://proceedings.mlr.press/v97/seshadri19a.html,Paper screen only; no exhaustive dataset audit claimed

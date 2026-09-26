@@ -1,0 +1,80 @@
+{
+  "archive_members": [
+    "synthetic_diagnostics.csv",
+    "synthetic_parameters.jsonl",
+    "synthetic_draws.npz"
+  ],
+  "archive_sha256": "8d20da507f808bcf1769709418dd5bf63d6cf2dd1550fb6e4a45df3f2aef09e6",
+  "synthetic_diagnostic_rows": 8400,
+  "independent_simulations": 1400,
+  "generated_seed": 202609260,
+  "archive_arrays": {
+    "train": {
+      "shape": [
+        459200,
+        3
+      ],
+      "dtype": "uint8",
+      "minimum": 0,
+      "maximum": 7
+    },
+    "training_offsets": {
+      "shape": [
+        1401
+      ],
+      "dtype": "int64",
+      "minimum": 0,
+      "maximum": 459200
+    },
+    "diagnostic": {
+      "shape": [
+        1400,
+        1000,
+        3
+      ],
+      "dtype": "uint8",
+      "minimum": 0,
+      "maximum": 7
+    },
+    "groups": {
+      "shape": [
+        1400,
+        1000
+      ],
+      "dtype": "uint8",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "cell_rep": {
+      "shape": [
+        1400,
+        2
+      ],
+      "dtype": "int64",
+      "minimum": 0,
+      "maximum": 199
+    }
+  },
+  "all_text_values": [
+    "Hunter_2004_equation_30",
+    "abstain",
+    "calibration",
+    "confounding",
+    "exact_subset_dp",
+    "fit_unavailable",
+    "fitted",
+    "group_adjusted",
+    "group_pl_mixture",
+    "insufficient_within_cell_context_variation",
+    "interior",
+    "no_unique_finite_mle",
+    "ok",
+    "oracle",
+    "pl",
+    "pooled",
+    "sm",
+    "unavailable"
+  ],
+  "validation_frozen_stream_replay_passed": true,
+  "empirical_records_in_archive": false
+}

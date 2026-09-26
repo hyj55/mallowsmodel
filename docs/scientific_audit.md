@@ -38,3 +38,5 @@ See [machine-readable validation](../results/audit/validation.json). It records 
 4. No claim of MLE minimax optimality, a successful active Section 3 hierarchy comparison, or universally correct feature-based model selection follows.
 
 This audit corrects earlier overly broad assurances of strict replication. [Algorithm details](algorithms.md), [all references](references.md), [historical snapshot](history.md).
+
+Subsequent work is recorded separately in [additional data and mechanism validation](validation_extension.md). It adds three empirical tasks without changing the audited estimators and identifies limits of the context diagnostic. Its PatrasIQ report intervals are supported by newly verified one-report-per-person source metadata; the older Dots/Puzzle interval withdrawal remains in force.
