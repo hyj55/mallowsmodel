@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "unchanged_estimator_and_diagnostic_modules": [
+    "src/strict_models.py",
+    "src/manuscript_estimators.py",
+    "src/models.py",
+    "src/diagnostics.py",
+    "src/strict_features.py"
+  ],
+  "independent_synthetic_training_datasets": 1400,
+  "synthetic_fit_rows": 2800,
+  "synthetic_diagnostic_rows": 8400,
+  "included_real_tasks": 3,
+  "upstream_filtered_sources_not_fitted": 1,
+  "source_files_verified": 12,
+  "eligible_original_reports_preserved": 2164,
+  "real_prediction_rows_checked": 15,
+  "real_context_points_checked": 8,
+  "all_saved_synthetic_population_predictions_recomputed": true,
+  "all_synthetic_training_draws_replayed": true,
+  "synthetic_draw_archive_matches_frozen_streams": true,
+  "public_sounds_matches_upstream_original_object": true,
+  "protocol_sha256": "984f42df509ba31d3fdef30659592cd9393ab5f738d2d9d61267578ba5179e8e"
+}

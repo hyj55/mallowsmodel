@@ -4,6 +4,7 @@ Use Python 3.12 and a separate checkout so recorded results are not overwritten 
 
 ```bash
 python -m pip install -r requirements-lock.txt
+python validation_artifacts.py
 python -m pytest -q
 python download_strict_data.py
 python download_strict_tricot.py
@@ -18,9 +19,17 @@ python run_baseline_replacement.py
 python validate_strict_features.py
 python validate_scientific_audit.py
 python make_strict_figures.py
+python run_validation_synthetic.py --workers 2
+python run_validation_real.py
+python validate_validation_extension.py
+python make_validation_figures.py
 ```
 
 The strict simulation/real seed is 202609251, wheat seed 202609252, baseline replacement seed 202609253. Dataset, training, diagnostic and estimator randomization streams are fixed separately where specified. All models within a task receive the same reports. Discovery is disjoint from confirmation; neither selects an optimizer after seeing test performance.
+
+The additional validation seed is 202609260. Its 1,400 independent synthetic training datasets are new, separate from the 4,760 earlier datasets. Each has three nested diagnostic budgets; these are not independent replications. Exact synthetic draws are saved in results/validation_extension/synthetic_draws.npz and replayed against the frozen random streams. The three eligible real tasks retain every original report and use the pre-fit source amendment's fixed split indices. Beach is excluded before fitting, not after inspecting performance. See the [extension report](validation_extension.md) and [file dictionary](../results/validation_extension/README.md).
+
+Three large extension outputs are committed as lossless archive parts because the large-file upload did not complete. `python validation_artifacts.py` restores their exact original bytes and verifies file, archive and part SHA256 hashes; it performs no fitting, resampling or numerical alteration. It refuses to overwrite a changed local output. The CSV, JSONL and NPZ names in the result dictionary refer to these restored files. The read-only CI workflow restores and checks them locally before validation. `--pack` is for packaging a deliberately completed new run, not for altering the recorded study.
 
 Sharp exact sieve blocks above 8 are unavailable. Section 3 accepts only lambda<=1 and every recorded successful fit uses zero hierarchy stages. Exact subset DP is guarded at n<=18; larger centers use the cited integer formulation with a 120-second certificate requirement. Solver timeout returns unavailable, never a heuristic estimate. Certified ties can have different chosen orders on another solver version; compare the objective certificate and disclose prediction changes rather than forcing a match.
 
@@ -30,4 +39,4 @@ The complete 4,760-dataset simulation is already recorded. Its earlier GitHub re
 
 Uncertainty definitions and withdrawal of unidentified-unit intervals are specified once in [algorithms.md](algorithms.md). Reported real intervals are conditional on fixed training fits. The source/metadata search is exploratory; data-dependent discovery is not population-level evidence about how often a model wins.
 
-The GitHub verification workflow has read-only repository permissions. It checks tests and structural consistency; it does not push experiment outputs, change published estimates, or automatically run the full simulation after a documentation edit. Full data checks can be run locally with the commands above.
+The GitHub verification workflow has read-only repository permissions. It checks tests and both repository-only validators; it does not push experiment outputs, change published estimates, or automatically run the full simulation after a documentation edit. Full data checks can be run locally with the commands above.

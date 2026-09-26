@@ -1,0 +1,10 @@
+{
+  "seed": 202609260,
+  "included_tasks": 3,
+  "source_exclusions": 1,
+  "eligible_original_reports": 2164,
+  "deleted_eligible_reports": 0,
+  "pre_fit_protocol_commit": "ddad79788574374d3c31699c74a145ff75d9008f",
+  "pre_fit_source_amendment_commit": "6e3cef2e97978153f5c4c6911f5a62b94d905bd0",
+  "protocol_sha256": "984f42df509ba31d3fdef30659592cd9393ab5f738d2d9d61267578ba5179e8e"
+}

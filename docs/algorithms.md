@@ -44,9 +44,11 @@ Exact likelihood maximization does not establish minimax Kendall risk. Sharp is 
 
 Keep full original reports and catalogs. Preserve ties as ties; do not turn them into strict rankings. Sources requiring invalid-report deletion fail whole-task eligibility. Lossless decoding and one fixed train/discovery/test partition do not alter within-report preferences. Simulated bridges and shell tilts are declared generating laws, never transformations of real data.
 
-Synthetic intervals use independent training repetitions. Identified real respondent units use paired bootstrap sampling of whole units, conditional on training. Anonymous PrefLib and Beans data receive no inferential intervals. Missing wheat village IDs are not imputed or grouped into a fabricated village. Its NLL and unadjusted context slope are descriptive only; the village-adjusted diagnostic is unavailable. Unavailable results are not zeros.
+Synthetic intervals use independent training repetitions. Real predictive intervals use paired bootstrap sampling of documented independent units, conditional on training. Earlier anonymous PrefLib Dots/Puzzle and Beans data receive no inferential intervals because the export does not establish those units. The new PatrasIQ metadata explicitly documents one report per person per task, so report resampling is used within each task even though identities are anonymous; it does not establish independence between its two tasks. Sounds retains source assessor IDs and resamples whole assessors. Missing wheat village IDs are not imputed or grouped into a fabricated village. Its NLL and unadjusted context slope are descriptive only; the village-adjusted diagnostic is unavailable. Unavailable results are not zeros.
 
 The within-pair slope and shell decomposition are our exploratory diagnostics, not estimators proposed in the manuscript. They help interpret a particular fitted comparison; they establish neither causal effects nor a universally valid selection rule.
+
+The [additional validation](validation_extension.md) tests the existing context percentile bootstrap without changing it. It fails badly in the severe-confounding, small-budget cell with sparse within-group overlap. Its real-data context intervals are therefore exploratory, not uniformly valid model-family tests. This calibration finding concerns the context statistic, not the separate whole-ranking NLL bootstrap. Center and dispersion estimation error can also produce rejection of a fitted SM prediction even when the generating family is SM.
 
 ## References
 

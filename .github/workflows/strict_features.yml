@@ -26,4 +26,7 @@ jobs:
       - name: Mathematical and domain checks
         run: python -m pytest -q
       - name: Check repository and recorded-result consistency
-        run: python validate_scientific_audit.py --repository-only
+        run: |
+          python validation_artifacts.py
+          python validate_scientific_audit.py --repository-only
+          python validate_validation_extension.py --repository-only

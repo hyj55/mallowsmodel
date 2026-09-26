@@ -10,3 +10,7 @@ data/processed/
 results/private/
 results/audit_before/
 .DS_Store
+# Exact large extension outputs are restored from committed lossless parts.
+results/validation_extension/synthetic_diagnostics.csv
+results/validation_extension/synthetic_parameters.jsonl
+results/validation_extension/synthetic_draws.npz

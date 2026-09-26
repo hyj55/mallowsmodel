@@ -132,6 +132,8 @@ These are descriptive averages over five specified mixture weights with n=8,r=3,
 
 The pairwise selector agrees with the *confirmation point-estimate* winner in **10/15** comparable real tasks, with one further task unavailable. Several differences are unresolved and tasks are dependent. This cannot establish reliable real-data selection. The context-only diagnostic is particularly unreliable at current sample sizes.
 
+The later [additional validation](validation_extension.md) adds independent training repetitions to investigate why: uncertain centers attenuate true context effects, heterogeneous PL groups can mimic them, and the same percentile context bootstrap fails in a sparse-overlap cell. Those findings qualify interpretation of context intervals here; they do not alter this study's original point results or count its repetitions again.
+
 ## 6. What we can conclude
 
 1. **Controlled support:** within-shell error allocation changes the predictive winner independently of the inversion-count distribution.
