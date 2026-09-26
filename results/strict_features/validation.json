@@ -102,8 +102,8 @@
     "matplotlib": "3.10.8"
   },
   "protocol_hashes": {
-    "STRICT_FEATURE_PROTOCOL.md": "7bbc69eb3111f4460a427bf86c12ae25552f667679ba38b1d57c03df4c4a4b5b",
     "STRICT_SOURCE_ADDENDUM.md": "289ab46439bf10bf1f1cf9e20ebec2c0dabc7c95df2170c3575f61aad82a9751",
+    "STRICT_FEATURE_PROTOCOL.md": "7bbc69eb3111f4460a427bf86c12ae25552f667679ba38b1d57c03df4c4a4b5b",
     "STRICT_FEATURE_FOLLOWUP.md": "3cb161e34d15c10498fc669761d92165dc9865a3339602d9c91e6a2c698c5afb"
   },
   "status": "passed"

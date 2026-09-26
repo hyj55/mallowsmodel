@@ -54,8 +54,11 @@ def real_results():
         for i, row in g.iterrows():
             if np.isfinite(row.delta):
                 color = GREEN if row.delta < 0 else BLUE
-                ax.errorbar(row.delta, i, xerr=[[row.delta-row.delta_lo], [row.delta_hi-row.delta]],
-                            fmt='o', color=color, capsize=3, markersize=5)
+                if np.isfinite(row.delta_lo) and np.isfinite(row.delta_hi):
+                    ax.errorbar(row.delta, i, xerr=[[row.delta-row.delta_lo], [row.delta_hi-row.delta]],
+                                fmt='o', color=color, capsize=3, markersize=5)
+                else:
+                    ax.plot(row.delta, i, 'o', color=color, markersize=5)
             else:
                 ax.text(.02, i, 'PL: no unique finite MLE', fontsize=8, va='center', color=GRAY)
         labels = [x.replace('00024-0000000', 'Dots ').replace('00025-0000000', 'Puzzle ')
@@ -65,7 +68,7 @@ def real_results():
         ax.invert_yaxis(); ax.axvline(0, color=GRAY, lw=1, linestyle='--')
         ax.grid(axis='x', alpha=.15)
     fig.suptitle('All 16 prespecified real tasks; negative differences favor SM\n'
-                 'Pointwise 95% intervals; left: anonymous-record working bootstrap', fontsize=11)
+                 'Left: descriptive only (assessor IDs unavailable); right: conditional 95% intervals', fontsize=11)
     save(fig, 'real_confirmation')
 
 

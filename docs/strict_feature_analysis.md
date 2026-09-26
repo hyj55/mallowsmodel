@@ -1,8 +1,10 @@
 # Which data structures favor selective Mallows or Plackett–Luce?
 
-**Strict estimator study, 25 September 2026.** Completed: **4,760 independent synthetic training samples**, **16 new real tasks / 8,763 original reports**, and a follow-up reusing 200 of those training samples. Nine additional agricultural sources were screened; all decisions are retained.
+**Feature study, 25 September 2026; audited 26 September UTC.** Completed: **4,760 independent synthetic training samples**, **16 new real tasks / 8,763 original reports**, and a follow-up reusing 200 of those training samples. Nine additional agricultural sources were screened; all decisions are retained.
 
 **Main finding:** the predictive winner reverses when the distribution of *which mistakes occur* changes, even with the entire inversion-count distribution fixed. Real full-ranking tasks provide tentative SM-favorable examples, while some directly elicited partial-ranking tasks favor PL. We have **not** established the specific SM context effect in real data, or a reliable small-data rule for selecting the model.
+
+**Audit correction:** anonymous PrefLib intervals have been withdrawn. Its point estimates remain descriptive. The current method and solver distinctions are defined in [the algorithm contract](algorithms.md); this is not a replication of all manuscript Algorithm 4.1 steps. [Audit](scientific_audit.md).
 
 All scores are whole-ranking **conditional** negative log likelihood, in nats:
 
@@ -41,23 +43,9 @@ Expected inversions remain **0.826685**, as does their complete distribution for
 
 The bridge moves from −0.0548 [−0.0573, −0.0522] at pure SM to +0.0647 [0.0609, 0.0685] at pure PL. Its within-pair displayed-gap slope falls from 0.10339 to zero while equal-gap reliability heterogeneity increases. This supports a joint structural explanation, not a claim that context alone caused the NLL difference.
 
-## 2. Exact estimator contract
+## 2. Estimators and computational scope
 
-| Fit | Published specification | Actual implementation/domain |
-|---|---|---|
-| SM center MLE | Supplied manuscript, Proposition 4.1 | Exact subset DP for n<=18 |
-| Larger SM center MLE | Conitzer, Davenport & Kalagnanam (2006), integral LP3 [1] | All eight n=30 real optima certified; HiGHS replaces the paper's CPLEX solver |
-| SM dispersion | Manuscript Proposition 4.2 on \([0,\infty]\) | Interior root, beta=0, or beta=infinity; no cap |
-| Sharp center | Algorithm 2.1 and Lemma 2.11 | Proof constants, one orientation-independent pair/report/block, fixed lexicographic packing; exact blocks up to 8 |
-| Efficient center | Algorithm 3.1 | Only its lambda<=1 schedule domain; **every executed fit had depth zero** |
-| Clipped Borda | Manuscript equation (3.4) | Separately named outside Algorithm 3.1's domain |
-| PL MLE | Hunter (2004), §5, equation (30) [2] | Simultaneous unaccelerated MM for the full ranking likelihood |
-
-The integer formulation is algebraically identical after eliminating antisymmetric variables; only a matching lower/upper integer bound is accepted. An uncertified incumbent would be unavailable. Changing the exact solver does not change the statistical optimization problem.
-
-Hunter's update divides each item's count of appearances above last by the sum of inverse remaining-set worths over nontrivial choice stages containing it. All worths update simultaneously. Sum-to-one normalization changes only the unidentified scale. The fixed-point tolerance is 1e-10 and normalized gradient tolerance 1e-8; nonexistence and nonconvergence remain outcomes.
-
-There are **no penalties, pseudo-comparisons, beta shrinkage, probability floors, inserted comparisons, outcome-dependent item deletions, or heuristic MLE replacements**. Numerical tolerances and certified exact optimization are disclosed. Larger sharp sieves are unavailable, not replaced by MLE. Real beta0=0.1 was fixed for schedule construction; its truth is not certified. The manuscript's §4 permits prespecified regularization, so earlier regularized experiments are not inherently invalid, but they answer a different question and remain separate.
+See the single [algorithm contract](algorithms.md) for exact source equations, implementation choices, domains and failures. Small-instance MLE uses manuscript DP; n=30 uses a certified integer-formulation benchmark with a different solver backend. All eight n=30 real centers were certified. Sharp is unavailable above the exact sieve limit. Every executed Section 3 fit has depth zero. Unbounded beta and unpenalized Hunter MM follow the separately frozen study protocol, not the manuscript's full regularized predictive algorithm.
 
 For pure SM at n=8, r=3, N=448, mean Kendall errors are MLE **0.075**, sharp **0.575**, clipped Borda **0.600**, and PL-worth ordering **0.425**. Here lambda=48, outside the sparse-pair theorem regime. This is a finite-sample result, **not evidence that MLE attains the minimax lower bound**. Under hybrid laws, the stored risk is distance to a generating reference, not a proven SM population center. No active multilevel advantage of §3 was measured.
 
@@ -79,22 +67,22 @@ Unbounded SM has a boundary issue: **223/3,200 bridge MLE runs** have infinite p
 
 The fixed split is 60% fit / 20% discovery / 20% confirmation. All usable source reports are retained; models share the same folds. Sources and decoding code are pinned and hashed.
 
-**PrefLib Dots and Puzzle [3,4]:** all eight original tasks, n=r=4, 793–800 reports each. Dot counts or puzzle difficulty supply an objective reference order, not necessarily the population SM center. Upstream aggregation removes assessor/trial IDs, so the intervals are **anonymous-record working intervals**, not independent-assessor evidence. These full rankings can test shell structure but not changing display contexts.
+**PrefLib Dots and Puzzle [3,4]:** all eight original tasks, n=r=4, 793–800 reports each. Dot counts or puzzle difficulty supply an objective reference order, not necessarily the population SM center. Upstream aggregation removes assessor/trial IDs, so **no inferential intervals are reported after audit**. Earlier anonymous-record working intervals are withdrawn. These full rankings can test shell structure but not changing display contexts.
 
 **Yoo et al. (2024) [5]:** 600 participants in two arms, directly ranking 2, 3, 5 and 6 dot images. Each arm/size task has 30 images and 300 reports, split 180/60/60. Different sizes have different physical catalogs and remain separate. Whole participant blocks, reconstructed from the original export loop, use the same fold across sizes. We decode the original ordinal response, not numerical ratings. The public exports may already contain upstream screening; we add none. These eight tasks are not eight independent studies. [Encoding details](protocols/STRICT_SOURCE_ADDENDUM.md).
 
 ![All real tasks](../figures/strict_features/real_confirmation.png)
 
-| Task | Confirmation Δ [pointwise 95% CI] |
+| Task | Confirmation Δ [conditional CI when units identified] |
 |---|---:|
-| Dots 1 | −0.0262 [−0.0495, −0.0028] |
-| Dots 2 | −0.0054 [−0.0360, 0.0251] |
-| Dots 3 | −0.0345 [−0.0735, −0.0002] |
-| Dots 4 | −0.0495 [−0.0994, −0.0001] |
-| Puzzle 1 | 0.0159 [−0.0135, 0.0428] |
-| **Puzzle 2** | **−0.0770 [−0.1145, −0.0426]** |
-| Puzzle 3 | −0.0401 [−0.0838, 0.0025] |
-| Puzzle 4 | −0.0105 [−0.0412, 0.0163] |
+| Dots 1 | −0.0262 (descriptive only) |
+| Dots 2 | −0.0054 (descriptive only) |
+| Dots 3 | −0.0345 (descriptive only) |
+| Dots 4 | −0.0495 (descriptive only) |
+| Puzzle 1 | 0.0159 (descriptive only) |
+| **Puzzle 2** | **−0.0770 (descriptive only)** |
+| Puzzle 3 | −0.0401 (descriptive only) |
+| Puzzle 4 | −0.0105 (descriptive only) |
 | Dots 2024 A, r=2 | PL: no unique finite MLE |
 | A, r=3 | 0.0559 [−0.1968, 0.3221] |
 | A, r=5 | 0.2034 [−0.0905, 0.4751] |
@@ -104,9 +92,9 @@ The fixed split is 60% fit / 20% discovery / 20% confirmation. All usable source
 | B, r=5 | 0.1532 [−0.0503, 0.3489] |
 | B, r=6 | −0.1261 [−0.3545, 0.0957] |
 
-Intervals are unadjusted and conditional on the fits. Source search and dependent tasks preclude treating this as a population prevalence study of model suitability.
+Only the 2024 respondent tasks retain intervals; these are unadjusted and conditional on the fits. Source search and dependent tasks preclude treating this as a population prevalence study of model suitability.
 
-**An SM-favorable example:** Puzzle 2 has NLL 2.6746 versus PL's 2.7516. The exact shell decomposition attributes −0.0403 to shell masses and **−0.0367 [−0.0668, −0.0059]** to within-shell allocation. Replacing PL's unequal within-shell probabilities with uniform allocation improves confirmation prediction here. This supports the proposed explanation; it does not prove exact uniformity or a true SM generating model.
+**An SM-favorable example:** Puzzle 2 has NLL 2.6746 versus PL's 2.7516. The exact shell decomposition attributes −0.0403 to shell masses and **−0.0367 (descriptive only)** to within-shell allocation. Replacing PL's unequal within-shell probabilities with uniform allocation improves confirmation prediction here. This is a descriptive fit-level explanation; missing assessor IDs prevent a sampling-based significance claim. It does not prove exact uniformity or a true SM generating model.
 
 **PL-favorable examples:** in 2024 A/r=6, the within-shell component is **+0.2139 [0.0350, 0.3811]**; in B/r=3 it is **+0.0920 [0.0136, 0.1703]**. PL's differentiated probabilities among equally distant rankings contribute to its advantage. This is a predictive, not causal, decomposition. B/r=6 remains unresolved and is retained.
 
@@ -147,7 +135,7 @@ The pairwise selector agrees with the *confirmation point-estimate* winner in **
 ## 6. What we can conclude
 
 1. **Controlled support:** within-shell error allocation changes the predictive winner independently of the inversion-count distribution.
-2. **Tentative real examples:** uniform within-shell allocation helps in Puzzle 2; unequal allocation helps in two partial-dots tasks. This is not a universal classification rule.
+2. **Real examples:** uniform within-shell allocation has a favorable point estimate in Puzzle 2 (descriptive only); unequal allocation helps in two partial-dots tasks with identified-unit conditional intervals. This is not a universal classification rule.
 3. **Still unsupported:** a verified real SM context effect, reliable small-data model selection, minimax optimality of MLE, or an active §3 hierarchy advantage.
 
 A useful next independent study would repeat the same pairs in randomized triples, placing the third item **between** versus **outside** them in an externally anchored order, with balanced assessor groups. It should collect enough repetitions per pair/context and retain strict original reports. This follows from the coverage and diagnostic-budget findings; it does not justify retrospective modifications to existing observations.
@@ -165,4 +153,4 @@ The supplied private manuscript is the authority for Algorithms 2.1/3.1/3.2, equ
 
 [Reproduction commands and formal uncertainty definitions](../results/strict_features/README.md). [Validation](../results/strict_features/validation.json). Main, source and follow-up protocols were committed respectively as **4dfcd26c9bc386d9048f1f76c3cee391cad96cc2**, **771171b242d54c7f8b8e815e5a7e552c7fbc3b33**, and **fa958a4ab42e5d3fbaff3904526526f5c9216633** before their corresponding computations.
 
-**Recovery provenance:** after calculations and local validation finished, the workspace disconnected during publication. Source code was restored from the session and the same pinned inputs, seeds, estimators and designs were rerun successfully in GitHub Actions. All 15 comparable real-task deltas, primary simulation summaries and diagnostic-budget accuracies match the recorded pre-disconnect values. This replay is not counted as additional independent evidence. [Recovery status](../results/strict_features/recovery_status.json). Earlier regularized results remain separate historical experiments.
+**Recovery provenance:** after calculations and local validation finished, the workspace disconnected during publication. Source code was restored from the session and the same pinned inputs, seeds, estimators and designs were rerun successfully in GitHub Actions. All 15 comparable real-task deltas, primary simulation summaries and diagnostic-budget accuracies match the recorded pre-disconnect values. This replay is not counted as additional independent evidence. [Recovery status](../results/strict_features/recovery_status.json). Earlier regularized results are accessible only through [History](history.md); the active pipeline does not mix those estimators. The audit rerun is recorded separately in results/audit and likewise adds no independent evidence.

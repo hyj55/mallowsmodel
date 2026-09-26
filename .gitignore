@@ -8,6 +8,5 @@ data/raw/*
 !data/raw/beans.rda
 data/processed/
 results/private/
+results/audit_before/
 .DS_Store
-
-results/exposure/tennis_predictions.csv

@@ -1,0 +1,49 @@
+{
+  "repository": {
+    "status": "passed",
+    "parsed_python_files": 22,
+    "local_markdown_links": 83,
+    "exact_duplicate_documents": 0,
+    "conflict_markers": 0,
+    "retired_paths_absent": 93,
+    "anonymous_intervals_withdrawn": true,
+    "missing_villages_not_used_as_clusters": true,
+    "baseline_source_rows_preserved": 10842,
+    "sushi_respondent_folds_aligned": true,
+    "sushi_b_certified_integer_objective": 45149,
+    "workflow_read_only": true
+  },
+  "baseline_replacement": {
+    "status": "passed",
+    "source_files_verified": 2,
+    "source_reports": 10842,
+    "reports_dropped": 0,
+    "saved_fit_rows_checked": 15,
+    "point_values_and_conditional_intervals_recomputed": true,
+    "all_three_mle_objectives_certified": true,
+    "prefit_protocol_commit": "517990bb8cc7111513eeca9dac5dd3d97e25831b"
+  },
+  "context_followup": {
+    "status": "passed",
+    "source_files_verified": 4,
+    "ranking_reports": 493,
+    "ranking_reports_dropped": 0,
+    "saved_score_rows_checked": 10,
+    "unadjusted_context_rows_checked": 2,
+    "missing_village_labels": 113,
+    "inferential_intervals_available": false,
+    "village_adjusted_diagnostic": "unavailable_missing_village",
+    "parameter_refit_comparison": "../audit/refit_comparison.json"
+  },
+  "strict_feature_validation": "passed",
+  "implementation_hashes": {
+    "src/__init__.py": "fec88edd46e815d38189118eeb2ce04ce919a3aabe794bef940c2609e5b44680",
+    "src/data.py": "494cbf5ebf5f575734a956414f1fe247d6bf648652a9a75b307f6f073d714b5d",
+    "src/diagnostics.py": "ed272cc7882a36a1cf8a3570a1cea1673175cab3530e08cc83abbabd60804100",
+    "src/manuscript_estimators.py": "70894e6aed5236e7c0035beafa5533b7483051bc668cb69e687aee5dcb682f38",
+    "src/models.py": "ca4c989fe94b60fb5527f128a17175ddbc52092ff8892fe26d795e5e103cfe96",
+    "src/strict_features.py": "ae95b71822538c82a8bfe815ea7267406680e401e35577ac58df99561cdb1469",
+    "src/strict_models.py": "244c90978402da73879d4826fd09af71ef3bbff6d9f5b52290a304dee52d69a2"
+  },
+  "status": "passed"
+}

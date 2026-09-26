@@ -1,67 +1,30 @@
-# References and provenance
+# References and their actual roles
 
-The supplied unpublished manuscript, *Selective Mallows Estimation from Uniform
-Partial Rankings: Minimax Kendall Risk, Efficient Algorithms, and Likelihood
-Comparisons*, is the specification: §1.1 model, §2.5 sharp estimator,
-§3 efficient hierarchy, §4.1 likelihood fitting, §4.3 beans protocol.
-It is not included in the distributable repository.
+The supplied unpublished manuscript, *Selective Mallows Estimation from Uniform Partial Rankings: Minimax Kendall Risk, Efficient Algorithms, and Likelihood Comparisons*, specifies the model, Algorithms 2.1/3.1/3.2, equation (3.4), Lemma 2.11, proof constants (3.22–3.23), and Propositions 4.1–4.3. It is private and is not redistributed. The current unpenalized experiment is not a replication of its complete regularized Algorithm 4.1. See the [method contract](algorithms.md).
 
-1. Fotakis, D., Kalavasis, A., & Stavropoulos, K. (2021).
-   **Aggregating Incomplete and Noisy Rankings.** AISTATS, PMLR 130, 2278–2286.
-   [Paper and supplement](https://proceedings.mlr.press/v130/fotakis21a.html).
-   Used for the selective model, literal PosEst, and localization-based MLE discussion.
-2. Raman, K., & Joachims, T. (2014).
-   **Methods for Ordinal Peer Grading.** KDD.
-   [Author PDF](https://www.cs.cornell.edu/people/tj/publications/raman_joachims_14a.pdf).
-   Used for the strict-subset, equal-reliability specialization of greedy MAL and the applied comparison precedent.
-3. Conitzer, V., Davenport, A., & Kalagnanam, J. (2006).
-   **Improved Bounds for Computing Kemeny Rankings.** AAAI.
-   [AAAI PDF](https://cdn.aaai.org/AAAI/2006/AAAI06-099.pdf).
-   Used for generic Kemeny optimization and lower-bound methodology; our implementation uses SciPy/HiGHS.
-4. PlackettLuce package maintainers. **Preferred Bean Varieties in Nicaragua.**
-   [Official dataset documentation](https://hturner.github.io/PlackettLuce/reference/beans.html).
-   [Pinned data source](https://raw.githubusercontent.com/hturner/PlackettLuce/ea031f7b129910c518daabf7c3e769aa499ea639/data/beans.rda).
-   Used for the 842-record dataset, assigned triples, response decoding, and season fields.
-5. van Etten, J., et al. (2019).
-   **Crop variety management for climate adaptation supported by citizen science.**
-   PNAS, 116(10), 4194–4199.
-   [Original study](https://www.pnas.org/doi/10.1073/pnas.1813720116).
-   Original study credited by the beans documentation.
-6. Kamishima, T. **SUSHI Preference Data Sets.**
-   [Creator's data and license page](https://www.kamishima.net/sushi/).
-   [Original 2016 archive](https://www.kamishima.net/asset/sushi3-2016.zip).
-   Used for original order files and the prohibition on redistributing source data.
-   File format is additionally documented in the README inside the downloaded archive.
-7. Kamishima, T. (2003).
-   **Nantonac Collaborative Filtering: Recommendation Based on Order Responses.** KDD.
-   [Author PDF](https://www.kamishima.net/archive/2003-p-kdd.pdf).
-   Acknowledgment of the Sushi data's originating research; this project is not collaborative filtering.
-8. Mao, C., Weed, J., & Rigollet, P. (2018).
-   **Minimax Rates and Efficient Algorithms for Noisy Sorting.** ALT, PMLR 83, 821–847.
-   [Paper](https://proceedings.mlr.press/v83/mao18a.html).
-   Background for independent-pair minimax and sieve methods; not used to pretend report pairs are independent.
-9. SciPy developers. **`scipy.optimize.milp`.**
-   [Official documentation](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.milp.html).
-   Solver status, time limits, and dual-bound semantics. Runtime used SciPy 1.17.0.
-10. Turner, H. L., van Etten, J., Firth, D., & Kosmidis, I. (2020).
-    **Modelling rankings in R: the PlackettLuce package.** Computational Statistics, 35, 1027–1057.
-    [Paper](https://link.springer.com/article/10.1007/s00180-020-00959-3).
-    [Official overview](https://hturner.github.io/PlackettLuce/articles/Overview.html).
-    Used for direct subset PL modeling and finite regularized estimates. Our Python fit uses the manuscript's ridge objective, not the R package's default pseudo-rankings.
+## Estimators and optimization
 
-Data bytes, source URLs, seeds and software versions are recorded under `results/`.
+1. **Conitzer, V., Davenport, A., & Kalagnanam, J. (2006).** Improved Bounds for Computing Kemeny Rankings. AAAI, 620–626. [Publisher PDF](https://cdn.aaai.org/AAAI/2006/AAAI06-099.pdf). The integral LP3 formulation defines our larger-center exact optimization benchmark. Their experiments used CPLEX 9.1; this project uses HiGHS and does not reproduce that solver's trajectory or runtime.
+2. **Hunter, D. R. (2004).** MM algorithms for generalized Bradley–Terry models. *Annals of Statistics*, 32(1), 384–406. [DOI](https://doi.org/10.1214/aos/1079120141). Section 5, equation (30): simultaneous, unaccelerated PL MM updates. No added penalty or pseudo-comparisons.
+3. **SciPy developers.** [scipy.optimize.milp](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.milp.html). Solver status and dual-bound semantics; recorded runtime SciPy 1.17.0. Numerical certification is distinguished from an uncertified incumbent.
 
-11. Cantwell, G. T., & Moore, C. (2022). **Belief propagation for permutations,
-    rankings, and partial orders.** Physical Review E 105, L052303.
-    [Paper](https://arxiv.org/abs/2110.00513),
-    [DOI](https://doi.org/10.1103/PhysRevE.105.L052303),
-    [code](https://github.com/gcant/pairwise-comparison-BP).
-    Page 5 and reference 27 identify ATP 2010–2019 and Sackmann's source.
-12. Sackmann, J. **ATP Tennis Rankings, Results, and Stats.**
-    [Original repository](https://github.com/JeffSackmann/tennis_atp).
-    Original README and data dictionary define annual files and tournament dates.
-    License: CC BY-NC-SA 4.0.
-13. Aneeshers. **Tennis Sackmann archive.**
-    [Pinned mirror](https://github.com/Aneeshers/tennis-sackmann-archive/tree/83733587353df8a41f2fd4f516147d5aa83f5a8d).
-    Used because the original endpoint returned 404; original authorship stays
-    with Jeff Sackmann. Accessed 2026-09-25.
+## Current data and source documentation
+
+4. **Mao, A., Procaccia, A. D., & Chen, Y. (2013).** Better Human Computation Through Principled Voting. AAAI. [Official proceedings](https://ojs.aaai.org/index.php/AAAI/article/download/8460/8319). Original Dots/Puzzle study.
+5. **PrefLib.** Official [Dots](https://preflib.github.io/PrefLib-Jekyll/dataset/00024) and [Puzzle](https://preflib.github.io/PrefLib-Jekyll/dataset/00025) collections; [source repository](https://github.com/PrefLib/PrefLib-Data), commit 1a8e9a9d0ad02a2a2d7473e813d1ac3057264f80. Multiplicities and objective references are preserved; the export does not identify assessors.
+6. **Yoo, Y., Escobedo, A. R., Kemmer, R., & Chiou, E. (2024).** Elicitation and aggregation of multimodal estimates improve wisdom of crowd effects on ordering tasks. *Scientific Reports*, 14, 2640. [Paper](https://www.nature.com/articles/s41598-024-52176-3), [author data/UI/export code](https://github.com/ryankemmer/simpleRatingRanking). Arm A commit 8bc1331abea2fdbfb4ce75cd453565bda83f4dc7; arm B e133bec2eb766cef2f0741d4e7d175f89a4719f4.
+7. **AgrDataSci/tricot-data.** [Official repository](https://github.com/AgrDataSci/tricot-data), [Zenodo DOI](https://doi.org/10.5281/zenodo.17112492), commit 169edfaba947b5afee52c1e217e0ff275fb71e34. Metadata-defined screen of nine sources; all exclusions are reported, no fits from this screen.
+8. **gosset maintainers.** [Bread wheat sample documentation](https://agrdatasci.github.io/gosset/reference/breadwheat.html), [pinned source](https://github.com/AgrDataSci/gosset/tree/bb5eb75c08fe3ab0f28931c093dcb66dea7c4185). The separate 493-record wheat task; best/worst decoding, location, season and redacted/missing metadata.
+9. **SP-Rank authors (2026).** [Original paper](https://arxiv.org/html/2601.05253v1), [author data release](https://github.com/amrit19/SP-Rank-Dataset/tree/d9ceab3386ac04aca7791fd83da8508851f87dc9). Audit of actual first-order Rank treatments and displayed objective gaps; no model fits.
+10. **PlackettLuce maintainers.** [Preferred Bean Varieties in Nicaragua](https://hturner.github.io/PlackettLuce/reference/beans.html), [pinned original R data](https://raw.githubusercontent.com/hturner/PlackettLuce/ea031f7b129910c518daabf7c3e769aa499ea639/data/beans.rda). All 842 reports; assigned triples and best/worst fields.
+11. **van Etten, J., et al. (2019).** Crop variety management for climate adaptation supported by citizen science. *PNAS*, 116(10), 4194–4199. [DOI](https://doi.org/10.1073/pnas.1813720116). Originating study credited by the agricultural sample documentation; package samples are not asserted to be the full study.
+12. **Kamishima, T.** [SUSHI Preference Data Sets and terms](https://www.kamishima.net/sushi/), [2016 archive](https://www.kamishima.net/asset/sushi3-2016.zip). Original order files and archive README define the two 5,000-respondent tasks. Raw data are not redistributed.
+13. **Kamishima, T. (2003).** Nantonac Collaborative Filtering: Recommendation Based on Order Responses. KDD. [Author PDF](https://www.kamishima.net/archive/2003-p-kdd.pdf). Originating Sushi research; the present task is conditional ranking prediction, not collaborative filtering.
+
+## Background, not additional fitted algorithms
+
+14. **Fotakis, D., Kalavasis, A., & Stavropoulos, K. (2021).** Aggregating Incomplete and Noisy Rankings. AISTATS, PMLR 130, 2278–2286. [Paper and supplement](https://proceedings.mlr.press/v130/fotakis21a.html). Selective Mallows background. PosEst/localized MLE are not current comparison arms.
+15. **Mao, C., Weed, J., & Rigollet, P. (2018).** Minimax Rates and Efficient Algorithms for Noisy Sorting. ALT, PMLR 83, 821–847. [Paper](https://proceedings.mlr.press/v83/mao18a.html). Independent-pair theory background; it does not justify treating pairs within a report as independent.
+16. **Turner, H. L., van Etten, J., Firth, D., & Kosmidis, I. (2020).** Modelling rankings in R: the PlackettLuce package. *Computational Statistics*, 35, 1027–1057. [DOI](https://doi.org/10.1007/s00180-020-00959-3), [official overview](https://hturner.github.io/PlackettLuce/articles/Overview.html). Data/package context; current Python fitting does not use its default pseudo-rankings or the earlier ridge fitter.
+
+Historical greedy-MAL and ATP/BP references belong to the retired experiments and remain in the [pinned historical snapshot](history.md). They are not current estimator claims. All current source URLs, immutable versions and file hashes are recorded in the [data manifests](../data/README.md).

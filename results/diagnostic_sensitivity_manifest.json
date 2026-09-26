@@ -1,6 +1,0 @@
-{
-  "addendum_sha256": "40fbb28a76f228e7a02ec2300b5679114acdcb83b22b9a4f24e16c419df6e279",
-  "seed": 20260925,
-  "bootstrap": 2000,
-  "selection": "Post-diagnostic sensitivity; no test tuning"
-}

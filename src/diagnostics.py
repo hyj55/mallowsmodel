@@ -91,7 +91,10 @@ def shell_decomposition(y, center, beta, theta):
 
 
 def pair_arrays(y, center, beta, theta):
-    """Columns enumerate center-position pairs, rows remain independent reports."""
+    """Columns enumerate center-position pairs; rows preserve whole reports.
+
+    This representation makes no assumption about independent assessors.
+    """
     order_indices = np.argsort(positions(center)[y], axis=1)
     ordered = np.take_along_axis(y, order_indices, axis=1)
     a, b = np.array(list(combinations(range(y.shape[1]), 2))).T
@@ -105,14 +108,10 @@ def pair_arrays(y, center, beta, theta):
             "pair": first * len(center) + second, "worth_gap": worth_gap}
 
 
-def binary_nll(z, p):
-    p = np.clip(p, 1e-12, 1 - 1e-12)
-    return -(z * np.log(p) + (1-z) * np.log1p(-p))
-
-
 def context_slope(arrays, strata=None, resamples=2000, seed=20260925, return_draws=False):
     """Pair fixed effects (or pair x stratum), report-cluster percentile bootstrap.
 
+    Set resamples=0 for descriptive-only results when independent units are unknown.
     The slope is descriptive and linear, not an extra fitted preference model.
     All regressors and eligibility use the displayed sets and frozen center only.
     """
@@ -154,16 +153,16 @@ def context_slope(arrays, strata=None, resamples=2000, seed=20260925, return_dra
     estimate = slope(np.ones(m))
     rng = np.random.default_rng(seed)
     sims = np.array([slope(np.bincount(rng.integers(m, size=m), minlength=m))
-                     for _ in range(resamples)])
+                     for _ in range(resamples)]).reshape(-1, 3)
     raw_sims = sims
     sims = sims[np.isfinite(sims).all(axis=1)]
     answer = {**info, "status": "ok", "valid_bootstraps": len(sims)}
     for j, name in enumerate(["observed", "sm_predicted", "pl_predicted"]):
         answer[name] = float(estimate[j])
-        answer[name+"_lo"], answer[name+"_hi"] = map(float, np.quantile(sims[:,j], [.025,.975]))
+        answer[name+"_lo"], answer[name+"_hi"] = (map(float, np.quantile(sims[:,j], [.025,.975])) if len(sims) else (np.nan, np.nan))
     for j, name in [(1,"residual_vs_sm"),(2,"residual_vs_pl")]:
         answer[name] = float(estimate[0]-estimate[j])
-        answer[name+"_lo"], answer[name+"_hi"] = map(float, np.quantile(sims[:,0]-sims[:,j], [.025,.975]))
+        answer[name+"_lo"], answer[name+"_hi"] = (map(float, np.quantile(sims[:,0]-sims[:,j], [.025,.975])) if len(sims) else (np.nan, np.nan))
     if return_draws:
         answer["_draws"] = raw_sims
     return answer

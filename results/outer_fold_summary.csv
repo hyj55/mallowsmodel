@@ -1,3 +1,0 @@
-dataset,pooled_delta,fold_delta_min,fold_delta_max,test_reports,note
-beans,0.016782943237417636,0.0072489301136007605,0.02154002291973331,842,Descriptive stability; no independent-fold CI
-sushi_a,0.0316794072559395,0.0027897678522737584,0.0599278526443632,5000,Descriptive stability; no independent-fold CI

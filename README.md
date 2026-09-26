@@ -1,205 +1,52 @@
-# Selective Mallows vs. Plackett–Luce
+# Selective Mallows versus Plackett–Luce
 
-Reproducible Python experiments comparing **direct subset Mallows** (SM) and
-**Plackett–Luce** (PL) on complete rankings of displayed subsets. The repository
-contains the implemented estimators, data access and validation, saved fitted
-parameters, aggregate results, figures, and an analysis.
+Numerical research on how pair reliability, error allocation within Kendall-distance shells, and displayed-set effects relate to prediction. Python implementations preserve original ranking reports and distinguish published estimators from optimization and diagnostic choices.
 
-**Main finding:** neither model wins across all tasks. Exact SM fitting removes
-an optimization confound at small item counts. Prediction also depends on
-dispersion estimation and the probability structure within a ranking.
+**Current status:** the controlled feature experiment is complete; real data provide some PL-favorable examples and descriptive SM-favorable examples. The specific positive SM context effect remains unconfirmed. No result establishes minimax optimality of an MLE or an active multilevel advantage of Section 3.
 
 ## Start here
 
-- **[New: original wheat and SP-Rank context follow-up](docs/context_followup.md)** — 493 intact wheat reports; context effect remains unresolved; all six SP-Rank tasks lack the targeted objective-gap contrast.
+1. [Scientific audit and corrections](docs/scientific_audit.md) — what complied, what did not, and what was withdrawn.
+2. [Feature-transition experiments](docs/strict_feature_analysis.md) — 4,760 independent synthetic training samples and 16 original real tasks.
+3. [Wheat and SP-Rank follow-up](docs/context_followup.md) — one intact wheat task and six source-design audits.
+4. [Replacement of historical Beans/Sushi comparisons](docs/baseline_replacement.md).
+5. [Canonical algorithms and assumptions](docs/algorithms.md), [data provenance](data/README.md), [reproduction](docs/reproducibility.md), [references](docs/references.md).
 
-- **[Strict feature-transition study: completed analysis](docs/strict_feature_analysis.md)**
-- [Strict-study results, source audit and reproduction](results/strict_features/README.md)
+## Interpretation
 
-- **[Exposure regimes, manuscript estimators and ATP tennis](docs/exposure_analysis.md)**
-- [New results and reproduction commands](results/exposure/README.md)
+The primary criterion is conditional whole-ranking NLL, averaged over the same test reports. Delta = NLL(SM) − NLL(PL); negative favors SM. No joint-probability comparison. Raw NLLs across different report lengths are not comparable.
 
-- [Analysis and conclusions](docs/analysis.md)
-- [Mechanism diagnostics and formal definitions](docs/diagnostics.md)
-- [Algorithms, sources, and exactness guarantees](docs/algorithms.md)
-- [Dataset properties, preprocessing, and licenses](data/README.md)
-- [Reproduction and uncertainty conventions](docs/reproducibility.md)
-- [References](docs/references.md) and [BibTeX](docs/references.bib)
+The current unpenalized experiment is **not a literal replication of the manuscript's complete Algorithm 4.1**, which explicitly permits/requires prespecified boundary handling and regularized PL fitting. It uses the manuscript's center/dispersion definitions and Hunter's original MM algorithm under a separately recorded protocol. See the algorithm contract before attributing a result to the paper.
 
-## Strict feature study (25 September 2026)
+The larger SM MLE uses Conitzer et al.'s integral LP3 formulation with a different solver backend and an optimum certificate. This is an exact-optimization comparison, **not a reproduction of the original CPLEX implementation or its runtime**. Uncertified fits are unavailable. Unavailable sharp sieves are not replaced by MLE; Section 3 is not extended by capping lambda.
 
-Completed **4,760 independent synthetic training datasets** and **16 new real
-tasks (8,763 original reports)**. Protocols were frozen before their respective
-fits; the diagnostic-budget follow-up is explicitly exploratory.
+No unsupported inference is repaired by inventing sampling identities: PrefLib, Beans and wheat now have descriptive results only where assessor/cluster IDs are unavailable. Dots 2024 and Sushi intervals are conditional on frozen fits and their source-defined/reconstructed respondent units. Source search and related tasks limit generalization.
 
-Changing probabilities within the same Kendall-distance shell reverses the
-predictive winner even when every shell mass remains fixed. Puzzle 2 provides
-a tentative SM-favorable example; two 2024 partial-dots tasks favor PL.
-The specific real-data SM context effect remains unconfirmed.
-
-Strict fits use exact/certified SM centers, uncapped dispersion, the literal
-sharp/efficient estimators in their computational domains, and Hunter MM for PL.
-No penalty, probability floor, report repair, item deletion or heuristic MLE
-replacement is used. Larger sharp sieves are unavailable; all executed Section 3
-fits have depth zero. All nine additional agricultural candidates failed the
-frozen whole-task eligibility rule; every exclusion is documented.
-
-![Strict feature transitions](figures/strict_features/feature_transitions.png)
-
-See the [English report](docs/strict_feature_analysis.md) and
-[reproduction commands](results/strict_features/README.md#reproduce).
-After a workspace disconnect during publication, the same experiments were
-successfully replayed in GitHub Actions. All recorded real-task deltas, primary
-simulation summaries and diagnostic-budget accuracies matched. See the
-[run status](results/strict_features/recovery_status.json) and
-[validation](results/strict_features/validation.json). The replay adds no
-independent experimental evidence.
-
-Earlier results below are separate historical experiments with their original
-regularization and heuristic choices.
-
-## Historical base experiments
-
-- Three real-data tasks: Beans, Sushi A, and Sushi B; **72 primary paired fits**.
-- Three generating mechanisms × four sample sizes × 30 independent repeats:
-  **360 synthetic paired fits**.
-- Center-optimization benchmarks, small-sample dispersion shrinkage, same-order
-  comparisons, season transfer, and split sensitivity.
-- Held-out diagnostics for pair reliability, probability allocation within
-  Kendall-distance shells, and changes in pair probabilities across displayed sets.
-
-The main score is **held-out whole-ranking conditional NLL**, in natural-log
-units. Define Δ = NLL(SM) − NLL(PL); positive values favor PL.
-Joint likelihood is not included.
-
-| Dataset | Training reports N | SM NLL | PL NLL | Δ [95% CI] |
-|---|---:|---:|---:|---:|
-| Beans | 673 | 1.7925 | 1.7818 | 0.0107 [−0.0068, 0.0277] |
-| Sushi A | 3,000 | 14.3078 | 14.2501 | 0.0577 [0.0179, 0.0988] |
-| Sushi B, approximate SM | 3,000 | 14.2641 | 14.2658 | −0.0018 [−0.0506, 0.0435] |
-
-These are pointwise, exploratory intervals from paired **whole-report**
-bootstrap, conditional on the fitted models. They do not include training-sample
-uncertainty. NLL magnitudes should not be compared across different report lengths.
-
-![Real-data learning curves](figures/real_learning_curves.png)
-
-## Historical models and fitting
-
-SM generates a ranking **directly on the displayed set**, around the restriction
-of one global center. It does not generate a full ranking and then delete items.
-
-| Component | Implementation |
-|---|---|
-| SM center, n = 10 | Exact subset dynamic programming; global Kemeny optimum |
-| SM center, n = 100 | Eight-start insertion search plus a time-limited MILP bound audit; approximate |
-| SM dispersion | Profile conditional likelihood over β ∈ [0, 10] |
-| PL worths | Full listwise likelihood with validation-selected ridge penalty |
-| Small-sample sensitivity | Validation-selected multiplicative shrinkage of SM β |
-
-Beans, Sushi A, and all main simulations have n = 10. Sushi B has n = 100;
-its centers have **no global optimality certificate**. The exposure extension now implements the exact sharp sieve for blocks up to
-eight items, plus the proof-constant Section 3 estimator. Larger exact sieves
-are explicitly unavailable; all executed Section 3 fits have depth zero. These experiments do not establish minimax optimality of the MLE.
-
-## Historical pipeline reproduction
-
-Run commands from the repository root. Python **3.12** is recommended.
-`requirements-lock.txt` records the versions used for the saved experiments.
+## Run
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate
 python -m pip install -r requirements-lock.txt
 python -m pytest -q
 ```
 
-Replot the saved primary results without downloading data:
+Experiment commands are maintained in the [reproduction guide](docs/reproducibility.md).
 
-```bash
-python make_figures.py
-```
+Python 3.12. Run in a separate checkout to preserve committed results. The n=100 exact-optimization attempt can exhaust its fixed 120-second budget; this is an outcome, not a fallback trigger. See [reproduction details](docs/reproducibility.md).
 
-Download/verify the inputs, then reproduce the diagnostics using the saved fits:
+## Structure
 
-```bash
-python download_data.py
-python download_data.py --verify-only
-python run_diagnostics.py --same-center
-```
-
-Run the complete experiment pipeline:
-
-```bash
-python run_experiments.py --part all --synthetic-reps 30
-python run_followups.py --cutting-plane
-python run_diagnostics.py --same-center
-python make_figures.py
-```
-
-Commands regenerate files in `results/` and `figures/`. Use a separate checkout
-if you want to preserve an untouched copy of the recorded run. The two optional
-cutting-plane audits each have a 60-second limit. Time-limited large-instance
-optimization can produce different bounds on a different machine.
-See [reproducibility notes](docs/reproducibility.md) for selective runs and checks.
-
-## Repository layout
-
-| Path | Contents |
+| Path | Purpose |
 |---|---|
-| `src/strict_models.py`, `src/strict_features.py` | Strict published-estimator fits and controlled feature interventions |
-| `run_strict_*.py`, `validate_strict_features.py` | Strict experiments, follow-ups and replay validation |
-| `download_strict_*.py`, `make_strict_figures.py` | Pinned sources, eligibility audit and strict-study figures |
-| `src/models.py` | Likelihoods, center solvers, dispersion/PL fits, direct-subset samplers |
-| `src/cutting_plane.py` | Additional Kemeny lower/upper-bound solver |
-| `src/data.py` | Verified data acquisition, strict ranking parsing, exposure audits |
-| `src/diagnostics.py` | Exact shell probabilities, pair marginals, report-bootstrap diagnostics |
-| `run_experiments.py` | Main real and synthetic comparisons |
-| `run_followups.py` | Exploratory same-order, temporal, split, and solver checks |
-| `run_diagnostics.py` | Exploratory explanations of model differences |
-| `download_data.py`, `make_figures.py` | Input verification and figure regeneration |
-| `data/` | Bundled Beans data, source manifest, download policy, third-party license |
-| `results/` | Aggregate CSV/JSON results, fitted parameters, provenance, validation |
-| `figures/` | Research figures in PNG and editable SVG |
-| `docs/` | English analysis, algorithms, references, and preserved protocols |
-| `tests/` | Exhaustive small-instance and probability/gradient correctness checks |
+| `src/strict_models.py` | Single active fitting interface: exact SM, published centers, unpenalized Hunter MM |
+| `src/manuscript_estimators.py` | Sharp sieve, score hierarchy, clipped Borda |
+| `src/models.py` | Likelihood mathematics, exact subset DP, direct-subset samplers |
+| `src/diagnostics.py`, `src/strict_features.py` | Descriptive diagnostics and declared synthetic laws |
+| `src/data.py`, `download_*.py` | Original-source acquisition and validation |
+| `run_*.py` | Current experiments only |
+| `docs/protocols/` | Dated original designs and explicit audit amendments |
+| `results/strict_features/`, `results/context_followup/`, `results/baseline_replacement/` | Distinct experiments, all outcomes retained |
+| `results/audit/` | Refit and repository validation evidence |
+| `figures/strict_features/` | Scientific figures, PNG for reading and SVG for export |
+| `tests/` | Mathematical, boundary and sampling-unit checks |
 
-## Data and scope
-
-The unchanged Beans file is bundled with its upstream GPL-3 notice. **Sushi
-source data are not redistributed**, in accordance with the creator's terms;
-the downloader retrieves the original archive and verifies its SHA256 hash.
-Raw Sushi files, processed respondent-level data, and private loss caches are
-excluded from Git. No unpublished manuscript is included.
-
-Beans and Sushi have no known true central ranking. Sushi A and B share
-respondents and use aligned splits; they are not independent participant
-samples. Beans has no assessor identifier. Real subset designs are not assumed
-uniform; the synthetic design is uniform and independent. See
-[limitations and next experiments](docs/analysis.md#limitations-and-next-experiments).
-
-Research and data sources are credited in [References](docs/references.md).
-Third-party data retain their own terms; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
-No project-wide open-source license has been assigned to the original research code.
-
-## Exposure extension
-
-The new Python files are src/manuscript_estimators.py, src/tennis.py,
-run_exposure.py, run_exposure_followup.py, make_exposure_figures.py and
-validate_exposure.py. They add the manuscript estimators, actual lambda/mu
-coverage audits, uniform-design simulations, and chronological ATP seasons.
-The report separates center recovery, prediction, and regularization effects.
-
-~~~bash
-OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python run_exposure.py --part all
-OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python run_exposure_followup.py
-python make_exposure_figures.py
-python validate_exposure.py
-~~~
-
-The extension was regenerated successfully in GitHub Actions after a workspace
-disconnect. results/exposure/validation.json records 58 replayed designs, all
-60 real fits, ten seasons and matching pre-interruption results. The workflow
-is now manual: Actions → Recover exposure experiments → Run workflow.
-ATP raw data are downloaded separately from an immutable archive of Jeff
-Sackmann's CC BY-NC-SA 4.0 data. Raw Sushi observations remain excluded.
+Historical regularized, shrunk and heuristic experiments are accessible at the pinned commit in [History](docs/history.md). They are no longer mixed into the runnable current pipeline. Git history is preserved; the private manuscript and respondent ranking data are not newly redistributed. [Third-party notices](THIRD_PARTY_NOTICES.md).

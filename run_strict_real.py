@@ -74,9 +74,9 @@ def split_task(task, task_index):
     return parts
 
 
-def ci(values, seed, resamples=2000):
+def ci(values, seed, resamples=2000, unit_identified=True):
     values = np.asarray(values, float)
-    if not np.isfinite(values).all():
+    if not unit_identified or not np.isfinite(values).all():
         return np.nan, np.nan
     rng = np.random.default_rng(seed)
     sampled = rng.integers(len(values), size=(resamples, len(values)))
@@ -111,6 +111,8 @@ def run():
         fit_idx, discovery_idx, test_idx = split_task(task, task_index)
         train, discovery, test = [task['y'][x] for x in [fit_idx, discovery_idx, test_idx]]
         n, r = task['n'], task['r']
+        unit_identified = task['family'] != 'preflib'
+        uncertainty = 'conditional_participant_bootstrap' if unit_identified else 'unavailable_assessor_ids'
         for split, indices in [('fit', fit_idx), ('discovery', discovery_idx), ('confirmation', test_idx)]:
             splits.extend(dict(dataset=task['name'], record=int(i), group=int(task['group'][i]), split=split) for i in indices)
         counts = np.bincount(train.ravel(), minlength=n)
@@ -132,8 +134,8 @@ def run():
         pl_loss = models['pl'].nll(test)
         for method, model in models.items():
             loss = model.nll(test); delta = loss-pl_loss
-            low, high = ci(delta, SEED+task_index)
-            results.append(dict(dataset=task['name'], method=method, status=model.status,
+            low, high = ci(delta, SEED+task_index, unit_identified=unit_identified)
+            results.append(dict(dataset=task['name'], method=method, status=model.status, uncertainty_status=uncertainty,
                 nll=float(loss.mean()), delta=float(delta.mean()), delta_lo=low, delta_hi=high,
                 infinite_reports=int(np.isinf(loss).sum()),
                 objective_kendall=kendall(model.order, task['truth']) if model.status == 'ok' else np.nan,
@@ -158,11 +160,11 @@ def run():
             for split, y in [('discovery', discovery), ('confirmation', test)]:
                 decomposition = shell_decomposition(y, primary.order, primary.beta, models['pl'].theta)
                 for component in ['total', 'shell_mass', 'within_shell']:
-                    low, high = ci(decomposition[component], SEED+task_index+1)
-                    shells.append(dict(dataset=task['name'], split=split, component=component,
+                    low, high = ci(decomposition[component], SEED+task_index+1, unit_identified=unit_identified)
+                    shells.append(dict(dataset=task['name'], split=split, component=component, uncertainty_status=uncertainty,
                         value=decomposition[component].mean(), ci_low=low, ci_high=high))
                 arrays = pair_arrays(y, primary.order, primary.beta, models['pl'].theta)
-                c = context_slope(arrays, resamples=2000, seed=SEED+task_index+2)
+                c = context_slope(arrays, resamples=2000 if unit_identified else 0, seed=SEED+task_index+2)
                 contexts.append(dict(dataset=task['name'], split=split, **c))
                 profiles.extend(diagnostic_profiles(y, train, primary, models['pl'], task, split))
         for filename, rows in [('real_results', results), ('real_datasets', descriptions),

@@ -74,8 +74,7 @@ def load_beans():
         best, worst = row["best"], row["worst"]
         if (any(pd.isna(x) for x in items+[best, worst]) or len(set(items)) != 3
                 or best not in ("A", "B", "C") or worst not in ("A", "B", "C") or best == worst):
-            excluded += 1
-            continue
+            raise ValueError('Whole Beans task is ineligible: invalid original report; no rows removed')
         middle = next(x for x in "ABC" if x not in (best, worst))
         y.append([lookup[items["ABC".index(x)]] for x in [best, middle, worst]])
         seasons.append(str(row["season"]))

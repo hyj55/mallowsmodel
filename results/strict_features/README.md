@@ -1,27 +1,10 @@
 # Strict feature-transition study
 
-Read [the English analysis](../../docs/strict_feature_analysis.md). These results follow the frozen [main protocol](../../docs/protocols/STRICT_FEATURE_PROTOCOL.md), [source addendum](../../docs/protocols/STRICT_SOURCE_ADDENDUM.md), and explicitly exploratory [follow-up](../../docs/protocols/STRICT_FEATURE_FOLLOWUP.md).
+Read [the English analysis](../../docs/strict_feature_analysis.md). Current uncertainty and attribution corrections are specified in [the audit](../../docs/scientific_audit.md). These results originate from the frozen [main protocol](../../docs/protocols/STRICT_FEATURE_PROTOCOL.md), [source addendum](../../docs/protocols/STRICT_SOURCE_ADDENDUM.md), and explicitly exploratory [follow-up](../../docs/protocols/STRICT_FEATURE_FOLLOWUP.md).
 
 ## Reproduce
 
-From the repository root with Python 3.12 and requirements-lock.txt installed:
-
-~~~bash
-python download_strict_data.py
-python download_strict_tricot.py
-python run_strict_simulations.py --part bridge
-python run_strict_simulations.py --part shell
-python run_strict_simulations.py --part coverage
-python run_strict_real.py
-python run_strict_followups.py --part budgets
-python run_strict_followups.py --part objective
-python validate_strict_features.py
-python make_strict_figures.py
-~~~
-
-The master seed is **202609251**. Fitting, discovery, testing and algorithm randomization use separate streams. Use another checkout to preserve recorded outputs. Runtimes can vary; an exact solver can select a different tied optimum on another version, but must certify its objective. All eight recorded n=30 real centers are certified.
-
-The agricultural downloader reproduces the eligibility audit, not extra fits. Raw source files stay under ignored data/raw/strict_features/ and are retrieved from immutable commits; the manifest verifies SHA256 hashes. Original response files and the private manuscript are not rehosted. Figure-only reproduction: python make_strict_figures.py.
+Use the [shared reproduction guide](../../docs/reproducibility.md) for installation, full experiment commands, fixed seeds and solver limitations. Source files remain in ignored data/raw directories. The agricultural downloader runs the eligibility audit only. Recovery replay is not additional evidence.
 
 ## Files
 
@@ -50,7 +33,7 @@ N means **training reports**. Value means mixture weight a, or shell tilt h. Del
 - SM dispersion is unbounded; infinite beta and predictive loss are retained. Non-strongly-connected PL comparisons are unavailable, not stabilized by deleted items or added comparisons. Undefined estimates are NaN; divergent loss is infinity.
 - Plain summary metrics are NaN if a required run is undefined, and can be infinite. Suffixes finite_conditional, defined, infinite, finite, and status counts disclose conditioning. Plain lo/hi intervals are provided only when every repetition is finite.
 - Simulation intervals are paired-replicate t intervals: mean ± t(0.975,R−1) × SD/sqrt(R). Pairs within a ranking are not independent repetitions. With unbounded SM estimates, finite-N boundary events can make unconditional expected log loss infinite even when an observed simulation cell has all finite fits.
-- Real intervals are paired whole-report percentile bootstraps with 2,000 draws, conditional on fixed fits. One participant contributes one report per 2024 arm/size task, and folds align across sizes. PrefLib lacks assessor/trial IDs, so its intervals are anonymous-record working calculations. Intervals are pointwise, unadjusted, and exclude training and source-selection uncertainty.
-- Context is a descriptive slope of correctly oriented outcomes on displayed-center gap with pair fixed effects. Only pairs with at least two gap levels, each observed at least twice, are eligible. Whole reports are bootstrapped; undefined resamples are counted through valid_bootstraps. Insufficient variation is unavailable, not a zero effect.
+- Real intervals are paired whole-report percentile bootstraps with 2,000 draws, conditional on fixed fits. One participant contributes one report per 2024 arm/size task, and folds align across sizes. PrefLib lacks assessor/trial IDs; its earlier working intervals have been withdrawn. Current outputs keep point values with uncertainty_status=unavailable_assessor_ids. Intervals are pointwise, unadjusted, and exclude training and source-selection uncertainty.
+- Where respondent units are identified, context is a descriptive slope of correctly oriented outcomes on displayed-center gap with pair fixed effects. Only pairs with at least two gap levels, each observed at least twice, are eligible. Whole reports are bootstrapped; undefined resamples are counted through valid_bootstraps. Insufficient variation is unavailable, not a zero effect.
 - For shell d, define Q(Y|S)=P_PL(D=d|S)/|shell_d(S)| about the fixed training center. Then log(P_PL/P_SM)=log(Q/P_SM)+log(P_PL/Q). Q is an exact diagnostic, never a fitted replacement model.
 - Recovery uses the same seeds and sources after a workspace disconnect; it supplies no additional independent replication. Validation records agreement with rounded pre-disconnect summaries. Numerical differences would be disclosed rather than used to select a favorable run.

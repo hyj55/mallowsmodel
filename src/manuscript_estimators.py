@@ -75,7 +75,9 @@ def hierarchy(y,n,stages,priority,terminal_scores=True):
 def efficient_center(y,n,seed=0,beta0=.8):
     y=validate_rankings(y,n);N,r=y.shape;meta=exposure(n,r,N)
     priority=np.random.default_rng(seed).permutation(n)
-    low=(r-1)/(n-1);eta=min(meta['lambda_'],1.);candidates=[]
+    if meta['lambda_'] > 1:
+        raise ValueError('Algorithm 3.1 schedule domain requires lambda <= 1')
+    low=(r-1)/(n-1);eta=meta['lambda_'];candidates=[]
     while eta>=low:candidates.append(eta);eta/=2
     if meta['mu']>=1 and (not candidates or candidates[-1]!=low):candidates.append(low)
     for eta in candidates:

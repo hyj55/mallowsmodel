@@ -33,18 +33,18 @@ Git excludes the Sushi archive, processed respondent data, and private
 per-report output caches. The repository contains aggregate analyses and fitted
 model parameters, not copies of respondents' rankings.
 
-## ATP tennis
+## Other current sources
 
-Data author: **Jeff Sackmann**, ATP Tennis Rankings, Results, and Stats,
-https://github.com/JeffSackmann/tennis_atp. Data retain CC BY-NC-SA 4.0 terms.
-The original endpoint was unavailable; source files are retrieved from
-https://github.com/Aneeshers/tennis-sackmann-archive at commit
-83733587353df8a41f2fd4f516147d5aa83f5a8d. Its original attribution and license
-are preserved by the downloader. No source data ownership is claimed.
+PrefLib Dots/Puzzle, the 2024 dots author release, gosset wheat, SP-Rank and the
+tricot catalog are downloaded from pinned upstream sources; their raw files
+are not redistributed here. Attribution and immutable versions appear in
+[the reference list](docs/references.md) and [source manifests](data/README.md).
+The tricot source declares CC BY-SA 4.0. Upstream terms continue to apply to
+source-derived material. No ownership of these sources is claimed.
 
-Raw annual CSVs and the per-match prediction cache are excluded from Git.
-The repository distributes aggregate analyses and fitted parameters; any
-source-derived material subject to the upstream license retains those terms.
-Filtering and chronological splits are our analysis choices, not the source
-paper's exact preprocessing. See data/tennis_sources.json and the original
-license saved as data/licenses/ATP-CC-BY-NC-SA-4.0.txt after download.
+## Historical ATP analysis
+
+The retired ATP pipeline credited Jeff Sackmann and retained CC BY-NC-SA 4.0
+terms. That notice, mirror provenance and analysis are preserved in the
+[pinned historical snapshot](docs/history.md). No current ATP results or
+raw annual files are distributed on the active branch.

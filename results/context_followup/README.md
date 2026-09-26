@@ -1,15 +1,13 @@
-# Context follow-up
+# Context follow-up outputs
 
-Read [the English report](../../docs/context_followup.md) and [pre-fit protocol](../../docs/protocols/CONTEXT_FOLLOWUP.md).
+[Current report](../../docs/context_followup.md). Original rankings and fit point estimates are unchanged. Earlier cluster intervals and village-adjusted estimates are withdrawn under the [audit amendment](../../docs/protocols/AUDIT_AMENDMENT.md).
 
-One intact breadwheat task, five estimator statuses, two held-out splits. Six SP-Rank tasks are audited without fits. No original microdata are rehosted.
+- `scores.csv`: all methods/statuses; conditional NLL; CI fields unavailable because sampling-unit identity is missing.
+- `context.csv`: descriptive unadjusted slopes and support counts; village-adjusted analysis unavailable, with explicit status.
+- `coverage.json`: catalog, display counts, exposure and missing village information.
+- `splits.csv`: source row and split indices; village=-1 means missing metadata, never an inferential cluster.
+- `parameters.json`: fitted centers, dispersions, worths and convergence metadata.
+- `sprank_audit.csv`: every cohort/domain task, including zero objective-gap variation.
+- `validation.json`: current audit checks; the former cluster-validation record is in Git history.
 
-- `scores.csv`: all available/unavailable methods, conditional NLL and paired working intervals.
-- `context.csv`: observed and model-implied fixed-effect slopes, support counts, undefined-bootstrap counts and warnings. A single contributing metadata block cannot support cluster inference, even if its numerical interval is a point.
-- `coverage.json`: display diversity, lambda, mu and missing-village counts.
-- `splits.csv`: original row indices and anonymous metadata-block labels; every row appears once.
-- `parameters.json`: unchanged estimator outputs and convergence metadata; NaN marks unavailable values.
-- `sprank_audit.csv`: all six source tasks, including zero objective-gap variation.
-- `validation.json`: focused checks and pre-fit protocol commits.
-
-Run `python run_context_followup.py` with the locked environment plus `rdata==1.0.0`. The source manifest is `data/context_followup_sources.json`. Scientific limitations and references are in the report.
+Run `python run_context_followup.py`. Raw inputs are downloaded by immutable URL and checked against data/context_followup_sources.json. No source rankings are rehosted.

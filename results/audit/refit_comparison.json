@@ -1,0 +1,9 @@
+{
+  "strict_features_unchanged_predictive_point_rows": 80,
+  "strict_features_all_fitted_parameters_unchanged": true,
+  "context_followup_unchanged_predictive_point_rows": 10,
+  "context_followup_all_fitted_parameters_unchanged": true,
+  "independent_new_replay_evidence": 0,
+  "source_snapshot": "89b21645d5f7eb463cc90c4e982c3a66ce805b41",
+  "baseline_prefit_commit": "517990bb8cc7111513eeca9dac5dd3d97e25831b"
+}

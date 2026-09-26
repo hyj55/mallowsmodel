@@ -7,7 +7,7 @@
   "mu": 55.3125,
   "distinct_displays": 418,
   "known_villages": 14,
-  "bootstrap_blocks": 15,
+  "uncertainty_status": "unavailable_missing_cluster_ids",
   "missing_village": 113,
   "reports_dropped": 0,
   "missing_village_per_split": {
@@ -16,9 +16,9 @@
     "confirmation": 22
   },
   "villages_per_split": {
-    "fit": 14,
-    "discovery": 15,
-    "confirmation": 13
+    "fit": 13,
+    "discovery": 14,
+    "confirmation": 12
   },
   "unseen_training_items": 0
 }

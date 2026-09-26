@@ -1,7 +1,8 @@
 import numpy as np
 from src.manuscript_estimators import block_scores,efficient_center,extract_pairs,hierarchy,permutation_sieve,permutation_table,sharp_center,sieve_order
-from src.models import borda,kemeny_cost,logz_mean,pair_counts,distances,exact_dp,kendall
-from run_exposure import draw,estimator_seed
+from src.models import kemeny_cost,logz_mean,pair_counts,distances,exact_dp,kendall
+from src.strict_features import draw_large
+from src.strict_models import TIE_SEED
 
 def test_exact_sieve_separation_cover_and_objective():
     m,radius=5,3;orders,masks,bits=permutation_table(m);keep=permutation_sieve(m,radius)
@@ -25,7 +26,7 @@ def test_block_exposure_counts_and_depth_zero_borda():
     np.testing.assert_allclose(block_scores(y,[0,1],4,2),[1.,-1.5])
     for seed in [0,37]:
         order,meta=efficient_center(y,4,seed)
-        np.testing.assert_array_equal(order,borda(pair_counts(y,4),seed))
+        np.testing.assert_array_equal(order,np.lexsort((np.random.default_rng(seed).permutation(4), -block_scores(y, np.arange(4), 4, 2))))
         assert meta['depth']==0
 
 def test_multilevel_offsets_reconstruct_consistent_complete_orders():
@@ -43,7 +44,7 @@ def test_sharp_does_not_silently_become_mle():
 
 def test_vectorized_sampler_matches_subset_mallows():
     rng=np.random.default_rng(990);truth=np.array([3,0,4,1,2])
-    y=draw(rng,12000,5,3,truth,'SM',.8,np.zeros(5))
+    y=draw_large(rng,12000,truth,3,0.)
     assert abs(distances(y,truth).mean()-logz_mean(3,.8)[1])<.025
     assert np.max(abs(np.bincount(y.ravel(),minlength=5)-7200))<200
 
@@ -51,6 +52,6 @@ def test_truth_and_estimator_tie_streams_are_independent():
     risks=[]
     for seed in range(100):
         truth=np.random.default_rng(seed).permutation(8)
-        fitted=exact_dp(np.zeros((8,8),dtype=int),estimator_seed(seed))
+        fitted=exact_dp(np.zeros((8,8),dtype=int),TIE_SEED)
         risks.append(kendall(fitted,truth))
     assert 12.5<np.mean(risks)<15.5

@@ -1,8 +1,12 @@
 {
-  "diagnostic_definition_matches_existing_report_bootstrap": true,
-  "whole_cluster_weights_verified": true,
+  "status": "passed",
+  "source_files_verified": 4,
+  "ranking_reports": 493,
   "ranking_reports_dropped": 0,
-  "estimators_changed": false,
-  "protocol_commit": "7be066c1d951569783acf96aca14f3e8635939e1",
-  "prefit_metadata_amendment": "40be502dc4be5c006fcd6ef7c2f1e5916c24237c"
+  "saved_score_rows_checked": 10,
+  "unadjusted_context_rows_checked": 2,
+  "missing_village_labels": 113,
+  "inferential_intervals_available": false,
+  "village_adjusted_diagnostic": "unavailable_missing_village",
+  "parameter_refit_comparison": "../audit/refit_comparison.json"
 }

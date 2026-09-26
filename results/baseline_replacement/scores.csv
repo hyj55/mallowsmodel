@@ -1,0 +1,16 @@
+dataset,method,status,nll,delta,delta_lo,delta_hi,seconds,uncertainty_status
+beans,pl,ok,1.7973067157309583,0.0,,,0.0023413390008499846,unavailable_assessor_ids
+beans,mle,ok,1.7961233160790289,-0.0011833996519292464,,,0.006101456001488259,unavailable_assessor_ids
+beans,sharp,exact_sieve_unavailable,,,,,0.004907485999865457,unavailable_assessor_ids
+beans,efficient,outside_schedule_domain,,,,,0.00010642000052030198,unavailable_assessor_ids
+beans,borda,ok,1.808006625717122,0.010699909986164135,,,0.0016701370004739147,unavailable_assessor_ids
+sushi_a,pl,ok,14.279955654765532,0.0,0.0,0.0,0.024012472000322305,conditional_respondent_bootstrap
+sushi_a,mle,ok,14.294640239188157,0.014684584422623232,-0.027114411987578246,0.06190613074642163,0.02258494100169628,conditional_respondent_bootstrap
+sushi_a,sharp,exact_sieve_unavailable,,,,,0.030205256000044756,conditional_respondent_bootstrap
+sushi_a,efficient,outside_schedule_domain,,,,,0.0007148479999159463,conditional_respondent_bootstrap
+sushi_a,borda,ok,14.290765709854732,0.010810055089200458,-0.027077428692990298,0.05330757649029428,0.017971176999708405,conditional_respondent_bootstrap
+sushi_b,pl,ok,14.185618725050928,0.0,0.0,0.0,0.026519429997279076,conditional_respondent_bootstrap
+sushi_b,mle,ok,14.168363095269902,-0.01725562978102482,-0.06409762416284744,0.024553274160665002,27.4221177670006,conditional_respondent_bootstrap
+sushi_b,sharp,exact_sieve_unavailable,,,,,0.0331375850000768,conditional_respondent_bootstrap
+sushi_b,efficient,outside_schedule_domain,,,,,0.0007935260000522248,conditional_respondent_bootstrap
+sushi_b,borda,ok,14.171845376543656,-0.013773348507274873,-0.05796320385588796,0.024359338867676442,0.015168010999332182,conditional_respondent_bootstrap

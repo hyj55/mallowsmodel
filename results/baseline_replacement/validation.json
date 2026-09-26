@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "source_files_verified": 2,
+  "source_reports": 10842,
+  "reports_dropped": 0,
+  "saved_fit_rows_checked": 15,
+  "point_values_and_conditional_intervals_recomputed": true,
+  "all_three_mle_objectives_certified": true,
+  "prefit_protocol_commit": "517990bb8cc7111513eeca9dac5dd3d97e25831b"
+}

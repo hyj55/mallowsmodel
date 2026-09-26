@@ -1,92 +1,33 @@
-# Data
+# Current data and provenance
 
-## Inputs and why they are useful
+Sources are pinned by commit or original archive and verified by SHA256; the Sushi URL itself is not immutable. Current parsers retain original strict reports and complete source catalogs. No ranking is repaired, censored top-k list treated as a displayed-set ranking, or missing item removed to obtain a finite fit. Original source screening is not claimed to be unfiltered raw field data.
 
-| Task | Reports | Items n | Ranked items r | Item exposure range | Observed pairs |
-|---|---:|---:|---:|---:|---:|
-| Beans | 842 | 10 | 3 | 234–270 | 45 / 45 |
-| Sushi A | 5,000 | 10 | 10 | 5,000 | 45 / 45 |
-| Sushi B | 5,000 | 100 | 10 | 50–1,546 | 4,809 / 4,950 |
+| Source / tasks | Reports | Catalog and report sizes | Sampling-unit information | Role |
+|---|---:|---|---|---|
+| PrefLib Dots (4), Puzzle (4) | 6,363 total | n=r=4 | Assessor/trial IDs removed upstream | Descriptive shell structure; no CI or changing-set context contrast |
+| Yoo et al. dots 2024 (8 tasks) | 2,400 reports from 600 participants | n=30 per size/arm; r=2,3,5,6 | Participant blocks reconstructed from documented export loop; folds align across sizes | Identified-unit conditional prediction/diagnostics |
+| gosset breadwheat | 493 | n=16, r=3 | Farmer names redacted; 113 village labels missing | Descriptive context follow-up; no CI or village-adjusted inference |
+| SP-Rank (6 audited tasks) | 5,328 strict first-order Rank responses | r=4/5; cohorts kept separate | Repeated worker IDs available | Audit only: no pair changes objective displayed gap |
+| Beans | 842 | n=10, r=3 | No assessor ID | Replacement fit, descriptive only |
+| Sushi A / B | 5,000 each, shared respondents | n=10/100, r=10 | One report/task/respondent; aligned row folds | Replacement fits with conditional respondent intervals |
 
-All responses used here are strict, complete rankings **within the displayed
-set**. None is treated as a censored top-k ranking over the whole catalog.
-None supplies a true population center. Center estimation error relative to
-truth is evaluated only in simulations.
+Dots/puzzle objective answers are external references, not supplied latent population SM centers. Preference sources supply no true center. Catalogs for different 2024 dots report sizes correspond to different images and are never pooled. Numerical lambda/mu do not certify uniform sampling of display subsets.
 
-### Beans
+## Decoding and exclusions
 
-[Official documentation](https://hturner.github.io/PlackettLuce/reference/beans.html)
-describes field trials of ten bean varieties in Nicaragua over five growing
-seasons. Each report identifies three assigned varieties and the best and worst
-of the three. We recover the middle item and form a strict three-item ranking.
-The separate better/worse comparisons with a local variety are not used.
+PrefLib multiplicities are expanded exactly; anonymous records do not restore assessor identities. The 2024 JSON reports encode ordered local item labels; the pinned author export/UI files establish the mapping back to dot images. Each participant's four reports remain together across sizes. No numerical ratings are converted to rankings.
 
-The loader validates missing fields, distinct varieties, and different valid
-best/worst labels. **All 842 records pass; zero reports are excluded.** Labels
-are sorted and mapped to integers. Every pair occurs 44–65 times. Season
-counts are Ap15: 481, Po15: 177, Ap16: 87, Pr16: 64, and Po16: 33.
-Climate and location fields are not predictors in the primary models.
+Breadwheat and Beans report best and worst among three distinct displayed items. Best, remaining item, worst is a lossless complete-order decoding. If an invalid report occurs, the entire task is ineligible; no rows are silently skipped. All recorded Beans and breadwheat rows pass. Sushi uses original strict order files, not ratings. All 5,000 rows per task and all 100 Sushi B labels are retained.
 
-This is the main small-item partial-ranking task, so the SM center can be
-optimized exactly. There is no assessor ID; record-level splits cannot rule
-out dependence from repeated farmers. The temporal follow-up trains on the
-658 reports labeled 2015 and tests on the 184 labeled 2016.
+The frozen tricot catalog screen covers nine eligible source projects by its predeclared metadata rule. Five lack the target overall trait; four have non-strict reports. All decisions are recorded in results/strict_features/tricot_eligibility.csv; none was fitted or repaired. This earlier screen does not include the later separately specified gosset wheat task.
 
-### Sushi A and B
+## Manifests and sources
 
-The [creator's 2016 archive](https://www.kamishima.net/sushi/) provides order
-responses from 5,000 respondents. A ranks the same ten items; B ranks ten items
-from a catalog of 100. Their respondent rows are aligned, and the experiments
-use the same respondent split for both tasks. They are fitted separately.
+- [strict_feature_sources.json](strict_feature_sources.json): all 22 PrefLib/dots data and encoding-provenance files.
+- [strict_tricot_sources.json](strict_tricot_sources.json), [candidate scope](strict_tricot_candidates.json): nine agricultural projects and source metadata.
+- [context_followup_sources.json](context_followup_sources.json): pinned wheat and SP-Rank sources.
+- [sources.json](sources.json): original Beans/Sushi bytes, reused unchanged by the replacement.
 
-The parser reads `sushi3a.5000.10.order` and `sushi3b.5000.10.order`, checks the
-strict-order format and item ranges, and keeps the original item IDs. Display
-order within a record is never shuffled. Ratings are not used. A B-only
-diagnostic uses the current east/west-region field (zero-based column 9 of
-`sushi3.udata`); it does not enter either primary fit.
+`download_strict_data.py`, `download_strict_tricot.py`, `run_context_followup.py` and `download_data.py` verify their respective sources. Original report arrays are kept in ignored data/raw directories. The unchanged bundled Beans R data file is covered by its existing GPL notice. Sushi source terms prohibit redistribution. [Notices](../THIRD_PARTY_NOTICES.md) and [publication references](../docs/references.md).
 
-A provides an exact-optimization control. B tests scalability and varying
-display contexts. B exposure is strongly nonuniform: pair counts range from
-0 to 462, and 141 possible pairs never co-occur. Uniform-design risk guarantees
-are therefore not asserted for these real data. The original Sushi study's
-sampling description is credited in [References](../docs/references.md).
-
-## Access and version control
-
-```bash
-python download_data.py
-python download_data.py --verify-only
-```
-
-The loader rejects byte-size or SHA256 mismatches. It never silently updates
-the experiment to a new upstream version. [sources.json](sources.json) is the
-pinned input manifest; `results/data_audit.json` records parsed coverage.
-
-| File | Distribution | SHA256 |
-|---|---|---|
-| `raw/beans.rda` | Bundled unchanged from the pinned PlackettLuce source | `bdf799913727b3d0e75c5a4276f77fe8e0abdc9605707c7755ccb04e33ef9b6c` |
-| `raw/sushi3-2016.zip` | Downloaded from the creator; ignored by Git | `4f8bbf3acd6f796cb3d0add6c73c394664982c57d3b48e75e92014e5278558a8` |
-
-Beans is taken from PlackettLuce commit
-`ea031f7b129910c518daabf7c3e769aa499ea639`, whose `DESCRIPTION` specifies GPL-3.
-See [license and attribution](../THIRD_PARTY_NOTICES.md).
-The Sushi creator permits research use and prohibits redistribution. Do not
-commit the archive, extracted rankings, or respondent-level loss caches.
-
-Simulated reports are generated directly by `src/models.py` using the recorded
-seeds and settings; synthetic source observations are regenerated, not stored.
-Aggregate simulated results are included under `results/`.
-
-## ATP tennis extension
-
-src/tennis.py downloads Sackmann's 2009–2019 main-tour singles files from
-archive commit 83733587353df8a41f2fd4f516147d5aa83f5a8d. The first year defines
-the initial prior-season catalog; evaluation covers 2010–2019. Immutable URLs,
-byte counts and SHA256 hashes are recorded in data/tennis_sources.json.
-Raw CSVs are excluded from Git. The source date denotes tournament starts,
-not exact match times; chronological splits preserve tournaments. Invalid or
-incomplete matches and out-of-catalog players are excluded and counted.
-
-No real dataset has a supplied true center or a verified uniform display
-design. Numeric lambda<1 is available from ATP and small report subsets of
-Beans/Sushi B. See [the exposure report](../docs/exposure_analysis.md).
+Sample splits alter training membership only; they never permute the within-report ranking. Simulation observations are generated from the declared conditional laws and recorded seeds in src/strict_features.py. No synthetic manipulation is applied to real data.

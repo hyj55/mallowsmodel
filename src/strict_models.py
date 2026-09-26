@@ -107,7 +107,6 @@ def fit_sm_strict(y, n, method='mle', beta0=.8, pair_seed=0, milp_seconds=120.):
     elif method == 'efficient':
         if lam > 1:
             return StrictFit(method, None, status='outside_schedule_domain', metadata=meta)
-        # The legacy min(lambda,1) is identically lambda on this admitted domain.
         order, info = efficient_center(y, n, TIE_SEED, beta0)
         meta.update(info)
     elif method == 'borda':
