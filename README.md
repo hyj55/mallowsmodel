@@ -2,15 +2,16 @@
 
 Numerical research on how pair reliability, error allocation within Kendall-distance shells, and displayed-set effects relate to prediction. Python implementations preserve original ranking reports and distinguish published estimators from optimization and diagnostic choices.
 
-**Current status:** the new validation adds three original real tasks and 1,400 independent synthetic training datasets. None of the new exact-SM-versus-PL real comparisons has a clear winner. Simulations show that center error can hide a true SM context effect, while heterogeneous PL groups can produce a positive pooled effect and an SM predictive win. Sparse overlap also exposes a diagnostic-bootstrap failure. The specific positive real SM context mechanism remains unconfirmed. No result establishes MLE minimax optimality or an active multilevel advantage of Section 3.
+**Current status:** repeated trial/assessor sensitivity is complete across nine tasks. At the same training count, fitting the same Puzzle trial improves both SM and PL; larger pooled samples often offset that benefit, and relative model sensitivity varies by condition. Sounds individual fits frequently lack a finite PL MLE or incur infinite SM prediction loss, preventing an overall personal-model winner claim. The earlier three-task and 1,400-dataset mechanism validation remains separate; the specific positive real SM context mechanism is still unconfirmed.
 
 ## Start here
 
-1. [Additional data and mechanism validation](docs/validation_extension.md) — Sounds, two PatrasIQ tasks, center uncertainty and assessor/display confounding.
-2. [Scientific audit and corrections](docs/scientific_audit.md) — what complied, what did not, and what was withdrawn.
-3. [Feature-transition experiments](docs/strict_feature_analysis.md) — 4,760 earlier independent synthetic training samples and 16 original real tasks.
-4. [Wheat and SP-Rank follow-up](docs/context_followup.md) and [historical Beans/Sushi replacement](docs/baseline_replacement.md).
-5. [Canonical algorithms and assumptions](docs/algorithms.md), [data provenance](data/README.md), [reproduction](docs/reproducibility.md), [references](docs/references.md).
+1. [Trial/assessor sensitivity](docs/group_sensitivity.md) · [中文详细结果](docs/group_sensitivity_zh.md) — 100 primary shuffles, training-budget controls, group holdout and estimator admission.
+2. [Additional data and mechanism validation](docs/validation_extension.md) — Sounds, two PatrasIQ tasks, center uncertainty and assessor/display confounding.
+3. [Scientific audit and corrections](docs/scientific_audit.md) — what complied, what did not, and what was withdrawn.
+4. [Feature-transition experiments](docs/strict_feature_analysis.md) — 4,760 earlier independent synthetic training samples and 16 original real tasks.
+5. [Wheat and SP-Rank follow-up](docs/context_followup.md) and [historical Beans/Sushi replacement](docs/baseline_replacement.md).
+6. [Canonical algorithms and assumptions](docs/algorithms.md), [data provenance](data/README.md), [reproduction](docs/reproducibility.md), [references](docs/references.md).
 
 ## Interpretation
 
@@ -36,7 +37,7 @@ The restoration command verifies and unpacks three large recorded outputs from l
 
 The extension publishes aggregate empirical results and fitted model parameters. Per-report empirical predictions and sampling-unit/split records are generated locally and are not included in GitHub. The synthetic archive contains only generated observations.
 
-Python 3.12. Run in a separate checkout to preserve committed results. The n=100 exact-optimization attempt can exhaust its fixed 120-second budget; this is an outcome, not a fallback trigger. See [reproduction details](docs/reproducibility.md).
+Python 3.12 for the earlier experiments; the group-sensitivity run used Python 3.13.7 with the same pinned packages. Run in a separate checkout to preserve committed results. The n=100 exact-optimization attempt can exhaust its fixed 120-second budget; this is an outcome, not a fallback trigger. See [reproduction details](docs/reproducibility.md).
 
 ## Structure
 
@@ -46,14 +47,16 @@ Python 3.12. Run in a separate checkout to preserve committed results. The n=100
 | `src/manuscript_estimators.py` | Sharp sieve, score hierarchy, clipped Borda |
 | `src/models.py` | Likelihood mathematics, exact subset DP, direct-subset samplers |
 | `src/diagnostics.py`, `src/strict_features.py` | Descriptive diagnostics and declared synthetic laws |
+| `src/group_sensitivity.py`, `src/group_sensitivity_summary.py` | Recovered groups, repeated splits, coverage admission and paired summaries |
 | `src/validation_extension.py` | New source acquisition, lossless decoding and declared heterogeneous PL law |
 | `src/data.py`, `download_*.py` | Original-source acquisition and validation |
 | `run_*.py` | Current experiments only |
 | `docs/protocols/` | Dated original designs and explicit audit amendments |
 | `results/strict_features/`, `results/context_followup/`, `results/baseline_replacement/` | Distinct experiments, all outcomes retained |
 | `results/validation_extension/` | New real comparisons, all synthetic draws, parameters, statuses and validation |
+| `results/group_sensitivity/` | Repeated split and per-group aggregates, availability, source/code hashes and validation |
 | `results/audit/` | Refit and repository validation evidence |
-| `figures/strict_features/`, `figures/validation_extension/` | Scientific figures, PNG for reading and SVG for export |
+| `figures/strict_features/`, `figures/validation_extension/`, `figures/group_sensitivity/` | Scientific figures, PNG for reading and SVG for export |
 | `tests/` | Mathematical, boundary and sampling-unit checks |
 
 Historical regularized, shrunk and heuristic experiments are accessible at the pinned commit in [History](docs/history.md). They are no longer mixed into the runnable current pipeline. Git history is preserved; the private manuscript and respondent ranking data are not newly redistributed. [Third-party notices](THIRD_PARTY_NOTICES.md).

@@ -27,6 +27,8 @@ The frozen tricot catalog screen covers nine eligible source projects by its pre
 
 ## Manifests and sources
 
+The [group-sensitivity follow-up](../docs/group_sensitivity.md) recovers all 320 original Puzzle/2013-Dots trial files from Andrew Mao's [Voting Data archive](https://www.andrewmao.net/code/). All 24 ranking multiplicities match each of the eight pinned PrefLib files exactly. Original trial identities are restored; physical board/image layouts and cross-trial assessor identities are not. The 6,363 original reports stay local. Sounds supplies the separate repeated-assessor experiment. See [group_sensitivity_sources.json](group_sensitivity_sources.json) for the archive checksum and source links. Repeated partitions are built from these original files, not by guessing a mapping from expanded anonymous PrefLib rows.
+
 - [strict_feature_sources.json](strict_feature_sources.json): all 22 PrefLib/dots data and encoding-provenance files.
 - [strict_tricot_sources.json](strict_tricot_sources.json), [candidate scope](strict_tricot_candidates.json): nine agricultural projects and source metadata.
 - [context_followup_sources.json](context_followup_sources.json): pinned wheat and SP-Rank sources.

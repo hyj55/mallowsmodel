@@ -50,6 +50,16 @@ The within-pair slope and shell decomposition are our exploratory diagnostics, n
 
 The [additional validation](validation_extension.md) tests the existing context percentile bootstrap without changing it. It fails badly in the severe-confounding, small-budget cell with sparse within-group overlap. Its real-data context intervals are therefore exploratory, not uniformly valid model-family tests. This calibration finding concerns the context statistic, not the separate whole-ranking NLL bootstrap. Center and dispersion estimation error can also produce rejection of a fitted SM prediction even when the generating family is SM.
 
+## Group-sensitivity follow-up (27 September 2026)
+
+The separately frozen [repeated-group protocol](protocols/GROUP_SENSITIVITY_20260927.md) adds Fotakis et al. (2021) Algorithm 1 PosEst. It counts majority predecessors, includes pair-count ties for both alternatives, and breaks final positional ties using a fixed seeded random priority. A fit is admitted only when every unordered pair co-occurs in training; the empirical minimum frequency is recorded. This is a center estimator, not an MLE or their localized MLE algorithm. Its fitted dispersion uses the unchanged profile likelihood.
+
+`src/group_sensitivity.py` batches the existing exact subset-DP recurrence by subset cardinality and caches repeated dispersion roots. Tests compare the entire resulting order, including ties, against the existing implementation and exhaustively check small-instance optima. These are arithmetic optimizations, not approximate optimization, early stopping, or changed likelihoods. Earlier pipelines and estimators are unchanged.
+
+For this follow-up only, the user's applicability requirement is implemented conservatively: sharp/efficient fits outside the theorems' lambda<=1 regime are excluded from the new comparison, even though Sharp can mechanically return an order outside that region. This does not retroactively redefine earlier sharp fits as computationally invalid. Within the sparse regime, an unavailable exact sharp sieve may use the explicitly authorized Section 3 fallback. The actual branch is logged; a depth-zero result supplies no evidence for an active hierarchy. Numeric coverage thresholds do not establish the unknown C0, true signal bound, independent observations or uniform selection assumptions.
+
+The within-assessor experiment deliberately predicts new reports of known assessors; the separate whole-assessor holdout predicts new people. Neither repeated split percentiles nor recovered stimulus-set identities supply missing independent sampling units. All within-trial Puzzle/Dots comparisons remain descriptive.
+
 ## References
 
 [Manuscript and published algorithm references](references.md). The private manuscript is not redistributed. This code is a mathematical implementation, not an author-supplied implementation or a certification of the paper's theorems.
