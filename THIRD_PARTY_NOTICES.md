@@ -51,7 +51,11 @@ for Crispino et al. (2019), Barrett and Crispino (2018), Vitelli et al. (2018)
 and Caragiannis et al. (2017). The synthetic draw archive contains generated
 observations only, not participant responses.
 
-## Historical ATP analysis
+## Recovered original trial archive
+
+The group-sensitivity experiment downloads Andrew Mao's original `voting-results.tar.gz`, linked from [his Code & Data page](https://www.andrewmao.net/code/). It retains 160 Puzzle and 160 2013-Dots trial files locally and verifies their aggregate frequencies against the pinned PrefLib sources. The original archive, raw trial rankings, Sounds records, per-report membership information and fit caches are not redistributed in this repository. Published summaries are derived aggregate analyses; no new license is assigned to the upstream material. Credit: Mao, Procaccia and Chen (AAAI 2013). The archive's URL is mutable, so its expected bytes and SHA256 are fixed in `data/group_sensitivity_sources.json`.
+
+## Historical ATP analysis (retired)
 
 The retired ATP pipeline credited Jeff Sackmann and retained CC BY-NC-SA 4.0
 terms. That notice, mirror provenance and analysis are preserved in the

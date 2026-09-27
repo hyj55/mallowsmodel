@@ -21,9 +21,9 @@ The supplied unpublished manuscript, *Selective Mallows Estimation from Uniform 
 12. **Kamishima, T.** [SUSHI Preference Data Sets and terms](https://www.kamishima.net/sushi/), [2016 archive](https://www.kamishima.net/asset/sushi3-2016.zip). Original order files and archive README define the two 5,000-respondent tasks. Raw data are not redistributed.
 13. **Kamishima, T. (2003).** Nantonac Collaborative Filtering: Recommendation Based on Order Responses. KDD. [Author PDF](https://www.kamishima.net/archive/2003-p-kdd.pdf). Originating Sushi research; the present task is conditional ranking prediction, not collaborative filtering.
 
-## Background, not additional fitted algorithms
+## Additional center estimator and background
 
-14. **Fotakis, D., Kalavasis, A., & Stavropoulos, K. (2021).** Aggregating Incomplete and Noisy Rankings. AISTATS, PMLR 130, 2278–2286. [Paper and supplement](https://proceedings.mlr.press/v130/fotakis21a.html). Selective Mallows background. PosEst/localized MLE are not current comparison arms.
+14. **Fotakis, D., Kalavasis, A., & Stavropoulos, K. (2021).** Aggregating Incomplete and Noisy Rankings. AISTATS, PMLR 130, 2278–2286. [Paper and supplement](https://proceedings.mlr.press/v130/fotakis21a.html). Algorithm 1 PosEst is implemented in the separately dated group-sensitivity follow-up, with a training-only p-frequency admission check. Their localized MLE algorithm is not implemented. Earlier experiments did not include PosEst.
 15. **Mao, C., Weed, J., & Rigollet, P. (2018).** Minimax Rates and Efficient Algorithms for Noisy Sorting. ALT, PMLR 83, 821–847. [Paper](https://proceedings.mlr.press/v83/mao18a.html). Independent-pair theory background; it does not justify treating pairs within a report as independent.
 16. **Turner, H. L., van Etten, J., Firth, D., & Kosmidis, I. (2020).** Modelling rankings in R: the PlackettLuce package. *Computational Statistics*, 35, 1027–1057. [DOI](https://doi.org/10.1007/s00180-020-00959-3), [official overview](https://hturner.github.io/PlackettLuce/articles/Overview.html). Data/package context; current Python fitting does not use its default pseudo-rankings or the earlier ridge fitter.
 

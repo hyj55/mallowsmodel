@@ -1,0 +1,452 @@
+{
+  "protocol_commit": "69541057711c08ff1508f25676bb6abfdd12c27d",
+  "seed": 202609270,
+  "plan": [
+    [
+      70,
+      100
+    ],
+    [
+      50,
+      20
+    ],
+    [
+      80,
+      20
+    ]
+  ],
+  "holdout_repetitions": 100,
+  "datasets": [
+    {
+      "dataset": "dots-3",
+      "quick": false,
+      "source": {
+        "preflib": "00024-00000001",
+        "values": [
+          200,
+          203,
+          206,
+          209
+        ],
+        "reports": 795,
+        "groups": 40,
+        "frequency_match": true,
+        "archive_sha256": "2906b0ce3fc375813f7fd061e55fd642e6e9ac472a385a56d2b8e36ef838e0d4",
+        "assessor_ids_available": false,
+        "board_layouts_available": false
+      },
+      "n": 4,
+      "r": 4,
+      "reports": 795,
+      "groups": 40,
+      "unit": "original_trial",
+      "min_reports_per_group": 18,
+      "max_reports_per_group": 21,
+      "seed": 202609270,
+      "split_plan": [
+        [
+          70,
+          100
+        ],
+        [
+          50,
+          20
+        ],
+        [
+          80,
+          20
+        ]
+      ],
+      "holdout_repetitions": 100,
+      "fit_contexts": 11440,
+      "distinct_training_histograms": 11311,
+      "candidate_fit_attempts": 57200,
+      "elapsed_seconds": 151.3520929090446
+    },
+    {
+      "dataset": "dots-5",
+      "quick": false,
+      "source": {
+        "preflib": "00024-00000002",
+        "values": [
+          200,
+          205,
+          210,
+          215
+        ],
+        "reports": 794,
+        "groups": 40,
+        "frequency_match": true,
+        "archive_sha256": "2906b0ce3fc375813f7fd061e55fd642e6e9ac472a385a56d2b8e36ef838e0d4",
+        "assessor_ids_available": false,
+        "board_layouts_available": false
+      },
+      "n": 4,
+      "r": 4,
+      "reports": 794,
+      "groups": 40,
+      "unit": "original_trial",
+      "min_reports_per_group": 18,
+      "max_reports_per_group": 21,
+      "seed": 202609270,
+      "split_plan": [
+        [
+          70,
+          100
+        ],
+        [
+          50,
+          20
+        ],
+        [
+          80,
+          20
+        ]
+      ],
+      "holdout_repetitions": 100,
+      "fit_contexts": 11440,
+      "distinct_training_histograms": 11294,
+      "candidate_fit_attempts": 57200,
+      "elapsed_seconds": 152.49071235302836
+    },
+    {
+      "dataset": "dots-7",
+      "quick": false,
+      "source": {
+        "preflib": "00024-00000003",
+        "values": [
+          200,
+          207,
+          214,
+          221
+        ],
+        "reports": 800,
+        "groups": 40,
+        "frequency_match": true,
+        "archive_sha256": "2906b0ce3fc375813f7fd061e55fd642e6e9ac472a385a56d2b8e36ef838e0d4",
+        "assessor_ids_available": false,
+        "board_layouts_available": false
+      },
+      "n": 4,
+      "r": 4,
+      "reports": 800,
+      "groups": 40,
+      "unit": "original_trial",
+      "min_reports_per_group": 18,
+      "max_reports_per_group": 21,
+      "seed": 202609270,
+      "split_plan": [
+        [
+          70,
+          100
+        ],
+        [
+          50,
+          20
+        ],
+        [
+          80,
+          20
+        ]
+      ],
+      "holdout_repetitions": 100,
+      "fit_contexts": 11440,
+      "distinct_training_histograms": 11150,
+      "candidate_fit_attempts": 57200,
+      "elapsed_seconds": 157.70481644797837
+    },
+    {
+      "dataset": "dots-9",
+      "quick": false,
+      "source": {
+        "preflib": "00024-00000004",
+        "values": [
+          200,
+          209,
+          218,
+          227
+        ],
+        "reports": 794,
+        "groups": 40,
+        "frequency_match": true,
+        "archive_sha256": "2906b0ce3fc375813f7fd061e55fd642e6e9ac472a385a56d2b8e36ef838e0d4",
+        "assessor_ids_available": false,
+        "board_layouts_available": false
+      },
+      "n": 4,
+      "r": 4,
+      "reports": 794,
+      "groups": 40,
+      "unit": "original_trial",
+      "min_reports_per_group": 19,
+      "max_reports_per_group": 21,
+      "seed": 202609270,
+      "split_plan": [
+        [
+          70,
+          100
+        ],
+        [
+          50,
+          20
+        ],
+        [
+          80,
+          20
+        ]
+      ],
+      "holdout_repetitions": 100,
+      "fit_contexts": 11440,
+      "distinct_training_histograms": 11095,
+      "candidate_fit_attempts": 57200,
+      "elapsed_seconds": 160.40301744401222
+    },
+    {
+      "dataset": "puzzle-11",
+      "quick": false,
+      "source": {
+        "preflib": "00025-00000001",
+        "values": [
+          11,
+          14,
+          17,
+          20
+        ],
+        "reports": 793,
+        "groups": 40,
+        "frequency_match": true,
+        "archive_sha256": "2906b0ce3fc375813f7fd061e55fd642e6e9ac472a385a56d2b8e36ef838e0d4",
+        "assessor_ids_available": false,
+        "board_layouts_available": false
+      },
+      "n": 4,
+      "r": 4,
+      "reports": 793,
+      "groups": 40,
+      "unit": "original_trial",
+      "min_reports_per_group": 18,
+      "max_reports_per_group": 21,
+      "seed": 202609270,
+      "split_plan": [
+        [
+          70,
+          100
+        ],
+        [
+          50,
+          20
+        ],
+        [
+          80,
+          20
+        ]
+      ],
+      "holdout_repetitions": 100,
+      "fit_contexts": 11440,
+      "distinct_training_histograms": 11235,
+      "candidate_fit_attempts": 57200,
+      "elapsed_seconds": 156.32995311095146
+    },
+    {
+      "dataset": "puzzle-5",
+      "quick": false,
+      "source": {
+        "preflib": "00025-00000002",
+        "values": [
+          5,
+          8,
+          11,
+          14
+        ],
+        "reports": 795,
+        "groups": 40,
+        "frequency_match": true,
+        "archive_sha256": "2906b0ce3fc375813f7fd061e55fd642e6e9ac472a385a56d2b8e36ef838e0d4",
+        "assessor_ids_available": false,
+        "board_layouts_available": false
+      },
+      "n": 4,
+      "r": 4,
+      "reports": 795,
+      "groups": 40,
+      "unit": "original_trial",
+      "min_reports_per_group": 17,
+      "max_reports_per_group": 21,
+      "seed": 202609270,
+      "split_plan": [
+        [
+          70,
+          100
+        ],
+        [
+          50,
+          20
+        ],
+        [
+          80,
+          20
+        ]
+      ],
+      "holdout_repetitions": 100,
+      "fit_contexts": 11440,
+      "distinct_training_histograms": 10790,
+      "candidate_fit_attempts": 57200,
+      "elapsed_seconds": 164.8217804369633
+    },
+    {
+      "dataset": "puzzle-7",
+      "quick": false,
+      "source": {
+        "preflib": "00025-00000003",
+        "values": [
+          7,
+          10,
+          13,
+          16
+        ],
+        "reports": 795,
+        "groups": 40,
+        "frequency_match": true,
+        "archive_sha256": "2906b0ce3fc375813f7fd061e55fd642e6e9ac472a385a56d2b8e36ef838e0d4",
+        "assessor_ids_available": false,
+        "board_layouts_available": false
+      },
+      "n": 4,
+      "r": 4,
+      "reports": 795,
+      "groups": 40,
+      "unit": "original_trial",
+      "min_reports_per_group": 18,
+      "max_reports_per_group": 21,
+      "seed": 202609270,
+      "split_plan": [
+        [
+          70,
+          100
+        ],
+        [
+          50,
+          20
+        ],
+        [
+          80,
+          20
+        ]
+      ],
+      "holdout_repetitions": 100,
+      "fit_contexts": 11440,
+      "distinct_training_histograms": 10929,
+      "candidate_fit_attempts": 57200,
+      "elapsed_seconds": 165.0322233790066
+    },
+    {
+      "dataset": "puzzle-9",
+      "quick": false,
+      "source": {
+        "preflib": "00025-00000004",
+        "values": [
+          9,
+          12,
+          15,
+          18
+        ],
+        "reports": 797,
+        "groups": 40,
+        "frequency_match": true,
+        "archive_sha256": "2906b0ce3fc375813f7fd061e55fd642e6e9ac472a385a56d2b8e36ef838e0d4",
+        "assessor_ids_available": false,
+        "board_layouts_available": false
+      },
+      "n": 4,
+      "r": 4,
+      "reports": 797,
+      "groups": 40,
+      "unit": "original_trial",
+      "min_reports_per_group": 18,
+      "max_reports_per_group": 22,
+      "seed": 202609270,
+      "split_plan": [
+        [
+          70,
+          100
+        ],
+        [
+          50,
+          20
+        ],
+        [
+          80,
+          20
+        ]
+      ],
+      "holdout_repetitions": 100,
+      "fit_contexts": 11440,
+      "distinct_training_histograms": 11100,
+      "candidate_fit_attempts": 57200,
+      "elapsed_seconds": 157.93071425898233
+    },
+    {
+      "dataset": "sounds",
+      "quick": false,
+      "source": {
+        "reports": 1380,
+        "groups": 46,
+        "reports_per_group": 30,
+        "sha256": "091b8e7c7cf074ef9256059c912105a20306d4fd74e364d708ffdfd8e4d82d49",
+        "assessor_ids_available": true
+      },
+      "n": 12,
+      "r": 2,
+      "reports": 1380,
+      "groups": 46,
+      "unit": "source_assessor",
+      "min_reports_per_group": 30,
+      "max_reports_per_group": 30,
+      "seed": 202609270,
+      "split_plan": [
+        [
+          70,
+          100
+        ],
+        [
+          50,
+          20
+        ],
+        [
+          80,
+          20
+        ]
+      ],
+      "holdout_repetitions": 100,
+      "fit_contexts": 13120,
+      "distinct_training_histograms": 13120,
+      "candidate_fit_attempts": 65600,
+      "elapsed_seconds": 136.43257947900565
+    }
+  ],
+  "interpretation": "5th\u201395th percentiles describe split sensitivity; not population confidence intervals.",
+  "versions": {
+    "python": "3.13.7",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "pandas": "2.2.3"
+  },
+  "code_sha256": {
+    "src/group_sensitivity.py": "86e29ce2810ab456afe99adc24266c020b0abfaca0ad335b6b8154dc16defbf4",
+    "src/group_sensitivity_summary.py": "c6fed088bb9b9d8d164b23e035c79578f3771cf50e8ac9f99421f346aced3f71",
+    "run_group_sensitivity.py": "c75c8d323c5fd99aa195ce799b31ce346a2a74fe2f4b65e0708628a5b10a45d6",
+    "src/strict_models.py": "244c90978402da73879d4826fd09af71ef3bbff6d9f5b52290a304dee52d69a2",
+    "src/manuscript_estimators.py": "70894e6aed5236e7c0035beafa5533b7483051bc668cb69e687aee5dcb682f38",
+    "src/models.py": "ca4c989fe94b60fb5527f128a17175ddbc52092ff8892fe26d795e5e103cfe96",
+    "docs/protocols/GROUP_SENSITIVITY_20260927.md": "a9b60140f687b2d104c7cd6a9dbc302343eb5874d5d8cbcff1f558b32bdc6b3a",
+    "data/group_sensitivity_sources.json": "7dafc7f2ea569ef8368667cde6c4d542a8f17c32b13e10a7a258427b03075af1"
+  },
+  "published_sha256": {
+    "scores.csv": "567d71815100a7f5af1f7d65386a16f41911ced51113c92784c53943a45aad1f",
+    "contrasts.csv": "da3e0a78739208b5bf2d6618f6e1e4d0e067e6e6d1d69328277f24a70de666c8",
+    "group_scores.csv.gz": "ec7645e75146f84fede61116e8b084da2d29f7683ce6ca131fd72806b01bb98c",
+    "eligibility.csv": "eefd9d854c2a2be107f522f1342c63e62bcf1de3ce0864e462b83ac68b79c54b",
+    "repeat_scores.csv.gz": "249aa59ddd7c49a58820314ff479b9045bd11fc6b0dc1bbf769ec8d8a14ca85d",
+    "repeat_contrasts.csv.gz": "d9cbd944cff9940e11419e96754da828447e2523f43362356d22ca073aaf09e5"
+  }
+}
