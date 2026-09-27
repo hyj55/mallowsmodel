@@ -1,0 +1,25 @@
+{
+  "archive": {
+    "file": "voting-results.tar.gz",
+    "url": "https://dl.dropboxusercontent.com/s/mf0mm153pe3f12w/voting-results.tar.gz",
+    "source_page": "https://www.andrewmao.net/code/",
+    "bytes": 16620,
+    "sha256": "2906b0ce3fc375813f7fd061e55fd642e6e9ac472a385a56d2b8e36ef838e0d4"
+  },
+  "trials": {
+    "Puzzle-5": "00025-00000002",
+    "Puzzle-7": "00025-00000003",
+    "Puzzle-9": "00025-00000004",
+    "Puzzle-11": "00025-00000001",
+    "Dots-3": "00024-00000001",
+    "Dots-5": "00024-00000002",
+    "Dots-7": "00024-00000003",
+    "Dots-9": "00024-00000004"
+  },
+  "assessor_source": {
+    "file": "sounds.rda",
+    "manifest": "data/validation_extension_sources.json",
+    "sha256": "091b8e7c7cf074ef9256059c912105a20306d4fd74e364d708ffdfd8e4d82d49"
+  },
+  "identity_limitations": "Original trial filenames recovered; physical board layouts, globally unique board IDs, and cross-trial worker IDs are absent. Sounds alone has verified repeated within-task assessor IDs."
+}
