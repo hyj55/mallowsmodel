@@ -1,5 +1,7 @@
 # Strict feature-transition study
 
+The real-data files here retain the original single split. Their repeated-refit averages are in [repeated_holdout](../repeated_holdout/README.md); simulations and source-only audits in this directory are unchanged.
+
 Read [the English analysis](../../docs/strict_feature_analysis.md). Current uncertainty and attribution corrections are specified in [the audit](../../docs/scientific_audit.md). These results originate from the frozen [main protocol](../../docs/protocols/STRICT_FEATURE_PROTOCOL.md), [source addendum](../../docs/protocols/STRICT_SOURCE_ADDENDUM.md), and explicitly exploratory [follow-up](../../docs/protocols/STRICT_FEATURE_FOLLOWUP.md).
 
 ## Reproduce

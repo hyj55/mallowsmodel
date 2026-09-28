@@ -1,5 +1,7 @@
 # Context follow-up outputs
 
+The real-data files here retain the original single split. Their repeated-refit averages are in [repeated_holdout](../repeated_holdout/README.md); simulations and source-only audits in this directory are unchanged.
+
 [Current report](../../docs/context_followup.md). Original rankings and fit point estimates are unchanged. Earlier cluster intervals and village-adjusted estimates are withdrawn under the [audit amendment](../../docs/protocols/AUDIT_AMENDMENT.md).
 
 - `scores.csv`: all methods/statuses; conditional NLL; CI fields unavailable because sampling-unit identity is missing.

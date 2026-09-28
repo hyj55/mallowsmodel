@@ -1,5 +1,7 @@
 # Replacement of historical Beans and Sushi comparisons
 
+**28 September 2026 update:** the real-data point comparisons below retain their original single partition. Use the [30-repeat correction](repeated_holdout.md) ([中文](repeated_holdout_zh.md)) for average predictive performance after repeated full refitting. Original bootstrap intervals stay conditional on the original fits; synthetic results and source-only audits are unchanged.
+
 **Completed 26 September 2026 UTC.** These exploratory fits replace earlier capped, regularized and heuristic versions in the current scientific comparison. They use a newly frozen common 60/20/20 split, not the old repeated learning-curve design. Do not pool the new and old estimates or attribute differences solely to removing regularization.
 
 [Protocol committed before fitting](https://github.com/hyj55/mallowsmodel/commit/517990bb8cc7111513eeca9dac5dd3d97e25831b). All original reports are retained; no ties broken, items deleted, reports repaired or test data used for tuning. Source bytes match the historical manifest. The MLE uses manuscript DP at n=10 and the certified integer-formulation benchmark at n=100. PL uses Hunter's original MM update; both fits are unpenalized. [Canonical method contract](algorithms.md).

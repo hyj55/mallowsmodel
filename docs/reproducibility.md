@@ -2,6 +2,8 @@
 
 Use Python 3.12 and a separate checkout so recorded results are not overwritten accidentally. Numerical dependencies and solver versions are fixed in requirements-lock.txt. The current source is the single active implementation; historical variants require the pinned checkout in [History](history.md).
 
+**Current repeated real comparison:** use the [30-partition correction](#repeated-estimation-of-the-original-real-comparison) below. The original real-data commands immediately below reproduce their archived single-split studies; they do not produce the newer repeated averages. Existing simulation commands already generate multiple independent training datasets.
+
 ```bash
 python -m pip install -r requirements-lock.txt
 python validation_artifacts.py
@@ -61,3 +63,21 @@ The runner downloads only missing sources, verifies their hashes, and exactly re
 On systems where Python does not recognize the local HTTPS certificate chain, repair the local CA configuration or use a trusted HTTPS client to download the manifest's exact URLs into the specified cache paths. The loader still verifies SHA256 and byte size; do not disable certificate verification or accept changed sources.
 
 Repeated-split percentiles are descriptive partition ranges, not independent-person confidence intervals. See the [report](group_sensitivity.md) for finite-mask denominators and the severe Sounds individual-fit limitations.
+
+## Repeated estimation of the original real comparison
+
+The [28 September protocol](protocols/REPEATED_HOLDOUT_20260928.md) was committed before production at [3da7e993](https://github.com/hyj55/mallowsmodel/commit/3da7e993c9ce2ae23a85a418cfa19ac2b138f01d). It corrects 23 earlier single-split real comparisons with 30 new 60/20/20 allocations and full refits per task. It preserves the earlier source decoders, methods, parameter settings and grouping rules, including whole-person Sounds partitions. It does not change the separate group study.
+
+```bash
+python download_repeated_data.py
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python run_repeated_real.py --workers 2
+python validate_repeated_holdout.py
+python validate_repeated_holdout.py --repository-only
+python make_repeated_holdout_figures.py
+```
+
+The root seed is 202609280. `SeedSequence([seed, task_split_key, repeat])` separates partition randomization from the fixed original estimator seeds. Sushi A/B share one split key, and each dots2024 arm shares a key across report lengths. The [manifest](../results/repeated_holdout/manifest.json) records all task-specific keys, exact source/code hashes and Python 3.13.7/locked numerical versions used in the completed run. Raw observations and detailed predictor/membership caches remain local. Full verification replays these caches without refitting; read-only CI verifies the public counts, hashes and averages.
+
+The primary outputs are averages of separately trained confirmation losses, with availability and infinity accounting. The partition Monte Carlo SE measures the precision of that average conditional on the fixed dataset, not population sampling uncertainty. It differs from the partition percentile ranges in the group-sensitivity report. See the [result dictionary](../results/repeated_holdout/README.md) for all denominators, resume/batch behavior and quick-check commands. Source acquisition leaves existing source manifests unchanged and rejects mismatched bytes.
+
+The already completed real and synthetic sample-size curves are indexed [here](learning_curves.md). The historical empirical curves used older fitting rules and one fixed outer test set; they are not silently substituted for current-estimator repeated curves.

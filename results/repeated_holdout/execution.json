@@ -1,0 +1,10 @@
+{
+  "workers": 2,
+  "openblas_threads": 1,
+  "omp_threads": 1,
+  "architecture": "x86_64",
+  "operating_system": "Darwin",
+  "python": "3.13.7",
+  "exact_integer_time_limit_seconds": 120,
+  "timeout_note": "A wall-clock certificate limit depends on hardware and concurrent load; unavailable certification is a computational outcome, not a nonexistence theorem for an SM optimum."
+}

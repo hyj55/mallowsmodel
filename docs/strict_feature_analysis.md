@@ -1,5 +1,7 @@
 # Which data structures favor selective Mallows or Plackett–Luce?
 
+**28 September 2026 update:** the real-data point comparisons below retain their original single partition. Use the [30-repeat correction](repeated_holdout.md) ([中文](repeated_holdout_zh.md)) for average predictive performance after repeated full refitting. Original bootstrap intervals stay conditional on the original fits; synthetic results and source-only audits are unchanged.
+
 **Feature study, 25 September 2026; audited 26 September UTC.** Completed: **4,760 independent synthetic training samples**, **16 new real tasks / 8,763 original reports**, and a follow-up reusing 200 of those training samples. Nine additional agricultural sources were screened; all decisions are retained.
 
 **Main finding:** the predictive winner reverses when the distribution of *which mistakes occur* changes, even with the entire inversion-count distribution fixed. Real full-ranking tasks provide tentative SM-favorable examples, while some directly elicited partial-ranking tasks favor PL. We have **not** established the specific SM context effect in real data, or a reliable small-data rule for selecting the model.
