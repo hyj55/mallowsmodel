@@ -1,5 +1,7 @@
 # Historical experiments
 
+For the already completed Beans/Sushi A/B sample-size experiments, use the [learning-curve index](learning_curves.md). It lists the exact training budgets, repetition definitions, figure/table links and differences from the current estimators.
+
 The repository previously mixed several protocols. The complete pre-audit snapshot remains at [commit 89b21645d5f7eb463cc90c4e982c3a66ce805b41](https://github.com/hyj55/mallowsmodel/tree/89b21645d5f7eb463cc90c4e982c3a66ce805b41). No Git history was rewritten.
 
 | Earlier material | Disposition |

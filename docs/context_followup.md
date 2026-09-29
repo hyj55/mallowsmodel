@@ -1,5 +1,7 @@
 # Original-data follow-up: displayed-set context
 
+**28 September 2026 update:** the real-data point comparisons below retain their original single partition. Use the [30-repeat correction](repeated_holdout.md) ([中文](repeated_holdout_zh.md)) for average predictive performance after repeated full refitting. Original bootstrap intervals stay conditional on the original fits; synthetic results and source-only audits are unchanged.
+
 **Audited 26 September 2026 UTC.** One intact agricultural task and six SP-Rank source-design audits. The positive SM context effect remains unconfirmed. Original reports, centers, dispersion estimates and NLL point values are unchanged by the audit.
 
 ## Wheat

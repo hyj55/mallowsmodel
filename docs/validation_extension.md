@@ -1,5 +1,7 @@
 # Additional data and mechanism validation
 
+**28 September 2026 update:** the real-data point comparisons below retain their original single partition. Use the [30-repeat correction](repeated_holdout.md) ([中文](repeated_holdout_zh.md)) for average predictive performance after repeated full refitting. Original bootstrap intervals stay conditional on the original fits; synthetic results and source-only audits are unchanged.
+
 26 September 2026. Three new empirical tasks and **1,400 independent synthetic training datasets** are complete. The original estimators and diagnostic definitions are unchanged. The primary real comparison has **no clear winner on any of the three new tasks**. Simulations identify two important limitations: an inaccurate center can hide a true SM context effect, and heterogeneous PL groups can produce both a positive marginal context effect and a predictive advantage for a single SM fit.
 
 This follow-up was motivated by earlier findings. Its [design](protocols/VALIDATION_EXTENSION_20260926.md) and [source amendment](protocols/VALIDATION_SOURCE_AMENDMENT.md) were committed before its fits as `ddad79788574374d3c31699c74a145ff75d9008f` and `6e3cef2e97978153f5c4c6911f5a62b94d905bd0`. It is a frozen follow-up, not an independently preregistered original study.

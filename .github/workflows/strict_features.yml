@@ -31,3 +31,4 @@ jobs:
           python validate_scientific_audit.py --repository-only
           python validate_validation_extension.py --repository-only
           python validate_group_sensitivity.py --repository-only
+          python validate_repeated_holdout.py --repository-only

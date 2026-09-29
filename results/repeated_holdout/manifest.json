@@ -1,0 +1,595 @@
+{
+  "seed": 202609280,
+  "repetitions": 30,
+  "protocol_commit": "3da7e993c9ce2ae23a85a418cfa19ac2b138f01d",
+  "baseline_main": "551368d48a0b87e7f8573d0f28efa1ac66e4c625",
+  "training_contexts": 690,
+  "candidate_fits": 3450,
+  "datasets": [
+    {
+      "dataset": "beans",
+      "study": "baseline_replacement",
+      "n": 10,
+      "r": 3,
+      "reports": 842,
+      "units": 842,
+      "unit_description": "anonymous_report",
+      "split_key": 0,
+      "estimator_seed": 202609253,
+      "split_sizes": {
+        "fit": 505,
+        "discovery": 168,
+        "confirmation": 169
+      }
+    },
+    {
+      "dataset": "sushi_a",
+      "study": "baseline_replacement",
+      "n": 10,
+      "r": 10,
+      "reports": 5000,
+      "units": 5000,
+      "unit_description": "aligned_sushi_respondent",
+      "split_key": 1,
+      "estimator_seed": 202609253,
+      "split_sizes": {
+        "fit": 3000,
+        "discovery": 1000,
+        "confirmation": 1000
+      }
+    },
+    {
+      "dataset": "sushi_b",
+      "study": "baseline_replacement",
+      "n": 100,
+      "r": 10,
+      "reports": 5000,
+      "units": 5000,
+      "unit_description": "aligned_sushi_respondent",
+      "split_key": 1,
+      "estimator_seed": 202609253,
+      "split_sizes": {
+        "fit": 3000,
+        "discovery": 1000,
+        "confirmation": 1000
+      }
+    },
+    {
+      "dataset": "00024-00000001",
+      "study": "strict_features",
+      "n": 4,
+      "r": 4,
+      "reports": 795,
+      "units": 795,
+      "unit_description": "anonymous_upstream_aggregated_records",
+      "split_key": 1000,
+      "estimator_seed": 202609251,
+      "split_sizes": {
+        "fit": 477,
+        "discovery": 159,
+        "confirmation": 159
+      }
+    },
+    {
+      "dataset": "00024-00000002",
+      "study": "strict_features",
+      "n": 4,
+      "r": 4,
+      "reports": 794,
+      "units": 794,
+      "unit_description": "anonymous_upstream_aggregated_records",
+      "split_key": 1001,
+      "estimator_seed": 202609252,
+      "split_sizes": {
+        "fit": 476,
+        "discovery": 159,
+        "confirmation": 159
+      }
+    },
+    {
+      "dataset": "00024-00000003",
+      "study": "strict_features",
+      "n": 4,
+      "r": 4,
+      "reports": 800,
+      "units": 800,
+      "unit_description": "anonymous_upstream_aggregated_records",
+      "split_key": 1002,
+      "estimator_seed": 202609253,
+      "split_sizes": {
+        "fit": 480,
+        "discovery": 160,
+        "confirmation": 160
+      }
+    },
+    {
+      "dataset": "00024-00000004",
+      "study": "strict_features",
+      "n": 4,
+      "r": 4,
+      "reports": 794,
+      "units": 794,
+      "unit_description": "anonymous_upstream_aggregated_records",
+      "split_key": 1003,
+      "estimator_seed": 202609254,
+      "split_sizes": {
+        "fit": 476,
+        "discovery": 159,
+        "confirmation": 159
+      }
+    },
+    {
+      "dataset": "00025-00000001",
+      "study": "strict_features",
+      "n": 4,
+      "r": 4,
+      "reports": 793,
+      "units": 793,
+      "unit_description": "anonymous_upstream_aggregated_records",
+      "split_key": 1004,
+      "estimator_seed": 202609255,
+      "split_sizes": {
+        "fit": 475,
+        "discovery": 159,
+        "confirmation": 159
+      }
+    },
+    {
+      "dataset": "00025-00000002",
+      "study": "strict_features",
+      "n": 4,
+      "r": 4,
+      "reports": 795,
+      "units": 795,
+      "unit_description": "anonymous_upstream_aggregated_records",
+      "split_key": 1005,
+      "estimator_seed": 202609256,
+      "split_sizes": {
+        "fit": 477,
+        "discovery": 159,
+        "confirmation": 159
+      }
+    },
+    {
+      "dataset": "00025-00000003",
+      "study": "strict_features",
+      "n": 4,
+      "r": 4,
+      "reports": 795,
+      "units": 795,
+      "unit_description": "anonymous_upstream_aggregated_records",
+      "split_key": 1006,
+      "estimator_seed": 202609257,
+      "split_sizes": {
+        "fit": 477,
+        "discovery": 159,
+        "confirmation": 159
+      }
+    },
+    {
+      "dataset": "00025-00000004",
+      "study": "strict_features",
+      "n": 4,
+      "r": 4,
+      "reports": 797,
+      "units": 797,
+      "unit_description": "anonymous_upstream_aggregated_records",
+      "split_key": 1007,
+      "estimator_seed": 202609258,
+      "split_sizes": {
+        "fit": 478,
+        "discovery": 159,
+        "confirmation": 160
+      }
+    },
+    {
+      "dataset": "dots2024_A_r2",
+      "study": "strict_features",
+      "n": 30,
+      "r": 2,
+      "reports": 300,
+      "units": 300,
+      "unit_description": "source_export_participant_blocks",
+      "split_key": 165,
+      "estimator_seed": 202609259,
+      "split_sizes": {
+        "fit": 180,
+        "discovery": 60,
+        "confirmation": 60
+      }
+    },
+    {
+      "dataset": "dots2024_A_r3",
+      "study": "strict_features",
+      "n": 30,
+      "r": 3,
+      "reports": 300,
+      "units": 300,
+      "unit_description": "source_export_participant_blocks",
+      "split_key": 165,
+      "estimator_seed": 202609260,
+      "split_sizes": {
+        "fit": 180,
+        "discovery": 60,
+        "confirmation": 60
+      }
+    },
+    {
+      "dataset": "dots2024_A_r5",
+      "study": "strict_features",
+      "n": 30,
+      "r": 5,
+      "reports": 300,
+      "units": 300,
+      "unit_description": "source_export_participant_blocks",
+      "split_key": 165,
+      "estimator_seed": 202609261,
+      "split_sizes": {
+        "fit": 180,
+        "discovery": 60,
+        "confirmation": 60
+      }
+    },
+    {
+      "dataset": "dots2024_A_r6",
+      "study": "strict_features",
+      "n": 30,
+      "r": 6,
+      "reports": 300,
+      "units": 300,
+      "unit_description": "source_export_participant_blocks",
+      "split_key": 165,
+      "estimator_seed": 202609262,
+      "split_sizes": {
+        "fit": 180,
+        "discovery": 60,
+        "confirmation": 60
+      }
+    },
+    {
+      "dataset": "dots2024_B_r2",
+      "study": "strict_features",
+      "n": 30,
+      "r": 2,
+      "reports": 300,
+      "units": 300,
+      "unit_description": "source_export_participant_blocks",
+      "split_key": 166,
+      "estimator_seed": 202609263,
+      "split_sizes": {
+        "fit": 180,
+        "discovery": 60,
+        "confirmation": 60
+      }
+    },
+    {
+      "dataset": "dots2024_B_r3",
+      "study": "strict_features",
+      "n": 30,
+      "r": 3,
+      "reports": 300,
+      "units": 300,
+      "unit_description": "source_export_participant_blocks",
+      "split_key": 166,
+      "estimator_seed": 202609264,
+      "split_sizes": {
+        "fit": 180,
+        "discovery": 60,
+        "confirmation": 60
+      }
+    },
+    {
+      "dataset": "dots2024_B_r5",
+      "study": "strict_features",
+      "n": 30,
+      "r": 5,
+      "reports": 300,
+      "units": 300,
+      "unit_description": "source_export_participant_blocks",
+      "split_key": 166,
+      "estimator_seed": 202609265,
+      "split_sizes": {
+        "fit": 180,
+        "discovery": 60,
+        "confirmation": 60
+      }
+    },
+    {
+      "dataset": "dots2024_B_r6",
+      "study": "strict_features",
+      "n": 30,
+      "r": 6,
+      "reports": 300,
+      "units": 300,
+      "unit_description": "source_export_participant_blocks",
+      "split_key": 166,
+      "estimator_seed": 202609266,
+      "split_sizes": {
+        "fit": 180,
+        "discovery": 60,
+        "confirmation": 60
+      }
+    },
+    {
+      "dataset": "wheat",
+      "study": "context_followup",
+      "n": 16,
+      "r": 3,
+      "reports": 493,
+      "units": 493,
+      "unit_description": "anonymous_report_missing_cluster_ids",
+      "split_key": 2000,
+      "estimator_seed": 202609252,
+      "split_sizes": {
+        "fit": 295,
+        "discovery": 99,
+        "confirmation": 99
+      }
+    },
+    {
+      "dataset": "sounds",
+      "study": "validation_extension",
+      "n": 12,
+      "r": 2,
+      "reports": 1380,
+      "units": 46,
+      "unit_description": "source_assessor_id",
+      "split_key": 3001,
+      "estimator_seed": 202609261,
+      "split_sizes": {
+        "fit": 810,
+        "discovery": 270,
+        "confirmation": 300
+      }
+    },
+    {
+      "dataset": "patras_cost",
+      "study": "validation_extension",
+      "n": 36,
+      "r": 6,
+      "reports": 392,
+      "units": 392,
+      "unit_description": "documented_one_report_per_volunteer",
+      "split_key": 3002,
+      "estimator_seed": 202609262,
+      "split_sizes": {
+        "fit": 235,
+        "discovery": 78,
+        "confirmation": 79
+      }
+    },
+    {
+      "dataset": "patras_population",
+      "study": "validation_extension",
+      "n": 48,
+      "r": 6,
+      "reports": 392,
+      "units": 392,
+      "unit_description": "documented_one_report_per_volunteer",
+      "split_key": 3003,
+      "estimator_seed": 202609263,
+      "split_sizes": {
+        "fit": 235,
+        "discovery": 78,
+        "confirmation": 79
+      }
+    }
+  ],
+  "sources": [
+    {
+      "path": "data/raw/beans.rda",
+      "sha256": "bdf799913727b3d0e75c5a4276f77fe8e0abdc9605707c7755ccb04e33ef9b6c",
+      "bytes": 8852
+    },
+    {
+      "path": "data/raw/sushi3-2016.zip",
+      "sha256": "4f8bbf3acd6f796cb3d0add6c73c394664982c57d3b48e75e92014e5278558a8",
+      "bytes": 222176
+    },
+    {
+      "path": "data/raw/strict_features/00024-00000001.soc",
+      "sha256": "95a1d29822963329402195694cc62a2046fae8f5e3cf2e7e431df6f4456b58e0",
+      "bytes": 675
+    },
+    {
+      "path": "data/raw/strict_features/00024-00000002.soc",
+      "sha256": "53d9b9ab0593c4de58bdf764168fe19fb3196a82b43ccc44310ff0fd7e2d3f44",
+      "bytes": 674
+    },
+    {
+      "path": "data/raw/strict_features/00024-00000003.soc",
+      "sha256": "b9c231aa7ce860ec33d05aed44dd328e364f7926c90fb480bc49412e923debd4",
+      "bytes": 676
+    },
+    {
+      "path": "data/raw/strict_features/00024-00000004.soc",
+      "sha256": "206ec157fb68e02d168db26942ebabeedb8cbe0454e507d0706709716a600d7b",
+      "bytes": 673
+    },
+    {
+      "path": "data/raw/strict_features/00025-00000001.soc",
+      "sha256": "62770ce91cd8590a8868698b5ece97f4c561d58fb4c101054d1d11fcfa83b49f",
+      "bytes": 677
+    },
+    {
+      "path": "data/raw/strict_features/00025-00000002.soc",
+      "sha256": "7240de0ab792121e79eb761c14b244ea8ddbd6e63e84a08d4a19964382ae1fd9",
+      "bytes": 672
+    },
+    {
+      "path": "data/raw/strict_features/00025-00000003.soc",
+      "sha256": "92d333140144c062c582d9728fbbc35729d4b6f2860f07b550fdd62939bcaa66",
+      "bytes": 674
+    },
+    {
+      "path": "data/raw/strict_features/00025-00000004.soc",
+      "sha256": "3309fb582e483b4a8aab3063fa9c64b536b20058dc1db5f44e4199c7c385fa9e",
+      "bytes": 676
+    },
+    {
+      "path": "data/raw/strict_features/06-08-2021ratingsrankingsA1.json",
+      "sha256": "c9ce7c813e5fb53d0c371bee99ab138f1d6134f0f75c13aff34bfa4d05c7e2a6",
+      "bytes": 37870
+    },
+    {
+      "path": "data/raw/strict_features/06-08-2021ratingsrankingsA2.json",
+      "sha256": "f0d7699c2f6eb191011703c6c1f550837033a9d05c9174e73d31cfc2a8ed316b",
+      "bytes": 37902
+    },
+    {
+      "path": "data/raw/strict_features/06-08-2021ratingsrankingsA3.json",
+      "sha256": "5e259823696befaa3b9eb0902eb30d9f1f93193e58ceca21b2fdeacdeef51779",
+      "bytes": 37878
+    },
+    {
+      "path": "data/raw/strict_features/06-08-2021ratingsrankingsA4.json",
+      "sha256": "50c16b871da6ac44b95fd79269e6004d3487142ab041eb1eba4f6929aefa7888",
+      "bytes": 37903
+    },
+    {
+      "path": "data/raw/strict_features/06-08-2021ratingsrankingsA5.json",
+      "sha256": "26b74c5171b9da9d679363dcd06c98b2dc3c1c58f29819506c13abe2aaa2e344",
+      "bytes": 37896
+    },
+    {
+      "path": "data/raw/strict_features/A_dataOperations_data_to_json.py",
+      "sha256": "07db9b26a2ddab0a3138923d453413636199c7013afd322b333c756283bee1e0",
+      "bytes": 2229
+    },
+    {
+      "path": "data/raw/strict_features/A_public_javascripts_rankings.js",
+      "sha256": "93dc56b243d84ecf5dcdc952e6e5a2ace2d8ddbd7e2f07e8f16bc93a96f9c01e",
+      "bytes": 11080
+    },
+    {
+      "path": "data/raw/strict_features/06-08-2021ratingsrankingsB1.json",
+      "sha256": "fc1bd663e013e191740c2a35b2b5241547e533c6943c6ceda5c6dc9211e42009",
+      "bytes": 37922
+    },
+    {
+      "path": "data/raw/strict_features/06-08-2021ratingsrankingsB2.json",
+      "sha256": "65ff4ed53059c11b84b64721322c975310ebfef89603e8c13d3843b0101b8579",
+      "bytes": 37969
+    },
+    {
+      "path": "data/raw/strict_features/06-14-2021ratingsrankingsB3.json",
+      "sha256": "5bcd196c7ba00d1f0ee35e4bbe199ae5ab5b9a3b22f8be0fb483fd587e52bbb6",
+      "bytes": 37928
+    },
+    {
+      "path": "data/raw/strict_features/06-14-2021ratingsrankingsB4.json",
+      "sha256": "005d48b223bef93f4bf028eeed6ae4bc252fb73a11200c45bf0fc98c3a233e10",
+      "bytes": 37911
+    },
+    {
+      "path": "data/raw/strict_features/06-08-2021ratingsrankingsB5.json",
+      "sha256": "3601b8b5269092e931cc6850d0b19d3334a2bfed6829425416536bd3640a6de1",
+      "bytes": 37910
+    },
+    {
+      "path": "data/raw/strict_features/B_dataOperations_data_to_json.py",
+      "sha256": "bcab4f8f40d67c61abef3c1bbe403295bf852ea74605a541ee63fd73f92b66d8",
+      "bytes": 2212
+    },
+    {
+      "path": "data/raw/strict_features/B_public_javascripts_rankings.js",
+      "sha256": "e74f1cf6b164f15923c225f2d2df4c573a47a886ec80c8517a7df0bcb01a0eca",
+      "bytes": 11078
+    },
+    {
+      "path": "data/raw/validation_extension/beach_preferences.rda",
+      "sha256": "54a0015fb9a4793115dd26651b38fe2ffdbe21b72dcbdc04554c1c081b3dd335",
+      "bytes": 1884
+    },
+    {
+      "path": "data/raw/validation_extension/sounds.rda",
+      "sha256": "091b8e7c7cf074ef9256059c912105a20306d4fd74e364d708ffdfd8e4d82d49",
+      "bytes": 1726
+    },
+    {
+      "path": "data/raw/validation_extension/generate_beach_data.R",
+      "sha256": "e597a74b4062c4f121369fcce4236785ff599c7365f7434a8e23e7680b9cd31f",
+      "bytes": 381
+    },
+    {
+      "path": "data/raw/validation_extension/generate_sounds_data.R",
+      "sha256": "9cefa7e314ffb549ab94f21a5a1e18bc91af95da8e4ef62304eab657d6414a2d",
+      "bytes": 117
+    },
+    {
+      "path": "data/raw/validation_extension/beach_preferences.Rd",
+      "sha256": "869e367874172603bf418b44b865f0ac100fbd0ae11a3a0ac9b092857a7c6df1",
+      "bytes": 677
+    },
+    {
+      "path": "data/raw/validation_extension/sounds.Rd",
+      "sha256": "55d75c85e9b86879978dfe5902e3106d3da0ef90ae342dc61c168e29f24108d7",
+      "bytes": 1046
+    },
+    {
+      "path": "data/raw/validation_extension/REFERENCES.bib",
+      "sha256": "ad0c32a4863f6d787c2a48598992c816ecadf32a29a1482f1fc1de6a8bf0fe40",
+      "bytes": 15997
+    },
+    {
+      "path": "data/raw/validation_extension/00034-00000001.soi",
+      "sha256": "4099eae979a1d81cad5e7b8d2a4978c221a08e0060938618ea5f1c5dffb6bb89",
+      "bytes": 8645
+    },
+    {
+      "path": "data/raw/validation_extension/00034-00000002.soi",
+      "sha256": "787186f4809e3e51437aa17fde39597d72976456faab188b2563a768f8f47e2c",
+      "bytes": 9149
+    },
+    {
+      "path": "data/raw/validation_extension/patras_info.txt",
+      "sha256": "16e0671bf40bc08687f2508c6a00920d91281dad9fc48f42e08dc6e11b0c199e",
+      "bytes": 2079
+    },
+    {
+      "path": "data/raw/validation_extension/Beaches_data.Rdata",
+      "sha256": "06617406a50f559343ff3dfe50201bcb1be6f114027bb596e4b8f5c91c73660a",
+      "bytes": 12473
+    },
+    {
+      "path": "data/raw/validation_extension/Sounds.RData",
+      "sha256": "fd381450bc773384d661e132d543d11ca86d2cf79b6851e84682e38000e3e99a",
+      "bytes": 5670
+    },
+    {
+      "path": "data/raw/context_followup/breadwheat.rda",
+      "sha256": "cef54fd4688dcaa330f2c5b1477cab5f235b3777ff0f9db795ae480ebbd06302",
+      "bytes": 8752
+    }
+  ],
+  "code_sha256": {
+    "src/repeated_holdout.py": "292346621cbe929d3b08c12df8657e0b898bc094ea35d1fdc0dc04212b6830c9",
+    "src/repeated_holdout_summary.py": "636556c3382358106790acdf15d0cfad2bda795eb7706fa7f3d68eb75d4084b2",
+    "run_repeated_real.py": "debc864c790fbe44ea91ed116a6f2b3e3f8b056dada29f5e5d400e336e0abab7",
+    "src/data.py": "494cbf5ebf5f575734a956414f1fe247d6bf648652a9a75b307f6f073d714b5d",
+    "src/models.py": "ca4c989fe94b60fb5527f128a17175ddbc52092ff8892fe26d795e5e103cfe96",
+    "src/strict_models.py": "244c90978402da73879d4826fd09af71ef3bbff6d9f5b52290a304dee52d69a2",
+    "src/manuscript_estimators.py": "70894e6aed5236e7c0035beafa5533b7483051bc668cb69e687aee5dcb682f38",
+    "src/diagnostics.py": "ed272cc7882a36a1cf8a3570a1cea1673175cab3530e08cc83abbabd60804100",
+    "src/strict_features.py": "ae95b71822538c82a8bfe815ea7267406680e401e35577ac58df99561cdb1469",
+    "src/validation_extension.py": "bbdeb2bfb088d46166e906716596711cf8ad52274de019d3e6310503fd047c59",
+    "run_strict_real.py": "998d0a7aa7ca54d32a45839b83994e8870b0943db0828e63de89af188fecb00a",
+    "docs/protocols/REPEATED_HOLDOUT_20260928.md": "8f058388dc6a4e6d2e760b28de66340fead44e7bd9f643865a3de19377252628"
+  },
+  "published_sha256": {
+    "repeat_scores.csv.gz": "47591795aa93dba24262911749f110ef8f9114be8021f6c04a2d7eb8fb673f70",
+    "scores.csv": "debca0d078762d6d8416ae68bcb9ffdbbbe1cb49fbf45b13ca0fde9e2502c9ba",
+    "repeat_diagnostics.csv.gz": "682bb1dd86f54d473378509cc37dbc8d5bda161ce51118623a5186e8967dbede",
+    "diagnostics.csv": "6154ec4086b20fb15d21c987de94835b4123dd4c68e14404a31660db8dd32081",
+    "repeat_selections.csv.gz": "2f123f923813e96ba675da28d91a7d8b1daf36894ca5fe892db5aefb39db415e",
+    "selections.csv": "da0e85c78c47fc62549fc719f84a70686aa8f7be450db51916c7f1836082f331"
+  },
+  "versions": {
+    "python": "3.13.7",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "pandas": "2.2.3"
+  },
+  "target": "Mean confirmation loss over independently randomized original 60/20/20 partitions",
+  "precision": "Partition Monte Carlo standard error conditional on fixed source observations; not population uncertainty"
+}
