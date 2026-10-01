@@ -42,7 +42,7 @@ This is exact finite-state summation, subject to numerical precision. Training f
 With a known generating order π₀, the center error is
 
 ```math
-d_K(\hat\pi,\pi_0)=\sum_{i<j}\mathbf1\{\hat\pi\text{ and }\pi_0\text{ disagree on }i,j\}.
+d_K(\hat\pi,\pi_0)=\sum_{i\lt j}\mathbf1\{\hat\pi\text{ and }\pi_0\text{ disagree on }i,j\}.
 ```
 
 PL's estimated order sorts its worths. Some tables normalize by the maximum n(n−1)/2. Exposure tables also divide by the reference scale min{n(n−1)/2,n/λ}; this is a descriptive normalization, not a verified minimax constant. Center risk is averaged over independent simulated training draws.
@@ -57,7 +57,7 @@ For training data, let Aᵢ=Σₜ1{i∈Sₜ} and Cᵢⱼ=Σₜ1{i,j∈Sₜ}. Rep
 
 ```math
 \mu=\frac{Nr}{n},\qquad \lambda=\frac{Nr(r-1)}{n(n-1)},\qquad
-\hat p=\min_{i<j}\frac{C_{ij}}N.
+\hat p=\min_{i\lt j}\frac{C_{ij}}N.
 ```
 
 For fixed r, μ and λ are the actual catalogue-wide averages of appearance and pair counts. Under independent uniform subset sampling they also equal each item's/pair's expected count. They need not describe any particular item in nonuniform real data. Full item coverage, full pair coverage, and directed strong connectivity are different properties.

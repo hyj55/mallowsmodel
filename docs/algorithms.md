@@ -69,7 +69,7 @@ The proof constants and schedule are not tuned to test performance. β₀=.1 is 
 P1/P2, G1, S1/S2 and D2 use Hunter's simultaneous, unaccelerated MM equation (30). If Vᵢ counts reports in which i is not last and Rₜₖ is the remaining set at stage k<r,
 
 ```math
-w_i^{new}=\frac{V_i}{\sum_t\sum_{k<r:i\in R_{tk}}\left(\sum_{j\in R_{tk}}w_j\right)^{-1}}.
+w_i^{new}=\frac{V_i}{\sum_t\sum_{k\lt r:i\in R_{tk}}\left(\sum_{j\in R_{tk}}w_j\right)^{-1}}.
 ```
 
 Updates normalize the common worth scale only. The observed directed win graph must support a unique finite MLE; disconnected or one-way-separated data are not repaired with pseudo-comparisons or item deletion. The fixed convergence criteria are maximum log-worth change <10⁻¹⁰ and gradient per report <10⁻⁸, with at most 100,000 iterations. Nonconvergence and failed existence checks remain unavailable. An independent optimizer used in tests verifies the likelihood, not an extra competing fitted method.
