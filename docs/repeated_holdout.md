@@ -57,11 +57,17 @@ N, discovery and confirmation are report counts. For Sounds these represent 27, 
 
 ## Averaging and availability
 
-For partition b, score Dᵇ=Tᵇ⁻¹Σₜ(ℓSM,b,t−ℓPL,b,t), then average Dᵇ over the 30 partitions. The point estimate is not obtained by evaluating an ensemble or by pooling different available SM and PL partition sets.
+For partition $`b`$ with $`T_b`$ confirmation reports, score
+
+```math
+D^{(b)}=\frac{1}{T_b}\sum_{t=1}^{T_b}\left(\ell_{\mathrm{SM},b,t}-\ell_{\mathrm{PL},b,t}\right),
+```
+
+then average $`D^{(b)}`$ over the 30 partitions. The point estimate is not obtained by evaluating an ensemble or by pooling different available SM and PL partition sets.
 
 A full mean is undefined if any required fit is unavailable. A defined infinite predictive loss remains infinite. Separate finite-conditional averages and counts describe the subset of finite comparisons; finite-report averages inside a partition have another denominator. These alternatives are clearly named in [the output dictionary](../results/repeated_holdout/README.md).
 
-The figure shows mean ±1 partition Monte Carlo SE, SD(Dᵇ)/√30 when all 30 are finite. For conditional summaries the finite count replaces 30. This is precision over partition randomization given the fixed dataset, not a 95% population CI. No inner bootstrap is run.
+The figure shows mean ±1 partition Monte Carlo SE, $`\mathrm{SD}(D^{(b)})/\sqrt{30}`$ when all 30 are finite. For conditional summaries the finite count replaces 30. This is precision over partition randomization given the fixed dataset, not a 95% population CI. No inner bootstrap is run.
 
 ## Diagnostics and selection
 

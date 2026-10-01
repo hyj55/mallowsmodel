@@ -12,7 +12,7 @@ Sushi B N=100/3,000 has a large-catalogue multistart insertion/MILP-bound benchm
 
 ## Holding the fitted order common
 
-For Beans N=673 and Sushi A N=3,000 under L1's five saved training fits, refit ridge PL subject to θπ₁≥…≥θπₙ, where π is the fitted SM center. The penalty is the same training-selected penalty; ties are allowed, and confirmation data do not tune it. Compare original SM with this order-constrained PL on the same test reports.
+For Beans N=673 and Sushi A N=3,000 under L1's five saved training fits, refit ridge PL subject to $`\theta_{\pi_1}\ge\cdots\ge\theta_{\pi_n}`$, where π is the fitted SM center. The penalty is the same training-selected penalty; ties are allowed, and confirmation data do not tune it. Compare original SM with this order-constrained PL on the same test reports.
 
 The converse control fixes SM's center to the order of fitted PL worths and profiles bounded β using training reports. Comparing that SM with the original PL asks how their probability laws differ after equalizing their order. The ATP version profiles and validation-shrinks SM β on the PL order within each year.
 

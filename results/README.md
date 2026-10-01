@@ -18,6 +18,6 @@ Read results by experiment, dataset, estimator, evaluation target and denominato
 
 The last two locations pin implementation `89b21645d5f7eb463cc90c4e982c3a66ce805b41`. They are part of the same study, with bounded/regularized procedures explicitly distinguished from unpenalized ones. [The learning chapter](../docs/learning_curves.md) and [implementation registry](../docs/history.md) locate their exact files and meanings.
 
-Δ=NLL(SM)−NLL(PL); negative favors SM. A fixed-fit bootstrap interval, independent-simulation t interval, Wilson rate interval, split percentile range and partition MCSE are different objects. No bootstrap endpoints are averaged to form P1 uncertainty. All unavailable/infinite/finite-conditional counts must accompany a comparison. [Definitions and formulas](../docs/uncertainty.md).
+$`\Delta=\mathrm{NLL}(\mathrm{SM})-\mathrm{NLL}(\mathrm{PL})`$; negative favors SM. A fixed-fit bootstrap interval, independent-simulation t interval, Wilson rate interval, split percentile range and partition MCSE are different objects. No bootstrap endpoints are averaged to form P1 uncertainty. All unavailable/infinite/finite-conditional counts must accompany a comparison. [Definitions and formulas](../docs/uncertainty.md).
 
 Three large D2 artifacts are restored with `python validation_artifacts.py`. Public empirical artifacts generally contain fitted parameters and aggregate results; detailed private membership/prediction caches are needed for some local replay. See [reproduction](../docs/reproducibility.md) for those distinctions.

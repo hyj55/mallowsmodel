@@ -10,8 +10,8 @@ There are seven training settings and 200 independently generated datasets per s
 
 | Component | Population | n,r | Training N | Settings |
 |---|---|---|---|---|
-| Center calibration | Pure SM β=.8 or equal-gap PL matched in mean inversions | 8,3 | 28,448 | Four cells |
-| Group/display confounding | Two PL groups with different strengths and display assignment | 4,3 | 448 | ρ=0,.45,.90, three cells |
+| Center calibration | Pure SM $`\beta=0.8`$ or equal-gap PL matched in mean inversions | 8,3 | 28,448 | Four cells |
+| Group/display confounding | Two PL groups with different strengths and display assignment | 4,3 | 448 | $`\rho\in\{0,0.45,0.90\}`$, three cells |
 
 For each repetition, a fresh diagnostic sample of 1,000 reports is generated independently of training. Budgets Mdiag=60,200,1,000 are nested prefixes. The fitted pair's population NLL is summed over the exact support and does not use the diagnostic sample as a test approximation. Root seed 202609260 provides independent label, training and diagnostic streams.
 
@@ -23,7 +23,7 @@ A positive detection means the nominal 95% observed-slope interval lies wholly a
 
 ## Known heterogeneous-PL counterexample
 
-Use equally likely displays S₁={0,1,2} and S₂={0,2,3}. Each report belongs to one of two groups with log-worth vectors θᵍᵢ=−sᵍi, where sᵍ=.2 or .8 (before randomized relabeling). The stronger group's probability is (1+ρ)/2 for S₁ and (1−ρ)/2 for S₂.
+Use equally likely displays $`S_1=\{0,1,2\}`$ and $`S_2=\{0,2,3\}`$. Each report belongs to one of two groups with log-worth vectors $`\theta_i^g=-s^g i`$, where $`s^g\in\{0.2,0.8\}`$ (before randomized relabeling). The stronger group's probability is $`(1+\rho)/2`$ for $`S_1`$ and $`(1-\rho)/2`$ for $`S_2`$.
 
 Within either group PL has no pair context effect. For the shared pair (0,2), the pooled agreement contrast between displays is exactly
 
@@ -41,7 +41,7 @@ Across independent repetitions, compute rejection/detection/selection rates and 
 
 ## Calibration result and empirical scope
 
-At ρ=.90 and diagnostic budget 60, adjusted diagnostics are available in 143/200 repetitions and reject the true zero effect 30.8% of the time among those available. At budget 200, availability is 199/200 and rejection 7.5%; at 1,000, availability is 200/200 and rejection 3.0%. Sparse overlap makes the plug-in percentile slope bootstrap unreliable. Eligibility thresholds or intervals were not retuned after this result.
+At $`\rho=0.90`$ and diagnostic budget 60, adjusted diagnostics are available in 143/200 repetitions and reject the true zero effect 30.8% of the time among those available. At budget 200, availability is 199/200 and rejection 7.5%; at 1,000, availability is 200/200 and rejection 3.0%. Sparse overlap makes the plug-in percentile slope bootstrap unreliable. Eligibility thresholds or intervals were not retuned after this result.
 
 Consequently, empirical context intervals are exploratory evidence about particular fits, not calibrated universal model-family tests. This experiment does not assess the separate mean-NLL bootstrap. The Sounds and PatrasIQ empirical tasks share the `validation_extension` output directory, but their data, fitting and inference are described jointly with all empirical tasks in [the catalogue](../data/sounds_patras.md) and [P1/P2](repeated_holdout.md).
 

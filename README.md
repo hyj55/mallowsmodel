@@ -2,7 +2,7 @@
 
 This repository studies how selective Mallows (SM) and Plackett–Luce (PL) predict a noisy ordering of a displayed set. Both models receive the same ranking reports. The study combines human preferences, objective ordering tasks, agricultural trials, tennis matches, and controlled simulations to examine prediction, sample size, item coverage, population heterogeneity, and model structure.
 
-The main score is the mean negative log probability of a held-out **whole ranking conditional on its displayed set**. Throughout, **Δ = NLL(SM) − NLL(PL)**: a negative value favors SM. Years, seasons, locations, participant attributes, and numerical ratings are not fitted covariates. Where available, metadata support splitting, grouping, source checks, or explicitly identified diagnostics.
+The main score is the mean negative log probability of a held-out **whole ranking conditional on its displayed set**. Throughout, **$`\Delta=\mathrm{NLL}(\mathrm{SM})-\mathrm{NLL}(\mathrm{PL})`$**: a negative value favors SM. Years, seasons, locations, participant attributes, and numerical ratings are not fitted covariates. Where available, metadata support splitting, grouping, source checks, or explicitly identified diagnostics.
 
 ## Read the study
 

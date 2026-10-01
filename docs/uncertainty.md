@@ -8,7 +8,7 @@ A fitted model's performance on new respondents, a learning procedure's average 
 
 | Experiment/output | Random unit used in its uncertainty calculation | Calculation | Interpretation |
 |---|---|---|---|
-| P1 repeated prediction | Random partition of the same fixed source data | Mean ± **one** SD/√30 in figures | Conditional partition Monte Carlo precision; not a 95% CI |
+| P1 repeated prediction | Random partition of the same fixed source data | Mean ± **one** $`\mathrm{SD}/\sqrt{30}`$ in figures | Conditional partition Monte Carlo precision; not a 95% CI |
 | G1 group comparison | Refit outcome across randomized partitions | 5th–95th percentiles; figure center is median | Central 90% empirical split range; not a CI |
 | P2 identified-unit prediction/shells | Held-out person or whole report, with fitted models fixed | 2,000 paired bootstrap draws; 2.5th–97.5th percentiles | Pointwise nominal 95% conditional interval |
 | P2 context slope | Whole ranking report, with ranking-model parameters fixed | 2,000 report bootstrap draws; refit diagnostic slope | Exploratory plug-in percentile interval |
@@ -25,11 +25,11 @@ All stated confidence levels are pointwise, without adjustment for the many task
 
 ## Paired whole-report bootstrap
 
-Fix trained SM and PL models. For T test reports compute dₜ=ℓSM,t−ℓPL,t and Δ̂=T⁻¹Σₜdₜ. For each b=1,…,B:
+Fix trained SM and PL models. For T test reports compute $`d_t=\ell_{\mathrm{SM},t}-\ell_{\mathrm{PL},t}`$ and $`\hat\Delta=\frac1T\sum_{t=1}^T d_t`$. For each $`b=1,\ldots,B`$:
 
-1. Draw T indices independently and uniformly **with replacement** from {1,…,T}.
+1. Draw T indices independently and uniformly **with replacement** from $`\{1,\ldots,T\}`$.
 2. Use the same indices for both models, equivalently select the precomputed paired d values.
-3. Compute Δ*b as their mean.
+3. Compute $`\Delta_b^*`$ as their mean.
 
 The interval is
 
@@ -45,7 +45,7 @@ P2 uses one report per person in each Sushi task (T=1,000), dots2024 arm/size ta
 
 ## Whole-person and tournament bootstrap
 
-For cluster g, let Aᵍ=Σₜ∈g dₜ and Bᵍ be the number of scored reports. Draw G cluster IDs J₁,…,Jᴳ with replacement from the G held-out clusters, and calculate
+For cluster g, let $`A^g=\sum_{t\in g}d_t`$ and $`B^g`$ be the number of scored reports. Draw G cluster IDs $`J_1,\ldots,J_G`$ with replacement from the G held-out clusters, and calculate
 
 ```math
 \Delta^*=\frac{\sum_{j=1}^{G}A^{J_j}}{\sum_{j=1}^{G}B^{J_j}}.
@@ -53,9 +53,9 @@ For cluster g, let Aᵍ=Σₜ∈g dₜ and Bᵍ be the number of scored reports.
 
 Repeat 2,000 times and take percentile endpoints. Every report of a selected cluster travels together, including when the cluster is selected more than once. The ratio targets mean **report** loss; averaging cluster means with equal weights would target a different quantity when cluster sizes differ.
 
-For Sounds P2, G=10 assessors and Bᵍ=30 for each. For ATP, G is the held-out season's tournament count and tournament sizes vary. The cluster bootstrap is justified by treating the clusters as independently sampled units while allowing arbitrary dependence inside each cluster. Ten Sounds test people provide limited precision; tournament grouping does not account for a player appearing in multiple tournaments.
+For Sounds P2, G=10 assessors and $`B^g=30`$ for each. For ATP, G is the held-out season's tournament count and tournament sizes vary. The cluster bootstrap is justified by treating the clusters as independently sampled units while allowing arbitrary dependence inside each cluster. Ten Sounds test people provide limited precision; tournament grouping does not account for a player appearing in multiple tournaments.
 
-Sounds pair-profile intervals use the same ratio with Aᵍ equal to the sum of observed agreements in a training-defined bin and Bᵍ the number of bin occurrences. People with no occurrence in that bin remain in the sampling frame with zero numerator/denominator. Draws with zero total denominator are unavailable. The fitted model probabilities remain fixed. See `unit_interval` in [the implementation](../src/validation_extension.py).
+Sounds pair-profile intervals use the same ratio with $`A^g`$ equal to the sum of observed agreements in a training-defined bin and $`B^g`$ the number of bin occurrences. People with no occurrence in that bin remain in the sampling frame with zero numerator/denominator. Draws with zero total denominator are unavailable. The fitted model probabilities remain fixed. See `unit_interval` in [the implementation](../src/validation_extension.py).
 
 ATP strength-bin and calibration-bin observed-frequency intervals use the same ratio bootstrap on year–tournament identifiers, preserving matches inside each contributing cluster. The bins are held fixed from fitted predictions. Because these calculations first restrict to a bin, their resampling frame consists of clusters represented in that bin; it is not a bootstrap over all possible seasons, players or future bins. Sparse bin counts and players recurring across tournaments remain limitations. Mean predicted probabilities and paired-loss point columns do not acquire CIs merely because an observed-frequency interval appears beside them.
 
@@ -68,41 +68,47 @@ For each bootstrap draw, sample complete reports with replacement. A report's mu
 Residual intervals use the paired differences inside each draw:
 
 ```math
-\gamma^*_{obs,b}-\gamma^*_{SM,b},\qquad
-\gamma^*_{obs,b}-\gamma^*_{PL,b}.
+\gamma^*_{\mathrm{obs},b}-\gamma^*_{\mathrm{SM},b},\qquad
+\gamma^*_{\mathrm{obs},b}-\gamma^*_{\mathrm{PL},b}.
 ```
 
 They are not obtained by subtracting endpoints of separate intervals. If a draw has zero remaining within-cell gap variance, it is undefined. Only draws with all three finite slopes enter the quantiles, and `valid_bootstraps` records the count. With no original eligible variation the diagnostic is unavailable, not zero.
 
 P2 uses B=2,000 where independent report units are supported. D2 uses B=499 **inside each independent simulation repetition**. Budgets of 60, 200 and 1,000 reports are nested prefixes of the same diagnostic sample. The 499 draws are not independent training experiments. Regularized Beans/Sushi diagnostic analyses use the same report indices across their saved training repetitions and average the relevant diagnostic draws.
 
-**Theoretical scope:** report resampling preserves within-report pair dependence. A ratio/slope bootstrap can approximate uncertainty when independent units supply enough stable within-cell variation and denominators remain away from zero. Freezing estimated centers and data-dependent eligibility omits their uncertainty. Sparse cells can make this approximation poor. D2 explicitly finds failure: at ρ=.90 and diagnostic budget 60, only 143/200 adjusted diagnostics are available, and 30.8% reject the true zero effect despite a nominal 5% test. These intervals remain exploratory. This calibration result does not test the separate whole-ranking NLL bootstrap.
+**Theoretical scope:** report resampling preserves within-report pair dependence. A ratio/slope bootstrap can approximate uncertainty when independent units supply enough stable within-cell variation and denominators remain away from zero. Freezing estimated centers and data-dependent eligibility omits their uncertainty. Sparse cells can make this approximation poor. D2 explicitly finds failure: at $`\rho=0.90`$ and diagnostic budget 60, only 143/200 adjusted diagnostics are available, and 30.8% reject the true zero effect despite a nominal 5% test. These intervals remain exploratory. This calibration result does not test the separate whole-ranking NLL bootstrap.
 
 ## Partition Monte Carlo standard error
 
-For P1, let Dᵇ be the mean paired confirmation loss after fitting on partition b. The dataset is fixed; partition seeds are independently randomized. When all R=30 values are finite,
+For P1, let $`D^{(b)}`$ be the mean paired confirmation loss after fitting on partition b. The dataset is fixed; partition seeds are independently randomized. When all R=30 values are finite,
 
 ```math
-\bar D=\frac1R\sum_bD^b,\qquad
-s_D^2=\frac1{R-1}\sum_b(D^b-\bar D)^2,\qquad
+\bar D=\frac1R\sum_bD^{(b)},\qquad
+s_D^2=\frac1{R-1}\sum_b(D^{(b)}-\bar D)^2,\qquad
 MCSE=\frac{s_D}{\sqrt R}.
 ```
 
-This follows from Varpartition(D̄ | data)=Varpartition(D | data)/R for independent partition draws conditional on the observed data and specified fitting rules. Reusing people across partitions does not invalidate this **conditional Monte Carlo** target. It does prevent interpreting those R partitions as R independent collections of people.
+For independent partition draws conditional on the observed data $`\mathcal D`$ and specified fitting rules,
 
-The [P1 figure](../figures/repeated_holdout/confirmation_means.png) plots **D̄ ± MCSE**, not ±1.96 MCSE and not a population confidence interval. The point is an average of separately trained models' losses, not an ensemble's log loss. Increasing R reduces integration error over partitions; it does not make a finite source sample arbitrarily informative about a population.
+```math
+\mathrm{Var}_{\mathrm{partition}}(\bar D\mid\mathcal D)=\frac{\mathrm{Var}_{\mathrm{partition}}(D\mid\mathcal D)}{R}.
+```
+
+Here $`D`$ is the scalar loss difference from one random partition. Reusing people across partitions does not invalidate this **conditional Monte Carlo** target. It does prevent interpreting those R partitions as R independent collections of people.
+
+The [P1 figure](../figures/repeated_holdout/confirmation_means.png) plots **$`\bar D\pm\mathrm{MCSE}`$**, not $`\pm1.96\,\mathrm{MCSE}`$ and not a population confidence interval. The point is an average of separately trained models' losses, not an ensemble's log loss. Increasing R reduces integration error over partitions; it does not make a finite source sample arbitrarily informative about a population.
 
 P1 does not bootstrap within partitions, average bootstrap endpoints, or combine a P2 CI with a P1 mean. Its diagnostic records use zero bootstrap draws and aggregate descriptive point estimates only. Different bins/eligible diagnostics can contribute different numbers of repetitions.
 
 ## Group split percentiles
 
-G1 refits on 100 primary 70/30 within-group partitions, 20 partitions each at 50/50 and 80/20, and 100 separate whole-group holdouts. For each scalar metric, the summary retains finite repetition values and computes mean, median, Q.05, Q.95 and the fraction below zero. Figures show the median and [Q.05,Q.95]; tables generally show means.
+G1 refits on 100 primary 70/30 within-group partitions, 20 partitions each at 50/50 and 80/20, and 100 separate whole-group holdouts. For each scalar metric, the summary retains finite repetition values and computes mean, median, $`Q_{0.05}`$, $`Q_{0.95}`$ and the fraction below zero. Figures show the median and $`[Q_{0.05},Q_{0.95}]`$; tables generally show means.
 
 These quantiles describe the spread of **individual split outcomes**, not uncertainty in their mean. They contain the central 90% of the observed finite-result distribution, not a 95% CI. No independent-splits t test is used. Local/reference interactions use common four-way finite report masks within a repetition; missing or infinite outcomes and coverage are reported separately. A narrow conditional range with very poor coverage is not evidence of good unconditional performance.
 
 ## Student-t simulation intervals
 
-For a fixed generating law, catalogue, report size, training budget and estimator, obtain one scalar Zᵇ per independent generated repetition. Use
+For a fixed generating law, catalogue, report size, training budget and estimator, obtain one scalar $`Z^{(b)}`$ per independent generated repetition. Use
 
 ```math
 \bar Z\ \pm\ t_{.975,R-1}\frac{s_Z}{\sqrt R}.
@@ -118,7 +124,7 @@ S1/S2 also use this t formula for some binary selector-correctness averages. Suc
 
 ## Wilson intervals for rates
 
-In D2, each independent repetition provides a binary event: positive detection, rejection of zero, rejection of the fitted SM slope, or correct model selection. If K repetitions have a defined event and x are successes, p̂=x/K. With z=Φ⁻¹(.975), the interval is
+In D2, each independent repetition provides a binary event: positive detection, rejection of zero, rejection of the fitted SM slope, or correct model selection. If K repetitions have a defined event and x are successes, $`\hat p=x/K`$. With $`z=\Phi^{-1}(0.975)`$, the interval is
 
 ```math
 \frac{\hat p+z^2/(2K)\ \pm\ z\sqrt{\hat p(1-\hat p)/K+z^2/(4K^2)}}{1+z^2/K}.
@@ -133,10 +139,10 @@ K is the metric's actual available count, not automatically 200. Thus rejection 
 For L1/L2 and related fixed-test empirical controls, multiple trained fits share a test set. First calculate the per-report average paired loss
 
 ```math
-\bar d_t=\frac1R\sum_{b=1}^{R}(\ell_{SM,b,t}-\ell_{PL,b,t}),
+\bar d_t=\frac1R\sum_{b=1}^{R}(\ell_{\mathrm{SM},b,t}-\ell_{\mathrm{PL},b,t}),
 ```
 
-then apply the 2,000-draw report bootstrap to the vector of d̄ values. L1 has R=5 for Beans/Sushi A and R=3 for Sushi B; L2 has R=5. These intervals condition on that fitted collection. They do not resample the training subsets or quantify outer-split variability. Averaging log losses is also different from scoring averaged probabilities.
+then apply the 2,000-draw report bootstrap to the vector of $`\bar d_t`$ values. L1 has R=5 for Beans/Sushi A and R=3 for Sushi B; L2 has R=5. These intervals condition on that fitted collection. They do not resample the training subsets or quantify outer-split variability. Averaging log losses is also different from scoring averaged probabilities.
 
 Beans year transfer uses five permutations of the same 2015 training reports, the same 2016 test rows, and that same test-only bootstrap. Missing farmer IDs make its saved endpoints assumption-dependent descriptive evidence, not a verified cluster-valid CI. The five-fold control reports no fold-based CI.
 
@@ -144,8 +150,8 @@ ATP's season-level bootstrap is described above. Across seasons, the reported me
 
 ## Nonfinite results and denominators
 
-- **P1:** any undefined repetition makes the full mean unavailable; all-defined results retain infinite loss. The full MCSE requires all 30 values finite. `finite_conditional_mean` and its MCSE use only K finite repetitions, dividing their SD by √K. Finite-report summaries are separately named and have another denominator.
-- **S1/S2:** full mean CIs require all repetitions finite. `finite_conditional` intervals apply the t formula to K finite values with K−1 degrees of freedom. This changes the estimand.
+- **P1:** any undefined repetition makes the full mean unavailable; all-defined results retain infinite loss. The full MCSE requires all 30 values finite. `finite_conditional_mean` and its MCSE use only K finite repetitions, dividing their SD by $`\sqrt K`$. Finite-report summaries are separately named and have another denominator.
+- **S1/S2:** full mean CIs require all repetitions finite. `finite_conditional` intervals apply the t formula to K finite values with $`K-1`$ degrees of freedom. This changes the estimand.
 - **D2 prediction:** full t intervals require all values finite; a finite-conditional mean and counts are saved, without a separate finite-conditional CI in that table.
 - **P2 bootstrap:** ordinary predictive intervals are not supplied when required paired losses are nonfinite or independent sampling units cannot be justified.
 - **G1:** finite report masks and finite repetition values determine descriptive summaries; all coverage and failure counts must accompany them.
