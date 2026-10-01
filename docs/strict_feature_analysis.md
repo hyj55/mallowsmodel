@@ -10,13 +10,17 @@ Two interventions distinguish overall noise from allocation among wrong orders.
 
 **Bridge:** for a∈{0,.25,.5,.75,1},
 
-$$P_a(Y\mid S)=(1-a)P_{SM}(Y\mid S)+aP_{PL}(Y\mid S).$$
+```math
+P_a(Y\mid S)=(1-a)P_{SM}(Y\mid S)+aP_{PL}(Y\mid S).
+```
 
 Expected inversions remain matched, but multiple probability features change together. Intermediate populations need not belong to either fitted family.
 
 **Fixed-shell intervention:** let d=dK(Y,π₀ restricted to S). For h∈{0,.5,1,2,4},
 
-$$P_h(Y\mid S)=P_{SM}(D=d\mid S)\frac{P_{PL}(Y\mid S)^h}{\sum_{Y':D(Y')=d}P_{PL}(Y'\mid S)^h}.$$
+```math
+P_h(Y\mid S)=P_{SM}(D=d\mid S)\frac{P_{PL}(Y\mid S)^h}{\sum_{Y':D(Y')=d}P_{PL}(Y'\mid S)^h}.
+```
 
 Every display retains its entire SM inversion-count distribution. h=0 is uniform within shells; increasing h favors PL-like allocation inside each shell. Pair marginals can change, so this is not a pure intervention on a single pair diagnostic. No empirical report is transformed this way.
 
