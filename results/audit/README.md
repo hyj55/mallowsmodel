@@ -1,6 +1,6 @@
 # Verification evidence
 
-[Validity and verification](../../docs/scientific_audit.md) · [Implementation registry](../../docs/history.md)
+[Validity and verification](../../docs/scientific_audit.md) · [Implementation registry](../../docs/implementation_registry.md)
 
 | File | Contents and scope |
 |---|---|
