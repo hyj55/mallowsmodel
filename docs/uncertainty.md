@@ -33,7 +33,9 @@ Fix trained SM and PL models. For T test reports compute dₜ=ℓSM,t−ℓPL,t 
 
 The interval is
 
-$$[Q_{.025}(\Delta^*_1,\ldots,\Delta^*_B),\ Q_{.975}(\Delta^*_1,\ldots,\Delta^*_B)],\qquad B=2000.$$
+```math
+[Q_{.025}(\Delta^*_1,\ldots,\Delta^*_B),\ Q_{.975}(\Delta^*_1,\ldots,\Delta^*_B)],\qquad B=2000.
+```
 
 A size-T draw contains repetitions and omissions; it is not a permutation of all T reports. Neither the ranking center, β nor PL worths is re-estimated in this bootstrap. Shell components and other report-level means use the same construction on their corresponding report contributions.
 
@@ -45,7 +47,9 @@ P2 uses one report per person in each Sushi task (T=1,000), dots2024 arm/size ta
 
 For cluster g, let Aᵍ=Σₜ∈g dₜ and Bᵍ be the number of scored reports. Draw G cluster IDs J₁,…,Jᴳ with replacement from the G held-out clusters, and calculate
 
-$$\Delta^*=\frac{\sum_{j=1}^{G}A^{J_j}}{\sum_{j=1}^{G}B^{J_j}}.$$
+```math
+\Delta^*=\frac{\sum_{j=1}^{G}A^{J_j}}{\sum_{j=1}^{G}B^{J_j}}.
+```
 
 Repeat 2,000 times and take percentile endpoints. Every report of a selected cluster travels together, including when the cluster is selected more than once. The ratio targets mean **report** loss; averaging cluster means with equal weights would target a different quantity when cluster sizes differ.
 
@@ -63,8 +67,10 @@ For each bootstrap draw, sample complete reports with replacement. A report's mu
 
 Residual intervals use the paired differences inside each draw:
 
-$$\gamma^*_{obs,b}-\gamma^*_{SM,b},\qquad
-\gamma^*_{obs,b}-\gamma^*_{PL,b}.$$
+```math
+\gamma^*_{obs,b}-\gamma^*_{SM,b},\qquad
+\gamma^*_{obs,b}-\gamma^*_{PL,b}.
+```
 
 They are not obtained by subtracting endpoints of separate intervals. If a draw has zero remaining within-cell gap variance, it is undefined. Only draws with all three finite slopes enter the quantiles, and `valid_bootstraps` records the count. With no original eligible variation the diagnostic is unavailable, not zero.
 
@@ -76,9 +82,11 @@ P2 uses B=2,000 where independent report units are supported. D2 uses B=499 **in
 
 For P1, let Dᵇ be the mean paired confirmation loss after fitting on partition b. The dataset is fixed; partition seeds are independently randomized. When all R=30 values are finite,
 
-$$\bar D=\frac1R\sum_bD^b,\qquad
+```math
+\bar D=\frac1R\sum_bD^b,\qquad
 s_D^2=\frac1{R-1}\sum_b(D^b-\bar D)^2,\qquad
-MCSE=\frac{s_D}{\sqrt R}.$$
+MCSE=\frac{s_D}{\sqrt R}.
+```
 
 This follows from Varpartition(D̄ | data)=Varpartition(D | data)/R for independent partition draws conditional on the observed data and specified fitting rules. Reusing people across partitions does not invalidate this **conditional Monte Carlo** target. It does prevent interpreting those R partitions as R independent collections of people.
 
@@ -96,7 +104,9 @@ These quantiles describe the spread of **individual split outcomes**, not uncert
 
 For a fixed generating law, catalogue, report size, training budget and estimator, obtain one scalar Zᵇ per independent generated repetition. Use
 
-$$\bar Z\ \pm\ t_{.975,R-1}\frac{s_Z}{\sqrt R}.$$
+```math
+\bar Z\ \pm\ t_{.975,R-1}\frac{s_Z}{\sqrt R}.
+```
 
 S1/S2 use R=40; D2 predictive means use R=200; S3 uses R=30 per specified generated cell (rounded duplicate exposure designs can yield 60). Pair SM and PL within each repetition **before** calculating a Δ interval. Discovery-budget comparisons also take within-repetition regret differences before calculating an interval across repetitions.
 
@@ -110,7 +120,9 @@ S1/S2 also use this t formula for some binary selector-correctness averages. Suc
 
 In D2, each independent repetition provides a binary event: positive detection, rejection of zero, rejection of the fitted SM slope, or correct model selection. If K repetitions have a defined event and x are successes, p̂=x/K. With z=Φ⁻¹(.975), the interval is
 
-$$\frac{\hat p+z^2/(2K)\ \pm\ z\sqrt{\hat p(1-\hat p)/K+z^2/(4K^2)}}{1+z^2/K}.$$
+```math
+\frac{\hat p+z^2/(2K)\ \pm\ z\sqrt{\hat p(1-\hat p)/K+z^2/(4K^2)}}{1+z^2/K}.
+```
 
 This is the inversion of the binomial score test, not a bootstrap over the 499 inner draws. It respects probability boundaries and avoids the zero-width Wald interval at zero observed events, but is still not an exact-coverage binomial interval. [Wilson score construction](https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm).
 
@@ -120,7 +132,9 @@ K is the metric's actual available count, not automatically 200. Thus rejection 
 
 For L1/L2 and related fixed-test empirical controls, multiple trained fits share a test set. First calculate the per-report average paired loss
 
-$$\bar d_t=\frac1R\sum_{b=1}^{R}(\ell_{SM,b,t}-\ell_{PL,b,t}),$$
+```math
+\bar d_t=\frac1R\sum_{b=1}^{R}(\ell_{SM,b,t}-\ell_{PL,b,t}),
+```
 
 then apply the 2,000-draw report bootstrap to the vector of d̄ values. L1 has R=5 for Beans/Sushi A and R=3 for Sushi B; L2 has R=5. These intervals condition on that fitted collection. They do not resample the training subsets or quantify outer-split variability. Averaging log losses is also different from scoring averaged probabilities.
 

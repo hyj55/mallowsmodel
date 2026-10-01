@@ -6,14 +6,18 @@
 
 A report is a strict complete ordering Y=(y₁,…,yᵣ) of its displayed set S. The selective Mallows model is
 
-$$P_{SM}(Y\mid S;\pi,\beta)=\frac{e^{-\beta d_K(Y,\pi|_S)}}{Z_r(\beta)},\qquad
-Z_r(\beta)=\prod_{j=1}^{r}\sum_{v=0}^{j-1}e^{-\beta v},\quad \beta\ge0.$$
+```math
+P_{SM}(Y\mid S;\pi,\beta)=\frac{e^{-\beta d_K(Y,\pi|_S)}}{Z_r(\beta)},\qquad
+Z_r(\beta)=\prod_{j=1}^{r}\sum_{v=0}^{j-1}e^{-\beta v},\quad \beta\ge0.
+```
 
 π is one catalogue-wide center; π restricted to S orders only that display. β=0 is uniform and large β concentrates around the center. The law is defined directly on S. Sampling a full n-item Mallows ranking and deleting unshown items is a different observation mechanism and is not the selective generator used here.
 
 With worths wᵢ=e^θᵢ>0, PL gives
 
-$$P_{PL}(Y\mid S;\theta)=\prod_{k=1}^{r}\frac{e^{\theta_{y_k}}}{\sum_{j=k}^{r}e^{\theta_{y_j}}}.$$
+```math
+P_{PL}(Y\mid S;\theta)=\prod_{k=1}^{r}\frac{e^{\theta_{y_k}}}{\sum_{j=k}^{r}e^{\theta_{y_j}}}.
+```
 
 A common shift of θ is unidentified; scale normalization changes no probabilities. Both laws can evaluate complete orders of different display sizes, but the reported experiments use separate fixed-r tasks, preserving each physical catalogue. A censored top-k report would require the full original display and summation over unseen tails, not these likelihoods on the retained k items alone.
 
@@ -23,11 +27,15 @@ The private manuscript *Selective Mallows Estimation from Uniform Partial Rankin
 
 Let Wᵢⱼ count training reports putting i ahead of j. Then
 
-$$\hat\pi\in\arg\min_{\pi}D(\pi),\qquad D(\pi)=\sum_{t=1}^{N}d_K(Y_t,\pi|_{S_t}).$$
+```math
+\hat\pi\in\arg\min_{\pi}D(\pi),\qquad D(\pi)=\sum_{t=1}^{N}d_K(Y_t,\pi|_{S_t}).
+```
 
 Pair counts are sufficient for this optimization; no pair independence assumption is introduced. For a set A, exact subset DP uses
 
-$$F(A)=\min_{i\in A}\left\{F(A\setminus\{i\})+\sum_{j\in A\setminus\{i\}}W_{ij}\right\},\quad F(\varnothing)=0,$$
+```math
+F(A)=\min_{i\in A}\left\{F(A\setminus\{i\})+\sum_{j\in A\setminus\{i\}}W_{ij}\right\},\quad F(\varnothing)=0,
+```
 
 with i placed last. The computational guard is n≤18. G1 batches the same recurrence and preserves its fixed tie priority.
 
@@ -48,7 +56,9 @@ Given any selected SM center, profile β by minimizing βD+N log Zᵣ(β). With 
 
 For a block B, qₜᵢ=(|B∩Sₜ|+1−2 rank of i within Yₜ restricted to B)1{i∈B∩Sₜ}. With Aᵢ its batch appearance count, the block score is
 
-$$s_i(B)=\operatorname{clip}_{[-|B|,|B|]}\left[\frac{n-1}{(r-1)A_i}\sum_tq_{ti}\right],$$
+```math
+s_i(B)=\mathrm{clip}_{[-|B|,|B|]}\left[\frac{n-1}{(r-1)A_i}\sum_tq_{ti}\right],
+```
 
 using zero when Aᵢ=0. Larger scores precede smaller scores. Sharp's exact terminal packing radius is φ=m·choose(m,2)/k for a block of m items and k extracted pairs; lexicographic greedy packing and seeded choices make permitted arbitrary choices reproducible.
 
@@ -58,7 +68,9 @@ The proof constants and schedule are not tuned to test performance. β₀=.1 is 
 
 P1/P2, G1, S1/S2 and D2 use Hunter's simultaneous, unaccelerated MM equation (30). If Vᵢ counts reports in which i is not last and Rₜₖ is the remaining set at stage k<r,
 
-$$w_i^{new}=\frac{V_i}{\sum_t\sum_{k<r:i\in R_{tk}}\left(\sum_{j\in R_{tk}}w_j\right)^{-1}}.$$
+```math
+w_i^{new}=\frac{V_i}{\sum_t\sum_{k<r:i\in R_{tk}}\left(\sum_{j\in R_{tk}}w_j\right)^{-1}}.
+```
 
 Updates normalize the common worth scale only. The observed directed win graph must support a unique finite MLE; disconnected or one-way-separated data are not repaired with pseudo-comparisons or item deletion. The fixed convergence criteria are maximum log-worth change <10⁻¹⁰ and gradient per report <10⁻⁸, with at most 100,000 iterations. Nonconvergence and failed existence checks remain unavailable. An independent optimizer used in tests verifies the likelihood, not an extra competing fitted method.
 

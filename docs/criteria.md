@@ -6,18 +6,24 @@
 
 For a fitted model f, test report t has loss
 
-$$\ell_{f,t}=-\log P_f(Y_t\mid S_t),\qquad
-L_f=\frac1T\sum_{t=1}^{T}\ell_{f,t}.$$
+```math
+\ell_{f,t}=-\log P_f(Y_t\mid S_t),\qquad
+L_f=\frac1T\sum_{t=1}^{T}\ell_{f,t}.
+```
 
 Natural logarithms give nats per report. Each complete report has equal weight within a task. The paired comparison is
 
-$$d_t=\ell_{SM,t}-\ell_{PL,t},\qquad \Delta=\frac1T\sum_t d_t.$$
+```math
+d_t=\ell_{SM,t}-\ell_{PL,t},\qquad \Delta=\frac1T\sum_t d_t.
+```
 
 Negative Δ favors SM. This score is used in every fitted empirical and simulation comparison. Different r values have different outcome spaces; raw loss or Δ magnitude is not a universal ranking of dataset suitability. The uniform-ranking reference has loss log(r!). No likelihood of the display-selection mechanism is included.
 
 Expected log loss is appropriate for probability prediction because, for a true conditional law p and candidate q,
 
-$$\mathbb E_p[-\log q(Y\mid S)]=H(p(\cdot\mid S))+\mathrm{KL}(p(\cdot\mid S)\Vert q(\cdot\mid S)).$$
+```math
+\mathbb E_p[-\log q(Y\mid S)]=H(p(\cdot\mid S))+\mathrm{KL}(p(\cdot\mid S)\Vert q(\cdot\mid S)).
+```
 
 Thus differences compare predictive distributions under the evaluation population. Winning does not establish that the winning family generated the data. A zero probability assigned to a possible test observation gives infinite loss and cannot be replaced by a finite score without changing the procedure.
 
@@ -25,7 +31,9 @@ Thus differences compare predictive distributions under the evaluation populatio
 
 S1 and D2 enumerate the finite support of displayed sets and their orderings. For each fitted predictor,
 
-$$L_f^{pop}=\sum_S p(S)\sum_{Y\in\mathfrak S(S)}p(Y\mid S)[-\log P_f(Y\mid S)].$$
+```math
+L_f^{pop}=\sum_S p(S)\sum_{Y\in\mathfrak S(S)}p(Y\mid S)[-\log P_f(Y\mid S)].
+```
 
 This is exact finite-state summation, subject to numerical precision. Training fits still vary across independent repetitions. S2 instead averages 2,000 independently generated test reports per repetition. S3 uses 2,000 test reports in the n=8/n=10 grids and 1,000 in the n=64 grid. Empirical tasks use their specified held-out reports. A diagnostic sample is not substituted for the exact population test distribution.
 
@@ -33,7 +41,9 @@ This is exact finite-state summation, subject to numerical precision. Training f
 
 With a known generating order π₀, the center error is
 
-$$d_K(\hat\pi,\pi_0)=\sum_{i<j}\mathbf1\{\hat\pi\text{ and }\pi_0\text{ disagree on }i,j\}.$$
+```math
+d_K(\hat\pi,\pi_0)=\sum_{i<j}\mathbf1\{\hat\pi\text{ and }\pi_0\text{ disagree on }i,j\}.
+```
 
 PL's estimated order sorts its worths. Some tables normalize by the maximum n(n−1)/2. Exposure tables also divide by the reference scale min{n(n−1)/2,n/λ}; this is a descriptive normalization, not a verified minimax constant. Center risk is averaged over independent simulated training draws.
 
@@ -45,8 +55,10 @@ The training objective is D(π)=Σₜd_K(Yₜ,π restricted to Sₜ). Benchmark 
 
 For training data, let Aᵢ=Σₜ1{i∈Sₜ} and Cᵢⱼ=Σₜ1{i,j∈Sₜ}. Report unseen items, observed pairs, minima/maxima, and
 
-$$\mu=\frac{Nr}{n},\qquad \lambda=\frac{Nr(r-1)}{n(n-1)},\qquad
-\hat p=\min_{i<j}\frac{C_{ij}}N.$$
+```math
+\mu=\frac{Nr}{n},\qquad \lambda=\frac{Nr(r-1)}{n(n-1)},\qquad
+\hat p=\min_{i<j}\frac{C_{ij}}N.
+```
 
 For fixed r, μ and λ are the actual catalogue-wide averages of appearance and pair counts. Under independent uniform subset sampling they also equal each item's/pair's expected count. They need not describe any particular item in nonuniform real data. Full item coverage, full pair coverage, and directed strong connectivity are different properties.
 
@@ -56,8 +68,10 @@ Coverage simulations additionally report μ/log(er), the uniform-design unseen e
 
 Orient a pair (i,j) according to a chosen reference center, and let z=1 if the report agrees. Let h be their position difference **within that center restricted to the displayed set**, not their gap in the entire catalogue. Then
 
-$$p_{SM}(h,\beta)=\frac{h+1}{1-e^{-(h+1)\beta}}-\frac{h}{1-e^{-h\beta}},\qquad
-p_{PL}(i,j)=\frac{e^{\theta_i}}{e^{\theta_i}+e^{\theta_j}}.$$
+```math
+p_{SM}(h,\beta)=\frac{h+1}{1-e^{-(h+1)\beta}}-\frac{h}{1-e^{-h\beta}},\qquad
+p_{PL}(i,j)=\frac{e^{\theta_i}}{e^{\theta_i}+e^{\theta_j}}.
+```
 
 At β=0, pSM=1/2; for h=1 it equals logistic(β). A pair extracted from a longer ranking may have h>1. For each pair, binary log loss is −z log p−(1−z)log(1−p); Brier loss is (z−p)². Average pairs **within each report** before averaging reports. The fitting likelihood remains listwise; these scores are diagnostics and discovery criteria.
 
@@ -69,13 +83,17 @@ ATP's strength profile bins |θᵢ−θⱼ| into [0,.5), [.5,1), [1,1.5) and [1.
 
 Fix the training SM center. Let d=D(Y)=d_K(Y,π restricted to S), and let aᵣ(d) count permutations at distance d. Define the PL shell probability QPL(d|S) by summing PL probabilities within the shell. The distribution
 
-$$Q_{sym}(Y\mid S)=Q_{PL}(D(Y)\mid S)/a_r(D(Y))$$
+```math
+Q_{sym}(Y\mid S)=Q_{PL}(D(Y)\mid S)/a_r(D(Y))
+```
 
 keeps PL's shell masses but makes its within-shell probabilities uniform. The exact identity is
 
-$$\ell_{SM}-\ell_{PL}
+```math
+\ell_{SM}-\ell_{PL}
 =\underbrace{\ell_{SM}-\ell_{sym}}_{\text{shell-mass contribution}}
-+\underbrace{\ell_{sym}-\ell_{PL}}_{\text{within-shell contribution}}.$$
++\underbrace{\ell_{sym}-\ell_{PL}}_{\text{within-shell contribution}}.
+```
 
 PL shell masses are computed by finite-state subset/polynomial recursion, not a frequency estimate from sparse test permutations. The two components are paired contributions to one loss difference, not independent causal effects. A positive within-shell component means PL's differentiated probabilities helped on those reports. This diagnostic is used for P2 PrefLib/dots2024 and PatrasIQ, P1 averages of those diagnostics, and the Beans/Sushi structural analyses under their specified regularized fits.
 
@@ -83,8 +101,10 @@ PL shell masses are computed by finite-state subset/polynomial recursion, not a 
 
 For a fixed pair, SM's marginal probability can change when its displayed-center gap changes; a single homogeneous PL model's pair probability does not. Define a cell c as a pair, or pair × recorded stratum. Keep cells with at least two distinct gaps each occurring at least twice. With within-cell means h̄c and z̄c,
 
-$$\hat\gamma=\frac{\sum_c\sum_{a\in c}(h_a-\bar h_c)(z_a-\bar z_c)}
-{\sum_c\sum_{a\in c}(h_a-\bar h_c)^2}.$$
+```math
+\hat\gamma=\frac{\sum_c\sum_{a\in c}(h_a-\bar h_c)(z_a-\bar z_c)}
+{\sum_c\sum_{a\in c}(h_a-\bar h_c)^2}.
+```
 
 The index a refers to a pair occurrence inside a report. Replacing z by pSM or pPL gives the predicted slope under the same exposures. The residuals are γobserved−γSM and γobserved−γPL. These are descriptive slopes, not parameters added to either ranking model.
 
@@ -98,7 +118,9 @@ S1 records exact structural summaries using the finite support. For each pair/di
 
 Within-shell nonuniformity is the display-averaged quantity
 
-$$\sum_d P(D=d\mid S)\,\mathrm{KL}\big(P(Y\mid D=d,S)\Vert\mathrm{Uniform}(a_r(d))\big).$$
+```math
+\sum_d P(D=d\mid S)\,\mathrm{KL}\big(P(Y\mid D=d,S)\Vert\mathrm{Uniform}(a_r(d))\big).
+```
 
 Mean inversions is E[D]. The shell intervention holds the full distribution of D fixed, not only this mean.
 
@@ -114,7 +136,9 @@ G1 reports both report-weighted (micro) and equal-group (macro) means. If group 
 
 The local-versus-reference change for a family is Llocal−Lreference. Relative sensitivity is
 
-$$I=(L_{SM,local}-L_{PL,local})-(L_{SM,reference}-L_{PL,reference}).$$
+```math
+I=(L_{SM,local}-L_{PL,local})-(L_{SM,reference}-L_{PL,reference}).
+```
 
 The four losses use exactly the same test reports with all four predictions finite. Negative I shifts the comparison toward SM; it need not mean either local model improves absolutely. Pooled and equal-budget matched-pool references answer different questions. Group-transfer tests use different held-out groups and are not report-paired with within-group tests.
 

@@ -27,7 +27,9 @@ Use equally likely displays S₁={0,1,2} and S₂={0,2,3}. Each report belongs t
 
 Within either group PL has no pair context effect. For the shared pair (0,2), the pooled agreement contrast between displays is exactly
 
-$$\rho\,[\operatorname{logistic}(1.6)-\operatorname{logistic}(.4)].$$
+```math
+\rho\,[\mathrm{logistic}(1.6)-\mathrm{logistic}(.4)].
+```
 
 Thus display/assessor association creates a pooled effect even though each group follows PL. Compare pair-only cells with pair × true-group cells using the same observations. These true group labels are used only for the diagnostic control; the fitted ranking models remain pooled.
 
