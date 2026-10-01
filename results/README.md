@@ -16,7 +16,7 @@ Read results by experiment, dataset, estimator, evaluation target and denominato
 | [Regularized prediction artifacts](https://github.com/hyj55/mallowsmodel/tree/89b21645d5f7eb463cc90c4e982c3a66ce805b41/results) | L1, S3 n=10, T1 Beans, C1 | `real_*`, `synthetic_*`, `beans_transfer_*`, `same_order_*`, `outer_fold_*`, diagnostic and optimization tables |
 | [Exposure and ATP artifacts](https://github.com/hyj55/mallowsmodel/tree/89b21645d5f7eb463cc90c4e982c3a66ce805b41/results/exposure) | L2, S3 exposure, T1 ATP, C1 | `small_*`, `coverage_*`, `real_*`, `tennis_*`, penalty and feasibility controls |
 
-The last two locations pin implementation `89b21645d5f7eb463cc90c4e982c3a66ce805b41`. They are part of the same study, with bounded/regularized procedures explicitly distinguished from unpenalized ones. [The learning chapter](../docs/learning_curves.md) and [implementation registry](../docs/history.md) locate their exact files and meanings.
+The last two locations pin implementation `89b21645d5f7eb463cc90c4e982c3a66ce805b41`. They are part of the same study, with bounded/regularized procedures explicitly distinguished from unpenalized ones. [The learning chapter](../docs/learning_curves.md) and [implementation registry](../docs/implementation_registry.md) locate their exact files and meanings.
 
 $`\Delta=\mathrm{NLL}(\mathrm{SM})-\mathrm{NLL}(\mathrm{PL})`$; negative favors SM. A fixed-fit bootstrap interval, independent-simulation t interval, Wilson rate interval, split percentile range and partition MCSE are different objects. No bootstrap endpoints are averaged to form P1 uncertainty. All unavailable/infinite/finite-conditional counts must accompany a comparison. [Definitions and formulas](../docs/uncertainty.md).
 

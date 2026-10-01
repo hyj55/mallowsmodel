@@ -1,6 +1,6 @@
 # Reproduction and verification
 
-[Study guide](../README.md) · [Experiment map](experiments.md) · [Implementation registry](history.md) · [Result dictionaries](../results/README.md)
+[Study guide](../README.md) · [Experiment map](experiments.md) · [Implementation registry](implementation_registry.md) · [Result dictionaries](../results/README.md)
 
 Choose the experiment and its matching implementation before running a command. Verification checks recorded evidence; fitting creates or replaces outputs. Use a separate checkout for a reproduction run. The published figures and tables are already computed, and editing their explanation does not require rerunning experiments.
 

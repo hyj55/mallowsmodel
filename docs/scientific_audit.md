@@ -1,6 +1,6 @@
 # Scientific validity and verification
 
-[Study design](experiments.md) · [Estimator definitions](algorithms.md) · [Uncertainty](uncertainty.md) · [Evidence registry](history.md)
+[Study design](experiments.md) · [Estimator definitions](algorithms.md) · [Uncertainty](uncertainty.md) · [Evidence registry](implementation_registry.md)
 
 The study separates three questions: whether a calculation matches its stated procedure, whether its inference assumptions fit the observation design, and whether a result supports a general scientific claim. Passing implementation checks does not establish the other two.
 

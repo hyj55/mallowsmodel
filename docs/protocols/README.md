@@ -1,6 +1,6 @@
 # Frozen design records
 
-[Experiment map](../experiments.md) · [Methods](../algorithms.md) · [Uncertainty](../uncertainty.md) · [Implementation registry](../history.md)
+[Experiment map](../experiments.md) · [Methods](../algorithms.md) · [Uncertainty](../uncertainty.md) · [Implementation registry](../implementation_registry.md)
 
 These records preserve design decisions and their timing. They remain byte-identical to the versions referenced by run manifests; they are evidence records rather than parallel reader guides. Use the linked study chapters for the integrated explanation and supported interpretation of results.
 
