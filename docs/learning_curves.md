@@ -39,6 +39,8 @@ All displays are sampled uniformly and independently and then ranked directly wi
 | S3 learning | n=10,r=3; SM, equal-gap PL, unequal-gap PL | 20,50,100,300 | 30 independent streams per law; nested training budgets and a shared fresh 2,000-report test within stream | Exact DP SM, bounded/shrunk β, tuned ridge PL; center benchmarks |
 | S3 small exposure | n=8; SM and matched PL | r=2: 2,4,8,16,28,56,112; r=4: 1,2,4,8,16,64; r=8: 1,2,8,32 | 30 fresh draws per cell, 2,000 independent test reports | Exact center, Sharp, efficient/Borda, ridge PL; raw/shrunk β |
 | S3 large exposure | n=64; r=2,8,32; SM and matched PL | Rounded exposure-derived budget defined below | 30 fresh draws per requested design, 1,000 independent test reports | Efficient/Borda with bounded/shrunk β and ridge PL; no exact center |
+| S1/S2 likelihood controls | n=8 or 32 | Multiple budgets in [the mechanism design](strict_feature_analysis.md) | 40 independent training draws per cell | Unbounded SM variants and unpenalized PL |
+| D2 diagnostic calibration | n=8,r=3 | 28 and 448 | 200 independent draws per law/budget | Exact SM and unpenalized PL |
 
 The large-exposure training budget is
 
@@ -46,8 +48,6 @@ The large-exposure training budget is
 N=\max\left(1,\mathrm{round}\left(\frac{\lambda_{\mathrm{target}}\,64\cdot63}{r(r-1)}\right)\right),
 \qquad\lambda_{\mathrm{target}}\in\{0.03,0.3,1,3\}.
 ```
-| S1/S2 likelihood controls | n=8 or 32 | Multiple budgets in [the mechanism design](strict_feature_analysis.md) | 40 independent training draws per cell | Unbounded SM variants and unpenalized PL |
-| D2 diagnostic calibration | n=8,r=3 | 28 and 448 | 200 independent draws per law/budget | Exact SM and unpenalized PL |
 
 The n=10 design has 90 independent law/repetition streams and 360 budget-specific training/evaluation contexts. Its four budgets reuse each stream; they are not 360 independent source draws. Small/large exposure grids have 1,020 and 720 independent datasets, respectively. Rounding can map two requested n=64,r=32 exposure targets to N=1; their independent streams produce 60 repetitions in the corresponding merged table cell.
 
