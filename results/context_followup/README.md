@@ -1,15 +1,17 @@
-# Context follow-up outputs
+# Wheat diagnostics and SP-Rank design audit
 
-The real-data files here retain the original single split. Their repeated-refit averages are in [repeated_holdout](../repeated_holdout/README.md); simulations and source-only audits in this directory are unchanged.
+[Observation design](../../docs/context_followup.md) · [Wheat fields](../../data/wheat.md) · [Screened data](../../data/screening.md) · [Uncertainty](../../docs/uncertainty.md)
 
-[Current report](../../docs/context_followup.md). Original rankings and fit point estimates are unchanged. Earlier cluster intervals and village-adjusted estimates are withdrawn under the [audit amendment](../../docs/protocols/AUDIT_AMENDMENT.md).
+Wheat uses one specified P2 partition and all 493 source reports. CI fields and the village-adjusted statistic are unavailable because identities do not support the required clustering assumptions. P1's repeated wheat means are in [repeated_holdout](../repeated_holdout/README.md). SP-Rank receives an observation-design audit and no model fit.
 
-- `scores.csv`: all methods/statuses; conditional NLL; CI fields unavailable because sampling-unit identity is missing.
-- `context.csv`: descriptive unadjusted slopes and support counts; village-adjusted analysis unavailable, with explicit status.
-- `coverage.json`: catalog, display counts, exposure and missing village information.
-- `splits.csv`: source row and split indices; village=-1 means missing metadata, never an inferential cluster.
-- `parameters.json`: fitted centers, dispersions, worths and convergence metadata.
-- `sprank_audit.csv`: every cohort/domain task, including zero objective-gap variation.
-- `validation.json`: current audit checks; the former cluster-validation record is in Git history.
+| File | Contents |
+|---|---|
+| `scores.csv` | Five candidate statuses on both held-out partitions; whole-ranking NLL and paired difference; unsupported interval fields empty |
+| `context.csv` | Unadjusted slopes, eligible pairs and occurrence counts; explicit unavailable village-adjusted status |
+| `coverage.json` | Catalogue, displays, exposure and missing-village counts |
+| `splits.csv` | Source row/split indices; village=−1 denotes missing metadata, never one inferential cluster |
+| `parameters.json` | Centers, dispersion, worths and optimizer metadata |
+| `sprank_audit.csv` | Every cohort/domain task and its count of changing objective-gap pairs |
+| `validation.json` | Source, calculation and supported-interval checks |
 
-Run `python run_context_followup.py`. Raw inputs are downloaded by immutable URL and checked against data/context_followup_sources.json. No source rankings are rehosted.
+Reproduce with `python run_context_followup.py` under [the shared guide](../../docs/reproducibility.md). Raw inputs are verified against `data/context_followup_sources.json`; no source rankings are rehosted.

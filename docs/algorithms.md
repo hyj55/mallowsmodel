@@ -1,65 +1,83 @@
-# Algorithm and inference contract
+# Models, estimators and admission rules
 
-This is the authoritative method specification for the current repository. Historical variants are documented through [History](history.md), not exposed as alternative defaults.
+[Experiment map](experiments.md) · [Evaluation](criteria.md) · [Uncertainty](uncertainty.md) · [References](references.md)
 
-## Relation to the supplied manuscript
+## Observation law
 
-The current study fits the direct subset law P(Y|S). It never obtains selective Mallows observations by deleting items from a sampled full ranking. Pair counts are sufficient for the center objective; using them does not assume the induced pairs are independent.
+A report is a strict complete ordering Y=(y₁,…,yᵣ) of its displayed set S. The selective Mallows model is
 
-The manuscript's **Algorithm 4.1 is a regularized predictive protocol**: step 2 prespecifies a dispersion bound/penalty, step 3 uses Proposition 4.3's regularized listwise PL objective. Its Proposition 4.2 also describes the unbounded profile MLE. Therefore the present unbounded-SM/unpenalized-PL study is an explicitly chosen experimental variant using original estimators, not a claim to replicate all of Algorithm 4.1. Regularization is not inherently unscientific or contrary to that manuscript; undisclosed estimator changes would be.
+$$P_{SM}(Y\mid S;\pi,\beta)=\frac{e^{-\beta d_K(Y,\pi|_S)}}{Z_r(\beta)},\qquad
+Z_r(\beta)=\prod_{j=1}^{r}\sum_{v=0}^{j-1}e^{-\beta v},\quad \beta\ge0.$$
 
-## Published estimator mapping
+π is one catalogue-wide center; π restricted to S orders only that display. β=0 is uniform and large β concentrates around the center. The law is defined directly on S. Sampling a full n-item Mallows ranking and deleting unshown items is a different observation mechanism and is not the selective generator used here.
 
-| Method | Source and implementation | Limitations |
+With worths wᵢ=e^θᵢ>0, PL gives
+
+$$P_{PL}(Y\mid S;\theta)=\prod_{k=1}^{r}\frac{e^{\theta_{y_k}}}{\sum_{j=k}^{r}e^{\theta_{y_j}}}.$$
+
+A common shift of θ is unidentified; scale normalization changes no probabilities. Both laws can evaluate complete orders of different display sizes, but the reported experiments use separate fixed-r tasks, preserving each physical catalogue. A censored top-k report would require the full original display and summation over unseen tails, not these likelihoods on the retained k items alone.
+
+The private manuscript *Selective Mallows Estimation from Uniform Partial Rankings: Minimax Kendall Risk, Efficient Algorithms, and Likelihood Comparisons* supplies the SM construction and estimators. Its Section 4 also specifies regularized prediction in Algorithm 4.1. The study therefore labels its unpenalized and bounded/regularized procedures explicitly; sharing the SM law is not a claim that every experiment reproduces every step of that algorithm.
+
+## Exact center and dispersion
+
+Let Wᵢⱼ count training reports putting i ahead of j. Then
+
+$$\hat\pi\in\arg\min_{\pi}D(\pi),\qquad D(\pi)=\sum_{t=1}^{N}d_K(Y_t,\pi|_{S_t}).$$
+
+Pair counts are sufficient for this optimization; no pair independence assumption is introduced. For a set A, exact subset DP uses
+
+$$F(A)=\min_{i\in A}\left\{F(A\setminus\{i\})+\sum_{j\in A\setminus\{i\}}W_{ij}\right\},\quad F(\varnothing)=0,$$
+
+with i placed last. The computational guard is n≤18. G1 batches the same recurrence and preserves its fixed tie priority.
+
+For larger catalogues, a binary linear-order formulation uses xᵢⱼ=1 when i precedes j, minimizes Σᵢ<ⱼ[Wᵢⱼ+(Wⱼᵢ−Wᵢⱼ)xᵢⱼ], and imposes 0≤xᵢⱼ+xⱼₖ−xᵢₖ≤1 for i<j<k. P1/P2 accept an exact center only when an independently checked feasible objective and integer lower bound coincide within the declared numerical rules. The time budget is 120 seconds. HiGHS solves the integral formulation of [Conitzer et al.](references.md), not their original CPLEX runtime experiment. An uncertified incumbent is unavailable for the exact comparison; tied optima may choose different centers.
+
+Given any selected SM center, profile β by minimizing βD+N log Zᵣ(β). With d̄=D/N, the unbounded profile solves Eβ[dK]=d̄, with β=∞ when d̄=0 and β=0 when d̄≥r(r−1)/4. Finite roots use tolerance 10⁻¹². The same profile is used after exact, Sharp, efficient, Fotakis and clipped-Borda centers in the unpenalized experiments. Infinite predictive losses remain recorded.
+
+## Score, sieve and majority estimators
+
+| Estimator | Construction and role | Scope/admission |
 |---|---|---|
-| SM exact center DP | Manuscript Proposition 4.1: F(A)=min_i[F(A minus i)+sum_{j in A minus i} W_ij], backtrack last items | n<=18 computational guard; data-independent tie priority |
-| Larger exact center | Conitzer, Davenport & Kalagnanam (2006), integer version of LP3, objective equal to total Kendall disagreement | HiGHS replaces their CPLEX 9.1 backend; certified optimum only; no original-runtime/solver-trajectory replication |
-| SM dispersion | Manuscript Proposition 4.2 on [0,infinity]; solve expected inversions=observed mean | beta=infinity and infinite test loss retained; no cap or shrinkage |
-| Sharp | Algorithm 2.1, Lemma 2.11, equations (3.22–3.23) | Literal constants and schedule; exact sieve limited to block size 8; no substitution |
-| Efficient | Algorithms 3.1/3.2, equations (3.4), (3.22–3.23) | lambda<=1 schedule domain; direct entry point now rejects larger lambda; all recorded successful fits have depth zero |
-| Clipped Borda | Equation (3.4) with the full catalog | Separate score estimator, not an MLE or a renamed hierarchy outside its domain |
-| PL | Hunter (2004), Section 5, simultaneous unaccelerated MM equation (30) | Requires a unique finite MLE; no penalty, pseudo-comparison, component deletion or rank breaking |
+| Sharp | Manuscript Algorithm 2.1: proof-constant localization/pilot, one orientation-independent uniformly selected pair per report/block, exact greedy permutation sieve and disagreement minimization | Exact terminal blocks limited to eight items; larger required blocks return unavailable. Fresh pilot and terminal reports are disjoint |
+| Efficient | Algorithms 3.1/3.2: clipped block scores, fresh batches, padded blocks and accumulated offsets, then terminal ordering | Unpenalized entry point requires λ≤1; insufficient feasible schedule falls back as specified to global scores. Every recorded successful fit has depth zero |
+| Clipped Borda | Full-catalogue version of manuscript equation (3.4), sorted by normalized score | A scalable separate center baseline; no silent relabeling as an active multilevel hierarchy |
+| Fotakis / PosEst | Algorithm 1 of Fotakis et al. (2021): majority-predecessor counts, ascending score order, seeded final ties | G1 requires every unordered pair observed; records p̂=min Cᵢⱼ/N. Equality counts as a predecessor in both directions |
+| Insertion | Local moves minimizing the same D objective from specified starts | A declared approximation in L1/L2/T1/C1; not used to fill missing exact results in P1/P2 |
+| Greedy MAL specialization | Equal-reliability ordinal aggregation heuristic | C1 center-objective benchmark; not a separate probability law |
 
-Sharp pair extraction selects one uniform unordered pair from each displayed block intersection using randomness independent of orientation. Its sieve uses phi=m*choose(m,2)/k and a fixed lexicographic greedy packing at distance greater than phi; disagreements are minimized **over that sieve**, not all permutations. Pilot reports and subsequent reports are disjoint. Arbitrary choices permitted by the manuscript are fixed before outcomes; they are not tuned to improve test loss.
+For a block B, qₜᵢ=(|B∩Sₜ|+1−2 rank of i within Yₜ restricted to B)1{i∈B∩Sₜ}. With Aᵢ its batch appearance count, the block score is
 
-The score hierarchy uses original whole reports, batch-local appearance denominators, padded cores and accumulated offsets. The test with manually supplied small hierarchy stages checks bookkeeping only; it is **not** an experiment with changed proof constants and supplies no multilevel statistical evidence.
+$$s_i(B)=\operatorname{clip}_{[-|B|,|B|]}\left[\frac{n-1}{(r-1)A_i}\sum_tq_{ti}\right],$$
 
-For PL, if W_i counts reports placing i above last, each simultaneous update is
+using zero when Aᵢ=0. Larger scores precede smaller scores. Sharp's exact terminal packing radius is φ=m·choose(m,2)/k for a block of m items and k extracted pairs; lexicographic greedy packing and seeded choices make permitted arbitrary choices reproducible.
 
-\[
- w_i^{new}=\frac{W_i}{\sum_t\sum_{k<r:\ i\in R_{tk}}1/\sum_{j\in R_{tk}}w_j},
-\]
+The proof constants and schedule are not tuned to test performance. β₀=.1 is a real-data schedule input, not an established lower bound on a real population signal; simulations use .8. Numerical λ≤1, full item coverage or μ/log(er)>1 do not verify the sufficient unknown constant, independent reports, uniform displays or a true SM law.
 
-followed only by normalization of the unidentified common worth scale. R_tk is the remaining set at choice stage k. Fixed log-worth change tolerance=1e-10, gradient/report threshold=1e-8, maximum=100000 iterations. Nonconvergence is unavailable, not a new early-stopping estimator. The published update is also checked against an independent likelihood optimizer; that optimizer is a test oracle, not the fitted PL algorithm.
+## Unpenalized PL
 
-The integer formulation eliminates antisymmetric variables algebraically: x_ij=1 means i precedes j for i<j, objective=sum_{i<j}[W_ij+(W_ji-W_ij)x_ij], and 0<=x_ij+x_jk-x_ik<=1. Feasible integer solutions are total orders. The backend's numerical lower bound and a verified feasible upper bound must certify the same integer objective; an incumbent alone is never used. Different solvers can choose different tied optima, so a stored fit is **one** certified MLE, not proof all MLEs predict identically. We report the actual center and do not compare runtime with the original paper.
+P1/P2, G1, S1/S2 and D2 use Hunter's simultaneous, unaccelerated MM equation (30). If Vᵢ counts reports in which i is not last and Rₜₖ is the remaining set at stage k<r,
 
-## Conditions and what cannot be claimed
+$$w_i^{new}=\frac{V_i}{\sum_t\sum_{k<r:i\in R_{tk}}\left(\sum_{j\in R_{tk}}w_j\right)^{-1}}.$$
 
-Training lambda=Nr(r-1)/(n(n-1)); mu=Nr/n. Numeric lambda<=1 alone establishes neither the sufficient mu condition nor uniform independent displayed sets. The manuscript's sufficient constants are used without finite-sample retuning. On real data beta0=.1 is a fixed schedule input, not an established lower bound on the true signal. Simulations use beta0=.8. No true latent center is supplied for preference datasets; objective dot/puzzle answers are a different reference.
+Updates normalize the common worth scale only. The observed directed win graph must support a unique finite MLE; disconnected or one-way-separated data are not repaired with pseudo-comparisons or item deletion. The fixed convergence criteria are maximum log-worth change <10⁻¹⁰ and gradient per report <10⁻⁸, with at most 100,000 iterations. Nonconvergence and failed existence checks remain unavailable. An independent optimizer used in tests verifies the likelihood, not an extra competing fitted method.
 
-Exact likelihood maximization does not establish minimax Kendall risk. Sharp is not an approximate MLE. Infinite SM predictive loss and nonfinite/nonunique PL MLEs are substantive outcomes. Finite-run averages condition on finiteness when applicable; they do not establish finite unconditional expected plug-in log loss.
+## Bounded and regularized predictive procedures
 
-## Data and uncertainty
+L1/L2/S3/T1 and related C1 controls use explicit variants stored with their implementation snapshot. SM profiles β on [0,10]. A separate predictor uses αβ, with α selected on inner validation from {0,.25,.5,.75,1}, holding the final center fixed. Both unshrunk and shrunk results are recorded.
 
-Keep full original reports and catalogs. Preserve ties as ties; do not turn them into strict rankings. Sources requiring invalid-report deletion fail whole-task eligibility. Lossless decoding and one fixed train/discovery/test partition do not alter within-report preferences. Simulated bridges and shell tilts are declared generating laws, never transformations of real data.
+Ridge PL minimizes the summed listwise NLL plus (τ/2)Σᵢθᵢ², under the implementation's worth normalization. L1 tunes τ over {.01,.1,1,10,100}, refits on all N development reports, and records a τ=10⁻⁶ sensitivity separately. L2/S3 exposure/T1 use {.1,1,10}; fixed τ=1 and 10 sensitivities are separately identified. When N<5 in the exposure procedure, no validation is attempted: τ=1 and α=.5 are fixed. These variants assess predictive regularization and do not supply an unpenalized MLE comparison.
 
-Synthetic intervals use independent training repetitions. Real predictive intervals use paired bootstrap sampling of documented independent units, conditional on training. Earlier anonymous PrefLib Dots/Puzzle and Beans data receive no inferential intervals because the export does not establish those units. The new PatrasIQ metadata explicitly documents one report per person per task, so report resampling is used within each task even though identities are anonymous; it does not establish independence between its two tasks. Sounds retains source assessor IDs and resamples whole assessors. Missing wheat village IDs are not imputed or grouped into a fabricated village. Its NLL and unadjusted context slope are descriptive only; the village-adjusted diagnostic is unavailable. Unavailable results are not zeros.
+The efficient-center variant in the regularized exposure implementation starts the schedule at min(λ,1), including λ>1 designs. Those rows are an empirical extension outside the manuscript schedule domain; their labels do not establish theorem applicability. All its executed hierarchies are also depth zero. C1's ordering constraints on PL and the converse SM-on-PL-order fit are specified [with those controls](structural_controls.md).
 
-The within-pair slope and shell decomposition are our exploratory diagnostics, not estimators proposed in the manuscript. They help interpret a particular fitted comparison; they establish neither causal effects nor a universally valid selection rule.
+## Which methods are admitted where?
 
-The [additional validation](validation_extension.md) tests the existing context percentile bootstrap without changing it. It fails badly in the severe-confounding, small-budget cell with sparse within-group overlap. Its real-data context intervals are therefore exploratory, not uniformly valid model-family tests. This calibration finding concerns the context statistic, not the separate whole-ranking NLL bootstrap. Center and dispersion estimation error can also produce rejection of a fitted SM prediction even when the generating family is SM.
+[The empirical allocation table](experiments.md#estimator-allocation-by-empirical-dataset) gives every dataset family. The simulation grids specify methods in [S1/S2](strict_feature_analysis.md), [S3](learning_curves.md#simulation-learning-and-exposure-grids), and [D2](validation_extension.md).
 
-## Group-sensitivity follow-up (27 September 2026)
+G1 applies additional training-only checks: every SM candidate needs all catalogue items observed; Fotakis needs every pair observed; Sharp/efficient are excluded for λ>1; n≤8 uses Sharp where admitted and does not duplicate an efficient fallback; n>8 records Sharp unavailable and permits the efficient fallback where its domain holds. Exact DP needs no full-pair-coverage assumption, but G1 conservatively excludes unseen items. PL retains its own directed-connectivity rule.
 
-The separately frozen [repeated-group protocol](protocols/GROUP_SENSITIVITY_20260927.md) adds Fotakis et al. (2021) Algorithm 1 PosEst. It counts majority predecessors, includes pair-count ties for both alternatives, and breaks final positional ties using a fixed seeded random priority. A fit is admitted only when every unordered pair co-occurs in training; the empirical minimum frequency is recorded. This is a center estimator, not an MLE or their localized MLE algorithm. Its fitted dispersion uses the unchanged profile likelihood.
+P1/P2 mechanically attempt Sharp where its sieve can be computed, including dense n=4 tasks; those rows do not claim a sparse-theorem guarantee. This deliberate policy difference is part of the experiment specification. No estimator is selected because it won on the confirmation data.
 
-`src/group_sensitivity.py` batches the existing exact subset-DP recurrence by subset cardinality and caches repeated dispersion roots. Tests compare the entire resulting order, including ties, against the existing implementation and exhaustively check small-instance optima. These are arithmetic optimizations, not approximate optimization, early stopping, or changed likelihoods. Earlier pipelines and estimators are unchanged.
+## Status and reference conventions
 
-For this follow-up only, the user's applicability requirement is implemented conservatively: sharp/efficient fits outside the theorems' lambda<=1 regime are excluded from the new comparison, even though Sharp can mechanically return an order outside that region. This does not retroactively redefine earlier sharp fits as computationally invalid. Within the sparse regime, an unavailable exact sharp sieve may use the explicitly authorized Section 3 fallback. The actual branch is logged; a depth-zero result supplies no evidence for an active hierarchy. Numeric coverage thresholds do not establish the unknown C0, true signal bound, independent observations or uniform selection assumptions.
-
-The within-assessor experiment deliberately predicts new reports of known assessors; the separate whole-assessor holdout predicts new people. Neither repeated split percentiles nor recovered stimulus-set identities supply missing independent sampling units. All within-trial Puzzle/Dots comparisons remain descriptive.
-
-## References
-
-[Manuscript and published algorithm references](references.md). The private manuscript is not redistributed. This code is a mathematical implementation, not an author-supplied implementation or a certification of the paper's theorems.
+Read algorithm, branch/depth, solver certificate, boundary status and availability alongside the method label. A fallback is identified by its actual branch. External dot counts, solution steps and city answers are used only for reference diagnostics, not supplied as the fitted latent center. The study provides neither an active-hierarchy performance result nor a theorem certificate for arbitrary real-data sampling designs.

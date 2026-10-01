@@ -1,10 +1,10 @@
-# Additional-source and mechanism validation outputs
+# Diagnostic calibration and Sounds/PatrasIQ files
 
-The real-data files here retain the original single split. Their repeated-refit averages are in [repeated_holdout](../repeated_holdout/README.md); simulations and source-only audits in this directory are unchanged.
+[D2 design](../../docs/validation_extension.md) · [P2 fixed prediction](../../docs/baseline_replacement.md) · [Sources](../../data/sounds_patras.md) · [Uncertainty](../../docs/uncertainty.md)
 
-Read [the English report](../../docs/validation_extension.md) first. This directory adds three original real tasks and 1,400 independent synthetic training datasets. It does not overwrite earlier studies. Both design commits preceded fitting; see the manifests and [protocols](../../docs/protocols/README.md).
+This directory contains 1,400 independent synthetic training datasets for diagnostic calibration/confounding and fixed-partition prediction for Sounds and both PatrasIQ tasks. It also records Beaches' pre-fit exclusion. P1's 30-partition estimates for these empirical tasks are in [repeated_holdout](../repeated_holdout/README.md).
 
-Run `python validation_artifacts.py` from the repository root to restore the three large files below. They are stored in `artifacts/` as lossless ZIP parts to avoid the stalled large-file upload. The manifest checks every part and the exact original file bytes; no data or numerical result changes. Other tables are directly readable on GitHub.
+Run `python validation_artifacts.py` from the repository root to restore the three large files below. They are stored in `artifacts/` as lossless ZIP parts for byte-verified distribution. The manifest checks every part and the exact original file bytes; no data or numerical result changes. Other tables are directly readable on GitHub.
 
 | File | Contents |
 |---|---|

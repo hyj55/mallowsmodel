@@ -1,42 +1,41 @@
-# Scientific audit and corrections
+# Scientific validity and verification
 
-**26 September 2026 UTC / 25 September New York.** Audited the actual GitHub snapshot 89b21645d5f7eb463cc90c4e982c3a66ce805b41 against the supplied manuscript's Sections 2–4, the cited integer formulation, the implementation and original-data manifests. This is a retrospective audit, not a new independent study.
+[Study design](experiments.md) · [Estimator definitions](algorithms.md) · [Uncertainty](uncertainty.md) · [Evidence registry](history.md)
 
-**Answer to the user's question:** not every earlier experiment met the current standard. The active pipeline now separates original estimators, exact optimization and exploratory diagnostics; earlier modified pipelines are accessible only in Git history. No result is called compliant merely because its filename contains strict.
+The study separates three questions: whether a calculation matches its stated procedure, whether its inference assumptions fit the observation design, and whether a result supports a general scientific claim. Passing implementation checks does not establish the other two.
 
-## Findings and actions
+## Interpretation safeguards
 
-| Audit issue | What was actually done | Correction / consequence |
-|---|---|---|
-| Early fitting pipeline | beta cap, optional shrinkage, PL ridge, large-center insertion heuristics | Removed from current runnable comparison; Beans/Sushi rerun under a frozen unpenalized protocol |
-| Section 4 attribution | Current unpenalized study described too broadly as literal manuscript replication | Algorithm 4.1 explicitly uses prespecified boundary treatment and regularized PL; current study is a declared variant using original estimator definitions and Hunter MM |
-| Large-n center MLE | Conitzer integral LP3 with HiGHS, not original CPLEX 9.1 | Retain as certified exact-optimization benchmark; no original solver/runtime reproduction claim; disclose possible tied MLEs |
-| Efficient estimator entry point | Shared legacy function capped lambda at 1; strict wrapper already rejected lambda>1 | Removed cap and enforce rejection at both interfaces; recorded successful strict fits unchanged |
-| Sharp estimator | Literal pair extraction and exact greedy sieve only up to block size 8 | Retain unavailable status above limit; do not replace by MLE or claim an untested computational implementation |
-| PrefLib uncertainty | Anonymous records bootstrapped despite missing assessor identities | Withdraw all associated inferential intervals and significance claims; retain descriptive point comparisons |
-| Wheat uncertainty | Missing village IDs pooled into an artificial bootstrap block | Remove that convention, its intervals and village-adjusted inference; keep all records and unadjusted point values |
-| Shared helper APIs | Obsolete capped/penalized/heuristic fitters remained callable alongside current fits | Remove obsolete fitting APIs and clipped diagnostic probability helper; one active fitter module |
-| Data validation | Integer conversion could silently truncate noninteger labels | Reject noninteger inputs; original datasets already use integer item IDs, so fitted values do not change |
-| Repository presentation | Historical and current instructions/reports/results coexisted | One current README, algorithm contract, reproduction guide and result index; old full snapshot linked in History |
+| Issue | Treatment and remaining limitation |
+|---|---|
+| Different predictive procedures | Unbounded SM/unpenalized PL and bounded/shrunk SM/ridge PL are named separately. Both belong to the study, but their results are not pooled as one estimator |
+| Manuscript scope | SM laws and specified estimators follow the supplied manuscript; an unpenalized comparison is a declared variant of its regularized Section 4 prediction procedure |
+| Exact center | DP is exact within its guard; larger instances need a checked optimum certificate. A timed-out incumbent is unavailable in exact comparisons |
+| Approximate center | Insertion and bounded optimization in L1/L2/T1/C1 are explicitly labeled; their training bounds do not certify test performance |
+| Estimator theorem domain | Uniform display sampling, independent reports, signal lower bounds and sufficient sample-size constants are not verified merely by numeric λ/μ. Recorded efficient fits have hierarchy depth zero |
+| Anonymous records | Beans, PrefLib and wheat do not support verified independent-person intervals. Their P2 interval fields are unavailable; fixed point values and descriptive split summaries remain usable |
+| Missing village identities | Wheat's missing labels are not treated as one cluster. Village-adjusted inference is unavailable |
+| Repeated participants | Sounds splits and resamples people. Other shared-participant tasks are analyzed separately; their conclusions are not independent study replications |
+| Nonfinite outcomes | Undefined estimates, infinite losses and finite-conditional summaries have separate counts and targets |
+| Diagnostic calibration | D2 documents confounding and sparse-overlap bootstrap failure. Nominal context intervals are exploratory |
+| Many comparisons | No multiplicity or source-search adjustment is claimed |
 
-Regularization is not intrinsically unscientific: the manuscript itself includes it. The issue is specifying the estimator honestly, following its definition, and not letting undisclosed modifications determine a scientific conclusion. Likewise exact algebraic reformulation and numerical tolerances do not by themselves modify a statistical objective, but do not establish replication of every implementation detail.
+## Corrections preserved in the evidence record
 
-## Recomputed and verified
+The frozen [audit amendment](protocols/AUDIT_AMENDMENT.md) withdraws independent-record or artificial-village inference where sampling units cannot be justified. It does not repair a source ranking, delete an inconvenient response or change a fitted point value. Some immutable result snapshots therefore contain interval columns whose inferential interpretation is superseded by [the uncertainty guide](uncertainty.md).
 
-- Refit **all 16 strict real tasks and wheat**, with original data and unchanged membership/seeds. **All centers, beta values, PL worths, fit statuses and NLL point values match** the saved earlier fits to numerical tolerance. The 90 compared result rows include both held-out wheat splits, not 90 independent studies. [Replay comparison](../results/audit/refit_comparison.json).
-- Refit **Beans, Sushi A and Sushi B** after [freezing the replacement protocol](protocols/BASELINE_REPLACEMENT.md). All original reports retained. Sushi B now has a certified global MLE with objective 45,149. Its interval and Sushi A's interval span zero; Beans is descriptive only. [Results](baseline_replacement.md).
-- Existing **4,760 synthetic training samples** are retained, not rerun or counted again. The mathematical helpers used there are unchanged on admitted inputs. Tests verify noise/shell controls, independent MM optimization, exhaustive small-n center optima, sieve separation/coverage, orientation-independent pair sampling and boundary failures. All successful recorded Section 3 fits have depth zero.
-- Full raw source checksum validation and saved-fit prediction replay are included. No source ranks were modified to produce a model advantage. New uncertainty suppression changes reported evidence, not an estimator or a source observation.
+The implementation rejects noninteger item labels rather than silently truncating them. The unpenalized efficient entry point rejects λ>1; exposure simulations that deliberately cap that schedule are documented as a separate empirical extension. Neither change establishes that a real population satisfies the manuscript assumptions.
 
-See [machine-readable validation](../results/audit/validation.json). It records the actual checks performed, rather than asserting that tests prove every future input correct. Frozen protocols remain unedited historical records; [the audit amendment](protocols/AUDIT_AMENDMENT.md) explicitly supersedes the affected inference provisions.
+## Checks on numerical results
 
-## Current defensible conclusions
+Source hashes and parser checks preserve original strict reports, complete catalogues and multiplicities. Original voting-trial frequencies exactly reconcile with all eight PrefLib tasks. Split checks verify disjoint memberships, documented person/group boundaries and shared task alignments. Mathematical tests cover small-state normalization, pair marginals, shell recursion, exact center optimization and PL likelihood optimization.
 
-1. Controlled simulations show a model-winner reversal as within-shell error allocation changes with all shell masses fixed.
-2. Puzzle 2 remains an SM-favorable **descriptive** example. Its earlier interval-based support is withdrawn. Two identified-participant partial-dots tasks retain PL-favorable conditional intervals; source/task dependence and training uncertainty still limit generalization.
-3. The specific positive real-data SM context effect remains unconfirmed. Wheat is too weakly supported and incompletely grouped for such an inference; SP-Rank lacks the targeted objective-gap variation.
-4. No claim of MLE minimax optimality, a successful active Section 3 hierarchy comparison, or universally correct feature-based model selection follows.
+The [refit comparison](../results/audit/refit_comparison.json) checks 16 PrefLib/dots2024 tasks plus wheat against saved fitted parameters and predictions; all centers, dispersion/worth values and point losses agree to the recorded tolerance. Its 90 rows include both wheat held-out partitions and are not 90 independent studies. The group and repeated-partition validators replay saved memberships and parameters and recompute published aggregates. Such replay is verification, not another training repetition.
 
-This audit corrects earlier overly broad assurances of strict replication. [Algorithm details](algorithms.md), [all references](references.md), [historical snapshot](history.md).
+The D2 archive contains 1,400 generated datasets and their parameters. A completeness check recovered ten omitted parameter-log records from the original fixed seeds; their already stored fit/diagnostic values agreed before append. No extra datasets or favorable reruns were added. Archive-part checks restore the exact recorded bytes. [Storage and replay details](../results/validation_extension/README.md).
 
-Subsequent work is recorded separately in [additional data and mechanism validation](validation_extension.md). It adds three empirical tasks without changing the audited estimators and identifies limits of the context diagnostic. Its PatrasIQ report intervals are supported by newly verified one-report-per-person source metadata; the older Dots/Puzzle interval withdrawal remains in force.
+## What repository verification does
+
+The read-only workflow runs tests, restores lossless generated-data archives and checks public output hashes, counts and aggregations. It does not refit the full experiment or publish new outputs on a documentation change. Full source/prediction replay is a separate local check, and some detailed empirical caches must be regenerated from permitted source downloads. [Reproduction commands](reproducibility.md) distinguish these levels.
+
+Remaining limits are substantive: unknown cross-trial identities, nonuniform displays, dependence between tasks and years, data-dependent source selection, computational certificate limits, and conditional rather than full-learning-procedure intervals. The [findings](findings.md) are stated at that level of evidence.

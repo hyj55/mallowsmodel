@@ -1,10 +1,10 @@
-# Repeated trial and assessor sensitivity
+# Trial and assessor heterogeneity
 
-27 September 2026. [中文详细报告](group_sensitivity_zh.md) · [Frozen protocol](protocols/GROUP_SENSITIVITY_20260927.md) · [Output dictionary](../results/group_sensitivity/README.md).
+[Experiment G1](experiments.md) · [Data and identities](../data/dots_puzzle.md) · [Criteria](criteria.md#group-comparisons-and-aggregation) · [Uncertainty](uncertainty.md#group-split-percentiles) · [Outputs](../results/group_sensitivity/README.md)
 
 Local fitting can improve Puzzle prediction when the training count is held fixed, for both SM and PL. Full pooled training often offsets that benefit with a larger sample. The relative SM–PL change is not stable across Puzzle conditions. Sounds exposes severe finite-MLE and infinite-prediction limitations for individual fitting; its rare successful cases do not support a population-level model comparison.
 
-## Source recovery and scope
+## Observations and group identity
 
 The original [author data page](https://www.andrewmao.net/code/) links [voting-results.tar.gz](https://dl.dropboxusercontent.com/s/mf0mm153pe3f12w/voting-results.tar.gz), SHA256 `2906b0ce3fc375813f7fd061e55fd642e6e9ac472a385a56d2b8e36ef838e0d4`. Its 40 files per condition identify repeated physical stimulus sets. All 24 ranking frequencies exactly match each of the eight pinned PrefLib files. Puzzle contributes 3,180 reports; Dots (2013, **not dots2024**) contributes 3,183. Each report ranks all four presented items. The four difficulty conditions in each family are fitted separately.
 
@@ -20,9 +20,9 @@ A separate 100 whole-group 70/30 holdouts evaluates transfer to unseen trials/as
 
 Unchanged conditional likelihoods, unbounded SM profile beta and unpenalized Hunter MM are used. Infinite SM losses and undefined/nonconverged PL fits remain explicit. No beta cap, pseudodata, removed catalog items, test-driven method selection or repaired split is introduced. This is the declared unregularized variant, not a literal implementation of the entirety of manuscript Algorithm 4.1.
 
-- **Exact SM center:** exact subset DP for n=4 and n=12; cardinality batching preserves the recurrence, objective and seeded tie order. No approximate substitute was needed. This follow-up conservatively excludes fits with unseen catalog items. Full pair coverage is not necessary for a Kemeny minimizer to exist; sparse ties/nonidentifiability remain limitations.
+- **Exact SM center:** exact subset DP for n=4 and n=12; cardinality batching preserves the recurrence, objective and seeded tie order. No approximate substitute was needed. G1 conservatively excludes fits with unseen catalog items. Full pair coverage is not necessary for a Kemeny minimizer to exist; sparse ties/nonidentifiability remain limitations.
 - **Fotakis Algorithm 1 / PosEst:** majority-predecessor counts, counting equal-count pair ties in both directions, fixed seeded random score-tie order. Admit only training sets containing every item pair; record empirical p=min(pair count)/N. This structural check does not certify the paper's true-model or sample-size recovery guarantees. Profile beta is then fitted by the same likelihood.
-- **Sharp / efficient:** the pre-fit policy conservatively excludes lambda=N*r*(r−1)/(n*(n−1))>1, outside the manuscript's sparse theorem regime. This is a theorem-domain admission choice, not a claim that Sharp is mechanically undefined outside that regime. Consequently Sharp/efficient are excluded for full four-item trials. Sounds local data can satisfy lambda≤1; n=12 exceeds the size-8 exact sieve guard, so the authorized Section 3 fallback is used when every item appears. All successful efficient fits had hierarchy depth zero. Uniform subset sampling, independent reports, true beta≥.1 and the unknown sufficient constant C0 are not verified; mu/log(e*r)>1 is not a certificate.
+- **Sharp / efficient:** the pre-fit policy conservatively excludes lambda=N*r*(r−1)/(n*(n−1))>1, outside the manuscript's sparse theorem regime. This is a theorem-domain admission choice, not a claim that Sharp is mechanically undefined outside that regime. Consequently Sharp/efficient are excluded for full four-item trials. Sounds local data can satisfy lambda≤1; n=12 exceeds the size-8 exact sieve guard, so the specified Section 3 fallback is used when every item appears. All successful efficient fits had hierarchy depth zero. Uniform subset sampling, independent reports, true beta≥.1 and the unknown sufficient constant C0 are not verified; mu/log(e*r)>1 is not a certificate.
 - **PL:** requires directed strong connectivity and the unchanged numerical convergence checks. An unavailable finite unique MLE is not assigned an invented predictive score.
 
 ## Primary results
@@ -40,7 +40,7 @@ NLL is in nats/report; delta=SM exact−PL, negative favoring SM. Values are mea
 | dots-7 | -0.0126 | -0.0080 | +0.0009 | -0.0128 |
 | dots-9 | -0.0313 | -0.0312 | -0.0260 | -0.0364 |
 
-Puzzle-5 pooled delta has a 5th–95th split range [-0.0773, -0.0356]; local [-0.0995, +0.0073]. Puzzle-7/9 have mean sign reversals but ranges spanning zero. These are partition-sensitivity summaries, not confidence intervals or independent replications.
+Puzzle-5 pooled delta has a 5th–95th split range [-0.0773, -0.0356]; local [-0.0995, +0.0073]. Puzzle-7/9 have mean sign reversals but ranges spanning zero. These are partition-sensitivity summaries, not confidence intervals or independent samples from a population.
 
 ## Training-budget control
 
@@ -111,7 +111,7 @@ Main trial four-way coverage is about 99.4%–100%; unavailable/infinite cases a
 
 The run records 104,640 training contexts and 523,200 candidate statuses, including exclusions and cache reuse, across 7,743 original reports. Public outputs have 23,400 repeat-score rows and 18,300 group-score summaries. Figures use medians; tables use means. Micro/report-weighted and macro/equal-group values are both retained.
 
-Eight focused tests check sampling, ties, exact-DP agreement, coverage admission, likelihoods and unavailable/infinite aggregation; source matching is checked by the loader and full replay. All 28 tests passed. The full test suite is run alongside read-only replay of every stored prediction, training/test membership and four-way mask, followed by recomputation of the published tables. See [validation.json](../results/group_sensitivity/validation.json) for the completed validation receipt. Public-only CI verifies checksums and repeat aggregation without downloading respondent data.
+Focused tests check sampling, ties, exact-DP agreement, coverage admission, likelihoods and unavailable/infinite aggregation. Full local validation reconciles source frequencies, replays stored predictions and split memberships, and recomputes the published tables and four-way masks. See [validation.json](../results/group_sensitivity/validation.json) for the completed validation receipt. Public repository verification checks checksums and repeat aggregation without downloading respondent data.
 
 ```bash
 python run_group_sensitivity.py --workers 4

@@ -1,7 +1,11 @@
-# Audit evidence
+# Verification evidence
 
-- `refit_comparison.json`: unchanged fitted statistical parameters and point predictions for the original 16 tasks and wheat, compared with the pre-audit snapshot. Wheat's two held-out splits explain its 10 result rows.
-- `validation.json`: current mathematical, split, source-hash, stored-fit and repository checks.
-- `retired_paths.json`: files retired from main, accessible in the pinned Git history. Nothing was deleted from Git history.
+[Validity and verification](../../docs/scientific_audit.md) · [Implementation registry](../../docs/history.md)
 
-This is a retrospective correctness audit, not new independent experimental evidence. Read ../../docs/scientific_audit.md for the decisions and remaining limits.
+| File | Contents and scope |
+|---|---|
+| `refit_comparison.json` | Fitted parameter and point-prediction agreement for 16 PrefLib/dots2024 tasks and wheat; wheat's two held-out partitions account for ten of the compared rows |
+| `validation.json` | Mathematical, split, source-hash, saved-fit and repository checks actually performed |
+| `retired_paths.json` | Compatibility/integrity list of paths absent from this checkout; matching implementation snapshots retain those experiment outputs |
+
+These checks do not add independent training datasets or new participants. The interpretation of unsupported interval columns is specified in [the uncertainty guide](../../docs/uncertainty.md), and all scientific components remain in [the experiment map](../../docs/experiments.md).

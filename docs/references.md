@@ -1,6 +1,6 @@
-# References and their actual roles
+# References and source attribution
 
-The supplied unpublished manuscript, *Selective Mallows Estimation from Uniform Partial Rankings: Minimax Kendall Risk, Efficient Algorithms, and Likelihood Comparisons*, specifies the model, Algorithms 2.1/3.1/3.2, equation (3.4), Lemma 2.11, proof constants (3.22–3.23), and Propositions 4.1–4.3. It is private and is not redistributed. The current unpenalized experiment is not a replication of its complete regularized Algorithm 4.1. See the [method contract](algorithms.md).
+The supplied unpublished manuscript, *Selective Mallows Estimation from Uniform Partial Rankings: Minimax Kendall Risk, Efficient Algorithms, and Likelihood Comparisons*, specifies the model, Algorithms 2.1/3.1/3.2, equation (3.4), Lemma 2.11, proof constants (3.22–3.23), and Propositions 4.1–4.3. It is private and is not redistributed. The unpenalized and bounded/regularized experiments implement different specified predictive procedures; neither is described as reproducing every detail of the manuscript by association alone. See the [method contract](algorithms.md).
 
 ## Estimators and optimization
 
@@ -8,7 +8,7 @@ The supplied unpublished manuscript, *Selective Mallows Estimation from Uniform 
 2. **Hunter, D. R. (2004).** MM algorithms for generalized Bradley–Terry models. *Annals of Statistics*, 32(1), 384–406. [DOI](https://doi.org/10.1214/aos/1079120141). Section 5, equation (30): simultaneous, unaccelerated PL MM updates. No added penalty or pseudo-comparisons.
 3. **SciPy developers.** [scipy.optimize.milp](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.milp.html). Solver status and dual-bound semantics; recorded runtime SciPy 1.17.0. Numerical certification is distinguished from an uncertified incumbent.
 
-## Current data and source documentation
+## Ranking and agricultural data
 
 4. **Mao, A., Procaccia, A. D., & Chen, Y. (2013).** Better Human Computation Through Principled Voting. AAAI. [Official proceedings](https://ojs.aaai.org/index.php/AAAI/article/download/8460/8319). Original Dots/Puzzle study.
 5. **PrefLib.** Official [Dots](https://preflib.github.io/PrefLib-Jekyll/dataset/00024) and [Puzzle](https://preflib.github.io/PrefLib-Jekyll/dataset/00025) collections; [source repository](https://github.com/PrefLib/PrefLib-Data), commit 1a8e9a9d0ad02a2a2d7473e813d1ac3057264f80. Multiplicities and objective references are preserved; the export does not identify assessors.
@@ -23,11 +23,11 @@ The supplied unpublished manuscript, *Selective Mallows Estimation from Uniform 
 
 ## Additional center estimator and background
 
-14. **Fotakis, D., Kalavasis, A., & Stavropoulos, K. (2021).** Aggregating Incomplete and Noisy Rankings. AISTATS, PMLR 130, 2278–2286. [Paper and supplement](https://proceedings.mlr.press/v130/fotakis21a.html). Algorithm 1 PosEst is implemented in the separately dated group-sensitivity follow-up, with a training-only p-frequency admission check. Their localized MLE algorithm is not implemented. Earlier experiments did not include PosEst.
+14. **Fotakis, D., Kalavasis, A., & Stavropoulos, K. (2021).** Aggregating Incomplete and Noisy Rankings. AISTATS, PMLR 130, 2278–2286. [Paper and supplement](https://proceedings.mlr.press/v130/fotakis21a.html). Algorithm 1 PosEst is used in G1 with a training-only all-pair admission check and in the C1 center-objective benchmark. Their localized MLE algorithm is not implemented.
 15. **Mao, C., Weed, J., & Rigollet, P. (2018).** Minimax Rates and Efficient Algorithms for Noisy Sorting. ALT, PMLR 83, 821–847. [Paper](https://proceedings.mlr.press/v83/mao18a.html). Independent-pair theory background; it does not justify treating pairs within a report as independent.
-16. **Turner, H. L., van Etten, J., Firth, D., & Kosmidis, I. (2020).** Modelling rankings in R: the PlackettLuce package. *Computational Statistics*, 35, 1027–1057. [DOI](https://doi.org/10.1007/s00180-020-00959-3), [official overview](https://hturner.github.io/PlackettLuce/articles/Overview.html). Data/package context; current Python fitting does not use its default pseudo-rankings or the earlier ridge fitter.
+16. **Turner, H. L., van Etten, J., Firth, D., & Kosmidis, I. (2020).** Modelling rankings in R: the PlackettLuce package. *Computational Statistics*, 35, 1027–1057. [DOI](https://doi.org/10.1007/s00180-020-00959-3), [official overview](https://hturner.github.io/PlackettLuce/articles/Overview.html). Data/package context; P1/P2 use unpenalized Python MM, while explicitly named regularization experiments use ridge PL; the package's default pseudo-rankings are not substituted for either.
 
-## Additional validation sources
+## Pair reports and source screening
 
 17. **Crispino, M., Arjas, E., Vitelli, V., Barrett, N., & Frigessi, A. (2019).** A Bayesian Mallows approach to nontransitive pair comparison data: How human are sounds? *Annals of Applied Statistics*, 13(1), 492–519. [DOI](https://doi.org/10.1214/18-AOAS1203). Original Sounds data study; its Bayesian estimator is not fitted here.
 18. **Barrett, N., & Crispino, M. (2018).** The impact of 3-D sound spatialisation on listeners' understanding of human agency in acousmatic music. *Journal of New Music Research*, 47(5), 399–415. [DOI](https://doi.org/10.1080/09298215.2018.1437187). Source credited by Sounds documentation.
@@ -38,4 +38,13 @@ The supplied unpublished manuscript, *Selective Mallows Estimation from Uniform 
 23. **Seshadri, A., Peysakhovich, A., & Ugander, J. (2019).** Discovering Context Effects from Raw Choice Data. ICML, PMLR 97, 5660–5669. [Paper](https://proceedings.mlr.press/v97/seshadri19a.html). Context background and source screening only; no extra fitted algorithm or newly verified ranking dataset from it.
 24. **Green, P. E., & Rao, V. R. (1972).** Applied Multidimensional Scaling: A Comparison of Approaches and Algorithms. Holt, Rinehart and Winston. Original breakfast study, screened via [PrefLib dataset 00035](https://preflib.github.io/PrefLib-Jekyll/dataset/00035), digitized by Dominik Peters. Metadata screen only, not fitted.
 
-Historical greedy-MAL and ATP/BP references belong to the retired experiments and remain in the [pinned historical snapshot](history.md). They are not current estimator claims. All acquired source URLs, immutable versions and file hashes are recorded in the [data manifests](../data/README.md); metadata-only screens retain their links and scope separately.
+## Optimization, sports and inference references
+
+25. **Raman, K., & Joachims, T. (2014).** Methods for Ordinal Peer Grading. KDD. [Author PDF](https://www.cs.cornell.edu/people/tj/publications/raman_joachims_14a.pdf). Algorithm 2 supplies the equal-reliability greedy MAL specialization in C1; it is a heuristic center benchmark.
+26. **Cantwell, G. T., & Moore, C. (2022).** Belief propagation for permutations, rankings, and partial orders. *Physical Review E*, 105, L052303. [Author manuscript](https://arxiv.org/abs/2110.00513). Identifies the ATP 2010–2019 application; its approximate marginal-likelihood approach is not the held-out prediction criterion used here.
+27. **Sackmann, J.** [ATP match data](https://github.com/JeffSackmann/tennis_atp); [pinned archival mirror](https://github.com/Aneeshers/tennis-sackmann-archive/tree/83733587353df8a41f2fd4f516147d5aa83f5a8d/atp). Player, tournament and completed-match source for T1; CC BY-NC-SA 4.0 attribution is retained.
+28. **Efron, B. (1979).** Bootstrap Methods: Another Look at the Jackknife. *Annals of Statistics*, 7(1), 1–26. [DOI](https://doi.org/10.1214/aos/1176344552). Empirical-distribution resampling rationale; it does not by itself justify treating unidentified dependent rows as independent units.
+29. **NIST/SEMATECH e-Handbook.** [Confidence limits for a mean](https://www.itl.nist.gov/div898/handbook/eda/section3/eda352.htm). Student-t interval definition and normal/large-sample rationale for independent-repetition mean intervals.
+30. **NIST/SEMATECH e-Handbook.** [Intervals for a proportion](https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm). Wilson score construction used for D2's binomial detection, rejection and selection rates.
+
+The [data catalogue](../data/README.md) links actual files, variable dictionaries and immutable versions. [Uncertainty](uncertainty.md) states how each inference construction is used and where its assumptions are unresolved. The source manifests, rather than a mutable project homepage alone, identify the bytes used in an experiment.

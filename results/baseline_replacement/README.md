@@ -1,9 +1,16 @@
-# Baseline replacement outputs
+# Fixed-partition Beans and Sushi prediction
 
-The real-data files here retain the original single split. Their repeated-refit averages are in [repeated_holdout](../repeated_holdout/README.md); simulations and source-only audits in this directory are unchanged.
+[P2 design](../../docs/baseline_replacement.md) · [Data](../../data/README.md) · [Methods](../../docs/algorithms.md) · [Uncertainty](../../docs/uncertainty.md)
 
-[Report](../../docs/baseline_replacement.md) · [frozen protocol](../../docs/protocols/BASELINE_REPLACEMENT.md).
+These files describe one fixed 60/20/20 allocation of each task under unbounded SM and unpenalized PL. All three exact-center results have optimum certificates. P1 separately averages 30 full refits in [repeated_holdout](../repeated_holdout/README.md).
 
-`scores.csv` contains every method status and conditional confirmation NLL; `parameters.json` stores the actual centers, beta, PL worths and optimum/convergence certificates. `datasets.json` reports source and training coverage. `splits.csv` preserves all source row memberships and shared Sushi respondent folds. `data_manifest.json` verifies the original source bytes. `validation.json` records replay from stored fits and source reports.
+| File | Contents |
+|---|---|
+| `scores.csv` | Every method/status, confirmation NLL and paired Δ; conditional test-unit bootstrap endpoints where supported |
+| `parameters.json` | Actual centers, β, PL worths, optimum and convergence evidence |
+| `datasets.json` | Source sizes and training coverage |
+| `splits.csv` | Every source row membership, including aligned Sushi A/B respondent allocations |
+| `data_manifest.json` | Original source-byte verification |
+| `validation.json` | Saved-fit and source-report replay receipt |
 
-Beans receives no inferential interval because assessor identities are unavailable. Sushi intervals are conditional on fixed fits and use whole respondents. No respondent ranking data are distributed. Run `python run_baseline_replacement.py` in a separate checkout to reproduce.
+Beans has no supported independent-person interval because farmer identities are absent. Sushi intervals resample whole respondents and condition on the fixed fits. No respondent rankings are distributed. Reproduce with `python run_baseline_replacement.py` in the matching checkout; see [reproduction](../../docs/reproducibility.md).

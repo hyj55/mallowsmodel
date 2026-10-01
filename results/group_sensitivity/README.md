@@ -1,6 +1,6 @@
 # Group-sensitivity result dictionary
 
-[English methods and findings](../../docs/group_sensitivity.md) · [中文详细结果](../../docs/group_sensitivity_zh.md).
+[G1 design and findings](../../docs/group_sensitivity.md) · [Aggregation formulas](../../docs/criteria.md#group-comparisons-and-aggregation) · [Split ranges](../../docs/uncertainty.md#group-split-percentiles).
 
 All nine tasks, groups, candidate methods and failed contexts are retained. These artifacts contain aggregate summaries, not newly redistributed respondent ranking records. The frozen protocol and seed precede the production runs.
 
@@ -11,7 +11,7 @@ All nine tasks, groups, candidate methods and failed contexts are retained. Thes
 | `contrasts.csv` | Local-minus-pooled/matched changes for each family and their interaction, on four-way common finite prediction masks |
 | `eligibility.csv` | Every candidate's status counts, training sizes, observed item/pair coverage, lambda/mu and actual efficient depth |
 | `group_scores.csv.gz` | 18,300 repeated-split group summaries, including all 320 original trial groups and 46 assessor groups across schemes/candidates/budgets |
-| `repeat_scores.csv.gz` | 23,400 individual repeat summaries; permits checking random-split sensitivity and recomputing `scores.csv` |
+| `repeat_scores.csv.gz` | 23,400 individual repeat summaries; supports inspecting repeat outcomes and recomputing `scores.csv` |
 | `repeat_contrasts.csv.gz` | Per-repeat paired contrasts and common coverage, underlying `contrasts.csv` |
 | `validation.json` | Read-only source/membership/prediction replay and aggregate verification receipt; no new fits |
 

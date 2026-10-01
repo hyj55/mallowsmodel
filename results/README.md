@@ -1,15 +1,23 @@
-# Current results index
+# Result files and field guides
 
-| Directory | Study | Current status |
+[Study guide](../README.md) · [Findings](../docs/findings.md) · [Criteria](../docs/criteria.md) · [Uncertainty](../docs/uncertainty.md)
+
+Read results by experiment, dataset, estimator, evaluation target and denominator. Filenames are stable artifact identifiers; several scientific components share a directory.
+
+| Location | Components | What to read |
 |---|---|---|
-| [repeated_holdout](repeated_holdout/README.md) | 23 original real tasks, 30 new partitions and full refits per task | Current average predictive comparison; retains failures and distinguishes partition precision from population uncertainty |
-| [group_sensitivity](group_sensitivity/README.md) | Nine real tasks; trial/person strata, 100 primary splits, equal-budget controls and new-group transfer | Completed; group information helps both models at equal Puzzle training budgets; Sounds personal comparison limited by fit existence and infinite losses |
-| [validation_extension](validation_extension/README.md) | Three new real tasks and 1,400 new independent synthetic training datasets | Completed; no clear new primary real winner; center-error and confounding effects plus diagnostic failure retained |
-| [strict_features](strict_features/README.md) | 4,760 synthetic training samples, 16 real tasks, frozen follow-ups | Retained; PrefLib intervals withdrawn; method attribution clarified |
-| [context_followup](context_followup/README.md) | Wheat fit and six SP-Rank design audits | Point results retained; unidentified-cluster inference withdrawn |
-| [baseline_replacement](baseline_replacement/README.md) | Intact Beans/Sushi rerun with original estimators | Completed; all three centers exact/certified |
-| [audit](audit/README.md) | Refitting, source integrity, mathematical and structural checks | Evidence for corrections; not independent scientific replications |
+| [repeated_holdout](repeated_holdout/README.md) | P1: 23 tasks ×30 refits | Mean loss, paired Δ, partition MCSE, all fit/finite counts |
+| [baseline_replacement](baseline_replacement/README.md) | P2: Beans/Sushi | Fixed-fit prediction, certificates and supported test-unit intervals |
+| [strict_features](strict_features/README.md) | S1/S2/D1; P2 PrefLib/dots2024; tricot screen | Controlled laws, coverage, selectors, shells and context diagnostics |
+| [context_followup](context_followup/README.md) | P2 wheat; A1 SP-Rank | Point prediction, metadata-limited diagnostics and observation-design audit |
+| [validation_extension](validation_extension/README.md) | D2; P2 Sounds/PatrasIQ; Beaches screen | Calibration/confounding draws, rates and Wilson bars, identified-unit empirical intervals |
+| [group_sensitivity](group_sensitivity/README.md) | G1 | Pooled/local/matched controls, group transfer, common masks and split ranges |
+| [audit](audit/README.md) | Calculation and evidence verification | Source/fit replay and integrity receipts; no additional scientific replicates |
+| [Regularized prediction artifacts](https://github.com/hyj55/mallowsmodel/tree/89b21645d5f7eb463cc90c4e982c3a66ce805b41/results) | L1, S3 n=10, T1 Beans, C1 | `real_*`, `synthetic_*`, `beans_transfer_*`, `same_order_*`, `outer_fold_*`, diagnostic and optimization tables |
+| [Exposure and ATP artifacts](https://github.com/hyj55/mallowsmodel/tree/89b21645d5f7eb463cc90c4e982c3a66ce805b41/results/exposure) | L2, S3 exposure, T1 ATP, C1 | `small_*`, `coverage_*`, `real_*`, `tennis_*`, penalty and feasibility controls |
 
-The real point results in baseline_replacement, strict_features, context_followup and validation_extension retain their original single partitions. Use repeated_holdout for their updated average predictive estimates; synthetic studies and the separate group_sensitivity study remain distinct. The [learning-curve index](../docs/learning_curves.md) locates the historical Beans/Sushi size experiments and explains their different fitting protocol.
+The last two locations pin implementation `89b21645d5f7eb463cc90c4e982c3a66ce805b41`. They are part of the same study, with bounded/regularized procedures explicitly distinguished from unpenalized ones. [The learning chapter](../docs/learning_curves.md) and [implementation registry](../docs/history.md) locate their exact files and meanings.
 
-No current result uses the removed historical capped, shrunk or heuristic fitting pipeline. All prior outputs remain at the snapshot linked in [History](../docs/history.md). See [the scientific audit](../docs/scientific_audit.md) before comparing old and new values.
+Δ=NLL(SM)−NLL(PL); negative favors SM. A fixed-fit bootstrap interval, independent-simulation t interval, Wilson rate interval, split percentile range and partition MCSE are different objects. No bootstrap endpoints are averaged to form P1 uncertainty. All unavailable/infinite/finite-conditional counts must accompany a comparison. [Definitions and formulas](../docs/uncertainty.md).
+
+Three large D2 artifacts are restored with `python validation_artifacts.py`. Public empirical artifacts generally contain fitted parameters and aggregate results; detailed private membership/prediction caches are needed for some local replay. See [reproduction](../docs/reproducibility.md) for those distinctions.
