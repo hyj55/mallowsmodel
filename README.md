@@ -1,67 +1,47 @@
-# Selective Mallows versus Plackett–Luce
+# Selective Mallows and Plackett–Luce: a comparative study
 
-Numerical research on how pair reliability, error allocation within Kendall-distance shells, and displayed-set effects relate to prediction. Python implementations preserve original ranking reports and distinguish published estimators from optimization and diagnostic choices.
+This repository studies how selective Mallows (SM) and Plackett–Luce (PL) predict a noisy ordering of a displayed set. Both models receive the same ranking reports. The study combines human preferences, objective ordering tasks, agricultural trials, tennis matches, and controlled simulations to examine prediction, sample size, item coverage, population heterogeneity, and model structure.
 
-**Current status:** the original 23 real tasks now have 30 new partitions and complete refitting per task. Their repeated average predictive losses supersede single-split point comparisons, with unavailable fits and infinite losses retained. This correction is separate from the completed nine-task trial/assessor study. Neither repeated partitions nor descriptive context averages establish a positive real SM context mechanism. Existing Beans/Sushi learning curves are indexed with their historical fitting limitations.
+The main score is the mean negative log probability of a held-out **whole ranking conditional on its displayed set**. Throughout, **Δ = NLL(SM) − NLL(PL)**: a negative value favors SM. Years, seasons, locations, participant attributes, and numerical ratings are not fitted covariates. Where available, metadata support splitting, grouping, source checks, or explicitly identified diagnostics.
 
-## Start here
+## Read the study
 
-- [Repeated estimation of the original real comparisons](docs/repeated_holdout.md) · [中文详细结果](docs/repeated_holdout_zh.md) — 30 new partitions per task, paired average losses, fit availability and conditional Monte Carlo precision.
-- [Existing learning curves](docs/learning_curves.md) — exact locations and budgets for Beans, Sushi A/B and the current synthetic studies.
+| Start with | What it explains |
+|---|---|
+| [Data catalogue](data/README.md) | Every dataset, source files, variables, participant identifiers, preprocessing, sample sizes, coverage, and experimental uses |
+| [Research questions and experiment map](docs/experiments.md) | How all analyses fit together; datasets, estimators, repetitions, and result locations |
+| [Models and estimators](docs/algorithms.md) | Probability laws, center and dispersion estimation, regularization variants, and admission requirements |
+| [Evaluation criteria](docs/criteria.md) | Mathematical definitions of prediction loss, center error, coverage, shell and context diagnostics, and model selection |
+| [Uncertainty and resampling](docs/uncertainty.md) | Exactly how each CI, bootstrap, split range, and Monte Carlo standard error is calculated, and the assumptions behind it |
+| [Findings](docs/findings.md) | Results organized by scientific question, with links to complete tables and figures |
+| [Reproduction guide](docs/reproducibility.md) | How to verify saved outputs or reproduce a specified experiment |
 
-1. [Trial/assessor sensitivity](docs/group_sensitivity.md) · [中文详细结果](docs/group_sensitivity_zh.md) — 100 primary shuffles, training-budget controls, group holdout and estimator admission.
-2. [Additional data and mechanism validation](docs/validation_extension.md) — Sounds, two PatrasIQ tasks, center uncertainty and assessor/display confounding.
-3. [Scientific audit and corrections](docs/scientific_audit.md) — what complied, what did not, and what was withdrawn.
-4. [Feature-transition experiments](docs/strict_feature_analysis.md) — 4,760 earlier independent synthetic training samples and 16 original real tasks.
-5. [Wheat and SP-Rank follow-up](docs/context_followup.md) and [historical Beans/Sushi replacement](docs/baseline_replacement.md).
-6. [Canonical algorithms and assumptions](docs/algorithms.md), [data provenance](data/README.md), [reproduction](docs/reproducibility.md), [references](docs/references.md).
+## Experimental structure
 
-## Interpretation
+1. **Predictive comparison:** 23 empirical tasks, with 30 training/discovery/confirmation partitions and complete refitting on each partition. Fixed-partition analyses provide detailed conditional diagnostics and identified-unit bootstrap intervals.
+2. **Sample size and coverage:** empirical learning curves, small-budget comparisons, and independent simulations vary the number of training reports while recording estimator availability.
+3. **Group heterogeneity:** Puzzle and Dots trial groups and Sounds assessors compare pooled and local fitting, equal training budgets, and transfer to unseen groups.
+4. **Mechanism controls:** matched-noise mixtures and fixed-shell interventions separate overall noise from the allocation of probability among mistaken rankings. Calibration experiments test how center error and assessor/display confounding affect diagnostics.
+5. **Temporal prediction and structural controls:** Beans year transfer, ATP season forecasts, common-order comparisons, and optimization checks test specific alternative explanations.
 
-The primary criterion is conditional whole-ranking NLL, averaged over the same test reports. Delta = NLL(SM) − NLL(PL); negative favors SM. No joint-probability comparison. Raw NLLs across different report lengths are not comparable.
+These are components of one study. Each component retains its specified estimator, data membership, and inference target. In particular, a regularized learning curve and an unpenalized repeated comparison estimate different procedures' performance; their numerical results are not pooled as if the procedures were identical. The [experiment map](docs/experiments.md) covers all components, including results stored at immutable implementation snapshots.
 
-The current unpenalized experiment is **not a literal replication of the manuscript's complete Algorithm 4.1**, which explicitly permits/requires prespecified boundary handling and regularized PL fitting. It uses the manuscript's center/dispersion definitions and Hunter's original MM algorithm under a separately recorded protocol. See the algorithm contract before attributing a result to the paper.
+## Reading the evidence
 
-The larger SM MLE uses Conitzer et al.'s integral LP3 formulation with a different solver backend and an optimum certificate. This is an exact-optimization comparison, **not a reproduction of the original CPLEX implementation or its runtime**. Uncertified fits are unavailable. Unavailable sharp sieves are not replaced by MLE; Section 3 is not extended by capping lambda.
+Controlled simulations exhibit a reversal of the SM–PL predictive ranking while keeping the complete distribution of inversion counts fixed. On empirical data, results depend on the task, fitting procedure, coverage, and evaluation target. Group-specific fitting can help both families at matched training budgets. A reliable real-data diagnostic for identifying an SM generating mechanism has not been established.
 
-No unsupported inference is repaired by inventing sampling identities: earlier PrefLib Dots/Puzzle, Beans and wheat results remain descriptive where the independent units cannot be established. The PatrasIQ source documents one report per person per task, permitting per-task report intervals despite anonymization; its two tasks are not independent studies. Sounds uses whole-assessor resampling. The original real bootstrap intervals condition on frozen fits. The repeated correction reports partition Monte Carlo precision conditional on fixed data; it is not a population confidence interval. Source search and related tasks limit generalization; sparse context intervals are exploratory and not uniformly calibrated.
+An error bar is not automatically a confidence interval. The 30-partition figures show **±1 partition Monte Carlo SE**, while group figures show **5th–95th split percentiles**. Bootstrap and simulation confidence intervals have different sampling units and assumptions. Unavailable fits, infinite losses, and finite-only summaries are recorded explicitly. Start with the [uncertainty guide](docs/uncertainty.md) before interpreting an apparent difference as statistically resolved.
 
-## Run
+## Verify the saved study
 
 ```bash
 python -m pip install -r requirements-lock.txt
 python validation_artifacts.py
 python -m pytest -q
+python validate_scientific_audit.py --repository-only
+python validate_validation_extension.py --repository-only
+python validate_group_sensitivity.py --repository-only
+python validate_repeated_holdout.py --repository-only
 ```
 
-Experiment commands are maintained in the [reproduction guide](docs/reproducibility.md).
-
-The restoration command verifies and unpacks three large recorded outputs from lossless archive parts. It changes only their storage representation, with no statistical computation.
-
-The extension publishes aggregate empirical results and fitted model parameters. Per-report empirical predictions and sampling-unit/split records are generated locally and are not included in GitHub. The synthetic archive contains only generated observations.
-
-Python 3.12 for the earlier experiments; the group-sensitivity and repeated-estimation runs used Python 3.13.7 with the same pinned packages. Run in a separate checkout to preserve committed results. The n=100 exact-optimization attempt can exhaust its fixed 120-second budget; this is an outcome, not a fallback trigger. See [reproduction details](docs/reproducibility.md).
-
-## Structure
-
-| Path | Purpose |
-|---|---|
-| `src/strict_models.py` | Single active fitting interface: exact SM, published centers, unpenalized Hunter MM |
-| `src/manuscript_estimators.py` | Sharp sieve, score hierarchy, clipped Borda |
-| `src/models.py` | Likelihood mathematics, exact subset DP, direct-subset samplers |
-| `src/diagnostics.py`, `src/strict_features.py` | Descriptive diagnostics and declared synthetic laws |
-| `src/group_sensitivity.py`, `src/group_sensitivity_summary.py` | Recovered groups, repeated splits, coverage admission and paired summaries |
-| `src/repeated_holdout.py`, `src/repeated_holdout_summary.py` | Repeated refitting of original tasks, availability-aware loss averages and partition precision |
-| `src/validation_extension.py` | New source acquisition, lossless decoding and declared heterogeneous PL law |
-| `src/data.py`, `download_*.py` | Original-source acquisition and validation |
-| `run_*.py` | Current experiments only |
-| `docs/protocols/` | Dated original designs and explicit audit amendments |
-| `results/strict_features/`, `results/context_followup/`, `results/baseline_replacement/` | Distinct experiments, all outcomes retained |
-| `results/validation_extension/` | New real comparisons, all synthetic draws, parameters, statuses and validation |
-| `results/group_sensitivity/` | Repeated split and per-group aggregates, availability, source/code hashes and validation |
-| `results/repeated_holdout/` | All 30 new repetitions for 23 original real tasks, aggregates, manifests and replay verification |
-| `results/audit/` | Refit and repository validation evidence |
-| `figures/strict_features/`, `figures/validation_extension/`, `figures/group_sensitivity/`, `figures/repeated_holdout/` | Scientific figures, PNG for reading and SVG for export |
-| `tests/` | Mathematical, boundary and sampling-unit checks |
-
-Historical regularized, shrunk and heuristic experiments are accessible at the pinned commit in [History](docs/history.md). They are no longer mixed into the runnable current pipeline. Git history is preserved; the private manuscript and respondent ranking data are not newly redistributed. [Third-party notices](THIRD_PARTY_NOTICES.md).
+These checks do not refit the models. The archive restoration command reconstructs recorded outputs and verifies their bytes. Some detailed empirical caches require local source acquisition and are not redistributed. See [reproduction](docs/reproducibility.md), [result dictionaries](results/README.md), [references](docs/references.md), and [third-party notices](THIRD_PARTY_NOTICES.md).

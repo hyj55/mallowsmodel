@@ -1,51 +1,42 @@
-# Original-data follow-up: displayed-set context
+# Observation design and context identifiability
 
-**28 September 2026 update:** the real-data point comparisons below retain their original single partition. Use the [30-repeat correction](repeated_holdout.md) ([中文](repeated_holdout_zh.md)) for average predictive performance after repeated full refitting. Original bootstrap intervals stay conditional on the original fits; synthetic results and source-only audits are unchanged.
+[Experiment map](experiments.md) · [Context criterion](criteria.md#context-slope) · [Data catalogue](../data/README.md) · [Calibration](validation_extension.md)
 
-**Audited 26 September 2026 UTC.** One intact agricultural task and six SP-Rank source-design audits. The positive SM context effect remains unconfirmed. Original reports, centers, dispersion estimates and NLL point values are unchanged by the audit.
+A ranking dataset may be suitable for predictive comparison without identifying a changing-display mechanism. The context diagnostic needs the **same pair** observed at different gaps in a fixed reference order, with enough observations at each gap. More reports, larger average item coverage, or several nominal display sizes do not automatically provide this contrast.
 
-## Wheat
+## What the data can identify
 
-The official gosset sample contains **493 strict triples over 16 varieties**, Vaishali, India, 2014 Rabi season. Best and worst among three distinct varieties determine the order without ambiguity. All 493 reports are retained. This is the package sample, not all records in the 2019 PNAS study; no latent true center is supplied. [Source documentation](https://agrdatasci.github.io/gosset/reference/breadwheat.html).
+| Observation design | Predictive comparison | Changing-gap diagnostic |
+|---|---|---|
+| Complete fixed display, such as Sushi A or a four-category PrefLib task | Whole-ranking probabilities can be compared | No within-pair display-gap variation |
+| Varying assigned subsets, such as Sushi B or PatrasIQ | Conditional probabilities can be compared on the observed display distribution | Possible, subject to repeated-pair overlap and the chosen reference |
+| One pair per report, such as Sounds or ATP | Direct pair prediction | Displayed gap is always one; no such context contrast |
+| Top-k responses from a larger display | Requires a censored likelihood | Cannot replace the original display by the recorded top-k items |
+| Pair seen at different gaps by different participant mixtures | Pooled prediction remains a defined target | A slope may reflect mixture changes rather than a homogeneous SM mechanism |
 
-The frozen split is 295 training / 99 discovery / 99 confirmation. Training lambda=7.375, mu=55.3125. All items occur in training. There are **418 distinct displayed sets**. The center algorithms and computational limits are specified in the [method contract](algorithms.md).
+The model input is only the ordering and displayed set. Metadata can still be essential for identifying dependence, defining a split or explaining a diagnostic. The [D2 control](validation_extension.md) gives an exact heterogeneous-PL counterexample with a nonzero pooled context effect.
 
-| Confirmation method | Conditional NLL | SM minus PL |
-|---|---:|---:|
-| Hunter MM PL | 1.4794 | — |
-| SM exact DP MLE | 1.5801 | +0.1007 |
-| SM clipped Borda | 1.4847 | +0.0053 |
+## Wheat: predictive data with limited inferential metadata
 
-These are **descriptive point comparisons**. Sharp is unavailable at this exact sieve size; Section 3 is outside its schedule domain. Neither is replaced by a different estimator. MLE training distance is 216, beta=0.93935; Borda distance is 234, beta=0.84795.
+[Wheat](../data/wheat.md) has 493 intact triples over 16 varieties and 418 distinct displays. P2 uses 295 training, 99 discovery and 99 confirmation reports. Exact-center SM has confirmation NLL 1.5801, PL 1.4794 and clipped-Borda SM 1.4847. These are descriptive point comparisons; [P1](repeated_holdout.md) also averages 30 complete refits.
 
-**Correction:** 113 village labels are missing and farmer identities are redacted. The previous extra unknown-village bootstrap block did not identify independent units. Its intervals, including the degenerate village-adjusted interval, are withdrawn. No missing report is deleted or assigned a surrogate village. All CIs are now unavailable; the village-adjusted diagnostic is unavailable as well. A -1 label in the split metadata denotes missing information only. Point estimates do not establish statistical superiority or geographic generalization.
+The fitted-center context calculation has the following support:
 
-## Specific SM prediction
-
-Freeze the training MLE center. Within each pair, relate its correctly oriented indicator Z to its displayed-center gap h, using pair fixed effects. This exploratory diagnostic does not change either model fit. A pair needs at least two observations at each of two gap levels.
-
-| Split | Eligible pairs | Pair observations | Observed slope | SM prediction | PL prediction |
+| Held-out sample | Eligible pairs | Pair occurrences | Observed slope | SM predicted slope | PL predicted slope |
 |---|---:|---:|---:|---:|---:|
-| Discovery | 8 | 39 | -0.1043 | 0.1109 | 0 |
-| Confirmation | 6 | 30 | +0.0874 | 0.1109 | 0 |
+| Discovery | 8 | 39 | −.1043 | .1109 | 0 |
+| Confirmation | 6 | 30 | +.0874 | .1109 | 0 |
 
-The signs differ between splits and support is sparse. No inferential interval is asserted with unidentified clustering. Thus the confirmation point estimate being closer to SM is **not sufficient evidence** for its mechanism. Arbitrary third-item dependence would not establish the SM gap formula either.
+The signs differ and support is sparse. Participant names are redacted and 113 village labels are missing. Missing villages are not assigned one artificial inferential cluster. Neither a village-adjusted estimate nor a sampling-unit-justified CI is available. Closeness of one slope point estimate to SM's prediction does not establish an SM mechanism.
 
-## SP-Rank design audit
+## SP-Rank: many reports but no targeted objective-gap contrast
 
-The author's public dataset contains repeated participants and several elicitation formats. We retained for the audit actual complete first-order Rank responses (treatments 4/5/6), separately across three domains and the two author-defined cohorts. Top choices, approvals and meta-predictions were not converted to full rankings.
+The [source audit](../data/screening.md#sp-rank) uses actual complete first-order Rank treatments 4/5/6, separately by domain and the two study cohorts. It retains 1,200 four-item reports per domain and 576 five-item reports per domain: 5,328 total. Top choices, approvals and meta-predictions are not converted into full rankings.
 
-| Cohort | Domains | Strict reports per domain | Distinct displays per domain | Pairs with changing objective displayed gap |
-|---|---:|---:|---:|---:|
-| Four items | 3 | 1,200 | 20 | 0 in every task |
-| Five items | 3 | 576 | 12 | 0 in every task |
+Each of the three four-item tasks has 20 distinct displays and each five-item task has 12. In every audited task, each observed pair has a constant gap in the **objective** reference order. There are zero pairs with the changing objective-gap contrast. No SM or PL fits are made for this screen. This does not exclude other uses of SP-Rank or prove absence of variation around every possible fitted center.
 
-All 5,328 audited reports are strict, but each observed pair has a constant gap within the displayed **objective order**. These displays cannot identify the targeted between-versus-outside contrast about that order. No fits were run for this follow-up. This is not a claim about all possible fitted centers or other uses of SP-Rank. Objective order need not equal a latent SM center. [Paper and author release](https://arxiv.org/html/2601.05253v1).
+## Trial identity and physical identity
 
-The lesson is about experimental information: total report count, lambda and mu do not measure repeated within-pair context contrasts. We did not alter observations to create those contrasts or continue screening until a favorable result appeared.
+[Puzzle/Dots trial recovery](../data/dots_puzzle.md) restores which reports concerned the same four-stimulus set. It does not recover individual puzzle layouts, globally unique board IDs or worker identities across trials. Pooled category labels and local physical sets therefore define different prediction tasks. [G1](group_sensitivity.md) quantifies that difference with matched training budgets; it does not equate solution-step count with a universal latent human difficulty.
 
-## Reproduce and provenance
-
-Run `python run_context_followup.py` with requirements-lock.txt. See [the shared reproduction guide](reproducibility.md), [original frozen protocol](protocols/CONTEXT_FOLLOWUP.md), [retrospective correction](protocols/AUDIT_AMENDMENT.md), [source manifest](../data/context_followup_sources.json), and [outputs](../results/context_followup/README.md).
-
-Sources are pinned at gosset bb5eb75c08fe3ab0f28931c093dcb66dea7c4185 and SP-Rank d9ceab3386ac04aca7791fd83da8508851f87dc9. The original study and metadata amendment preceded fits at commits 7be066c1d951569783acf96aca14f3e8635939e1 and 40be502dc4be5c006fcd6ef7c2f1e5916c24237c. The later audit is retrospective and adds no independent data. [Full references](references.md).
+Source and observation checks are recorded in [A1 outputs](../results/context_followup/README.md). Their scope is eligibility and identifiability, not a search-unadjusted claim about how often either model wins.

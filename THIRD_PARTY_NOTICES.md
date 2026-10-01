@@ -33,7 +33,7 @@ Git excludes the Sushi archive, processed respondent data, and private
 per-report output caches. The repository contains aggregate analyses and fitted
 model parameters, not copies of respondents' rankings.
 
-## Other current sources
+## PrefLib, agricultural and author releases
 
 PrefLib Dots/Puzzle, the 2024 dots author release, gosset wheat, SP-Rank and the
 tricot catalog are downloaded from pinned upstream sources; their raw files
@@ -42,11 +42,11 @@ are not redistributed here. Attribution and immutable versions appear in
 The tricot source declares CC BY-SA 4.0. Upstream terms continue to apply to
 source-derived material. No ownership of these sources is claimed.
 
-The additional Sounds/Beaches audit uses BayesMallows commit
+The Sounds/Beaches source audit uses BayesMallows commit
 `a26cf89d3142ea3499489730e7c2b3ef9a26bfb2`; PatrasIQ uses PrefLib dataset
 00034 at commit `1a8e9a9d0ad02a2a2d7473e813d1ac3057264f80`. Original response
 files and upstream R objects are downloaded directly, checksum-verified and
-excluded from this repository. See the [extension references](docs/validation_extension.md)
+excluded from this repository. See the [data references](docs/references.md)
 for Crispino et al. (2019), Barrett and Crispino (2018), Vitelli et al. (2018)
 and Caragiannis et al. (2017). The synthetic draw archive contains generated
 observations only, not participant responses.
@@ -55,9 +55,6 @@ observations only, not participant responses.
 
 The group-sensitivity experiment downloads Andrew Mao's original `voting-results.tar.gz`, linked from [his Code & Data page](https://www.andrewmao.net/code/). It retains 160 Puzzle and 160 2013-Dots trial files locally and verifies their aggregate frequencies against the pinned PrefLib sources. The original archive, raw trial rankings, Sounds records, per-report membership information and fit caches are not redistributed in this repository. Published summaries are derived aggregate analyses; no new license is assigned to the upstream material. Credit: Mao, Procaccia and Chen (AAAI 2013). The archive's URL is mutable, so its expected bytes and SHA256 are fixed in `data/group_sensitivity_sources.json`.
 
-## Historical ATP analysis (retired)
+## ATP tennis
 
-The retired ATP pipeline credited Jeff Sackmann and retained CC BY-NC-SA 4.0
-terms. That notice, mirror provenance and analysis are preserved in the
-[pinned historical snapshot](docs/history.md). No current ATP results or
-raw annual files are distributed on the active branch.
+The chronological ATP component credits Jeff Sackmann's tennis data and retains the source's **CC BY-NC-SA 4.0** terms. Its pinned acquisition uses the archival mirror documented in [the ATP source chapter](data/tennis.md). The [source manifest](https://github.com/hyj55/mallowsmodel/blob/89b21645d5f7eb463cc90c4e982c3a66ce805b41/data/tennis_sources.json) and matching implementation preserve attribution and license information. Raw annual match files are not bundled in this checkout. No project-wide license is assigned to that third-party material.

@@ -1,6 +1,8 @@
-# Repeated estimation of the original real-data comparisons
+# Repeated empirical prediction: field dictionary
 
-Thirty newly randomized 60/20/20 training/discovery/confirmation partitions for each of 23 tasks. Every model is refitted on each training partition. This corrects the original single-partition predictive estimates; it is separate from the trial/assessor sensitivity study. Read the [English report](../../docs/repeated_holdout.md), [中文报告](../../docs/repeated_holdout_zh.md) and [frozen amendment](../../docs/protocols/REPEATED_HOLDOUT_20260928.md).
+[P1 design](../../docs/repeated_holdout.md) · [Formulas](../../docs/criteria.md) · [Partition uncertainty](../../docs/uncertainty.md#partition-monte-carlo-standard-error)
+
+Thirty randomized 60/20/20 training/discovery/confirmation partitions per task, with a full refit on each training partition. These outputs estimate mean predictive performance over the specified allocation mechanism. Trial/person-local and group-transfer targets are documented separately in G1.
 
 | File | Contents |
 |---|---|
@@ -24,7 +26,7 @@ Within each repeat, `finite_report_nll` and `finite_report_delta` separately res
 
 Every score row records item/pair training coverage and the original estimator status. Finite item coverage does not certify a finite unpenalized PL MLE, the uniform display-design assumption, independent observations, or a theorem's sufficient sample-size condition. The original Sharp mechanical evaluation is retained where computationally feasible; it is not newly admitted under the more conservative policy of the separate group study.
 
-Context/shell/pair-profile averages are descriptive and conditional on diagnostic availability. Their `recorded_repetitions` need not equal 30 for a gap/bin absent from some held-out sets. `successful_diagnostics` and each metric's finite count must be inspected. No old bootstrap interval endpoints are averaged; the empty interval columns in per-repeat context records reflect `resamples=0`.
+Context/shell/pair-profile averages are descriptive and conditional on diagnostic availability. Their `recorded_repetitions` need not equal 30 for a gap/bin absent from some held-out sets. `successful_diagnostics` and each metric's finite count must be inspected. No fixed-fit bootstrap interval endpoints are averaged; the empty interval columns in per-repeat context records reflect `resamples=0`.
 
 ## Reproduce and verify
 

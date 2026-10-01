@@ -1,45 +1,53 @@
-# Where the existing learning curves are recorded
+# Sample size, exposure and regularization
 
-Checked against the actual code and saved tables on 28 September 2026. A learning curve varies the **number of training ranking reports N**, holding the item catalog n and ranking length r fixed within a task. It is different from changing the number of ranked items in each observation.
+[Experiments L1/L2/S3](experiments.md) · [Data](../data/README.md) · [Estimator variants](algorithms.md#bounded-and-regularized-predictive-procedures) · [Uncertainty](uncertainty.md)
 
-## Real data: already completed, historical fitting protocol
+A learning curve varies training reports N while holding the task's catalogue n, report length r and evaluation target fixed. It can reveal estimation error, coverage failures and regularization effects. Increasing r instead changes the information inside each report and is a different intervention. All completed budget analyses below are part of the study; their fitting variants are identified explicitly.
 
-The original real learning curves remain at the immutable pre-audit commit **89b21645d5f7eb463cc90c4e982c3a66ce805b41**:
+## Empirical learning curves
 
-- [Figure: Beans and Sushi A/B learning curves](https://github.com/hyj55/mallowsmodel/blob/89b21645d5f7eb463cc90c4e982c3a66ce805b41/figures/real_learning_curves.png).
-- [Numerical summaries](https://github.com/hyj55/mallowsmodel/blob/89b21645d5f7eb463cc90c4e982c3a66ce805b41/results/real_summary.csv) and [individual fitted repetitions](https://github.com/hyj55/mallowsmodel/blob/89b21645d5f7eb463cc90c4e982c3a66ce805b41/results/real_replicates.csv).
-- [Runner and exact budget/split definitions](https://github.com/hyj55/mallowsmodel/blob/89b21645d5f7eb463cc90c4e982c3a66ce805b41/run_experiments.py): `outer_split`, `fit_compare`, `real_experiments`.
+| Dataset | n,r | N budgets | Training permutations at each N | Fixed outer test |
+|---|---|---|---:|---:|
+| Beans | 10,3 | 20,50,100,200,400,673 | 5 | 169 |
+| Sushi A | 10,10 | 20,50,100,300,1,000,3,000 | 5 | 1,000 |
+| Sushi B | 100,10 | 100,300,1,000,3,000 | 3 | 1,000 |
 
-| Task | n | r | Training report counts N | Training subsamples at each N | Fixed test reports |
-|---|---:|---:|---|---:|---:|
-| Beans | 10 | 3 | 20, 50, 100, 200, 400, 673 | 5 | 169 |
-| Sushi A | 10 | 10 | 20, 50, 100, 300, 1,000, 3,000 | 5 | 1,000 |
-| Sushi B | 100 | 10 | 100, 300, 1,000, 3,000 | 3 | 1,000 |
+Make one 80/20 outer report split. Within each repetition, permute the development pool and use nested prefixes for N. A/B respondents share the outer split. The inner first floor(.8N) reports tune PL's ridge penalty and the optional SM dispersion multiplier on the remainder; final fits use all N. Thus N includes inner validation. At Beans N=673 the five permutations contain the same full development sample; they are not five new samples.
 
-The outer 80/20 partition was made **once**. Each repetition reshuffled the development pool and used nested prefixes for the budgets, with the same outer test set. Thus these are repeated training subsamples, not multiple independent outer train/test partitions. Beans at N=673 uses the entire same development pool in all repetitions; changing its ordering does not create new observations.
+SM uses exact subset DP for Beans/Sushi A and a declared multistart insertion/integer-bound pipeline for Sushi B. The latter's 12 primary fits were not certified global optima. β is bounded at 10; unshrunk and validation-shrunk results are separate. PL tunes τ over {.01,.1,1,10,100}; τ=10⁻⁶ is a separate sensitivity, not the unpenalized MM fit. These choices make small-budget predictions finite and test regularization, while differing from P1/P2's unbounded/unpenalized procedure.
 
-A separate historical [five-fold follow-up](https://github.com/hyj55/mallowsmodel/blob/89b21645d5f7eb463cc90c4e982c3a66ce805b41/run_followups.py) did refit Beans and Sushi A on five disjoint outer test folds, with results in [outer_fold_summary.csv](https://github.com/hyj55/mallowsmodel/blob/89b21645d5f7eb463cc90c4e982c3a66ce805b41/results/outer_fold_summary.csv). That fixed-budget check already used multiple training/test sets, but still used the historical `fit_compare` protocol. It is not the later single-split unpenalized replacement and is not part of the new 30-partition correction.
+For each fixed test report, average its paired losses across the saved training repetitions, then bootstrap those report averages 2,000 times. This yields test-only conditional intervals; it does not include outer partition or training-sample uncertainty. Beans lacks farmer IDs, so its stored endpoints do not justify population inference. See [the formula](uncertainty.md#learning-curve-and-temporal-intervals).
 
-These are **historical model variants**: validation-selected PL ridge, a capped SM dispersion fit, additional validation-shrinkage sensitivity results, and an uncertified large-catalog optimization pipeline. The main, calibrated and near-MLE columns must not be interchanged. They do not establish the learning curve of the current unpenalized PL versus certified exact SM comparison. The audit did not delete their Git history. The later [baseline replacement](baseline_replacement.md) and [30-repeat correction](repeated_holdout.md) use the current estimators at one training budget per task.
+[Complete summaries](https://github.com/hyj55/mallowsmodel/blob/89b21645d5f7eb463cc90c4e982c3a66ce805b41/results/real_summary.csv), [repetitions](https://github.com/hyj55/mallowsmodel/blob/89b21645d5f7eb463cc90c4e982c3a66ce805b41/results/real_replicates.csv), [figure](https://github.com/hyj55/mallowsmodel/blob/89b21645d5f7eb463cc90c4e982c3a66ce805b41/figures/real_learning_curves.png), and [implementation](https://github.com/hyj55/mallowsmodel/blob/89b21645d5f7eb463cc90c4e982c3a66ce805b41/run_experiments.py) are pinned to the matching implementation snapshot.
 
-The repository owner's request allowed an already completed learning-curve experiment to be indexed instead of duplicated. Therefore the 28 September amendment does **not** run another real learning-curve study. It corrects the single-partition current real comparisons separately and discloses the historical protocol difference.
+## Small-budget prediction
 
-## Current strict synthetic studies: training size already varies
+L2 uses Beans N=2,5,10,14,30,100 and Sushi B N=5,10,25,50,100,300. Five development-pool permutations supply nested prefixes, with the same fixed outer test definition as L1. All catalogue labels and original reports are retained.
 
-The [strict-feature report](strict_feature_analysis.md) and its runners record:
+Both tasks fit the efficient/Borda center; Beans additionally fits exact DP, while Sushi B fits insertion initialized by the efficient order. Exact Sharp terminal blocks exceed the eight-item guard here, so this is not a large-catalogue Sharp comparison. Dispersion is bounded and optionally shrunk; PL tunes {.1,1,10}. N<5 fixes α=.5 and τ=1 without pretending to validate on an insufficient sample. Separate fixed-penalty PL controls use τ=1 and 10. The efficient λ>1 schedule cap in this implementation is labeled an empirical domain extension.
 
-| Experiment | Fixed catalog/report length | Training N | Independent generated training datasets per cell |
-|---|---|---|---:|
-| Bridge | n=8, r=2 or 3 | 8, 28, 112, 448 | 40 |
-| Shell | n=8, r=3 | 28, 112, 448 | 40 |
-| Coverage | n=32, r=3 | 40, 160, 640 | 40 |
+NLL, unseen items/pairs, actual exposure, branches and concentration choices are recorded. The interval averages each test report over the five fits, then resamples reports; it is not a t interval over five independent outer splits. The [complete result directory](https://github.com/hyj55/mallowsmodel/tree/89b21645d5f7eb463cc90c4e982c3a66ce805b41/results/exposure) includes `real_summary.csv`, `real_replicates.csv`, `real_exposure.csv`, and `real_penalty_sensitivity.csv`.
 
-See [bridge_summary.csv](../results/strict_features/bridge_summary.csv), [shell_summary.csv](../results/strict_features/shell_summary.csv), [coverage_summary.csv](../results/strict_features/coverage_summary.csv) and [run_strict_simulations.py](../run_strict_simulations.py). The coverage comparison deliberately does not fit exact MLE: read its method column instead of attributing efficient/Borda results to MLE. The [validation extension](validation_extension.md) additionally compares calibration settings at N=28 and N=448 with 200 independent training draws per cell; it is a mechanism/calibration experiment, not another empirical Sushi curve. Its three diagnostic-sample budgets are not three independently trained models.
+At Sushi B N=100, changing the PL tuning comparison to fixed τ=10 changes a reported SM advantage into a near-zero difference. This is evidence that small validation budgets can determine the fitted-procedure ranking, not a reason to choose a penalty using the test set.
 
-## Why a learning curve is useful
+## Simulation learning and exposure grids
 
-More observations may reduce center/worth estimation error, increase item/pair coverage, make a finite PL MLE exist, and reduce SM boundary fits. A persistent predictive gap at larger N may instead be consistent with model mismatch. Neither a monotonically improving realized curve nor a particular crossover is guaranteed. Hold n, r, the data population and loss definition fixed; changing them alongside N would confound the interpretation. On real data, even a persistent gap does not identify the true generating mechanism.
+All displays are sampled uniformly and independently and then ranked directly within the set. True center labels are randomized independently of estimator tie-breaking. In the n=10 learning grid, PL equal-gap scores are linearly spaced and the unequal-gap vector has one separated top item followed by nine closely spaced items; this differs from S1’s alternating-gap control. The SM signal is β=.8; PL strength scales match its expected inversion count. A matched mean noise level does not imply equal ranking entropy or equal pair reliability.
 
-For a new study under the current estimators, **Sushi A is the cleanest initial benchmark for sample-size effects**: every report ranks the same ten items, and exact SM optimization is practical. It is the full-ranking special case and cannot test a varying displayed-set mechanism. **Sushi B is the complementary partial-ranking benchmark**: each respondent ranks ten items drawn from a catalog of 100. Small-N behavior mixes statistical estimation with item/pair coverage and finite-MLE/solver availability, so all of those must be reported. Its nonuniform display design also remains a limitation for the manuscript's uniform-design theory. The two tasks have aligned respondents and are not independent population replications.
+| Design | Generating laws and sizes | N | Repetitions and evaluation | Estimators |
+|---|---|---|---|---|
+| S3 learning | n=10,r=3; SM, equal-gap PL, unequal-gap PL | 20,50,100,300 | 30 independent streams per law; nested training budgets and a shared fresh 2,000-report test within stream | Exact DP SM, bounded/shrunk β, tuned ridge PL; center benchmarks |
+| S3 small exposure | n=8; SM and matched PL | r=2: 2,4,8,16,28,56,112; r=4: 1,2,4,8,16,64; r=8: 1,2,8,32 | 30 fresh draws per cell, 2,000 independent test reports | Exact center, Sharp, efficient/Borda, ridge PL; raw/shrunk β |
+| S3 large exposure | n=64; r=2,8,32; SM and matched PL | max(1,round(λtarget·64·63/[r(r−1)])), λtarget=.03,.3,1,3 | 30 fresh draws per requested design, 1,000 independent test reports | Efficient/Borda with bounded/shrunk β and ridge PL; no exact center |
+| S1/S2 likelihood controls | n=8 or 32 | Multiple budgets in [the mechanism design](strict_feature_analysis.md) | 40 independent training draws per cell | Unbounded SM variants and unpenalized PL |
+| D2 diagnostic calibration | n=8,r=3 | 28 and 448 | 200 independent draws per law/budget | Exact SM and unpenalized PL |
 
-A future current-estimator curve should use fresh repeated respondent partitions, a fixed confirmation set across budgets within each repetition, nested training prefixes, paired SM/PL evaluation, and prespecified failure accounting. Compare average losses of separately fitted models; do not turn the experiment into a probability-averaging ensemble. Treat repetition precision as conditional on the observed dataset, not as additional independent people.
+The n=10 design has 90 independent law/repetition streams and 360 budget-specific training/evaluation contexts. Its four budgets reuse each stream; they are not 360 independent source draws. Small/large exposure grids have 1,020 and 720 independent datasets, respectively. Rounding can map two requested n=64,r=32 exposure targets to N=1; their independent streams produce 60 repetitions in the corresponding merged table cell.
+
+Within a fixed exposure cell, saved mean-loss and center-error intervals use Student-t formulas across independent repetitions. The n=10 learning summary supplies a paired Δ interval; its separate loss, calibrated-loss and center-error columns are means without attached intervals. The [uncertainty chapter](uncertainty.md#student-t-simulation-intervals) explains why independence matters and how this differs from empirical repeated splitting. Reference-shape normalizations and coverage diagnostics are defined in [Criteria](criteria.md).
+
+[Simulation learning tables](https://github.com/hyj55/mallowsmodel/blob/89b21645d5f7eb463cc90c4e982c3a66ce805b41/results/synthetic_summary.csv), [exposure tables](https://github.com/hyj55/mallowsmodel/tree/89b21645d5f7eb463cc90c4e982c3a66ce805b41/results/exposure), and [exposure runner](https://github.com/hyj55/mallowsmodel/blob/89b21645d5f7eb463cc90c4e982c3a66ce805b41/run_exposure.py) preserve the exact procedures. Runtime and schedule-feasibility checks do not create new statistical repetitions.
+
+## Interpretation
+
+Sample-size effects can arise from better center/strength estimation, more complete exposure, finite-MLE existence, solver certification or concentration tuning. Report those alongside loss. A persistent large-N gap may reflect model mismatch, but these finite grids do not identify the true family on an arbitrary empirical dataset. P1 supplies repeated-partition estimates at one budget per task; it is not a replacement for a multi-budget curve or evidence that L1/L2 used identical estimators.

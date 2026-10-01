@@ -1,37 +1,28 @@
-# Replacement of historical Beans and Sushi comparisons
+# Fixed-partition prediction and diagnostics
 
-**28 September 2026 update:** the real-data point comparisons below retain their original single partition. Use the [30-repeat correction](repeated_holdout.md) ([中文](repeated_holdout_zh.md)) for average predictive performance after repeated full refitting. Original bootstrap intervals stay conditional on the original fits; synthetic results and source-only audits are unchanged.
+[Experiment P2](experiments.md) · [Criteria](criteria.md) · [Uncertainty](uncertainty.md) · [Data catalogue](../data/README.md)
 
-**Completed 26 September 2026 UTC.** These exploratory fits replace earlier capped, regularized and heuristic versions in the current scientific comparison. They use a newly frozen common 60/20/20 split, not the old repeated learning-curve design. Do not pool the new and old estimates or attribute differences solely to removing regularization.
+## Purpose
 
-[Protocol committed before fitting](https://github.com/hyj55/mallowsmodel/commit/517990bb8cc7111513eeca9dac5dd3d97e25831b). All original reports are retained; no ties broken, items deleted, reports repaired or test data used for tuning. Source bytes match the historical manifest. The MLE uses manuscript DP at n=10 and the certified integer-formulation benchmark at n=100. PL uses Hunter's original MM update; both fits are unpenalized. [Canonical method contract](algorithms.md).
+A specified fitted model can be examined in detail on a disjoint diagnostic or confirmation set. P2 supplies these conditional analyses alongside P1's average across partitions. The point estimate and bootstrap interval in a P2 row describe **that row's fixed training allocation**; its interval must not be placed around a P1 mean.
 
-| Dataset | Source reports | n,r | Training N | lambda | mu |
-|---|---:|---|---:|---:|---:|
-| Beans | 842 | 10,3 | 505 | 33.667 | 151.5 |
-| Sushi A | 5,000 | 10,10 | 3,000 | 3,000 | 3,000 |
-| Sushi B | 5,000 | 100,10 | 3,000 | 27.273 | 300 |
+## Datasets and allocation
 
-All are outside the sparse-pair regime; no risk-bound claim. Sushi A/B use the same respondent split and are not independent studies. Beans has no assessor identifier. Sushi B's observed display design is strongly nonuniform; an observed lambda value does not certify the uniform-design assumption.
+The 23 tasks and 60/20/20 report counts are listed in [P1 task sizes](repeated_holdout.md#task-sizes). P2 uses one separately specified permutation per task, with whole-assessor Sounds splits and aligned Sushi and within-arm dots2024 participant splits. Anonymous Beans, Wheat and PrefLib rows are split as reports. No year/season/geographic/demographic stratification is imposed. Ranking content is preserved.
 
-## Confirmation results
+| Tasks | Root seed / runner | Output directory |
+|---|---|---|
+| Beans, Sushi A/B | 202609253; `run_baseline_replacement.py` | `results/baseline_replacement/` |
+| Eight PrefLib Dots/Puzzle and eight dots2024 tasks | 202609251; `run_strict_real.py` | `results/strict_features/real_*` |
+| Wheat | 202609252; `run_context_followup.py` | `results/context_followup/` |
+| Sounds, PatrasIQ cost/population | 202609260 with source-index streams; `run_validation_real.py` | `results/validation_extension/real_*` |
 
-Negative delta favors SM. NLLs at different report sizes should not be compared.
+All use the specified exact/Sharp/efficient/clipped-Borda SM candidates and Hunter MM PL, recording unavailability. [The dataset-by-estimator table](experiments.md#estimator-allocation-by-empirical-dataset) states why each method is feasible, excluded or attempted. Exact means subset DP through n=18 and a certified integer optimum above that limit; no confirmation-based optimizer selection occurs.
 
-| Task | PL NLL | SM exact MLE NLL | Delta | Conditional 95% interval |
-|---|---:|---:|---:|---|
-| Beans | 1.7973 | 1.7961 | -0.0012 | unavailable: assessor IDs |
-| Sushi A | 14.2800 | 14.2946 | +0.0147 | [-0.0271, +0.0619] |
-| Sushi B | 14.1856 | 14.1684 | -0.0173 | [-0.0641, +0.0246] |
+## Criteria and interval units
 
-**No clear MLE predictive winner emerges on this split.** The Beans point difference is small and descriptive. Both Sushi intervals include zero. Intervals are paired whole-respondent bootstrap intervals with 2,000 draws, conditional on these training fits, excluding training and data-selection uncertainty. These findings do not reverse or confirm every historical learning-curve result: the protocol changed.
+The principal score is mean confirmation whole-ranking NLL. Pair SM−PL losses on each report before averaging. Identified-unit intervals use 2,000 percentile bootstrap draws conditional on the fixed fits: individual respondents within Sushi/dots2024/PatrasIQ tasks, whole assessors for Sounds. Beans, anonymous PrefLib and Wheat have no supported inferential CI. The [resampling chapter](uncertainty.md) supplies formulas, assumptions, nonfinite handling and limits.
 
-The Sushi B integer optimization **certified lower=upper=45,149 training disagreements** within its prespecified 120-second budget. The reported center is therefore one global MLE; it is not the earlier insertion heuristic. Using HiGHS reproduces the cited integral formulation, not the original CPLEX implementation or its timing. Other tied optima could produce different test predictions.
+PrefLib/dots2024 and PatrasIQ also have shell-mass/within-shell components and context slopes on discovery and confirmation; Sounds has direct-pair reliability profiles. Wheat has an unadjusted slope and explicitly unavailable village adjustment. The objective-reference follow-up uses the external answer order only for its named diagnostic, never for training the primary model. Beans/Sushi P2 supplies predictive scores; their richer saved mechanism diagnostics belong to the separately specified C1 regularized fitting control.
 
-Clipped Borda deltas are +0.0107 for Beans, +0.0108 for Sushi A and -0.0138 for Sushi B. It is separately named, not called MLE. Sharp is unavailable for all three exact sieve sizes. Section 3 is outside its schedule domain in all three tasks. Every status is retained in [scores.csv](../results/baseline_replacement/scores.csv).
-
-The replacement confirms that once computational approximation is removed, these data do not automatically deliver a decisive model preference. It does not establish that the models have identical population performance.
-
-## Reproduce
-
-`python run_baseline_replacement.py` under requirements-lock.txt. The default attempts the exact n=100 solve once; failure to certify on another machine remains unavailable. No additional data cleaning or fallback is allowed. [Outputs](../results/baseline_replacement/README.md), [data descriptions](../data/README.md), [references](references.md).
+A task can have an exact fitted center and still have no reliable sampling interval. Conversely, an available bootstrap interval is conditional on the fixed fit, not proof of correct model specification. [Findings](findings.md) combines these analyses by question; [result dictionaries](../results/README.md) link every complete table.

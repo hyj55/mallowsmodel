@@ -1,12 +1,12 @@
-# Strict feature-transition study
+# Mechanism, coverage and empirical diagnostic files
 
-The real-data files here retain the original single split. Their repeated-refit averages are in [repeated_holdout](../repeated_holdout/README.md); simulations and source-only audits in this directory are unchanged.
+[S1/S2/D1 design](../../docs/strict_feature_analysis.md) · [P2 fixed prediction](../../docs/baseline_replacement.md) · [Criteria](../../docs/criteria.md) · [Uncertainty](../../docs/uncertainty.md)
 
-Read [the English analysis](../../docs/strict_feature_analysis.md). Current uncertainty and attribution corrections are specified in [the audit](../../docs/scientific_audit.md). These results originate from the frozen [main protocol](../../docs/protocols/STRICT_FEATURE_PROTOCOL.md), [source addendum](../../docs/protocols/STRICT_SOURCE_ADDENDUM.md), and explicitly exploratory [follow-up](../../docs/protocols/STRICT_FEATURE_FOLLOWUP.md).
+The directory contains 4,760 independently generated training datasets, fixed-partition results for 16 empirical tasks, discovery-budget controls and a tricot source screen. P1's 30-partition means for the same empirical tasks are in [repeated_holdout](../repeated_holdout/README.md). They have a different uncertainty target from the conditional P2 diagnostics.
 
 ## Reproduce
 
-Use the [shared reproduction guide](../../docs/reproducibility.md) for installation, full experiment commands, fixed seeds and solver limitations. Source files remain in ignored data/raw directories. The agricultural downloader runs the eligibility audit only. Recovery replay is not additional evidence.
+Use the [shared reproduction guide](../../docs/reproducibility.md) for installation, full experiment commands, fixed seeds and solver limitations. Source files remain in ignored data/raw directories. The agricultural downloader runs the eligibility audit only. Replaying a fixed random stream adds no independent evidence.
 
 ## Files
 
@@ -14,7 +14,7 @@ Use the [shared reproduction guide](../../docs/reproducibility.md) for installat
 |---|---|
 | bridge_*, shell_*, coverage_* | Every simulation fit, losses, law features, selector results, summaries and counts |
 | real_datasets.csv | Reports, training coverage, distinct displays and grouping limitations |
-| real_splits.csv | Original record indices and reconstructed group IDs |
+| real_splits.csv | Specified source record indices and reconstructed group IDs |
 | real_parameters.json | Centers, dispersions, PL worths, status and solver certificates |
 | real_results.csv, real_predictions.csv | All method statuses and confirmation losses |
 | real_shells.csv | Exact shell-mass and within-shell decomposition |
@@ -35,7 +35,7 @@ N means **training reports**. Value means mixture weight a, or shell tilt h. Del
 - SM dispersion is unbounded; infinite beta and predictive loss are retained. Non-strongly-connected PL comparisons are unavailable, not stabilized by deleted items or added comparisons. Undefined estimates are NaN; divergent loss is infinity.
 - Plain summary metrics are NaN if a required run is undefined, and can be infinite. Suffixes finite_conditional, defined, infinite, finite, and status counts disclose conditioning. Plain lo/hi intervals are provided only when every repetition is finite.
 - Simulation intervals are paired-replicate t intervals: mean ± t(0.975,R−1) × SD/sqrt(R). Pairs within a ranking are not independent repetitions. With unbounded SM estimates, finite-N boundary events can make unconditional expected log loss infinite even when an observed simulation cell has all finite fits.
-- Real intervals are paired whole-report percentile bootstraps with 2,000 draws, conditional on fixed fits. One participant contributes one report per 2024 arm/size task, and folds align across sizes. PrefLib lacks assessor/trial IDs; its earlier working intervals have been withdrawn. Current outputs keep point values with uncertainty_status=unavailable_assessor_ids. Intervals are pointwise, unadjusted, and exclude training and source-selection uncertainty.
+- Real intervals are paired whole-report percentile bootstraps with 2,000 draws, conditional on fixed fits. One participant contributes one report per 2024 arm/size task, and folds align across sizes. The anonymous PrefLib export lacks assessor/trial IDs; G1 recovers trial membership but not cross-trial assessors; independent-record intervals are unsupported. Outputs keep point values with uncertainty_status=unavailable_assessor_ids. Intervals are pointwise, unadjusted, and exclude training and source-selection uncertainty.
 - Where respondent units are identified, context is a descriptive slope of correctly oriented outcomes on displayed-center gap with pair fixed effects. Only pairs with at least two gap levels, each observed at least twice, are eligible. Whole reports are bootstrapped; undefined resamples are counted through valid_bootstraps. Insufficient variation is unavailable, not a zero effect.
 - For shell d, define Q(Y|S)=P_PL(D=d|S)/|shell_d(S)| about the fixed training center. Then log(P_PL/P_SM)=log(Q/P_SM)+log(P_PL/Q). Q is an exact diagnostic, never a fitted replacement model.
 - Recovery uses the same seeds and sources after a workspace disconnect; it supplies no additional independent replication. Validation records agreement with rounded pre-disconnect summaries. Numerical differences would be disclosed rather than used to select a favorable run.
