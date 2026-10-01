@@ -10,9 +10,9 @@ The study includes preference reports, objective ordering tasks, agricultural ev
 - **n:** catalogue size; unused labels are not removed merely to obtain a finite fit.
 - **r:** displayed and completely ordered items in each report. Each fitted task has fixed r.
 - **N:** training reports in a particular experiment. A dataset has no unique N independent of its split or budget.
-- **μ=Nr/n:** average training appearances per catalogue item.
-- **λ=Nr(r−1)/(n(n−1)):** average training co-occurrences per unordered catalogue pair.
-- **Observed pair coverage:** distinct pairs seen / n(n−1)/2. Minimum item/pair counts and directed connectivity describe features that averages miss.
+- **$`\mu=Nr/n`$:** average training appearances per catalogue item.
+- **$`\lambda=Nr(r-1)/(n(n-1))`$:** average training co-occurrences per unordered catalogue pair.
+- **Observed pair coverage:** distinct pairs seen / $`n(n-1)/2`$. Minimum item/pair counts and directed connectivity describe features that averages miss.
 
 μ and λ are also per-item/per-pair expectations under uniform independent display sampling. Real-data averages alone do not verify that sampling assumption. All empirical source items appear at least once in their full P1 task; this does not imply every training partition has adequate coverage.
 

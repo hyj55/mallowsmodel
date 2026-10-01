@@ -4,11 +4,11 @@
 
 ## Generating populations
 
-Sample an r-item display uniformly from n labels, then generate its complete ranking directly conditional on that display. The reference order is randomized independently of estimator tie priorities. SM uses β=.8. PL log-worth gaps are either all equal or alternate 1,4,1,4,… before a common scaling chosen to match SM's expected inversion count averaged over displays.
+Sample an r-item display uniformly from n labels, then generate its complete ranking directly conditional on that display. The reference order is randomized independently of estimator tie priorities. SM uses $`\beta=0.8`$. PL log-worth gaps are either all equal or alternate 1,4,1,4,… before a common scaling chosen to match SM's expected inversion count averaged over displays.
 
 Two interventions distinguish overall noise from allocation among wrong orders.
 
-**Bridge:** for a∈{0,.25,.5,.75,1},
+**Bridge:** for $`a\in\{0,0.25,0.5,0.75,1\}`$,
 
 ```math
 P_a(Y\mid S)=(1-a)P_{SM}(Y\mid S)+aP_{PL}(Y\mid S).
@@ -16,7 +16,7 @@ P_a(Y\mid S)=(1-a)P_{SM}(Y\mid S)+aP_{PL}(Y\mid S).
 
 Expected inversions remain matched, but multiple probability features change together. Intermediate populations need not belong to either fitted family.
 
-**Fixed-shell intervention:** let d=dK(Y,π₀ restricted to S). For h∈{0,.5,1,2,4},
+**Fixed-shell intervention:** let $`d=d_K(Y,\pi_0|_S)`$. For $`h\in\{0,0.5,1,2,4\}`$,
 
 ```math
 P_h(Y\mid S)=P_{SM}(D=d\mid S)\frac{P_{PL}(Y\mid S)^h}{\sum_{Y':D(Y')=d}P_{PL}(Y'\mid S)^h}.
@@ -32,7 +32,7 @@ Every display retains its entire SM inversion-count distribution. h=0 is uniform
 | Fixed-shell | n=8,r=3 | 28,112,448 | Five h values × two gap shapes; 40 per cell | 1,200 |
 | Coverage | n=32,r=3 | 40,160,640 | a=0,.5,1; equal gaps; 40 per cell | 360 |
 
-Every generated training dataset is shared by all candidate methods. For n=8, attempt exact DP SM, Sharp, efficient, clipped Borda and unpenalized PL. Exact DP provides a feasible small-catalogue likelihood benchmark; Sharp's terminal enumeration is within the guard; efficient is excluded when λ>1; Borda supplies the global-score comparison. Successful efficient fits have no active hierarchy stages.
+Every generated training dataset is shared by all candidate methods. For n=8, attempt exact DP SM, Sharp, efficient, clipped Borda and unpenalized PL. Exact DP provides a feasible small-catalogue likelihood benchmark; Sharp's terminal enumeration is within the guard; efficient is excluded when $`\lambda>1`$; Borda supplies the global-score comparison. Successful efficient fits have no active hierarchy stages.
 
 Each fit receives an independent discovery sample of 1,000 whole reports. The n=8 test criterion is exact population NLL computed over every display/order, so no finite-test noise is added. Root seed 202609251 separates training, discovery, test and algorithm random streams.
 

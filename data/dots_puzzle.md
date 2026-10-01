@@ -38,6 +38,6 @@ Different puzzles requiring the same number of solution steps can differ in huma
 
 ## Uses and coverage
 
-P1/P2 expand the anonymous PrefLib frequencies and split reports; no trial stratification is used there. Their exact N values are listed in [task sizes](../docs/repeated_holdout.md#task-sizes). Since r=n=4, λ=μ=N and item/pair exposure is complete in every nonempty training subset. Fixed full displays permit shell diagnostics but no within-pair changing-display gap contrast.
+P1/P2 expand the anonymous PrefLib frequencies and split reports; no trial stratification is used there. Their exact N values are listed in [task sizes](../docs/repeated_holdout.md#task-sizes). Since r=n=4, $`\lambda=\mu=N`$ and item/pair exposure is complete in every nonempty training subset. Fixed full displays permit shell diagnostics but no within-pair changing-display gap contrast.
 
 G1 uses the original trial files, not a guessed assignment of anonymous expanded rows. It splits within all 40 trials or holds out entire trials and compares local, pooled and matched-budget fitting. Trial metadata route the local model; they are not fitted covariates. All four conditions remain separate. Repeated trial partitions do not supply the missing worker identities, so G1's empirical split ranges are descriptive.

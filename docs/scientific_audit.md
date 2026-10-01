@@ -24,7 +24,7 @@ The study separates three questions: whether a calculation matches its stated pr
 
 The frozen [audit amendment](protocols/AUDIT_AMENDMENT.md) withdraws independent-record or artificial-village inference where sampling units cannot be justified. It does not repair a source ranking, delete an inconvenient response or change a fitted point value. Some immutable result snapshots therefore contain interval columns whose inferential interpretation is superseded by [the uncertainty guide](uncertainty.md).
 
-The implementation rejects noninteger item labels rather than silently truncating them. The unpenalized efficient entry point rejects λ>1; exposure simulations that deliberately cap that schedule are documented as a separate empirical extension. Neither change establishes that a real population satisfies the manuscript assumptions.
+The implementation rejects noninteger item labels rather than silently truncating them. The unpenalized efficient entry point rejects $`\lambda>1`$; exposure simulations that deliberately cap that schedule are documented as a separate empirical extension. Neither change establishes that a real population satisfies the manuscript assumptions.
 
 ## Checks on numerical results
 
