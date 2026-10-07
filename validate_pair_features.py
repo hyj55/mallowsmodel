@@ -46,6 +46,11 @@ def verify(with_sources=False):
             denominator += int(g['count'].sum())
         np.testing.assert_allclose(np.sqrt(numerator/denominator), row.heterogeneity_sd, atol=1e-14)
     joined = pd.read_csv(OUT/'nll_comparison.csv')
+    combined = pd.read_csv(OUT/'all_features.csv').set_index('dataset')
+    assert len(combined) == 33 and combined.index.is_unique
+    for source in [joined, pd.read_csv(OUT/'structure/nll_comparison.csv')]:
+        indexed = source.set_index('dataset')
+        pd.testing.assert_frame_equal(combined[indexed.columns].sort_index(), indexed.sort_index())
     saved = pd.read_csv(ROOT/'results/repeated_holdout/scores.csv')
     temporal = pd.read_csv(OUT/'tennis_nll_source.csv')
     assert len(joined) == len(centers) == 33

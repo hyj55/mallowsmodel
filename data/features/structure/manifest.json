@@ -5,7 +5,7 @@
   "references": 51,
   "inputs": {
     "data/features/centers.json": "c82354a1c3df6038617fdfaa2b72cfcaec06df34f76f05e0efc27f03433c79af",
-    "data/features/manifest.json": "99be60be065ac0c51cd26af3ee80f42baf06cffa439f5387471fb501a6dcb1bc",
+    "data/features/manifest.json": "a3e464abf3292d8a7415647b8ff8ff78953796ceb27063420ca0300b2861ae21",
     "data/features/nll_comparison.csv": "b27241effedcd1b078ed769512dbe573b36017b0aec98c062341a84084ac7b17",
     "results/repeated_holdout/scores.csv": "debca0d078762d6d8416ae68bcb9ffdbbbe1cb49fbf45b13ca0fde9e2502c9ba",
     "data/features/tennis_nll_source.csv": "a6661bf62f242c1ca8785e4b51d54c7a47764a09d8a57422c6a3eba153a2417e"
@@ -13,7 +13,8 @@
   "code_sha256": {
     "src/structure_features.py": "44c72605998fc2ce528e311a671a23a583071dfd221cd00e51e046211a1e9d25",
     "describe_structure_features.py": "a6d0fc8f799204c2a018f77b000bbf84f352df758943a2be09f7d74069dc219c",
-    "make_structure_feature_summary.py": "533b2bbc13fa6bd6073ec35c98fe1b6eb81e58ed91e3eba39eaea4df2815d106"
+    "make_structure_feature_summary.py": "25ca1610bb254dc92c74f9a9bcda2108a6883ddab99047c28b6fcc148a5998ac",
+    "make_feature_summary.py": "cfef99b66b0f7a6f5d0a07e9d86140c8ce4373ba8f922a8fc0818a5219d499f5"
   },
   "output_sha256": {
     "shells/beans.csv": "f8e896749afb435b24d2d11eef1ae53f57a33270b07eec58f2ef859aa11b6b09",
@@ -84,7 +85,7 @@
     "pairs/atp_2019.csv": "7f1e64bf14d115b60c73339082a4ec925a4a49dd66e90538a615e29d1c470038",
     "summary.csv": "48466bf30be8069f0768a169266d225a635a5972045e69eeed0e3e76442a842f",
     "nll_comparison.csv": "69ab0b944bff1a92b79b9bb804f7974126f6b5de2e97ee282d5e388315aedb59",
-    "comparison.md": "4c75c69cd336c11f91c83e8a51850aed04656b5b434d57107565a7e53446240a",
+    "comparison.md": "401c2cc91fa78954a929719fb635e78fb081ac935cebccf4d3c99c4d78cfc8c4",
     "associations.csv": "e2e952ddd01cb6e87820894da0aa4b4c79cafd64336f9ac8dc0805c99359e99a",
     "feature_vs_nll.svg": "7c913db6fb53220603d070e53b002ed1a40b9f637cd22b89932f37b9886264ec",
     "feature_vs_nll.png": "e0ddec884f9837ff037b1a6f14677d54a65c3b869d9eb4f76889a22ab601523d"

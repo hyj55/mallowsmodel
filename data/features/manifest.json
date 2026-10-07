@@ -4833,7 +4833,9 @@
   "code_sha256": {
     "describe_pair_features.py": "406443d2f329d26fd2113fe08eac76a56e557bdee26e4cf6c3a07a50ecb55bf5",
     "src/pair_features.py": "e71f88ed113964848ced352680edf65717d0530044c4dd81b897fd3239fd9b9a",
-    "make_pair_feature_summary.py": "a1c747c33c828dbd870d05dbcabb1ba1e334e78b3a91a81c49ba04a1beadf4fd"
+    "make_pair_feature_summary.py": "ff5ed9118ae9f8ad69379f1059f851e7fce696c14178c3d7c23252812437adb3",
+    "make_feature_summary.py": "cfef99b66b0f7a6f5d0a07e9d86140c8ce4373ba8f922a8fc0818a5219d499f5",
+    "make_structure_feature_summary.py": "25ca1610bb254dc92c74f9a9bcda2108a6883ddab99047c28b6fcc148a5998ac"
   },
   "output_sha256": {
     "pair_rates.csv.gz": "2a99125635d114dea8302e3e5e640c9f71d3e0686b70bbd354429faa5871e426",
@@ -4874,10 +4876,11 @@
     "pairs/sushi_a.csv": "810863488e703dcaf1015411048e2d6632d33c51fef14d5f5c83339488bc8ae0",
     "pairs/sushi_b.csv": "d8416b6fc5229d5a2ead780ac0a0793181c4acc7dfb31763cb36c891ce4aa4b4",
     "pairs/wheat.csv": "a2708e497c6e80578a0d21043d4c48bd97b8948883941985808eeab4ac5d6dc7",
-    "comparison.md": "8fcee8d1856d7a66162996889c7cfce8a2b8df25f9d2cb6eb3d13244846715cf",
+    "comparison.md": "87551fd65dfdb99019a2b511826a72a8ade11e9c0f6ab6420a12da587565255a",
     "associations.csv": "32ca659321241e30441cc6863793a528c4646b62fd75ad94e67544fd60b74608",
     "feature_vs_nll.svg": "2bd6593f17a15c6df29f01e1f825e46e1faeea1f3c4df56cd711109fb704b74a",
-    "feature_vs_nll.png": "13d33476c368f816aa2e965a3e927d874e31f95d51f91d00b217d88286fa5288"
+    "feature_vs_nll.png": "13d33476c368f816aa2e965a3e927d874e31f95d51f91d00b217d88286fa5288",
+    "all_features.csv": "7a6f464f3243b884a6a856d922e34e4efad6b592f5c7b56248c7e6741968cb91"
   },
   "weighting": "Occurrence-weighted variance across pair frequencies within each exact h; occurrence-weighted across h with at least two pairs",
   "full_data_center": "Exact DP for n<=18; 120-second certified MILP for n<=100; two-start insertion fallback or n>100",

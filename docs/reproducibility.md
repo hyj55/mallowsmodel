@@ -22,21 +22,20 @@ The restoration command verifies ZIP parts and reconstructs the exact recorded D
 
 ## Recompute full-data descriptive characteristics
 
-These commands calculate data features and reuse saved NLLs; they do not run a prediction experiment:
+All three characteristics share one [methods guide](../data/features/README.md) and [comparison](../data/features/comparison.md). To rebuild just that combined report from saved feature tables, run `python make_feature_summary.py`. The following commands reconstruct the data features and reuse saved NLLs; they do not run a prediction experiment:
 
 ```bash
 python download_repeated_data.py
 python describe_pair_features.py
-python make_pair_feature_summary.py
-python validate_pair_features.py --sources
 python describe_structure_features.py
-python make_structure_feature_summary.py
+python make_feature_summary.py
+python validate_pair_features.py --sources
 python validate_structure_features.py --sources
 ```
 
 The descriptor verifies sources and replays saved full-data reference centers by default. Missing ATP annual files are acquired from the pinned manifest. `--refresh-centers` explicitly requests center recomputation. Public-only validation is `python validate_pair_features.py`; it checks the counts, within-h summaries, hashes and NLL join without downloading raw data. [Definitions and file dictionary](../data/features/README.md).
 
-The structure descriptor reuses those references and counts every report for characteristics 2 and 3. It writes public shell/pair summaries to `data/features/structure/` and exact ranking/display tables to ignored `results/private/structure_features/`, respecting source redistribution terms. `python validate_structure_features.py` checks public hashes, aggregation identities, structural availability and the unchanged NLL join. Adding `--sources` independently reconstructs every exact ranking and pair/display count, checks zero-count shell contributions, and verifies each one-item replacement against the original reports. [Definitions, local frequency-table dictionary and limitations](../data/features/structure/README.md).
+The structure descriptor reuses those references and counts every report for characteristics 2 and 3. It writes public shell/pair summaries to `data/features/structure/` and exact ranking/display tables to ignored `results/private/structure_features/`, respecting source redistribution terms. `python validate_structure_features.py` checks public hashes, aggregation identities, structural availability and the unchanged NLL join. Adding `--sources` independently reconstructs every exact ranking and pair/display count, checks zero-count shell contributions, and verifies each one-item replacement against the original reports. [Definitions, local frequency-table dictionary and limitations](../data/features/README.md).
 
 ## Reproduce P1: repeated empirical prediction
 

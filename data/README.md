@@ -55,11 +55,9 @@ Immutable source commits or archive checksums identify the actual inputs. A muta
 
 ## Full-data ranking characteristics
 
-[Equal-gap pair frequencies](features/README.md) describe the entire 23 P1 tasks and ten ATP yearly tasks before experimental splitting. Every observed pair × displayed-center-gap cell retains its wins, losses, sample count and frequency. The description compares different pairs only at the same h and records sampling support, reference-center certification and an additional objective-order version where available. These are data characteristics, not an additional experiment or held-out model test.
+The [single characteristics guide](features/README.md) explains three complementary descriptions of the full 23 P1 tasks and ten ATP annual tasks: different pairs' win rates at equal displayed-center gap h; ordering frequencies within the same display and Kendall shell; and a fixed pair's rates across displays, including replacement of exactly one other item. They share the same full-data reference centers and retain objective-order versions where available. All eligible reports enter; these are data characteristics, not additional prediction experiments.
 
-The [per-dataset comparison](features/comparison.md) places those full-data features beside the existing P1 or T1 SM-minus-PL NLL gaps, retaining incomplete-fit denominators and separate prediction targets. Raw frequency dispersion includes sampling variation; sparse pair cells are explicitly identified.
-
-Two further [full-data characteristics](features/structure/README.md) describe actual ranking frequencies within the same exact display and Kendall-distance shell, and a fixed pair's observed win rates across different displays. The latter also enumerates contrasts that replace exactly one other item. All zero-count possible orders enter the shell comparison; sparse cells and structurally unavailable contrasts remain explicit. [Their complete per-dataset NLL comparison](features/structure/comparison.md) includes the nominal uniform-sampling scale for shell frequencies and repetition counts for display contrasts. These features reuse the same full-data references as characteristic 1.
+The [combined per-dataset table](features/comparison.md) places all three characteristics beside the existing P1 or T1 SM-minus-PL NLL gap in one row, followed by detailed support tables and figures. Sampling support, nominal uniform-sampling reference, structurally unavailable contrasts, incomplete-fit denominators and separate prediction targets remain explicit. [One CSV](features/all_features.csv) contains all feature and NLL columns.
 
 ## Full-source coverage
 
