@@ -1,4 +1,14 @@
-# Equal-gap pair frequencies in the full datasets
+# Full-data ranking characteristics
+
+These descriptions use every eligible report in each complete empirical task. They share the same declared reference centers and compare their features with existing prediction results; they introduce no new experiment.
+
+| Characteristic | Question and calculation | Per-dataset comparison with NLL |
+|---|---|---|
+| 1. Equal-gap pair frequencies | Different pairs' observed win rates at the same displayed-center gap h; defined below | [All 33 tasks](comparison.md) |
+| 2. Frequencies within a display and shell | [Fix the exact displayed set and Kendall distance; compare frequencies of all possible orders, including zeros](structure/README.md#characteristic-2-uniform-frequencies-within-the-same-display-and-shell) | [Every task and its sampling support](structure/comparison.md#2-same-display-same-kendall-distance-shell) |
+| 3. Same pair across displays | [Actual rates across exact displays, association with h, and contrasts replacing exactly one other item](structure/README.md#characteristic-3-a-fixed-pair-across-exact-displayed-sets) | [Every task and available contrasts](structure/comparison.md#3-same-pair-across-exact-displayed-sets) |
+
+## Characteristic 1: equal-gap pair frequencies
 
 [Data catalogue](../README.md) · [Every dataset beside its NLL gap](comparison.md) · [Machine-readable comparison](nll_comparison.csv) · [Every gap](by_gap.csv)
 

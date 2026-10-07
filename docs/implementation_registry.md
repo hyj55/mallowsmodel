@@ -6,7 +6,7 @@ The scientific organization is by research question. This page maps each compone
 
 | Component | Matching implementation and outputs | Procedure identity |
 |---|---|---|
-| Full-data characteristics | `describe_pair_features.py`, `src/pair_features.py`, `data/features/` | Every report; pair frequencies compared within exact h; saved NLLs joined without refitting prediction models |
+| Full-data characteristics | `describe_pair_features.py`, `src/pair_features.py`, `describe_structure_features.py`, `src/structure_features.py`, `data/features/` | Every report; equal-h pair rates, actual within-display/shell frequencies, exact-display pair effects and one-item replacements; saved NLLs joined without refitting prediction models |
 | P1 repeated prediction | `run_repeated_real.py`, `src/repeated_holdout.py`, `results/repeated_holdout/` | 30 unpenalized full refits per task |
 | P2 fixed prediction | Baseline, strict-real, context and validation-real runners and result directories | Fixed training/discovery/confirmation allocation; supported unit-bootstrap inference |
 | G1 group heterogeneity | `run_group_sensitivity.py`, `results/group_sensitivity/` | Exact/Fotakis plus admitted Sharp/efficient; unpenalized PL; equal-budget controls |
