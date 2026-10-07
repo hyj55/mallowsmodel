@@ -1,0 +1,10 @@
+feature,group,tasks,pearson,spearman,inference
+shell_excess_tv,P1_all_available,18,-0.46612447093841,-0.487074464730064,descriptive only; no p-value or independence assumption
+shell_excess_tv,P1_r3,4,0.604053908293464,0.8,descriptive only; no p-value or independence assumption
+shell_excess_tv,P1_r4,8,-0.315131523707583,-0.119047619047619,descriptive only; no p-value or independence assumption
+shell_excess_tv,P1_r6,3,0.919987214440185,1,descriptive only; no p-value or independence assumption
+context_display_sd,P1_all_available,9,-0.474284974692142,-0.633333333333333,descriptive only; no p-value or independence assumption
+context_display_sd,P1_r3,4,0.921239581791183,0.4,descriptive only; no p-value or independence assumption
+context_display_sd,P1_r6,3,-0.955340277706295,-1,descriptive only; no p-value or independence assumption
+swap_gap_effect,P1_all_available,8,0.703245651532575,0.666666666666667,descriptive only; no p-value or independence assumption
+swap_gap_effect,P1_r3,4,0.453819167493843,0.4,descriptive only; no p-value or independence assumption

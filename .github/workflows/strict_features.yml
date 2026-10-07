@@ -33,3 +33,4 @@ jobs:
           python validate_group_sensitivity.py --repository-only
           python validate_repeated_holdout.py --repository-only
           python validate_pair_features.py
+          python validate_structure_features.py
