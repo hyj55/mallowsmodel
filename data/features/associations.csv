@@ -1,0 +1,6 @@
+group,tasks,pearson,spearman,inference
+P1_all_complete,19,0.693368322015579,0.752631578947368,descriptive association only; no independent-task assumption or p-value
+P1_r3,4,0.835409148177752,0.4,descriptive association only; no independent-task assumption or p-value
+P1_r4,8,0.0276497205227792,0.476190476190476,descriptive association only; no independent-task assumption or p-value
+P1_r6,3,-0.982541269727337,-1,descriptive association only; no independent-task assumption or p-value
+T1_ATP_seasons,10,-0.592436751045152,-0.721212121212121,descriptive association only; no independent-task assumption or p-value

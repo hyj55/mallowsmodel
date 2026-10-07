@@ -85,6 +85,8 @@ At r=2, pair log loss is whole-ranking NLL. ATP Brier scores use a consistent pl
 
 ATP's strength profile bins $`\lvert\theta_i-\theta_j\rvert`$ into $`[0,0.5)`$, $`[0.5,1)`$, $`[1,1.5)`$ and $`[1.5,\infty)`$, using fitted training worths. Exclude exact worth ties from favorite-win rates, and record their count. A separate calibration plot sorts seen-player predictions by fitted probability within each method and divides them into ten nearly equal-count bins. Each point compares the bin's average predicted probability with its observed frequency. These are descriptive calibration summaries, not an independent test of the ranking model.
 
+For the separate **full-data descriptive characteristic**, [equal-gap pair frequencies](../data/features/README.md) count actual wins for every pair × h cell across the entire task, rather than grouping held-out outcomes by fitted PL worth. Its h-specific dispersions and full-task H summarize the observed frequencies; they are not prediction scores, confidence intervals, or goodness-of-fit tests. The [dataset comparison](../data/features/comparison.md) joins these features to already recorded NLL gaps.
+
 ## Decomposition by Kendall-distance shell
 
 Fix the training SM center. Let $`d=D(Y)=d_K(Y,\pi|_S)`$, and let $`a_r(d)`$ count permutations at distance d. Define the PL shell probability $`Q_{\mathrm{PL}}(d\mid S)`$ by summing PL probabilities within the shell. The distribution

@@ -44,6 +44,12 @@ The bars are ±1 partition MCSE. The plot also labels incomplete-fit cases; read
 
 P2 answers the complementary fixed-fit question. Its Sounds exact-SM difference is +.01919 with person-bootstrap interval [−.00884,.04330]; PatrasIQ cost is +.08173 [−.12933,.30613]; population is +.06407 [−.17458,.31015]. Those intervals condition on one training allocation and do not attach to the P1 means. Different center estimators can change the comparison: for example, P2 PatrasIQ cost clipped-Borda SM has +.32047 [.05951,.54920]. [P2](baseline_replacement.md) and [the output dictionary](../results/validation_extension/README.md) preserve every candidate.
 
+## Full-data pair characteristics
+
+The [data-feature catalogue](../data/features/README.md) describes each entire empirical task at equal displayed-center gap h. Dots 2013 and Puzzle have occurrence-weighted cross-pair frequency dispersion H of approximately 1.00–3.34 percentage points, with about 800 observations per relevant pair; all eight P1 mean NLL gaps favor SM. Sushi A has H=7.36 points with 5,000 observations per pair, and its P1 gap is +.02555. PatrasIQ cost has H=16.45 points and gap +.27794, but median pair × h support is only five observations.
+
+This descriptive relationship is not universal. dots2024 B at r=6 has H=23.36 points and a slightly SM-favorable gap −.01556. Most dots2024 cells have only one to three observations, so large raw dispersion cannot be read as noise-free population heterogeneity. Pooled correlations also change substantially when restricted to the same ranking length. [All 33 task comparisons, support counts, unavailable NLLs and separate ATP targets](../data/features/comparison.md) are published. These characteristics use full-data reference centers and are not additional prediction experiments or independent model tests.
+
 ## Trial and assessor heterogeneity
 
 At the same training count, local Puzzle fitting improves both SM and PL by approximately .11–.14 nats per report relative to matched pooled training. With the much larger full pooled training sample, that local advantage usually disappears. Relative SM–PL interactions change sign across Puzzle conditions and all their primary split ranges include zero. Group information can improve prediction without establishing that one family is consistently more group-sensitive.
