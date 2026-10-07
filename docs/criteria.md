@@ -89,7 +89,7 @@ For the separate **full-data descriptive characteristic**, [equal-gap pair frequ
 
 ## Decomposition by Kendall-distance shell
 
-For the separate **full-data frequency characteristic**, [characteristic 2](../data/features/structure/README.md#characteristic-2-uniform-frequencies-within-the-same-display-and-shell) fixes both S and d and counts actual orders across the entire task, including zero-count possible orders. It reports empirical total variation from uniformity and the nominal finite-sample uniform reference. The saved-fit likelihood decomposition below answers a different question and does not replace those frequency counts.
+For the separate **full-data frequency characteristic**, [characteristic 2](../data/features/README.md#characteristic-2-uniform-frequencies-within-the-same-display-and-shell) fixes both S and d and counts actual orders across the entire task, including zero-count possible orders. It reports empirical total variation from uniformity and the nominal finite-sample uniform reference. The saved-fit likelihood decomposition below answers a different question and does not replace those frequency counts.
 
 Fix the training SM center. Let $`d=D(Y)=d_K(Y,\pi|_S)`$, and let $`a_r(d)`$ count permutations at distance d. Define the PL shell probability $`Q_{\mathrm{PL}}(d\mid S)`$ by summing PL probabilities within the shell. The distribution
 
@@ -109,7 +109,7 @@ PL shell masses are computed by finite-state subset/polynomial recursion, not a 
 
 ## Context slope
 
-[Full-data characteristic 3](../data/features/structure/README.md#characteristic-3-a-fixed-pair-across-exact-displayed-sets) retains exact pair × display counts before aggregation, uses all reports without the diagnostic's repetition threshold, and includes matched contrasts that replace one nonfocal item. Its descriptive C, γ and replacement effect are joined to existing NLLs in [the data comparison](../data/features/structure/comparison.md). The following held-out diagnostic has its own eligibility and uncertainty procedure.
+[Full-data characteristic 3](../data/features/README.md#characteristic-3-a-fixed-pair-across-exact-displayed-sets) retains exact pair × display counts before aggregation, uses all reports without the diagnostic's repetition threshold, and includes matched contrasts that replace one nonfocal item. Its descriptive C, γ and replacement effect are joined to existing NLLs in [the data comparison](../data/features/comparison.md). The following held-out diagnostic has its own eligibility and uncertainty procedure.
 
 For a fixed pair, SM's marginal probability can change when its displayed-center gap changes; a single homogeneous PL model's pair probability does not. Define a cell c as a pair, or pair × recorded stratum. Keep cells with at least two distinct gaps each occurring at least twice. With within-cell means $`\bar h_c`$ and $`\bar z_c`$,
 

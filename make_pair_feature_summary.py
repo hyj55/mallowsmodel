@@ -1,13 +1,11 @@
 """Render full-data descriptive features beside already recorded NLL gaps."""
-import json
-import math
 import numpy as np
 import pandas as pd
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
-from describe_pair_features import ROOT, OUT, digest
+from describe_pair_features import OUT
 
 
 NAMES = {'beans':'Beans','sushi_a':'Sushi A','sushi_b':'Sushi B','wheat':'Wheat',
@@ -20,7 +18,7 @@ def label(name):
     return NAMES.get(name, name.replace('dots2024_','Dots 2024 ').replace('atp_','ATP ').replace('_',' '))
 
 
-def run():
+def render_section():
     frame = pd.read_csv(OUT/'nll_comparison.csv')
     p1 = frame.loc[frame.nll_study.eq('P1') & frame.delta.notna()]
     rows=[]
@@ -95,12 +93,13 @@ def run():
     table.extend(f'| {row.group} | {row.tasks} | {row.pearson:+.3f} | {row.spearman:+.3f} |' for row in association.itertuples())
     table += ['', '![Equal-h data features versus recorded NLL differences](feature_vs_nll.svg)','',
         'Axes differ between P1 and ATP. Every plotted point is a descriptive feature paired with an existing loss gap; no new confidence interval is computed.','']
-    (OUT/'comparison.md').write_text('\n'.join(table))
-    manifest=json.loads((OUT/'manifest.json').read_text())
-    manifest['code_sha256']['make_pair_feature_summary.py']=digest(ROOT/'make_pair_feature_summary.py')
-    for name in ['comparison.md','associations.csv','feature_vs_nll.svg','feature_vs_nll.png']:
-        manifest['output_sha256'][name]=digest(OUT/name)
-    (OUT/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
+    return '\n'.join(table)
+
+
+def run():
+    """Compatibility entry point for the unified three-characteristic report."""
+    from make_feature_summary import run as unified_run
+    unified_run()
 
 
 if __name__=='__main__':

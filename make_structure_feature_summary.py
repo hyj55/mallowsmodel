@@ -1,12 +1,10 @@
 """Render full-data shell/context characteristics next to existing NLL gaps."""
-import json
 import numpy as np
 import pandas as pd
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
-from describe_pair_features import ROOT,digest
 from describe_structure_features import OUT
 from make_pair_feature_summary import label
 
@@ -17,7 +15,7 @@ def number(x,scale=1,decimals=3,signed=False):
     return f'{scale*x:+.{decimals}f}' if signed else f'{scale*x:.{decimals}f}'
 
 
-def run():
+def render_section():
     data=pd.read_csv(OUT/'nll_comparison.csv')
     p1=data.loc[data.nll_study.eq('P1')]
     plt.rcParams.update({'font.family':'DejaVu Sans','font.size':9,'svg.hashsalt':'whole-data-shell-context'})
@@ -93,12 +91,13 @@ def run():
     lines += ['', '## Visual comparison','',
         '![Full-data structural characteristics and recorded NLL gaps](feature_vs_nll.svg)','',
         'Only available features with complete P1 NLL means are plotted. The first panel subtracts the nominal sampling reference to display the scale; it does not remove center uncertainty, report dependence, or mixtures. Features, report lengths and sampling support differ across tasks. [Associations](associations.csv) are descriptive, with no p-values or population claims.','']
-    (OUT/'comparison.md').write_text('\n'.join(lines))
-    manifest=json.loads((OUT/'manifest.json').read_text())
-    manifest['code_sha256']['make_structure_feature_summary.py']=digest(ROOT/'make_structure_feature_summary.py')
-    for name in ['comparison.md','associations.csv','feature_vs_nll.svg','feature_vs_nll.png']:
-        manifest['output_sha256'][name]=digest(OUT/name)
-    (OUT/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
+    return '\n'.join(lines)
+
+
+def run():
+    """Compatibility entry point for the unified three-characteristic report."""
+    from make_feature_summary import run as unified_run
+    unified_run()
 
 
 if __name__=='__main__':
