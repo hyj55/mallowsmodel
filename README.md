@@ -9,6 +9,7 @@ The main score is the mean negative log probability of a held-out **whole rankin
 | Start with | What it explains |
 |---|---|
 | [Data catalogue](data/README.md) | Every dataset, source files, variables, participant identifiers, preprocessing, sample sizes, coverage, and experimental uses |
+| [Full-data pair characteristics](data/features/README.md) | Actual pair win rates at equal displayed-center gap, every dataset's descriptive heterogeneity, and its existing SM–PL NLL gap |
 | [Research questions and experiment map](docs/experiments.md) | How all analyses fit together; datasets, estimators, repetitions, and result locations |
 | [Models and estimators](docs/algorithms.md) | Probability laws, center and dispersion estimation, regularization variants, and admission requirements |
 | [Evaluation criteria](docs/criteria.md) | Mathematical definitions of prediction loss, center error, coverage, shell and context diagnostics, and model selection |

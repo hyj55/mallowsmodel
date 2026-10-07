@@ -53,6 +53,12 @@ A displayed-set ranking is different from “show ten items but retain only the 
 
 Immutable source commits or archive checksums identify the actual inputs. A mutable download URL is not itself a version guarantee. Raw source caches and detailed respondent records are generally not redistributed. [Third-party notices](../THIRD_PARTY_NOTICES.md) explain the bundled Beans file and source terms.
 
+## Full-data pair characteristics
+
+[Equal-gap pair frequencies](features/README.md) describe the entire 23 P1 tasks and ten ATP yearly tasks before experimental splitting. Every observed pair × displayed-center-gap cell retains its wins, losses, sample count and frequency. The description compares different pairs only at the same h and records sampling support, reference-center certification and an additional objective-order version where available. These are data characteristics, not an additional experiment or held-out model test.
+
+The [per-dataset comparison](features/comparison.md) places those full-data features beside the existing P1 or T1 SM-minus-PL NLL gaps, retaining incomplete-fit denominators and separate prediction targets. Raw frequency dispersion includes sampling variation; sparse pair cells are explicitly identified.
+
 ## Full-source coverage
 
 The table below was calculated directly from the decoded source reports, without fitting a model. “Displays” counts distinct unordered item sets under each task's coding; for Dots/Puzzle these are difficulty-category sets, not a count of distinct physical stimuli. Participant-row placeholders for anonymous data are not person identifiers.

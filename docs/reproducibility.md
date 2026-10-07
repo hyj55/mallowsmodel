@@ -20,6 +20,19 @@ python validate_repeated_holdout.py --repository-only
 
 The restoration command verifies ZIP parts and reconstructs the exact recorded D2 diagnostic CSV, parameter JSONL and synthetic-draw NPZ. It performs no fitting or resampling and refuses to overwrite altered local outputs. Repository-only validators check public hashes, counts, arithmetic and stated status rules without downloading participant data. They do not claim to replay private respondent predictions.
 
+## Recompute full-data descriptive characteristics
+
+These commands calculate data features and reuse saved NLLs; they do not run a prediction experiment:
+
+```bash
+python download_repeated_data.py
+python describe_pair_features.py
+python make_pair_feature_summary.py
+python validate_pair_features.py --sources
+```
+
+The descriptor verifies sources and replays saved full-data reference centers by default. Missing ATP annual files are acquired from the pinned manifest. `--refresh-centers` explicitly requests center recomputation. Public-only validation is `python validate_pair_features.py`; it checks the counts, within-h summaries, hashes and NLL join without downloading raw data. [Definitions and file dictionary](../data/features/README.md).
+
 ## Reproduce P1: repeated empirical prediction
 
 ```bash
