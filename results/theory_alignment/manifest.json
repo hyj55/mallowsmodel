@@ -1,0 +1,24 @@
+{
+  "purpose": "Saved-result interpretation only; no new experiments",
+  "outputs": {
+    "results/theory_alignment/p1_regimes.csv": "e5f06796b1a0a823f481902a8ecb88824a97bbd0c9f8e3b122a44ef857f4622d",
+    "results/theory_alignment/p1_methods.csv": "dc7fcd05ed9f05dc04eb3f80c131e46a520a330b62c5c90b93c6e77610dd5d45",
+    "results/theory_alignment/p1_estimator_contrasts.csv": "46da56d5d2900c0b96b35802cf81f28627bf727d58b5baba198ba36a94071d5b",
+    "results/theory_alignment/pure_sm_results.csv": "dc5b1844d8b755d3945848b30c119f9f7cf0f120326fd8327ac4b42317a661ed",
+    "results/theory_alignment/g1_fotakis_vs_exact.csv": "84ee69dc5861c5750e11a77ee87332bd0fab5700ccbe25681924b10d25b275fb",
+    "results/theory_alignment/c1_sm_centers.csv": "35192f1218c5d0810037ef32adfe60ef2a075b293445f7a5e9c78b00bc27a729",
+    "results/theory_alignment/tables.md": "89ff48c45f7bb65aa9844846478f4632d1c7423f949ddb9cf8b42d4910df2faf"
+  },
+  "code": {
+    "analyze_theory_alignment.py": "445ef32a80e3254a618b4dc03012e5cccf2a8d4d9e6a5eb3c83ea69aa8f583e8",
+    "validate_theory_alignment.py": "9a2ebedb2a19f8f887f1d0f1585d4e991725032d07ecef8f6a7d255fb4266c38"
+  },
+  "rows": {
+    "p1_regimes": 23,
+    "p1_methods": 115,
+    "p1_estimator_contrasts": 69,
+    "pure_sm_results": 209,
+    "g1_fotakis_vs_exact": 90,
+    "c1_sm_centers": 16
+  }
+}

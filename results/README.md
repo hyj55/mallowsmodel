@@ -6,6 +6,7 @@ Read results by experiment, dataset, estimator, evaluation target and denominato
 
 | Location | Components | What to read |
 |---|---|---|
+| [theory_alignment](theory_alignment/README.md) | Estimator interpretation across P1/G1/S1/S2/S3/C1 | Regime conditions, actual branches, same-partition estimator NLL and known-center risk; arithmetic reuse of saved outputs |
 | [repeated_holdout](repeated_holdout/README.md) | P1: 23 tasks ×30 refits | Mean loss, paired Δ, partition MCSE, all fit/finite counts |
 | [baseline_replacement](baseline_replacement/README.md) | P2: Beans/Sushi | Fixed-fit prediction, certificates and supported test-unit intervals |
 | [strict_features](strict_features/README.md) | S1/S2/D1; P2 PrefLib/dots2024; tricot screen | Controlled laws, coverage, selectors, shells and context diagnostics |

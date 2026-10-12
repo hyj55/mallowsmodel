@@ -12,6 +12,8 @@ A local trial uses its fixed four physical stimuli, whereas pooled item labels i
 
 ## Pre-fit design and fitting
 
+The [estimator comparison](theory_alignment.md#g1-and-c1-where-fotakis-was-actually-compared) summarizes every saved Fotakis-versus-exact NLL contrast and its denominator. It also explains why Fotakis's majority construction is close to Theorem 2.17 but differs on tied pairs; agreement on these tasks does not prove general algorithmic equivalence.
+
 The [protocol commit](https://github.com/hyj55/mallowsmodel/commit/69541057711c08ff1508f25676bb6abfdd12c27d) predates production fits. Root seed `202609270` uses separate streams by task, fraction, repeat, purpose and group. The primary design repeats 70/30 within-group splits 100 times; budget sensitivities repeat 50/50 and 80/20 20 times each. Every group contributes floor(fraction × count) intact training reports, with the remainder held out. Integer rounding is explicit; no split is rerolled for coverage or fit existence.
 
 For identical test reports, compare (1) pooled training on all groups, (2) local training on the target group, and (3) matched_pool, a uniform without-replacement subsample of pooled training with exactly the local training count. Matched training can contain target-group reports. All methods share each context's training and test memberships. Group labels route local predictions but are not covariates in either ranking law. Local prediction requires known group identity and increases total model capacity.

@@ -20,6 +20,17 @@ python validate_repeated_holdout.py --repository-only
 
 The restoration command verifies ZIP parts and reconstructs the exact recorded D2 diagnostic CSV, parameter JSONL and synthetic-draw NPZ. It performs no fitting or resampling and refuses to overwrite altered local outputs. Repository-only validators check public hashes, counts, arithmetic and stated status rules without downloading participant data. They do not claim to replay private respondent predictions.
 
+## Rebuild the estimator-theory comparison
+
+The [theory chapter](theory_alignment.md) and [numerical appendix](../results/theory_alignment/tables.md) reuse saved estimator results. This analysis performs no fitting, simulation or resplitting:
+
+```bash
+python analyze_theory_alignment.py
+python validate_theory_alignment.py
+```
+
+The first command recomputes dimensional coordinates, complete/conditional paired NLL means and selected pure-SM risk summaries. Source hashes identify both the current study's saved tables and copied S3/C1 summaries from their implementation snapshot. The read-only validator checks provenance, arithmetic, availability and the majority tie counterexample. [Evidence dictionary](../results/theory_alignment/README.md).
+
 ## Recompute full-data descriptive characteristics
 
 All three characteristics share one [methods guide](../data/features/README.md) and [comparison](../data/features/comparison.md). To rebuild just that combined report from saved feature tables, run `python make_feature_summary.py`. The following commands reconstruct the data features and reuse saved NLLs; they do not run a prediction experiment:

@@ -6,6 +6,7 @@ The scientific organization is by research question. This page maps each compone
 
 | Component | Matching implementation and outputs | Procedure identity |
 |---|---|---|
+| Estimator-theory interpretation | `analyze_theory_alignment.py`, `validate_theory_alignment.py`, [evidence](../results/theory_alignment/README.md) | Saved-result arithmetic and manuscript regime mapping; no new experiment, model fit or split |
 | Full-data characteristics | `describe_pair_features.py`, `src/pair_features.py`, `describe_structure_features.py`, `src/structure_features.py`, `make_feature_summary.py`, `data/features/` | Every report; equal-h pair rates, actual within-display/shell frequencies, exact-display pair effects and one-item replacements; saved NLLs joined without refitting prediction models |
 | P1 repeated prediction | `run_repeated_real.py`, `src/repeated_holdout.py`, `results/repeated_holdout/` | 30 unpenalized full refits per task |
 | P2 fixed prediction | Baseline, strict-real, context and validation-real runners and result directories | Fixed training/discovery/confirmation allocation; supported unit-bootstrap inference |

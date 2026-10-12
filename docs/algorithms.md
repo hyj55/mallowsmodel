@@ -1,6 +1,6 @@
 # Models, estimators and admission rules
 
-[Experiment map](experiments.md) · [Evaluation](criteria.md) · [Uncertainty](uncertainty.md) · [References](references.md)
+[Experiment map](experiments.md) · [Theory and results](theory_alignment.md) · [Evaluation](criteria.md) · [Uncertainty](uncertainty.md) · [References](references.md)
 
 ## Observation law
 
@@ -62,6 +62,8 @@ Given any selected SM center, profile $`\beta`$ by minimizing
 With $`\bar d=D/N`$, the unbounded profile solves $`\mathbb E_\beta[d_K]=\bar d`$. The boundary solutions are $`\beta=\infty`$ when $`\bar d=0`$ and $`\beta=0`$ when $`\bar d\ge r(r-1)/4`$. Finite roots use tolerance $`10^{-12}`$. The same profile is used after exact, Sharp, efficient, Fotakis and clipped-Borda centers in the unpenalized experiments. Infinite predictive losses remain recorded.
 
 ## Score, sieve and majority estimators
+
+The [theory comparison](theory_alignment.md#which-bounds-match-in-which-region) gives the manuscript's matching risk regimes and relates each to saved runs. Its [Theorem 2.17 comparison](theory_alignment.md#theorem-217-versus-fotakis-posest) explains the shared majority-score construction and the pair-tie difference from Fotakis; neither should be confused with the saved `sharp` sieve or the efficient hierarchy.
 
 | Estimator | Construction and role | Scope/admission |
 |---|---|---|

@@ -12,6 +12,7 @@ The main score is the mean negative log probability of a held-out **whole rankin
 | [Full-data ranking characteristics](data/features/README.md) | Equal-gap pair rates, frequencies within the same display and Kendall shell, same-pair display effects, sampling support, and every dataset's existing SM–PL NLL gap |
 | [Research questions and experiment map](docs/experiments.md) | How all analyses fit together; datasets, estimators, repetitions, and result locations |
 | [Models and estimators](docs/algorithms.md) | Probability laws, center and dispersion estimation, regularization variants, and admission requirements |
+| [Estimator theory and recorded results](docs/theory_alignment.md) | Minimax regimes, which saved comparisons meet their conditions, actual estimator branches, and Theorem 2.17 versus Fotakis |
 | [Evaluation criteria](docs/criteria.md) | Mathematical definitions of prediction loss, center error, coverage, shell and context diagnostics, and model selection |
 | [Uncertainty and resampling](docs/uncertainty.md) | Exactly how each CI, bootstrap, split range, and Monte Carlo standard error is calculated, and the assumptions behind it |
 | [Findings](docs/findings.md) | Results organized by scientific question, with links to complete tables and figures |

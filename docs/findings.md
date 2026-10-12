@@ -54,6 +54,14 @@ This descriptive relationship is not universal. dots2024 B at r=6 has H=23.36 po
 
 [Characteristic 3](../data/features/comparison.md#3-same-pair-across-exact-displayed-sets) compares the same pair across exact displays. Replacing one other item to increase h gives Beans a count-weighted +2.66 percentage-point change over 420 contrasts, all with repeated displays; its NLL gap +.01251 still favors PL. Wheat gives +7.56 points and gap +.14741, but only 70 of 2,022 contrasts have both displays repeated. In dots2024 B r=6, the one-item replacement mean is −33.33 points from 30 contrasts with no such repeated-display support, whereas the broader within-pair slope is positive. These different summaries and their support cannot be reduced to a universal rule for the NLL winner. Fixed full displays provide no same-pair context comparison, and r=2 has neither a nontrivial shell constraint nor a same-pair display contrast.
 
+## Estimator risk and theorem correspondence
+
+The [theory/results analysis](theory_alignment.md) maps all six manuscript minimax regimes to the available evidence, including all 23 P1 training designs and the correctly specified SM simulation rows. Only two P1 tasks satisfy the numerical λ≤1 condition; real-data NLL and distance to an external objective order are not true-center Kendall risk.
+
+All recorded successful efficient fits have depth zero. Their agreement with global Borda therefore does not measure an active hierarchy's logarithmic tradeoff. The S3 complete-ranking average-position error falls from 4.767 at N=1 to .267 at N=32, consistent with Corollary 3.13; no saved majority-estimator risk curve directly tests Theorem 2.17. PosEst shares that theorem's majority-score idea, but its tied-pair convention differs.
+
+Estimator choice can change empirical predictions: in P1 Beans, Borda-center SM has mean NLL 1.79336, exact-center SM 1.80639, and PL 1.79388. Training optimality and held-out predictive quality are distinct targets. [Paired estimator differences, availability, branches and simulation errors](../results/theory_alignment/tables.md) make those comparisons explicit without rerunning the experiments.
+
 ## Trial and assessor heterogeneity
 
 At the same training count, local Puzzle fitting improves both SM and PL by approximately .11–.14 nats per report relative to matched pooled training. With the much larger full pooled training sample, that local advantage usually disappears. Relative SM–PL interactions change sign across Puzzle conditions and all their primary split ranges include zero. Group information can improve prediction without establishing that one family is consistently more group-sensitive.
