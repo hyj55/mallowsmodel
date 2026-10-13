@@ -4,6 +4,8 @@
 
 This directory relates existing estimator results to the supplied manuscript's conditions and risk targets. It contains arithmetic summaries and copies of saved public summary tables. It contains no new fitted model, simulated dataset, observation split or estimator implementation.
 
+These are the supplementary P1/G1/S1–S3/C1 arithmetic tables. The primary finite prediction, resource-accounted Sharp and fixed-R learning experiments are stored in [predictive](../predictive/README.md). The shared [theory chapter](../../docs/theory_alignment.md) explains both sets of evidence without treating repeated use of a source table as a new experiment.
+
 | File | Contents |
 |---|---|
 | [tables.md](tables.md) | P1 training regimes and estimator contrasts; correctly specified SM risk slices; G1 Fotakis contrasts |

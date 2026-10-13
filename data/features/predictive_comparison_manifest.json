@@ -1,0 +1,12 @@
+{
+  "inputs": {
+    "data/features/all_features.csv": "7a6f464f3243b884a6a856d922e34e4efad6b592f5c7b56248c7e6741968cb91",
+    "results/predictive/primary.csv": "198690c7eeecab7ccf98ab8f298167711fab5ec27ebae19bb2f0b9e23117a93d"
+  },
+  "outputs": {
+    "predictive_comparison.csv": "606fabeb6c3c2c121265a354a974d76827fdc585683c16f195fd99af0105824a",
+    "predictive_comparison.md": "a94bfec73061d26483252674734e0dea0394be35a9a8661149fd82420f2646e8"
+  },
+  "feature_recalculation": false,
+  "predictive_refitting": false
+}

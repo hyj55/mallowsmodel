@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "verified_at_utc": "2026-10-13T06:37:16.233472+00:00",
+  "code_signature": "d22ed921b17ba2e432f1d8c596a16fe619b5ebfca79621eb609703a04d2c1be0",
+  "training_contexts_replayed": 1290,
+  "score_rows_replayed": 7740,
+  "tests_passed": 56,
+  "primary_contexts": 690,
+  "learning_contexts": 360,
+  "independent_synthetic_contexts": 240,
+  "public_aggregate_checks": true,
+  "source_and_partition_checks": true,
+  "known_group_separation_checks": true,
+  "all_saved_test_losses_replayed": true,
+  "conditional_bootstrap_replayed": true,
+  "statistical_refits_during_validation": 0,
+  "full_data_feature_join_checked": true,
+  "figures_visually_inspected": [
+    "primary.png",
+    "learning.png",
+    "synthetic.png"
+  ],
+  "validator_sha256": "d64a86fffb90d582eb3ca7f986dc3c3b1892b96819b636409d1fa266dd9dc895",
+  "manifest_sha256": "ac9282d1df5cd0dfd258f329be3b05e86aa2cc7d61d891a2550f0ba90bc5d0b3"
+}

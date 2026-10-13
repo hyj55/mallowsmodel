@@ -1,5 +1,7 @@
 # Fixed-partition prediction and diagnostics
 
+This is the supplementary P2 fixed-fit analysis. The main finite, repeated predictive comparison is [P0](predictive_comparison.md). P2 retains the conditional diagnostics and intervals that answer additional questions; its unpenalized fits are not pooled with P0.
+
 [Experiment P2](experiments.md) · [Criteria](criteria.md) · [Uncertainty](uncertainty.md) · [Data catalogue](../data/README.md)
 
 ## Purpose

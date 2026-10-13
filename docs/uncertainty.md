@@ -8,6 +8,9 @@ A fitted model's performance on new respondents, a learning procedure's average 
 
 | Experiment/output | Random unit used in its uncertainty calculation | Calculation | Interpretation |
 |---|---|---|---|
+| P0/L0 empirical mean curves | Random allocation of fixed source units, including inner tuning | Mean; SD/sqrt(30); 2.5th–97.5th split quantiles | Partition Monte Carlo precision and descriptive spread; no population CI for the mean |
+| P0/L0 per-split prediction | Identified test units, all their reports kept together, fitted parameters fixed | 2,000 paired cluster draws; percentile interval of report-weighted ratios | Nominal 95% conditional test-sampling interval; anonymous tasks have no such CI |
+| S0 controlled curves | Fresh independent training and test datasets | Student-t mean interval over 20 repetitions | Approximate 95% Monte Carlo interval for that simulation procedure |
 | P1 repeated prediction | Random partition of the same fixed source data | Mean ± **one** $`\mathrm{SD}/\sqrt{30}`$ in figures | Conditional partition Monte Carlo precision; not a 95% CI |
 | G1 group comparison | Refit outcome across randomized partitions | 5th–95th percentiles; figure center is median | Central 90% empirical split range; not a CI |
 | P2 identified-unit prediction/shells | Held-out person or whole report, with fitted models fixed | 2,000 paired bootstrap draws; 2.5th–97.5th percentiles | Pointwise nominal 95% conditional interval |
@@ -22,6 +25,8 @@ A fitted model's performance on new respondents, a learning procedure's average 
 | Five-fold Beans/Sushi control | Five disjoint test folds | Pooled point estimate and fold minimum/maximum | Descriptive comparison; no independent-fold CI |
 
 All stated confidence levels are pointwise, without adjustment for the many tasks, methods, budgets and diagnostics. They are not posterior probabilities that one model is true. A 95% confidence procedure concerns repeated-sampling coverage under its assumptions. Approximate procedures need not attain 95% in a small or dependent sample.
+
+The [primary design](predictive_comparison.md#loss-averaging-and-intervals) specifies the P0 formulas and why its two uncertainty calculations have different targets. The [learning design](predictive_learning.md) describes dependence between nested budgets. Per-split bootstrap endpoints are never averaged into an interval for a thirty-split mean. P0's small known-group samples, including ten held-out Sounds assessors, retain the same small-cluster limitations described below.
 
 ## Paired whole-report bootstrap
 

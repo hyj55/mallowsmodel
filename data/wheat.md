@@ -22,6 +22,8 @@ The documented year/season describes the collection; these are not separate `yea
 
 ## Processing and role
 
+The main [P0 comparison](../docs/predictive_comparison.md) uses thirty allocations of 394 development and 99 test reports, with a 295/99 inner split for PL tuning. Final-development lambda=9.85 and mu=73.875. Both models use the same rankings and finite parameter rules. Sharp and its identical B0 global-sieve attempt record computational availability separately. The missing farmer/village identifiers still prevent a supported cluster bootstrap or village-balanced split; repeated randomization does not restore those identities.
+
 Best, the remaining item, and worst determine a strict complete order of the assigned triple. All 493 overall reports pass validation. The task retains n=16 varieties and r=3, all 120 catalogue pairs and 418 distinct displays. Full-source item counts range 85–98. Other traits do not become independent observations from the same farmer.
 
 P1/P2 allocate 295/99/99 reports. Training λ=7.375 and μ=55.3125. Random report splits do not keep villages together or balance age, gender or geography. The source describes randomized incomplete blocks, but the released sample alone does not establish every model-theory assumption.

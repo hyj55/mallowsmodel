@@ -6,7 +6,15 @@ The recorded experiments partly illustrate the manuscript's information and cove
 
 Theorem 2.17 and Fotakis et al.'s PosEst use the same majority-score idea. Their handling of tied pair counts differs, and their statistical conclusions concern different targets. In the implemented efficient estimator, every recorded hierarchy has depth zero; those observations describe global score sorting, not an active multilevel algorithm.
 
-This chapter reuses saved experiments. No model, simulation, split or estimator is added. The manuscript references below refer to the supplied 37-page *Selective Mallows Estimation from Uniform Partial Rankings: Minimax Kendall Risk, Efficient Algorithms, and Likelihood Comparisons*, SHA256 `400563b1789acbeea985e4b4c551162b64c87295ee3a7bf91037c8d4cc49e676`. It is unpublished and is not redistributed. [Source records](../results/theory_alignment/sources.json) identify the exact saved tables and implementation versions.
+The manuscript references below refer to the supplied 37-page *Selective Mallows Estimation from Uniform Partial Rankings: Minimax Kendall Risk, Efficient Algorithms, and Likelihood Comparisons*, SHA256 `400563b1789acbeea985e4b4c551162b64c87295ee3a7bf91037c8d4cc49e676`. It is unpublished and is not redistributed. [Source records](../results/theory_alignment/sources.json) identify the tables in the supplementary arithmetic appendix.
+
+## Connection to the primary predictive study
+
+[P0](predictive_comparison.md) implements the finite predictive protocol of Algorithm 4.1, with training-only PL regularization and a fixed finite SM dispersion bound. [L0/S0](predictive_learning.md) hold R=10 fixed: Sushi has r=10 and the controlled N/n curves have r=3. S0's correctly specified SM rows report true-center Kendall error; its PL rows and empirical NLL remain different targets from SM minimax risk.
+
+[B0](sieve_computation.md) adds the global pair-sieve wherever r<=10. Corollary 2.15 additionally requires lambda<=1 and the assumed generating design. Those conditions must be checked per training budget, not inferred from a small r. Sharp has zero pilot depth and one global terminal block in these catalogues, so B0 is an explicit reuse of the same selected pairs and sieve. Such identity supplies an algorithmic connection, not two independent supporting experiments.
+
+The active Sharp implementation removes the eight-item guard without changing A=256 or W_star. A full-space exact-DP shortcut makes some n=10 and n=12 fits computable, while other radii require complete greedy packing and can exceed time or memory budgets. [Resource receipts](../results/predictive/sieve_resources.json) and [all predictive scores](../results/predictive/primary.csv) distinguish computational availability from theorem applicability. The tables below retain the supplementary P1/G1/S1–S3 comparisons with their frozen implementations; references to an eight-item guard in those rows describe that implementation only.
 
 ## What the risk theorem measures
 
@@ -111,7 +119,7 @@ The appropriate description is **the same majority-score construction, with diff
 
 | Recorded method | Actual operation relevant to the theory | Consequence for interpretation |
 |---|---|---|
-| `sharp` | Literal Algorithm 2.1 with an exact sieve guard of eight items. In the recorded small-catalogue grids, the pilot has no stages and its padded terminal block covers the catalogue | It reduces to a global one-pair-per-report sieve there. It is not the full-ranking tournament estimator |
+| `sharp` in the supplementary tables | Algorithm 2.1 with that run's exact sieve guard of eight items. Its recorded small-catalogue grids have no pilot stages and a catalogue-wide terminal block | It reduces to a global one-pair-per-report sieve there. P0/L0/S0 remove the guard through the separate active implementation |
 | `efficient` in P1/S1/S2 | Algorithms 3.1/3.2 restricted to λ≤1; all successful depths are zero | Its predictions match global clipped Borda when tie priorities align. No active multilevel comparison was executed |
 | `efficient` in S3/L2/T1 | The saved bounded-prediction implementation starts from min(λ,1); all recorded depths are zero | λ>1 rows are an extension of the schedule. At r=n the actual average-position rule can instead be related to Corollary 3.13 |
 | `borda` | Global exposure-normalized signed score; the strict implementation applies the manuscript clipping | Relevant to Proposition 2.14 and the coverage-dominated corollary, not automatically the sharp Q rate |

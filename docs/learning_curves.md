@@ -1,8 +1,8 @@
-# Sample size, exposure and regularization
+# Supplementary sample size, exposure and regularization controls
 
 [Experiments L1/L2/S3](experiments.md) · [Data](../data/README.md) · [Estimator variants](algorithms.md#bounded-and-regularized-predictive-procedures) · [Uncertainty](uncertainty.md)
 
-A learning curve varies training reports N while holding the task's catalogue n, report length r and evaluation target fixed. It can reveal estimation error, coverage failures and regularization effects. Increasing r instead changes the information inside each report and is a different intervention. All completed budget analyses below are part of the study; their fitting variants are identified explicitly.
+A learning curve varies training reports N while holding the task's catalogue n, report length r and evaluation target fixed. The main curves are [L0/S0](predictive_learning.md), with thirty Sushi outer partitions and fixed-r independent simulations under P0's fitting rules. The controls below add fixed-test, shrinkage, small-budget and broader exposure questions; they retain their own implementation and uncertainty target. Increasing r changes the information inside a report and is a different intervention. The exposure grid containing r=32 is not part of the fixed-R=10 comparison.
 
 ## Empirical learning curves
 

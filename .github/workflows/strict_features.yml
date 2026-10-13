@@ -35,3 +35,4 @@ jobs:
           python validate_pair_features.py
           python validate_structure_features.py
           python validate_theory_alignment.py
+          python validate_predictive_study.py --repository-only

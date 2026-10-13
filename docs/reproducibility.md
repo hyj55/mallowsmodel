@@ -12,6 +12,7 @@ The read-only GitHub workflow uses Python 3.12. Numerical dependencies are pinne
 python -m pip install -r requirements-lock.txt
 python validation_artifacts.py
 python -m pytest -q
+python validate_predictive_study.py --repository-only
 python validate_scientific_audit.py --repository-only
 python validate_validation_extension.py --repository-only
 python validate_group_sensitivity.py --repository-only
@@ -19,6 +20,25 @@ python validate_repeated_holdout.py --repository-only
 ```
 
 The restoration command verifies ZIP parts and reconstructs the exact recorded D2 diagnostic CSV, parameter JSONL and synthetic-draw NPZ. It performs no fitting or resampling and refuses to overwrite altered local outputs. Repository-only validators check public hashes, counts, arithmetic and stated status rules without downloading participant data. They do not claim to replay private respondent predictions.
+
+## Reproduce the main prediction and learning study
+
+The active P0/L0/S0 fitting modules are `src/predictive_models.py`, `src/resource_sieve.py` and `src/predictive_study.py`. [The protocol](protocols/PREDICTIVE_COMPARISON_20261013.md) was committed before fitting. All 23 source tasks use the same parsers and source hashes as the supplementary repeated comparison. After acquiring those sources through `download_repeated_data.py`, run:
+
+```bash
+python benchmark_resource_sieve.py
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python run_predictive_study.py --workers 3
+python summarize_predictive_study.py
+python make_predictive_figures.py
+python compare_predictive_features.py
+python validate_predictive_study.py
+```
+
+The benchmark builds each expensive shared packing once and records complete results or resource failures. It does not fit outcome-dependent prediction models. The study runner is restartable and refuses to mix caches from different code fingerprints. `--study P0`, `--study L0` and `--study S0` select components; `--datasets` restricts empirical tasks. Partial runs are not publishable as the complete study: the summarizer requires all 1,290 contexts and all planned repetitions. Use a fresh private-output directory or checkout for a changed protocol.
+
+The public `results/predictive/` directory contains aggregate CSVs, compressed per-repetition scores and predictor parameters, plus source/code/resource manifests. Gzip files are ordinary standard-library-readable archives; no custom restoration is needed. Detailed empirical membership and per-report loss caches stay in `results/private/predictive/`. The full validator reconstructs memberships, checks group separation and source hashes, replays every saved probability and conditional bootstrap, and regenerates synthetic draws from recorded streams without refitting. Repository-only mode checks published parameters, all denominators, aliases, hashes and aggregate arithmetic without downloading source records.
+
+Main figures distinguish partition MCSE from independent-simulation confidence intervals. The feature-comparison script only joins the already computed whole-data features to the primary NLL summary; it neither refits a descriptive center nor uses full-data features for tuning.
 
 ## Rebuild the estimator-theory comparison
 
@@ -134,6 +154,6 @@ Install that snapshot's recorded dependencies and follow its source manifests. [
 
 Source acquisition rejects changed byte counts or SHA256 hashes. Repair a local HTTPS trust-chain problem through the local CA configuration or a trusted client; do not disable certificate verification or accept substituted data. Raw third-party rankings and detailed participant caches are generally ignored by Git. Generated synthetic archives contain no empirical responses.
 
-Sharp's exact terminal sieve is guarded at eight items; exact subset DP at 18. Larger exact centers need a certificate within 120 seconds. All successful efficient fits in the saved study have zero hierarchy depth. Tied exact optima may yield different chosen orders on another solver version: compare objective certificates and disclose prediction differences rather than forcing agreement.
+P0/L0/S0 Sharp has no eight-item guard: exact shortcuts and complete packings use declared memory/time budgets. A timeout is an unavailable Sharp fit, never a truncated approximate packing. P0 likelihood centers use exact subset DP through n=18 and a 30-second integer attempt above that size, with explicit approximate status when bounds differ. The supplementary P1/P2 implementation retains its eight-item sieve guard and 120-second exact-center certificate rule so its byte-locked outputs can still be replayed. All successful efficient fits have zero hierarchy depth. Tied exact optima and wall-clock-limited incumbents can differ across solver versions or hardware; compare objectives, resource receipts and certificates, and disclose resulting prediction differences rather than forcing agreement.
 
 CSV blanks/NaN denote unavailable quantities; infinity denotes divergent loss. Some saved JSON parameter records use Python-compatible NaN/Infinity tokens, so a strict JSON reader may need explicit handling. Verification of stored values is not a new independent experiment. The [protocol index](protocols/README.md) and [result dictionaries](../results/README.md) identify the evidence supporting each run.

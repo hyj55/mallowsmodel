@@ -1,5 +1,7 @@
 # Mechanism, coverage and empirical diagnostic files
 
+These outputs supply the supplementary mechanism, coverage and fixed-fit diagnostic components. The main finite comparison and Sharp implementation without an eight-item guard are documented in [P0/L0/S0](../predictive/README.md). The frozen estimator restrictions below describe these saved supplementary fits.
+
 [S1/S2/D1 design](../../docs/strict_feature_analysis.md) · [P2 fixed prediction](../../docs/baseline_replacement.md) · [Criteria](../../docs/criteria.md) · [Uncertainty](../../docs/uncertainty.md)
 
 The directory contains 4,760 independently generated training datasets, fixed-partition results for 16 empirical tasks, discovery-budget controls and a tricot source screen. P1's 30-partition means for the same empirical tasks are in [repeated_holdout](../repeated_holdout/README.md). They have a different uncertainty target from the conditional P2 diagnostics.

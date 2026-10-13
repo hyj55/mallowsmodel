@@ -1,8 +1,8 @@
 # Full-data ranking characteristics
 
-[Data catalogue](../README.md) · [All three features beside every NLL gap](comparison.md) · [Combined CSV](all_features.csv)
+[Data catalogue](../README.md) · [All three features beside primary NLL](predictive_comparison.md) · [Primary combined CSV](predictive_comparison.csv) · [Detailed support and supplementary NLL](comparison.md)
 
-The three characteristics below describe **every eligible report in each entire empirical task**. They share the same reference center, source population and observation coding. All are data descriptions; none adds a prediction experiment, a train/test split or a model-selection rule. Existing fits and prediction losses are unchanged.
+The three characteristics below describe **every eligible report in each entire empirical task**. They share the same reference center, source population and observation coding. All are data descriptions; none adds a prediction experiment, a train/test split or a model-selection rule. The [primary comparison table](predictive_comparison.md) joins these unchanged features to P0's thirty-repeat finite predictive results. The detailed tables retain supplementary P1/T1 targets as explicitly labeled columns. Neither table uses full-data features to choose a predictive model or hyperparameter.
 
 | Characteristic | What stays fixed | What is compared | Main summaries |
 |---|---|---|---|
@@ -10,7 +10,7 @@ The three characteristics below describe **every eligible report in each entire 
 | [2. Frequencies within a display and shell](#characteristic-2-uniform-frequencies-within-the-same-display-and-shell) | Exact displayed set S and Kendall distance d | Frequencies of all possible orders, including unobserved orders | TV, nominal uniform-sampling reference and occupancy |
 | [3. Same pair across displays](#characteristic-3-a-fixed-pair-across-exact-displayed-sets) | Focal pair; additionally all but one other item for matched replacements | Win rates across exact displayed sets and their association with h | Display variation C, slope γ and one-item replacement effect R |
 
-The [comparison page](comparison.md#all-three-characteristics-by-dataset) starts with all three characteristics and NLL side by side for each dataset, followed by detailed support tables. Larger raw dispersion need not mean stronger population heterogeneity: repeated observations, possible-order counts and undefined contrasts are part of the description.
+The [primary comparison](predictive_comparison.md) starts with all three characteristics and NLL side by side for each dataset; [detailed support tables](comparison.md#all-three-characteristics-by-dataset) retain the full sampling information and supplementary targets. Larger raw dispersion need not mean stronger population heterogeneity: repeated observations, possible-order counts and undefined contrasts are part of the description.
 
 ## Population and reference order
 
@@ -168,7 +168,11 @@ Positive γ or R is consistent with the direction of an SM gap effect, but does 
 
 Fixed full displays, including Sushi A and each pooled PrefLib condition, provide no same-pair display contrast. For r=2, a pair itself fixes the entire display. Those entries are NA, not measured zeros. PatrasIQ and Sushi B can have broader pair/display contrasts without any observed one-item replacement that changes h; their R is then NA while C and γ remain available.
 
-## Matching to existing NLL results
+## Matching to primary and supplementary NLL results
+
+The [primary joined table](predictive_comparison.md) and [CSV](predictive_comparison.csv) use P0's likelihood-center SM versus tuned ridge PL on thirty outer tests. All three features and their support counts are preserved. Fields prefixed `primary_` identify this target; they do not overwrite the P1/T1 columns below. ATP keeps its separate chronological T1 target. The feature is computed once from the complete dataset, not independently estimated inside each predictive split. This join is descriptive and performs no refitting.
+
+The following matching rules describe the retained **supplementary** `all_features.csv`, detailed support tables and correlations, whose numeric evidence is unchanged.
 
 For each of the 23 P1 tasks, join its feature to `split=confirmation, method=mle` in [the existing scores](../../results/repeated_holdout/scores.csv). Δ is the original 30-partition mean of NLL(SM)−NLL(PL), with exact/certified-center SM and unpenalized PL. Positive favors PL. The feature is calculated once from the whole task, not averaged over the training/test partitions.
 
@@ -182,7 +186,7 @@ The main comparison keeps whole-ranking NLL in nats/report. Since ranking length
 
 ## Reading all three characteristics with NLL
 
-The three characteristics describe different structural constraints; they are not interchangeable measures or votes for a model family. Use the [joint dataset table](comparison.md) and its support counts together.
+The three characteristics describe different structural constraints; they are not interchangeable measures or votes for a model family. Use the [primary joint dataset table](predictive_comparison.md) and [detailed support](comparison.md) together. The examples below retain explicitly supplementary P1/T1 numerical comparisons; use the `primary_*` columns for P0 values.
 
 - Dots 2013 has H≈1.00–1.96 percentage points and Puzzle H≈1.92–3.34, with about 800 observations per pair. All eight complete P1 gaps favor SM. Their coded display is fixed, so characteristic 3 is unavailable. Puzzle minimum 5 steps has shell TV .09677 versus nominal reference .06450 and Δ=−.05756: an empirical shell departure does not require PL to win.
 - Sushi A has H=7.36 points with 5,000 observations per pair and Δ=+.02555. Its shell TV .99351 is close to the nominal sampling reference .99335 because the possible-order space is large; raw TV near one alone is uninformative about model violation. Its display is fixed, so characteristic 3 is unavailable.
