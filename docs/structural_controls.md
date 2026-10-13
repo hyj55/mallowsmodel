@@ -4,6 +4,8 @@
 
 ## Center-objective benchmark
 
+The [estimator inventory](algorithms.md#estimator-inventory-and-references) supplies references for every candidate. In particular, greedy MAL is the equal-reliability specialization of [Raman & Joachims (2014), Section 3.1.1, Algorithm 2](https://www.cs.cornell.edu/people/tj/publications/raman_joachims_14a.pdf). Insertion is [repository-defined local search](references.md#repository-defined-procedures), not a numbered estimator in the selective-Mallows manuscript. C1's multistart candidate uses eight starts: Borda, PosEst, greedy MAL, and five seeded random orders.
+
 For Beans and Sushi A, compare exposure-normalized Borda, Fotakis PosEst, equal-reliability greedy MAL, multistart insertion and exact subset DP at Beans N=50/673 and Sushi A N=50/3,000, using one fixed development-pool permutation. Score their excess training Kendall objective relative to exact DP, not error relative to an unobserved true preference center. These methods test how optimization choices affect an SM fit; they are not five different ranking probability families. PosEst's benchmark evaluation does not carry G1's full-pair admission claim or its theorem guarantee automatically.
 
 Sushi B N=100/3,000 has a large-catalogue multistart insertion/MILP-bound benchmark and a cutting-plane pilot. One N=3,000 instance has a feasible objective 44,736 and lower bound 44,724; this bounds its center objective, not its test NLL. A 12-unit gap is not an exact certificate. P1/P2's certified integer fits use their own specified samples and acceptance rules, so numerical differences cannot be attributed solely to optimizer changes.

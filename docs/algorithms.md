@@ -25,6 +25,39 @@ The private manuscript *Selective Mallows Estimation from Uniform Partial Rankin
 
 **P0 is the primary Algorithm 4.1 comparison.** Its active implementation is `predictive_models.py`, with finite beta in [0,10], training-only ridge selection, refitting on 80% development data and paired outer evaluation. Sharp uses `resource_sieve.py` and the equivalent enlarged-budget completion in `sieve_budget_retry.py`, with no eight-item admission limit. [Primary fitting details](predictive_comparison.md#prespecified-fitting-procedures) and [sieve computation](sieve_computation.md) take precedence over the separately identified supplementary P1/P2 rules below.
 
+## Estimator inventory and references
+
+The inventory below covers the fitted methods and center-optimization procedures used across the study. They are not all separate statistical estimators: DP and integer programming solve the same center objective; insertion is a numerical approximation; dispersion fitting completes an SM predictor after a center has been chosen. Dataset-specific allocation remains in the [experiment map](experiments.md#estimator-allocation-by-empirical-dataset).
+
+**M** denotes the [supplied 37-page manuscript](references.md#supplied-manuscript-m), identified there by title and SHA256. Page numbers and algorithm numbers below refer to that version. A paper's theorem applies only under its stated assumptions; identifying an algorithm's source does not establish those assumptions for empirical data.
+
+### Center estimators and solvers
+
+| Method / saved label | Reference and precise location | Construction, implementation and study role |
+|---|---|---|
+| Exact SM likelihood center: subset DP (`mle`, `exact_dp`, or `sm_likelihood` with the DP path) | **M**, Section 4.1, Proposition 4.1, equation (4.4), p. 33 | Globally minimizes the whole-report Kendall objective. Implemented in [models.py](../src/models.py) and the batched recurrence in [group_sensitivity.py](../src/group_sensitivity.py); used through n=18. These are implementations of the same recurrence, not different estimators. |
+| Exact SM likelihood center: certified integer program | [Conitzer, Davenport & Kalagnanam (2006)](https://cdn.aaai.org/AAAI/2006/AAAI06-099.pdf), integral version of LP3, p. 623; the SM objective is **M**, Section 4.1 | [strict_models.py](../src/strict_models.py), `exact_integer_center`, eliminates reverse-direction variables and uses HiGHS. A center is called exact only with a matching feasible objective and lower bound. |
+| Primary likelihood-center procedure (`sm_likelihood`) | **M**, Algorithm 4.1 and Proposition 4.1, pp. 32–33; [Conitzer et al. (2006)](https://cdn.aaai.org/AAAI/2006/AAAI06-099.pdf), LP3; [repository-defined solver policy](references.md#repository-defined-procedures) | [predictive_models.py](../src/predictive_models.py), `likelihood_center`: DP through n=18, otherwise five-start insertion plus a 30-second integer attempt. Used in P0/L0/S0. An uncertified result is an explicitly approximate likelihood center, not an exact MLE. |
+| Sharp (`sharp`, `sm_sharp`) | **M**, Algorithm 2.1, p. 5; Lemma 2.11, pp. 12–13; Lemma 2.12 and Proposition 2.13, pp. 13–15; pilot Algorithm 3.2, pp. 24–25 | Localization/pilot, one orientation-independent random pair per eligible report/block, then permutation-sieve disagreement minimization. Active [resource_sieve.py](../src/resource_sieve.py) and [sieve_budget_retry.py](../src/sieve_budget_retry.py) have no item-count guard; budgets can still prevent completion. The [frozen supplementary implementation](../src/manuscript_estimators.py) retains its eight-item guard for replay. |
+| Global pair-sieve (`sm_global_sieve`, B0) | **M**, Lemma 2.11, pp. 12–13, and the first-part proof of Corollary 2.15, p. 16 | One randomly selected displayed pair per report, with the sieve on the full catalogue. [resource_sieve.py](../src/resource_sieve.py), `global_sieve_center`; included for r≤R=10. In the recorded P0/L0/S0 catalogues, Sharp has the same global terminal problem, so B0 explicitly reuses that fit. The bounded-r rate also requires the corollary's other assumptions. |
+| Efficient (`efficient`, `sm_efficient_fallback`) | **M**, Algorithms 3.1/3.2, pp. 19 and 24–25; scores in equation (3.4), p. 19; risk bound in Theorem 3.1 | [manuscript_estimators.py](../src/manuscript_estimators.py), `efficient_center`: fresh stage batches, padded blocks, offsets and terminal score sorting, with the specified global-score fallback. Recorded successful hierarchies have depth zero. The active primary study attempts it only after Sharp is unavailable and λ≤1. |
+| Global clipped Borda (`borda`; exposure-normalized `borda` in C1) | **M**, equation (3.4), pp. 19–20 with B equal to the full catalogue; Proposition 2.14, p. 15 | [manuscript_estimators.py](../src/manuscript_estimators.py), `score_order`, and C1's [pinned `borda`](https://github.com/hyj55/mallowsmodel/blob/89b21645d5f7eb463cc90c4e982c3a66ce805b41/src/models.py#L62). For fixed r the C1 score differs by the positive factor n−1; full-catalogue clipping is inactive, so the score orders agree under a common tie rule. It is also a component/fallback of the hierarchical algorithms. |
+| Fotakis / PosEst (`fotakis`, `posest`, `sm_fotakis`) | [Fotakis, Kalavasis & Stavropoulos (2021)](https://proceedings.mlr.press/v130/fotakis21a.html), Section 3, Algorithm 1, proceedings p. 2281 | Counts opponents that precede an item in at least half their joint reports; sorts these counts, using seeded final ties. [group_sensitivity.py](../src/group_sensitivity.py), `fotakis_center`, requires every pair observed in G1 and P0/L0/S0. C1's pinned `posest` mechanically permits missing pairs and has no corresponding full-pair admission guarantee. |
+| Insertion / multistart insertion (`insertion`, `multistart`) | [Repository-defined single-item local search](references.md#repository-defined-procedures); precise implementations linked below | Repeatedly take the best strictly improving remove-and-reinsert move for the Kendall objective. Starts and tie rules are experiment-specific. Used in supplementary L1/L2/S3/T1/C1, the primary large-catalogue solver, and full-data descriptive reference centers. It is not attributed to a numbered manuscript algorithm or claimed to be a new published estimator. |
+| Greedy MAL specialization (`greedy`) | [Raman & Joachims (2014)](https://www.cs.cornell.edu/people/tj/publications/raman_joachims_14a.pdf), Section 3.1.1, Algorithm 2, PDF pp. 3–4 | C1's [pinned `greedy`](https://github.com/hyj55/mallowsmodel/blob/89b21645d5f7eb463cc90c4e982c3a66ce805b41/src/models.py#L86) sets every assessor reliability to one and greedily selects the next item by net wins among remaining items. This is their greedy center heuristic specialized to equal reliability; it neither estimates individual reliabilities nor guarantees a Kemeny optimum. |
+
+### Dispersion, PL and fitted control variants
+
+| Fitted quantity or variant | Reference and precise location | Role and implementation distinction |
+|---|---|---|
+| SM profile dispersion, unbounded or capped | **M**, Proposition 4.2, equation (4.5), pp. 33–34 | Unbounded `profile_beta_unbounded` in [strict_models.py](../src/strict_models.py); capped `bounded_beta` in [predictive_models.py](../src/predictive_models.py), with [0,10] in P0/L0/S0. These estimate β conditional on the chosen center. |
+| Unpenalized PL MLE by MM | [Hunter (2004)](https://doi.org/10.1214/aos/1079120141), Section 5, equation (30) | [strict_models.py](../src/strict_models.py), `pl_mm_step` and `fit_pl_mm`: simultaneous, unaccelerated MM, subject to finite-MLE existence and convergence checks. Used in the unpenalized supplementary comparisons. |
+| Ridge PL (`pl` in P0/L0/S0 and the explicitly regularized controls) | **M**, Algorithm 4.1, p. 32, and Proposition 4.3, equation (4.6), p. 34 | [predictive_models.py](../src/predictive_models.py), `ridge_pl` and `tune_and_refit_pl`, use [SciPy L-BFGS-B](https://docs.scipy.org/doc/scipy/reference/optimize.minimize-lbfgsb.html) plus checked Newton refinement. The objective comes from M; the ridge grid, solver tolerances and refinement policy are specified by this repository. This is not Hunter's unpenalized MM fit. |
+| Validation-shrunk SM (`beta_shrinkage`, calibrated SM variants) | **M**, Proposition 4.2 for the base β fit; [repository-defined calibration](references.md#repository-defined-procedures) for the multiplier | Supplementary L1/L2/S3/T1 fit bounded β and choose an additional multiplier on inner validation data. The multiplier grid is not a separate estimator proposed in M. |
+| Order-constrained PL and SM on the PL order | [Repository-defined common-order controls](references.md#repository-defined-procedures), built from **M**, Propositions 4.2/4.3 | C1 constrains ridge PL worths to the fitted SM order, or fixes the SM center to the fitted PL order and profiles β. T1 also has a shrunk SM-on-PL-order control. [Control specification](structural_controls.md#holding-the-fitted-order-common) and the pinned code define these variants. |
+
+**Constructions discussed but not separately fitted:** M's Theorem 2.17 majority tournament (p. 16) differs from PosEst in its treatment of tied pair votes; the saved PosEst rows are not a separate implementation of that theorem. The one-report construction in Proposition 2.16 is a theoretical endpoint, not an additional fitted method. Likewise, Fotakis et al.'s localized MLE is not implemented here. See the [theory comparison](theory_alignment.md#theorem-217-versus-fotakis-posest).
+
 ## Exact center and dispersion
 
 Let $`W_{ij}`$ count training reports putting i ahead of j. Then
@@ -69,14 +102,7 @@ With $`\bar d=D/N`$, the unbounded profile solves $`\mathbb E_\beta[d_K]=\bar d`
 
 The [theory comparison](theory_alignment.md#which-bounds-match-in-which-region) gives the manuscript's matching risk regimes and relates each to saved runs. Its [Theorem 2.17 comparison](theory_alignment.md#theorem-217-versus-fotakis-posest) explains the shared majority-score construction and the pair-tie difference from Fotakis; neither should be confused with the saved `sharp` sieve or the efficient hierarchy.
 
-| Estimator | Construction and role | Scope/admission |
-|---|---|---|
-| Sharp | Manuscript Algorithm 2.1: proof-constant localization/pilot, one orientation-independent uniformly selected pair per report/block, exact greedy permutation sieve and disagreement minimization | P0/L0/S0 have no item-count guard: exact shortcuts or complete packing under explicit budgets. Frozen P1/P2/S1 replay retains its eight-item guard. Fresh pilot and terminal reports are disjoint |
-| Efficient | Algorithms 3.1/3.2: clipped block scores, fresh batches, padded blocks and accumulated offsets, then terminal ordering | Unpenalized entry point requires $`\lambda\le1`$; insufficient feasible schedule falls back as specified to global scores. Every recorded successful fit has depth zero |
-| Clipped Borda | Full-catalogue version of manuscript equation (3.4), sorted by normalized score | A scalable separate center baseline; no silent relabeling as an active multilevel hierarchy |
-| Fotakis / PosEst | Algorithm 1 of Fotakis et al. (2021): majority-predecessor counts, ascending score order, seeded final ties | P0/L0/S0 and G1 require every unordered pair observed. Equality counts as a predecessor in both directions |
-| Insertion | Local moves minimizing the same D objective from specified starts | A declared approximation in L1/L2/T1/C1; not used to fill missing exact results in P1/P2 |
-| Greedy MAL specialization | Equal-reliability ordinal aggregation heuristic | C1 center-objective benchmark; not a separate probability law |
+The [study-wide inventory](#estimator-inventory-and-references) provides a source for each method. For Sharp, pilot reports and terminal reports are disjoint; the unpenalized efficient entry point requires λ≤1. Fotakis's equality rule counts an opponent as a predecessor in both directions when their observed pair vote is tied. None of the approximate center methods fills a missing exact result in P1/P2.
 
 For a block $`B`$, let $`R_{ti}(B)`$ be the one-based rank of item $`i`$ in report $`Y_t`$ restricted to $`B`$. Define
 
@@ -93,6 +119,18 @@ s_i(B)=\mathrm{clip}_{[-|B|,|B|]}\left[\frac{n-1}{(r-1)A_i}\sum_tq_{ti}\right],
 using zero when $`A_i=0`$. Larger scores precede smaller scores. Sharp's exact terminal packing radius is $`\phi=m\binom{m}{2}/k`$ for a block of m items and k extracted pairs; lexicographic greedy packing and seeded choices make permitted arbitrary choices reproducible.
 
 The proof constants and schedule are not tuned to test performance. P0/L0/S0 use $`\beta_0=0.1`$; it is a schedule input, not an established lower bound on a real population signal. Supplementary SM simulations use .8 where specified. Numerical $`\lambda\le1`$, full item coverage or $`\mu/\log(er)>1`$ do not verify the sufficient unknown constant, independent reports, uniform displays or a true SM law.
+
+## Insertion and greedy MAL: what the names mean
+
+**Insertion** is the repository's specified local-search implementation, not a separately cited manuscript estimator. Starting from a complete order, it evaluates every single-item remove-and-reinsert move, chooses the move with the largest strict reduction in D, and repeats until no such move improves D. Multiple starts retain the best final objective. This only establishes a local optimum unless a separate lower bound certifies it. The [implementation references](references.md#repository-defined-procedures) distinguish C1's eight starts, the primary solver's five starts, and the other declared variants. This optimizer is unrelated to the insertion sampling construction used to generate Mallows rankings.
+
+**Greedy MAL** comes from [Raman & Joachims (2014), Section 3.1.1, Algorithm 2](https://www.cs.cornell.edu/people/tj/publications/raman_joachims_14a.pdf). With all assessor reliabilities set to one, its next item maximizes the following score over the remaining catalogue C:
+
+```math
+g_C(i)=\sum_{j\in C\setminus\{i\}}(W_{ij}-W_{ji}).
+```
+
+Place that item next, remove it from C, and recalculate the remaining scores. The paper writes the equivalent minimization of losses minus wins. C1 adds a seeded tie rule and uses strict reports. The paper's accompanying text identifies this as a greedy approximation even though the algorithm caption refers to computing an MLE. C1 does not implement their grader-reliability estimation, score-weighted MALS model, or MALBC alternative.
 
 ## Unpenalized PL
 
