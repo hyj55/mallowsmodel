@@ -24,15 +24,21 @@ All empirical tasks satisfy the chosen fixed report-size bound R=10. Their Sharp
 
 Center choice changes some predictions. For example, the P0 Beans Sharp difference is +0.00314 versus +0.01275 for the likelihood center. Sushi A Sharp gives +0.06029 versus +0.02542 for the likelihood center. These are prespecified estimator comparisons on the same reports, not a rule that selects whichever center wins on the outer test.
 
+Increasing the completion budget to 30 minutes and 4 GiB, together with equivalent exact packing algorithms, recovers **100 Sharp fits** in the learning and synthetic cells. It does not recover additional P0 tasks. The remaining 530 unavailable Sharp contexts fail the larger memory admission check. These are completion outcomes for the same experiment, with unchanged data, allocations and estimator definition; the [resource account](sieve_computation.md#completion-results-and-remaining-limits) lists their locations.
+
 ## Training size and catalogue size
 
 The [L0 Sushi curves](predictive_learning.md) use thirty aligned outer tests and nested development budgets. Sushi A's likelihood-center SM difference is −0.03976 at N=20, −0.02594 at N=50, and +0.03324 at N=100; it is +0.02499 at N=3000. Thus the observed comparison direction changes with budget. Sushi B's corresponding difference falls from +3.69397 at N=20 to +0.34730 at N=100 and +0.01149 at N=3000. Its large-catalogue center approximations and small-budget item coverage remain part of that procedure, not negligible details.
+
+Sushi A now also has complete Sharp results at every budget. The recovered Sharp-minus-PL means are +0.45598 at N=100 (partition MCSE 0.03004) and +0.21617 at N=300 (0.02240). Computational recovery does not imply predictive superiority: these means favor PL. Sharp's selected-pair objective uses only one sampled pair per report, so it is not the same fitted procedure as the whole-ranking likelihood center.
 
 ![Sushi learning curves](../figures/predictive/learning.png)
 
 S0 supplies independent known-generator controls with fixed r=3 and R=10. Under an SM generator at n=10, likelihood-center SM has delta +0.24261 at N=20, −0.04265 at N=100 and −0.06156 at N=500. Mean true-center Kendall error falls from 12.35 to 2.95 to 0.15. The center is exact in these n=10 fits. Even a correctly specified probability family can lose at small N when estimation and regularization dominate, so a finite-sample predictive winner does not identify the generating law.
 
 All 240 S0 likelihood-center fits, including n=32, have exact objective certificates. The synthetic catalogue-size pattern below therefore does not arise from an uncertified center optimization result.
+
+The recovered n=10,N=100 Sharp results have mean delta +0.01712 under the SM generator, with 95% independent-repetition interval [−0.01117,+0.04540], and +0.08445 under the PL generator, with interval [+0.06678,+0.10212]. Mean center Kendall errors are 6.55 and 9.75 respectively; the latter is an ordering error under a PL law, not SM minimax risk.
 
 At fixed N=100 under the SM generator, the likelihood-center delta is −0.06870 at n=6, −0.04265 at n=10, approximately zero at n=16, and +0.20505 at n=32. Increasing catalogue size with a fixed data budget changes exposure and estimation difficulty. Under the PL generator, the recorded likelihood-center SM comparison favors PL in every S0 design cell. The PL generator keeps its total log-worth range fixed, so adjacent strength gaps decrease as n grows; this declared design choice qualifies the catalogue-size interpretation.
 

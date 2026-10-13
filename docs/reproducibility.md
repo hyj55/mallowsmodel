@@ -28,6 +28,7 @@ The active P0/L0/S0 fitting modules are `src/predictive_models.py`, `src/resourc
 ```bash
 python benchmark_resource_sieve.py
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python run_predictive_study.py --workers 3
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python run_sieve_budget_retry.py
 python summarize_predictive_study.py
 python make_predictive_figures.py
 python compare_predictive_features.py
@@ -35,6 +36,8 @@ python validate_predictive_study.py
 ```
 
 The benchmark builds each expensive shared packing once and records complete results or resource failures. It does not fit outcome-dependent prediction models. The study runner is restartable and refuses to mix caches from different code fingerprints. `--study P0`, `--study L0` and `--study S0` select components; `--datasets` restricts empirical tasks. Partial runs are not publishable as the complete study: the summarizer requires all 1,290 contexts and all planned repetitions. Use a fresh private-output directory or checkout for a changed protocol.
+
+The completion command retries only the 630 unavailable Sharp contexts under a 1,800-second / 4-GiB budget. It checks the reconstructed data hashes before fitting and uses unchanged allocation and selected-pair streams. Exact ball-cover and radius-one parity algorithms preserve the original sieve. Restartable records go to `results/private/predictive_retry/`; the summarizer overlays them onto the original contexts, without duplicating repetitions or refitting other models. Original and completion code fingerprints remain separate in the manifest. The combined public results include 100 recovered Sharp fits; the full validator replays the combined records. To reproduce the current publication, run both fitting and completion commands before summarizing.
 
 The public `results/predictive/` directory contains aggregate CSVs, compressed per-repetition scores and predictor parameters, plus source/code/resource manifests. Gzip files are ordinary standard-library-readable archives; no custom restoration is needed. Detailed empirical membership and per-report loss caches stay in `results/private/predictive/`. The full validator reconstructs memberships, checks group separation and source hashes, replays every saved probability and conditional bootstrap, and regenerates synthetic draws from recorded streams without refitting. Repository-only mode checks published parameters, all denominators, aliases, hashes and aggregate arithmetic without downloading source records.
 

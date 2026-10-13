@@ -16,6 +16,8 @@ The manuscript references below refer to the supplied 37-page *Selective Mallows
 
 The active Sharp implementation removes the eight-item guard without changing A=256 or W_star. A full-space exact-DP shortcut makes some n=10 and n=12 fits computable, while other radii require complete greedy packing and can exceed time or memory budgets. [Resource receipts](../results/predictive/sieve_resources.json) and [all predictive scores](../results/predictive/primary.csv) distinguish computational availability from theorem applicability. The tables below retain the supplementary P1/G1/S1–S3 comparisons with their frozen implementations; references to an eight-item guard in those rows describe that implementation only.
 
+The same study includes a 30-minute / 4-GiB completion of unavailable fits. Exact ball-cover construction and a parity-constrained DP for radius one recover 100 Sharp fits without changing its candidate packing, selected-pair objective or tie rule. Direct comparison confirms that the original and completion engines produce the same 29,086 ten-item radius-four candidates in the same order. This improves computational availability, not the estimator's statistical definition or theorem assumptions; [remaining limitations](sieve_computation.md#completion-results-and-remaining-limits) stay explicit.
+
 ## What the risk theorem measures
 
 For a fixed positive dispersion, the manuscript studies

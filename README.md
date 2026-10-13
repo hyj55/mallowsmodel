@@ -39,6 +39,8 @@ Controlled simulations exhibit a reversal of the SM–PL predictive ranking whil
 
 P0 has thirty finite paired predictions for every task. The likelihood-center mean favors SM in the eight Dots 2013/Puzzle conditions and dots2024 B r=6; the remaining mean differences favor PL, with varying magnitudes and limitations. Sushi B retains approximate centers in 25/30 repetitions. Sharp is computed for eleven tasks, including ten- and twelve-item catalogues. [The findings chapter](docs/findings.md) connects these results to the fixed-R learning curves and the complementary evidence.
 
+The [enlarged-budget exact-sieve completion](docs/sieve_computation.md#completion-results-and-remaining-limits) fills 100 previously unavailable Sharp fits in the existing learning and synthetic cells. All Sushi A learning budgets and all n=10 synthetic sample-size points now have complete Sharp results. The combined tables preserve the same data splits, random streams and estimator definition, with explicit remaining memory failures.
+
 An error bar is not automatically a confidence interval. Empirical 30-partition figures show **±1 partition Monte Carlo SE**; simulation means use independent-repetition t intervals. P0/L0 also save per-split conditional bootstrap intervals at identified test-unit level. Those intervals do not include training variability or form a population CI for the average over splits. All availability and exact-center counts remain explicit. Start with the [uncertainty guide](docs/uncertainty.md).
 
 ## Verify the saved study

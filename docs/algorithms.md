@@ -23,7 +23,7 @@ A common shift of θ is unidentified; scale normalization changes no probabiliti
 
 The private manuscript *Selective Mallows Estimation from Uniform Partial Rankings: Minimax Kendall Risk, Efficient Algorithms, and Likelihood Comparisons* supplies the SM construction and estimators. Its Section 4 also specifies regularized prediction in Algorithm 4.1. The study therefore labels its unpenalized and bounded/regularized procedures explicitly; sharing the SM law is not a claim that every experiment reproduces every step of that algorithm.
 
-**P0 is the primary Algorithm 4.1 comparison.** Its active implementation is `predictive_models.py`, with finite beta in [0,10], training-only ridge selection, refitting on 80% development data and paired outer evaluation. Sharp uses `resource_sieve.py`, which has no eight-item admission limit. [Primary fitting details](predictive_comparison.md#prespecified-fitting-procedures) and [sieve computation](sieve_computation.md) take precedence over the separately identified supplementary P1/P2 rules below.
+**P0 is the primary Algorithm 4.1 comparison.** Its active implementation is `predictive_models.py`, with finite beta in [0,10], training-only ridge selection, refitting on 80% development data and paired outer evaluation. Sharp uses `resource_sieve.py` and the equivalent enlarged-budget completion in `sieve_budget_retry.py`, with no eight-item admission limit. [Primary fitting details](predictive_comparison.md#prespecified-fitting-procedures) and [sieve computation](sieve_computation.md) take precedence over the separately identified supplementary P1/P2 rules below.
 
 ## Exact center and dispersion
 

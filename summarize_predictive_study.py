@@ -2,6 +2,7 @@
 import gzip
 import hashlib
 import json
+import math
 import platform
 from pathlib import Path
 
@@ -14,6 +15,8 @@ from src.predictive_study import (read_records,signature,code_hashes,source_inve
     load_tasks,PUBLIC,PROTOCOL_COMMIT,BUDGETS,SIMULATION_CELLS)
 from src.repeated_holdout import json_value
 from src.resource_sieve import CACHE
+from src.sieve_budget_retry import CACHE as RETRY_CACHE,ball_size
+from run_sieve_budget_retry import apply_saved_retries,retry_hashes,BASE_COMMIT
 
 
 def task_label(name):
@@ -89,7 +92,7 @@ def write_tables(summary):
 
 
 def publish():
-    records=read_records(); expected=signature()
+    records=apply_saved_retries(read_records()); expected=signature()
     assert len(records)==1290, (len(records),'Expected 690 P0 + 360 L0 + 240 S0 fits')
     assert all(r['code_signature']==expected for r in records)
     frame=pd.DataFrame([s for r in records for s in r['scores']])
@@ -100,6 +103,7 @@ def publish():
     summary=summarize(frame)
     PUBLIC.mkdir(parents=True,exist_ok=True)
     outputs=[]
+    if (PUBLIC/'packing_crosscheck.json').exists():outputs.append('packing_crosscheck.json')
     for name,data in [('primary.csv',summary[summary.study=='P0']),
                       ('learning.csv',summary[(summary.study=='L0')|((summary.study=='P0')&summary.dataset.isin(['sushi_a','sushi_b']))]),
                       ('synthetic.csv',summary[summary.study=='S0'])]:
@@ -113,12 +117,34 @@ def publish():
         public.append(json.dumps(json_value(keep),sort_keys=True,allow_nan=False))
     (PUBLIC/'predictors.jsonl.gz').write_bytes(gzip.compress(('\n'.join(public)+'\n').encode(),mtime=0))
     outputs.append('predictors.jsonl.gz')
+    retry_rows=[]
+    for record in records:
+        if 'resource_retry' not in record:continue
+        fit=record['models']['sm_sharp'];meta=fit['metadata']
+        retry_rows.append(dict(study=record['study'],dataset=record['dataset'],n=record['n'],
+            N=record['N'],repeat=record['repeat'],status=fit['status'],
+            reason=meta.get('reason',''),seconds_limit=1800,memory_bytes=4<<30))
+    retry_frame=pd.DataFrame(retry_rows)
+    retry_frame.to_csv(PUBLIC/'resource_retries.csv',index=False)
+    outputs.append('resource_retries.csv')
+    bounds=[]
+    cases=sorted({(r['n'],r['n']*(r['n']*(r['n']-1)//2)//r['N'])
+        for r in records if 'resource_retry' in r and r['models']['sm_sharp']['status']!='ok'})
+    for n,radius in cases:
+        volume=ball_size(n,radius);orders=(math.factorial(n)+volume-1)//volume
+        bounds.append(dict(n=n,integer_radius=radius,kendall_ball_size=volume,
+            maximal_packing_order_lower_bound=orders,
+            explicit_int16_order_storage_lower_bound_bytes=2*n*orders,
+            interpretation='Covering-count lower bound for any maximal packing; not an implicit-solver memory lower bound'))
+    (PUBLIC/'sieve_cover_bounds.json').write_text(json.dumps(bounds,indent=2)+'\n')
+    outputs.append('sieve_cover_bounds.json')
     receipts=[]
-    for path in sorted(CACHE.glob('*.json')):
+    for path in sorted(list(CACHE.glob('*.json'))+list(RETRY_CACHE.glob('*.json'))):
         receipt=json.loads(path.read_text())
         # Pre-allocation failures precede radius-dependent construction; retain
         # the cache key as well as its receipt so the attempted radius is explicit.
         receipt['cache_file']=path.name
+        receipt['attempt']='expanded_budget' if receipt.get('seconds_limit')==1800 else 'initial_budget'
         receipt['integer_radius_from_cache_key']=int(path.stem.split('-')[-3])
         receipts.append(receipt)
     (PUBLIC/'sieve_resources.json').write_text(json.dumps(receipts,indent=2)+'\n'); outputs.append('sieve_resources.json')
@@ -127,6 +153,10 @@ def publish():
         allocation_unit=t.unit_description,units=len(np.unique(t.units)),split_key=t.split_key,
         estimator_seed=t.estimator_seed,source_report_sha256=hashlib.sha256(np.asarray(t.y,dtype='<i8').tobytes()).hexdigest()) for t in load_tasks()]
     manifest=dict(protocol_commit=PROTOCOL_COMMIT,code_signature=expected,code_sha256=code_hashes(),
+        resource_retry=dict(base_commit=BASE_COMMIT,code_sha256=retry_hashes(),
+            seconds_limit=1800,memory_bytes=4<<30,
+            attempts=sum('resource_retry' in r for r in records),
+            recovered=sum('resource_retry' in r and r['models']['sm_sharp']['status']=='ok' for r in records)),
         summary_code_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         sources=source_inventory(),datasets=descriptors,training_contexts=1290,
         context_counts={'P0':690,'L0':360,'S0':240},score_rows=7740,

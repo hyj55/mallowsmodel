@@ -16,7 +16,18 @@
     "run_strict_real.py": "998d0a7aa7ca54d32a45839b83994e8870b0943db0828e63de89af188fecb00a",
     "docs/protocols/PREDICTIVE_COMPARISON_20261013.md": "16e8256082e2dbb577d301fd398b3734b59cbea5cb6aeaf6b416b71e6690b392"
   },
-  "summary_code_sha256": "f628c99a14834004ec065fe39a868fbd961243a1499fb738b65c343a6aa75ce1",
+  "resource_retry": {
+    "base_commit": "cb3807c4930c76d3b35369164ec6c9e009d0872f",
+    "code_sha256": {
+      "src/sieve_budget_retry.py": "c738a8d774471c79b79a78c5bbb0e6b049a54b82ee61d5d0a9226bec4f078c18",
+      "run_sieve_budget_retry.py": "865f0645682fd25511819ad662c1ee96dbc30849c77143b195bb1e27d69c61ac"
+    },
+    "seconds_limit": 1800,
+    "memory_bytes": 4294967296,
+    "attempts": 630,
+    "recovered": 100
+  },
+  "summary_code_sha256": "4611748ee40883b712347e929567662e3a9170d216b5be024b2b6c1e5fa5a2d2",
   "sources": [
     {
       "path": "data/raw/beans.rda",
@@ -477,12 +488,15 @@
   "timing_note": "Sum of worker elapsed fitting/scoring times, not parallel wall-clock duration; synthetic generation precedes this timer.",
   "computational_alias": "sm_global_sieve reuses sm_sharp when identity is proved",
   "published_sha256": {
+    "packing_crosscheck.json": "f67c2d72c304247b617937f74aefb9e1c4c64db9a43a214a40f79c54438f6c98",
     "primary.csv": "198690c7eeecab7ccf98ab8f298167711fab5ec27ebae19bb2f0b9e23117a93d",
-    "learning.csv": "3f50ab05249885bd4021280f1e382aa44f0bdc7a08d871aa93ad639350c8ccdc",
-    "synthetic.csv": "68cd8d6ba8c161512f00d3836575d1cd1d5250458c33a5f45e2feec3bcce33d8",
-    "repeat_scores.csv.gz": "0c550383846711fd5b3a7550eb838f4b65a606fc5e0d4d9c4a4d4bd0f6962190",
-    "predictors.jsonl.gz": "4edb15ca1360a19bd87c65e09322ee8c2d972cdd19e76523babd474e8c38e9b7",
-    "sieve_resources.json": "16cc5475a99f03e3b232dad3f2bed0426618b8c771cf11e0d486456210cf9a9a",
+    "learning.csv": "dc869641effea3d4592f712eca74f41401dc2ff921b37c6f8f6c788ca3903749",
+    "synthetic.csv": "e65e0aab0b7685612482bf65f8a4beb7b8cbbb1f2fca6ca1d4c3bcc375ac1f60",
+    "repeat_scores.csv.gz": "922650063b60d9347ff9990aac2ba8f8eb00e076d60307af5c46e0d6f6c0699f",
+    "predictors.jsonl.gz": "9fd8b773158346c26c1329691b4e63f17549b0ea93a8521e2445aa22a9707fe6",
+    "resource_retries.csv": "f46e84ec4441e7be5f59196d8169e09cd65978f789598d64bf93a4afa624b03c",
+    "sieve_cover_bounds.json": "0cc048797c9f13513450f83ed41e70deedd421aaf0becaf83e87ccf4303ca7d9",
+    "sieve_resources.json": "2445e17fc815d29faa6ec27822354fe783c17b81751887b02bcda9a02ccd8841",
     "tables.md": "9542acf61e9df3467a3863b1434104eb7f4a582a191a9fdb38b9862a6557aef8"
   }
 }

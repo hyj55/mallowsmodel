@@ -25,6 +25,8 @@ The same-test and nested-training design makes the within-repetition comparisons
 
 Here r=10 and the upper bound R=10 are held fixed for every N, for both catalogue sizes. In Sushi B, many pairs or items can be unseen at small N; these catalogue items are retained. The tables record missing coverage and method admission, rather than rerolling a prefix or silently changing the catalogue.
 
+The enlarged-budget exact-sieve completion recovers Sushi A's N=100 and N=300 points, giving Sharp 30/30 fits at every A budget. Sushi B remains unavailable for Sharp at N=300,1000,3000 and the reused P0 N=4000 endpoint. All plotted values use the combined completed records; failed points remain absent rather than being plotted as zero.
+
 ## S0: independent data with fixed r=3 and R=10
 
 These controls isolate N and n under known generating mechanisms. Draw each displayed set uniformly before generating its reported order. The SM generator has beta=0.8; the PL generator has log-worths linearly decreasing from 1 to −1 along the generating order. Each independent repetition draws a fresh random order, training data, and 4,000 test reports. The model definitions and generator parameters are fixed, not calibrated to a favorable result.
@@ -50,6 +52,8 @@ For any scalar outcome X, including a paired SM−PL loss difference, the indepe
 Fresh independent training **and** test draws make the repetitions independent Monte Carlo observations. Finite test-set noise is part of X_b. The Student-t interval estimates the mean of this specified simulation procedure; with twenty potentially non-Gaussian errors it is approximate, not an exact risk bound. All intervals are pointwise. When an estimator is unavailable for a planned repetition, its full-cell mean and interval are unavailable; the conditional mean and denominator remain explicit.
 
 Fixing R meets one requirement of the bounded-subset corollary. The tables also report lambda: only cells satisfying lambda<=1 can address its first-part regime, and no finite grid establishes an asymptotic minimax theorem. The [theory correspondence](theory_alignment.md) distinguishes prediction, true-center risk, numerical exposure and theorem assumptions.
+
+The completion pass recovers both generators' n=10,N=100 Sharp cells (20/20 each), so all n=10 sample-size points have results. At N=100 the n=16 and n=32 Sharp cells remain memory-limited. The same selected pairs, objective and tie rule are retained; only the equivalent exact solver and computation budget change. See [completion methods and receipts](sieve_computation.md).
 
 ## Complementary curves
 

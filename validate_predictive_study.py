@@ -14,6 +14,8 @@ from src.repeated_holdout import restore_fit
 from src.models import pair_counts,kemeny_cost,distances
 from src.predictive_models import bounded_beta,pl_objective,RIDGE_GRID
 from summarize_predictive_study import summarize
+from run_sieve_budget_retry import apply_saved_retries,retry_hashes,BASE_COMMIT
+from src.manuscript_estimators import extract_pairs
 
 
 def frames_equal(a,b):
@@ -27,12 +29,28 @@ def validate_public():
     assert manifest['code_sha256']==code_hashes()
     assert manifest['code_signature']==signature()
     assert manifest['summary_code_sha256']==hashlib.sha256((PUBLIC.parents[1]/'summarize_predictive_study.py').read_bytes()).hexdigest()
+    assert manifest['resource_retry']['code_sha256']==retry_hashes()
+    assert manifest['resource_retry']['base_commit']==BASE_COMMIT
     for name,digest in manifest['published_sha256'].items():
         assert hashlib.sha256((PUBLIC/name).read_bytes()).hexdigest()==digest,name
+    if (PUBLIC/'packing_crosscheck.json').exists():
+        check=json.loads((PUBLIC/'packing_crosscheck.json').read_text())
+        assert check['orders']==29086 and check['complete_ordered_arrays_equal']
+        assert check['original_orders_sha256']==check['completion_orders_sha256']
+        assert check['verifier_sha256']==hashlib.sha256((PUBLIC.parents[1]/'verify_sieve_packing.py').read_bytes()).hexdigest()
     frame=pd.read_csv(PUBLIC/'repeat_scores.csv.gz')
     with gzip.open(PUBLIC/'predictors.jsonl.gz','rt') as stream:
         records=[json.loads(line) for line in stream]
     assert len(records)==1290 and len(frame)==7740
+    retried=[r for r in records if 'resource_retry' in r]
+    assert len(retried)==manifest['resource_retry']['attempts']==630
+    assert sum(r['models']['sm_sharp']['status']=='ok' for r in retried)==manifest['resource_retry']['recovered']==100
+    for record in retried:
+        assert record['resource_retry']['code_sha256']==retry_hashes()
+        assert record['resource_retry']['original_sharp']['status']=='sieve_resource_budget'
+        assert not record['resource_retry']['statistical_definition_changed']
+        assert record['models']['sm_sharp']['metadata']['retry_seconds']==1800
+        assert record['models']['sm_sharp']['metadata']['retry_memory']==4<<30
     assert set(frame.r)<=set(range(2,11)) and (frame.R_bound==10).all()
     assert not frame.duplicated(['study','dataset','n','N','repeat','method']).any()
     assert frame.loc[frame.method.isin(['pl','sm_likelihood']),'status'].eq('ok').all()
@@ -103,7 +121,7 @@ def validate_features():
 
 
 def validate_full():
-    tasks={t.name:t for t in load_tasks()}; records=read_records(); aligned={}; replay=[]
+    tasks={t.name:t for t in load_tasks()}; records=apply_saved_retries(read_records()); aligned={}; replay=[]
     for index,record in enumerate(records,1):
         if record['study']=='S0':
             c=synthetic_context(record['generator'],record['n'],record['N'],record['repeat'])
@@ -136,6 +154,10 @@ def validate_full():
                 assert abs(bounded_beta(total,len(y),y.shape[1])-fit.beta)<1e-10
                 if method=='sm_likelihood':
                     assert kemeny_cost(w,fit.order)==fit.metadata['upper_bound']
+                if method=='sm_sharp' and 'resource_retry' in record:
+                    pairs=extract_pairs(y,np.arange(c['n']),np.random.default_rng(c['estimator_seed']+173))
+                    pair_w=pair_counts(pairs,c['n'])
+                    assert kemeny_cost(pair_w,fit.order)==fit.metadata['blocks'][0]['objective']
         fresh,losses=evaluate(c,models)
         for a,b in zip(fresh,record['scores']):
             for key,value in a.items():

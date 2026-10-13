@@ -14,6 +14,7 @@
     "engine": "lexicographic_exact_v1",
     "complete": false,
     "cache_file": "lexicographic_exact_v1-10-1-1073741824-120.json",
+    "attempt": "initial_budget",
     "integer_radius_from_cache_key": 1
   },
   {
@@ -28,6 +29,7 @@
     "seconds_limit": 120.0,
     "memory_bytes": 1073741824,
     "cache_file": "lexicographic_exact_v1-10-22-1073741824-120.json",
+    "attempt": "initial_budget",
     "integer_radius_from_cache_key": 22
   },
   {
@@ -45,6 +47,22 @@
     "engine": "lexicographic_exact_v1",
     "complete": false,
     "cache_file": "lexicographic_exact_v1-10-4-1073741824-120.json",
+    "attempt": "initial_budget",
+    "integer_radius_from_cache_key": 4
+  },
+  {
+    "engine": "lexicographic_exact_v1",
+    "m": 10,
+    "radius": 4,
+    "path": "greedy_packing",
+    "complete": true,
+    "sieve_size": 29086,
+    "estimated_bytes": 210470400,
+    "elapsed_seconds": 545.5256715849973,
+    "seconds_limit": 1800.0,
+    "memory_bytes": 4294967296,
+    "cache_file": "lexicographic_exact_v1-10-4-4294967296-1800.json",
+    "attempt": "expanded_budget",
     "integer_radius_from_cache_key": 4
   },
   {
@@ -59,6 +77,7 @@
     "seconds_limit": 120.0,
     "memory_bytes": 1073741824,
     "cache_file": "lexicographic_exact_v1-10-9-1073741824-120.json",
+    "attempt": "initial_budget",
     "integer_radius_from_cache_key": 9
   },
   {
@@ -73,6 +92,7 @@
     "engine": "lexicographic_exact_v1",
     "complete": false,
     "cache_file": "lexicographic_exact_v1-100-123-1073741824-120.json",
+    "attempt": "initial_budget",
     "integer_radius_from_cache_key": 123
   },
   {
@@ -87,6 +107,7 @@
     "engine": "lexicographic_exact_v1",
     "complete": false,
     "cache_file": "lexicographic_exact_v1-100-165-1073741824-120.json",
+    "attempt": "initial_budget",
     "integer_radius_from_cache_key": 165
   },
   {
@@ -101,6 +122,7 @@
     "engine": "lexicographic_exact_v1",
     "complete": false,
     "cache_file": "lexicographic_exact_v1-100-1650-1073741824-120.json",
+    "attempt": "initial_budget",
     "integer_radius_from_cache_key": 1650
   },
   {
@@ -115,6 +137,7 @@
     "engine": "lexicographic_exact_v1",
     "complete": false,
     "cache_file": "lexicographic_exact_v1-100-495-1073741824-120.json",
+    "attempt": "initial_budget",
     "integer_radius_from_cache_key": 495
   },
   {
@@ -129,6 +152,7 @@
     "engine": "lexicographic_exact_v1",
     "complete": false,
     "cache_file": "lexicographic_exact_v1-16-19-1073741824-120.json",
+    "attempt": "initial_budget",
     "integer_radius_from_cache_key": 19
   },
   {
@@ -143,6 +167,7 @@
     "engine": "lexicographic_exact_v1",
     "complete": false,
     "cache_file": "lexicographic_exact_v1-16-4-1073741824-120.json",
+    "attempt": "initial_budget",
     "integer_radius_from_cache_key": 4
   },
   {
@@ -157,6 +182,7 @@
     "engine": "lexicographic_exact_v1",
     "complete": false,
     "cache_file": "lexicographic_exact_v1-30-54-1073741824-120.json",
+    "attempt": "initial_budget",
     "integer_radius_from_cache_key": 54
   },
   {
@@ -171,6 +197,7 @@
     "engine": "lexicographic_exact_v1",
     "complete": false,
     "cache_file": "lexicographic_exact_v1-32-158-1073741824-120.json",
+    "attempt": "initial_budget",
     "integer_radius_from_cache_key": 158
   },
   {
@@ -185,6 +212,7 @@
     "engine": "lexicographic_exact_v1",
     "complete": false,
     "cache_file": "lexicographic_exact_v1-36-72-1073741824-120.json",
+    "attempt": "initial_budget",
     "integer_radius_from_cache_key": 72
   },
   {
@@ -199,6 +227,7 @@
     "engine": "lexicographic_exact_v1",
     "complete": false,
     "cache_file": "lexicographic_exact_v1-48-172-1073741824-120.json",
+    "attempt": "initial_budget",
     "integer_radius_from_cache_key": 172
   },
   {
@@ -213,6 +242,185 @@
     "seconds_limit": 120.0,
     "memory_bytes": 1073741824,
     "cache_file": "lexicographic_exact_v1-9-9-1073741824-120.json",
+    "attempt": "initial_budget",
     "integer_radius_from_cache_key": 9
+  },
+  {
+    "m": 10,
+    "radius": 4,
+    "path": "lexicographic_ball_cover",
+    "permutations": 3628800,
+    "engine": "lexicographic_ball_cover_v1",
+    "complete": true,
+    "sieve_size": 29086,
+    "ball_size": 649,
+    "estimated_bytes": 76495552,
+    "memory_bytes": 4294967296,
+    "seconds_limit": 1800.0,
+    "elapsed_seconds": 6.057767880847678,
+    "orders_sha256": "270b214feb8a5c5554b4489f4ca45d6f2920168499024ed3bb7dc1efd4b49c9a",
+    "cache_file": "lexicographic_ball_cover_v1-10-4-4294967296-1800.json",
+    "attempt": "expanded_budget",
+    "integer_radius_from_cache_key": 4
+  },
+  {
+    "m": 100,
+    "radius": 123,
+    "path": "lexicographic_ball_cover",
+    "permutations": 93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000,
+    "reason": "working_array_memory_budget",
+    "estimated_bytes": 18758569304232774689021547010109606798633909621140705915187185742938737598639213037397234259207460175536993282086271975408488227394289664000000000000000000000000,
+    "memory_bytes": 4294967296,
+    "seconds_limit": 1800.0,
+    "elapsed_seconds": 1.395191065967083e-05,
+    "engine": "lexicographic_ball_cover_v1",
+    "complete": false,
+    "cache_file": "lexicographic_ball_cover_v1-100-123-4294967296-1800.json",
+    "attempt": "expanded_budget",
+    "integer_radius_from_cache_key": 123
+  },
+  {
+    "m": 100,
+    "radius": 165,
+    "path": "lexicographic_ball_cover",
+    "permutations": 93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000,
+    "reason": "working_array_memory_budget",
+    "estimated_bytes": 18758569304232774689021547010109606798633909621140705915187185742938737598639213037397234259207460175536993282086271975408488227394289664000000000000000000000000,
+    "memory_bytes": 4294967296,
+    "seconds_limit": 1800.0,
+    "elapsed_seconds": 1.5144934877753258e-05,
+    "engine": "lexicographic_ball_cover_v1",
+    "complete": false,
+    "cache_file": "lexicographic_ball_cover_v1-100-165-4294967296-1800.json",
+    "attempt": "expanded_budget",
+    "integer_radius_from_cache_key": 165
+  },
+  {
+    "m": 100,
+    "radius": 1650,
+    "path": "lexicographic_ball_cover",
+    "permutations": 93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000,
+    "reason": "working_array_memory_budget",
+    "estimated_bytes": 18758569304232774689021547010109606798633909621140705915187185742938737598639213037397234259207460175536993282086271975408488227394289664000000000000000000000000,
+    "memory_bytes": 4294967296,
+    "seconds_limit": 1800.0,
+    "elapsed_seconds": 1.962995156645775e-05,
+    "engine": "lexicographic_ball_cover_v1",
+    "complete": false,
+    "cache_file": "lexicographic_ball_cover_v1-100-1650-4294967296-1800.json",
+    "attempt": "expanded_budget",
+    "integer_radius_from_cache_key": 1650
+  },
+  {
+    "m": 100,
+    "radius": 495,
+    "path": "lexicographic_ball_cover",
+    "permutations": 93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000,
+    "reason": "working_array_memory_budget",
+    "estimated_bytes": 18758569304232774689021547010109606798633909621140705915187185742938737598639213037397234259207460175536993282086271975408488227394289664000000000000000000000000,
+    "memory_bytes": 4294967296,
+    "seconds_limit": 1800.0,
+    "elapsed_seconds": 0.0013020718470215797,
+    "engine": "lexicographic_ball_cover_v1",
+    "complete": false,
+    "cache_file": "lexicographic_ball_cover_v1-100-495-4294967296-1800.json",
+    "attempt": "expanded_budget",
+    "integer_radius_from_cache_key": 495
+  },
+  {
+    "m": 16,
+    "radius": 19,
+    "path": "lexicographic_ball_cover",
+    "permutations": 20922789888000,
+    "reason": "working_array_memory_budget",
+    "estimated_bytes": 690452066304000,
+    "memory_bytes": 4294967296,
+    "seconds_limit": 1800.0,
+    "elapsed_seconds": 9.491108357906342e-06,
+    "engine": "lexicographic_ball_cover_v1",
+    "complete": false,
+    "cache_file": "lexicographic_ball_cover_v1-16-19-4294967296-1800.json",
+    "attempt": "expanded_budget",
+    "integer_radius_from_cache_key": 19
+  },
+  {
+    "m": 16,
+    "radius": 4,
+    "path": "lexicographic_ball_cover",
+    "permutations": 20922789888000,
+    "reason": "working_array_memory_budget",
+    "estimated_bytes": 690452066304000,
+    "memory_bytes": 4294967296,
+    "seconds_limit": 1800.0,
+    "elapsed_seconds": 1.2409873306751251e-05,
+    "engine": "lexicographic_ball_cover_v1",
+    "complete": false,
+    "cache_file": "lexicographic_ball_cover_v1-16-4-4294967296-1800.json",
+    "attempt": "expanded_budget",
+    "integer_radius_from_cache_key": 4
+  },
+  {
+    "m": 30,
+    "radius": 54,
+    "path": "lexicographic_ball_cover",
+    "permutations": 265252859812191058636308480000000,
+    "reason": "working_array_memory_budget",
+    "estimated_bytes": 16180424448543654576814817280000000,
+    "memory_bytes": 4294967296,
+    "seconds_limit": 1800.0,
+    "elapsed_seconds": 1.0765157639980316e-05,
+    "engine": "lexicographic_ball_cover_v1",
+    "complete": false,
+    "cache_file": "lexicographic_ball_cover_v1-30-54-4294967296-1800.json",
+    "attempt": "expanded_budget",
+    "integer_radius_from_cache_key": 54
+  },
+  {
+    "m": 32,
+    "radius": 158,
+    "path": "lexicographic_ball_cover",
+    "permutations": 263130836933693530167218012160000000,
+    "reason": "working_array_memory_budget",
+    "estimated_bytes": 17103504400690079460869170790400000000,
+    "memory_bytes": 4294967296,
+    "seconds_limit": 1800.0,
+    "elapsed_seconds": 1.0662944987416267e-05,
+    "engine": "lexicographic_ball_cover_v1",
+    "complete": false,
+    "cache_file": "lexicographic_ball_cover_v1-32-158-4294967296-1800.json",
+    "attempt": "expanded_budget",
+    "integer_radius_from_cache_key": 158
+  },
+  {
+    "m": 36,
+    "radius": 72,
+    "path": "lexicographic_ball_cover",
+    "permutations": 371993326789901217467999448150835200000000,
+    "reason": "working_array_memory_budget",
+    "estimated_bytes": 27155512855662788875163959715010969600000000,
+    "memory_bytes": 4294967296,
+    "seconds_limit": 1800.0,
+    "elapsed_seconds": 1.3329088687896729e-05,
+    "engine": "lexicographic_ball_cover_v1",
+    "complete": false,
+    "cache_file": "lexicographic_ball_cover_v1-36-72-4294967296-1800.json",
+    "attempt": "expanded_budget",
+    "integer_radius_from_cache_key": 72
+  },
+  {
+    "m": 48,
+    "radius": 172,
+    "path": "lexicographic_ball_cover",
+    "permutations": 12413915592536072670862289047373375038521486354677760000000000,
+    "reason": "working_array_memory_budget",
+    "estimated_bytes": 1204149812475999049073642037595217378736584176403742720000000000,
+    "memory_bytes": 4294967296,
+    "seconds_limit": 1800.0,
+    "elapsed_seconds": 2.757599577307701e-05,
+    "engine": "lexicographic_ball_cover_v1",
+    "complete": false,
+    "cache_file": "lexicographic_ball_cover_v1-48-172-4294967296-1800.json",
+    "attempt": "expanded_budget",
+    "integer_radius_from_cache_key": 172
   }
 ]

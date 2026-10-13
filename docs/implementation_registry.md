@@ -6,7 +6,7 @@ The scientific organization is by research question. This page maps each compone
 
 | Component | Matching implementation and outputs | Procedure identity |
 |---|---|---|
-| P0/L0/S0/B0 finite prediction | `run_predictive_study.py`, `src/predictive_models.py`, `src/resource_sieve.py`, `results/predictive/` | Active Algorithm 4.1 comparison, grouped inner/outer allocations, resource-accounted Sharp without an eight-item guard, fixed-R curves and explicit global-sieve aliases |
+| P0/L0/S0/B0 finite prediction | `run_predictive_study.py`, `run_sieve_budget_retry.py`, `src/predictive_models.py`, `src/resource_sieve.py`, `src/sieve_budget_retry.py`, `results/predictive/` | Active Algorithm 4.1 comparison, grouped inner/outer allocations, resource-accounted Sharp with exact enlarged-budget completion, fixed-R curves and explicit global-sieve aliases |
 | Estimator-theory interpretation | `analyze_theory_alignment.py`, `validate_theory_alignment.py`, [evidence](../results/theory_alignment/README.md) | Saved-result arithmetic and manuscript regime mapping; no new experiment, model fit or split |
 | Full-data characteristics | `describe_pair_features.py`, `src/pair_features.py`, `describe_structure_features.py`, `src/structure_features.py`, `make_feature_summary.py`, `data/features/` | Every report; equal-h pair rates, actual within-display/shell frequencies, exact-display pair effects and one-item replacements; saved NLLs joined without refitting prediction models |
 | P1 repeated prediction | `run_repeated_real.py`, `src/repeated_holdout.py`, `results/repeated_holdout/` | 30 unpenalized full refits per task |

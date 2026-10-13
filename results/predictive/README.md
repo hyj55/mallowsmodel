@@ -12,6 +12,9 @@ These outputs cover 690 empirical P0 training contexts, 360 Sushi learning conte
 | [repeat_scores.csv.gz](repeat_scores.csv.gz) | Every per-repetition score, paired difference, coverage measure, conditional bootstrap interval and availability flag |
 | [predictors.jsonl.gz](predictors.jsonl.gz) | Fitted orders, dispersion, log-worths, selected ridge, inner-validation scores, seeds, data fingerprints and solver/resource metadata; no raw empirical reports |
 | [sieve_resources.json](sieve_resources.json) | Complete cached packing receipts and explicit memory/time failures |
+| [resource_retries.csv](resource_retries.csv) | All 630 enlarged-budget completion attempts; 100 recoveries and 530 remaining failures |
+| [sieve_cover_bounds.json](sieve_cover_bounds.json) | Covering-count lower bounds on explicit packing size for remaining cases; not universal solver memory bounds |
+| [packing_crosscheck.json](packing_crosscheck.json) | Direct equality of all 29,086 ordered radius-four candidates from the original and completion engines |
 | [manifest.json](manifest.json) | Protocol commit, code/source SHA256, exact task inventory and public-output hashes |
 | [tables.md](tables.md) | Readable primary and Sharp comparisons |
 
@@ -49,5 +52,7 @@ For each summary cell:
 ## Availability states
 
 `sieve_resource_budget` preserves the exact failure reason and actual block size/radius. `not_p_frequent` means a pair is unobserved, so Fotakis is not admitted. `sharp_available` means no efficient fallback is needed; `outside_schedule_domain` means efficient's lambda<=1 domain does not hold. These are not zero losses. An identical unavailable Sharp/global-sieve pair is still an alias, not two unrelated failures.
+
+The tables and figures include the [30-minute / 4-GiB completion pass](../../docs/sieve_computation.md#completion-results-and-remaining-limits). The 100 recovered Sharp fits fill existing L0/S0 cells; repetitions are not added. Predictor records retain each initial failure and the separate completion code fingerprint. All PL and likelihood-center parameters are unchanged.
 
 Use `python validate_predictive_study.py --repository-only` to verify public records and arithmetic. Full local replay additionally requires the source acquisition and private membership/loss caches described in the [reproduction guide](../../docs/reproducibility.md). Source reports and memberships are not redistributed in this directory.
