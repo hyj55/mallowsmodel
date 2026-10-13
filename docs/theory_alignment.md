@@ -1,6 +1,6 @@
 # Estimator theory and the recorded results
 
-[Models and algorithms](algorithms.md) · [Findings](findings.md) · [All numerical comparisons](../results/theory_alignment/tables.md) · [Evidence and reproduction](../results/theory_alignment/README.md)
+[Models and algorithms](algorithms.md) · [Estimator inventory and references](algorithms.md#estimator-inventory-and-references) · [Findings](findings.md) · [All numerical comparisons](../results/theory_alignment/tables.md) · [Evidence and reproduction](../results/theory_alignment/README.md)
 
 The recorded experiments partly illustrate the manuscript's information and coverage distinctions. They do **not** establish its minimax rates empirically across the stated parameter ranges. The most informative evidence is the center error in correctly specified SM simulations. Empirical held-out NLL answers a different question, and most empirical training designs are outside the intermediate-information region even before checking sampling assumptions.
 
