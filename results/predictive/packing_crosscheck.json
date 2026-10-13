@@ -1,0 +1,13 @@
+{
+  "n": 10,
+  "integer_radius": 4,
+  "orders": 29086,
+  "complete_ordered_arrays_equal": true,
+  "original_orders_sha256": "270b214feb8a5c5554b4489f4ca45d6f2920168499024ed3bb7dc1efd4b49c9a",
+  "completion_orders_sha256": "270b214feb8a5c5554b4489f4ca45d6f2920168499024ed3bb7dc1efd4b49c9a",
+  "original_construction_seconds": 545.5256715849973,
+  "completion_construction_seconds": 6.057767880847678,
+  "seconds_limit": 1800.0,
+  "memory_bytes": 4294967296,
+  "verifier_sha256": "1ad0b88bcff767fe8eab22840e9d9b21c6dd20a6d97748e7d895fd65ae913630"
+}

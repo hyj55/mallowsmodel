@@ -4,6 +4,8 @@ The supplied unpublished manuscript, *Selective Mallows Estimation from Uniform 
 
 ## Estimators and optimization
 
+The [risk-regime comparison](theory_alignment.md) uses the supplied 37-page manuscript, SHA256 `400563b1789acbeea985e4b4c551162b64c87295ee3a7bf91037c8d4cc49e676`, including Theorem 2.1, Propositions 2.2/2.14/2.16, Corollary 2.15, Theorem 2.17, Conjecture 2.18, Theorem 3.1 and Corollary 3.13. The exact version matters because theorem numbering and assumptions are manuscript-specific. The private file is not part of the public repository.
+
 1. **Conitzer, V., Davenport, A., & Kalagnanam, J. (2006).** Improved Bounds for Computing Kemeny Rankings. AAAI, 620–626. [Publisher PDF](https://cdn.aaai.org/AAAI/2006/AAAI06-099.pdf). The integral LP3 formulation defines our larger-center exact optimization benchmark. Their experiments used CPLEX 9.1; this project uses HiGHS and does not reproduce that solver's trajectory or runtime.
 2. **Hunter, D. R. (2004).** MM algorithms for generalized Bradley–Terry models. *Annals of Statistics*, 32(1), 384–406. [DOI](https://doi.org/10.1214/aos/1079120141). Section 5, equation (30): simultaneous, unaccelerated PL MM updates. No added penalty or pseudo-comparisons.
 3. **SciPy developers.** [scipy.optimize.milp](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.milp.html). Solver status and dual-bound semantics; recorded runtime SciPy 1.17.0. Numerical certification is distinguished from an uncertified incumbent.

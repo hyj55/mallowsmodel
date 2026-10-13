@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "verified_at_utc": "2026-10-13T16:11:02.000464+00:00",
+  "code_signature": "d22ed921b17ba2e432f1d8c596a16fe619b5ebfca79621eb609703a04d2c1be0",
+  "training_contexts_replayed": 1290,
+  "score_rows_replayed": 7740,
+  "tests_passed": 60,
+  "primary_contexts": 690,
+  "learning_contexts": 360,
+  "independent_synthetic_contexts": 240,
+  "public_aggregate_checks": true,
+  "source_and_partition_checks": true,
+  "known_group_separation_checks": true,
+  "all_saved_test_losses_replayed": true,
+  "conditional_bootstrap_replayed": true,
+  "statistical_refits_during_validation": 0,
+  "full_data_feature_join_checked": true,
+  "figures_visually_inspected": [
+    "primary.png",
+    "learning.png",
+    "synthetic.png"
+  ],
+  "validator_sha256": "6dcd4252b25fa6edd3e4bc5d0e35c7802a5ffa32ac83a8f021f1ea6e8907912f",
+  "manifest_sha256": "850e026ab1b45b5b29efc6e41378f2dff40d9e9b7a132ad25e061a3db48cf814",
+  "resource_retry_attempts": 630,
+  "resource_retry_recovered": 100,
+  "resource_retry_remaining": 530,
+  "unchanged_comparator_parameter_records": 3870,
+  "unchanged_previously_available_score_rows": 4714,
+  "selected_pair_objectives_verified": 100,
+  "complete_packing_equality_verified": 29086
+}

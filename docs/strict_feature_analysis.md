@@ -4,6 +4,8 @@
 
 ## Generating populations
 
+For the pure-SM endpoints, [the theorem/results comparison](theory_alignment.md#intermediate-information-and-bounded-r) reports true-center errors, dimensional conditions and executed estimator branches. Mixtures and shell interventions remain misspecification controls, not observations under the risk theorem's SM law.
+
 Sample an r-item display uniformly from n labels, then generate its complete ranking directly conditional on that display. The reference order is randomized independently of estimator tie priorities. SM uses $`\beta=0.8`$. PL log-worth gaps are either all equal or alternate 1,4,1,4,… before a common scaling chosen to match SM's expected inversion count averaged over displays.
 
 Two interventions distinguish overall noise from allocation among wrong orders.

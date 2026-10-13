@@ -1,8 +1,10 @@
-# Predictive comparison across repeated data partitions
+# Supplementary unpenalized comparison across repeated partitions
 
 [Experiment P1](experiments.md) · [Data](../data/README.md) · [Methods](algorithms.md) · [Uncertainty](uncertainty.md#partition-monte-carlo-standard-error) · [Results](findings.md#empirical-prediction)
 
 ## Question and procedure
+
+P1 is the unpenalized fit-existence and prediction control. The study's main finite predictive comparison is [P0](predictive_comparison.md), using the same outer tests but refitting on 80% development data with training-only regularization rules. P1's 60% fits, candidate guard and unbounded dispersion below belong to its own frozen procedure.
 
 How well do separately fitted SM and PL models predict held-out whole rankings, averaged over random training allocations of the observed data? For each of 23 tasks, make 30 newly randomized 60/20/20 training/discovery/confirmation partitions. Fit each candidate anew on each training partition and evaluate on the same held-out reports. Confirmation mean NLL and the within-partition paired SM−PL difference are the primary predictive quantities.
 

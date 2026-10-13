@@ -1,0 +1,82 @@
+[
+  {
+    "n": 16,
+    "integer_radius": 4,
+    "kendall_ball_size": 3723,
+    "maximal_packing_order_lower_bound": 5619873728,
+    "explicit_int16_order_storage_lower_bound_bytes": 179835959296,
+    "interpretation": "Covering-count lower bound for any maximal packing; not an implicit-solver memory lower bound"
+  },
+  {
+    "n": 16,
+    "integer_radius": 19,
+    "kendall_ball_size": 864758990,
+    "maximal_packing_order_lower_bound": 24195,
+    "explicit_int16_order_storage_lower_bound_bytes": 774240,
+    "interpretation": "Covering-count lower bound for any maximal packing; not an implicit-solver memory lower bound"
+  },
+  {
+    "n": 30,
+    "integer_radius": 54,
+    "kendall_ball_size": 4577571099770322600205,
+    "maximal_packing_order_lower_bound": 57946202043,
+    "explicit_int16_order_storage_lower_bound_bytes": 3476772122580,
+    "interpretation": "Covering-count lower bound for any maximal packing; not an implicit-solver memory lower bound"
+  },
+  {
+    "n": 32,
+    "integer_radius": 158,
+    "kendall_ball_size": 416624195870122912136514758506624,
+    "maximal_packing_order_lower_bound": 632,
+    "explicit_int16_order_storage_lower_bound_bytes": 40448,
+    "interpretation": "Covering-count lower bound for any maximal packing; not an implicit-solver memory lower bound"
+  },
+  {
+    "n": 36,
+    "integer_radius": 72,
+    "kendall_ball_size": 3636186842520974390040189363,
+    "maximal_packing_order_lower_bound": 102303138672599,
+    "explicit_int16_order_storage_lower_bound_bytes": 7365825984427128,
+    "interpretation": "Covering-count lower bound for any maximal packing; not an implicit-solver memory lower bound"
+  },
+  {
+    "n": 48,
+    "integer_radius": 172,
+    "kendall_ball_size": 39389019401391692031241305165543081946937863026,
+    "maximal_packing_order_lower_bound": 315161833962728,
+    "explicit_int16_order_storage_lower_bound_bytes": 30255536060421888,
+    "interpretation": "Covering-count lower bound for any maximal packing; not an implicit-solver memory lower bound"
+  },
+  {
+    "n": 100,
+    "integer_radius": 123,
+    "kendall_ball_size": 45883957513536716338175457338494837413547151885998422533018980296,
+    "maximal_packing_order_lower_bound": 2033961770111285391130647967869462074440052265408083984674897000143606408210242178391420465418,
+    "explicit_int16_order_storage_lower_bound_bytes": 406792354022257078226129593573892414888010453081616796934979400028721281642048435678284093083600,
+    "interpretation": "Covering-count lower bound for any maximal packing; not an implicit-solver memory lower bound"
+  },
+  {
+    "n": 100,
+    "integer_radius": 165,
+    "kendall_ball_size": 107601215715587082253044181684276436700619784009013434762073781639208072099,
+    "maximal_packing_order_lower_bound": 867334210150796121601808927231208592696147755786228714444876769004879168159028533165,
+    "explicit_int16_order_storage_lower_bound_bytes": 173466842030159224320361785446241718539229551157245742888975353800975833631805706633000,
+    "interpretation": "Covering-count lower bound for any maximal packing; not an implicit-solver memory lower bound"
+  },
+  {
+    "n": 100,
+    "integer_radius": 495,
+    "kendall_ball_size": 25162868116814692205922662692636522422863547242470721269310850332209839226526421151770327522630140362349736612486,
+    "maximal_packing_order_lower_bound": 3708886245029451632532650263575239540138844195,
+    "explicit_int16_order_storage_lower_bound_bytes": 741777249005890326506530052715047908027768839000,
+    "interpretation": "Covering-count lower bound for any maximal packing; not an implicit-solver memory lower bound"
+  },
+  {
+    "n": 100,
+    "integer_radius": 1650,
+    "kendall_ball_size": 25277477477507445994375693924695622132509275352606597606840111565273852503433720031661096778509358842171937753546827918369478003193901192683535641038773,
+    "maximal_packing_order_lower_bound": 3692070,
+    "explicit_int16_order_storage_lower_bound_bytes": 738414000,
+    "interpretation": "Covering-count lower bound for any maximal packing; not an implicit-solver memory lower bound"
+  }
+]

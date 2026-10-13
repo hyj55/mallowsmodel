@@ -10,11 +10,15 @@ Three sizes must remain distinct: n is the item catalogue, r is the number of it
 
 ## Experiment map
 
-The identifiers below are reading aids; filenames preserve the executable and output locations.
+The identifiers below are reading aids; filenames preserve the executable and output locations. P0 is the primary predictive comparison. L0/S0 use the same finite fitting rules for learning and catalogue-size questions. The remaining components are organized in the [supplementary guide](supplementary.md).
 
 | ID | Scientific question | Data and design | Estimators | Output and detailed design |
 |---|---|---|---|---|
-| P1 | Average prediction over random training allocations | All 23 empirical tasks; 30 independent randomizations of the fixed data; 60/20/20 | Unpenalized PL; SM exact, Sharp, efficient, clipped Borda, with unavailable statuses | [Repeated prediction](repeated_holdout.md), `results/repeated_holdout/` |
+| P0 | Main conditional predictive comparison | All 23 tasks; 30 grouped 80/20 outer allocations, 60/20 inner tuning split | Finite SM likelihood center, Sharp and admitted Fotakis; positive-ridge PL; efficient only after Sharp resource failure | [Primary design](predictive_comparison.md), `results/predictive/primary.csv` |
+| L0 | Prediction as training size grows | Sushi A/B; 30 aligned outer tests, nested N=20–3000 plus reused P0 N=4000 | Same finite predictors and resource rules as P0; r=R=10 | [Learning design](predictive_learning.md), `results/predictive/learning.csv` |
+| S0 | Prediction and center error as N or n grows | Direct SM/PL; 240 independent draws; fixed r=3, R=10 | Same P0 predictors; known-order Kendall error plus test NLL | [Controlled curves](predictive_learning.md#s0-independent-data-with-fixed-r3-and-r10), `results/predictive/synthetic.csv` |
+| B0 | Global sieve under a fixed report-size bound | All empirical tasks with r<=10 and S0; R stays 10 | Exact global pair-sieve; explicit alias where identical to Sharp | [Sieve supplement](sieve_computation.md), `sm_global_sieve` rows in predictive tables |
+| P1 | Supplementary unpenalized prediction and fit existence | All 23 empirical tasks; 30 independent randomizations of the fixed data; 60/20/20 | Unpenalized PL; SM exact, Sharp, efficient, clipped Borda, with unavailable statuses | [Unpenalized control](repeated_holdout.md), `results/repeated_holdout/` |
 | P2 | Conditional prediction and diagnostics for specified fitted models | Same 23 tasks; one specified 60/20/20 allocation per task | Same candidate family as P1 | [Fixed-partition analysis](baseline_replacement.md); baseline, strict-feature, wheat and validation result directories |
 | L1 | How training budget changes prediction | Beans, Sushi A/B; nested training subsets and fixed outer tests | Exact small-catalogue or approximate large-catalogue SM; bounded/shrunk dispersion; tuned ridge PL | [Learning curves](learning_curves.md); snapshot `results/real_*` |
 | L2 | What happens with very low exposure? | Beans and Sushi B; six budgets, five repetitions per budget | Efficient/Borda SM; Beans exact center or Sushi B insertion; bounded/shrunk dispersion; ridge PL and fixed-penalty controls | [Small-budget design](learning_curves.md#small-budget-prediction); snapshot `results/exposure/real_*` |
@@ -32,6 +36,8 @@ Sushi A/B, PatrasIQ's two tasks, and the four sizes within a dots2024 arm share 
 
 ## Training, discovery and confirmation
 
+P0 uses the first 80% of the same unit permutations as development and the final 20% as test. Its first 60% / next 20% division tunes PL inside development; final models refit on all 80%. L0 nests smaller budgets within these development units. Validation never selects between SM and PL. See [P0](predictive_comparison.md) for formulas and uncertainty targets.
+
 In P1/P2, training fits the center, dispersion or worths. Discovery supplies explicitly recorded diagnostics or a model choice. Confirmation evaluates the chosen rule or each prespecified candidate. The methods are not retuned on confirmation. P1 averages the scores of 30 separately fitted models; it does not average their probabilities into an ensemble.
 
 L1/L2 use a different allocation: one outer test set and an inner validation subset of the development data for penalties or dispersion multipliers. Final models use the entire specified development budget N. T1 uses calendar boundaries rather than random outer shuffles. G1 uses two-way train/test splits because it compares prespecified fitting schemes, not validation-selected penalties.
@@ -39,6 +45,10 @@ L1/L2 use a different allocation: one outer test set and an inner validation sub
 Random shuffling changes membership, never the preference order inside a report. It does not enforce equal demographic, seasonal or geographic proportions unless the design explicitly stratifies those variables. P1/P2 do not impose such balance. G1 stratifies by trial/person for within-group prediction; its whole-group holdout addresses a different target.
 
 ## Estimator allocation by empirical dataset
+
+For **P0**, every task attempts the finite likelihood center and Sharp; Fotakis requires complete observed pair coverage. The exact subset DP covers Beans, Sushi A, Dots/Puzzle, Wheat and Sounds. The other catalogues use integer optimization with explicit certificate/gap reporting. Sharp's active implementation has no eight-item guard and uses exact full-space/singleton shortcuts or resource-accounted packing. Efficient is a separately named fallback, admitted only after Sharp resource failure and when lambda<=1. Every task has r<=10 and is included in B0; its identical global-sieve/Sharp results are not fitted twice. [Actual availability and certificate counts](../results/predictive/primary.csv) are recorded for all thirty partitions.
+
+The following table is the **supplementary P1/P2 allocation**, whose byte-locked implementation is retained for replay. Its eight-item restriction does not apply to P0/L0/S0.
 
 “Attempted” includes a recorded exclusion or failure. An unavailable Sharp or exact fit is not relabeled as another algorithm.
 

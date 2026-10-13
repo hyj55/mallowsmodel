@@ -1,0 +1,89 @@
+{
+  "saved_inputs": [
+    {
+      "origin_ref": "dc429c96b315c32b6326b1834b2c07f4234a07d6",
+      "origin_path": "results/strict_features/bridge_summary.csv",
+      "git_sha": "a776b4bfef6e25a5a98e93c1c8eac62ffb7b7a50",
+      "destination": "results/strict_features/bridge_summary.csv",
+      "sha256": "0f9340a8a33e38bb5b08507568b79bc8c1eee55146ee68ab0cf27545bb2c23ae",
+      "url": "https://github.com/hyj55/mallowsmodel/blob/dc429c96b315c32b6326b1834b2c07f4234a07d6/results/strict_features/bridge_summary.csv"
+    },
+    {
+      "origin_ref": "dc429c96b315c32b6326b1834b2c07f4234a07d6",
+      "origin_path": "results/strict_features/shell_summary.csv",
+      "git_sha": "908663f978ae59ea598c8809348ca6369461367a",
+      "destination": "results/strict_features/shell_summary.csv",
+      "sha256": "e71ff735d2db2d64da774aa4164be333c1cd792ea8c1cf72d651458d09692672",
+      "url": "https://github.com/hyj55/mallowsmodel/blob/dc429c96b315c32b6326b1834b2c07f4234a07d6/results/strict_features/shell_summary.csv"
+    },
+    {
+      "origin_ref": "89b21645d5f7eb463cc90c4e982c3a66ce805b41",
+      "origin_path": "results/exposure/small_summary.csv",
+      "git_sha": "80728ef820668c3bb44bfce297c11d4472eef73c",
+      "destination": "results/theory_alignment/inputs/s3_small_summary.csv",
+      "sha256": "024b60fc419f321848228524c43702401137810fe4c577cd9df06caafbb197c2",
+      "url": "https://github.com/hyj55/mallowsmodel/blob/89b21645d5f7eb463cc90c4e982c3a66ce805b41/results/exposure/small_summary.csv"
+    },
+    {
+      "origin_ref": "89b21645d5f7eb463cc90c4e982c3a66ce805b41",
+      "origin_path": "results/exposure/coverage_summary.csv",
+      "git_sha": "f71c14a10000d4a85c92ea72ce7d0c26b9713028",
+      "destination": "results/theory_alignment/inputs/s3_coverage_summary.csv",
+      "sha256": "f4c2d4cae5954e71f0d36c0fa09e9bf4e3319958b7fd4dc1a85b695852079568",
+      "url": "https://github.com/hyj55/mallowsmodel/blob/89b21645d5f7eb463cc90c4e982c3a66ce805b41/results/exposure/coverage_summary.csv"
+    },
+    {
+      "origin_ref": "89b21645d5f7eb463cc90c4e982c3a66ce805b41",
+      "origin_path": "results/synthetic_algorithms.csv",
+      "git_sha": "83ed64835282669eb2d8efbe32a8e1fddaabce89",
+      "destination": "results/theory_alignment/inputs/c1_synthetic_algorithms.csv",
+      "sha256": "b492967b8da25e97da816ca9dbc8038aae8703bd765e70e23795d1bed68be2d1",
+      "url": "https://github.com/hyj55/mallowsmodel/blob/89b21645d5f7eb463cc90c4e982c3a66ce805b41/results/synthetic_algorithms.csv"
+    },
+    {
+      "origin_ref": "89b21645d5f7eb463cc90c4e982c3a66ce805b41",
+      "origin_path": "results/algorithm_benchmark.csv",
+      "git_sha": "2b3f18c55baefa4b87378b42a16ecba08e360362",
+      "destination": "results/theory_alignment/inputs/c1_algorithm_benchmark.csv",
+      "sha256": "ef2259df805296db66e004e585d764017d4d78ead9a853e2448cfae49e3e6e8f",
+      "url": "https://github.com/hyj55/mallowsmodel/blob/89b21645d5f7eb463cc90c4e982c3a66ce805b41/results/algorithm_benchmark.csv"
+    },
+    {
+      "origin_ref": "dc429c96b315c32b6326b1834b2c07f4234a07d6",
+      "origin_path": "results/repeated_holdout/repeat_scores.csv.gz",
+      "destination": "results/repeated_holdout/repeat_scores.csv.gz",
+      "sha256": "47591795aa93dba24262911749f110ef8f9114be8021f6c04a2d7eb8fb673f70",
+      "git_sha": "794e2c3d59481f38d0d8b82269add1711c621cb6",
+      "url": "https://github.com/hyj55/mallowsmodel/blob/dc429c96b315c32b6326b1834b2c07f4234a07d6/results/repeated_holdout/repeat_scores.csv.gz"
+    },
+    {
+      "origin_ref": "dc429c96b315c32b6326b1834b2c07f4234a07d6",
+      "origin_path": "results/group_sensitivity/repeat_scores.csv.gz",
+      "destination": "results/group_sensitivity/repeat_scores.csv.gz",
+      "sha256": "249aa59ddd7c49a58820314ff479b9045bd11fc6b0dc1bbf769ec8d8a14ca85d",
+      "git_sha": "d48b15484ec8650d1254d3cd8c63f79343e55390",
+      "url": "https://github.com/hyj55/mallowsmodel/blob/dc429c96b315c32b6326b1834b2c07f4234a07d6/results/group_sensitivity/repeat_scores.csv.gz"
+    },
+    {
+      "origin_ref": "dc429c96b315c32b6326b1834b2c07f4234a07d6",
+      "origin_path": "results/strict_features/coverage_summary.csv",
+      "destination": "results/strict_features/coverage_summary.csv",
+      "sha256": "c92ede7cd2d34f73010635e7e3576da4ff0d5a8e11dac527bfd1e1cf4c74808d",
+      "git_sha": "348d50b49e25de15eb5a38fd2a79106df574f295",
+      "url": "https://github.com/hyj55/mallowsmodel/blob/dc429c96b315c32b6326b1834b2c07f4234a07d6/results/strict_features/coverage_summary.csv"
+    }
+  ],
+  "manuscript": {
+    "title": "Selective Mallows Estimation from Uniform Partial Rankings: Minimax Kendall Risk, Efficient Algorithms, and Likelihood Comparisons",
+    "filename": "Mallows_model (1).pdf",
+    "pages": 37,
+    "sha256": "400563b1789acbeea985e4b4c551162b64c87295ee3a7bf91037c8d4cc49e676",
+    "availability": "User-supplied unpublished manuscript; not redistributed"
+  },
+  "fotakis": {
+    "title": "Aggregating Incomplete and Noisy Rankings",
+    "url": "https://proceedings.mlr.press/v130/fotakis21a.html",
+    "algorithm": "Algorithm 1 PosEst; theorem 1"
+  },
+  "scope": "Arithmetic reanalysis of saved results only; no new model fit, simulation, or split"
+}

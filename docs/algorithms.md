@@ -1,6 +1,6 @@
 # Models, estimators and admission rules
 
-[Experiment map](experiments.md) · [Evaluation](criteria.md) · [Uncertainty](uncertainty.md) · [References](references.md)
+[Experiment map](experiments.md) · [Theory and results](theory_alignment.md) · [Evaluation](criteria.md) · [Uncertainty](uncertainty.md) · [References](references.md)
 
 ## Observation law
 
@@ -22,6 +22,8 @@ P_{\mathrm{PL}}(Y\mid S;\theta)=\prod_{k=1}^{r}\frac{e^{\theta_{y_k}}}{\sum_{j=k
 A common shift of θ is unidentified; scale normalization changes no probabilities. Both laws can evaluate complete orders of different display sizes, but the reported experiments use separate fixed-r tasks, preserving each physical catalogue. A censored top-k report would require the full original display and summation over unseen tails, not these likelihoods on the retained k items alone.
 
 The private manuscript *Selective Mallows Estimation from Uniform Partial Rankings: Minimax Kendall Risk, Efficient Algorithms, and Likelihood Comparisons* supplies the SM construction and estimators. Its Section 4 also specifies regularized prediction in Algorithm 4.1. The study therefore labels its unpenalized and bounded/regularized procedures explicitly; sharing the SM law is not a claim that every experiment reproduces every step of that algorithm.
+
+**P0 is the primary Algorithm 4.1 comparison.** Its active implementation is `predictive_models.py`, with finite beta in [0,10], training-only ridge selection, refitting on 80% development data and paired outer evaluation. Sharp uses `resource_sieve.py` and the equivalent enlarged-budget completion in `sieve_budget_retry.py`, with no eight-item admission limit. [Primary fitting details](predictive_comparison.md#prespecified-fitting-procedures) and [sieve computation](sieve_computation.md) take precedence over the separately identified supplementary P1/P2 rules below.
 
 ## Exact center and dispersion
 
@@ -53,6 +55,8 @@ The transitivity constraints are
 
 P1/P2 accept an exact center only when an independently checked feasible objective and integer lower bound coincide within the declared numerical rules. The time budget is 120 seconds. HiGHS solves the integral formulation of [Conitzer et al.](references.md), not their original CPLEX runtime experiment. An uncertified incumbent is unavailable for the exact comparison; tied optima may choose different centers.
 
+P0/L0/S0 use the same subset DP through n=18. Larger catalogues use a 30-second integer attempt plus a deterministic five-start insertion incumbent. Both bounds and the achieved objective are recorded; unequal bounds explicitly identify an approximate center. This provides a finite predictive procedure while retaining a separate exact-center benchmark. It does not establish an exact MLE when certification fails.
+
 Given any selected SM center, profile $`\beta`$ by minimizing
 
 ```math
@@ -63,12 +67,14 @@ With $`\bar d=D/N`$, the unbounded profile solves $`\mathbb E_\beta[d_K]=\bar d`
 
 ## Score, sieve and majority estimators
 
+The [theory comparison](theory_alignment.md#which-bounds-match-in-which-region) gives the manuscript's matching risk regimes and relates each to saved runs. Its [Theorem 2.17 comparison](theory_alignment.md#theorem-217-versus-fotakis-posest) explains the shared majority-score construction and the pair-tie difference from Fotakis; neither should be confused with the saved `sharp` sieve or the efficient hierarchy.
+
 | Estimator | Construction and role | Scope/admission |
 |---|---|---|
-| Sharp | Manuscript Algorithm 2.1: proof-constant localization/pilot, one orientation-independent uniformly selected pair per report/block, exact greedy permutation sieve and disagreement minimization | Exact terminal blocks limited to eight items; larger required blocks return unavailable. Fresh pilot and terminal reports are disjoint |
+| Sharp | Manuscript Algorithm 2.1: proof-constant localization/pilot, one orientation-independent uniformly selected pair per report/block, exact greedy permutation sieve and disagreement minimization | P0/L0/S0 have no item-count guard: exact shortcuts or complete packing under explicit budgets. Frozen P1/P2/S1 replay retains its eight-item guard. Fresh pilot and terminal reports are disjoint |
 | Efficient | Algorithms 3.1/3.2: clipped block scores, fresh batches, padded blocks and accumulated offsets, then terminal ordering | Unpenalized entry point requires $`\lambda\le1`$; insufficient feasible schedule falls back as specified to global scores. Every recorded successful fit has depth zero |
 | Clipped Borda | Full-catalogue version of manuscript equation (3.4), sorted by normalized score | A scalable separate center baseline; no silent relabeling as an active multilevel hierarchy |
-| Fotakis / PosEst | Algorithm 1 of Fotakis et al. (2021): majority-predecessor counts, ascending score order, seeded final ties | G1 requires every unordered pair observed; records $`\hat p=\min_{i\lt j}C_{ij}/N`$. Equality counts as a predecessor in both directions |
+| Fotakis / PosEst | Algorithm 1 of Fotakis et al. (2021): majority-predecessor counts, ascending score order, seeded final ties | P0/L0/S0 and G1 require every unordered pair observed. Equality counts as a predecessor in both directions |
 | Insertion | Local moves minimizing the same D objective from specified starts | A declared approximation in L1/L2/T1/C1; not used to fill missing exact results in P1/P2 |
 | Greedy MAL specialization | Equal-reliability ordinal aggregation heuristic | C1 center-objective benchmark; not a separate probability law |
 
@@ -86,7 +92,7 @@ s_i(B)=\mathrm{clip}_{[-|B|,|B|]}\left[\frac{n-1}{(r-1)A_i}\sum_tq_{ti}\right],
 
 using zero when $`A_i=0`$. Larger scores precede smaller scores. Sharp's exact terminal packing radius is $`\phi=m\binom{m}{2}/k`$ for a block of m items and k extracted pairs; lexicographic greedy packing and seeded choices make permitted arbitrary choices reproducible.
 
-The proof constants and schedule are not tuned to test performance. $`\beta_0=0.1`$ is a real-data schedule input, not an established lower bound on a real population signal; simulations use .8. Numerical $`\lambda\le1`$, full item coverage or $`\mu/\log(er)>1`$ do not verify the sufficient unknown constant, independent reports, uniform displays or a true SM law.
+The proof constants and schedule are not tuned to test performance. P0/L0/S0 use $`\beta_0=0.1`$; it is a schedule input, not an established lower bound on a real population signal. Supplementary SM simulations use .8 where specified. Numerical $`\lambda\le1`$, full item coverage or $`\mu/\log(er)>1`$ do not verify the sufficient unknown constant, independent reports, uniform displays or a true SM law.
 
 ## Unpenalized PL
 
@@ -99,6 +105,8 @@ w_i^{\mathrm{new}}=\frac{V_i}{\sum_t\sum_{k\lt r:i\in R_{tk}}\left(\sum_{j\in R_
 Updates normalize the common worth scale only. The observed directed win graph must support a unique finite MLE; disconnected or one-way-separated data are not repaired with pseudo-comparisons or item deletion. The fixed convergence criteria are maximum log-worth change $`\lt 10^{-10}`$ and gradient per report $`\lt 10^{-8}`$, with at most 100,000 iterations. Nonconvergence and failed existence checks remain unavailable. An independent optimizer used in tests verifies the likelihood, not an extra competing fitted method.
 
 ## Bounded and regularized predictive procedures
+
+P0/L0/S0 profile beta on [0,10], without a validation-selected multiplier. PL selects tau from {.01,.1,1,10,100} on the inner split and refits on all development reports. The penalty is applied to summed NLL; positive ridge supports finite fits with disconnected comparisons. [The primary chapter](predictive_comparison.md) specifies objective, numerical checks, allocation and intervals. The following additional variants are supplementary controls.
 
 L1/L2/S3/T1 and related C1 controls use explicit variants stored with their implementation snapshot. SM profiles β on [0,10]. A separate predictor uses $`\alpha\beta`$, with α selected on inner validation from {0,.25,.5,.75,1}, holding the final center fixed. Both unshrunk and shrunk results are recorded.
 

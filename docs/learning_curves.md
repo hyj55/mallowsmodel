@@ -1,8 +1,8 @@
-# Sample size, exposure and regularization
+# Supplementary sample size, exposure and regularization controls
 
 [Experiments L1/L2/S3](experiments.md) · [Data](../data/README.md) · [Estimator variants](algorithms.md#bounded-and-regularized-predictive-procedures) · [Uncertainty](uncertainty.md)
 
-A learning curve varies training reports N while holding the task's catalogue n, report length r and evaluation target fixed. It can reveal estimation error, coverage failures and regularization effects. Increasing r instead changes the information inside each report and is a different intervention. All completed budget analyses below are part of the study; their fitting variants are identified explicitly.
+A learning curve varies training reports N while holding the task's catalogue n, report length r and evaluation target fixed. The main curves are [L0/S0](predictive_learning.md), with thirty Sushi outer partitions and fixed-r independent simulations under P0's fitting rules. The controls below add fixed-test, shrinkage, small-budget and broader exposure questions; they retain their own implementation and uncertainty target. Increasing r changes the information inside a report and is a different intervention. The exposure grid containing r=32 is not part of the fixed-R=10 comparison.
 
 ## Empirical learning curves
 
@@ -56,5 +56,7 @@ Within a fixed exposure cell, saved mean-loss and center-error intervals use Stu
 [Simulation learning tables](https://github.com/hyj55/mallowsmodel/blob/89b21645d5f7eb463cc90c4e982c3a66ce805b41/results/synthetic_summary.csv), [exposure tables](https://github.com/hyj55/mallowsmodel/tree/89b21645d5f7eb463cc90c4e982c3a66ce805b41/results/exposure), and [exposure runner](https://github.com/hyj55/mallowsmodel/blob/89b21645d5f7eb463cc90c4e982c3a66ce805b41/run_exposure.py) preserve the exact procedures. Runtime and schedule-feasibility checks do not create new statistical repetitions.
 
 ## Interpretation
+
+The [estimator/theory comparison](theory_alignment.md#correspondence-in-correctly-specified-simulations) places these saved center errors in the manuscript's coverage, intermediate-information and full-ranking regimes. It distinguishes the actual depth-zero score estimator from an active hierarchy and from Theorem 2.17's majority estimator.
 
 Sample-size effects can arise from better center/strength estimation, more complete exposure, finite-MLE existence, solver certification or concentration tuning. Report those alongside loss. A persistent large-N gap may reflect model mismatch, but these finite grids do not identify the true family on an arbitrary empirical dataset. P1 supplies repeated-partition estimates at one budget per task; it is not a replacement for a multi-budget curve or evidence that L1/L2 used identical estimators.

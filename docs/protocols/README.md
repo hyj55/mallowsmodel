@@ -6,6 +6,7 @@ These records preserve design decisions and their timing. They remain byte-ident
 
 | Record | Scope | Role |
 |---|---|---|
+| [PREDICTIVE_COMPARISON_20261013](PREDICTIVE_COMPARISON_20261013.md) | P0 finite prediction, L0/S0 curves and B0 global sieve | Pre-fit design, commit `052eeac57a58f8cb851ba7feac8578d18b053f3f`; fixed R=10 and explicit resource budgets |
 | [STRICT_FEATURE_PROTOCOL](STRICT_FEATURE_PROTOCOL.md) | S1/S2/D1 mechanism and coverage experiments | Pre-fit design |
 | [STRICT_SOURCE_ADDENDUM](STRICT_SOURCE_ADDENDUM.md) | PrefLib, dots2024 and agricultural source scope | Pre-fit source/decoding rules |
 | [STRICT_FEATURE_FOLLOWUP](STRICT_FEATURE_FOLLOWUP.md) | Diagnostic budgets and objective-reference checks | Explicit exploratory controls |

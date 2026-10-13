@@ -31,6 +31,8 @@ The loader reads the declared full catalogue, checks the prefix and ten distinct
 
 ## Sizes, coverage and dependence
 
+The main [P0 comparison](../docs/predictive_comparison.md) uses thirty aligned respondent allocations: 4,000 development and 1,000 test people in each task, with a 3,000/1,000 inner split for PL tuning before refitting. Final-development lambda/mu are 4,000/4,000 for A and 36.3636/400 for B. [L0](../docs/predictive_learning.md) takes aligned nested respondent prefixes of N=20,50,100,300,1000,3000 and reuses P0's N=4000 endpoint. r=R=10 remains fixed. B0's global sieve is explicitly the same fit as Sharp in these catalogues. Respondent metadata do not enter model likelihoods or exact demographic stratification.
+
 A has n=r=10, one display and full pair exposure. B has n=100, r=10 and 4,983 distinct displays among 5,000 reports. Its full source observes 4,809 of 4,950 possible pairs; item frequencies range 50–1,546. B's display design is strongly nonuniform. Keeping the full catalogue preserves the intended task but does not ensure a unique finite PL fit at small budgets.
 
 The same 5,000 respondents supplied A and B. Within each task there is one ranking per respondent. Experimental split keys align A/B membership so the same person occupies the same split in both tasks. Demographic balance is not enforced. A/B results are separate prediction tasks from a shared sample, not independent replications of a population claim.

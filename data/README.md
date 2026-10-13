@@ -14,7 +14,7 @@ The study includes preference reports, objective ordering tasks, agricultural ev
 - **$`\lambda=Nr(r-1)/(n(n-1))`$:** average training co-occurrences per unordered catalogue pair.
 - **Observed pair coverage:** distinct pairs seen / $`n(n-1)/2`$. Minimum item/pair counts and directed connectivity describe features that averages miss.
 
-μ and λ are also per-item/per-pair expectations under uniform independent display sampling. Real-data averages alone do not verify that sampling assumption. All empirical source items appear at least once in their full P1 task; this does not imply every training partition has adequate coverage.
+μ and λ are also per-item/per-pair expectations under uniform independent display sampling. Real-data averages alone do not verify that sampling assumption. All empirical source items appear at least once in their full P0/P1 task; this does not imply every training partition has adequate coverage.
 
 ## Dataset families
 
@@ -31,11 +31,11 @@ The study includes preference reports, objective ordering tasks, agricultural ev
 | [Screened sources](screening.md) | Tricot projects, Beaches, SP-Rank, potato, breakfast | Source-dependent | A1 eligibility/design audit; no SM–PL fits for excluded tasks |
 | [Synthetic populations](../docs/strict_feature_analysis.md) | n=4/8/10/32/64 and declared budgets | Known generating order and parameters; D2 also has known group labels | S1–S3, D1–D2 controlled experiments |
 
-P1's 23 tasks are three Beans/Sushi tasks, eight Dots/Puzzle tasks, eight dots2024 tasks, Wheat, Sounds and two PatrasIQ tasks. Their reuse in group, budget or diagnostic analyses is not counted as new independent data collection.
+P0's 23 tasks are three Beans/Sushi tasks, eight Dots/Puzzle tasks, eight dots2024 tasks, Wheat, Sounds and two PatrasIQ tasks. **All seven empirical ranking families above are used in the main P0 comparison and B0 global-sieve supplement**, as well as the P1/P2 controls listed in the table. Sushi A/B also supply L0's thirty-repeat learning curves. S0 uses n=6/10/16/32, r=3 and R=10 under independently generated SM and PL; its parameters and curves are in the [learning chapter](../docs/predictive_learning.md). ATP remains a separate chronological prediction target. Reuse in group, budget or diagnostic analyses is not new independent data collection.
 
 ## Source-to-ranking processing
 
-Verify source version and SHA256, decode item labels and observation format, validate the full task, then split intact reports or documented sampling units. P1/P2/G1 preserve all eligible reports and their ordering. PrefLib frequency expansion repeats the reported ranking exactly its recorded number of times; it does not reconstruct lost identities. Best/worst among three displayed items uniquely determines a complete ordering of those three. No rating-to-ranking conversion, tie breaking, or outcome-based removal is added in these fits.
+Verify source version and SHA256, decode item labels and observation format, validate the full task, then split intact reports or documented sampling units. P0/P1/P2/G1 preserve all eligible reports and their ordering. PrefLib frequency expansion repeats the reported ranking exactly its recorded number of times; it does not reconstruct lost identities. Best/worst among three displayed items uniquely determines a complete ordering of those three. No rating-to-ranking conversion, tie breaking, or outcome-based removal is added in these fits.
 
 A displayed-set ranking is different from “show ten items but retain only the top three.” The latter is censored and requires its original ten-item display plus a likelihood that marginalizes the unobserved tail. None of the included ranking tasks is deliberately recoded from such a top-k observation into a three-item display. A sports match is a direct two-item outcome. ATP has its own explicit completed-match and prior-catalogue eligibility rules; [those exclusions](tennis.md) must not be generalized into a claim that no source ever has filtering.
 

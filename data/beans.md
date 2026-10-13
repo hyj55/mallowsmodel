@@ -28,6 +28,8 @@ All 120 possible unordered triples occur in the full source, and all 45 pairs oc
 
 ## Season composition and allocation
 
+In the main [P0 comparison](../docs/predictive_comparison.md), each of thirty allocations uses 673 development reports and 169 test reports. Its 505/168 inner split selects the PL penalty before refitting on all 673; SM has a fixed beta bound. Final-development lambda is 44.8667 and mu is 201.9. Sharp and the identical B0 global sieve are attempted without an eight-item guard. Farmer identities remain unavailable, and the main comparison does not claim anonymous-report population CIs or exact seasonal balance.
+
 | Source season | Reports |
 |---|---:|
 | Apante 2015 (`Ap - 15`) | 481 |
