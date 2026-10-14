@@ -1,0 +1,27 @@
+{
+  "code_sha256": {
+    "src/streaming_sieve.cpp": "318b430f9c87eacc0311abcb8a65ad028f07129392d0d1b81459acd981e9740a",
+    "src/streaming_sieve.py": "c774ad02a2ba32cc7e8f5e2ef1039a63d1b7b0e0aff9e07a5cea7897f3c57deb",
+    "benchmark_streaming_sieve.py": "a2f34bf4a5f79a9a146ba6b4b6c231be917567900e468518715d65d915451b26"
+  },
+  "inputs_sha256": {
+    "results/predictive/predictors.jsonl.gz": "9fd8b773158346c26c1329691b4e63f17549b0ea93a8521e2445aa22a9707fe6",
+    "results/predictive/manifest.json": "850e026ab1b45b5b29efc6e41378f2dff40d9e9b7a132ad25e061a3db48cf814",
+    "results/predictive/primary.csv": "198690c7eeecab7ccf98ab8f298167711fab5ec27ebae19bb2f0b9e23117a93d",
+    "results/predictive/learning.csv": "dc869641effea3d4592f712eca74f41401dc2ff921b37c6f8f6c788ca3903749",
+    "results/predictive/synthetic.csv": "e65e0aab0b7685612482bf65f8a4beb7b8cbbb1f2fca6ca1d4c3bcc375ac1f60",
+    "results/predictive/repeat_scores.csv.gz": "922650063b60d9347ff9990aac2ba8f8eb00e076d60307af5c46e0d6f6c0699f",
+    "results/predictive/packing_crosscheck.json": "f67c2d72c304247b617937f74aefb9e1c4c64db9a43a214a40f79c54438f6c98"
+  },
+  "missing_contexts": 530,
+  "shared_packings": 10,
+  "complete_packings": 0,
+  "recovered_fits": 0,
+  "statistical_definition_changed": false,
+  "note": "A shared prerequisite construction is attempted once per (n, radius), not once per split. No predictor or score is published by this computational audit. Completed packings, if any, must still be scored on each unchanged extracted-pair sample before fits are published.",
+  "outputs_sha256": {
+    "packings.json": "b284a4a96035d3d5a95b766ce7f6b37c1970d7c90fe5b573e7bc940ab9e0c364",
+    "benchmarks.json": "dabc89a05e5a40e9a5a9e941218019dc5e6229186ba62b2918cc4ac7314384cb",
+    "contexts.csv": "914e755cf9407b7c150e48eaec7deb3abaf25f3aea3c0c21227ebcbd814724b8"
+  }
+}

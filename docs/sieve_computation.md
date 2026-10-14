@@ -1,6 +1,6 @@
 # Exact sieve computation and bounded-report supplement
 
-[Primary comparison](predictive_comparison.md) · [Resource receipts](../results/predictive/sieve_resources.json) · [Theory correspondence](theory_alignment.md)
+[Primary comparison](predictive_comparison.md) · [Resource receipts](../results/predictive/sieve_resources.json) · [Bounded-memory computation](../results/predictive/streaming/README.md) · [Theory correspondence](theory_alignment.md)
 
 ## Width is a statistical construction, not a computational cutoff
 
@@ -39,6 +39,8 @@ The packing benchmark completed m=9, radius=9 with 185 candidates, and m=10, rad
 
 For larger catalogues at intermediate radii, factorial array requirements can exceed the budget before construction starts. This records a limitation of this exact enumeration implementation, not a proof that every possible exact algorithm is infeasible. A resource rejection leaves the fit unavailable and retains its actual block size, radius and reason. The finite primary likelihood-center predictor is still evaluated independently. Efficient is used only under its explicitly stated fallback policy.
 
+The [streaming implementation](#bounded-memory-exact-search) removes this factorial pre-allocation and adds a bounded cache with disk spill. Its computation audit records actual search progress for the remaining cases separately from the earlier memory refusals. It does not turn unfinished candidate prefixes into fitted estimators.
+
 The active entry points are [resource_sieve.py](../src/resource_sieve.py), [predictive_models.py](../src/predictive_models.py), and the completion engine [sieve_budget_retry.py](../src/sieve_budget_retry.py). The byte-locked eight-item implementation in `manuscript_estimators.py` belongs to the supplementary P1/P2/S1 records and is retained solely so those saved results can still be replayed. It is not called for P0/L0/S0 Sharp fits.
 
 ## Exact completion algorithms
@@ -61,9 +63,61 @@ All **630** initially unavailable Sharp contexts were retried: **100 recovered, 
 
 L0 also displays the P0 N=4000 endpoints by reference; the unavailable Sushi B endpoint is included in P0's 360, not counted again. All Sushi A learning points and all n=10 synthetic sample-size points now have complete Sharp results.
 
-The remaining attempts fail the enlarged memory admission check, before allocating arrays. The new general packing engine still has factorial storage in its current representation, even though it avoids the previous repeated distance scans. These failures do not prove that a different implicit exact solver is impossible, and no additional completed real-data P0 Sharp task is claimed. Increasing a runtime limit cannot resolve this particular pre-allocation memory failure. Existing approximate Sushi B whole-ranking likelihood centers are a separate optimization problem and are not refitted by this Sharp completion pass.
+The ball-cover attempts in `resource_retries.csv` fail the enlarged memory admission check before allocating arrays. That engine still has factorial storage, even though it avoids the initial repeated distance scans. The streaming audit below addresses this implementation limitation without rewriting those earlier receipts. No additional completed real-data P0 Sharp task is claimed. Existing approximate Sushi B whole-ranking likelihood centers are a separate optimization problem and are not refitted by this Sharp completion work.
 
 A covering-count calculation also explains why some larger cases need more than a modest budget increase. A maximal radius-d packing must cover all n! orders with balls of size B(n,d), so it contains at least ceil(n!/B(n,d)) orders. For Wheat, n=16 and d=4, B=3,723 and that lower bound is **5,619,873,728 orders**: at least 179.84 GB just for the retained orders in the current int16 representation. For Dots2024, n=30,d=54, the corresponding storage lower bound is 3.48 TB. These are lower bounds for an explicitly stored packing, not for every possible implicit optimization algorithm. Other cases have weaker bounds, and must not be declared intrinsically impossible from this argument. [Exact counts for the remaining radii](../results/predictive/sieve_cover_bounds.json) are saved separately from measured resource receipts.
+
+## Bounded-memory exact search
+
+[Implementation](../src/streaming_sieve.py) · [Native search](../src/streaming_sieve.cpp) · [Measured attempts](../results/predictive/streaming/README.md)
+
+This engine implements the **same fixed lexicographic greedy packing**, not another maximal packing with a similar risk guarantee. A=256, W_star, the extracted pairs and their seed, radius, disagreement objective, and first-minimum tie rule are unchanged. The native search receives only the catalogue size and integer radius; it cannot use training outcomes or test losses to select candidates. Completed packings are scored on the original extracted pairs by `streaming_sharp_center`.
+
+Three changes reduce the computation and memory requirements:
+
+1. **Generate only the current lexicographic cursor.** Store accepted candidates, rather than allocating arrays for all n! permutations. Multiword pair orientations support more than 64 pairs, and cursor updates do not require fitting n! into a machine integer.
+2. **Skip prefixes with coverage certificates.** A certificate proves that every completion of a prefix would be rejected by the original greedy rule. The next cursor is the first permutation after that prefix. Search never skips a possibly admissible candidate.
+3. **Bound candidate memory and spill older blocks to disk.** Retain recent blocks and one reusable disk-read buffer. Their allocated capacities are checked against the array budget. The directory of spilled blocks does not grow in RAM: each block has a computed file offset. Complete candidate orders are written sequentially for later scoring; scoring reads them in bounded chunks. Temporary search indexes are removed when a search session exits normally.
+
+For a prefix P with remaining set T, let F_c(P) count disagreements with retained center c on comparisons fixed by P. Every completion satisfies
+
+```math
+d_K(\sigma,c)\le F_c(P)+\binom{|T|}{2}.
+```
+
+If the right-hand side is at most d, the entire prefix lies in c's coverage ball. This is the ordinary prefix certificate.
+
+Several balls can also cover a prefix together. For g retained centers, let v_ab count centers placing a before b. An upper bound on the sum of distances over every completion is
+
+```math
+U(P)=\sum_c F_c(P)+
+\sum_{\{a,b\}\subseteq T}\max\{v_{ab},g-v_{ab}\}.
+```
+
+If U(P)<g(d+1), a completion cannot be farther than d from all g centers, since that would make its distance sum at least g(d+1). The prefix is therefore covered by their union. The bound relaxes the remaining orientations independently; it need not be attainable to be a valid upper bound. This is a computational inequality, not a statistical assumption that observed pairs are independent. The helper checks groups of at most eight already retained centers. This is a cost limit on finding a joint coverage certificate; it places no limit on the number of items, terminal-block width, or retained candidates. Missing a stronger certificate only costs runtime. The default enables these more expensive joint checks for n>=24 and d>=n; changing that computational policy leaves the candidate sequence identical.
+
+Induction through lexicographic order establishes equivalence: every skipped permutation is already covered by accepted candidates, and every next uncovered cursor is accepted exactly when the original enumeration would accept it. The final scoring pass uses the same objective and strict-improvement update, so objective ties select the same first candidate. Tests compare full ordered packings across small catalogue sizes and radii, including joint pruning, multiple bit words, forced disk eviction, checkpoint resumption, and tied objectives. The ten-item radius-four benchmark additionally matches the original **29,086-candidate sequence by SHA256**.
+
+Normal time-budget exits save a hash-verified candidate prefix and cursor. Resumption rebuilds the bounded search cache from that prefix and continues the same enumeration; it does not restart with another packing or seed. Corrupt or inconsistent checkpoints are rejected. An interrupted session without a committed receipt is not silently treated as resumable. An incomplete prefix has `complete=false` and no final `sieve_size` or fitted loss.
+
+The 4-GiB limit applies to managed search arrays and their reserve; it is not a process-wide RSS or disk quota. Receipts also report the native process's measured peak RSS, separately from the Python orchestrator and compiler. Disk spill removes the need to keep all retained candidates in memory, but does **not** remove their total number: a complete Wheat packing would still require billions of candidates and substantial disk space, as well as the time to construct and examine them. A smaller allocation is not evidence of a completed fit.
+
+The recorded audit attempts all ten shared constructions needed by 530 missing fits. Eight receive 120 seconds; the two simulation constructions (m,d)=(16,19) and (32,158) resume to approximately 600 seconds each. **None completes, so no additional fitted result is published.** Every case now reaches actual search rather than failing the factorial allocation check. [The per-case table](../results/predictive/streaming/README.md#measured-outcome) gives retained-prefix sizes, resource accounting and complete implementation-check results. This is evidence of reduced memory requirements, not completion of the missing experiments.
+
+Reproduce the computation audit on Linux or macOS with a local GCC or Clang C++17 compiler and the repository's Python dependencies:
+
+```bash
+python benchmark_streaming_sieve.py --seconds 120 --workers 2
+python validate_streaming_sieve.py
+```
+
+To continue two existing verified checkpoints with another 30 minutes each:
+
+```bash
+python benchmark_streaming_sieve.py --resume --cases 16:19 32:158 --seconds 1800 --workers 2
+```
+
+Each worker has its own 4-GiB array budget; choose the worker count to fit the available machine. Compilation is local; the runner does not install or download a compiler. Completed ball-cover and parity-DP paths remain available and are preferable where they are faster. Frozen fitting modules, empirical allocations, parameters and published predictive losses are not rewritten by this audit.
 
 ## B0: global pair-sieve for bounded report sizes
 

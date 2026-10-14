@@ -1,0 +1,546 @@
+[
+  {
+    "complete": false,
+    "reason": "packing_wall_time_budget",
+    "packing_so_far": 38457,
+    "visited_leaves": 3088802,
+    "distance_comparisons": 7578559923,
+    "prefix_jumps": 3088802,
+    "allocated_working_bytes": 3335200,
+    "joint_prefix_jumps": 0,
+    "joint_cover": false,
+    "native_peak_rss_bytes": 1937408,
+    "disk_block_writes": 0,
+    "disk_block_reads": 0,
+    "elapsed_seconds": 120.001958049,
+    "engine": "lexicographic_prefix_cover_v1",
+    "path": "streaming_prefix_cover",
+    "m": 16,
+    "integer_radius": 4,
+    "resolved_permutations": 4787965,
+    "total_permutations": 20922789888000,
+    "seconds_limit": 120.0,
+    "memory_bytes": 4294967296,
+    "implementation_sha256": {
+      "native": "318b430f9c87eacc0311abcb8a65ad028f07129392d0d1b81459acd981e9740a",
+      "wrapper": "c774ad02a2ba32cc7e8f5e2ef1039a63d1b7b0e0aff9e07a5cea7897f3c57deb"
+    },
+    "build": {
+      "source_sha256": "318b430f9c87eacc0311abcb8a65ad028f07129392d0d1b81459acd981e9740a",
+      "compiler": "/usr/bin/c++",
+      "compiler_version": "Apple clang version 16.0.0 (clang-1600.0.26.6)",
+      "flags": [
+        "-O3",
+        "-std=c++17",
+        "-Wall",
+        "-Wextra",
+        "-Werror"
+      ]
+    },
+    "orders_sha256": "4a7988d86820d4333fdc99030cc50dac3a0308e47bb7caa5eae8ba7e1cd1e2ee",
+    "state_sha256": "e2589d052a28069c6c50f91f6272a27ee9e2232b02aabad28b3837f98f1db09e",
+    "total_elapsed_seconds": 120.001958049,
+    "sessions": [
+      {
+        "seconds_limit": 120.0,
+        "memory_bytes": 4294967296,
+        "elapsed_seconds": 120.001958049,
+        "joint_cover": false,
+        "retained_before": 0,
+        "retained_after": 38457
+      }
+    ],
+    "reused_resource_receipt": true
+  },
+  {
+    "complete": false,
+    "reason": "packing_wall_time_budget",
+    "packing_so_far": 1034,
+    "visited_leaves": 326263745,
+    "distance_comparisons": 22608078551,
+    "prefix_jumps": 326263745,
+    "allocated_working_bytes": 2139168,
+    "joint_prefix_jumps": 0,
+    "joint_cover": false,
+    "native_peak_rss_bytes": 737280,
+    "disk_block_writes": 0,
+    "disk_block_reads": 0,
+    "elapsed_seconds": 480.001720541,
+    "engine": "lexicographic_prefix_cover_v1",
+    "path": "streaming_prefix_cover",
+    "m": 16,
+    "integer_radius": 19,
+    "resolved_permutations": 1916329944,
+    "total_permutations": 20922789888000,
+    "seconds_limit": 480.0,
+    "memory_bytes": 4294967296,
+    "implementation_sha256": {
+      "native": "318b430f9c87eacc0311abcb8a65ad028f07129392d0d1b81459acd981e9740a",
+      "wrapper": "c774ad02a2ba32cc7e8f5e2ef1039a63d1b7b0e0aff9e07a5cea7897f3c57deb"
+    },
+    "build": {
+      "source_sha256": "318b430f9c87eacc0311abcb8a65ad028f07129392d0d1b81459acd981e9740a",
+      "compiler": "/usr/bin/c++",
+      "compiler_version": "Apple clang version 16.0.0 (clang-1600.0.26.6)",
+      "flags": [
+        "-O3",
+        "-std=c++17",
+        "-Wall",
+        "-Wextra",
+        "-Werror"
+      ]
+    },
+    "orders_sha256": "0bb8767d6f17489a8feda251e8784ba34692319a457a23b63b4f7b23829238c4",
+    "state_sha256": "d709a108aa049c29f1e04824fa11fd1909127bdc6dc9c915876260bf7b00983e",
+    "total_elapsed_seconds": 600.002340839,
+    "sessions": [
+      {
+        "seconds_limit": 120.0,
+        "memory_bytes": 4294967296,
+        "elapsed_seconds": 120.000620298,
+        "joint_cover": false,
+        "retained_before": 0,
+        "retained_after": 346
+      },
+      {
+        "seconds_limit": 480.0,
+        "memory_bytes": 4294967296,
+        "elapsed_seconds": 480.001720541,
+        "joint_cover": false,
+        "retained_before": 346,
+        "retained_after": 1034
+      }
+    ]
+  },
+  {
+    "complete": false,
+    "reason": "packing_wall_time_budget",
+    "packing_so_far": 5,
+    "visited_leaves": 3640271,
+    "distance_comparisons": 4973757,
+    "prefix_jumps": 3640271,
+    "allocated_working_bytes": 2121200,
+    "joint_prefix_jumps": 795639,
+    "joint_cover": true,
+    "native_peak_rss_bytes": 671744,
+    "disk_block_writes": 0,
+    "disk_block_reads": 0,
+    "elapsed_seconds": 120.000790174,
+    "engine": "lexicographic_prefix_cover_v1",
+    "path": "streaming_prefix_cover",
+    "m": 30,
+    "integer_radius": 54,
+    "resolved_permutations": 109994127822,
+    "total_permutations": 265252859812191058636308480000000,
+    "seconds_limit": 120.0,
+    "memory_bytes": 4294967296,
+    "implementation_sha256": {
+      "native": "318b430f9c87eacc0311abcb8a65ad028f07129392d0d1b81459acd981e9740a",
+      "wrapper": "c774ad02a2ba32cc7e8f5e2ef1039a63d1b7b0e0aff9e07a5cea7897f3c57deb"
+    },
+    "build": {
+      "source_sha256": "318b430f9c87eacc0311abcb8a65ad028f07129392d0d1b81459acd981e9740a",
+      "compiler": "/usr/bin/c++",
+      "compiler_version": "Apple clang version 16.0.0 (clang-1600.0.26.6)",
+      "flags": [
+        "-O3",
+        "-std=c++17",
+        "-Wall",
+        "-Wextra",
+        "-Werror"
+      ]
+    },
+    "orders_sha256": "aa99ebbf4e365bdc8079383790a3324cfcc81b7a537f8499d085bd29a1f0cbc5",
+    "state_sha256": "9a66b64525a13e632e9cbef2bf87bb9d72b21a21cab7dba4eb1b9f39f2da2a61",
+    "total_elapsed_seconds": 120.000790174,
+    "sessions": [
+      {
+        "seconds_limit": 120.0,
+        "memory_bytes": 4294967296,
+        "elapsed_seconds": 120.000790174,
+        "joint_cover": true,
+        "retained_before": 0,
+        "retained_after": 5
+      }
+    ],
+    "reused_resource_receipt": true
+  },
+  {
+    "complete": false,
+    "reason": "packing_wall_time_budget",
+    "packing_so_far": 3,
+    "visited_leaves": 24359478,
+    "distance_comparisons": 24360984,
+    "prefix_jumps": 24359478,
+    "allocated_working_bytes": 2123904,
+    "joint_prefix_jumps": 10113310,
+    "joint_cover": true,
+    "native_peak_rss_bytes": 688128,
+    "disk_block_writes": 0,
+    "disk_block_reads": 0,
+    "elapsed_seconds": 480.00053817,
+    "engine": "lexicographic_prefix_cover_v1",
+    "path": "streaming_prefix_cover",
+    "m": 32,
+    "integer_radius": 158,
+    "resolved_permutations": 4876934052122007321600,
+    "total_permutations": 263130836933693530167218012160000000,
+    "seconds_limit": 480.0,
+    "memory_bytes": 4294967296,
+    "implementation_sha256": {
+      "native": "318b430f9c87eacc0311abcb8a65ad028f07129392d0d1b81459acd981e9740a",
+      "wrapper": "c774ad02a2ba32cc7e8f5e2ef1039a63d1b7b0e0aff9e07a5cea7897f3c57deb"
+    },
+    "build": {
+      "source_sha256": "318b430f9c87eacc0311abcb8a65ad028f07129392d0d1b81459acd981e9740a",
+      "compiler": "/usr/bin/c++",
+      "compiler_version": "Apple clang version 16.0.0 (clang-1600.0.26.6)",
+      "flags": [
+        "-O3",
+        "-std=c++17",
+        "-Wall",
+        "-Wextra",
+        "-Werror"
+      ]
+    },
+    "orders_sha256": "2f63acfd44064c01763d7da1b15bd068d11a8398b2ee44ce3f8a23c5492de984",
+    "state_sha256": "01a145cda87f4b61e093152d9b35df15cff494b04ec3eca077fdd75f3ac58c3d",
+    "total_elapsed_seconds": 600.001361535,
+    "sessions": [
+      {
+        "seconds_limit": 120.0,
+        "memory_bytes": 4294967296,
+        "elapsed_seconds": 120.000823365,
+        "joint_cover": true,
+        "retained_before": 0,
+        "retained_after": 3
+      },
+      {
+        "seconds_limit": 480.0,
+        "memory_bytes": 4294967296,
+        "elapsed_seconds": 480.00053817,
+        "joint_cover": true,
+        "retained_before": 3,
+        "retained_after": 3
+      }
+    ]
+  },
+  {
+    "complete": false,
+    "reason": "packing_wall_time_budget",
+    "packing_so_far": 3,
+    "visited_leaves": 4313603,
+    "distance_comparisons": 5030965,
+    "prefix_jumps": 4313603,
+    "allocated_working_bytes": 2129312,
+    "joint_prefix_jumps": 1318134,
+    "joint_cover": true,
+    "native_peak_rss_bytes": 671744,
+    "disk_block_writes": 0,
+    "disk_block_reads": 0,
+    "elapsed_seconds": 120.001117889,
+    "engine": "lexicographic_prefix_cover_v1",
+    "path": "streaming_prefix_cover",
+    "m": 36,
+    "integer_radius": 72,
+    "resolved_permutations": 4430553108624,
+    "total_permutations": 371993326789901217467999448150835200000000,
+    "seconds_limit": 120.0,
+    "memory_bytes": 4294967296,
+    "implementation_sha256": {
+      "native": "318b430f9c87eacc0311abcb8a65ad028f07129392d0d1b81459acd981e9740a",
+      "wrapper": "c774ad02a2ba32cc7e8f5e2ef1039a63d1b7b0e0aff9e07a5cea7897f3c57deb"
+    },
+    "build": {
+      "source_sha256": "318b430f9c87eacc0311abcb8a65ad028f07129392d0d1b81459acd981e9740a",
+      "compiler": "/usr/bin/c++",
+      "compiler_version": "Apple clang version 16.0.0 (clang-1600.0.26.6)",
+      "flags": [
+        "-O3",
+        "-std=c++17",
+        "-Wall",
+        "-Wextra",
+        "-Werror"
+      ]
+    },
+    "orders_sha256": "180d33a44b52242fd3101b8912d88696d4fa57cf9921d548fda15d9f89c7fa1f",
+    "state_sha256": "521718a7379bb457bff1f50d78185bb3d9946ea77a695e6a478fe396447f9d3e",
+    "total_elapsed_seconds": 120.001117889,
+    "sessions": [
+      {
+        "seconds_limit": 120.0,
+        "memory_bytes": 4294967296,
+        "elapsed_seconds": 120.001117889,
+        "joint_cover": true,
+        "retained_before": 0,
+        "retained_after": 3
+      }
+    ],
+    "reused_resource_receipt": true
+  },
+  {
+    "complete": false,
+    "reason": "packing_wall_time_budget",
+    "packing_so_far": 3,
+    "visited_leaves": 2496710,
+    "distance_comparisons": 2496853,
+    "prefix_jumps": 2496710,
+    "allocated_working_bytes": 2149664,
+    "joint_prefix_jumps": 972834,
+    "joint_cover": true,
+    "native_peak_rss_bytes": 667648,
+    "disk_block_writes": 0,
+    "disk_block_reads": 0,
+    "elapsed_seconds": 120.001506444,
+    "engine": "lexicographic_prefix_cover_v1",
+    "path": "streaming_prefix_cover",
+    "m": 48,
+    "integer_radius": 172,
+    "resolved_permutations": 108333307588106662427520,
+    "total_permutations": 12413915592536072670862289047373375038521486354677760000000000,
+    "seconds_limit": 120.0,
+    "memory_bytes": 4294967296,
+    "implementation_sha256": {
+      "native": "318b430f9c87eacc0311abcb8a65ad028f07129392d0d1b81459acd981e9740a",
+      "wrapper": "c774ad02a2ba32cc7e8f5e2ef1039a63d1b7b0e0aff9e07a5cea7897f3c57deb"
+    },
+    "build": {
+      "source_sha256": "318b430f9c87eacc0311abcb8a65ad028f07129392d0d1b81459acd981e9740a",
+      "compiler": "/usr/bin/c++",
+      "compiler_version": "Apple clang version 16.0.0 (clang-1600.0.26.6)",
+      "flags": [
+        "-O3",
+        "-std=c++17",
+        "-Wall",
+        "-Wextra",
+        "-Werror"
+      ]
+    },
+    "orders_sha256": "bb8ba7a52dc659058c98bbf2a0f0c472fb17dc9ed7d63517f2148ada45f0013c",
+    "state_sha256": "0431138525ea7868813377cb4978cf1d17c314dcb6909c06977696c89773c563",
+    "total_elapsed_seconds": 120.001506444,
+    "sessions": [
+      {
+        "seconds_limit": 120.0,
+        "memory_bytes": 4294967296,
+        "elapsed_seconds": 120.001506444,
+        "joint_cover": true,
+        "retained_before": 0,
+        "retained_after": 3
+      }
+    ],
+    "reused_resource_receipt": true
+  },
+  {
+    "complete": false,
+    "reason": "packing_wall_time_budget",
+    "packing_so_far": 4,
+    "visited_leaves": 280230,
+    "distance_comparisons": 567739,
+    "prefix_jumps": 280230,
+    "allocated_working_bytes": 2290144,
+    "joint_prefix_jumps": 82277,
+    "joint_cover": true,
+    "native_peak_rss_bytes": 675840,
+    "disk_block_writes": 0,
+    "disk_block_reads": 0,
+    "elapsed_seconds": 120.000896325,
+    "engine": "lexicographic_prefix_cover_v1",
+    "path": "streaming_prefix_cover",
+    "m": 100,
+    "integer_radius": 123,
+    "resolved_permutations": 107432974990460044800,
+    "total_permutations": 93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000,
+    "seconds_limit": 120.0,
+    "memory_bytes": 4294967296,
+    "implementation_sha256": {
+      "native": "318b430f9c87eacc0311abcb8a65ad028f07129392d0d1b81459acd981e9740a",
+      "wrapper": "c774ad02a2ba32cc7e8f5e2ef1039a63d1b7b0e0aff9e07a5cea7897f3c57deb"
+    },
+    "build": {
+      "source_sha256": "318b430f9c87eacc0311abcb8a65ad028f07129392d0d1b81459acd981e9740a",
+      "compiler": "/usr/bin/c++",
+      "compiler_version": "Apple clang version 16.0.0 (clang-1600.0.26.6)",
+      "flags": [
+        "-O3",
+        "-std=c++17",
+        "-Wall",
+        "-Wextra",
+        "-Werror"
+      ]
+    },
+    "orders_sha256": "91da57b552112360e3845ce7586f3371a103ef695f6ac56125869d2c13038078",
+    "state_sha256": "bd96d47ce2db3a7bfdacd9b5a0b6a048a98bfa1ead374650c493350ff024067c",
+    "total_elapsed_seconds": 120.000896325,
+    "sessions": [
+      {
+        "seconds_limit": 120.0,
+        "memory_bytes": 4294967296,
+        "elapsed_seconds": 120.000896325,
+        "joint_cover": true,
+        "retained_before": 0,
+        "retained_after": 4
+      }
+    ],
+    "reused_resource_receipt": true
+  },
+  {
+    "complete": false,
+    "reason": "packing_wall_time_budget",
+    "packing_so_far": 4,
+    "visited_leaves": 280082,
+    "distance_comparisons": 563606,
+    "prefix_jumps": 280082,
+    "allocated_working_bytes": 2290144,
+    "joint_prefix_jumps": 89526,
+    "joint_cover": true,
+    "native_peak_rss_bytes": 667648,
+    "disk_block_writes": 0,
+    "disk_block_reads": 0,
+    "elapsed_seconds": 120.00112042,
+    "engine": "lexicographic_prefix_cover_v1",
+    "path": "streaming_prefix_cover",
+    "m": 100,
+    "integer_radius": 165,
+    "resolved_permutations": 1297311450933631053392640,
+    "total_permutations": 93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000,
+    "seconds_limit": 120.0,
+    "memory_bytes": 4294967296,
+    "implementation_sha256": {
+      "native": "318b430f9c87eacc0311abcb8a65ad028f07129392d0d1b81459acd981e9740a",
+      "wrapper": "c774ad02a2ba32cc7e8f5e2ef1039a63d1b7b0e0aff9e07a5cea7897f3c57deb"
+    },
+    "build": {
+      "source_sha256": "318b430f9c87eacc0311abcb8a65ad028f07129392d0d1b81459acd981e9740a",
+      "compiler": "/usr/bin/c++",
+      "compiler_version": "Apple clang version 16.0.0 (clang-1600.0.26.6)",
+      "flags": [
+        "-O3",
+        "-std=c++17",
+        "-Wall",
+        "-Wextra",
+        "-Werror"
+      ]
+    },
+    "orders_sha256": "c39411ccb8e8e0cb18fdd04318c21cb143c29bc535b8e9fa1c115f47b4e42d11",
+    "state_sha256": "ac44f5f1e4a524d11aa48594374554e7d5559f00580e0eb792f6224d5597a7a9",
+    "total_elapsed_seconds": 120.00112042,
+    "sessions": [
+      {
+        "seconds_limit": 120.0,
+        "memory_bytes": 4294967296,
+        "elapsed_seconds": 120.00112042,
+        "joint_cover": true,
+        "retained_before": 0,
+        "retained_after": 4
+      }
+    ],
+    "reused_resource_receipt": true
+  },
+  {
+    "complete": false,
+    "reason": "packing_wall_time_budget",
+    "packing_so_far": 4,
+    "visited_leaves": 375428,
+    "distance_comparisons": 1187753,
+    "prefix_jumps": 375428,
+    "allocated_working_bytes": 2290144,
+    "joint_prefix_jumps": 154072,
+    "joint_cover": true,
+    "native_peak_rss_bytes": 671744,
+    "disk_block_writes": 0,
+    "disk_block_reads": 0,
+    "elapsed_seconds": 120.001408528,
+    "engine": "lexicographic_prefix_cover_v1",
+    "path": "streaming_prefix_cover",
+    "m": 100,
+    "integer_radius": 495,
+    "resolved_permutations": 4317909030659146326735276405994111680575176704000000,
+    "total_permutations": 93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000,
+    "seconds_limit": 120.0,
+    "memory_bytes": 4294967296,
+    "implementation_sha256": {
+      "native": "318b430f9c87eacc0311abcb8a65ad028f07129392d0d1b81459acd981e9740a",
+      "wrapper": "c774ad02a2ba32cc7e8f5e2ef1039a63d1b7b0e0aff9e07a5cea7897f3c57deb"
+    },
+    "build": {
+      "source_sha256": "318b430f9c87eacc0311abcb8a65ad028f07129392d0d1b81459acd981e9740a",
+      "compiler": "/usr/bin/c++",
+      "compiler_version": "Apple clang version 16.0.0 (clang-1600.0.26.6)",
+      "flags": [
+        "-O3",
+        "-std=c++17",
+        "-Wall",
+        "-Wextra",
+        "-Werror"
+      ]
+    },
+    "orders_sha256": "44f4696e665f8b2819a83780b88fdb911a8a6d9192bb4421328cb9d7d0746280",
+    "state_sha256": "36eb05c31432b76593c6667063b601b44e70e8ec04fc2de829f8068b0892676e",
+    "total_elapsed_seconds": 120.001408528,
+    "sessions": [
+      {
+        "seconds_limit": 120.0,
+        "memory_bytes": 4294967296,
+        "elapsed_seconds": 120.001408528,
+        "joint_cover": true,
+        "retained_before": 0,
+        "retained_after": 4
+      }
+    ],
+    "reused_resource_receipt": true
+  },
+  {
+    "complete": false,
+    "reason": "packing_wall_time_budget",
+    "packing_so_far": 3,
+    "visited_leaves": 449590,
+    "distance_comparisons": 838573,
+    "prefix_jumps": 449590,
+    "allocated_working_bytes": 2290144,
+    "joint_prefix_jumps": 427059,
+    "joint_cover": true,
+    "native_peak_rss_bytes": 667648,
+    "disk_block_writes": 0,
+    "disk_block_reads": 0,
+    "elapsed_seconds": 120.001170543,
+    "engine": "lexicographic_prefix_cover_v1",
+    "path": "streaming_prefix_cover",
+    "m": 100,
+    "integer_radius": 1650,
+    "resolved_permutations": 364566335453186379683175026522951448375734839871876621154456270844383198789684822654237285851916403200,
+    "total_permutations": 93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000,
+    "seconds_limit": 120.0,
+    "memory_bytes": 4294967296,
+    "implementation_sha256": {
+      "native": "318b430f9c87eacc0311abcb8a65ad028f07129392d0d1b81459acd981e9740a",
+      "wrapper": "c774ad02a2ba32cc7e8f5e2ef1039a63d1b7b0e0aff9e07a5cea7897f3c57deb"
+    },
+    "build": {
+      "source_sha256": "318b430f9c87eacc0311abcb8a65ad028f07129392d0d1b81459acd981e9740a",
+      "compiler": "/usr/bin/c++",
+      "compiler_version": "Apple clang version 16.0.0 (clang-1600.0.26.6)",
+      "flags": [
+        "-O3",
+        "-std=c++17",
+        "-Wall",
+        "-Wextra",
+        "-Werror"
+      ]
+    },
+    "orders_sha256": "d9230b1251bb068dcc4d2b1f9f5488c899b8abf6c356ae2c28f56c215555772f",
+    "state_sha256": "edf2889ccf3f4c88aeabace762718109bec32977d39e3d04506974aea1a99adb",
+    "total_elapsed_seconds": 120.001170543,
+    "sessions": [
+      {
+        "seconds_limit": 120.0,
+        "memory_bytes": 4294967296,
+        "elapsed_seconds": 120.001170543,
+        "joint_cover": true,
+        "retained_before": 0,
+        "retained_after": 3
+      }
+    ],
+    "reused_resource_receipt": true
+  }
+]

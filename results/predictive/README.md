@@ -15,6 +15,7 @@ These outputs cover 690 empirical P0 training contexts, 360 Sushi learning conte
 | [resource_retries.csv](resource_retries.csv) | All 630 enlarged-budget completion attempts; 100 recoveries and 530 remaining failures |
 | [sieve_cover_bounds.json](sieve_cover_bounds.json) | Covering-count lower bounds on explicit packing size for remaining cases; not universal solver memory bounds |
 | [packing_crosscheck.json](packing_crosscheck.json) | Direct equality of all 29,086 ordered radius-four candidates from the original and completion engines |
+| [streaming/](streaming/README.md) | Bounded-memory exact search, disk-spill checks, and actual search attempts for the 530 remaining contexts; no partial-packing predictions |
 | [manifest.json](manifest.json) | Protocol commit, code/source SHA256, exact task inventory and public-output hashes |
 | [tables.md](tables.md) | Readable primary and Sharp comparisons |
 

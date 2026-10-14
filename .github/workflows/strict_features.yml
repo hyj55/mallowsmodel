@@ -36,3 +36,4 @@ jobs:
           python validate_structure_features.py
           python validate_theory_alignment.py
           python validate_predictive_study.py --repository-only
+          python validate_streaming_sieve.py
