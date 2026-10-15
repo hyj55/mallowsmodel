@@ -89,7 +89,7 @@ def prediction_comparison(summary):
             pl = g.loc[g.method.eq('pl')].iloc[0]
             complete = int(sm.paired_delta_finite_repeats) == int(sm.repetitions)
             row.update(nll_study='P1', sm_method='exact_certified_mle', pl_method='unpenalized_mm',
-                nll_target='mean over 30 original confirmation partitions',
+                nll_target='mean over five confirmation partitions',
                 nll_source='results/repeated_holdout/scores.csv',
                 sm_nll=sm.nll_mean, pl_nll=pl.nll_mean,
                 delta=sm.paired_delta_mean if complete else np.nan,

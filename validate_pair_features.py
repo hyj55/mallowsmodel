@@ -59,7 +59,7 @@ def verify(with_sources=False):
             original = saved.loc[saved.dataset.eq(row.dataset) & saved.method.eq('mle')
                                  & saved.split.eq('confirmation')].iloc[0]
             assert row.paired_repetitions == original.paired_delta_finite_repeats
-            if row.paired_repetitions < 30:
+            if row.paired_repetitions < 5:
                 assert np.isnan(row.delta)
                 np.testing.assert_allclose(row.conditional_delta, original.paired_delta_finite_conditional_mean)
             else:

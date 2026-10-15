@@ -49,20 +49,20 @@
       "url": "https://github.com/hyj55/mallowsmodel/blob/89b21645d5f7eb463cc90c4e982c3a66ce805b41/results/algorithm_benchmark.csv"
     },
     {
-      "origin_ref": "dc429c96b315c32b6326b1834b2c07f4234a07d6",
+      "origin_ref": "current-generated-report",
       "origin_path": "results/repeated_holdout/repeat_scores.csv.gz",
       "destination": "results/repeated_holdout/repeat_scores.csv.gz",
-      "sha256": "47591795aa93dba24262911749f110ef8f9114be8021f6c04a2d7eb8fb673f70",
-      "git_sha": "794e2c3d59481f38d0d8b82269add1711c621cb6",
-      "url": "https://github.com/hyj55/mallowsmodel/blob/dc429c96b315c32b6326b1834b2c07f4234a07d6/results/repeated_holdout/repeat_scores.csv.gz"
+      "sha256": "aeb5a1f69f6bff21cc74a5de5b572d7ea31eb69511bb8173a67c68e108f331aa",
+      "git_sha": "51ab6389f75d46fe70cfaecbbcbb879a0630253a",
+      "url": "https://github.com/hyj55/mallowsmodel/blob/main/results/repeated_holdout/repeat_scores.csv.gz"
     },
     {
-      "origin_ref": "dc429c96b315c32b6326b1834b2c07f4234a07d6",
+      "origin_ref": "current-generated-report",
       "origin_path": "results/group_sensitivity/repeat_scores.csv.gz",
       "destination": "results/group_sensitivity/repeat_scores.csv.gz",
-      "sha256": "249aa59ddd7c49a58820314ff479b9045bd11fc6b0dc1bbf769ec8d8a14ca85d",
-      "git_sha": "d48b15484ec8650d1254d3cd8c63f79343e55390",
-      "url": "https://github.com/hyj55/mallowsmodel/blob/dc429c96b315c32b6326b1834b2c07f4234a07d6/results/group_sensitivity/repeat_scores.csv.gz"
+      "sha256": "8dfed975146a5e4e40ead90e8963c6eb8e4f7d482ee54e8f2bcfa07da41affdf",
+      "git_sha": "c2369608685cdbc69f1cb03e806058afa24bfc1f",
+      "url": "https://github.com/hyj55/mallowsmodel/blob/main/results/group_sensitivity/repeat_scores.csv.gz"
     },
     {
       "origin_ref": "dc429c96b315c32b6326b1834b2c07f4234a07d6",

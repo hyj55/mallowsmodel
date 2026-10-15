@@ -105,7 +105,7 @@ def run_task(task, quick=False):
                                                              loss[reference][method], loss[reference]['pl'])))
             if repeat % 20 == 0:
                 print(task.name, 'within', percent, repeat, 'cache', len(cache), flush=True)
-    for repeat in range(2 if quick else 100):
+    for repeat in range(2 if quick else 5):
         train, test = holdout_split(task.groups, task.index, repeat)
         if np.intersect1d(task.groups[train], task.groups[test]).size:
             raise AssertionError('A group crossed the holdout boundary')
@@ -124,7 +124,7 @@ def run_task(task, quick=False):
         reports=len(task.y), groups=len(task.group_names), unit=task.unit,
         min_reports_per_group=int(np.bincount(task.groups).min()),
         max_reports_per_group=int(np.bincount(task.groups).max()),
-        seed=SEED, split_plan=plan, holdout_repetitions=2 if quick else 100,
+        seed=SEED, split_plan=plan, holdout_repetitions=2 if quick else 5,
         fit_contexts=context_count, distinct_training_histograms=len(cache),
         candidate_fit_attempts=len(audit), elapsed_seconds=elapsed)
     (directory / 'manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')

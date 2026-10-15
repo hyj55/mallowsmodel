@@ -4,7 +4,7 @@
 
 ## Sounds
 
-In the main [P0 comparison](../docs/predictive_comparison.md), each of thirty allocations has 36 development assessors (1,080 reports) and ten test assessors (300 reports). A 27/9 assessor inner split selects PL ridge before refitting on all 36. Final-development lambda=16.3636 and mu=180. The paired conditional bootstrap resamples whole test assessors, retaining all thirty judgments together. The separate E0 Sharp comparison uses the full-space shortcut for this twelve-item catalogue; B0 reuses its selected pairs and sieve. P0 itself needs no sieve.
+In the main [P0 comparison](../docs/predictive_comparison.md), each of five allocations has 36 development assessors (1,080 reports) and ten test assessors (300 reports). A 27/9 assessor inner split selects PL ridge before refitting on all 36. Final-development lambda=16.3636 and mu=180. The paired conditional bootstrap resamples whole test assessors, retaining all thirty judgments together. The separate E0 Sharp comparison uses the full-space shortcut for this twelve-item catalogue; B0 reuses its selected pairs and sieve. P0 itself needs no sieve.
 
 The source is the BayesMallows [Sounds object and documentation](https://github.com/ocbe-uio/BayesMallows/blob/a26cf89d3142ea3499489730e7c2b3ef9a26bfb2/man/sounds.Rd), with upstream `Sounds.RData` and conversion code pinned in [validation_extension_sources.json](validation_extension_sources.json). The study is credited to [Crispino et al. (2019)](https://doi.org/10.1214/18-AOAS1203) and Barrett and Crispino (2018). Participants compare how human the agency in sounds appears; these are preference/judgment outcomes, not a known true order.
 
@@ -16,7 +16,7 @@ P1/P2 compare pooled predictive models and pair-reliability profiles. P2's sourc
 
 ## PatrasIQ cost and population
 
-The main [P0 comparison](../docs/predictive_comparison.md) uses 313 development and 79 test reports per task, over thirty allocations, with a 235/78 inner split for PL tuning. It retains the documented one-report-per-volunteer unit within a task and does not invent cross-task matching. Both r=6 tasks enter the separate E0 estimator comparison and B0 sieve supplement with R=10; computational failures and missing-pair Fotakis admission are recorded without changing the catalogue. Conditional intervals require independently sampled volunteers, while their thirty-split mean has a partition MCSE rather than a population CI.
+The main [P0 comparison](../docs/predictive_comparison.md) uses 313 development and 79 test reports per task, over five allocations, with a 235/78 inner split for PL tuning. It retains the documented one-report-per-volunteer unit within a task and does not invent cross-task matching. Both r=6 tasks enter the separate E0 estimator comparison and B0 sieve supplement with R=10; computational failures and missing-pair Fotakis admission are recorded without changing the catalogue. Conditional intervals require independently sampled volunteers, while their five-split mean has a partition MCSE rather than a population CI.
 
 The [PrefLib Cities Survey page](https://preflib.github.io/PrefLib-Jekyll/dataset/00034), its [pinned study description](https://github.com/PrefLib/PrefLib-Data/blob/1a8e9a9d0ad02a2a2d7473e813d1ac3057264f80/datasets/00034%20-%20cities/info.txt), and [Caragiannis et al. (2017)](https://ojs.aaai.org/index.php/AAAI/article/view/10585) describe 392 volunteers at PatrasIQ in April 2016. Each person ordered six cities by estimated cost of living and six countries by estimated population, in decreasing order.
 

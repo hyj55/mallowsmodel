@@ -45,7 +45,7 @@ def render_section():
                      'dots2024_B_r6':(-100,-14),'00025-00000002':(4,-13)}
             ax.annotate(label(row.dataset),(100*row.heterogeneity_sd,row.delta),
                         xytext=offsets[row.dataset],textcoords='offset points',fontsize=8)
-    ax.set_title('P1: 19 tasks with all 30 NLL comparisons')
+    ax.set_title('P1: tasks with all five NLL comparisons')
     ax.set_ylabel('Recorded whole-ranking NLL(SM) - NLL(PL)\nPositive favors PL')
     ax.set_xlim(-1,36);ax.set_ylim(-.09,.32)
     ax.legend(ncols=3,loc='upper left',frameon=False,fontsize=8)
@@ -71,7 +71,7 @@ def render_section():
         '[Definitions, interpretation and limitations](README.md) · [CSV](nll_comparison.csv) · [Every h](by_gap.csv)','',
         'H and H1 are **percentage points**, calculated from the entire task. H compares pairs only within the same h before aggregating; H1 restricts that comparison to adjacent pairs. Median count is the number of reports per observed pair × h cell. Δ is the saved SM-minus-PL whole-ranking NLL gap in nats/report. Counts and empirical frequencies are not estimates with a universal binomial CI.','',
         '## P1 datasets','',
-        'The reference centers for all 23 tasks are certified full-data Kendall-objective minima. Original prediction fits and test losses are unchanged. Four incomplete means remain unavailable; conditional means use only the listed successful repetitions.','',
+        'The reference centers for all 23 tasks are certified full-data Kendall-objective minima. Original prediction fits and test losses are unchanged. Incomplete means remain unavailable; conditional means use only the listed successful repetitions.','',
         '| Task / exact pair counts | H | H1 | Median count | Occurrences in cells with ≥5 reports | Δ | Finite repetitions | Conditional Δ if incomplete |',
         '|---|---:|---:|---:|---:|---:|---:|---:|']
     def table_row(row,temporal=False):

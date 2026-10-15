@@ -5,16 +5,17 @@
   "references": 51,
   "inputs": {
     "data/features/centers.json": "c82354a1c3df6038617fdfaa2b72cfcaec06df34f76f05e0efc27f03433c79af",
-    "data/features/manifest.json": "a3e464abf3292d8a7415647b8ff8ff78953796ceb27063420ca0300b2861ae21",
-    "data/features/nll_comparison.csv": "b27241effedcd1b078ed769512dbe573b36017b0aec98c062341a84084ac7b17",
-    "results/repeated_holdout/scores.csv": "debca0d078762d6d8416ae68bcb9ffdbbbe1cb49fbf45b13ca0fde9e2502c9ba",
+    "data/features/manifest.json": "c971c780a4663f53575e2495568ae15a27d173319438c00c8cb135c9eb0d5e63",
+    "data/features/nll_comparison.csv": "257fdcc8c8324953fec4fff0043a3e152f41519f7316ab4fc538b720aa425f02",
+    "results/repeated_holdout/scores.csv": "cfc22e4688b168d4394883775ad4a71e48915bb636d27598037351bc5910c843",
     "data/features/tennis_nll_source.csv": "a6661bf62f242c1ca8785e4b51d54c7a47764a09d8a57422c6a3eba153a2417e"
   },
   "code_sha256": {
     "src/structure_features.py": "44c72605998fc2ce528e311a671a23a583071dfd221cd00e51e046211a1e9d25",
     "describe_structure_features.py": "a6d0fc8f799204c2a018f77b000bbf84f352df758943a2be09f7d74069dc219c",
-    "make_structure_feature_summary.py": "25ca1610bb254dc92c74f9a9bcda2108a6883ddab99047c28b6fcc148a5998ac",
-    "make_feature_summary.py": "cfef99b66b0f7a6f5d0a07e9d86140c8ce4373ba8f922a8fc0818a5219d499f5"
+    "make_structure_feature_summary.py": "b8318a8d744dd67837cb90fddef12d787df85369af5b0f6b73ef598950abeb38",
+    "make_feature_summary.py": "57eb32455291915ad5fa34d564a2e0911b49bd62ffe700ade772db876aa2635c",
+    "refresh_feature_predictions.py": "a51a59fc3d6103a0b6a412ee60f3ddc1fa2926eac1523f9af0a43757d901a502"
   },
   "output_sha256": {
     "shells/beans.csv": "f8e896749afb435b24d2d11eef1ae53f57a33270b07eec58f2ef859aa11b6b09",
@@ -84,11 +85,11 @@
     "shells/atp_2019.csv": "d2026309a3b73ee788f1fda4b8f0e009abc1bfa42ee67b2d4b515c3eb23c8e02",
     "pairs/atp_2019.csv": "7f1e64bf14d115b60c73339082a4ec925a4a49dd66e90538a615e29d1c470038",
     "summary.csv": "48466bf30be8069f0768a169266d225a635a5972045e69eeed0e3e76442a842f",
-    "nll_comparison.csv": "69ab0b944bff1a92b79b9bb804f7974126f6b5de2e97ee282d5e388315aedb59",
+    "nll_comparison.csv": "a898c6cf89f54272d7971f60a55ce7e55d6b2a02455ffe3ee5d53f10880f676a",
     "comparison.md": "401c2cc91fa78954a929719fb635e78fb081ac935cebccf4d3c99c4d78cfc8c4",
-    "associations.csv": "e2e952ddd01cb6e87820894da0aa4b4c79cafd64336f9ac8dc0805c99359e99a",
-    "feature_vs_nll.svg": "7c913db6fb53220603d070e53b002ed1a40b9f637cd22b89932f37b9886264ec",
-    "feature_vs_nll.png": "e0ddec884f9837ff037b1a6f14677d54a65c3b869d9eb4f76889a22ab601523d"
+    "associations.csv": "df752f5178daa15adb852d0e1779e8cad2f2192287cb40250d0e790a87663924",
+    "feature_vs_nll.svg": "2820f46a47030ec558b22f20aa73b220e5a5858ca1216c242b4c54cf3dd2c775",
+    "feature_vs_nll.png": "492f61a35cb7cfd1357fb20eea759ae0bed026b84c46a5956c883c607ccb79c7"
   },
   "private_output_sha256": {
     "results/private/structure_features/beans/full_data_displays.csv.gz": "5e74f88210532b8eba68c7020ad51c633f9861dcaae74e3ce6f0265a6bbf2e8b",

@@ -1,0 +1,31 @@
+{
+  "protocol_commit": "052eeac57a58f8cb851ba7feac8578d18b053f3f",
+  "code_signature": "d22ed921b17ba2e432f1d8c596a16fe619b5ebfca79621eb609703a04d2c1be0",
+  "code_sha256": {
+    "src/resource_sieve.py": "934f2691fbe17105478ad6b4968646146e4d65bc206f0cbd55c27e310bd33941",
+    "src/predictive_models.py": "531973aab5ad775dbb5ba966c75cf862e9ce6b543576fdb8032d915e507ec233",
+    "src/predictive_study.py": "b3cbf1976d5ad92377d97cd3caecab73507d58328784acd97b06e4f264ff1780",
+    "run_predictive_study.py": "394281cc495f0ccb5fa0b7b91a1c4780aa42c1252c08130cfa849c99d94c34a8",
+    "src/models.py": "ca4c989fe94b60fb5527f128a17175ddbc52092ff8892fe26d795e5e103cfe96",
+    "src/strict_models.py": "244c90978402da73879d4826fd09af71ef3bbff6d9f5b52290a304dee52d69a2",
+    "src/manuscript_estimators.py": "70894e6aed5236e7c0035beafa5533b7483051bc668cb69e687aee5dcb682f38",
+    "src/group_sensitivity.py": "86e29ce2810ab456afe99adc24266c020b0abfaca0ad335b6b8154dc16defbf4",
+    "src/repeated_holdout.py": "292346621cbe929d3b08c12df8657e0b898bc094ea35d1fdc0dc04212b6830c9",
+    "src/data.py": "494cbf5ebf5f575734a956414f1fe247d6bf648652a9a75b307f6f073d714b5d",
+    "src/validation_extension.py": "bbdeb2bfb088d46166e906716596711cf8ad52274de019d3e6310503fd047c59",
+    "run_strict_real.py": "998d0a7aa7ca54d32a45839b83994e8870b0943db0828e63de89af188fecb00a",
+    "docs/protocols/PREDICTIVE_COMPARISON_20261013.md": "16e8256082e2dbb577d301fd398b3734b59cbea5cb6aeaf6b416b71e6690b392"
+  },
+  "resource_retry": {
+    "base_commit": "cb3807c4930c76d3b35369164ec6c9e009d0872f",
+    "code_sha256": {
+      "src/sieve_budget_retry.py": "c738a8d774471c79b79a78c5bbb0e6b049a54b82ee61d5d0a9226bec4f078c18",
+      "run_sieve_budget_retry.py": "865f0645682fd25511819ad662c1ee96dbc30849c77143b195bb1e27d69c61ac"
+    },
+    "seconds_limit": 1800,
+    "memory_bytes": 4294967296,
+    "attempts": 630,
+    "recovered": 100
+  },
+  "source_commit": "fa8031893905e472992c45aa4c4ed05d8391c444"
+}

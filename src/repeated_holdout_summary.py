@@ -80,7 +80,7 @@ def tables_from_records(records):
 def publish(records, tasks, sources, output):
     expected = {(task.name, rep) for task in tasks for rep in range(REPETITIONS)}
     actual = [(r['dataset'], r['repeat']) for r in records]
-    assert len(tasks) == 23 and len(actual) == len(set(actual)) == len(expected) == 690
+    assert len(tasks) == 23 and len(actual) == len(set(actual)) == len(expected) == 115
     assert set(actual) == expected
     output.mkdir(parents=True, exist_ok=True)
     frames = tables_from_records(records)
@@ -102,6 +102,8 @@ def publish(records, tasks, sources, output):
         baseline_main='551368d48a0b87e7f8573d0f28efa1ac66e4c625', training_contexts=len(records),
         candidate_fits=5*len(records), datasets=descriptors, sources=sources,
         code_sha256=code_hashes(), published_sha256=digests,
+        record_code_signatures=sorted({r['code_signature'] for r in records}),
+        fit_producer='results/provenance/repeated_holdout_fit_producer.json',
         versions=dict(python=platform.python_version(), numpy=np.__version__, scipy=scipy.__version__, pandas=pd.__version__),
         target='Mean confirmation loss over independently randomized original 60/20/20 partitions',
         precision='Partition Monte Carlo standard error conditional on fixed source observations; not population uncertainty')

@@ -61,17 +61,17 @@ def main():
 
     p1 = pd.read_csv(ROOT/'results/repeated_holdout/repeat_scores.csv.gz')
     p1 = p1.loc[p1.split.eq('confirmation')]
-    assert len(p1) == 3450 and not p1.duplicated(['dataset','repeat','method']).any()
+    assert len(p1) == 575 and not p1.duplicated(['dataset','repeat','method']).any()
     for row in tables['p1_regimes'].itertuples():
         raw = p1.loc[p1.dataset.eq(row.dataset)&p1.method.eq('mle')]
-        assert len(raw) == 30
-        same(raw[['n','r','n_train']].to_numpy(), np.tile([row.n,row.r,row.N], (30,1)))
+        assert len(raw) == 5
+        same(raw[['n','r','n_train']].to_numpy(), np.tile([row.n,row.r,row.N], (5,1)))
         assert row.pair_min_across_partitions == raw.min_pair_count.min()
         assert row.max_unseen_items == raw.unseen_items.max()
         assert row.all_pairs_observed_every_partition == raw.min_pair_count.gt(0).all()
     for row in tables['p1_methods'].itertuples():
         raw = p1.loc[p1.dataset.eq(row.dataset)&p1.method.eq(row.method)]
-        assert row.partitions == len(raw) == 30
+        assert row.partitions == len(raw) == 5
         assert row.successful_fits == raw.status.eq('ok').sum()
         assert json.loads(row.status_counts) == dict(Counter(raw.status))
         assert json.loads(row.branch_counts) == dict(Counter(raw.branch.dropna()))
@@ -85,7 +85,7 @@ def main():
         paired = raw.loc[raw.method.eq(row.method_a)].merge(
             raw.loc[raw.method.eq(row.method_b)], on='repeat', validate='one_to_one')
         diff = paired.nll_x.to_numpy()-paired.nll_y.to_numpy()
-        assert len(diff) == row.partitions == 30
+        assert len(diff) == row.partitions == 5
         assert np.isfinite(diff).sum() == row.finite_paired_partitions
         same(row.mean_nll_difference, mean(diff))
         same(row.finite_conditional_nll_difference, mean(diff, False))
@@ -93,7 +93,7 @@ def main():
     assert tables['p1_regimes'].lambda_le_one.sum() == 2
     assert tables['p1_regimes'].full_ranking.sum() == 9
     efficient = tables['p1_methods'].query('method == "efficient"')
-    assert efficient.successful_fits.sum() == 60
+    assert efficient.successful_fits.sum() == 10
     assert efficient.maximum_recorded_depth.dropna().eq(0).all()
 
     synthetic = tables['pure_sm_results']

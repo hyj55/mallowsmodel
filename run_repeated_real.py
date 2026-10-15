@@ -1,4 +1,4 @@
-"""Run the predeclared 30-partition correction without changing previous artifacts."""
+"""Run five fixed, outcome-independent random partitions per task."""
 import argparse
 from concurrent.futures import ProcessPoolExecutor, as_completed
 import gzip

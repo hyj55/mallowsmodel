@@ -1,0 +1,20 @@
+{
+  "design": "L1: five nested development permutations, one fixed outer test; 80 fits",
+  "code_sha256": {
+    "controls/l1/run.py": "31369f06621088e21006c9e4a5830d52f0d8a004ae2581eb84fd6aab31045e72",
+    "controls/l1/src/models.py": "04ddb8c214d0d7f3e07c10071c0dda54aa22a03de28ad8a4c862e08944ab5d2e",
+    "controls/l1/src/data.py": "1af4bca70c33aeed0c1dd970fe7de33e5f6a9f9903b051db7d08d832085678ad",
+    "controls/l1/validate.py": "483fac917bf82281c0b040998f97dcf66a3460d6eee991af175aea0f0faee1e6"
+  },
+  "outputs": {
+    "real_replicates.csv": "1baaa7ee3960ac4a297c236eb6aff9fa812b8bd9e6617081c847f0c20331145d",
+    "real_summary.csv": "af0906ef9a23ee50560557afecb912e253526d7be4eedbd0d5413b63c6ad8974",
+    "fitted_parameters.json": "84a1ba9d57040eceafd21f1ed3fe9a78f2392f5e260f36b0eef3ec46c550125c",
+    "environment.json": "7b77c5670caa782d5bb71cc900433989e8f86313471c8de21fd8e026820b2f70",
+    "data_manifest.json": "c761d3dfcb46a31f27ef0faa7e5a0731f0ec07e4b08a81f01dcbffedd919351a",
+    "data_audit.json": "445479d0e1e251bb1904bc1a4346fe53d46f58a21d4eb6c7166b72f412de4a96"
+  },
+  "repetitions": 5,
+  "bootstrap_draws": 2000,
+  "bootstrap_target": "Test-report sampling conditional on the five fitted predictors"
+}

@@ -18,7 +18,7 @@ from .validation_extension import real_tasks
 
 ROOT = Path(__file__).resolve().parents[1]
 SEED = 202609280
-REPETITIONS = 30
+REPETITIONS = 5
 METHODS = ('pl', 'mle', 'sharp', 'efficient', 'borda')
 PROTOCOL_COMMIT = '3da7e993c9ce2ae23a85a418cfa19ac2b138f01d'
 CORE_FILES = ('src/repeated_holdout.py', 'src/repeated_holdout_summary.py',

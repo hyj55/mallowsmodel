@@ -45,7 +45,7 @@ def main():
         ('heterogeneity_percentage_points','H (pp)'),('shell_excess_tv','T−b'),
         ('C_percentage_points','C (pp)'),('context_gap_slope','gamma'),
         ('R_percentage_points','R (pp)'),('primary_delta','SM−PL NLL')])+'\n\n'
-    text+='The CSV preserves all support counts, feature statuses and supplementary NLL fields, alongside clearly prefixed `primary_*` columns. P0 averages thirty 80/20 fits; ATP retains T1’s chronological target and is not added to P0. Raw NLL gaps have different scales across r. Shared respondents, task mixtures and unmeasured season/assessor composition prevent an interpretation as independent causal evidence.\n'
+    text+='The CSV preserves all support counts, feature statuses and supplementary NLL fields, alongside clearly prefixed `primary_*` columns. P0 averages five 80/20 fits; ATP retains T1’s chronological target and is not added to P0. Raw NLL gaps have different scales across r. Shared respondents, task mixtures and unmeasured season/assessor composition prevent an interpretation as independent causal evidence.\n'
     (path.parent/'predictive_comparison.md').write_text(text)
     manifest=dict(inputs={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in
         [ROOT/'data/features/all_features.csv',ROOT/'results/predictive/primary.csv']},

@@ -2,7 +2,7 @@
 
 [Data catalogue](../README.md) · [All three features beside primary NLL](predictive_comparison.md) · [Primary combined CSV](predictive_comparison.csv) · [Detailed support and supplementary NLL](comparison.md)
 
-The three characteristics below describe **every eligible report in each entire empirical task**. They share the same reference center, source population and observation coding. All are data descriptions; none adds a prediction experiment, a train/test split or a model-selection rule. The [primary comparison table](predictive_comparison.md) joins these unchanged features to P0's thirty-repeat Algorithm 4.1 results (likelihood-center SM versus PL only; E0 estimators are not selected for this column). The detailed tables retain supplementary P1/T1 targets as explicitly labeled columns. Neither table uses full-data features to choose a predictive model or hyperparameter.
+The three characteristics below describe **every eligible report in each entire empirical task**. They share the same reference center, source population and observation coding. All are data descriptions; none adds a prediction experiment, a train/test split or a model-selection rule. The [primary comparison table](predictive_comparison.md) joins these unchanged features to P0's five-repeat Algorithm 4.1 results (likelihood-center SM versus PL only; E0 estimators are not selected for this column). The detailed tables retain supplementary P1/T1 targets as explicitly labeled columns. Neither table uses full-data features to choose a predictive model or hyperparameter.
 
 | Characteristic | What stays fixed | What is compared | Main summaries |
 |---|---|---|---|
@@ -170,11 +170,11 @@ Fixed full displays, including Sushi A and each pooled PrefLib condition, provid
 
 ## Matching to primary and supplementary NLL results
 
-The [primary joined table](predictive_comparison.md) and [CSV](predictive_comparison.csv) use P0's likelihood-center SM versus tuned ridge PL on thirty outer tests. All three features and their support counts are preserved. Fields prefixed `primary_` identify this target; they do not overwrite the P1/T1 columns below. ATP keeps its separate chronological T1 target. The feature is computed once from the complete dataset, not independently estimated inside each predictive split. This join is descriptive and performs no refitting.
+The [primary joined table](predictive_comparison.md) and [CSV](predictive_comparison.csv) use P0's likelihood-center SM versus tuned ridge PL on five outer tests. All three features and their support counts are preserved. Fields prefixed `primary_` identify this target; they do not overwrite the P1/T1 columns below. ATP keeps its separate chronological T1 target. The feature is computed once from the complete dataset, not independently estimated inside each predictive split. This join is descriptive and performs no refitting.
 
 The following matching rules describe the retained **supplementary** `all_features.csv`, detailed support tables and correlations, whose numeric evidence is unchanged.
 
-For each of the 23 P1 tasks, join its feature to `split=confirmation, method=mle` in [the existing scores](../../results/repeated_holdout/scores.csv). Δ is the original 30-partition mean of NLL(SM)−NLL(PL), with exact/certified-center SM and unpenalized PL. Positive favors PL. The feature is calculated once from the whole task, not averaged over the training/test partitions.
+For each of the 23 P1 tasks, join its feature to `split=confirmation, method=mle` in [the existing scores](../../results/repeated_holdout/scores.csv). Δ is the original five-partition mean of NLL(SM)−NLL(PL), with exact/certified-center SM and unpenalized PL. Positive favors PL. The feature is calculated once from the whole task, not averaged over the training/test partitions.
 
 Sushi B, dots2024 A/B at r=2, and PatrasIQ population have incomplete paired predictions. Their full Δ remains missing. Separate columns retain the finite-repetition count and its conditional mean; those conditional means are not substituted into the scatterplot or correlations. Existing partition MCSE is copied to the CSV with its original meaning and is not a population CI for this feature–loss relationship.
 

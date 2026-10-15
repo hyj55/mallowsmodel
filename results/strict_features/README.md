@@ -4,7 +4,7 @@ These outputs supply the supplementary mechanism, coverage and fixed-fit diagnos
 
 [S1/S2/D1 design](../../docs/strict_feature_analysis.md) · [P2 fixed prediction](../../docs/baseline_replacement.md) · [Criteria](../../docs/criteria.md) · [Uncertainty](../../docs/uncertainty.md)
 
-The directory contains 4,760 independently generated training datasets, fixed-partition results for 16 empirical tasks, discovery-budget controls and a tricot source screen. P1's 30-partition means for the same empirical tasks are in [repeated_holdout](../repeated_holdout/README.md). They have a different uncertainty target from the conditional P2 diagnostics.
+The directory contains 4,760 independently generated training datasets, fixed-partition results for 16 empirical tasks, discovery-budget controls and a tricot source screen. P1's five-partition means for the same empirical tasks are in [repeated_holdout](../repeated_holdout/README.md). They have a different uncertainty target from the conditional P2 diagnostics.
 
 ## Reproduce
 

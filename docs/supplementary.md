@@ -8,7 +8,7 @@ The study uses one source catalogue and related analyses to answer several quest
 |---|---|---|
 | Does the SM center estimator change prediction? | [E0 estimator comparison](estimator_comparison.md) | Sharp, Fotakis and Efficient with distinct admission and resource counts; none is substituted into P0 based on test scores |
 | What structure is present in the complete observed dataset? | [Three data characteristics](../data/features/README.md) | Equal-gap pair frequencies, within-shell frequencies and same-pair display changes; descriptive, not extra experiments |
-| How does prediction behave without finite regularization? | [P1 unpenalized repeated comparison](repeated_holdout.md) | Thirty 60/20/20 allocations, finite-MLE existence and exact-solver admission; different predictors from P0 |
+| How does prediction behave without finite regularization? | [P1 unpenalized repeated comparison](repeated_holdout.md) | Five 60/20/20 allocations, finite-MLE existence and exact-solver admission; different predictors from P0 |
 | What do particular fitted predictors get wrong? | [P2 fixed-fit diagnostics](baseline_replacement.md), [ranking diagnostics](strict_feature_analysis.md) | Conditional test-unit bootstrap, pair profiles, shell decomposition and context effects |
 | Do physical trial or assessor groups matter? | [G1 group sensitivity](group_sensitivity.md) | Pooled versus group-local fits, equal-budget controls and transfer to unseen groups |
 | Can particular mechanisms reverse relative prediction? | [S1/S2 mechanism and coverage controls](strict_feature_analysis.md) | Shell-preserving interventions, mixtures and sparse-coverage effects |

@@ -47,8 +47,8 @@ def run():
         'NA denotes an undefined contrast or incomplete predictive comparison, not verified equality.', '',
         '## All three characteristics by dataset', '',
         '### P1 tasks', '',
-        'All 23 tasks have certified full-data reference centers. The existing NLL means use 30 confirmation partitions; '
-        'four incomplete paired means remain NA. Finite-only conditional means are listed separately in the detail table.', '',
+        'All 23 tasks have certified full-data reference centers. The NLL means use five confirmation partitions; '
+        'incomplete paired means remain NA. Finite-only conditional means are listed separately in the detail table.', '',
         '| Task | r | 1: H, pp | 2: TV / uniform reference | 3: C, pp | 3: R, pp | Existing Δ | Finite partitions |',
         '|---|---:|---:|---:|---:|---:|---:|---:|']
 
@@ -69,9 +69,9 @@ def run():
     lines.extend(overview(row) for row in combined.loc[combined.nll_study.eq('T1')].itertuples())
     lines += ['', '## Reading the three characteristics together', '',
         '- Sushi A has H=7.36 points, but its shell TV .99351 is close to the nominal sampling reference .99335; '
-        'its fixed display makes characteristic 3 unavailable. Its existing Δ=+.02555 favors PL.',
+        'its fixed display makes characteristic 3 unavailable. Its five-partition NLL gap favors PL.',
         '- Beans has shell TV .23473 versus reference .24580 and R=+2.66 points with repeated observations in both '
-        'displays of all 420 matched contrasts. Its Δ=+.01251 favors PL despite the positive h association.',
+        'displays of all 420 matched contrasts. Its five-partition NLL gap favors PL despite the positive h association.',
         '- Dots 2013 and Puzzle combine relatively small H with complete NLL gaps favoring SM. Their coded displays '
         'are fixed, so they cannot establish a same-pair display effect. Nonzero shell-frequency departures do not '
         'by themselves establish that PL predicts better.',

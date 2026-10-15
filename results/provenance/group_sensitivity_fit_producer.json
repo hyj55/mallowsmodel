@@ -1,0 +1,14 @@
+{
+  "protocol_commit": "69541057711c08ff1508f25676bb6abfdd12c27d",
+  "code_sha256": {
+    "src/group_sensitivity.py": "86e29ce2810ab456afe99adc24266c020b0abfaca0ad335b6b8154dc16defbf4",
+    "src/group_sensitivity_summary.py": "c6fed088bb9b9d8d164b23e035c79578f3771cf50e8ac9f99421f346aced3f71",
+    "run_group_sensitivity.py": "c75c8d323c5fd99aa195ce799b31ce346a2a74fe2f4b65e0708628a5b10a45d6",
+    "src/strict_models.py": "244c90978402da73879d4826fd09af71ef3bbff6d9f5b52290a304dee52d69a2",
+    "src/manuscript_estimators.py": "70894e6aed5236e7c0035beafa5533b7483051bc668cb69e687aee5dcb682f38",
+    "src/models.py": "ca4c989fe94b60fb5527f128a17175ddbc52092ff8892fe26d795e5e103cfe96",
+    "docs/protocols/GROUP_SENSITIVITY_20260927.md": "a9b60140f687b2d104c7cd6a9dbc302343eb5874d5d8cbcff1f558b32bdc6b3a",
+    "data/group_sensitivity_sources.json": "7dafc7f2ea569ef8368667cde6c4d542a8f17c32b13e10a7a258427b03075af1"
+  },
+  "source_commit": "fa8031893905e472992c45aa4c4ed05d8391c444"
+}

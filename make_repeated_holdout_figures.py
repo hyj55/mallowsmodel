@@ -20,13 +20,13 @@ def label(name):
 def main():
     data = pd.read_csv(ROOT / 'results/repeated_holdout/scores.csv')
     data = data[data.split.eq('confirmation') & data.method.eq('mle')].copy()
-    assert len(data) == 23 and data.repetitions.eq(30).all()
+    assert len(data) == 23 and data.repetitions.eq(5).all()
     groups = [data[data.study.ne('strict_features')], data[data.dataset.str.startswith('000')],
               data[data.dataset.str.startswith('dots2024')]]
     fig, axes = plt.subplots(1, 3, figsize=(15, 5.8), gridspec_kw={'wspace':.75})
     for ax, rows, title in zip(axes, groups, ['Other real tasks', 'PrefLib tasks', 'Dots 2024 tasks']):
         for i, (_, row) in enumerate(rows.iterrows()):
-            full = row.paired_delta_finite_repeats == 30
+            full = row.paired_delta_finite_repeats == 5
             mean = row.paired_delta_mean if full else row.paired_delta_finite_conditional_mean
             se = row.paired_delta_partition_mcse if full else row.paired_delta_finite_conditional_partition_mcse
             if np.isfinite(mean):
@@ -36,7 +36,7 @@ def main():
             else:
                 ax.text(.02, i, 'No finite paired mean', transform=ax.get_yaxis_transform(),
                         color='#9a6500', fontsize=8)
-        labels = [label(r.dataset) + (f' [{int(r.paired_delta_finite_repeats)}/30]' if r.paired_delta_finite_repeats != 30 else '')
+        labels = [label(r.dataset) + (f' [{int(r.paired_delta_finite_repeats)}/5]' if r.paired_delta_finite_repeats != 5 else '')
                   for _, r in rows.iterrows()]
         ax.set_yticks(range(len(rows)), labels, fontsize=9)
         ax.set_ylim(len(rows)-.4, -.6)
@@ -47,8 +47,8 @@ def main():
         ax.spines[['top','right']].set_visible(False)
     fig.suptitle('Repeated holdout: exact SM versus unpenalized PL', fontsize=16, y=.98)
     fig.text(.04, .025,
-        '30 new partitions per task. Bars: ±1 partition Monte Carlo SE conditional on these data; not population confidence intervals.\n'
-        'Solid: all 30 paired losses finite. Hollow: finite-repeat conditional mean only; bracket = retained repeat count.\n'
+        '5 new partitions per task. Bars: ±1 partition Monte Carlo SE conditional on these data; not population confidence intervals.\n'
+        'Solid: all 5 paired losses finite. Hollow: finite-repeat conditional mean only; bracket = retained repeat count.\n'
         'Whole-ranking losses have different report lengths across tasks; effect magnitudes are not a universal task ranking.', fontsize=9)
     fig.subplots_adjust(top=.88, bottom=.23, left=.13, right=.985)
     out = ROOT / 'figures/repeated_holdout'; out.mkdir(parents=True, exist_ok=True)

@@ -8,11 +8,11 @@
 
 P0 compares how selective Mallows and Plackett–Luce predict a complete noisy ordering **of the items actually displayed**. Both families receive the same training rankings and score the same held-out rankings, conditioning on each report's displayed set. A ranking of ten displayed items is different from a censored top-three response to those ten. The eligible sources are described in the [data catalogue](../data/README.md); no top-k censoring is silently recoded as a smaller display.
 
-There are 23 empirical tasks, including separately coded difficulty conditions, dots2024 arms and report sizes, and Sushi A/B. A task is not necessarily an independent study. The protocol was [committed before these fits](https://github.com/hyj55/mallowsmodel/commit/052eeac57a58f8cb851ba7feac8578d18b053f3f). Its prediction target is a new allocated unit from the same sampled task population, rather than transfer to another year, location or task.
+There are 23 empirical tasks, including separately coded difficulty conditions, dots2024 arms and report sizes, and Sushi A/B. A task is not necessarily an independent study. The current reporting budget uses fixed repetition IDs 0–4, without choosing allocations by their outcomes. [Fit provenance](../results/provenance/README.md) records the producer versions. Its prediction target is a new allocated unit from the same sampled task population, rather than transfer to another year, location or task.
 
-## Thirty outer allocations, with training-only tuning
+## Five outer allocations, with training-only tuning
 
-For U allocation units, use the prespecified permutation indexed by root seed 202609280, task split key and repetition b=0,...,29. Define a=floor(0.6U), c=floor(0.8U).
+For U allocation units, use the prespecified permutation indexed by root seed 202609280, task split key and repetition b=0,...,4. Define a=floor(0.6U), c=floor(0.8U).
 
 | Permutation positions | Purpose |
 |---|---|
@@ -75,15 +75,15 @@ For each outer-test report t, score the complete reported ranking:
 \ell_{M,b,t}=-\log P_M(Y_t\mid S_t;\widehat\vartheta_{M,b}),\qquad
 \Delta_b=\frac1{T_b}\sum_{t\in\mathcal T_b}
 (\ell_{\mathrm{SM},b,t}-\ell_{\mathrm{PL},b,t}),\qquad
-\overline\Delta=\frac1{30}\sum_{b=1}^{30}\Delta_b.
+\overline\Delta=\frac1{5}\sum_{b=1}^{5}\Delta_b.
 ```
 
 Negative delta favors SM. Test pairs are never treated as independent observations. Report length affects the scale of whole-ranking loss; a larger numerical gap at r=10 is not automatically a stronger scientific effect than one at r=2.
 
 Two different kinds of uncertainty are saved:
 
-1. **Partition precision and spread.** The MCSE is SD(delta_b)/sqrt(30); split quantiles are the empirical 2.5th and 97.5th percentiles. Conditional on the fixed dataset, independently generated permutations justify the Monte Carlo SE for their average. The overlapping observations do not create thirty independent population samples. Neither this SE nor the split range is a population sampling CI.
-2. **Conditional test-unit bootstrap.** Within one split, keep fitted parameters fixed and resample the G identified test units with replacement 2,000 times, using identical draws for both models. If A_g is a unit's sum of paired losses and B_g its report count, each draw is sum(A_g*)/sum(B_g*). Its 2.5th and 97.5th percentiles form a nominal 95% conditional interval. Independent sampled clusters with finite-variance losses motivate this empirical-distribution approximation; within-person dependence is retained. Small G and nonrepresentative sampling limit coverage. These intervals do not include training or tuning variability and are not averaged into a CI for the thirty-split mean.
+1. **Partition precision and spread.** The MCSE is SD(delta_b)/sqrt(5); split quantiles are the empirical 2.5th and 97.5th percentiles. Conditional on the fixed dataset, independently generated permutations justify the Monte Carlo SE for their average. The overlapping observations do not create five independent population samples. Neither this SE nor the split range is a population sampling CI.
+2. **Conditional test-unit bootstrap.** Within one split, keep fitted parameters fixed and resample the G identified test units with replacement 2,000 times, using identical draws for both models. If A_g is a unit's sum of paired losses and B_g its report count, each draw is sum(A_g*)/sum(B_g*). Its 2.5th and 97.5th percentiles form a nominal 95% conditional interval. Independent sampled clusters with finite-variance losses motivate this empirical-distribution approximation; within-person dependence is retained. Small G and nonrepresentative sampling limit coverage. These intervals do not include training or tuning variability and are not averaged into a CI for the five-split mean.
 
 No anonymous-row population CI is supplied for Beans, Wheat or the eight PrefLib tasks. Known units support an assumption about independence; identifiers alone do not prove it. Cross-task intervals are pointwise, without a multiple-comparison correction. See the shared [uncertainty guide](uncertainty.md).
 
@@ -91,8 +91,8 @@ No anonymous-row population CI is supplied for Beans, Wheat or the eight PrefLib
 
 Start with the [independent P0 report and 23-task table](../results/main/README.md). [P0 summary.csv](../results/main/summary.csv) contains only the main likelihood-center comparison and its paired PL reference; [per-partition scores](../results/main/repeat_scores.csv.gz) contain exactly the two main methods. [E0](../results/estimator_comparison/README.md) has separate estimator tables. The raw `results/predictive/primary.csv` retains mixed-method allocation records solely for reproducibility; its filename does not classify every row as a main result. The [result dictionary](../results/predictive/README.md) locates per-repetition intervals, fitted parameters, optimization bounds and code/source fingerprints. A summary mean is left unavailable when not all planned repetitions are available; a separately named conditional mean is not substituted for it.
 
-All 690 primary SM/PL paired predictions are finite. The likelihood center is certified in every repetition of 22 tasks, and in 5/30 Sushi B repetitions. Those 690 paired predictions are the complete main result. The separate E0 report records Sharp availability and Fotakis admission; their exclusions do not remove a P0 result. [Findings](findings.md) interprets the observed differences alongside these limits.
+All 115 primary SM/PL paired predictions are finite. The likelihood center is certified in every repetition of 22 tasks, and in 2/5 Sushi B repetitions. Those 115 paired predictions are the complete main result. The separate E0 report records Sharp availability and Fotakis admission; their exclusions do not remove a P0 result. [Findings](findings.md) interprets the observed differences alongside these limits.
 
-The [30-shuffle audit](../results/main/split_precision.md) shows where repetition averaging is used and why 30 is a precision/computation choice, not a special threshold or a source of population CIs.
+The [five-allocation precision report](../results/main/split_precision.md) gives each task’s MCSE and observed range. Five is a computation budget, not a threshold guaranteeing stable conclusions; the sample SD has only four degrees of freedom. Split percentiles based on five values are coarse descriptive summaries.
 
 P0 is the main Algorithm 4.1 comparison. The unpenalized P1 comparison and fixed-fit P2 diagnostics remain [supplementary](supplementary.md), with their own fitting rules and inference targets. They are not independent replications of P0: P0 reuses the same source data and outer test allocations. Mechanism simulations, group controls and temporal transfer retain the additional questions they answer.

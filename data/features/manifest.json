@@ -4827,22 +4827,23 @@
   ],
   "tennis_manifest_sha256": "2993054fe546d77c6d384f388e3eb21a7c65bd8500187b28b0a3b747faf8981f",
   "nll_input_sha256": {
-    "results/repeated_holdout/scores.csv": "debca0d078762d6d8416ae68bcb9ffdbbbe1cb49fbf45b13ca0fde9e2502c9ba",
+    "results/repeated_holdout/scores.csv": "cfc22e4688b168d4394883775ad4a71e48915bb636d27598037351bc5910c843",
     "data/features/tennis_nll_source.csv": "a6661bf62f242c1ca8785e4b51d54c7a47764a09d8a57422c6a3eba153a2417e"
   },
   "code_sha256": {
-    "describe_pair_features.py": "406443d2f329d26fd2113fe08eac76a56e557bdee26e4cf6c3a07a50ecb55bf5",
+    "describe_pair_features.py": "6e61fd34bf732f55068fb375652e4b229c16a25ea12df45613747907246003f6",
     "src/pair_features.py": "e71f88ed113964848ced352680edf65717d0530044c4dd81b897fd3239fd9b9a",
-    "make_pair_feature_summary.py": "ff5ed9118ae9f8ad69379f1059f851e7fce696c14178c3d7c23252812437adb3",
-    "make_feature_summary.py": "cfef99b66b0f7a6f5d0a07e9d86140c8ce4373ba8f922a8fc0818a5219d499f5",
-    "make_structure_feature_summary.py": "25ca1610bb254dc92c74f9a9bcda2108a6883ddab99047c28b6fcc148a5998ac"
+    "make_pair_feature_summary.py": "125147cd96c0b3dad700167286f49ce73f69c5abb42a5f7b6f8070f199c36115",
+    "make_feature_summary.py": "57eb32455291915ad5fa34d564a2e0911b49bd62ffe700ade772db876aa2635c",
+    "make_structure_feature_summary.py": "b8318a8d744dd67837cb90fddef12d787df85369af5b0f6b73ef598950abeb38",
+    "refresh_feature_predictions.py": "a51a59fc3d6103a0b6a412ee60f3ddc1fa2926eac1523f9af0a43757d901a502"
   },
   "output_sha256": {
     "pair_rates.csv.gz": "2a99125635d114dea8302e3e5e640c9f71d3e0686b70bbd354429faa5871e426",
     "by_gap.csv": "12f472fabe91b2ea1cf333550bee3675906fcbd3bb5c9e9aff84c26096b34520",
     "summary.csv": "20f65f2e85e8191abf3573950af1fd2f020fbd17d1cebc8971cd1d153b5b0d9e",
     "centers.json": "c82354a1c3df6038617fdfaa2b72cfcaec06df34f76f05e0efc27f03433c79af",
-    "nll_comparison.csv": "b27241effedcd1b078ed769512dbe573b36017b0aec98c062341a84084ac7b17",
+    "nll_comparison.csv": "257fdcc8c8324953fec4fff0043a3e152f41519f7316ab4fc538b720aa425f02",
     "pairs/00024-00000001.csv": "19c84afdf2f713706602b6eeecb6e22661c96620ff50f7fe41e39f6d27db9dba",
     "pairs/00024-00000002.csv": "4b4725c4d6efebf30c94bb69345b2d3c8ee9cbe31789808b6a67c4681862a38a",
     "pairs/00024-00000003.csv": "884cc07f93c9a079026df252285f426dd4d5110c47b2d23dd9cff64e1a9b3a3a",
@@ -4876,11 +4877,11 @@
     "pairs/sushi_a.csv": "810863488e703dcaf1015411048e2d6632d33c51fef14d5f5c83339488bc8ae0",
     "pairs/sushi_b.csv": "d8416b6fc5229d5a2ead780ac0a0793181c4acc7dfb31763cb36c891ce4aa4b4",
     "pairs/wheat.csv": "a2708e497c6e80578a0d21043d4c48bd97b8948883941985808eeab4ac5d6dc7",
-    "comparison.md": "87551fd65dfdb99019a2b511826a72a8ade11e9c0f6ab6420a12da587565255a",
-    "associations.csv": "32ca659321241e30441cc6863793a528c4646b62fd75ad94e67544fd60b74608",
-    "feature_vs_nll.svg": "2bd6593f17a15c6df29f01e1f825e46e1faeea1f3c4df56cd711109fb704b74a",
-    "feature_vs_nll.png": "13d33476c368f816aa2e965a3e927d874e31f95d51f91d00b217d88286fa5288",
-    "all_features.csv": "7a6f464f3243b884a6a856d922e34e4efad6b592f5c7b56248c7e6741968cb91"
+    "comparison.md": "870d83ebe60aa218759bbbe32cce4237e8b83e4096ba9eb86ad2c17c2debf84f",
+    "associations.csv": "f06935beb513e4912bd402676d51daf0702320b9711839ddc3c60fd48d98b36f",
+    "feature_vs_nll.svg": "b05c120015219c0146a87d85346d063d907fcd28fab78623be7f6318beaf890c",
+    "feature_vs_nll.png": "452c4a8922ca77df4b8b691a5b7d1692d344178c805eafc155179882760d2182",
+    "all_features.csv": "5dd8702190b8672e24b8c89459c31ec1f17420b5dbf32abf288bc9c61541a03f"
   },
   "weighting": "Occurrence-weighted variance across pair frequencies within each exact h; occurrence-weighted across h with at least two pairs",
   "full_data_center": "Exact DP for n<=18; 120-second certified MILP for n<=100; two-start insertion fallback or n>100",

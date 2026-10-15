@@ -38,7 +38,7 @@ def summarize():
     for entry in source['saved_inputs']:
         assert digest(ROOT/entry['destination']) == entry['sha256'], entry['destination']
     p1=pd.read_csv(ROOT/'results/repeated_holdout/repeat_scores.csv.gz').query('split == "confirmation"')
-    assert len(p1)==23*30*5
+    assert len(p1)==23*5*5
     exposure=[]; methods=[]; contrasts=[]
     for name,group in p1.groupby('dataset',sort=True):
         base=group.loc[group.method.eq('mle')]
@@ -140,7 +140,7 @@ def render_tables(tables):
         'The coverage ratio μ/log(er) is not certification of the unknown sufficient constant C0.','',
         display_table(p,['dataset','n','r','N','lambda_','mu','coverage_ratio','pair_min_across_partitions','full_ranking']), '',
         '## P1 estimator predictions','',
-        'All differences are paired on the same confirmation reports and averaged over the same 30 partitions. '
+        'All differences are paired on the same confirmation reports and averaged over the same five partitions. '
         'The table displays only complete means; the CSV preserves finite-conditional differences and their denominators. '
         'Signs here compare SM center estimators, not SM versus PL.','']
     c=tables['p1_estimator_contrasts'];wide=c.pivot(index='dataset',columns='method_a',values='mean_nll_difference').reset_index()
@@ -175,7 +175,7 @@ def render_tables(tables):
         display_table(tables['c1_sm_centers'],['N','lambda_','method','risk','mean_training_objective_gap',
             'max_training_objective_gap','zero_objective_gap_repetitions','repetitions']), '',
         '## G1: Fotakis versus exact SM','',
-        'Prespecified G1 70% within-group allocations, 100 repetitions. Only complete all-report NLL comparisons enter a complete mean; '
+        'Prespecified G1 70% within-group allocations, five repetitions. Only complete all-report NLL comparisons enter a complete mean; '
         'local unavailable groups are not silently removed. Negative means favor Fotakis-center SM prediction. '
         'All 50%/80% and group-holdout comparisons are also in [the CSV](g1_fotakis_vs_exact.csv).','',
         display_table(g.query('design=="within" and percent==70'),

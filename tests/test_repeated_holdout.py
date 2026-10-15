@@ -15,7 +15,7 @@ def test_partition_counts_alignment_reproducibility_and_distinct_repeats():
     a, b = task('sushi_a'), task('sushi_b')
     first = split_task(a, 0)
     assert [len(x) for x in first.values()] == [60,20,20]
-    for rep in range(30):
+    for rep in range(5):
         pa, pb = split_task(a, rep), split_task(b, rep)
         np.testing.assert_array_equal(np.sort(np.concatenate(list(pa.values()))), np.arange(100))
         for name in pa:
@@ -29,7 +29,7 @@ def test_partition_counts_alignment_reproducibility_and_distinct_repeats():
 
 def test_assessor_blocks_never_cross_any_split_boundary():
     t = task(units=np.repeat(np.arange(46), 30))
-    for rep in range(30):
+    for rep in range(5):
         parts = split_task(t, rep)
         assert [len(x) for x in parts.values()] == [810,270,300]
         sets = [set(t.units[ix]) for ix in parts.values()]

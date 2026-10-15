@@ -20,6 +20,8 @@ def spread(values, prefix):
     result = {prefix + '_finite_repeats': len(finite)}
     for suffix, value in [('mean', np.mean(finite) if len(finite) else np.nan),
                           ('median', np.median(finite) if len(finite) else np.nan),
+                          ('min', np.min(finite) if len(finite) else np.nan),
+                          ('max', np.max(finite) if len(finite) else np.nan),
                           ('p05', np.quantile(finite, .05) if len(finite) else np.nan),
                           ('p95', np.quantile(finite, .95) if len(finite) else np.nan),
                           ('negative_fraction', np.mean(finite < 0) if len(finite) else np.nan)]:
@@ -168,8 +170,9 @@ def publish_summaries(private, public):
                   'src/strict_models.py', 'src/manuscript_estimators.py', 'src/models.py',
                   'docs/protocols/GROUP_SENSITIVITY_20260927.md', 'data/group_sensitivity_sources.json']
     manifest = dict(protocol_commit='69541057711c08ff1508f25676bb6abfdd12c27d', seed=SEED,
-        plan=SPLIT_PLAN, holdout_repetitions=100, datasets=datasets,
-        interpretation='5th–95th percentiles describe split sensitivity; not population confidence intervals.',
+        plan=SPLIT_PLAN, holdout_repetitions=5, datasets=datasets,
+        fit_producer='results/provenance/group_sensitivity_fit_producer.json',
+        interpretation='Five partitions: observed min/max and interpolated percentiles describe split spread, not population confidence intervals.',
         versions=dict(python=platform.python_version(), numpy=np.__version__, scipy=scipy.__version__, pandas=pd.__version__),
         code_sha256={p: hashlib.sha256((ROOT / p).read_bytes()).hexdigest() for p in code_paths},
         published_sha256=hashes)

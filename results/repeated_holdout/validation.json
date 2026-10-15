@@ -1,7 +1,7 @@
 {
-  "training_contexts": 690,
-  "candidate_fits": 3450,
-  "heldout_score_rows": 6900,
+  "training_contexts": 115,
+  "candidate_fits": 575,
+  "heldout_score_rows": 1150,
   "all_sources_verified": true,
   "all_memberships_verified": true,
   "aligned_tasks_verified": true,
@@ -11,6 +11,6 @@
   "all_diagnostics_and_selectors_replayed": true,
   "all_six_public_tables_recomputed": true,
   "refits_performed": 0,
-  "manifest_sha256": "8b83248169d3d88b1b9c03682bbb12449b4decbd518479f09c5709841d2ec4b4",
-  "validator_sha256": "4a93b1e0a2767b01f4a7f7f5c12cbd128a9c77a4e1cb0618ae155bd074256277"
+  "manifest_sha256": "c8ef05d6ea97a2ff91f8213e4d0cffb0e1e759de0ef0946f3c8522743c662c94",
+  "validator_sha256": "08f8d03bc5aaefb26d2d3df3891067f0bbcb15bd3a0cbcfad0006cf7fdb5e0cf"
 }
