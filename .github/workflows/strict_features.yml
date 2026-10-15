@@ -39,3 +39,5 @@ jobs:
           python build_study_reports.py --check
           python controls/l1/validate.py
           python controls/l1/validate_diagnostics.py
+          python controls/tuned_sharp/validate.py
+          python controls/tuned_sharp/report.py --check

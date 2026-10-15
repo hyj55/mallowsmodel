@@ -1,0 +1,26 @@
+{
+  "base_commit": "80e246692d741eba54b06f380614f3396cb8d9f9",
+  "records": 19,
+  "code_sha256": {
+    "controls/tuned_sharp/model.py": "26e9e8c65a284ae665faa99faae918ce8b3886a6048956f2e11a243245ec195d",
+    "controls/tuned_sharp/run.py": "ce332eec39d942b5c31bb6e92a3a1ba03c4a54329520ee2913d396ef36062ae9",
+    "src/manuscript_estimators.py": "70894e6aed5236e7c0035beafa5533b7483051bc668cb69e687aee5dcb682f38",
+    "src/sieve_budget_retry.py": "c738a8d774471c79b79a78c5bbb0e6b049a54b82ee61d5d0a9226bec4f078c18",
+    "src/resource_sieve.py": "934f2691fbe17105478ad6b4968646146e4d65bc206f0cbd55c27e310bd33941",
+    "src/predictive_models.py": "531973aab5ad775dbb5ba966c75cf862e9ce6b543576fdb8032d915e507ec233",
+    "src/predictive_study.py": "b3cbf1976d5ad92377d97cd3caecab73507d58328784acd97b06e4f264ff1780",
+    "src/repeated_holdout.py": "35308283b12f502f8001dea80c8cc50649664eb9e26c87e15bd21a4c62c2309e",
+    "src/models.py": "ca4c989fe94b60fb5527f128a17175ddbc52092ff8892fe26d795e5e103cfe96",
+    "src/strict_models.py": "244c90978402da73879d4826fd09af71ef3bbff6d9f5b52290a304dee52d69a2"
+  },
+  "inputs": {
+    "results/predictive/predictors.jsonl.gz": "1f74eb9884bd0f4b61a915c49b865af4c282136a5d90502e767ab68863112adc",
+    "results/predictive/repeat_scores.csv.gz": "5aba6cf92538bb3df9ef96521807b048b9aa79cf2c0f31fac440aa2b870cd268"
+  },
+  "outputs": {
+    "models.jsonl.gz": "ef5a4e5e49692db24f28cc94a92416af23022ca40006f652c99e1584976f6750",
+    "candidates.csv": "da02f5aeae591c25bfc2fa3302671eff1b4ceba06a0e9ba140102bdf00531fd7",
+    "scores.csv": "8006cce3329de9721bd3387801d76f5c83c89a0c74e816e63ed7812040435e84",
+    "comparisons.csv": "b5fa5e7cc3a95bf0ac0f6347ca7729c9737afaf5b875643546198d9ea2dcfe56"
+  }
+}

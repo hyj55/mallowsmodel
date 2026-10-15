@@ -18,6 +18,7 @@ The main score is the mean negative log probability of a held-out **whole rankin
 | [Five-allocation precision](results/main/split_precision.md) | What the repetitions contribute, five-score means and ranges, MCSE versus CI, and computation tradeoffs |
 | [Learning and catalogue size](docs/predictive_learning.md) | Five-repeat Sushi curves and independent fixed-r simulations, with R=10 throughout |
 | [Sieve computation](docs/sieve_computation.md) | Sharp without an eight-item guard, exact shortcuts, measured resource limits and the global-sieve supplement |
+| [Borda-pilot tuned block sieve](docs/tuned_block_sieve.md) | One allocation for every unresolved Sharp cell, validation-selected blocks, exact local sieves and paired comparisons with existing fits |
 | [Research questions and experiment map](docs/experiments.md) | How all analyses fit together; datasets, estimators, repetitions, and result locations |
 | [Models and estimators](docs/algorithms.md) | Probability laws, center and dispersion estimation, regularization variants, and admission requirements |
 | [Estimator theory and recorded results](docs/theory_alignment.md) | Minimax regimes, which saved comparisons meet their conditions, actual estimator branches, and Theorem 2.17 versus Fotakis |
