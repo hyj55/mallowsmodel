@@ -77,7 +77,7 @@ Every row below assumes the manuscript's SM observation law and fixed positive s
 
 ```math
 R_K^\star(N;n,n,\beta)\asymp_\beta
-\frac{n}{\sqrt{N+1}}\operatorname{sech}(\beta/2)^N.
+\frac{n}{\sqrt{N+1}}\mathrm{sech}(\beta/2)^N.
 ```
 
 The efficient Algorithm 3.1 has a different upper bound in the same well-covered intermediate region:

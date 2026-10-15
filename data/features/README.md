@@ -31,7 +31,7 @@ Across the three characteristics, all 18 available objective-reference versions 
 Let the declared reference order be π. In report t, restrict π to the displayed set S_t. Orient each pair (i,j) so that i precedes j in π, and define
 
 ```math
-h_t(i,j)=\operatorname{pos}_{\pi|_{S_t}}(j)-\operatorname{pos}_{\pi|_{S_t}}(i).
+h_t(i,j)=\mathrm{pos}_{\pi|_{S_t}}(j)-\mathrm{pos}_{\pi|_{S_t}}(i).
 ```
 
 Adjacent items have h=1; h−1 is the number of displayed items between them. This is neither their distance in the full catalogue nor their distance in the noisy reported order. If a pair occurs at different h values in different displays, it contributes to separate cells.
@@ -103,14 +103,14 @@ A single observation in an a-order shell necessarily gives T=1−1/a. This can b
 
 ```math
 b(m,a)=\frac{a}{2}\mathbb E\left|\frac Xm-\frac1a\right|,
-\quad X\sim\operatorname{Binomial}(m,1/a).
+\quad X\sim\mathrm{Binomial}(m,1/a).
 ```
 
 For a>1, the code evaluates the equivalent finite expression
 
 ```math
 b(m,a)=\left(1-\frac1a\right)
-\Pr\!\left\{\operatorname{Binomial}(m-1,1/a)=\left\lfloor m/a\right\rfloor\right\}.
+\Pr\!\left\{\mathrm{Binomial}(m-1,1/a)=\left\lfloor m/a\right\rfloor\right\}.
 ```
 
 The comparison shows observed T, b, and T−b, with the same observation weights. It also shows the shell observation count, m/a, and the share of observations in shells repeated at least twice. In particular, many observations per shell need not mean enough observations per possible ranking when r is large.

@@ -1,6 +1,6 @@
 {
   "producer": "build_study_reports.py",
-  "producer_sha256": "9005abfb24fdba381772b348affd92aed00138e61613086930486d3caf2b05ac",
+  "producer_sha256": "55ca1b926898663fb2bcf5d4c21719d154f99bc7c4e3cb9cb71f62608bef8e2b",
   "source_sha256": {
     "results/predictive/primary.csv": "198690c7eeecab7ccf98ab8f298167711fab5ec27ebae19bb2f0b9e23117a93d",
     "results/predictive/repeat_scores.csv.gz": "922650063b60d9347ff9990aac2ba8f8eb00e076d60307af5c46e0d6f6c0699f",
@@ -36,7 +36,7 @@
     "results/estimator_comparison/summary.csv": "444a57947790394c3815e4587896054528de8c9cbad991339e4f79febda6a293",
     "results/global_sieve/summary.csv": "49a8598b98ab48fe462560665ba5783ba6da76ee64be95a03209e913309780a4",
     "results/main/README.md": "83d8a6d5642355f111fd8563896c9e3b68ffce66e31c162d5f150f958856cea0",
-    "results/main/split_precision.md": "320386095031c985013d914f3944ceeaa7104fce171e9759071cc518ec3b6bfd",
+    "results/main/split_precision.md": "3517fa41abf205236eb99ce6cabda6978d34a5028b8e62ba573420f99c9ca0b2",
     "results/estimator_comparison/README.md": "9654d4edde48d179af7ddc43f2ce2e9ac9d794e5e2cdba03716b5d606e010a76",
     "results/global_sieve/README.md": "e43c602bc400b959b564d5e8cf154a9572c225d3f9d2f741e0620400233bbeba",
     "results/predictive/tables.md": "4a5c77d5eb3269e311ae6c2e37aa19abbc37be00a7e1ae250ff0c96fc4e1036d"

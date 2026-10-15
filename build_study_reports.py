@@ -166,9 +166,9 @@ P0/E0/L0 additionally save a separate 2,000-draw test-unit bootstrap inside each
 Conditional on the observed dataset and fixed fitting rules, independently randomized partitions give
 
 ```math
-\widehat{\mathrm{MCSE}}_B=\frac{s_\Delta}{\sqrt B},\qquad
-\operatorname{Var}(\overline\Delta_B\mid\mathcal D)
-=\frac{\operatorname{Var}(\Delta_b\mid\mathcal D)}{B}.
+\widehat{\mathrm{MCSE}}_B=\frac{s_\Delta}{\sqrt{B}},\qquad
+\mathrm{Var}(\overline{\Delta}_B\mid\mathcal{D})
+=\frac{\mathrm{Var}(\Delta_b\mid\mathcal{D})}{B}.
 ```
 
 Thirty has no special theoretical status. At a fixed partition variance, increasing B from 10 to 30 reduces MCSE by about **42%**, and increasing it from 20 to 30 by about **18%**. Doubling 30 to 60 reduces it by about 29%; halving the MCSE requires approximately four times as many fits. The estimated SD can change as repetitions are added, so observed MCSE need not decrease monotonically.
