@@ -2,11 +2,13 @@
 
 [Experiment map](../experiments.md) · [Methods](../algorithms.md) · [Uncertainty](../uncertainty.md) · [Implementation registry](../implementation_registry.md)
 
+**Current reading nomenclature:** P0 alone is the Algorithm 4.1 main experiment. E0 names the additional empirical center-estimator comparison and B0 the global sieve. Frozen protocol references to a common P0 batch include those separate supplements; that storage/design grouping does not make them main experiments. Other uses of “primary” in a frozen protocol mean that component's prespecified endpoint or allocation, not another main experiment.
+
 These records preserve design decisions and their timing. They remain byte-identical to the versions referenced by run manifests; they are evidence records rather than parallel reader guides. Use the linked study chapters for the integrated explanation and supported interpretation of results.
 
 | Record | Scope | Role |
 |---|---|---|
-| [PREDICTIVE_COMPARISON_20261013](PREDICTIVE_COMPARISON_20261013.md) | P0 finite prediction, L0/S0 curves and B0 global sieve | Pre-fit design, commit `052eeac57a58f8cb851ba7feac8578d18b053f3f`; fixed R=10 and explicit resource budgets |
+| [PREDICTIVE_COMPARISON_20261013](PREDICTIVE_COMPARISON_20261013.md) | Shared runner: P0 main, E0/B0 estimator supplements, and L0/S0 curves | Pre-fit design, commit `052eeac57a58f8cb851ba7feac8578d18b053f3f`; fixed R=10 and explicit resource budgets |
 | [STRICT_FEATURE_PROTOCOL](STRICT_FEATURE_PROTOCOL.md) | S1/S2/D1 mechanism and coverage experiments | Pre-fit design |
 | [STRICT_SOURCE_ADDENDUM](STRICT_SOURCE_ADDENDUM.md) | PrefLib, dots2024 and agricultural source scope | Pre-fit source/decoding rules |
 | [STRICT_FEATURE_FOLLOWUP](STRICT_FEATURE_FOLLOWUP.md) | Diagnostic budgets and objective-reference checks | Explicit exploratory controls |

@@ -1,6 +1,6 @@
 # Fixed-partition Beans and Sushi prediction
 
-This directory supplies supplementary **P2 fixed-fit diagnostics** for Beans and Sushi. Start with [P0](../predictive/README.md) for the main thirty-repeat finite comparison; the conditional diagnostics here retain their own fitted parameters and inference target.
+This directory supplies supplementary **P2 fixed-fit diagnostics** for Beans and Sushi. Start with [P0: Algorithm 4.1](../main/README.md) for the main thirty-repeat comparison; the conditional diagnostics here retain their own fitted parameters and inference target.
 
 [P2 design](../../docs/baseline_replacement.md) · [Data](../../data/README.md) · [Methods](../../docs/algorithms.md) · [Uncertainty](../../docs/uncertainty.md)
 

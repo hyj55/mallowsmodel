@@ -2,7 +2,7 @@
 
 [Data catalogue](../README.md) · [All three features beside primary NLL](predictive_comparison.md) · [Primary combined CSV](predictive_comparison.csv) · [Detailed support and supplementary NLL](comparison.md)
 
-The three characteristics below describe **every eligible report in each entire empirical task**. They share the same reference center, source population and observation coding. All are data descriptions; none adds a prediction experiment, a train/test split or a model-selection rule. The [primary comparison table](predictive_comparison.md) joins these unchanged features to P0's thirty-repeat finite predictive results. The detailed tables retain supplementary P1/T1 targets as explicitly labeled columns. Neither table uses full-data features to choose a predictive model or hyperparameter.
+The three characteristics below describe **every eligible report in each entire empirical task**. They share the same reference center, source population and observation coding. All are data descriptions; none adds a prediction experiment, a train/test split or a model-selection rule. The [primary comparison table](predictive_comparison.md) joins these unchanged features to P0's thirty-repeat Algorithm 4.1 results (likelihood-center SM versus PL only; E0 estimators are not selected for this column). The detailed tables retain supplementary P1/T1 targets as explicitly labeled columns. Neither table uses full-data features to choose a predictive model or hyperparameter.
 
 | Characteristic | What stays fixed | What is compared | Main summaries |
 |---|---|---|---|
@@ -14,9 +14,9 @@ The [primary comparison](predictive_comparison.md) starts with all three charact
 
 ## Population and reference order
 
-The calculation covers all 23 P1 tasks and the ten ATP annual tasks. PrefLib frequencies are expanded exactly as recorded. No report is selected because of its outcome or pair count. Excluded source tasks without SM–PL predictions and synthetic populations are outside this empirical catalogue. For ATP, “entire task” means all completed matches in that year satisfying T1's existing prior-season-catalogue rule, before its January–June / July–December division; it includes the cold-player test matches. The separate T1 main NLL target is narrower and is identified below.
+The calculation covers all 23 P1 tasks and the ten ATP annual tasks. PrefLib frequencies are expanded exactly as recorded. No report is selected because of its outcome or pair count. Excluded source tasks without SM–PL predictions and synthetic populations are outside this empirical catalogue. For ATP, “entire task” means all completed matches in that year satisfying T1's existing prior-season-catalogue rule, before its January–June / July–December division; it includes the cold-player test matches. The separate T1 seen-player NLL target is narrower and is identified below.
 
-A direction and an h value require a common reference order. For the primary description, use all reports to minimize the total Kendall objective. The saved centers for **all 23 P1 tasks are certified optima**: subset DP for n≤18 and integer optimization for larger catalogues. ATP's 418–469-item catalogues use a deterministic two-start insertion approximation, explicitly marked uncertified. The two initial orders sort aggregate win rate and aggregate win-minus-loss counts; every subsequent insertion strictly reduces the Kendall objective. Catalogue items remain present, including zero-exposure ATP items. Deterministic tie handling does not imply a unique optimum.
+A direction and an h value require a common reference order. For the full-data description, use all reports to minimize the total Kendall objective. The saved centers for **all 23 P1 tasks are certified optima**: subset DP for n≤18 and integer optimization for larger catalogues. ATP's 418–469-item catalogues use a deterministic two-start insertion approximation, explicitly marked uncertified. The two initial orders sort aggregate win rate and aggregate win-minus-loss counts; every subsequent insertion strictly reduces the Kendall objective. Catalogue items remain present, including zero-exposure ATP items. Deterministic tie handling does not imply a unique optimum.
 
 This computes a reference center for description, not a new predictive fit: it does not estimate full-data PL worths, tune a dispersion, or score a held-out ranking. Reference orders, objective values, solver certificates and report hashes are saved in [centers.json](centers.json). They are data-dependent, so this is not an independent model check.
 
@@ -31,7 +31,7 @@ Across the three characteristics, all 18 available objective-reference versions 
 Let the declared reference order be π. In report t, restrict π to the displayed set S_t. Orient each pair (i,j) so that i precedes j in π, and define
 
 ```math
-h_t(i,j)=\operatorname{pos}_{\pi|_{S_t}}(j)-\operatorname{pos}_{\pi|_{S_t}}(i).
+h_t(i,j)=\mathrm{pos}_{\pi|_{S_t}}(j)-\mathrm{pos}_{\pi|_{S_t}}(i).
 ```
 
 Adjacent items have h=1; h−1 is the number of displayed items between them. This is neither their distance in the full catalogue nor their distance in the noisy reported order. If a pair occurs at different h values in different displays, it contributes to separate cells.
@@ -103,14 +103,14 @@ A single observation in an a-order shell necessarily gives T=1−1/a. This can b
 
 ```math
 b(m,a)=\frac{a}{2}\mathbb E\left|\frac Xm-\frac1a\right|,
-\quad X\sim\operatorname{Binomial}(m,1/a).
+\quad X\sim\mathrm{Binomial}(m,1/a).
 ```
 
 For a>1, the code evaluates the equivalent finite expression
 
 ```math
 b(m,a)=\left(1-\frac1a\right)
-\Pr\!\left\{\operatorname{Binomial}(m-1,1/a)=\left\lfloor m/a\right\rfloor\right\}.
+\Pr\!\left\{\mathrm{Binomial}(m-1,1/a)=\left\lfloor m/a\right\rfloor\right\}.
 ```
 
 The comparison shows observed T, b, and T−b, with the same observation weights. It also shows the shell observation count, m/a, and the share of observations in shells repeated at least twice. In particular, many observations per shell need not mean enough observations per possible ranking when r is large.

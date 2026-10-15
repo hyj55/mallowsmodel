@@ -20,18 +20,18 @@ The study includes preference reports, objective ordering tasks, agricultural ev
 
 | Dataset | Reports and catalogue | Metadata/identity | Experimental uses |
 |---|---|---|---|
-| [Beans](beans.md) | M=842; n=10; r=3 | Year, season, temperature, coordinates, date; no farmer ID | P1/P2 prediction; L1/L2 budgets; T1 year transfer; C1 controls |
-| [Sushi A and B](sushi.md) | M=5,000 each; n=10/100; r=10 | Shared respondent rows; user/item attribute files | P1/P2 prediction; L1 budgets; Sushi B L2; C1 diagnostics/optimization |
-| [Dots 2013 and Puzzle](dots_puzzle.md) | Eight tasks, M=793–800 each; n=r=4 | Objective category labels; 40 recovered trials per condition; no cross-trial worker IDs | P1/P2 prediction and shells; G1 trial-specific fitting |
-| [Dots 2024](dots2024.md) | Eight arm/size tasks, M=300 each; n=30; r=2/3/5/6 | Four-report participant blocks, task batch, numerical responses and times | P1/P2 prediction, center-reference and mechanism diagnostics |
-| [Bread wheat](wheat.md) | M=493; n=16; r=3 | Location/demographics and four traits; names redacted; missing villages | P1/P2 prediction and unadjusted context diagnostics |
-| [Sounds](sounds_patras.md#sounds) | M=1,380; n=12; r=2 | 46 assessor IDs, 30 reports each | P1/P2 prediction and pair profiles; G1 person-specific/transfer analysis |
-| [PatrasIQ](sounds_patras.md#patrasiq-cost-and-population) | M=392 each; n=36/48; r=6 | Documented one report/person/task; cross-task matching absent | P1/P2 prediction, shells, objective-reference diagnostics |
+| [Beans](beans.md) | M=842; n=10; r=3 | Year, season, temperature, coordinates, date; no farmer ID | P0 main; E0/B0 supplements; P1/P2 prediction; L1/L2 budgets; T1 year transfer; C1 controls |
+| [Sushi A and B](sushi.md) | M=5,000 each; n=10/100; r=10 | Shared respondent rows; user/item attribute files | P0 main; E0/B0 supplements; P1/P2 prediction; L1 budgets; Sushi B L2; C1 diagnostics/optimization |
+| [Dots 2013 and Puzzle](dots_puzzle.md) | Eight tasks, M=793–800 each; n=r=4 | Objective category labels; 40 recovered trials per condition; no cross-trial worker IDs | P0 main; E0/B0 supplements; P1/P2 prediction and shells; G1 trial-specific fitting |
+| [Dots 2024](dots2024.md) | Eight arm/size tasks, M=300 each; n=30; r=2/3/5/6 | Four-report participant blocks, task batch, numerical responses and times | P0 main; E0/B0 supplements; P1/P2 prediction, center-reference and mechanism diagnostics |
+| [Bread wheat](wheat.md) | M=493; n=16; r=3 | Location/demographics and four traits; names redacted; missing villages | P0 main; E0/B0 supplements; P1/P2 prediction and unadjusted context diagnostics |
+| [Sounds](sounds_patras.md#sounds) | M=1,380; n=12; r=2 | 46 assessor IDs, 30 reports each | P0 main; E0/B0 supplements; P1/P2 prediction and pair profiles; G1 person-specific/transfer analysis |
+| [PatrasIQ](sounds_patras.md#patrasiq-cost-and-population) | M=392 each; n=36/48; r=6 | Documented one report/person/task; cross-task matching absent | P0 main; E0/B0 supplements; P1/P2 prediction, shells, objective-reference diagnostics |
 | [ATP tennis](tennis.md) | Ten 2010–2019 tasks; n=418–469; r=2 | Player and tournament IDs, dates, surfaces, match statistics | T1 chronological prediction; C1 common-order and strength controls |
 | [Screened sources](screening.md) | Tricot projects, Beaches, SP-Rank, potato, breakfast | Source-dependent | A1 eligibility/design audit; no SM–PL fits for excluded tasks |
 | [Synthetic populations](../docs/strict_feature_analysis.md) | n=4/8/10/32/64 and declared budgets | Known generating order and parameters; D2 also has known group labels | S1–S3, D1–D2 controlled experiments |
 
-P0's 23 tasks are three Beans/Sushi tasks, eight Dots/Puzzle tasks, eight dots2024 tasks, Wheat, Sounds and two PatrasIQ tasks. **All seven empirical ranking families above are used in the main P0 comparison and B0 global-sieve supplement**, as well as the P1/P2 controls listed in the table. Sushi A/B also supply L0's thirty-repeat learning curves. S0 uses n=6/10/16/32, r=3 and R=10 under independently generated SM and PL; its parameters and curves are in the [learning chapter](../docs/predictive_learning.md). ATP remains a separate chronological prediction target. Reuse in group, budget or diagnostic analyses is not new independent data collection.
+P0's 23 tasks are three Beans/Sushi tasks, eight Dots/Puzzle tasks, eight dots2024 tasks, Wheat, Sounds and two PatrasIQ tasks. **All seven empirical ranking families above are used in the Algorithm 4.1 main experiment P0, separate estimator comparison E0, and global-sieve supplement B0**, as well as the P1/P2 controls listed in the table. Sushi A/B also supply L0's thirty-repeat learning curves. S0 uses n=6/10/16/32, r=3 and R=10 under independently generated SM and PL; its parameters and curves are in the [learning chapter](../docs/predictive_learning.md). ATP remains a separate chronological prediction target. Reuse in group, budget or diagnostic analyses is not new independent data collection.
 
 ## Source-to-ranking processing
 

@@ -19,7 +19,7 @@ d_t=\ell_{\mathrm{SM},t}-\ell_{\mathrm{PL},t},\qquad \Delta=\frac1T\sum_t d_t.
 
 Negative Δ favors SM. This score is used in every fitted empirical and simulation comparison. Different r values have different outcome spaces; raw loss or Δ magnitude is not a universal ranking of dataset suitability. The uniform-ranking reference has loss $`\log(r!)`$. No likelihood of the display-selection mechanism is included.
 
-For the primary P0/L0 comparison, compute this paired mean separately on each outer test, then average the thirty values with equal weight. The development and inner-tuning procedure are defined in [P0](predictive_comparison.md); no test score is used to select a center or penalty. S0 averages twenty independent training/test repetitions and uses finite 4,000-report test losses, not the enumerated population loss defined next. [The uncertainty guide](uncertainty.md) separates partition MCSE, conditional cluster bootstrap and independent-repetition t intervals.
+For the main P0 experiment and the separately named E0/L0 comparisons, compute this paired mean separately on each outer test, then average the thirty values with equal weight. The development and inner-tuning procedure are defined in [P0](predictive_comparison.md); no test score is used to select a center or penalty. S0 averages twenty independent training/test repetitions and uses finite 4,000-report test losses, not the enumerated population loss defined next. [The uncertainty guide](uncertainty.md) separates partition MCSE, conditional cluster bootstrap and independent-repetition t intervals.
 
 Expected log loss is appropriate for probability prediction because, for a true conditional law p and candidate q,
 

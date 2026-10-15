@@ -8,8 +8,8 @@ A fitted model's performance on new respondents, a learning procedure's average 
 
 | Experiment/output | Random unit used in its uncertainty calculation | Calculation | Interpretation |
 |---|---|---|---|
-| P0/L0 empirical mean curves | Random allocation of fixed source units, including inner tuning | Mean; SD/sqrt(30); 2.5th–97.5th split quantiles | Partition Monte Carlo precision and descriptive spread; no population CI for the mean |
-| P0/L0 per-split prediction | Identified test units, all their reports kept together, fitted parameters fixed | 2,000 paired cluster draws; percentile interval of report-weighted ratios | Nominal 95% conditional test-sampling interval; anonymous tasks have no such CI |
+| P0 main and E0/L0 supplementary empirical means | Random allocation of fixed source units, including inner tuning | Mean; SD/sqrt(30); 2.5th–97.5th split quantiles | Partition Monte Carlo precision and descriptive spread; no population CI for the mean |
+| P0/E0/L0 per-split prediction | Identified test units, all their reports kept together, fitted parameters fixed | 2,000 paired cluster draws; percentile interval of report-weighted ratios | Nominal 95% conditional test-sampling interval; anonymous tasks have no such CI |
 | S0 controlled curves | Fresh independent training and test datasets | Student-t mean interval over 20 repetitions | Approximate 95% Monte Carlo interval for that simulation procedure |
 | P1 repeated prediction | Random partition of the same fixed source data | Mean ± **one** $`\mathrm{SD}/\sqrt{30}`$ in figures | Conditional partition Monte Carlo precision; not a 95% CI |
 | G1 group comparison | Refit outcome across randomized partitions | 5th–95th percentiles; figure center is median | Central 90% empirical split range; not a CI |
@@ -85,7 +85,7 @@ P2 uses B=2,000 where independent report units are supported. D2 uses B=499 **in
 
 ## Partition Monte Carlo standard error
 
-For P1, let $`D^{(b)}`$ be the mean paired confirmation loss after fitting on partition b. The dataset is fixed; partition seeds are independently randomized. When all R=30 values are finite,
+For P0 main, E0/L0 supplements and P1, let $`D^{(b)}`$ be the mean paired outer-test loss after fitting on partition b (called confirmation in P1). The dataset is fixed; partition seeds are independently randomized. When all R=30 values are finite,
 
 ```math
 \bar D=\frac1R\sum_bD^{(b)},\qquad
@@ -101,13 +101,15 @@ For independent partition draws conditional on the observed data $`\mathcal D`$ 
 
 Here $`D`$ is the scalar loss difference from one random partition. Reusing people across partitions does not invalidate this **conditional Monte Carlo** target. It does prevent interpreting those R partitions as R independent collections of people.
 
-The [P1 figure](../figures/repeated_holdout/confirmation_means.png) plots **$`\bar D\pm\mathrm{MCSE}`$**, not $`\pm1.96\,\mathrm{MCSE}`$ and not a population confidence interval. The point is an average of separately trained models' losses, not an ensemble's log loss. Increasing R reduces integration error over partitions; it does not make a finite source sample arbitrarily informative about a population.
+The [P1 figure](../figures/repeated_holdout/confirmation_means.png) plots **$`\bar D\pm\mathrm{MCSE}`$**, not $`\pm1.96\,\mathrm{MCSE}`$ and not a population confidence interval. The point is an average of separately trained models' losses, not an ensemble's log loss. Increasing R reduces integration error over partitions; it does not make a finite source sample arbitrarily informative about a population. For the related population-variance problem, [Bengio and Grandvalet (2004)](https://www.jmlr.org/papers/v5/grandvalet04a.html) show that no universally unbiased variance estimator exists for K-fold cross-validation. Their result concerns K-fold CV, not this conditional random-partition MCSE; it is a reason to distinguish targets rather than transfer a naive independent-fold CI to P0.
+
+The [P0 precision audit](../results/main/split_precision.md) lists all uses of the 30 randomizations and compares fixed prefixes of the saved results. Thirty is a computation/precision choice, not a theoretical minimum. P0/E0/L0 retain separate conditional test-unit bootstrap intervals inside eligible partitions; their mean-level CI fields remain empty.
 
 P1 does not bootstrap within partitions, average bootstrap endpoints, or combine a P2 CI with a P1 mean. Its diagnostic records use zero bootstrap draws and aggregate descriptive point estimates only. Different bins/eligible diagnostics can contribute different numbers of repetitions.
 
 ## Group split percentiles
 
-G1 refits on 100 primary 70/30 within-group partitions, 20 partitions each at 50/50 and 80/20, and 100 separate whole-group holdouts. For each scalar metric, the summary retains finite repetition values and computes mean, median, $`Q_{0.05}`$, $`Q_{0.95}`$ and the fraction below zero. Figures show the median and $`[Q_{0.05},Q_{0.95}]`$; tables generally show means.
+G1 refits on 100 prespecified 70/30 within-group partitions, 20 partitions each at 50/50 and 80/20, and 100 separate whole-group holdouts. For each scalar metric, the summary retains finite repetition values and computes mean, median, $`Q_{0.05}`$, $`Q_{0.95}`$ and the fraction below zero. Figures show the median and $`[Q_{0.05},Q_{0.95}]`$; tables generally show means.
 
 These quantiles describe the spread of **individual split outcomes**, not uncertainty in their mean. They contain the central 90% of the observed finite-result distribution, not a 95% CI. No independent-splits t test is used. Local/reference interactions use common four-way finite report masks within a repetition; missing or infinite outcomes and coverage are reported separately. A narrow conditional range with very poor coverage is not evidence of good unconditional performance.
 

@@ -1,14 +1,14 @@
-# Training size and catalogue size
+# Supplementary learning and catalogue-size experiments (L0/S0)
 
 [Primary prediction](predictive_comparison.md) · [Empirical curves](../results/predictive/learning.csv) · [Synthetic curves](../results/predictive/synthetic.csv) · [Supplementary learning controls](learning_curves.md)
 
-L0 and S0 use the same finite fitting procedures as P0: the fixed SM beta bound 10, inner-selected positive PL ridge, exact small-catalogue likelihood centers, and certified-or-explicitly-approximate integer optimization for larger catalogues. Sharp is attempted with the resource-accounted exact sieve. Fotakis requires every pair to be observed. Efficient appears only as an admitted fallback after Sharp fails computationally. The global-sieve supplement reuses the identical Sharp fit when the two constructions coincide.
+**L0 and S0 are supplementary experiments; P0 alone is the Algorithm 4.1 main experiment.** Their likelihood-center SM and PL curves use P0's finite fitting procedures: the fixed SM beta bound 10, inner-selected positive PL ridge, exact small-catalogue likelihood centers, and certified-or-explicitly-approximate integer optimization for larger catalogues. Separate estimator curves additionally attempt Sharp with the resource-accounted exact sieve; this does not make Sharp a P0 main method. Fotakis requires every pair to be observed. Efficient appears only as an admitted fallback after Sharp fails computationally. The global-sieve supplement reuses the identical Sharp fit when the two constructions coincide.
 
 ## L0: Sushi A/B with thirty outer partitions
 
 Both tasks have 5,000 respondent rows and rank ten items per report. A has a fixed ten-item catalogue and display; B has a hundred-item catalogue and varying ten-item displays. This makes the two tasks informative about different exposure regimes, but they are different preference tasks and not a controlled intervention on catalogue size.
 
-Use P0's 30 aligned respondent permutations. Each outer test has 1,000 people. Independently permute the 4,000 development respondents with seed sequence (202610130, task split key, repetition), using the same order for A and B. Take nested prefixes of N=20,50,100,300,1000,3000. An observation in a small prefix remains in all larger prefixes for that repetition. P0's N=4000 fit supplies the final endpoint; it is linked, not fitted or counted twice.
+Use P0's 30 aligned respondent permutations. Each outer test has 1,000 people. Independently permute the 4,000 development respondents with seed sequence (202610130, task split key, repetition), using the same order for A and B. Take nested prefixes of N=20,50,100,300,1000,3000. An observation in a small prefix remains in all larger prefixes for that repetition. The N=4000 endpoint reuses P0 for likelihood-center SM/PL and E0 for the estimator supplements; it is linked, not fitted or counted twice.
 
 At each N, use the first floor(0.75N) respondents for inner fitting and the rest for PL penalty validation, then refit on all N. Thus N always denotes the final development budget, not the smaller inner-training size. Inner membership can change as a prefix grows, while the outer test remains fixed within the repetition. There is no exchange of training and test respondents as N changes.
 
@@ -25,7 +25,7 @@ The same-test and nested-training design makes the within-repetition comparisons
 
 Here r=10 and the upper bound R=10 are held fixed for every N, for both catalogue sizes. In Sushi B, many pairs or items can be unseen at small N; these catalogue items are retained. The tables record missing coverage and method admission, rather than rerolling a prefix or silently changing the catalogue.
 
-The enlarged-budget exact-sieve completion recovers Sushi A's N=100 and N=300 points, giving Sharp 30/30 fits at every A budget. Sushi B remains unavailable for Sharp at N=300,1000,3000 and the reused P0 N=4000 endpoint. All plotted values use the combined completed records; failed points remain absent rather than being plotted as zero.
+The enlarged-budget exact-sieve completion recovers Sushi A's N=100 and N=300 points, giving Sharp 30/30 fits at every A budget. Sushi B remains unavailable for Sharp at N=300,1000,3000 and the reused E0 Sharp N=4000 endpoint. All plotted values use the combined completed records; failed points remain absent rather than being plotted as zero.
 
 ## S0: independent data with fixed r=3 and R=10
 
@@ -40,7 +40,7 @@ In the PL catalogue-size curve the overall log-worth range stays fixed, so adjac
 
 The shared n=10,N=100 cell is used once. With two generators and 20 independent repetitions, there are 240 distinct training/test draws, not 280. Each cell uses a 75/25 inner split of its training reports and refits on all N. Seeds are determined by (202610131, generator index, n, N, repetition); independent child streams supply the generating order, training reports and test reports.
 
-The primary predictive quantity remains whole-ranking NLL. Also record Kendall distance of each fitted order from the generating order. Under the correctly specified SM generator this is realized center-estimation error. Under the PL generator it is an ordering-error description, not selective-Mallows minimax risk.
+The predictive quantity remains whole-ranking NLL. Also record Kendall distance of each fitted order from the generating order. Under the correctly specified SM generator this is realized center-estimation error. Under the PL generator it is an ordering-error description, not selective-Mallows minimax risk.
 
 For any scalar outcome X, including a paired SM−PL loss difference, the independent-repetition mean and interval are
 

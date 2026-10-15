@@ -27,7 +27,7 @@
     "attempts": 630,
     "recovered": 100
   },
-  "summary_code_sha256": "4611748ee40883b712347e929567662e3a9170d216b5be024b2b6c1e5fa5a2d2",
+  "summary_code_sha256": "9895a48b280dfe0fca87905ff986dee95102f04b340dae9f20e9b5b6ca51b390",
   "sources": [
     {
       "path": "data/raw/beans.rda",
@@ -497,6 +497,6 @@
     "resource_retries.csv": "f46e84ec4441e7be5f59196d8169e09cd65978f789598d64bf93a4afa624b03c",
     "sieve_cover_bounds.json": "0cc048797c9f13513450f83ed41e70deedd421aaf0becaf83e87ccf4303ca7d9",
     "sieve_resources.json": "2445e17fc815d29faa6ec27822354fe783c17b81751887b02bcda9a02ccd8841",
-    "tables.md": "9542acf61e9df3467a3863b1434104eb7f4a582a191a9fdb38b9862a6557aef8"
+    "tables.md": "4a5c77d5eb3269e311ae6c2e37aa19abbc37be00a7e1ae250ff0c96fc4e1036d"
   }
 }

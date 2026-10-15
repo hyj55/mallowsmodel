@@ -1,6 +1,6 @@
 # Repeated empirical prediction: field dictionary
 
-This is the supplementary **P1 unpenalized control**. The main finite predictive comparison is [P0](../predictive/README.md); its 80% refits and resource-accounted Sharp are different procedures. These saved P1 results retain their own byte-locked fitting rules and denominators.
+This is the supplementary **P1 unpenalized control**. The main experiment is [P0: Algorithm 4.1](../main/README.md), whose 80% likelihood-center/PL refits differ from P1. Resource-accounted Sharp belongs to [E0](../estimator_comparison/README.md), a separately named supplement. These saved P1 results retain their own byte-locked fitting rules and denominators.
 
 [P1 design](../../docs/repeated_holdout.md) · [Formulas](../../docs/criteria.md) · [Partition uncertainty](../../docs/uncertainty.md#partition-monte-carlo-standard-error)
 

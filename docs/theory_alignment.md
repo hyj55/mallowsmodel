@@ -14,7 +14,7 @@ The manuscript references below refer to the supplied 37-page *Selective Mallows
 
 [B0](sieve_computation.md) adds the global pair-sieve wherever r<=10. Corollary 2.15 additionally requires lambda<=1 and the assumed generating design. Those conditions must be checked per training budget, not inferred from a small r. Sharp has zero pilot depth and one global terminal block in these catalogues, so B0 is an explicit reuse of the same selected pairs and sieve. Such identity supplies an algorithmic connection, not two independent supporting experiments.
 
-The active Sharp implementation removes the eight-item guard without changing A=256 or W_star. A full-space exact-DP shortcut makes some n=10 and n=12 fits computable, while other radii require complete greedy packing and can exceed time or memory budgets. [Resource receipts](../results/predictive/sieve_resources.json) and [all predictive scores](../results/predictive/primary.csv) distinguish computational availability from theorem applicability. The tables below retain the supplementary P1/G1/S1–S3 comparisons with their frozen implementations; references to an eight-item guard in those rows describe that implementation only.
+[E0](estimator_comparison.md) is the supplementary estimator comparison, distinct from P0's Algorithm 4.1 main experiment. Its Sharp implementation removes the eight-item guard without changing A=256 or W_star. A full-space exact-DP shortcut makes some n=10 and n=12 fits computable, while other radii require complete greedy packing and can exceed time or memory budgets. [Resource receipts](../results/predictive/sieve_resources.json) and [E0 estimator scores](../results/estimator_comparison/summary.csv) distinguish computational availability from theorem applicability. The tables below retain the supplementary P1/G1/S1–S3 comparisons with their frozen implementations; references to an eight-item guard in those rows describe that implementation only.
 
 The same study includes a 30-minute / 4-GiB completion of unavailable fits. Exact ball-cover construction and a parity-constrained DP for radius one recover 100 Sharp fits without changing its candidate packing, selected-pair objective or tie rule. Direct comparison confirms that the original and completion engines produce the same 29,086 ten-item radius-four candidates in the same order. This improves computational availability, not the estimator's statistical definition or theorem assumptions; [remaining limitations](sieve_computation.md#completion-results-and-remaining-limits) stay explicit.
 
@@ -77,7 +77,7 @@ Every row below assumes the manuscript's SM observation law and fixed positive s
 
 ```math
 R_K^\star(N;n,n,\beta)\asymp_\beta
-\frac{n}{\sqrt{N+1}}\operatorname{sech}(\beta/2)^N.
+\frac{n}{\sqrt{N+1}}\mathrm{sech}(\beta/2)^N.
 ```
 
 The efficient Algorithm 3.1 has a different upper bound in the same well-covered intermediate region:
@@ -121,7 +121,7 @@ The appropriate description is **the same majority-score construction, with diff
 
 | Recorded method | Actual operation relevant to the theory | Consequence for interpretation |
 |---|---|---|
-| `sharp` in the supplementary tables | Algorithm 2.1 with that run's exact sieve guard of eight items. Its recorded small-catalogue grids have no pilot stages and a catalogue-wide terminal block | It reduces to a global one-pair-per-report sieve there. P0/L0/S0 remove the guard through the separate active implementation |
+| `sharp` in the supplementary tables | Algorithm 2.1 with that run's exact sieve guard of eight items. Its recorded small-catalogue grids have no pilot stages and a catalogue-wide terminal block | It reduces to a global one-pair-per-report sieve there. E0/L0/S0 remove the guard through the separate active implementation |
 | `efficient` in P1/S1/S2 | Algorithms 3.1/3.2 restricted to λ≤1; all successful depths are zero | Its predictions match global clipped Borda when tie priorities align. No active multilevel comparison was executed |
 | `efficient` in S3/L2/T1 | The saved bounded-prediction implementation starts from min(λ,1); all recorded depths are zero | λ>1 rows are an extension of the schedule. At r=n the actual average-position rule can instead be related to Corollary 3.13 |
 | `borda` | Global exposure-normalized signed score; the strict implementation applies the manuscript clipping | Relevant to Proposition 2.14 and the coverage-dominated corollary, not automatically the sharp Q rate |
@@ -218,9 +218,9 @@ The C1 center benchmark attached to the S3 n=10,r=3 SM learning design supplies 
 
 Each mean uses 30 independent streams; budgets are nested within a stream. The ranking of Borda and PosEst changes with N. All four budgets have λ>1, and r=3<n, so neither the intermediate sharp-rate theorem nor the complete-ranking Theorem 2.17 predicts their ordering. Every saved SM multistart result attains the exact DP training objective, but it remains a different algorithm and may choose a different tied optimum. [All four center methods, errors and objective gaps](../results/theory_alignment/tables.md#c1--s3-learning-center-benchmarks-under-sm) are retained; these arithmetic means have no newly constructed interval.
 
-P1 did not fit Fotakis. G1 did. Across all eight Dots/Puzzle tasks, pooled Fotakis and exact SM NLL agree in every recorded pooled partition: the primary 70%, the 50%/80% sensitivities and held-out-group allocations. This does not establish algorithmic equivalence for arbitrary data.
+P1 did not fit Fotakis. G1 did. Across all eight Dots/Puzzle tasks, pooled Fotakis and exact SM NLL agree in every recorded pooled partition: the prespecified 70%, the 50%/80% sensitivities and held-out-group allocations. This does not establish algorithmic equivalence for arbitrary data.
 
-At the primary 70% within-group allocation, local Fotakis-minus-exact NLL means range from −.02468 to −.00396 across those eight tasks, each using all 100 repetitions. The lower local predictive loss is compatible with finite-sample estimator differences and small local training sets; there is no known true center for a Kendall-risk claim. In Sounds, local Fotakis is unavailable under its pair-coverage gate, while the pooled 70% comparison is −.00597. [All G1 comparison counts and means](../results/theory_alignment/g1_fotakis_vs_exact.csv) preserve the unavailable cases and all allocation schemes.
+At the prespecified 70% within-group allocation, local Fotakis-minus-exact NLL means range from −.02468 to −.00396 across those eight tasks, each using all 100 repetitions. The lower local predictive loss is compatible with finite-sample estimator differences and small local training sets; there is no known true center for a Kendall-risk claim. In Sounds, local Fotakis is unavailable under its pair-coverage gate, while the pooled 70% comparison is −.00597. [All G1 comparison counts and means](../results/theory_alignment/g1_fotakis_vs_exact.csv) preserve the unavailable cases and all allocation schemes.
 
 The C1 Sushi A training-objective benchmark has PosEst and exact DP at D=686 for N=50 and D=45,938 for N=3,000. That is equality of the training Kemeny objective at two contexts, not equality of generating-center risk or a full-ranking exponential-rate experiment. The C1 `posest` comparisons on sparse incomplete data also lack G1's all-pair admission rule. [The saved benchmark](../results/theory_alignment/inputs/c1_algorithm_benchmark.csv) identifies the objective, certification and runtime separately.
 

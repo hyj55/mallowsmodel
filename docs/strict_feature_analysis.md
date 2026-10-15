@@ -40,7 +40,7 @@ Each fit receives an independent discovery sample of 1,000 whole reports. The n=
 
 ## Coverage design
 
-For n=32, fit efficient, clipped Borda and unpenalized PL. Exact MLE and Sharp are not fitted in this grid: it studies scalable score estimation and finite-MLE existence at larger catalogue size, not an unrecorded exact optimization comparison. Primary SM for discovery selection is Borda; for n=8 it is exact SM. n=32 evaluation uses 2,000 fresh test reports per repetition.
+For n=32, fit efficient, clipped Borda and unpenalized PL. Exact MLE and Sharp are not fitted in this grid: it studies scalable score estimation and finite-MLE existence at larger catalogue size, not an unrecorded exact optimization comparison. The prespecified SM comparator for discovery selection is Borda; for n=8 it is exact SM. n=32 evaluation uses 2,000 fresh test reports per repetition.
 
 | N | λ | μ | Interpretation |
 |---:|---:|---:|---|
