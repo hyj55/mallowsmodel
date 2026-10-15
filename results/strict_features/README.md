@@ -1,6 +1,6 @@
 # Mechanism, coverage and empirical diagnostic files
 
-These outputs supply the supplementary mechanism, coverage and fixed-fit diagnostic components. The main finite comparison and Sharp implementation without an eight-item guard are documented in [P0/L0/S0](../predictive/README.md). The frozen estimator restrictions below describe these saved supplementary fits.
+These outputs supply the supplementary mechanism, coverage and fixed-fit diagnostic components. The only main experiment is [P0: Algorithm 4.1](../main/README.md). Sharp without the eight-item guard belongs to [E0](../estimator_comparison/README.md) and the separate L0/S0 estimator curves. The frozen estimator restrictions below describe these saved supplementary fits.
 
 [S1/S2/D1 design](../../docs/strict_feature_analysis.md) · [P2 fixed prediction](../../docs/baseline_replacement.md) · [Criteria](../../docs/criteria.md) · [Uncertainty](../../docs/uncertainty.md)
 

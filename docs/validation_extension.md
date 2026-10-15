@@ -17,7 +17,7 @@ For each repetition, a fresh diagnostic sample of 1,000 reports is generated ind
 
 ## Oracle and fitted center controls
 
-In the calibration populations, compare context slopes oriented around the true generating center and around the estimated SM center. The oracle reference uses the declared reference dispersion .8; the fitted reference uses fitted β. Both use the same diagnostic observations. The oracle is a diagnostic control, not privileged information supplied to primary training.
+In the calibration populations, compare context slopes oriented around the true generating center and around the estimated SM center. The oracle reference uses the declared reference dispersion .8; the fitted reference uses fitted β. Both use the same diagnostic observations. The oracle is a diagnostic control, not privileged information supplied to ranking-model training.
 
 A positive detection means the nominal 95% observed-slope interval lies wholly above zero. Zero-effect rejection means the interval excludes zero in either direction. Rejection of fitted SM uses the interval for observed minus SM-predicted slope. The fitted-center selection rule compares distance to the fitted SM slope versus distance to zero; correctness is evaluated against the exact population-NLL winner, excluding unavailable/tied winners.
 

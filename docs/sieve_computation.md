@@ -1,6 +1,8 @@
-# Exact sieve computation and bounded-report supplement
+# Supplementary exact sieve computation: E0/L0/S0 and B0
 
 [Primary comparison](predictive_comparison.md) · [Resource receipts](../results/predictive/sieve_resources.json) · [Theory correspondence](theory_alignment.md)
+
+**This chapter concerns supplementary estimators, not the main experiment.** P0 is exclusively Algorithm 4.1's likelihood-center SM versus PL comparison, with [690 available paired predictions](../results/main/README.md). E0 names the empirical Sharp/Fotakis/Efficient comparison. L0/S0 are separate curve experiments and B0 is the global-sieve alias. A failed sieve is not a missing P0 main result.
 
 ## Width is a statistical construction, not a computational cutoff
 
@@ -39,7 +41,7 @@ The packing benchmark completed m=9, radius=9 with 185 candidates, and m=10, rad
 
 For larger catalogues at intermediate radii, factorial array requirements can exceed the budget before construction starts. This records a limitation of this exact enumeration implementation, not a proof that every possible exact algorithm is infeasible. A resource rejection leaves the fit unavailable and retains its actual block size, radius and reason. The finite primary likelihood-center predictor is still evaluated independently. Efficient is used only under its explicitly stated fallback policy.
 
-The active entry points are [resource_sieve.py](../src/resource_sieve.py), [predictive_models.py](../src/predictive_models.py), and the completion engine [sieve_budget_retry.py](../src/sieve_budget_retry.py). The byte-locked eight-item implementation in `manuscript_estimators.py` belongs to the supplementary P1/P2/S1 records and is retained solely so those saved results can still be replayed. It is not called for P0/L0/S0 Sharp fits.
+The active entry points are [resource_sieve.py](../src/resource_sieve.py), [predictive_models.py](../src/predictive_models.py), and the completion engine [sieve_budget_retry.py](../src/sieve_budget_retry.py). The byte-locked eight-item implementation in `manuscript_estimators.py` belongs to the supplementary P1/P2/S1 records and is retained solely so those saved results can still be replayed. It is not called for E0/L0/S0 Sharp fits.
 
 ## Exact completion algorithms
 
@@ -55,19 +57,21 @@ All **630** initially unavailable Sharp contexts were retried: **100 recovered, 
 
 | Component | Newly completed Sharp fits | Remaining unavailable Sharp fits |
 |---|---:|---:|
-| P0, 23 empirical tasks | 0 | 360: Dots2024 A/B at r=2,3,5,6; PatrasIQ cost/population; Sushi B; Wheat |
+| E0, empirical estimator supplement | 0 | 360: Dots2024 A/B at r=2,3,5,6; PatrasIQ cost/population; Sushi B; Wheat |
 | L0, Sushi learning | 60: Sushi A N=100 and N=300, each 30/30 | 90: Sushi B N=300,1000,3000, each 0/30 |
 | S0, independent simulations | 40: n=10,N=100 under both generators, each 20/20 | 80: n=16 and n=32 at N=100 under both generators |
 
-L0 also displays the P0 N=4000 endpoints by reference; the unavailable Sushi B endpoint is included in P0's 360, not counted again. All Sushi A learning points and all n=10 synthetic sample-size points now have complete Sharp results.
+L0 reuses the N=4000 endpoints: P0 supplies likelihood-center/PL and E0 supplies the estimator supplements. The unavailable Sharp Sushi B endpoint is included in E0's 360, not counted again. All Sushi A learning points and all n=10 synthetic sample-size points now have complete Sharp results.
 
-The remaining attempts fail the enlarged memory admission check, before allocating arrays. The new general packing engine still has factorial storage in its current representation, even though it avoids the previous repeated distance scans. These failures do not prove that a different implicit exact solver is impossible, and no additional completed real-data P0 Sharp task is claimed. Increasing a runtime limit cannot resolve this particular pre-allocation memory failure. Existing approximate Sushi B whole-ranking likelihood centers are a separate optimization problem and are not refitted by this Sharp completion pass.
+The ball-cover retries recorded in `resource_retries.csv` fail the enlarged memory admission check before allocating arrays. The new general packing engine still has factorial storage in its current representation, even though it avoids the previous repeated distance scans. These failures do not prove that a different implicit exact solver is impossible, and no additional completed real-data E0 Sharp task is claimed. Increasing a runtime limit cannot resolve this particular pre-allocation memory failure. Existing approximate Sushi B whole-ranking likelihood centers are a separate optimization problem and are not refitted by this Sharp completion pass.
+
+The separate [exact-streaming implementation and computation audit (PR #14)](https://github.com/hyj55/mallowsmodel/pull/14) removes factorial pre-allocation and attempts all ten shared constructions. Its saved attempts reach actual search but time out; none recovers an additional fit. The count remains 530 supplementary Sharp fits, not missing main comparisons. Memory admission and search timeout are different stages of the same computational limitation.
 
 A covering-count calculation also explains why some larger cases need more than a modest budget increase. A maximal radius-d packing must cover all n! orders with balls of size B(n,d), so it contains at least ceil(n!/B(n,d)) orders. For Wheat, n=16 and d=4, B=3,723 and that lower bound is **5,619,873,728 orders**: at least 179.84 GB just for the retained orders in the current int16 representation. For Dots2024, n=30,d=54, the corresponding storage lower bound is 3.48 TB. These are lower bounds for an explicitly stored packing, not for every possible implicit optimization algorithm. Other cases have weaker bounds, and must not be declared intrinsically impossible from this argument. [Exact counts for the remaining radii](../results/predictive/sieve_cover_bounds.json) are saved separately from measured resource receipts.
 
 ## B0: global pair-sieve for bounded report sizes
 
-Every P0 empirical task has r<=10 and therefore receives the global-sieve supplement with the fixed constant **R=10**. The global version selects one uniform pair from every development report and applies the same sieve to the entire catalogue. In these designs Sharp has no consumed pilot reports and exactly one global block. With the same retained-pair seed, the two procedures are identical. Accordingly, `sm_global_sieve` is an explicit alias of `sm_sharp`, including its resource status, rather than another independent fitted result.
+Every empirical task shared by P0/E0 has r<=10 and therefore enters the separately named B0 global-sieve supplement with the fixed constant **R=10**. The global version selects one uniform pair from every development report and applies the same sieve to the entire catalogue. In these designs Sharp has no consumed pilot reports and exactly one global block. With the same retained-pair seed, the two procedures are identical. Accordingly, `sm_global_sieve` is an explicit alias of `sm_sharp`, including its resource status, rather than another independent fitted result.
 
 Corollary 2.15's first part concerns fixed beta, uniform independent r-subsets, lambda<=1 and r<=R for a constant R, giving the Q∧n² Kendall-risk scale with constants allowed to depend on beta and R. **r<=10 alone does not establish those assumptions.** The empirical rows record numerical exposure but cannot certify a true SM law or uniform assignment. The result concerns center Kendall risk; real-data NLL measures a different quantity.
 

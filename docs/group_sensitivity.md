@@ -14,7 +14,7 @@ A local trial uses its fixed four physical stimuli, whereas pooled item labels i
 
 The [estimator comparison](theory_alignment.md#g1-and-c1-where-fotakis-was-actually-compared) summarizes every saved Fotakis-versus-exact NLL contrast and its denominator. It also explains why Fotakis's majority construction is close to Theorem 2.17 but differs on tied pairs; agreement on these tasks does not prove general algorithmic equivalence.
 
-The [protocol commit](https://github.com/hyj55/mallowsmodel/commit/69541057711c08ff1508f25676bb6abfdd12c27d) predates production fits. Root seed `202609270` uses separate streams by task, fraction, repeat, purpose and group. The primary design repeats 70/30 within-group splits 100 times; budget sensitivities repeat 50/50 and 80/20 20 times each. Every group contributes floor(fraction × count) intact training reports, with the remainder held out. Integer rounding is explicit; no split is rerolled for coverage or fit existence.
+The [protocol commit](https://github.com/hyj55/mallowsmodel/commit/69541057711c08ff1508f25676bb6abfdd12c27d) predates production fits. Root seed `202609270` uses separate streams by task, fraction, repeat, purpose and group. The prespecified G1 design repeats 70/30 within-group splits 100 times; budget sensitivities repeat 50/50 and 80/20 20 times each. Every group contributes floor(fraction × count) intact training reports, with the remainder held out. Integer rounding is explicit; no split is rerolled for coverage or fit existence.
 
 For identical test reports, compare (1) pooled training on all groups, (2) local training on the target group, and (3) matched_pool, a uniform without-replacement subsample of pooled training with exactly the local training count. Matched training can contain target-group reports. All methods share each context's training and test memberships. Group labels route local predictions but are not covariates in either ranking law. Local prediction requires known group identity and increases total model capacity.
 
@@ -84,7 +84,7 @@ Puzzle interactions differ in sign and all ranges span zero. Group identity has 
 
 ## Estimator sensitivity
 
-Local delta values below retain exact as the predeclared primary method; they do not select a method using test results.
+Local delta values below retain exact as the predeclared reference method; they do not select a method using test results.
 
 | Task | Exact−PL | Fotakis−PL |
 | --- | --- | --- |
@@ -103,7 +103,7 @@ Fotakis often predicts better locally despite not maximizing training likelihood
 
 With 21 training and 9 test pairs per assessor, only 28 of 4,600 local PL contexts have a usable finite unique MLE; 4,572 fail strong connectivity. Matched pooled training has only 9 usable contexts. Exact SM excludes 454 contexts with unseen items; among 4,146 admitted contexts, 1,531 have at least one infinite test loss and 2,615 have all finite predictions. Efficient admits the same 4,146, with 420 contexts containing infinite losses, all at depth zero. Local Fotakis fails all-pair coverage everywhere.
 
-These failures are outcomes of the fixed unregularized experiment. The tiny intersection of finite local predictions cannot estimate overall comparative personal predictive risk. Additional regularized or hierarchical modeling would require a separately specified experiment. All pooled primary fits and whole-person holdout fits are available: exact-SM delta=+0.0134 within persons and +0.0090 for new persons, with new-person split range [-0.0060,+0.0275].
+These failures are outcomes of the fixed unregularized experiment. The tiny intersection of finite local predictions cannot estimate overall comparative personal predictive risk. Additional regularized or hierarchical modeling would require a separately specified experiment. All pooled 70/30 fits and whole-person holdout fits are available: exact-SM delta=+0.0134 within persons and +0.0090 for new persons, with new-person split range [-0.0060,+0.0275].
 
 Stable latent person characteristics can induce dependence after pooling; including other people does not remove it. Conditional independence given a person's parameters is a modeling assumption. Unknown cross-trial identities remain unresolved. Repeated shuffles do not create independent people, and no independent-splits t-test or standard error divided by sqrt(100) is used.
 

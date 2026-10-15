@@ -175,7 +175,7 @@ def render_tables(tables):
         display_table(tables['c1_sm_centers'],['N','lambda_','method','risk','mean_training_objective_gap',
             'max_training_objective_gap','zero_objective_gap_repetitions','repetitions']), '',
         '## G1: Fotakis versus exact SM','',
-        'Primary 70% within-group allocations, 100 repetitions. Only complete all-report NLL comparisons enter a complete mean; '
+        'Prespecified G1 70% within-group allocations, 100 repetitions. Only complete all-report NLL comparisons enter a complete mean; '
         'local unavailable groups are not silently removed. Negative means favor Fotakis-center SM prediction. '
         'All 50%/80% and group-holdout comparisons are also in [the CSV](g1_fotakis_vs_exact.csv).','',
         display_table(g.query('design=="within" and percent==70'),

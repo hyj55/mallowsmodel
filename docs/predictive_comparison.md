@@ -1,6 +1,8 @@
-# Primary grouped predictive comparison
+# P0: main experiment — Algorithm 4.1
 
-[Study guide](../README.md) · [Results](../results/predictive/tables.md) · [Data](../data/README.md) · [Learning curves](predictive_learning.md) · [Supplementary evidence](supplementary.md)
+[Study guide](../README.md) · [Main results and analysis](../results/main/README.md) · [Data](../data/README.md) · [Learning curves](predictive_learning.md) · [Supplementary evidence](supplementary.md)
+
+**P0 is the study's only main experiment: manuscript Algorithm 4.1.** Its two competitors are whole-ranking likelihood-center SM and tuned ridge PL. Sharp, Fotakis and Efficient belong to [E0](estimator_comparison.md); global pair-sieve belongs to [B0](sieve_computation.md). They share allocations but are not part of this main comparison.
 
 ## Question and observation
 
@@ -18,6 +20,8 @@ For U allocation units, use the prespecified permutation indexed by root seed 20
 | Next c−a units | Inner validation: select the PL penalty by whole-ranking NLL |
 | First c units together | Development: refit PL with its selected penalty; fit each SM center and dispersion |
 | Final U−c units | Outer test: evaluate the prespecified competitors |
+
+Algorithm 4.1 requires chronological splitting **for forecasting**, not for every predictive target. P0 uses repeated random grouped allocations for same-population prediction; [T1](temporal_prediction.md) addresses future years/seasons.
 
 Thus the final predictors use 80% of units. The 60/20 division lies entirely inside this development set. Validation chooses a parameter **within PL**, not a winner between SM and PL. SM's dispersion bound and center methods are fixed in advance. No method or hyperparameter is chosen using outer-test outcomes. Each repetition fits a different predictor; the study averages their scores, not their probabilities into an ensemble.
 
@@ -59,15 +63,9 @@ PL minimizes the regularized listwise objective on the **sum** scale:
 
 Positive ridge gives a unique finite parameter vector even with unobserved items or a disconnected comparison graph. Choose tau by inner-validation NLL and refit on the full development partition. An exact validation tie uses the first grid value. The same grid is used across tasks and sample sizes; because the data objective is a sum, a fixed tau has relatively greater influence at small N. Independent gradient checks verify numerical convergence, including a Newton refinement of the same objective when necessary.
 
-The secondary center comparisons within P0 are:
+## Separate estimator supplement
 
-| Center | Admission and role |
-|---|---|
-| Sharp, Algorithm 2.1 | Literal pilot, A=256, W_star and exact pair-sieve; attempted under explicit time/memory budgets, with no eight-item guard |
-| Fotakis, Algorithm 1 | Fitted only when every unordered pair appears in development data; tie conventions follow the implemented published rule |
-| Efficient, Algorithm 3.1 | Used only after Sharp has a recorded resource failure and only when lambda<=1; always labeled as a separate fallback |
-
-Sharp is tried before efficient. Efficient is not substituted for an available Sharp fit. Fotakis's observed pair coverage is checked anew in every partition, so admission can vary across repetitions. An algorithm being computable on real data does not verify its theorem assumptions: uniform subset sampling, a single true SM law, independent reports and a positive true beta are separate conditions. [Sieve computation and B0](sieve_computation.md) explains the width, exact shortcuts, resource receipts and global-sieve supplement.
+[E0](estimator_comparison.md) evaluates Sharp, Fotakis and an admitted Efficient fallback on the same allocations, with their own results and availability. [B0](sieve_computation.md) describes the global pair-sieve. These are not steps required by Algorithm 4.1 and are not candidates from which P0 chooses a winner. No sieve computation is needed to produce P0's main comparison.
 
 ## Loss, averaging and intervals
 
@@ -91,8 +89,10 @@ No anonymous-row population CI is supplied for Beans, Wheat or the eight PrefLib
 
 ## Reading results and reproducing them
 
-Start with the [23-task primary table](../results/predictive/tables.md). [primary.csv](../results/predictive/primary.csv) gives every center, availability count, mean loss, paired difference, Monte Carlo SE, split range and exact-certificate count. The [result dictionary](../results/predictive/README.md) locates per-repetition intervals, fitted parameters, optimization bounds and code/source fingerprints. A summary mean is left unavailable when not all planned repetitions are available; a separately named conditional mean is not substituted for it.
+Start with the [independent P0 report and 23-task table](../results/main/README.md). [P0 summary.csv](../results/main/summary.csv) contains only the main likelihood-center comparison and its paired PL reference; [per-partition scores](../results/main/repeat_scores.csv.gz) contain exactly the two main methods. [E0](../results/estimator_comparison/README.md) has separate estimator tables. The raw `results/predictive/primary.csv` retains mixed-method allocation records solely for reproducibility; its filename does not classify every row as a main result. The [result dictionary](../results/predictive/README.md) locates per-repetition intervals, fitted parameters, optimization bounds and code/source fingerprints. A summary mean is left unavailable when not all planned repetitions are available; a separately named conditional mean is not substituted for it.
 
-All 690 primary SM/PL paired predictions are finite. The likelihood center is certified in every repetition of 22 tasks, and in 5/30 Sushi B repetitions. Sharp is available for all thirty repetitions of eleven tasks; the remaining tasks retain resource failures. Fotakis passes its pair-coverage requirement in 416 contexts. [Findings](findings.md) interprets the observed differences alongside these limits.
+All 690 primary SM/PL paired predictions are finite. The likelihood center is certified in every repetition of 22 tasks, and in 5/30 Sushi B repetitions. Those 690 paired predictions are the complete main result. The separate E0 report records Sharp availability and Fotakis admission; their exclusions do not remove a P0 result. [Findings](findings.md) interprets the observed differences alongside these limits.
 
-P0 is the main predictive comparison. The unpenalized P1 comparison and fixed-fit P2 diagnostics remain [supplementary](supplementary.md), with their own fitting rules and inference targets. They are not independent replications of P0: P0 reuses the same source data and outer test allocations. Mechanism simulations, group controls and temporal transfer retain the additional questions they answer.
+The [30-shuffle audit](../results/main/split_precision.md) shows where repetition averaging is used and why 30 is a precision/computation choice, not a special threshold or a source of population CIs.
+
+P0 is the main Algorithm 4.1 comparison. The unpenalized P1 comparison and fixed-fit P2 diagnostics remain [supplementary](supplementary.md), with their own fitting rules and inference targets. They are not independent replications of P0: P0 reuses the same source data and outer test allocations. Mechanism simulations, group controls and temporal transfer retain the additional questions they answer.

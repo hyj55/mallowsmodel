@@ -1,12 +1,14 @@
-# Finite predictive comparison and learning results
+# Shared predictive records and supplementary curve outputs
 
-[Primary tables](tables.md) · [Design and formulas](../../docs/predictive_comparison.md) · [Learning design](../../docs/predictive_learning.md) · [Exact sieve](../../docs/sieve_computation.md)
+[P0 main results](../main/README.md) · [E0 estimator results](../estimator_comparison/README.md) · [B0 global sieve](../global_sieve/README.md) · [Design and formulas](../../docs/predictive_comparison.md) · [Learning design](../../docs/predictive_learning.md) · [Exact sieve](../../docs/sieve_computation.md)
 
-These outputs cover 690 empirical P0 training contexts, 360 Sushi learning contexts (L0), and 240 independent synthetic contexts (S0). Six method rows per context include all unavailable states and an explicitly reused global-sieve row. They do **not** represent 7,740 independent fits. P0 supplies L0's full-development endpoint without another fit; the intersecting S0 curve cell is fitted once.
+**The main experiment is only P0: Algorithm 4.1, with methods `pl` and `sm_likelihood`.** E0 names Sharp/Fotakis/Efficient comparisons and B0 names the global sieve. The raw format predates this reading separation and retains `study=P0` as a shared empirical allocation-family key. It must not be used alone to identify main-experiment rows.
+
+These outputs cover 690 empirical training contexts, 360 Sushi learning contexts (L0), and 240 independent synthetic contexts (S0). Six method rows per context include all unavailable states and an explicitly reused global-sieve row. They do **not** represent 7,740 independent fits. P0 supplies L0's full-development endpoint without another fit; the intersecting S0 curve cell is fitted once.
 
 | File | Contents |
 |---|---|
-| [primary.csv](primary.csv) | All 23 tasks and six methods, averaged over 30 outer allocations |
+| [primary.csv](primary.csv) | Raw six-method allocation export for 23 tasks; contains P0 main, E0 supplement and B0 alias rows; use named views for interpretation |
 | [learning.csv](learning.csv) | Sushi A/B at N=20,50,100,300,1000,3000, plus P0's N=4000 endpoint; 30 allocations each |
 | [synthetic.csv](synthetic.csv) | Fixed-r sample-size and catalogue-size curves, two generators and 20 independent repetitions per cell |
 | [repeat_scores.csv.gz](repeat_scores.csv.gz) | Every per-repetition score, paired difference, coverage measure, conditional bootstrap interval and availability flag |
@@ -16,11 +18,13 @@ These outputs cover 690 empirical P0 training contexts, 360 Sushi learning conte
 | [sieve_cover_bounds.json](sieve_cover_bounds.json) | Covering-count lower bounds on explicit packing size for remaining cases; not universal solver memory bounds |
 | [packing_crosscheck.json](packing_crosscheck.json) | Direct equality of all 29,086 ordered radius-four candidates from the original and completion engines |
 | [manifest.json](manifest.json) | Protocol commit, code/source SHA256, exact task inventory and public-output hashes |
-| [tables.md](tables.md) | Readable primary and Sharp comparisons |
+| [tables.md](tables.md) | Directory linking separate P0, E0, B0, L0 and S0 reports |
 
 Standard Python reads the compressed CSV with `pandas.read_csv(path)` and JSONL with `gzip.open(path, 'rt')`. Each JSONL line is one training context, containing its method parameters. Nonfinite unavailable parameters are represented by the strings `nan`, `inf` or `-inf`; successful primary prediction losses are finite.
 
 ## Keys and method identity
+
+For raw `study=P0`, `pl`/`sm_likelihood` map to **P0 main**; `sm_sharp`/`sm_fotakis`/`sm_efficient_fallback` map to **E0**; and `sm_global_sieve` maps to **B0**. Named E0/B0 summaries preserve `raw_study=P0` while giving their own `study` label. `build_study_reports.py` creates these views and verifies their selections without changing raw fits or scores. The 360 unavailable empirical Sharp fits are E0 outcomes, not missing P0 results. The [presentation manifest](../study_reports_manifest.json) records input/output hashes.
 
 The score key is `(study,dataset,n,N,repeat,method)`. `r` is report size and `N` is final development reports, including the inner-validation subset used for PL tuning. `n_test` counts complete ranking reports, and `test_units` counts the units available for cluster resampling. `repeat` starts at zero.
 
@@ -55,4 +59,4 @@ For each summary cell:
 
 The tables and figures include the [30-minute / 4-GiB completion pass](../../docs/sieve_computation.md#completion-results-and-remaining-limits). The 100 recovered Sharp fits fill existing L0/S0 cells; repetitions are not added. Predictor records retain each initial failure and the separate completion code fingerprint. All PL and likelihood-center parameters are unchanged.
 
-Use `python validate_predictive_study.py --repository-only` to verify public records and arithmetic. Full local replay additionally requires the source acquisition and private membership/loss caches described in the [reproduction guide](../../docs/reproducibility.md). Source reports and memberships are not redistributed in this directory.
+Use `python build_study_reports.py --check` to verify the named views and precision arithmetic. Use `python validate_predictive_study.py --repository-only` to verify public records and arithmetic. Full local replay additionally requires the source acquisition and private membership/loss caches described in the [reproduction guide](../../docs/reproducibility.md). Source reports and memberships are not redistributed in this directory.

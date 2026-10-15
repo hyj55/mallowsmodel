@@ -7,10 +7,10 @@
     "results/theory_alignment/pure_sm_results.csv": "dc5b1844d8b755d3945848b30c119f9f7cf0f120326fd8327ac4b42317a661ed",
     "results/theory_alignment/g1_fotakis_vs_exact.csv": "84ee69dc5861c5750e11a77ee87332bd0fab5700ccbe25681924b10d25b275fb",
     "results/theory_alignment/c1_sm_centers.csv": "35192f1218c5d0810037ef32adfe60ef2a075b293445f7a5e9c78b00bc27a729",
-    "results/theory_alignment/tables.md": "89ff48c45f7bb65aa9844846478f4632d1c7423f949ddb9cf8b42d4910df2faf"
+    "results/theory_alignment/tables.md": "b62f9def733cbf1b9bfcc13da10965cd8822a39902842f8898a563915f964978"
   },
   "code": {
-    "analyze_theory_alignment.py": "445ef32a80e3254a618b4dc03012e5cccf2a8d4d9e6a5eb3c83ea69aa8f583e8",
+    "analyze_theory_alignment.py": "35f491ca5301f20cbd9b0d99499e9ece4c0fd72cb6934e6481ae423a127facde",
     "validate_theory_alignment.py": "9a2ebedb2a19f8f887f1d0f1585d4e991725032d07ecef8f6a7d255fb4266c38"
   },
   "rows": {

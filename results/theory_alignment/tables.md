@@ -195,7 +195,7 @@ n=10, r=3, β=.8; 30 independent streams, with nested budgets within each stream
 
 ## G1: Fotakis versus exact SM
 
-Primary 70% within-group allocations, 100 repetitions. Only complete all-report NLL comparisons enter a complete mean; local unavailable groups are not silently removed. Negative means favor Fotakis-center SM prediction. All 50%/80% and group-holdout comparisons are also in [the CSV](g1_fotakis_vs_exact.csv).
+Prespecified G1 70% within-group allocations, 100 repetitions. Only complete all-report NLL comparisons enter a complete mean; local unavailable groups are not silently removed. Negative means favor Fotakis-center SM prediction. All 50%/80% and group-holdout comparisons are also in [the CSV](g1_fotakis_vs_exact.csv).
 
 | dataset | scheme | complete_finite_pairs | repetitions | fotakis_minus_exact | identical_nll_repetitions |
 |---|---|---|---|---|---|

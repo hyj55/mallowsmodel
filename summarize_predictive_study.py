@@ -73,22 +73,9 @@ def markdown_table(frame,columns):
 
 
 def write_tables(summary):
-    p=summary[(summary.study=='P0')&(summary.method=='sm_likelihood')].copy()
-    p['available_label']=p.available.astype(str)+'/30'
-    p['certificate_label']=p.certified_centers.astype(str)+'/30'
-    p['task_label']=p.dataset.map(task_label)
-    text='# Primary predictive comparison\n\n'
-    text+='[Design](../../docs/predictive_comparison.md) · [All estimators](primary.csv) · [Learning curves](learning.csv) · [Synthetic controls](synthetic.csv)\n\n'
-    text+='Each row averages 30 refitted 80/20 outer partitions. PL ridge is chosen inside development data; SM dispersion is bounded by 10. Delta is SM minus PL whole-ranking NLL (nats/report). A negative value favors SM. The MCSE concerns random partitions of this fixed dataset, **not a population confidence interval**. Exact-center counts refer to the whole-ranking objective, not the pair-sieve objective.\n\n'
-    text+=markdown_table(p,[('task_label','Task'),('n','n'),('r','r'),('N','Development reports'),
-        ('delta_mean','Mean delta'),('delta_mcse','Partition MCSE'),('available_label','Available'),('certificate_label','Certified centers')])+'\n\n'
-    text+='## Sharp and global pair-sieve\n\n'
-    q=summary[(summary.study=='P0')&summary.method.eq('sm_sharp')].copy()
-    q['available_label']=q.available.astype(str)+'/30'
-    q['task_label']=q.dataset.map(task_label)
-    text+=markdown_table(q,[('task_label','Task'),('delta_mean','Sharp minus PL'),('delta_mcse','Partition MCSE'),('available_label','Available'),('statuses','Status counts')])+'\n\n'
-    text+='For these empirical designs Sharp has zero pilot depth and one terminal block containing the catalogue. B0 uses the identical retained pairs and exact sieve, so its rows are explicit aliases of Sharp; it is a supplementary theoretical comparison, not additional independent evidence. Computational failures are retained. A small r does not make factorial enumeration tractable for a large n.\n'
-    (PUBLIC/'tables.md').write_text(text)
+    # Keep the raw export stable; readers receive separate scientific reports.
+    from build_study_reports import build
+    build(update_manifest=False)
 
 
 def publish():

@@ -1,0 +1,44 @@
+{
+  "producer": "build_study_reports.py",
+  "producer_sha256": "34355b2c0d78d8dbedfe7726addb1a9ff4b20ded28ae635661ebe4e9779cf1c1",
+  "source_sha256": {
+    "results/predictive/primary.csv": "198690c7eeecab7ccf98ab8f298167711fab5ec27ebae19bb2f0b9e23117a93d",
+    "results/predictive/repeat_scores.csv.gz": "922650063b60d9347ff9990aac2ba8f8eb00e076d60307af5c46e0d6f6c0699f",
+    "results/predictive/predictors.jsonl.gz": "9fd8b773158346c26c1329691b4e63f17549b0ea93a8521e2445aa22a9707fe6"
+  },
+  "interpretation": "Presentation views and arithmetic of existing scores only; no fitting or resampling.",
+  "main_selection": {
+    "raw_study": "P0",
+    "methods": [
+      "pl",
+      "sm_likelihood"
+    ],
+    "paired_contexts": 690
+  },
+  "estimator_selection": {
+    "raw_study": "P0",
+    "reading_name": "E0",
+    "methods": [
+      "sm_sharp",
+      "sm_fotakis",
+      "sm_efficient_fallback"
+    ]
+  },
+  "global_sieve_selection": {
+    "raw_study": "P0",
+    "reading_name": "B0",
+    "method": "sm_global_sieve"
+  },
+  "outputs_sha256": {
+    "results/main/summary.csv": "d3be516458e1d234338c7c7b26501452e2750f62f84d844384e3561f9adbd02f",
+    "results/main/repeat_scores.csv.gz": "71514a6cf0bc0a258893ec4a49559cd0cbc0258d4faa3987b73fdb6d4ec3931c",
+    "results/main/split_precision.csv": "750a2a5030a5d3dce79acbd8a7b77cb8f4fe68e5f9b00b0eaee0884918b4bf8d",
+    "results/estimator_comparison/summary.csv": "444a57947790394c3815e4587896054528de8c9cbad991339e4f79febda6a293",
+    "results/global_sieve/summary.csv": "49a8598b98ab48fe462560665ba5783ba6da76ee64be95a03209e913309780a4",
+    "results/main/README.md": "83d8a6d5642355f111fd8563896c9e3b68ffce66e31c162d5f150f958856cea0",
+    "results/main/split_precision.md": "320386095031c985013d914f3944ceeaa7104fce171e9759071cc518ec3b6bfd",
+    "results/estimator_comparison/README.md": "9654d4edde48d179af7ddc43f2ce2e9ac9d794e5e2cdba03716b5d606e010a76",
+    "results/global_sieve/README.md": "e43c602bc400b959b564d5e8cf154a9572c225d3f9d2f741e0620400233bbeba",
+    "results/predictive/tables.md": "4a5c77d5eb3269e311ae6c2e37aa19abbc37be00a7e1ae250ff0c96fc4e1036d"
+  }
+}

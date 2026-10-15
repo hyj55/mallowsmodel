@@ -4,7 +4,7 @@
 
 This directory relates existing estimator results to the supplied manuscript's conditions and risk targets. It contains arithmetic summaries and copies of saved public summary tables. It contains no new fitted model, simulated dataset, observation split or estimator implementation.
 
-These are the supplementary P1/G1/S1–S3/C1 arithmetic tables. The primary finite prediction, resource-accounted Sharp and fixed-R learning experiments are stored in [predictive](../predictive/README.md). The shared [theory chapter](../../docs/theory_alignment.md) explains both sets of evidence without treating repeated use of a source table as a new experiment.
+These are the supplementary P1/G1/S1–S3/C1 arithmetic tables. The [P0 Algorithm 4.1 main experiment](../main/README.md), [E0 supplementary estimator comparison](../estimator_comparison/README.md), and [B0 global sieve](../global_sieve/README.md) have separate reports. L0/S0 supplementary curves and all raw allocation records are indexed in [predictive](../predictive/README.md). The shared [theory chapter](../../docs/theory_alignment.md) explains both sets of evidence without treating repeated use of a source table as a new experiment.
 
 | File | Contents |
 |---|---|

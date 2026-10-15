@@ -2,7 +2,7 @@
 
 [Experiments L1/L2/S3](experiments.md) · [Data](../data/README.md) · [Estimator variants](algorithms.md#bounded-and-regularized-predictive-procedures) · [Uncertainty](uncertainty.md)
 
-A learning curve varies training reports N while holding the task's catalogue n, report length r and evaluation target fixed. The main curves are [L0/S0](predictive_learning.md), with thirty Sushi outer partitions and fixed-r independent simulations under P0's fitting rules. The controls below add fixed-test, shrinkage, small-budget and broader exposure questions; they retain their own implementation and uncertainty target. Increasing r changes the information inside a report and is a different intervention. The exposure grid containing r=32 is not part of the fixed-R=10 comparison.
+A learning curve varies training reports N while holding the task's catalogue n, report length r and evaluation target fixed. The supplementary repeated curves are [L0/S0](predictive_learning.md), with thirty Sushi outer partitions and fixed-r independent simulations under P0's fitting rules. The controls below add fixed-test, shrinkage, small-budget and broader exposure questions; they retain their own implementation and uncertainty target. Increasing r changes the information inside a report and is a different intervention. The exposure grid containing r=32 is not part of the fixed-R=10 comparison.
 
 ## Empirical learning curves
 
@@ -14,7 +14,7 @@ A learning curve varies training reports N while holding the task's catalogue n,
 
 Make one 80/20 outer report split. Within each repetition, permute the development pool and use nested prefixes for N. A/B respondents share the outer split. The inner first floor(.8N) reports tune PL's ridge penalty and the optional SM dispersion multiplier on the remainder; final fits use all N. Thus N includes inner validation. At Beans N=673 the five permutations contain the same full development sample; they are not five new samples.
 
-SM uses exact subset DP for Beans/Sushi A and a declared multistart insertion/integer-bound pipeline for Sushi B. The latter's 12 primary fits were not certified global optima. β is bounded at 10; unshrunk and validation-shrunk results are separate. PL tunes τ over {.01,.1,1,10,100}; $`\tau=10^{-6}`$ is a separate sensitivity, not the unpenalized MM fit. These choices make small-budget predictions finite and test regularization, while differing from P1/P2's unbounded/unpenalized procedure.
+SM uses exact subset DP for Beans/Sushi A and a declared multistart insertion/integer-bound pipeline for Sushi B. The latter's 12 reported fits were not certified global optima. β is bounded at 10; unshrunk and validation-shrunk results are separate. PL tunes τ over {.01,.1,1,10,100}; $`\tau=10^{-6}`$ is a separate sensitivity, not the unpenalized MM fit. These choices make small-budget predictions finite and test regularization, while differing from P1/P2's unbounded/unpenalized procedure.
 
 For each fixed test report, average its paired losses across the saved training repetitions, then bootstrap those report averages 2,000 times. This yields test-only conditional intervals; it does not include outer partition or training-sample uncertainty. Beans lacks farmer IDs, so its stored endpoints do not justify population inference. See [the formula](uncertainty.md#learning-curve-and-temporal-intervals).
 

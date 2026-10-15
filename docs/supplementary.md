@@ -2,10 +2,11 @@
 
 [Main predictive comparison](predictive_comparison.md) · [Learning and catalogue size](predictive_learning.md) · [Experiment map](experiments.md)
 
-The study uses one source catalogue and related analyses to answer several questions. P0 supplies the main finite predictive comparison; L0/S0 supply learning and catalogue-size curves under the same fitting rules. The components below retain additional scientific questions, rather than repeating the main table in several reports. Their parameter rules, splits and uncertainty targets remain attached to their results.
+The study uses one source catalogue and related analyses to answer several questions. P0 is exclusively the main Algorithm 4.1 likelihood-center SM versus PL comparison. E0 is the supplementary estimator comparison; B0 is the supplementary global sieve. L0/S0 are supplementary learning and catalogue-size experiments. The components below retain additional scientific questions, rather than repeating the main table in several reports. Their parameter rules, splits and uncertainty targets remain attached to their results.
 
 | Question | Evidence to read | What it adds |
 |---|---|---|
+| Does the SM center estimator change prediction? | [E0 estimator comparison](estimator_comparison.md) | Sharp, Fotakis and Efficient with distinct admission and resource counts; none is substituted into P0 based on test scores |
 | What structure is present in the complete observed dataset? | [Three data characteristics](../data/features/README.md) | Equal-gap pair frequencies, within-shell frequencies and same-pair display changes; descriptive, not extra experiments |
 | How does prediction behave without finite regularization? | [P1 unpenalized repeated comparison](repeated_holdout.md) | Thirty 60/20/20 allocations, finite-MLE existence and exact-solver admission; different predictors from P0 |
 | What do particular fitted predictors get wrong? | [P2 fixed-fit diagnostics](baseline_replacement.md), [ranking diagnostics](strict_feature_analysis.md) | Conditional test-unit bootstrap, pair profiles, shell decomposition and context effects |
