@@ -2,6 +2,7 @@
 import argparse
 import gzip
 import hashlib
+import io
 import json
 from pathlib import Path
 
@@ -16,6 +17,15 @@ INPUTS = ('results/predictive/primary.csv', 'results/predictive/repeat_scores.cs
 
 def digest(data):
     return hashlib.sha256(data).hexdigest()
+
+
+def compressed_csv(frame):
+    # GzipFile keeps OS=255 on Python 3.12 as well as 3.13; gzip.compress
+    # with mtime=0 delegates the header to zlib on 3.12 and varies by OS.
+    buffer = io.BytesIO()
+    with gzip.GzipFile(fileobj=buffer, mode='wb', filename='', mtime=0) as stream:
+        stream.write(frame.to_csv(index=False, float_format='%.12g').encode())
+    return buffer.getvalue()
 
 
 def table(frame, columns):
@@ -77,7 +87,7 @@ def artifacts():
     def csv(path, frame):
         put(path, frame.to_csv(index=False, float_format='%.12g'))
     csv('results/main/summary.csv', main)
-    put('results/main/repeat_scores.csv.gz', gzip.compress(main_scores.to_csv(index=False, float_format='%.12g').encode(), mtime=0))
+    put('results/main/repeat_scores.csv.gz', compressed_csv(main_scores))
     csv('results/main/split_precision.csv', precision)
     csv('results/estimator_comparison/summary.csv', e0)
     csv('results/global_sieve/summary.csv', b0)
