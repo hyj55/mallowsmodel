@@ -2,7 +2,7 @@
 
 [Experiment G1](experiments.md) · [Data and identities](../data/dots_puzzle.md) · [Criteria](criteria.md#group-comparisons-and-aggregation) · [Uncertainty](uncertainty.md#group-split-percentiles) · [Outputs](../results/group_sensitivity/README.md)
 
-Local fitting can improve Puzzle prediction when the training count is held fixed, for both SM and PL. Full pooled training often offsets that benefit with a larger sample. The relative SM–PL change is not stable across Puzzle conditions. Sounds exposes severe finite-MLE and infinite-prediction limitations for individual fitting; its rare successful cases do not support a population-level model comparison.
+This supplementary experiment separates the effect of training count from the predictive value of trial or assessor identity. All comparisons retain unavailable or infinite predictions and disclose the finite cases used in each aggregate.
 
 ## Observations and group identity
 
@@ -10,110 +10,96 @@ The original [author data page](https://www.andrewmao.net/code/) links [voting-r
 
 A local trial uses its fixed four physical stimuli, whereas pooled item labels identify difficulty categories across trials. Actual board layouts, globally unique board IDs and cross-trial assessor IDs remain unavailable. Trial membership does not establish assessor independence or prove that no stimulus was reused elsewhere. Sounds contributes 46 source-identified assessors with 30 pair reports each over 12 items (1,380 reports). The pinned BayesMallows source and download hashes are retained in the data manifests. Other tasks do not provide both reliable group identities and within-task per-person repetitions for this design. Different catalogs/tasks are not combined to manufacture repetitions.
 
-## Pre-fit design and fitting
+## Design and fitting
 
 The [estimator comparison](theory_alignment.md#g1-and-c1-where-fotakis-was-actually-compared) summarizes every saved Fotakis-versus-exact NLL contrast and its denominator. It also explains why Fotakis's majority construction is close to Theorem 2.17 but differs on tied pairs; agreement on these tasks does not prove general algorithmic equivalence.
 
-The [protocol commit](https://github.com/hyj55/mallowsmodel/commit/69541057711c08ff1508f25676bb6abfdd12c27d) predates production fits. Root seed `202609270` uses separate streams by task, fraction, repeat, purpose and group. The prespecified G1 design repeats 70/30 within-group splits 100 times; budget sensitivities repeat 50/50 and 80/20 20 times each. Every group contributes floor(fraction × count) intact training reports, with the remainder held out. Integer rounding is explicit; no split is rerolled for coverage or fit existence.
+Root seed `202609270` uses separate streams by task, fraction, repeat, purpose and group. Use five repetitions, IDs 0–4, for each 70/30, 50/50 and 80/20 within-group split. Every group contributes floor(fraction × count) intact training reports, with the remainder held out. No split is rerolled for coverage or fit existence. [Current execution specification](protocols/GROUP_SENSITIVITY_20260927.md).
 
 For identical test reports, compare (1) pooled training on all groups, (2) local training on the target group, and (3) matched_pool, a uniform without-replacement subsample of pooled training with exactly the local training count. Matched training can contain target-group reports. All methods share each context's training and test memberships. Group labels route local predictions but are not covariates in either ranking law. Local prediction requires known group identity and increases total model capacity.
 
-A separate 100 whole-group 70/30 holdouts evaluates transfer to unseen trials/assessors using pooled fits. It is a different predictive target, not paired report-for-report with within-group evaluation. Within-assessor evaluation predicts additional reports of known people; it is not a new-person split. Trial holdout cannot establish person disjointness without person IDs.
+A separate five whole-group 70/30 holdouts evaluates transfer to unseen trials/assessors using pooled fits. It is a different predictive target, not paired report-for-report with within-group evaluation. Within-assessor evaluation predicts additional reports of known people; it is not a new-person split. Trial holdout cannot establish person disjointness without person IDs.
 
 Unchanged conditional likelihoods, unbounded SM profile beta and unpenalized Hunter MM are used. Infinite SM losses and undefined/nonconverged PL fits remain explicit. No beta cap, pseudodata, removed catalog items, test-driven method selection or repaired split is introduced. This is the declared unregularized variant, not a literal implementation of the entirety of manuscript Algorithm 4.1.
 
 - **Exact SM center:** exact subset DP for n=4 and n=12; cardinality batching preserves the recurrence, objective and seeded tie order. No approximate substitute was needed. G1 conservatively excludes fits with unseen catalog items. Full pair coverage is not necessary for a Kemeny minimizer to exist; sparse ties/nonidentifiability remain limitations.
 - **Fotakis Algorithm 1 / PosEst:** majority-predecessor counts, counting equal-count pair ties in both directions, fixed seeded random score-tie order. Admit only training sets containing every item pair; record empirical p=min(pair count)/N. This structural check does not certify the paper's true-model or sample-size recovery guarantees. Profile beta is then fitted by the same likelihood.
-- **Sharp / efficient:** the pre-fit policy conservatively excludes $`\lambda=Nr(r-1)/(n(n-1))>1`$, outside the manuscript's sparse theorem regime. This is a theorem-domain admission choice, not a claim that Sharp is mechanically undefined outside that regime. Consequently Sharp/efficient are excluded for full four-item trials. Sounds local data can satisfy $`\lambda\le1`$; n=12 exceeds the size-8 exact sieve guard, so the specified Section 3 fallback is used when every item appears. All successful efficient fits had hierarchy depth zero. Uniform subset sampling, independent reports, true $`\beta\ge0.1`$ and the unknown sufficient constant $`C_0`$ are not verified; $`\mu/\log(er)>1`$ is not a certificate.
+- **Sharp / efficient:** the specified policy conservatively excludes $`\lambda=Nr(r-1)/(n(n-1))>1`$, outside the manuscript's sparse theorem regime. This is a theorem-domain admission choice, not a claim that Sharp is mechanically undefined outside that regime. Consequently Sharp/efficient are excluded for full four-item trials. Sounds local data can satisfy $`\lambda\le1`$; n=12 exceeds the size-8 exact sieve guard, so the specified Section 3 fallback is used when every item appears. All successful efficient fits had hierarchy depth zero. Uniform subset sampling, independent reports, true $`\beta\ge0.1`$ and the unknown sufficient constant $`C_0`$ are not verified; $`\mu/\log(er)>1`$ is not a certificate.
 - **PL:** requires directed strong connectivity and the unchanged numerical convergence checks. An unavailable finite unique MLE is not assigned an invented predictive score.
 
-## Primary results
+## Group comparison results
 
-NLL is in nats/report; delta=SM exact−PL, negative favoring SM. Values are means across 100 70/30 repetitions on each scheme's pairwise finite predictions. Cross-scheme comparisons below use stricter four-way common masks. Whole-group holdout is a separate target.
+Delta is exact-center SM minus PL NLL, in nats/report; negative favors SM. Each mean uses five 70/30 allocations. These scheme-specific values use paired finite reports, so they are conditional where coverage is incomplete. Cross-scheme contrasts below use a stricter shared four-way mask.
 
-| Task | Pooled | Local | Matched pool | Whole-group holdout |
-| --- | --- | --- | --- | --- |
-| puzzle-5 | -0.0571 | -0.0482 | -0.0585 | -0.0572 |
-| puzzle-7 | -0.0143 | +0.0113 | +0.0047 | -0.0191 |
-| puzzle-9 | -0.0094 | +0.0053 | +0.0004 | -0.0106 |
-| puzzle-11 | -0.0110 | -0.0175 | -0.0084 | -0.0123 |
-| dots-3 | -0.0129 | -0.0007 | -0.0050 | -0.0147 |
-| dots-5 | -0.0167 | +0.0220 | -0.0136 | -0.0182 |
-| dots-7 | -0.0126 | -0.0080 | +0.0009 | -0.0128 |
-| dots-9 | -0.0313 | -0.0312 | -0.0260 | -0.0364 |
+| Task | Pooled delta | Local delta | Matched-pool delta | Whole-group holdout delta | Local paired coverage |
+|---|---:|---:|---:|---:|---:|
+| puzzle-5 | -0.06292 | -0.04439 | -0.06245 | -0.06516 | 99.53% |
+| puzzle-7 | -0.00526 | +0.01028 | +0.00229 | -0.02635 | 99.05% |
+| puzzle-9 | -0.01260 | -0.02788 | -0.01441 | -0.00683 | 99.44% |
+| puzzle-11 | -0.01572 | -0.00463 | -0.02368 | -0.01770 | 100.00% |
+| dots-3 | -0.01258 | -0.01099 | -0.01322 | -0.01468 | 100.00% |
+| dots-5 | -0.01512 | +0.03572 | -0.01256 | -0.01191 | 100.00% |
+| dots-7 | -0.00560 | -0.02574 | -0.01322 | -0.01389 | 100.00% |
+| dots-9 | -0.03063 | -0.02185 | -0.02295 | -0.02348 | 100.00% |
+| sounds | +0.01390 | +0.26688 | -0.15434 | +0.00049 | 0.43% |
 
-Puzzle-5 pooled delta has a 5th–95th split range [-0.0773, -0.0356]; local [-0.0995, +0.0073]. Puzzle-7/9 have mean sign reversals but ranges spanning zero. These are partition-sensitivity summaries, not confidence intervals or independent samples from a population.
+## Training-budget control and model sensitivity
 
-## Training-budget control
+For each target group, compare local and reference predictions on the same reports with all four losses finite (SM/PL × local/reference). The matched pool is sampled without replacement from pooled training, with the local training count. Negative local-minus-reference changes favor local fitting. The interaction is (SM_local − PL_local) − (SM_reference − PL_reference); negative shifts the comparison toward SM.
 
-Each contrast uses the same test reports with all four predictions finite (SM/PL × local/reference). Negative changes favor local fitting. Coverage is the mean fraction of test reports in the matched four-way mask.
+| Task | Reference | SM change | PL change | Interaction | Observed interaction min–max | Four-way coverage |
+|---|---|---:|---:|---:|---|---:|
+| puzzle-5 | pooled | +0.04288 | +0.02363 | +0.01925 | [-0.02877, +0.07604] | 99.53% |
+| puzzle-5 | matched_pool | -0.07461 | -0.09006 | +0.01545 | [-0.09425, +0.09086] | 99.05% |
+| puzzle-7 | pooled | +0.03763 | +0.02259 | +0.01504 | [-0.02098, +0.06565] | 99.05% |
+| puzzle-7 | matched_pool | -0.07430 | -0.08145 | +0.00715 | [-0.08330, +0.06454] | 99.05% |
+| puzzle-9 | pooled | +0.01092 | +0.02598 | -0.01507 | [-0.06086, +0.01371] | 99.44% |
+| puzzle-9 | matched_pool | -0.14480 | -0.13079 | -0.01401 | [-0.06167, +0.04980] | 99.44% |
+| puzzle-11 | pooled | +0.01660 | +0.00551 | +0.01108 | [-0.02451, +0.03506] | 100.00% |
+| puzzle-11 | matched_pool | -0.10841 | -0.12745 | +0.01905 | [-0.01873, +0.06673] | 100.00% |
+| dots-3 | pooled | +0.08563 | +0.08404 | +0.00159 | [-0.09036, +0.03018] | 100.00% |
+| dots-3 | matched_pool | -0.03870 | -0.04094 | +0.00223 | [-0.09369, +0.06675] | 100.00% |
+| dots-5 | pooled | +0.07386 | +0.02302 | +0.05085 | [+0.03608, +0.06378] | 100.00% |
+| dots-5 | matched_pool | -0.05234 | -0.10062 | +0.04828 | [+0.02513, +0.05577] | 100.00% |
+| dots-7 | pooled | +0.09573 | +0.11588 | -0.02015 | [-0.05630, +0.04812] | 100.00% |
+| dots-7 | matched_pool | -0.02339 | -0.01086 | -0.01252 | [-0.06481, +0.05597] | 100.00% |
+| dots-9 | pooled | +0.09132 | +0.08254 | +0.00878 | [-0.01378, +0.03667] | 100.00% |
+| dots-9 | matched_pool | -0.04571 | -0.04681 | +0.00110 | [-0.02448, +0.04920] | 100.00% |
+| sounds | pooled | +0.70417 | +0.44407 | +0.26010 | [+0.26010, +0.26010] | 0.43% |
+| sounds | matched_pool | NA | NA | NA | [NA, NA] | 0.00% |
 
-| Task | SM local−pooled | PL local−pooled | SM local−matched | PL local−matched | Matched coverage |
-| --- | --- | --- | --- | --- | --- |
-| puzzle-5 | +0.0040 | -0.0049 | -0.1285 | -0.1386 | 99.44% |
-| puzzle-7 | +0.0187 | -0.0071 | -0.1327 | -0.1391 | 99.38% |
-| puzzle-9 | +0.0177 | +0.0030 | -0.1162 | -0.1212 | 99.65% |
-| puzzle-11 | +0.0097 | +0.0162 | -0.1212 | -0.1121 | 100.00% |
-| dots-3 | +0.0997 | +0.0876 | -0.0392 | -0.0435 | 100.00% |
-| dots-5 | +0.0935 | +0.0549 | -0.0459 | -0.0814 | 100.00% |
-| dots-7 | +0.1113 | +0.1066 | -0.0354 | -0.0266 | 99.95% |
-| dots-9 | +0.0985 | +0.0984 | -0.0349 | -0.0297 | 100.00% |
+The five-value range is descriptive, not a population confidence interval or a calibrated test. Equal-budget improvements do not imply that a local model beats the much larger pooled sample. Relative SM–PL changes depend on the condition and sampled allocation. These observational comparisons cannot isolate a causal board or person effect; local routing also changes effective model capacity.
 
-At equal training counts, all four Puzzle tasks improve for both families by about 0.11–0.14 nats/report. This does not imply that a local model beats the much larger pooled training set. Both families retain negative mean local-minus-matched changes at the 50%, 70% and 80% training budgets. Smaller budgets increase failures and favor full pooled training; some local fits improve at 80%. Dots has smaller equal-budget gains and generally benefits from the full pooled sample.
+![Local prediction changes: medians and observed ranges](../figures/group_sensitivity/local_prediction_changes.png)
 
-![Prediction changes](../figures/group_sensitivity/local_prediction_changes.png)
+![Relative SM–PL changes: medians and observed ranges](../figures/group_sensitivity/relative_model_changes.png)
 
-## Relative model sensitivity
-
-Interaction=(SM_local−PL_local)−(SM_reference−PL_reference), evaluated on common four-way finite cases. Negative shifts the comparison toward SM. Ranges are empirical 5th–95th split percentiles, **not population confidence intervals**.
-
-| Task | Vs pooled mean | Split range | Vs matched mean | Split range |
-| --- | --- | --- | --- | --- |
-| puzzle-5 | +0.0089 | [-0.0432, +0.0642] | +0.0101 | [-0.0777, +0.0867] |
-| puzzle-7 | +0.0257 | [-0.0388, +0.0844] | +0.0064 | [-0.0778, +0.0748] |
-| puzzle-9 | +0.0147 | [-0.0346, +0.0572] | +0.0050 | [-0.0650, +0.0759] |
-| puzzle-11 | -0.0065 | [-0.0481, +0.0398] | -0.0091 | [-0.0701, +0.0488] |
-| dots-3 | +0.0122 | [-0.0425, +0.0521] | +0.0043 | [-0.0480, +0.0668] |
-| dots-5 | +0.0387 | [+0.0001, +0.0816] | +0.0356 | [-0.0154, +0.0892] |
-| dots-7 | +0.0046 | [-0.0449, +0.0498] | -0.0088 | [-0.0732, +0.0622] |
-| dots-9 | +0.0001 | [-0.0592, +0.0519] | -0.0052 | [-0.0863, +0.0651] |
-
-Puzzle interactions differ in sign and all ranges span zero. Group identity has predictive value, but no stable differential sensitivity is established. Dots-5 shifts toward PL against full pooled training; the equal-budget range spans zero. These are multiple descriptive comparisons, not a population significance claim. More parameters, assessor composition and unrecorded trial conditions prevent a causal board-identity interpretation.
-
-![Relative advantage](../figures/group_sensitivity/relative_model_changes.png)
-
-## Estimator sensitivity
-
-Local delta values below retain exact as the predeclared reference method; they do not select a method using test results.
-
-| Task | Exact−PL | Fotakis−PL |
-| --- | --- | --- |
-| puzzle-5 | -0.0482 | -0.0707 |
-| puzzle-7 | +0.0113 | -0.0032 |
-| puzzle-9 | +0.0053 | +0.0015 |
-| puzzle-11 | -0.0175 | -0.0298 |
-| dots-3 | -0.0007 | -0.0097 |
-| dots-5 | +0.0220 | +0.0087 |
-| dots-7 | -0.0080 | -0.0294 |
-| dots-9 | -0.0312 | -0.0559 |
-
-Fotakis often predicts better locally despite not maximizing training likelihood. Model-family conclusions should therefore name the center estimator. The per-group output retains every group and candidate, including skipped candidates and finite coverage.
+The [complete tables](../results/group_sensitivity/README.md) include 50%, 70% and 80% training fractions, report-weighted and equal-group summaries, and separate method coverage. [Fotakis versus exact](../results/theory_alignment/g1_fotakis_vs_exact.csv) compares center estimators; no test winner is substituted for the reference estimator.
 
 ## Sounds and dependent observations
 
-With 21 training and 9 test pairs per assessor, only 28 of 4,600 local PL contexts have a usable finite unique MLE; 4,572 fail strong connectivity. Matched pooled training has only 9 usable contexts. Exact SM excludes 454 contexts with unseen items; among 4,146 admitted contexts, 1,531 have at least one infinite test loss and 2,615 have all finite predictions. Efficient admits the same 4,146, with 420 contexts containing infinite losses, all at depth zero. Local Fotakis fails all-pair coverage everywhere.
+Each local 70/30 context has 21 training and nine test pairs for one of 46 assessors. Across five repetitions there are 230 local training contexts. The finite-MLE and item-coverage audit is:
 
-These failures are outcomes of the fixed unregularized experiment. The tiny intersection of finite local predictions cannot estimate overall comparative personal predictive risk. Additional regularized or hierarchical modeling would require a separately specified experiment. All pooled 70/30 fits and whole-person holdout fits are available: exact-SM delta=+0.0134 within persons and +0.0090 for new persons, with new-person split range [-0.0060,+0.0275].
+| Method | Fit status | Contexts |
+|---|---|---:|
+| pl | no_unique_finite_mle | 229 |
+| pl | ok | 1 |
+| sm_efficient | ok | 205 |
+| sm_efficient | unseen_catalog_items | 25 |
+| sm_fotakis | not_p_frequent | 205 |
+| sm_fotakis | unseen_catalog_items | 25 |
+| sm_mle | ok | 205 |
+| sm_mle | unseen_catalog_items | 25 |
+| sm_sharp | exact_sieve_unavailable | 205 |
+| sm_sharp | unseen_catalog_items | 25 |
 
-Stable latent person characteristics can induce dependence after pooling; including other people does not remove it. Conditional independence given a person's parameters is a modeling assumption. Unknown cross-trial identities remain unresolved. Repeated shuffles do not create independent people, and no independent-splits t-test or standard error divided by sqrt(100) is used.
+An available SM fit can still assign zero probability to a test ranking; those infinite losses are recorded separately. Small finite intersections cannot estimate overall personal predictive risk. Within-assessor prediction targets further reports of known people, while whole-person holdout targets unseen people. Stable latent person characteristics can induce dependence; adding other people's reports does not remove it. Unknown cross-trial assessor identities remain unresolved.
 
 ## Availability, validation and reproduction
 
-Main trial four-way coverage is about 99.4%–100%; unavailable/infinite cases are still reported separately. Finite conditional means are not unconditional finite-risk estimates. Puzzle-5 matched coverage at the 50% budget falls to about 94%, increasing conditional-selection concerns. Sounds local coverage is too low for meaningful overall comparisons.
+The study contains 11,160 training contexts and 55,800 candidate statuses across nine tasks. Public outputs contain 2,250 repeat-score rows. All repeat IDs are 0–4. Finite conditional results do not establish finite unconditional risk. Tables use means; figures use medians and observed minima/maxima. No independent-split population t-test is used.
 
-The run records 104,640 training contexts and 523,200 candidate statuses, including exclusions and cache reuse, across 7,743 original reports. Public outputs have 23,400 repeat-score rows and 18,300 group-score summaries. Figures use medians; tables use means. Micro/report-weighted and macro/equal-group values are both retained.
-
-Focused tests check sampling, ties, exact-DP agreement, coverage admission, likelihoods and unavailable/infinite aggregation. Full local validation reconciles source frequencies, replays stored predictions and split memberships, and recomputes the published tables and four-way masks. See [validation.json](../results/group_sensitivity/validation.json) for the completed validation receipt. Public repository verification checks checksums and repeat aggregation without downloading respondent data.
+Source checks reconcile every original Dots/Puzzle ranking frequency. Full replay verifies group membership, disjoint training/test reports, matched training counts, stored predictions and four-way masks without fitting again. Public-only validation checks hashes and all repeat aggregation. Detailed per-report caches and original data stay local.
 
 ```bash
 python run_group_sensitivity.py --workers 4
@@ -121,5 +107,3 @@ python validate_group_sensitivity.py
 python validate_group_sensitivity.py --repository-only
 python make_group_sensitivity_figures.py
 ```
-
-Use the pinned dependencies in a separate checkout; the recorded run used Python 3.13.7. Original data, per-report caches and fitted context parameters stay in ignored local directories. Reproduction refits those caches from the verified sources; public artifacts are aggregate results. Full replay requires the caches produced by the runner. Public-only validation does not claim to reconstruct per-report predictions.

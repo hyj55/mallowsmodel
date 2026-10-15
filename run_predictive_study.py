@@ -30,15 +30,16 @@ def main():
     p.add_argument('--study',nargs='+',choices=['P0','L0','S0'],default=['P0','L0','S0'])
     p.add_argument('--workers',type=int,default=3)
     p.add_argument('--datasets',nargs='*')
-    p.add_argument('--repetitions',type=int)
+    p.add_argument('--repetitions',type=int,choices=range(1,6),help='Empirical allocation count; S0 keeps twenty independent draws')
     args = p.parse_args()
     tasks=load_tasks(); code_signature=signature(); jobs=[]
-    for repeat in range(args.repetitions or 30):
-        if 'P0' in args.study:
+    empirical_repetitions = args.repetitions or 5
+    for repeat in range(max(empirical_repetitions, 20 if 'S0' in args.study else 0)):
+        if 'P0' in args.study and repeat < empirical_repetitions:
             for task in sorted(tasks,key=lambda t:-t.n):
                 if not args.datasets or task.name in args.datasets:
                     jobs.append(('P0',task.name,repeat,None,task.n))
-        if 'L0' in args.study:
+        if 'L0' in args.study and repeat < empirical_repetitions:
             for budget in BUDGETS:
                 for name in ('sushi_a','sushi_b'):
                     if not args.datasets or name in args.datasets:

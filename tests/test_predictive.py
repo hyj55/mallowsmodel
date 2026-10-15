@@ -113,7 +113,7 @@ def test_sushi_nested_budgets_align_respondents_and_exclude_outer_test():
     y=np.tile([0,1],(5000,1))
     a=Task('sushi_a','baseline',y,10,np.arange(5000),1,92,'respondent')
     b=Task('sushi_b','baseline',y,100,np.arange(5000),1,92,'respondent')
-    for repeat in (0,7):
+    for repeat in (0,4):
         small=curve_parts(a,repeat,20);large=curve_parts(a,repeat,100)
         other=curve_parts(b,repeat,100);outer=primary_parts(a,repeat)
         np.testing.assert_array_equal(small['development'],large['development'][:20])

@@ -1,0 +1,18 @@
+{
+  "protocol_commit": "3da7e993c9ce2ae23a85a418cfa19ac2b138f01d",
+  "code_sha256": {
+    "src/repeated_holdout.py": "292346621cbe929d3b08c12df8657e0b898bc094ea35d1fdc0dc04212b6830c9",
+    "src/repeated_holdout_summary.py": "636556c3382358106790acdf15d0cfad2bda795eb7706fa7f3d68eb75d4084b2",
+    "run_repeated_real.py": "debc864c790fbe44ea91ed116a6f2b3e3f8b056dada29f5e5d400e336e0abab7",
+    "src/data.py": "494cbf5ebf5f575734a956414f1fe247d6bf648652a9a75b307f6f073d714b5d",
+    "src/models.py": "ca4c989fe94b60fb5527f128a17175ddbc52092ff8892fe26d795e5e103cfe96",
+    "src/strict_models.py": "244c90978402da73879d4826fd09af71ef3bbff6d9f5b52290a304dee52d69a2",
+    "src/manuscript_estimators.py": "70894e6aed5236e7c0035beafa5533b7483051bc668cb69e687aee5dcb682f38",
+    "src/diagnostics.py": "ed272cc7882a36a1cf8a3570a1cea1673175cab3530e08cc83abbabd60804100",
+    "src/strict_features.py": "ae95b71822538c82a8bfe815ea7267406680e401e35577ac58df99561cdb1469",
+    "src/validation_extension.py": "bbdeb2bfb088d46166e906716596711cf8ad52274de019d3e6310503fd047c59",
+    "run_strict_real.py": "998d0a7aa7ca54d32a45839b83994e8870b0943db0828e63de89af188fecb00a",
+    "docs/protocols/REPEATED_HOLDOUT_20260928.md": "8f058388dc6a4e6d2e760b28de66340fead44e7bd9f643865a3de19377252628"
+  },
+  "source_commit": "fa8031893905e472992c45aa4c4ed05d8391c444"
+}

@@ -20,7 +20,7 @@ RAW = ROOT / 'data/raw/group_sensitivity'
 SEED = 202609270
 METHODS = ('sm_mle', 'sm_fotakis', 'sm_sharp', 'sm_efficient', 'pl')
 SCHEMES = ('pooled', 'local', 'matched_pool')
-SPLIT_PLAN = ((70, 100), (50, 20), (80, 20))
+SPLIT_PLAN = ((70, 5), (50, 5), (80, 5))
 
 
 @dataclass

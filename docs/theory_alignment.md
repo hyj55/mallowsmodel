@@ -16,7 +16,7 @@ The manuscript references below refer to the supplied 37-page *Selective Mallows
 
 [E0](estimator_comparison.md) is the supplementary estimator comparison, distinct from P0's Algorithm 4.1 main experiment. Its Sharp implementation removes the eight-item guard without changing A=256 or W_star. A full-space exact-DP shortcut makes some n=10 and n=12 fits computable, while other radii require complete greedy packing and can exceed time or memory budgets. [Resource receipts](../results/predictive/sieve_resources.json) and [E0 estimator scores](../results/estimator_comparison/summary.csv) distinguish computational availability from theorem applicability. The tables below retain the supplementary P1/G1/S1–S3 comparisons with their frozen implementations; references to an eight-item guard in those rows describe that implementation only.
 
-The same study includes a 30-minute / 4-GiB completion of unavailable fits. Exact ball-cover construction and a parity-constrained DP for radius one recover 100 Sharp fits without changing its candidate packing, selected-pair objective or tie rule. Direct comparison confirms that the original and completion engines produce the same 29,086 ten-item radius-four candidates in the same order. This improves computational availability, not the estimator's statistical definition or theorem assumptions; [remaining limitations](sieve_computation.md#completion-results-and-remaining-limits) stay explicit.
+The same study includes a 30-minute / 4-GiB completion of unavailable fits. Exact ball-cover construction and a parity-constrained DP for radius one complete 50 Sharp fits in the reported allocation set without changing its candidate packing, selected-pair objective or tie rule. Direct comparison confirms that the original and completion engines produce the same 29,086 ten-item radius-four candidates in the same order. This improves computational availability, not the estimator's statistical definition or theorem assumptions; [remaining limitations](sieve_computation.md#completion-results-and-remaining-limits) stay explicit.
 
 ## What the risk theorem measures
 
@@ -197,13 +197,18 @@ All-pair coverage and theoretical exposure are different checks. For example, Su
 
 The [complete P1 method inventory](../results/theory_alignment/p1_methods.csv) has all 115 dataset/method combinations. The [paired comparisons](../results/theory_alignment/tables.md#p1-estimator-predictions) show:
 
-- For both dots2024 r=2 tasks, efficient and Borda NLL agree in all 30 partitions. These are the 60 successful efficient fits, all with depth zero; the agreement follows from the executed construction.
-- In all eight PrefLib conditions, Borda and exact SM have identical confirmation NLL in every partition and zero distance to the external objective order. That order is not a known latent SM center. These are agreement observations, not a measured exponential risk curve.
-- In dots2024 A r=2, Borda has mean NLL .62009 versus .79619 for exact SM; in B r=2 the means are .71569 and .86744. The theorem does not promise that exact likelihood optimization minimizes held-out loss, nor does it promise that a minimax estimator wins each dataset.
-- Beans gives Borda NLL 1.79336 versus exact SM 1.80639; PL has 1.79388. The point comparison with PL therefore changes with the SM center procedure. This is a predictive-procedure observation, not a proof of a generating family or a contradiction of the center-risk bounds.
-- Sushi A gives Borda minus exact SM NLL +.00363. The true preference center is unknown, so this difference cannot identify which estimator has smaller Kendall risk.
+- Efficient and Borda agree in all five partitions of each dots2024 r=2 task. These ten successful Efficient fits all have depth zero; they do not test an active hierarchy.
+- In all eight PrefLib conditions, Borda and exact SM agree on confirmation NLL in every partition and attain the external objective order. That reference is not a known latent SM center.
 
-Sushi B has only 8 certified exact fits among 30 partitions. The full paired Borda–exact difference remains NA; its finite-only value and denominator are separate. No missing exact fit is replaced with another center to create a theorem comparison.
+| Task | Borda NLL | Exact SM NLL | PL NLL | Exact finite partitions |
+|---|---:|---:|---:|---:|
+| dots2024_A_r2 | +0.61921 | +0.77701 | NA | 5/5 |
+| dots2024_B_r2 | +0.71251 | +0.88073 | NA | 5/5 |
+| beans | +1.79821 | +1.80995 | +1.79601 | 5/5 |
+| sushi_a | +14.27011 | +14.26373 | +14.23660 | 5/5 |
+| sushi_b | +14.23555 | NA | +14.24209 | 2/5 |
+
+These are predictive-procedure comparisons, not true-center Kendall-risk measurements. No theorem says that training-likelihood optimization must minimize held-out NLL. Full means remain unavailable when a required certificate or finite prediction is missing; finite-conditional differences have separate denominators.
 
 ### G1 and C1: where Fotakis was actually compared
 
@@ -220,7 +225,7 @@ Each mean uses 30 independent streams; budgets are nested within a stream. The r
 
 P1 did not fit Fotakis. G1 did. Across all eight Dots/Puzzle tasks, pooled Fotakis and exact SM NLL agree in every recorded pooled partition: the prespecified 70%, the 50%/80% sensitivities and held-out-group allocations. This does not establish algorithmic equivalence for arbitrary data.
 
-At the prespecified 70% within-group allocation, local Fotakis-minus-exact NLL means range from −.02468 to −.00396 across those eight tasks, each using all 100 repetitions. The lower local predictive loss is compatible with finite-sample estimator differences and small local training sets; there is no known true center for a Kendall-risk claim. In Sounds, local Fotakis is unavailable under its pair-coverage gate, while the pooled 70% comparison is −.00597. [All G1 comparison counts and means](../results/theory_alignment/g1_fotakis_vs_exact.csv) preserve the unavailable cases and all allocation schemes.
+The five 70% within-group repetitions compare local, pooled and matched-pool Fotakis with exact SM. The [current comparison table](../results/theory_alignment/g1_fotakis_vs_exact.csv) reports every mean and finite denominator. Lower local predictive loss can reflect finite-sample estimator differences; no known true preference center supports a Kendall-risk conclusion. Sounds local Fotakis remains unavailable under its all-pair coverage gate.
 
 The C1 Sushi A training-objective benchmark has PosEst and exact DP at D=686 for N=50 and D=45,938 for N=3,000. That is equality of the training Kemeny objective at two contexts, not equality of generating-center risk or a full-ranking exponential-rate experiment. The C1 `posest` comparisons on sparse incomplete data also lack G1's all-pair admission rule. [The saved benchmark](../results/theory_alignment/inputs/c1_algorithm_benchmark.csv) identifies the objective, certification and runtime separately.
 

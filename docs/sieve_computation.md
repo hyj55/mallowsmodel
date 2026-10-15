@@ -2,7 +2,7 @@
 
 [Primary comparison](predictive_comparison.md) · [Resource receipts](../results/predictive/sieve_resources.json) · [Theory correspondence](theory_alignment.md)
 
-**This chapter concerns supplementary estimators, not the main experiment.** P0 is exclusively Algorithm 4.1's likelihood-center SM versus PL comparison, with [690 available paired predictions](../results/main/README.md). E0 names the empirical Sharp/Fotakis/Efficient comparison. L0/S0 are separate curve experiments and B0 is the global-sieve alias. A failed sieve is not a missing P0 main result.
+**This chapter concerns supplementary estimators, not the main experiment.** P0 is exclusively Algorithm 4.1's likelihood-center SM versus PL comparison, with [115 available paired predictions](../results/main/README.md). E0 names the empirical Sharp/Fotakis/Efficient comparison. L0/S0 are separate curve experiments and B0 is the global-sieve alias. A failed sieve is not a missing P0 main result.
 
 ## Width is a statistical construction, not a computational cutoff
 
@@ -53,19 +53,17 @@ At radius one the lexicographic greedy packing consists exactly of the even perm
 
 ## Completion results and remaining limits
 
-All **630** initially unavailable Sharp contexts were retried: **100 recovered, 530 remain unavailable**. Global-sieve aliases share these statuses and are not counted twice. Existing PL, likelihood-center SM and Fotakis parameters, source reports, train/test memberships, selected-pair seeds, beta fitting and bootstrap streams are preserved. Only unavailable Sharp/global-sieve fits and the resulting fallback-availability labels are updated. Both code fingerprints and the original Sharp failure are retained in each retried predictor record. [Per-repetition completion status](../results/predictive/resource_retries.csv) and the combined learning/simulation tables are the authoritative outputs.
+The current results contain **155 unavailable Sharp contexts**. Global-sieve aliases share their status and are not counted twice.
 
-| Component | Newly completed Sharp fits | Remaining unavailable Sharp fits |
-|---|---:|---:|
-| E0, empirical estimator supplement | 0 | 360: Dots2024 A/B at r=2,3,5,6; PatrasIQ cost/population; Sushi B; Wheat |
-| L0, Sushi learning | 60: Sushi A N=100 and N=300, each 30/30 | 90: Sushi B N=300,1000,3000, each 0/30 |
-| S0, independent simulations | 40: n=10,N=100 under both generators, each 20/20 | 80: n=16 and n=32 at N=100 under both generators |
+| Component | Available Sharp fits | Unavailable Sharp fits |
+|---|---:|---|
+| E0 empirical supplement | 55: eleven tasks × five allocations | 60: Wheat, Sushi B, both PatrasIQ tasks, eight dots2024 tasks |
+| L0 Sushi learning | 45: every Sushi A budget, and Sushi B N=20,50,100 | 15: Sushi B N=300,1000,3000 |
+| S0 independent simulations | 160 | 80: n=16 and n=32, N=100, both generators |
 
-L0 reuses the N=4000 endpoints: P0 supplies likelihood-center/PL and E0 supplies the estimator supplements. The unavailable Sharp Sushi B endpoint is included in E0's 360, not counted again. All Sushi A learning points and all n=10 synthetic sample-size points now have complete Sharp results.
+L0's N=4000 endpoint links to P0/E0 and is not counted twice. Every active n≤10 Sharp/global-sieve fit is available, so there is no missing fit in that catalogue-size scope for a tuned-width variant to fill. No tuned-width Sharp result is reported. The smallest missing catalogue is n=16. The distinct P1/P2 unpenalized controls retain their explicitly documented candidate guard; these are not the resource-accounted E0/L0/S0 fits above.
 
-The ball-cover retries recorded in `resource_retries.csv` fail the enlarged memory admission check before allocating arrays. The new general packing engine still has factorial storage in its current representation, even though it avoids the previous repeated distance scans. These failures do not prove that a different implicit exact solver is impossible, and no additional completed real-data E0 Sharp task is claimed. Increasing a runtime limit cannot resolve this particular pre-allocation memory failure. Existing approximate Sushi B whole-ranking likelihood centers are a separate optimization problem and are not refitted by this Sharp completion pass.
-
-The separate [exact-streaming implementation and computation audit (PR #14)](https://github.com/hyj55/mallowsmodel/pull/14) removes factorial pre-allocation and attempts all ten shared constructions. Its saved attempts reach actual search but time out; none recovers an additional fit. The count remains 530 supplementary Sharp fits, not missing main comparisons. Memory admission and search timeout are different stages of the same computational limitation.
+[Per-context resource status](../results/predictive/resource_retries.csv) identifies the 205 budgeted exact-sieve attempts: 50 complete and 155 fail the enlarged memory admission check. Their predictor records retain original fit-producer and retry fingerprints. These are exact-solver paths for the same estimator, not additional statistical replications. No partial packing or approximate optimum is labeled Sharp. The separate [streaming solver work](https://github.com/hyj55/mallowsmodel/pull/14) remains outside these published fit results.
 
 A covering-count calculation also explains why some larger cases need more than a modest budget increase. A maximal radius-d packing must cover all n! orders with balls of size B(n,d), so it contains at least ceil(n!/B(n,d)) orders. For Wheat, n=16 and d=4, B=3,723 and that lower bound is **5,619,873,728 orders**: at least 179.84 GB just for the retained orders in the current int16 representation. For Dots2024, n=30,d=54, the corresponding storage lower bound is 3.48 TB. These are lower bounds for an explicitly stored packing, not for every possible implicit optimization algorithm. Other cases have weaker bounds, and must not be declared intrinsically impossible from this argument. [Exact counts for the remaining radii](../results/predictive/sieve_cover_bounds.json) are saved separately from measured resource receipts.
 

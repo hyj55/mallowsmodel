@@ -22,9 +22,9 @@ For Beans/Sushi, average paired differences across fits for each test report, th
 
 ## Pair, shell and context diagnostics on saved fits
 
-L1's fixed-test Beans/Sushi fits supply pair log/Brier losses, training-gap bins, shell components and within-pair context slopes. Beans also uses pair×season cells, and Sushi B pair×current east/west region cells. These strata enter only the diagnostic calculation, not SM/PL fitting or the outer split. The same report-bootstrap indices carry all within-report pairs and all saved-fit contributions together.
+Five L1 fixed-test fits per task, including Sushi B, supply pair log/Brier losses, training-gap bins, shell components and within-pair context slopes. Beans also uses pair×season cells, and Sushi B pair×current east/west region cells. These strata enter only the diagnostic calculation, not SM/PL fitting or the outer split. The same report-bootstrap indices carry all within-report pairs and all saved-fit contributions together.
 
-Sushi A's complete fixed display has no within-pair changing-gap context contrast. Sushi B's varying display can have one, but approximate-center error and respondent/display composition limit interpretation. [Diagnostic tables](https://github.com/hyj55/mallowsmodel/blob/89b21645d5f7eb463cc90c4e982c3a66ce805b41/results/context_effects.csv), [shell decomposition](https://github.com/hyj55/mallowsmodel/blob/89b21645d5f7eb463cc90c4e982c3a66ce805b41/results/shell_decomposition.csv), and [criterion definitions](criteria.md) give the exact quantities.
+Sushi A's complete fixed display has no within-pair changing-gap context contrast. Sushi B's varying display can have one, but approximate-center error and respondent/display composition limit interpretation. [Diagnostic tables](../results/regularized_diagnostics/context_effects.csv), [shell decomposition](../results/regularized_diagnostics/shell_decomposition.csv), and [criterion definitions](criteria.md) give the exact quantities.
 
 ## Five-fold allocation control
 
@@ -33,3 +33,5 @@ Beans and Sushi A also use one random permutation divided into five disjoint out
 ## Mathematical checks and controls
 
 Enumeration at small r verifies normalization, SM pair probabilities, Mahonian shell counts and the PL shell recursion. Generated known-parameter controls confirm the changing-gap SM probability and PL's pair invariance before fitted diagnostic interpretation. Solver/likelihood tests compare independent implementations and replay saved predictions. Such checks verify calculations; they are not independent evidence that either family describes an empirical population.
+
+The [five-fit diagnostic guide](../results/regularized_diagnostics/README.md) links all current C1 pair/shell/context outputs and their verification.

@@ -1,10 +1,10 @@
 {
   "seed": 202609280,
-  "repetitions": 30,
+  "repetitions": 5,
   "protocol_commit": "3da7e993c9ce2ae23a85a418cfa19ac2b138f01d",
   "baseline_main": "551368d48a0b87e7f8573d0f28efa1ac66e4c625",
-  "training_contexts": 690,
-  "candidate_fits": 3450,
+  "training_contexts": 115,
+  "candidate_fits": 575,
   "datasets": [
     {
       "dataset": "beans",
@@ -563,9 +563,9 @@
     }
   ],
   "code_sha256": {
-    "src/repeated_holdout.py": "292346621cbe929d3b08c12df8657e0b898bc094ea35d1fdc0dc04212b6830c9",
-    "src/repeated_holdout_summary.py": "636556c3382358106790acdf15d0cfad2bda795eb7706fa7f3d68eb75d4084b2",
-    "run_repeated_real.py": "debc864c790fbe44ea91ed116a6f2b3e3f8b056dada29f5e5d400e336e0abab7",
+    "src/repeated_holdout.py": "35308283b12f502f8001dea80c8cc50649664eb9e26c87e15bd21a4c62c2309e",
+    "src/repeated_holdout_summary.py": "33e5e1e7761a030b5d053198d2175a27db5be196e9cf85685b6f2a9349c369da",
+    "run_repeated_real.py": "c382dfcc6b3caf125d977eda7fa1930189ebf155d7e2b0a07bf42da3365fabe3",
     "src/data.py": "494cbf5ebf5f575734a956414f1fe247d6bf648652a9a75b307f6f073d714b5d",
     "src/models.py": "ca4c989fe94b60fb5527f128a17175ddbc52092ff8892fe26d795e5e103cfe96",
     "src/strict_models.py": "244c90978402da73879d4826fd09af71ef3bbff6d9f5b52290a304dee52d69a2",
@@ -574,16 +574,20 @@
     "src/strict_features.py": "ae95b71822538c82a8bfe815ea7267406680e401e35577ac58df99561cdb1469",
     "src/validation_extension.py": "bbdeb2bfb088d46166e906716596711cf8ad52274de019d3e6310503fd047c59",
     "run_strict_real.py": "998d0a7aa7ca54d32a45839b83994e8870b0943db0828e63de89af188fecb00a",
-    "docs/protocols/REPEATED_HOLDOUT_20260928.md": "8f058388dc6a4e6d2e760b28de66340fead44e7bd9f643865a3de19377252628"
+    "docs/protocols/REPEATED_HOLDOUT_20260928.md": "a29757deff5bf895d3885db31e5e833886274d8e8a667e297cf8431e92be27a3"
   },
   "published_sha256": {
-    "repeat_scores.csv.gz": "47591795aa93dba24262911749f110ef8f9114be8021f6c04a2d7eb8fb673f70",
-    "scores.csv": "debca0d078762d6d8416ae68bcb9ffdbbbe1cb49fbf45b13ca0fde9e2502c9ba",
-    "repeat_diagnostics.csv.gz": "682bb1dd86f54d473378509cc37dbc8d5bda161ce51118623a5186e8967dbede",
-    "diagnostics.csv": "6154ec4086b20fb15d21c987de94835b4123dd4c68e14404a31660db8dd32081",
-    "repeat_selections.csv.gz": "2f123f923813e96ba675da28d91a7d8b1daf36894ca5fe892db5aefb39db415e",
-    "selections.csv": "da0e85c78c47fc62549fc719f84a70686aa8f7be450db51916c7f1836082f331"
+    "repeat_scores.csv.gz": "aeb5a1f69f6bff21cc74a5de5b572d7ea31eb69511bb8173a67c68e108f331aa",
+    "scores.csv": "cfc22e4688b168d4394883775ad4a71e48915bb636d27598037351bc5910c843",
+    "repeat_diagnostics.csv.gz": "0d2b561f71122bac8921ace2dc794d1af99ef3e4297bec52d039214d6c136909",
+    "diagnostics.csv": "383e8e955320b6ade79bb82bc76556080e9cef5f84cee73808023e46f805c6d7",
+    "repeat_selections.csv.gz": "58918267e390f5f68bd10a85374dc2306209b8f4e31b72c08a0c6145f72f0c52",
+    "selections.csv": "199e14da1b5d74f5e3b21c18825e3a023b4ffff9813045833d616a265b436220"
   },
+  "record_code_signatures": [
+    "9c353fecf84b10a3e09b202c874dd0417bf445c83e9ddb5bf7ea1a213d25b69b"
+  ],
+  "fit_producer": "results/provenance/repeated_holdout_fit_producer.json",
   "versions": {
     "python": "3.13.7",
     "numpy": "2.3.5",

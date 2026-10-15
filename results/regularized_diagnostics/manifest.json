@@ -1,0 +1,22 @@
+{
+  "repetitions": 5,
+  "bootstrap_draws": 2000,
+  "code": {
+    "controls/l1/diagnostics.py": "29aa69a87d69dcbbfa24f037906db5285990e5cf691beec645ca1af0bb01fb2d",
+    "controls/l1/src/diagnostics.py": "57c8a2ad13633a4f7167a66f85c34351b65fe328eb2e7a6b0c20de8249199e02",
+    "controls/l1/validate_diagnostics.py": "bc6a416239e01f9c7d65443489579a1f2f3a26c86be833e77378755ea13a41d3"
+  },
+  "inputs": {
+    "results/regularized_learning/fitted_parameters.json": "84a1ba9d57040eceafd21f1ed3fe9a78f2392f5e260f36b0eef3ec46c550125c"
+  },
+  "outputs": {
+    "shell_decomposition.csv": "c5f86899a3904415cc18f13b63c003f06f4363bb7f6c7ea2a4015b04c723500b",
+    "pair_diagnostics.csv": "9b137cb059632d9e999b958b80e6442b2ac99bbfd762005de3232145ee91d259",
+    "context_effects.csv": "f1905bb07209f189da5c3cdad7d32545d15746d61642f18e2674c865e525c5e7",
+    "context_replicates.csv": "a905c8daf4fad2dc82965ecc81ee34193f090a5e4de875a977436eae845cde35",
+    "adjacent_pair_bins.csv": "da4366fa6e5645a009d9e3a75dda717b3280b2c44a64cd7626b04d4802c3052d",
+    "diagnostic_coverage.csv": "deed9bbe37a44d5f3b9d1d52e0a2d9b99bbc304480f4686af079977e1b380b91",
+    "diagnostic_bin_cutoffs.csv": "377602c1beff5569717a1dac1d779c8cac55d6c237223755fedf6d76a9ef199b",
+    "diagnostic_manifest.json": "ac13f580738ed3bc0ad3f184bb14b8857b8b2d19085d59f04373ff64cf4a9cc6"
+  }
+}

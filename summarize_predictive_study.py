@@ -33,7 +33,7 @@ def summarize(frame):
     rows=[]
     keys=['study','dataset','n','r','N','method']
     for key,g in frame.groupby(keys,sort=True):
-        row=dict(zip(keys,key)); planned=20 if row['study']=='S0' else 30
+        row=dict(zip(keys,key)); planned=20 if row['study']=='S0' else 5
         finite=g.status.eq('ok') & np.isfinite(g.nll) & np.isfinite(g.delta)
         good=g[finite]; count=len(good); complete=count==planned
         row.update(repetitions=len(g),planned_repetitions=planned,available=count,
@@ -80,13 +80,14 @@ def write_tables(summary):
 
 def publish():
     records=apply_saved_retries(read_records()); expected=signature()
-    assert len(records)==1290, (len(records),'Expected 690 P0 + 360 L0 + 240 S0 fits')
-    assert all(r['code_signature']==expected for r in records)
+    assert len(records)==415, (len(records),'Expected 115 P0 + 60 L0 + 240 S0 fits')
+    record_signatures=sorted({r['code_signature'] for r in records})
+    assert len(record_signatures)==1, 'Do not mix model producer versions'
     frame=pd.DataFrame([s for r in records for s in r['scores']])
-    assert len(frame)==7740
+    assert len(frame)==2490
     keys=['study','dataset','repeat','n','N','method']
     assert not frame.duplicated(keys).any()
-    assert (frame.groupby(['study','dataset','n','N','method']).size()==frame.groupby(['study','dataset','n','N','method']).size().index.get_level_values('study').map(lambda s:20 if s=='S0' else 30)).all()
+    assert (frame.groupby(['study','dataset','n','N','method']).size()==frame.groupby(['study','dataset','n','N','method']).size().index.get_level_values('study').map(lambda s:20 if s=='S0' else 5)).all()
     summary=summarize(frame)
     PUBLIC.mkdir(parents=True,exist_ok=True)
     outputs=[]
@@ -140,13 +141,14 @@ def publish():
         allocation_unit=t.unit_description,units=len(np.unique(t.units)),split_key=t.split_key,
         estimator_seed=t.estimator_seed,source_report_sha256=hashlib.sha256(np.asarray(t.y,dtype='<i8').tobytes()).hexdigest()) for t in load_tasks()]
     manifest=dict(protocol_commit=PROTOCOL_COMMIT,code_signature=expected,code_sha256=code_hashes(),
+        record_code_signatures=record_signatures, fit_producer='results/provenance/predictive_fit_producer.json',
         resource_retry=dict(base_commit=BASE_COMMIT,code_sha256=retry_hashes(),
             seconds_limit=1800,memory_bytes=4<<30,
             attempts=sum('resource_retry' in r for r in records),
             recovered=sum('resource_retry' in r and r['models']['sm_sharp']['status']=='ok' for r in records)),
         summary_code_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
-        sources=source_inventory(),datasets=descriptors,training_contexts=1290,
-        context_counts={'P0':690,'L0':360,'S0':240},score_rows=7740,
+        sources=source_inventory(),datasets=descriptors,training_contexts=415,
+        context_counts={'P0':115,'L0':60,'S0':240},score_rows=2490,
         runtime=dict(python=platform.python_version(),platform=platform.platform(),
                      numpy=np.__version__,scipy=scipy.__version__,pandas=pd.__version__),
         summed_context_seconds=sum(r['seconds'] for r in records),

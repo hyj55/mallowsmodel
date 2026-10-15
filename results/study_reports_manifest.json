@@ -1,44 +1,31 @@
 {
   "producer": "build_study_reports.py",
-  "producer_sha256": "55ca1b926898663fb2bcf5d4c21719d154f99bc7c4e3cb9cb71f62608bef8e2b",
+  "producer_sha256": "42c8a56297990154d3fad7ee5d6f1634c6b7557a6451a8d4770501c6a6846215",
   "source_sha256": {
-    "results/predictive/primary.csv": "198690c7eeecab7ccf98ab8f298167711fab5ec27ebae19bb2f0b9e23117a93d",
-    "results/predictive/repeat_scores.csv.gz": "922650063b60d9347ff9990aac2ba8f8eb00e076d60307af5c46e0d6f6c0699f",
-    "results/predictive/predictors.jsonl.gz": "9fd8b773158346c26c1329691b4e63f17549b0ea93a8521e2445aa22a9707fe6"
+    "results/predictive/primary.csv": "2e31ba7d0c17309314a97f463c838e5e4e8566831a62f20e97bf4d5f57ef424b",
+    "results/predictive/repeat_scores.csv.gz": "5aba6cf92538bb3df9ef96521807b048b9aa79cf2c0f31fac440aa2b870cd268",
+    "results/predictive/predictors.jsonl.gz": "1f74eb9884bd0f4b61a915c49b865af4c282136a5d90502e767ab68863112adc"
   },
-  "interpretation": "Presentation views and arithmetic of existing scores only; no fitting or resampling.",
+  "interpretation": "Named current result views; no fitting or resampling.",
   "main_selection": {
     "raw_study": "P0",
     "methods": [
       "pl",
       "sm_likelihood"
     ],
-    "paired_contexts": 690
-  },
-  "estimator_selection": {
-    "raw_study": "P0",
-    "reading_name": "E0",
-    "methods": [
-      "sm_sharp",
-      "sm_fotakis",
-      "sm_efficient_fallback"
-    ]
-  },
-  "global_sieve_selection": {
-    "raw_study": "P0",
-    "reading_name": "B0",
-    "method": "sm_global_sieve"
+    "repetitions": 5,
+    "paired_contexts": 115
   },
   "outputs_sha256": {
-    "results/main/summary.csv": "d3be516458e1d234338c7c7b26501452e2750f62f84d844384e3561f9adbd02f",
-    "results/main/repeat_scores.csv.gz": "71514a6cf0bc0a258893ec4a49559cd0cbc0258d4faa3987b73fdb6d4ec3931c",
-    "results/main/split_precision.csv": "750a2a5030a5d3dce79acbd8a7b77cb8f4fe68e5f9b00b0eaee0884918b4bf8d",
-    "results/estimator_comparison/summary.csv": "444a57947790394c3815e4587896054528de8c9cbad991339e4f79febda6a293",
-    "results/global_sieve/summary.csv": "49a8598b98ab48fe462560665ba5783ba6da76ee64be95a03209e913309780a4",
-    "results/main/README.md": "83d8a6d5642355f111fd8563896c9e3b68ffce66e31c162d5f150f958856cea0",
-    "results/main/split_precision.md": "3517fa41abf205236eb99ce6cabda6978d34a5028b8e62ba573420f99c9ca0b2",
-    "results/estimator_comparison/README.md": "9654d4edde48d179af7ddc43f2ce2e9ac9d794e5e2cdba03716b5d606e010a76",
-    "results/global_sieve/README.md": "e43c602bc400b959b564d5e8cf154a9572c225d3f9d2f741e0620400233bbeba",
-    "results/predictive/tables.md": "4a5c77d5eb3269e311ae6c2e37aa19abbc37be00a7e1ae250ff0c96fc4e1036d"
+    "results/main/summary.csv": "9f642ffa283b8c401e7b436f65e963ee28fc4634e3828847d9762c333a01ef75",
+    "results/main/repeat_scores.csv.gz": "73aec2f9aea34f677d24d2a25613141fea56bd4992ab9130fb10db57a8e812d0",
+    "results/main/split_precision.csv": "8758157003ee9e802a63844dec2875f6dedd2cef1136a8478dcc5568537d31d7",
+    "results/estimator_comparison/summary.csv": "a59b4aaaa42c7ba470ec5ba1a97d7c5be0f3abbfdf5f28786efd5519185bc7f2",
+    "results/global_sieve/summary.csv": "24894b9861fbb3cd417cf87be9ada537383ee2437afb2033b4b9f01554f84a34",
+    "results/main/README.md": "e92ac371a9c0315289f1875bb7e1fd7c10ccf465c31e85648f13526d53b3bf28",
+    "results/main/split_precision.md": "82d413495613d6b618a635ea4e0db19b24a68b01e23069eaee676f1415e8c7b1",
+    "results/estimator_comparison/README.md": "04e14c312d8e2e9d1ffbec04ac2882e2f56ab04b8710565a6d064eaeb9222a55",
+    "results/global_sieve/README.md": "85a15c1f894af84efeb3c084d22cccc789c738aef1ca3c03c3215e89051b0077",
+    "results/predictive/tables.md": "b7f03043e62fb056d1732942d1257d0f52618f375f65fe4ecf29900274b9307d"
   }
 }

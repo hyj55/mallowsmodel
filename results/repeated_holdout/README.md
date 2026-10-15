@@ -4,11 +4,11 @@ This is the supplementary **P1 unpenalized control**. The main experiment is [P0
 
 [P1 design](../../docs/repeated_holdout.md) · [Formulas](../../docs/criteria.md) · [Partition uncertainty](../../docs/uncertainty.md#partition-monte-carlo-standard-error)
 
-Thirty randomized 60/20/20 training/discovery/confirmation partitions per task, with a full refit on each training partition. These outputs estimate mean predictive performance over the specified allocation mechanism. Trial/person-local and group-transfer targets are documented separately in G1.
+Five randomized 60/20/20 training/discovery/confirmation partitions per task, with a full refit on each training partition. These outputs estimate mean predictive performance over the specified allocation mechanism. Trial/person-local and group-transfer targets are documented separately in G1.
 
 | File | Contents |
 |---|---|
-| `repeat_scores.csv.gz` | All 6,900 method/held-out-partition score rows: 23 tasks × 30 fits × 5 methods × 2 held-out partitions |
+| `repeat_scores.csv.gz` | All 1,150 method/held-out-partition score rows: 23 tasks × 5 fits × 5 methods × 2 held-out partitions |
 | `scores.csv` | 230 aggregate rows, including mean NLL, paired SM−PL difference, partition Monte Carlo SE, fit/finite counts and conditional alternatives |
 | `repeat_diagnostics.csv.gz`, `diagnostics.csv` | All recorded context slopes, shell decompositions and pair-profile points, followed by their descriptive averages and availability counts |
 | `repeat_selections.csv.gz`, `selections.csv` | The 16 strict-feature tasks' discovery-only model selections and their confirmation losses, including abstentions |
@@ -24,7 +24,7 @@ The across-all-repetitions mean is blank if any repetition is unavailable. It is
 
 Within each repeat, `finite_report_nll` and `finite_report_delta` separately restrict to finite individual reports. Their summaries are secondary and have a different denominator. `finite_report_coverage` and `paired_finite_report_coverage` give the average retained fraction. Do not confuse excluding entire unavailable repetitions with excluding zero-probability test reports inside a repetition.
 
-`*_partition_mcse` is $`\mathrm{SD}/\sqrt{30}`$, available only when all 30 scalar metrics are finite. It measures numerical precision over randomized partitions **conditional on these fixed data**. It is not a population standard error, a respondent confidence interval, or evidence that repeated test participants are independent. A separately named `*_finite_conditional_partition_mcse` uses the corresponding number of finite repetitions. No split percentile ranges or population-significance decisions are reported here.
+`*_partition_mcse` is $`\mathrm{SD}/\sqrt{5}`$, available only when all five scalar metrics are finite. It measures numerical precision over randomized partitions **conditional on these fixed data**. It is not a population standard error, a respondent confidence interval, or evidence that repeated test participants are independent. A separately named `*_finite_conditional_partition_mcse` uses the corresponding number of finite repetitions. No split percentile ranges or population-significance decisions are reported here.
 
 Every score row records item/pair training coverage and the original estimator status. Finite item coverage does not certify a finite unpenalized PL MLE, the uniform display-design assumption, independent observations, or a theorem's sufficient sample-size condition. The original Sharp mechanical evaluation is retained where computationally feasible; it is not newly admitted under the more conservative policy of the separate group study.
 

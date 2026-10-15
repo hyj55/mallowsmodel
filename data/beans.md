@@ -28,7 +28,7 @@ All 120 possible unordered triples occur in the full source, and all 45 pairs oc
 
 ## Season composition and allocation
 
-In the main [P0 comparison](../docs/predictive_comparison.md), each of thirty allocations uses 673 development reports and 169 test reports. Its 505/168 inner split selects the PL penalty before refitting on all 673; SM has a fixed beta bound. Final-development lambda is 44.8667 and mu is 201.9. The separate E0 estimator comparison attempts Sharp without an eight-item guard; B0 aliases its global sieve. Neither is part of the Algorithm 4.1 main comparison. Farmer identities remain unavailable, and the main comparison does not claim anonymous-report population CIs or exact seasonal balance.
+In the main [P0 comparison](../docs/predictive_comparison.md), each of five allocations uses 673 development reports and 169 test reports. Its 505/168 inner split selects the PL penalty before refitting on all 673; SM has a fixed beta bound. Final-development lambda is 44.8667 and mu is 201.9. The separate E0 estimator comparison attempts Sharp without an eight-item guard; B0 aliases its global sieve. Neither is part of the Algorithm 4.1 main comparison. Farmer identities remain unavailable, and the main comparison does not claim anonymous-report population CIs or exact seasonal balance.
 
 | Source season | Reports |
 |---|---:|

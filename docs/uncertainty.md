@@ -8,11 +8,11 @@ A fitted model's performance on new respondents, a learning procedure's average 
 
 | Experiment/output | Random unit used in its uncertainty calculation | Calculation | Interpretation |
 |---|---|---|---|
-| P0 main and E0/L0 supplementary empirical means | Random allocation of fixed source units, including inner tuning | Mean; SD/sqrt(30); 2.5th–97.5th split quantiles | Partition Monte Carlo precision and descriptive spread; no population CI for the mean |
+| P0 main and E0/L0 supplementary empirical means | Random allocation of fixed source units, including inner tuning | Mean; SD/sqrt(5); 2.5th–97.5th split quantiles | Partition Monte Carlo precision and descriptive spread; no population CI for the mean |
 | P0/E0/L0 per-split prediction | Identified test units, all their reports kept together, fitted parameters fixed | 2,000 paired cluster draws; percentile interval of report-weighted ratios | Nominal 95% conditional test-sampling interval; anonymous tasks have no such CI |
 | S0 controlled curves | Fresh independent training and test datasets | Student-t mean interval over 20 repetitions | Approximate 95% Monte Carlo interval for that simulation procedure |
-| P1 repeated prediction | Random partition of the same fixed source data | Mean ± **one** $`\mathrm{SD}/\sqrt{30}`$ in figures | Conditional partition Monte Carlo precision; not a 95% CI |
-| G1 group comparison | Refit outcome across randomized partitions | 5th–95th percentiles; figure center is median | Central 90% empirical split range; not a CI |
+| P1 repeated prediction | Random partition of the same fixed source data | Mean ± **one** $`\mathrm{SD}/\sqrt{5}`$ in figures | Conditional partition Monte Carlo precision; not a 95% CI |
+| G1 group comparison | Refit outcome across randomized partitions | Minimum/maximum; figure center is median | Observed five-split range; not a CI |
 | P2 identified-unit prediction/shells | Held-out person or whole report, with fitted models fixed | 2,000 paired bootstrap draws; 2.5th–97.5th percentiles | Pointwise nominal 95% conditional interval |
 | P2 context slope | Whole ranking report, with ranking-model parameters fixed | 2,000 report bootstrap draws; refit diagnostic slope | Exploratory plug-in percentile interval |
 | L1/L2 and regularized C1 empirical summaries | Held-out report after averaging its losses over saved training fits | 2,000 paired report bootstrap draws | Conditional on the particular fitted model collection |
@@ -26,7 +26,7 @@ A fitted model's performance on new respondents, a learning procedure's average 
 
 All stated confidence levels are pointwise, without adjustment for the many tasks, methods, budgets and diagnostics. They are not posterior probabilities that one model is true. A 95% confidence procedure concerns repeated-sampling coverage under its assumptions. Approximate procedures need not attain 95% in a small or dependent sample.
 
-The [primary design](predictive_comparison.md#loss-averaging-and-intervals) specifies the P0 formulas and why its two uncertainty calculations have different targets. The [learning design](predictive_learning.md) describes dependence between nested budgets. Per-split bootstrap endpoints are never averaged into an interval for a thirty-split mean. P0's small known-group samples, including ten held-out Sounds assessors, retain the same small-cluster limitations described below.
+The [primary design](predictive_comparison.md#loss-averaging-and-intervals) specifies the P0 formulas and why its two uncertainty calculations have different targets. The [learning design](predictive_learning.md) describes dependence between nested budgets. Per-split bootstrap endpoints are never averaged into an interval for a five-split mean. P0's small known-group samples, including ten held-out Sounds assessors, retain the same small-cluster limitations described below.
 
 ## Paired whole-report bootstrap
 
@@ -85,7 +85,7 @@ P2 uses B=2,000 where independent report units are supported. D2 uses B=499 **in
 
 ## Partition Monte Carlo standard error
 
-For P0 main, E0/L0 supplements and P1, let $`D^{(b)}`$ be the mean paired outer-test loss after fitting on partition b (called confirmation in P1). The dataset is fixed; partition seeds are independently randomized. When all R=30 values are finite,
+For P0 main, E0/L0 supplements and P1, let $`D^{(b)}`$ be the mean paired outer-test loss after fitting on partition b (called confirmation in P1). The dataset is fixed; partition seeds are independently randomized. When all R=5 values are finite,
 
 ```math
 \bar D=\frac1R\sum_bD^{(b)},\qquad
@@ -103,15 +103,15 @@ Here $`D`$ is the scalar loss difference from one random partition. Reusing peop
 
 The [P1 figure](../figures/repeated_holdout/confirmation_means.png) plots **$`\bar D\pm\mathrm{MCSE}`$**, not $`\pm1.96\,\mathrm{MCSE}`$ and not a population confidence interval. The point is an average of separately trained models' losses, not an ensemble's log loss. Increasing R reduces integration error over partitions; it does not make a finite source sample arbitrarily informative about a population. For the related population-variance problem, [Bengio and Grandvalet (2004)](https://www.jmlr.org/papers/v5/grandvalet04a.html) show that no universally unbiased variance estimator exists for K-fold cross-validation. Their result concerns K-fold CV, not this conditional random-partition MCSE; it is a reason to distinguish targets rather than transfer a naive independent-fold CI to P0.
 
-The [P0 precision audit](../results/main/split_precision.md) lists all uses of the 30 randomizations and compares fixed prefixes of the saved results. Thirty is a computation/precision choice, not a theoretical minimum. P0/E0/L0 retain separate conditional test-unit bootstrap intervals inside eligible partitions; their mean-level CI fields remain empty.
+The [P0 precision report](../results/main/split_precision.md) lists the five-allocation estimates. Five is a computation/precision choice, not a theoretical minimum. Estimating SD from five values has only four degrees of freedom; small MCSE does not certify a model winner or population precision. Per-split test-unit bootstrap intervals remain conditional on their fits; mean-level population CI fields are empty.
 
 P1 does not bootstrap within partitions, average bootstrap endpoints, or combine a P2 CI with a P1 mean. Its diagnostic records use zero bootstrap draws and aggregate descriptive point estimates only. Different bins/eligible diagnostics can contribute different numbers of repetitions.
 
 ## Group split percentiles
 
-G1 refits on 100 prespecified 70/30 within-group partitions, 20 partitions each at 50/50 and 80/20, and 100 separate whole-group holdouts. For each scalar metric, the summary retains finite repetition values and computes mean, median, $`Q_{0.05}`$, $`Q_{0.95}`$ and the fraction below zero. Figures show the median and $`[Q_{0.05},Q_{0.95}]`$; tables generally show means.
+G1 uses five randomized partitions at each training fraction (50%, 70%, 80%) and five whole-group holdouts. Summaries retain finite counts, means, medians, minima, maxima and sign fractions. Figures show the median and observed minimum–maximum range. Machine-readable 5th/95th percentiles are also retained as descriptive interpolations; with five values they have little tail resolution.
 
-These quantiles describe the spread of **individual split outcomes**, not uncertainty in their mean. They contain the central 90% of the observed finite-result distribution, not a 95% CI. No independent-splits t test is used. Local/reference interactions use common four-way finite report masks within a repetition; missing or infinite outcomes and coverage are reported separately. A narrow conditional range with very poor coverage is not evidence of good unconditional performance.
+These are ranges of individual split outcomes, not confidence intervals for their mean or a population. Four-way finite report masks are shared by both model families and schemes. Missing and infinite outcomes and their coverage remain explicit. No independent-split population t-test is used.
 
 ## Student-t simulation intervals
 
@@ -149,7 +149,7 @@ For L1/L2 and related fixed-test empirical controls, multiple trained fits share
 \bar d_t=\frac1R\sum_{b=1}^{R}(\ell_{\mathrm{SM},b,t}-\ell_{\mathrm{PL},b,t}),
 ```
 
-then apply the 2,000-draw report bootstrap to the vector of $`\bar d_t`$ values. L1 has R=5 for Beans/Sushi A and R=3 for Sushi B; L2 has R=5. These intervals condition on that fitted collection. They do not resample the training subsets or quantify outer-split variability. Averaging log losses is also different from scoring averaged probabilities.
+then apply the 2,000-draw report bootstrap to the vector of $`\bar d_t`$ values. L1 and L2 each use R=5 for every task. These intervals condition on that fitted collection. They do not resample the training subsets or quantify outer-split variability. Averaging log losses is also different from scoring averaged probabilities.
 
 Beans year transfer uses five permutations of the same 2015 training reports, the same 2016 test rows, and that same test-only bootstrap. Missing farmer IDs make its saved endpoints assumption-dependent descriptive evidence, not a verified cluster-valid CI. The five-fold control reports no fold-based CI.
 
@@ -157,7 +157,7 @@ ATP's season-level bootstrap is described above. Across seasons, the reported me
 
 ## Nonfinite results and denominators
 
-- **P1:** any undefined repetition makes the full mean unavailable; all-defined results retain infinite loss. The full MCSE requires all 30 values finite. `finite_conditional_mean` and its MCSE use only K finite repetitions, dividing their SD by $`\sqrt K`$. Finite-report summaries are separately named and have another denominator.
+- **P1:** any undefined repetition makes the full mean unavailable; all-defined results retain infinite loss. The full MCSE requires all 5 values finite. `finite_conditional_mean` and its MCSE use only K finite repetitions, dividing their SD by $`\sqrt K`$. Finite-report summaries are separately named and have another denominator.
 - **S1/S2:** full mean CIs require all repetitions finite. `finite_conditional` intervals apply the t formula to K finite values with $`K-1`$ degrees of freedom. This changes the estimand.
 - **D2 prediction:** full t intervals require all values finite; a finite-conditional mean and counts are saved, without a separate finite-conditional CI in that table.
 - **P2 bootstrap:** ordinary predictive intervals are not supplied when required paired losses are nonfinite or independent sampling units cannot be justified.
@@ -169,4 +169,4 @@ An unbounded SM fit can put probability one on a center ordering after a zero-di
 
 Beans has no farmer ID. Anonymous PrefLib records lose cross-trial worker identities; recovering a stimulus-set filename does not recover people. Wheat has redacted names and 113 missing village labels. Their unverified report/cluster intervals are not used for inferential conclusions; corresponding P2 CI fields are absent or empty. Repeating partitions cannot repair unidentified sampling units.
 
-The study does not estimate a population sampling CI for the complete 30-partition learning procedure, perform a bootstrap that refits both models on resampled training populations, or correct intervals for source search and multiple testing. Seasons, locations and participant mixtures can change the target distribution even when omitted from model fitting. These limits define how the numerical intervals should be read; they do not alter the saved point estimates.
+The study does not estimate a population sampling CI for the complete five-partition learning procedure, perform a bootstrap that refits both models on resampled training populations, or correct intervals for source search and multiple testing. Seasons, locations and participant mixtures can change the target distribution even when omitted from model fitting. These limits define how the numerical intervals should be read; they do not alter the saved point estimates.

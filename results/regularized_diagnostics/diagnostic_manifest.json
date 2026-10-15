@@ -1,0 +1,20 @@
+{
+  "reporting_repetitions": 5,
+  "fitted_parameters_sha256": "84a1ba9d57040eceafd21f1ed3fe9a78f2392f5e260f36b0eef3ec46c550125c",
+  "seed": 20260925,
+  "bootstrap": 2000,
+  "python": "3.13.7",
+  "numpy": "2.3.5",
+  "verification": {
+    "exhaustive_sizes": [
+      3,
+      4,
+      5,
+      6
+    ],
+    "max_shell_probability_error": 1.1102230246251565e-16,
+    "checks": "pair marginals, shell counts, PL shell DP, loss decomposition, analytic triples"
+  },
+  "inference": "Exploratory, conditional on five saved fits; whole-report resampling",
+  "joint_likelihood_included": false
+}

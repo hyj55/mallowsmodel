@@ -6,7 +6,7 @@ Read results by experiment, dataset, estimator, evaluation target and denominato
 
 | Location | Components | What to read |
 |---|---|---|
-| [main](main/README.md) | **P0 main experiment: Algorithm 4.1** | Independent likelihood-center SM versus PL table and analysis; all 690 paired comparisons; uncertainty and 30-shuffle precision |
+| [main](main/README.md) | **P0 main experiment: Algorithm 4.1** | Independent likelihood-center SM versus PL table and analysis; all 115 paired comparisons; uncertainty and five-shuffle precision |
 | [estimator_comparison](estimator_comparison/README.md) | **E0 supplementary estimator comparison** | Sharp, Fotakis and Efficient outcomes and availability, separate from main completeness |
 | [global_sieve](global_sieve/README.md) | **B0 supplementary global sieve** | Exact identity with Sharp where applicable; aliases are not extra fits |
 | [predictive](predictive/README.md) | Shared raw allocation records; L0/S0 supplementary curves | Stable raw keys, parameters and hashes; explicit mapping to P0/E0/B0 reader views |
@@ -26,3 +26,5 @@ The last two locations pin implementation `89b21645d5f7eb463cc90c4e982c3a66ce805
 $`\Delta=\mathrm{NLL}(\mathrm{SM})-\mathrm{NLL}(\mathrm{PL})`$; negative favors SM. A fixed-fit bootstrap interval, independent-simulation t interval, Wilson rate interval, split percentile range and partition MCSE are different objects. No bootstrap endpoints are averaged to form P1 uncertainty. All unavailable/infinite/finite-conditional counts must accompany a comparison. [Definitions and formulas](../docs/uncertainty.md).
 
 Three large D2 artifacts are restored with `python validation_artifacts.py`. Public empirical artifacts generally contain fitted parameters and aggregate results; detailed private membership/prediction caches are needed for some local replay. See [reproduction](../docs/reproducibility.md) for those distinctions.
+
+[L1 fixed-test learning](regularized_learning/README.md) and [C1 five-fit diagnostics](regularized_diagnostics/README.md) each use five saved fits per budget/task, with their own conditional bootstrap target.

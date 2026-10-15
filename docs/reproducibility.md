@@ -28,7 +28,7 @@ Run `python build_study_reports.py` to regenerate the independent P0 main report
 
 ## Reproduce the shared prediction runner
 
-The runner stores P0 main, E0 estimator and B0 sieve outcomes under one empirical allocation-family key. **Only `pl` and `sm_likelihood` define the main Algorithm 4.1 comparison.** The [named selection mapping](estimator_comparison.md#reading-name-versus-stored-key) is used by all reader reports. L0/S0 are supplementary learning/simulation experiments. The shared fitting modules are `src/predictive_models.py`, `src/resource_sieve.py` and `src/predictive_study.py`. [The protocol](protocols/PREDICTIVE_COMPARISON_20261013.md) was committed before fitting. All 23 source tasks use the same parsers and source hashes as the supplementary repeated comparison. After acquiring those sources through `download_repeated_data.py`, run:
+The runner stores P0 main, E0 estimator and B0 sieve outcomes under one empirical allocation-family key. **Only `pl` and `sm_likelihood` define the main Algorithm 4.1 comparison.** The [named selection mapping](estimator_comparison.md#reading-name-versus-stored-key) is used by all reader reports. L0/S0 are supplementary learning/simulation experiments. The shared fitting modules are `src/predictive_models.py`, `src/resource_sieve.py` and `src/predictive_study.py`. The [execution specification](protocols/PREDICTIVE_COMPARISON_20261013.md) describes the current five-allocation budget; [producer provenance](../results/provenance/README.md) retains the actual fitted-record versions. All 23 source tasks use the same parsers and source hashes as the supplementary repeated comparison. After acquiring those sources through `download_repeated_data.py`, run:
 
 ```bash
 python benchmark_resource_sieve.py
@@ -40,9 +40,9 @@ python compare_predictive_features.py
 python validate_predictive_study.py
 ```
 
-The benchmark builds each expensive shared packing once and records complete results or resource failures. It does not fit outcome-dependent prediction models. The study runner is restartable and refuses to mix caches from different code fingerprints. `--study P0` selects the raw empirical batch (P0 main plus E0/B0 supplements), while `--study L0` and `--study S0` select the corresponding curve batches; `--datasets` restricts empirical tasks. Partial runs are not publishable as the complete study: the summarizer requires all 1,290 contexts and all planned repetitions. Use a fresh private-output directory or checkout for a changed protocol.
+The benchmark builds each expensive shared packing once and records complete results or resource failures. It does not fit outcome-dependent prediction models. The study runner is restartable and refuses to mix caches from different code fingerprints. `--study P0` selects the raw empirical batch (P0 main plus E0/B0 supplements), while `--study L0` and `--study S0` select the corresponding curve batches; `--datasets` restricts empirical tasks. Partial runs are not publishable as the complete study: the summarizer requires all 415 contexts and all planned repetitions. Use a fresh private-output directory or checkout for a changed protocol.
 
-The completion command belongs to E0/L0/S0 supplements and is not needed to obtain P0 main results. It retries only the 630 initially unavailable Sharp contexts under a 1,800-second / 4-GiB budget. It checks the reconstructed data hashes before fitting and uses unchanged allocation and selected-pair streams. Exact ball-cover and radius-one parity algorithms preserve the original sieve. Restartable records go to `results/private/predictive_retry/`; the summarizer overlays them onto the original contexts, without duplicating repetitions or refitting other models. Original and completion code fingerprints remain separate in the manifest. The combined public results include 100 recovered Sharp fits; the full validator replays the combined records. To reproduce the current publication, run both fitting and completion commands before summarizing.
+The completion command belongs to E0/L0/S0 supplements and is not needed to obtain P0 main results. It retries only the 205 resource-limited Sharp contexts under a 1,800-second / 4-GiB budget. It checks the reconstructed data hashes before fitting and uses unchanged allocation and selected-pair streams. Exact ball-cover and radius-one parity algorithms preserve the original sieve. Restartable records go to `results/private/predictive_retry/`; the summarizer overlays them onto the original contexts, without duplicating repetitions or refitting other models. Original and completion code fingerprints remain separate in the manifest. The combined public results include 50 completed Sharp fits; the full validator replays the combined records. To reproduce the current publication, run both fitting and completion commands before summarizing.
 
 The public `results/predictive/` directory contains aggregate CSVs, compressed per-repetition scores and predictor parameters, plus source/code/resource manifests. Gzip files are ordinary standard-library-readable archives; no custom restoration is needed. Detailed empirical membership and per-report loss caches stay in `results/private/predictive/`. The full validator reconstructs memberships, checks group separation and source hashes, replays every saved probability and conditional bootstrap, and regenerates synthetic draws from recorded streams without refitting. Repository-only mode checks published parameters, all denominators, aliases, hashes and aggregate arithmetic without downloading source records.
 
@@ -85,7 +85,7 @@ python validate_repeated_holdout.py
 python make_repeated_holdout_figures.py
 ```
 
-Root seed 202609280 and `SeedSequence([seed, task_split_key, repeat])` define 30 independent partition randomizations per task. Estimator seeds retain their specified values. Sushi A/B share one split key, and each dots2024 arm shares a key across r values. All methods share the same reports within a repetition. The manifest records exact keys, unit rules, source/core hashes and numerical versions.
+Root seed 202609280 and `SeedSequence([seed, task_split_key, repeat])` define five independent partition randomizations per task. Estimator seeds retain their specified values. Sushi A/B share one split key, and each dots2024 arm shares a key across r values. All methods share the same reports within a repetition. The manifest records exact keys, unit rules, source/core hashes and numerical versions.
 
 The runner retains detailed membership/predictor caches locally. Full validation replays those caches without refitting. `--datasets` supports complete task batches; `--summarize-only` recomputes public aggregates after every task finishes. `--quick` writes implementation-check repetitions to a separate ignored directory; they are not publication repetitions. Certificate availability can vary with platform or load under the fixed 120-second budget; an uncertified solution remains unavailable.
 
@@ -109,7 +109,7 @@ python validate_group_sensitivity.py
 python make_group_sensitivity_figures.py
 ```
 
-Root seed 202609270 separates task, fraction, repetition, purpose and group streams. Nine tasks use 100 within-group 70/30 splits, 20 each at 50/50 and 80/20, and 100 whole-group holdouts. The loader verifies the original voting archive against every PrefLib frequency. Detailed fits and memberships stay in ignored `results/private/group_sensitivity/`; full validation requires that runner-generated cache. Public verification instead recomputes aggregate tables from published repeat rows.
+Root seed 202609270 separates task, fraction, repetition, purpose and group streams. Nine tasks use five within-group splits at each of 50/50, 70/30 and 80/20, and five whole-group holdouts. The loader verifies the original voting archive against every PrefLib frequency. Detailed fits and memberships stay in ignored `results/private/group_sensitivity/`; full validation requires that runner-generated cache. Public verification instead recomputes aggregate tables from published repeat rows.
 
 `--quick --datasets puzzle-5 sounds` is an isolated implementation check. `--datasets` can partition a full run or read-only replay by task. A completed run's [validation receipt](../results/group_sensitivity/validation.json) records which batches and tables were checked.
 
@@ -142,14 +142,16 @@ Use the [matching implementation snapshot](https://github.com/hyj55/mallowsmodel
 
 | Experiment | Commands in that snapshot | Seed and dependencies |
 |---|---|---|
-| L1 empirical curves, C1 center benchmark | `python run_experiments.py --part real` | 20260920; downloads verified Beans/Sushi sources |
+| L1 empirical curves (current checkout) | `python controls/l1/run.py`, then `python controls/l1/validate.py --write-manifest --sources` | 20260920; five permutations per budget; 80 saved fits |
+| C1 center benchmark (linked implementation) | `python run_experiments.py --part real` | 20260920; fixed benchmark fits, distinct from the L1 summary |
 | S3 n=10 learning grid | `python run_experiments.py --part synthetic` | 20260920; 30 independent streams per law, nested N |
 | L2 small empirical budgets | `python run_exposure.py --part real` | 20260925; same outer split rule as L1 |
 | S3 n=8 exposure | `python run_exposure.py --part small` | 20260925; 30 repetitions per cell |
 | S3 n=64 exposure | `python run_exposure.py --part coverage` | 20260925; separate streams per requested design |
 | T1 ATP | `python run_exposure.py --part tennis` | 20260925; chronological allocation, pinned 2009–2019 source files |
 | T1 Beans, C1 same order/five folds | `python run_followups.py` | Uses L1 saved parameters; add `--cutting-plane` for the two objective-bound pilots |
-| C1 pair/shell/context diagnostics | `python run_diagnostics.py`, then `python run_diagnostics.py --same-center` | 20260925; uses L1 saved parameters |
+| C1 pair/shell/context diagnostics (current checkout) | `python controls/l1/diagnostics.py`, then `python controls/l1/validate_diagnostics.py --write-manifest` | 20260925; five current L1 fits per task |
+| C1 same-center sensitivity (linked implementation) | `python run_diagnostics.py --same-center` | Five fixed Sushi A fit contexts |
 | C1 ATP common order, L2 fixed penalties | `python run_exposure_followup.py` | Uses saved tennis and empirical exposure parameters |
 
 Install that snapshot's recorded dependencies and follow its source manifests. [Learning curves](learning_curves.md), [temporal design](temporal_prediction.md), and [controls](structural_controls.md) specify the statistical targets. Snapshot result files can be inspected directly without rerunning these commands. Interval limitations in [the shared uncertainty chapter](uncertainty.md) apply even where an immutable table contains unsupported sampling-interval columns.
@@ -165,3 +167,11 @@ Source acquisition rejects changed byte counts or SHA256 hashes. Repair a local 
 E0/L0/S0 Sharp has no eight-item guard: exact shortcuts and complete packings use declared memory/time budgets. A timeout is an unavailable Sharp fit, never a truncated approximate packing. P0 likelihood centers use exact subset DP through n=18 and a 30-second integer attempt above that size, with explicit approximate status when bounds differ. The supplementary P1/P2 implementation retains its eight-item sieve guard and 120-second exact-center certificate rule so its byte-locked outputs can still be replayed. All successful efficient fits have zero hierarchy depth. Tied exact optima and wall-clock-limited incumbents can differ across solver versions or hardware; compare objectives, resource receipts and certificates, and disclose resulting prediction differences rather than forcing agreement.
 
 CSV blanks/NaN denote unavailable quantities; infinity denotes divergent loss. Some saved JSON parameter records use Python-compatible NaN/Infinity tokens, so a strict JSON reader may need explicit handling. Verification of stored values is not a new independent experiment. The [protocol index](protocols/README.md) and [result dictionaries](../results/README.md) identify the evidence supporting each run.
+
+## Current report-only refresh
+
+After generating or replaying all five-allocation caches, rebuild numerical summaries with `summarize_predictive_study.py`, `run_repeated_real.py --summarize-only` and `run_group_sensitivity.py --summarize-only`. The current main bundle has 115 empirical, 60 learning and 240 independently simulated contexts. E0/B0 share the empirical contexts, and do not add observations.
+
+`python refresh_feature_predictions.py` joins unchanged full-data descriptors to the current P1 results and regenerates their joint report. `python compare_predictive_features.py` builds the P0 counterpart. Neither recomputes the descriptive reference centers or fits prediction models. Regenerate the predictive, repeated-holdout and group figures with their respective `make_*_figures.py` scripts.
+
+Saved fits and reporting code can have different producer fingerprints. Use the [provenance registry](../results/provenance/README.md); do not rewrite a cached fit's code signature to make it appear freshly generated. A clean reproduction uses an empty cache. Time-limited optimization may produce different valid incumbents, so certificates and objective gaps must accompany any changed prediction.

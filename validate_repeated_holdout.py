@@ -32,17 +32,19 @@ def frames_equal(actual, expected):
 
 def validate_public():
     manifest = json.loads((PUBLIC / 'manifest.json').read_text())
-    assert manifest['repetitions'] == REPETITIONS == 30
-    assert manifest['training_contexts'] == 690 and manifest['candidate_fits'] == 3450
+    assert manifest['repetitions'] == REPETITIONS == 5
+    assert manifest['training_contexts'] == 115 and manifest['candidate_fits'] == 575
     assert manifest['protocol_commit'] == PROTOCOL_COMMIT
     assert manifest['code_sha256'] == code_hashes()
+    from src.fit_provenance import validate_producer
+    validate_producer(ROOT, manifest)
     for name, digest in manifest['published_sha256'].items():
         assert hashlib.sha256((PUBLIC / name).read_bytes()).hexdigest() == digest, name
     scores = pd.read_csv(PUBLIC / 'repeat_scores.csv.gz')
     diagnostics = pd.read_csv(PUBLIC / 'repeat_diagnostics.csv.gz')
     selections = pd.read_csv(PUBLIC / 'repeat_selections.csv.gz')
     keys = ['dataset', 'repeat', 'split', 'method']
-    assert not scores.duplicated(keys).any() and len(scores) == 6900
+    assert not scores.duplicated(keys).any() and len(scores) == 1150
     descriptors = {t['dataset']:t for t in manifest['datasets']}
     assert len(descriptors) == 23 and set(scores.dataset) == set(descriptors)
     assert set(scores.method) == set(METHODS)
@@ -66,7 +68,7 @@ def validate_public():
         paired.loc[valid, 'nll'] - paired.loc[valid, 'nll_pl'], rtol=2e-9, atol=2e-9)
     assert paired.loc[~valid, 'paired_delta'].isna().all()
     assert not diagnostics.duplicated(['dataset', 'repeat', 'split', 'kind', 'reference', 'component']).any()
-    assert len(selections) == 16*30*2
+    assert len(selections) == 16*5*2
     assert not selections.duplicated(['dataset', 'repeat', 'selector']).any()
     for name, expected in [('scores', summarize_scores(scores)),
             ('diagnostics', summarize_diagnostics(diagnostics)),
@@ -117,7 +119,7 @@ def validate_records(tasks, records, expected_repetitions):
     checked = []
     for record in records:
         task, rep = by_name[record['dataset']], record['repeat']
-        assert record['code_signature'] == signature
+        assert record['code_signature'] in json.loads((PUBLIC/'manifest.json').read_text())['record_code_signatures']
         parts = split_task(task, rep)
         for split, ids in parts.items():
             np.testing.assert_array_equal(ids, record['parts'][split])

@@ -34,6 +34,7 @@ def validate_dataset(task, directory):
     score_keys = ['design', 'percent', 'repeat', 'scheme', 'group', 'method']
     contrast_keys = ['design', 'percent', 'repeat', 'group', 'sm_method', 'reference']
     assert not scores.duplicated(score_keys).any()
+    assert set(scores['repeat']) == set(range(5))
     assert not contrasts.duplicated(contrast_keys).any()
     expected_scores = {tuple(row[k] for k in score_keys): row for row in scores.to_dict('records')}
     expected_contrasts = {tuple(row[k] for k in contrast_keys): row for row in contrasts.to_dict('records')}
@@ -120,14 +121,14 @@ def validate_public(public):
     manifest = json.loads((public / 'manifest.json').read_text())
     assert len(manifest['datasets']) == 9
     assert sum(x['reports'] for x in manifest['datasets']) == 7743
-    assert all(not x['quick'] and x['holdout_repetitions'] == 100 for x in manifest['datasets'])
+    assert all(not x['quick'] and x['holdout_repetitions'] == 5 for x in manifest['datasets'])
     for name, digest in manifest['published_sha256'].items():
         assert hashlib.sha256((public / name).read_bytes()).hexdigest() == digest, name
     for name, digest in manifest['code_sha256'].items():
         assert hashlib.sha256((ROOT / name).read_bytes()).hexdigest() == digest, name
     scores = pd.read_csv(public / 'repeat_scores.csv.gz')
     contrasts = pd.read_csv(public / 'repeat_contrasts.csv.gz')
-    assert len(scores) == 23400
+    assert len(scores) == 2250
     assert (scores.n_finite + scores.n_infinite == scores.n_available).all()
     assert (scores.n_available <= scores.n_test).all()
     for frame, expected, name in [(scores, summarize_scores(scores), 'scores.csv'),

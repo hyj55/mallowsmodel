@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "fits": 80,
+  "budget_summaries": 16,
+  "per_budget_repetitions": 5,
+  "all_source_memberships_replayed": true,
+  "all_four_predictions_replayed": true,
+  "bootstrap_intervals_replayed": 48,
+  "refits_during_validation": 0,
+  "manifest_sha256": "bab776bbf3fbd9d54bafa2727cf4f68b402bdde5b74979c19cf919af115f4648",
+  "validator_sha256": "483fac917bf82281c0b040998f97dcf66a3460d6eee991af175aea0f0faee1e6"
+}

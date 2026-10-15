@@ -84,7 +84,7 @@ def render_section():
         '|---|---|---|---:|']
     for row in data.loc[data.nll_study.eq('T1')].itertuples():
         lines.append(f'| {label(row.dataset)} | NA: singleton shells | NA: pair fixes display | {row.delta:+.5f} |')
-    lines += ['', 'The four incomplete P1 means remain NA in every table and plot. Conditional means below use only the listed successful comparisons and are not substituted for complete Δ.','',
+    lines += ['', 'Incomplete P1 means remain NA in every table and plot. Conditional means below use only the listed successful comparisons and are not substituted for complete Δ.','',
         '| Task | Finite repetitions | Conditional Δ |','|---|---:|---:|']
     for row in p1.loc[p1.delta.isna()].itertuples():
         lines.append(f'| {label(row.dataset)} | {row.paired_repetitions}/{row.planned_repetitions} | {row.conditional_delta:+.5f} |')

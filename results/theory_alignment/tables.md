@@ -18,51 +18,51 @@ Only dots2024 A/B r=2 pass the numerical λ≤1 screen. All rows still lack a ve
 | 00025-00000002 | 4 | 4 | 477 | 477 | 477 | 199.89 | 477 | True |
 | 00025-00000003 | 4 | 4 | 477 | 477 | 477 | 199.89 | 477 | True |
 | 00025-00000004 | 4 | 4 | 478 | 478 | 478 | 200.31 | 478 | True |
-| beans | 10 | 3 | 505 | 33.667 | 151.5 | 72.191 | 17 | False |
+| beans | 10 | 3 | 505 | 33.667 | 151.5 | 72.191 | 23 | False |
 | dots2024_A_r2 | 30 | 2 | 180 | 0.41379 | 12 | 7.0874 | 0 | False |
 | dots2024_A_r3 | 30 | 3 | 180 | 1.2414 | 18 | 8.5771 | 0 | False |
 | dots2024_A_r5 | 30 | 5 | 180 | 4.1379 | 30 | 11.497 | 0 | False |
-| dots2024_A_r6 | 30 | 6 | 180 | 6.2069 | 36 | 12.895 | 0 | False |
+| dots2024_A_r6 | 30 | 6 | 180 | 6.2069 | 36 | 12.895 | 1 | False |
 | dots2024_B_r2 | 30 | 2 | 180 | 0.41379 | 12 | 7.0874 | 0 | False |
 | dots2024_B_r3 | 30 | 3 | 180 | 1.2414 | 18 | 8.5771 | 0 | False |
 | dots2024_B_r5 | 30 | 5 | 180 | 4.1379 | 30 | 11.497 | 0 | False |
 | dots2024_B_r6 | 30 | 6 | 180 | 6.2069 | 36 | 12.895 | 0 | False |
 | patras_cost | 36 | 6 | 235 | 5.5952 | 39.167 | 14.029 | 0 | False |
 | patras_population | 48 | 6 | 235 | 3.125 | 29.375 | 10.522 | 0 | False |
-| sounds | 12 | 2 | 810 | 12.273 | 135 | 79.733 | 4 | False |
+| sounds | 12 | 2 | 810 | 12.273 | 135 | 79.733 | 5 | False |
 | sushi_a | 10 | 10 | 3000 | 3000 | 3000 | 908.38 | 3000 | True |
 | sushi_b | 100 | 10 | 3000 | 27.273 | 300 | 90.838 | 0 | False |
-| wheat | 16 | 3 | 295 | 7.375 | 55.312 | 26.357 | 1 | False |
+| wheat | 16 | 3 | 295 | 7.375 | 55.312 | 26.357 | 2 | False |
 
 ## P1 estimator predictions
 
-All differences are paired on the same confirmation reports and averaged over the same 30 partitions. The table displays only complete means; the CSV preserves finite-conditional differences and their denominators. Signs here compare SM center estimators, not SM versus PL.
+All differences are paired on the same confirmation reports and averaged over the same five partitions. The table displays only complete means; the CSV preserves finite-conditional differences and their denominators. Signs here compare SM center estimators, not SM versus PL.
 
 | dataset | Borda − exact | Sharp − exact | Efficient − Borda |
 |---|---|---|---|
-| 00024-00000001 | 0 | 0.0027375 | NA |
-| 00024-00000002 | 0 | 0.0015599 | NA |
+| 00024-00000001 | 0 | 0 | NA |
+| 00024-00000002 | 0 | 0 | NA |
 | 00024-00000003 | 0 | 0 | NA |
 | 00024-00000004 | 0 | 0 | NA |
-| 00025-00000001 | 0 | 0.00091573 | NA |
+| 00025-00000001 | 0 | 0 | NA |
 | 00025-00000002 | 0 | 0 | NA |
-| 00025-00000003 | 0 | 0.017926 | NA |
-| 00025-00000004 | 0 | 0.0024297 | NA |
-| beans | -0.01303 | NA | NA |
-| dots2024_A_r2 | -0.1761 | NA | 0 |
-| dots2024_A_r3 | -0.092552 | NA | NA |
-| dots2024_A_r5 | -0.072583 | NA | NA |
-| dots2024_A_r6 | 0.014321 | NA | NA |
-| dots2024_B_r2 | -0.15175 | NA | 0 |
-| dots2024_B_r3 | -0.12902 | NA | NA |
-| dots2024_B_r5 | -0.035894 | NA | NA |
-| dots2024_B_r6 | 0.013853 | NA | NA |
-| patras_cost | -0.0072252 | NA | NA |
-| patras_population | -0.068909 | NA | NA |
-| sounds | -0.005867 | NA | NA |
-| sushi_a | 0.00363 | NA | NA |
+| 00025-00000003 | 0 | 0 | NA |
+| 00025-00000004 | 0 | 0 | NA |
+| beans | -0.011736 | NA | NA |
+| dots2024_A_r2 | -0.1578 | NA | 0 |
+| dots2024_A_r3 | -0.028345 | NA | NA |
+| dots2024_A_r5 | -0.090439 | NA | NA |
+| dots2024_A_r6 | 0.010508 | NA | NA |
+| dots2024_B_r2 | -0.16822 | NA | 0 |
+| dots2024_B_r3 | -0.077627 | NA | NA |
+| dots2024_B_r5 | -0.046421 | NA | NA |
+| dots2024_B_r6 | -0.016145 | NA | NA |
+| patras_cost | -0.027351 | NA | NA |
+| patras_population | -0.055331 | NA | NA |
+| sounds | 0.0013215 | NA | NA |
+| sushi_a | 0.0063785 | NA | NA |
 | sushi_b | NA | NA | NA |
-| wheat | -0.013654 | NA | NA |
+| wheat | -0.017828 | NA | NA |
 
 The [method inventory](p1_methods.csv) records all five methods for every task, including status counts, branches, depth, complete/conditional NLL and external-objective distance. That external distance is not true-center risk.
 
@@ -195,34 +195,34 @@ n=10, r=3, β=.8; 30 independent streams, with nested budgets within each stream
 
 ## G1: Fotakis versus exact SM
 
-Prespecified G1 70% within-group allocations, 100 repetitions. Only complete all-report NLL comparisons enter a complete mean; local unavailable groups are not silently removed. Negative means favor Fotakis-center SM prediction. All 50%/80% and group-holdout comparisons are also in [the CSV](g1_fotakis_vs_exact.csv).
+Prespecified G1 70% within-group allocations, five repetitions. Only complete all-report NLL comparisons enter a complete mean; local unavailable groups are not silently removed. Negative means favor Fotakis-center SM prediction. All 50%/80% and group-holdout comparisons are also in [the CSV](g1_fotakis_vs_exact.csv).
 
 | dataset | scheme | complete_finite_pairs | repetitions | fotakis_minus_exact | identical_nll_repetitions |
 |---|---|---|---|---|---|
-| dots-3 | local | 100 | 100 | -0.0090088 | 0 |
-| dots-3 | matched_pool | 100 | 100 | -0.020955 | 0 |
-| dots-3 | pooled | 100 | 100 | 0 | 100 |
-| dots-5 | local | 100 | 100 | -0.013233 | 0 |
-| dots-5 | matched_pool | 100 | 100 | -0.020979 | 0 |
-| dots-5 | pooled | 100 | 100 | 0 | 100 |
-| dots-7 | local | 100 | 100 | -0.02157 | 0 |
-| dots-7 | matched_pool | 100 | 100 | -0.026411 | 0 |
-| dots-7 | pooled | 100 | 100 | 0 | 100 |
-| dots-9 | local | 100 | 100 | -0.024682 | 0 |
-| dots-9 | matched_pool | 100 | 100 | -0.023555 | 0 |
-| dots-9 | pooled | 100 | 100 | 0 | 100 |
-| puzzle-11 | local | 100 | 100 | -0.012235 | 0 |
-| puzzle-11 | matched_pool | 100 | 100 | -0.01989 | 0 |
-| puzzle-11 | pooled | 100 | 100 | 0 | 100 |
-| puzzle-5 | local | 100 | 100 | -0.022479 | 0 |
-| puzzle-5 | matched_pool | 100 | 100 | -0.020691 | 1 |
-| puzzle-5 | pooled | 100 | 100 | 0 | 100 |
-| puzzle-7 | local | 100 | 100 | -0.014719 | 0 |
-| puzzle-7 | matched_pool | 100 | 100 | -0.031774 | 0 |
-| puzzle-7 | pooled | 100 | 100 | 0 | 100 |
-| puzzle-9 | local | 100 | 100 | -0.0039607 | 0 |
-| puzzle-9 | matched_pool | 100 | 100 | -0.021652 | 0 |
-| puzzle-9 | pooled | 100 | 100 | 0 | 100 |
-| sounds | local | 0 | 100 | NA | 0 |
-| sounds | matched_pool | 0 | 100 | NA | 0 |
-| sounds | pooled | 100 | 100 | -0.0059743 | 0 |
+| dots-3 | local | 5 | 5 | 0.00051403 | 0 |
+| dots-3 | matched_pool | 5 | 5 | -0.016595 | 0 |
+| dots-3 | pooled | 5 | 5 | 0 | 5 |
+| dots-5 | local | 5 | 5 | -0.012971 | 0 |
+| dots-5 | matched_pool | 5 | 5 | -0.0084618 | 0 |
+| dots-5 | pooled | 5 | 5 | 0 | 5 |
+| dots-7 | local | 5 | 5 | -0.019291 | 0 |
+| dots-7 | matched_pool | 5 | 5 | -0.031 | 0 |
+| dots-7 | pooled | 5 | 5 | 0 | 5 |
+| dots-9 | local | 5 | 5 | -0.019684 | 0 |
+| dots-9 | matched_pool | 5 | 5 | -0.029549 | 0 |
+| dots-9 | pooled | 5 | 5 | 0 | 5 |
+| puzzle-11 | local | 5 | 5 | -0.014411 | 0 |
+| puzzle-11 | matched_pool | 5 | 5 | -0.016349 | 0 |
+| puzzle-11 | pooled | 5 | 5 | 0 | 5 |
+| puzzle-5 | local | 5 | 5 | -0.017232 | 0 |
+| puzzle-5 | matched_pool | 5 | 5 | -0.019131 | 0 |
+| puzzle-5 | pooled | 5 | 5 | 0 | 5 |
+| puzzle-7 | local | 5 | 5 | -0.014314 | 0 |
+| puzzle-7 | matched_pool | 5 | 5 | -0.021463 | 0 |
+| puzzle-7 | pooled | 5 | 5 | 0 | 5 |
+| puzzle-9 | local | 5 | 5 | 0.011167 | 0 |
+| puzzle-9 | matched_pool | 5 | 5 | -0.012394 | 0 |
+| puzzle-9 | pooled | 5 | 5 | 0 | 5 |
+| sounds | local | 0 | 5 | NA | 0 |
+| sounds | matched_pool | 0 | 5 | NA | 0 |
+| sounds | pooled | 5 | 5 | -0.0052796 | 0 |

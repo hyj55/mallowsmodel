@@ -4,10 +4,10 @@
   "sources_and_predictions": [
     {
       "dataset": "puzzle-5",
-      "training_contexts": 11440,
-      "candidate_fits": 57200,
-      "group_score_rows": 90000,
-      "four_way_contrast_rows": 22400,
+      "training_contexts": 1220,
+      "candidate_fits": 6100,
+      "group_score_rows": 9300,
+      "four_way_contrast_rows": 2400,
       "source_reports": 795,
       "groups": 40,
       "source_verified": true,
@@ -16,10 +16,10 @@
     },
     {
       "dataset": "puzzle-7",
-      "training_contexts": 11440,
-      "candidate_fits": 57200,
-      "group_score_rows": 90000,
-      "four_way_contrast_rows": 22400,
+      "training_contexts": 1220,
+      "candidate_fits": 6100,
+      "group_score_rows": 9300,
+      "four_way_contrast_rows": 2400,
       "source_reports": 795,
       "groups": 40,
       "source_verified": true,
@@ -28,10 +28,10 @@
     },
     {
       "dataset": "puzzle-9",
-      "training_contexts": 11440,
-      "candidate_fits": 57200,
-      "group_score_rows": 90000,
-      "four_way_contrast_rows": 22400,
+      "training_contexts": 1220,
+      "candidate_fits": 6100,
+      "group_score_rows": 9300,
+      "four_way_contrast_rows": 2400,
       "source_reports": 797,
       "groups": 40,
       "source_verified": true,
@@ -40,10 +40,10 @@
     },
     {
       "dataset": "puzzle-11",
-      "training_contexts": 11440,
-      "candidate_fits": 57200,
-      "group_score_rows": 90000,
-      "four_way_contrast_rows": 22400,
+      "training_contexts": 1220,
+      "candidate_fits": 6100,
+      "group_score_rows": 9300,
+      "four_way_contrast_rows": 2400,
       "source_reports": 793,
       "groups": 40,
       "source_verified": true,
@@ -52,10 +52,10 @@
     },
     {
       "dataset": "dots-3",
-      "training_contexts": 11440,
-      "candidate_fits": 57200,
-      "group_score_rows": 90000,
-      "four_way_contrast_rows": 22400,
+      "training_contexts": 1220,
+      "candidate_fits": 6100,
+      "group_score_rows": 9300,
+      "four_way_contrast_rows": 2400,
       "source_reports": 795,
       "groups": 40,
       "source_verified": true,
@@ -64,10 +64,10 @@
     },
     {
       "dataset": "dots-5",
-      "training_contexts": 11440,
-      "candidate_fits": 57200,
-      "group_score_rows": 90000,
-      "four_way_contrast_rows": 22400,
+      "training_contexts": 1220,
+      "candidate_fits": 6100,
+      "group_score_rows": 9300,
+      "four_way_contrast_rows": 2400,
       "source_reports": 794,
       "groups": 40,
       "source_verified": true,
@@ -76,10 +76,10 @@
     },
     {
       "dataset": "dots-7",
-      "training_contexts": 11440,
-      "candidate_fits": 57200,
-      "group_score_rows": 90000,
-      "four_way_contrast_rows": 22400,
+      "training_contexts": 1220,
+      "candidate_fits": 6100,
+      "group_score_rows": 9300,
+      "four_way_contrast_rows": 2400,
       "source_reports": 800,
       "groups": 40,
       "source_verified": true,
@@ -88,10 +88,10 @@
     },
     {
       "dataset": "dots-9",
-      "training_contexts": 11440,
-      "candidate_fits": 57200,
-      "group_score_rows": 90000,
-      "four_way_contrast_rows": 22400,
+      "training_contexts": 1220,
+      "candidate_fits": 6100,
+      "group_score_rows": 9300,
+      "four_way_contrast_rows": 2400,
       "source_reports": 794,
       "groups": 40,
       "source_verified": true,
@@ -100,10 +100,10 @@
     },
     {
       "dataset": "sounds",
-      "training_contexts": 13120,
-      "candidate_fits": 65600,
-      "group_score_rows": 103600,
-      "four_way_contrast_rows": 37950,
+      "training_contexts": 1400,
+      "candidate_fits": 7000,
+      "group_score_rows": 10700,
+      "four_way_contrast_rows": 4022,
       "source_reports": 1380,
       "groups": 46,
       "source_verified": true,
@@ -113,21 +113,5 @@
   ],
   "aggregate_tables_recomputed": 6,
   "checksums_verified": true,
-  "split_ranges_are_confidence_intervals": false,
-  "replay_execution": {
-    "mode": "two sequential-dataset batches, both exit code 0; aggregate recomputation after both completed",
-    "commands": [
-      "python validate_group_sensitivity.py --datasets puzzle-5 puzzle-7 puzzle-9 puzzle-11",
-      "python validate_group_sensitivity.py --datasets dots-3 dots-5 dots-7 dots-9 sounds"
-    ],
-    "local_log_sha256": {
-      "results/private/group-sensitivity-puzzle-validation.log": "f8c28c98670e8210a8634d7974a701506710695bb3782eafb42e37ff81098e7e",
-      "results/private/group-sensitivity-remaining-validation.log": "bef9ade733f7a35b1a44f00da958270b3b8232ac547f69ce3a940791fb3698c8"
-    }
-  },
-  "tests": {
-    "command": "python -m pytest -q",
-    "passed": 28,
-    "failed": 0
-  }
+  "split_ranges_are_confidence_intervals": false
 }

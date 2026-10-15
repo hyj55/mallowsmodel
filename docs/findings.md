@@ -2,71 +2,79 @@
 
 [Design](experiments.md) · [Data](../data/README.md) · [Criteria](criteria.md) · [Uncertainty](uncertainty.md) · [Complete tables](../results/README.md)
 
-Throughout, $`\Delta=\mathrm{NLL}(\mathrm{SM})-\mathrm{NLL}(\mathrm{PL})`$; negative favors SM. The conclusions below concern specified fitted procedures and evaluation populations. Predictive advantage does not identify a generating model, and loss magnitudes across different ranking lengths are not directly comparable measures of dataset importance.
+Delta is SM minus PL whole-ranking NLL in nats/report; negative favors SM. Differences describe fitted procedures on specified evaluation populations. Neither a predictive advantage nor a descriptive feature identifies a generating model. Different ranking lengths are not on a common effect-size scale.
 
 ## Main experiment: Algorithm 4.1 (P0)
 
-The main [P0 comparison](predictive_comparison.md) has **30 finite paired predictions for every one of the 23 tasks**, using 80% development data, training-only PL tuning and bounded SM dispersion. [The independent main report](../results/main/README.md) contains the complete two-method table and detailed P0 analysis. [E0](../results/estimator_comparison/README.md) separately reports the other center estimators. A negative delta favors SM; the error bars below are partition MCSEs, not population confidence intervals.
+P0 is the only main experiment. Every task has five finite paired comparisons, for 115 in total. Fit on 80% development units, tune PL only inside development, and evaluate both families on identical outer tests. The [main report](../results/main/README.md) gives all 23 results, split-win counts and exact-center certificates.
 
-The likelihood-center SM mean favors SM in the eight Dots 2013/Puzzle conditions and dots2024 B at r=6, and favors PL in the other fourteen tasks. These are directions of observed means, not twenty-three independent significance decisions. Puzzle minimum five steps has delta −0.05855 (MCSE 0.00365); dots2024 B r=6 has −0.04621 (0.01352). PatrasIQ cost has +0.28339 (0.01974) and wheat +0.15917 (0.01337). Raw magnitudes across different r are not a common effect-size scale.
+The mean favors SM in ten tasks and PL in thirteen. These directions are not significance decisions; related tasks share observations or participants. The eight Dots 2013/Puzzle conditions favor SM on average. Wheat and PatrasIQ cost show clear PL-favorable directions relative to their partition MCSEs. Several other differences are poorly resolved.
 
-All 30 likelihood centers are certified for 22 tasks. **Sushi B is the exception:** only 5/30 have an exact certificate; the others retain explicitly approximate centers and objective bounds. Its mean delta +0.00975 (MCSE 0.00509) is therefore a comparison of the recorded fitting procedures, not an exact-MLE family comparison. Its median training-objective bound gap is 1,014 inversions, with maximum 1,107; these are optimization bound gaps, not bounds on test loss or actual distance to an optimal order. dots2024 B r=5 also has a small mean +0.01198 relative to its partition MCSE 0.01465. Neither case supports a broad model-winner claim.
+- Puzzle, minimum 11 steps: Δ=-0.01042 (partition MCSE 0.00294).
+- Wheat: Δ=+0.14126 (partition MCSE 0.02133).
+- PatrasIQ cost: Δ=+0.33462 (partition MCSE 0.04120).
+- Sushi A: Δ=+0.02711 (partition MCSE 0.00870).
+- Sushi B: Δ=-0.00398 (partition MCSE 0.00657).
+- Dots 2024 B r6: Δ=-0.01824 (partition MCSE 0.04181).
 
-![Primary finite prediction across all tasks](../figures/predictive/primary.png)
+All five likelihood centers are certified for 22 tasks. Sushi B has 2/5 certificates; its other centers remain explicitly approximate. Its small loss difference cannot support a general family-winner conclusion. Optimization gaps bound training objectives, not test loss. Figures show ±1 partition MCSE, not population confidence intervals. Five values give only four degrees of freedom for estimating the split variance.
 
-The marker is hollow where not all likelihood centers have exact certificates. All predictors retain the complete task catalogue. Regularization makes the PL predictions finite; it does not establish independent people in anonymous sources, remove mixture effects or prove that one probability family generated the data.
+![P0: five allocations, partition MCSE bars](../figures/predictive/primary.png)
+
+Identified test units support 2,000-draw paired bootstrap intervals inside each split, conditional on the fitted predictors. Those endpoints are not averaged into an interval for the five-fit mean. Anonymous sources retain unresolved dependence. Random allocation does not enforce seasonal or demographic balance.
 
 ## Supplementary estimator comparison (E0) and global sieve (B0)
 
-Sharp completes all thirty E0 fits for **11 tasks**: Beans, Sushi A, Sounds, the four Dots 2013 conditions and the four Puzzle conditions. This includes ten- and twelve-item catalogues. The other twelve tasks have explicit sieve resource failures rather than an eight-item exclusion. [The resource account](sieve_computation.md) distinguishes the exact full-space shortcut, complete nontrivial packings, and memory/time failures.
+Sharp completes five fits each for eleven tasks: Beans, Sushi A, Sounds and the eight Dots 2013/Puzzle conditions. The remaining twelve tasks have 60 explicit resource failures. B0's 55 available rows alias the same Sharp fits, because these schedules have no consumed pilot reports and one catalogue-wide terminal block. They are not additional independent fits.
 
-All empirical tasks satisfy the chosen fixed report-size bound R=10. Their Sharp pilot has zero depth and their terminal block covers the catalogue, making the B0 global sieve identical under the shared pair-selection seed. Its 330 available rows are aliases of the 330 Sharp fits, not additional replications. Efficient is used only for the 60 dots2024 r=2 contexts where Sharp fails and lambda<=1. Fotakis passes complete-pair admission in 416 of 690 contexts; its task-specific denominators remain visible.
+Fotakis is admitted in 71/115 empirical contexts; Efficient supplies 10 admitted fallback fits. Complete task-specific comparisons are in [E0](../results/estimator_comparison/README.md). No outer-test winner is promoted to P0.
 
-Center choice changes some predictions. For example, the E0 Beans Sharp difference is +0.00314 versus +0.01275 for the likelihood center. Sushi A Sharp gives +0.06029 versus +0.02543 for the likelihood center. These are prespecified estimator comparisons on the same reports, not a rule that selects whichever center wins on the outer test.
-
-Increasing the completion budget to 30 minutes and 4 GiB, together with equivalent exact packing algorithms, recovers **100 Sharp fits** in the learning and synthetic cells. It does not recover additional E0 Sharp tasks. The remaining 530 unavailable Sharp contexts comprise 360 E0, 90 L0 and 80 S0 fits. They are not missing Algorithm 4.1 main results. The published ball-cover retry records their memory-admission failures; the separate streaming-computation work records subsequent search attempts. These are completion outcomes for the same experiment, with unchanged data, allocations and estimator definition; the [resource account](sieve_computation.md#completion-results-and-remaining-limits) lists their locations.
+There are 155 unavailable Sharp contexts across E0 (60), L0 (15) and S0 (80), without double-counting aliases or linked endpoints. None has n≤10; the smallest missing catalogue is n=16. Thus no tuned-width variant is needed to complete the specified n≤10 scope. A and W_star retain the manuscript construction. These missing supplementary fits do not remove any P0 main result. [Exact computation and limitations](sieve_computation.md).
 
 ## Supplementary training-size and catalogue-size experiments (L0/S0)
 
-The [L0 Sushi curves](predictive_learning.md) use thirty aligned outer tests and nested development budgets. Sushi A's likelihood-center SM difference is −0.03976 at N=20, −0.02594 at N=50, and +0.03324 at N=100; it is +0.02499 at N=3000. Thus the observed comparison direction changes with budget. Sushi B's corresponding difference falls from +3.69397 at N=20 to +0.34730 at N=100 and +0.01149 at N=3000. Its large-catalogue center approximations and small-budget item coverage remain part of that procedure, not negligible details.
+L0 uses five aligned Sushi respondent allocations, nested development budgets and the same outer test within each repetition. Its SM likelihood-center differences are:
 
-Sushi A now also has complete Sharp results at every budget. The recovered Sharp-minus-PL means are +0.45598 at N=100 (partition MCSE 0.03004) and +0.21617 at N=300 (0.02240). Computational recovery does not imply predictive superiority: these means favor PL. Sharp's selected-pair objective uses only one sampled pair per report, so it is not the same fitted procedure as the whole-ranking likelihood center.
+| Task | N | Mean delta | Partition MCSE |
+|---|---:|---:|---:|
+| sushi_a | 20 | -0.11349 | 0.09465 |
+| sushi_a | 50 | -0.03070 | 0.09429 |
+| sushi_a | 100 | +0.02638 | 0.01392 |
+| sushi_a | 300 | +0.03691 | 0.00645 |
+| sushi_a | 1000 | +0.03412 | 0.00800 |
+| sushi_a | 3000 | +0.02962 | 0.00711 |
+| sushi_b | 20 | +3.24335 | 0.36589 |
+| sushi_b | 50 | +0.91086 | 0.11107 |
+| sushi_b | 100 | +0.36112 | 0.03252 |
+| sushi_b | 300 | +0.07580 | 0.02017 |
+| sushi_b | 1000 | +0.03123 | 0.00771 |
+| sushi_b | 3000 | -0.00221 | 0.00941 |
+| sushi_a | 4000 | +0.02711 | 0.00870 |
+| sushi_b | 4000 | -0.00398 | 0.00657 |
 
-![Sushi learning curves](../figures/predictive/learning.png)
+The comparison changes with training budget; realized curves need not be monotone. At small N, estimation, coverage and regularization matter alongside model specification. All Sushi A Sharp budgets are complete. Missing Sushi B Sharp points remain unavailable.
 
-S0 supplies independent known-generator controls with fixed r=3 and R=10. Under an SM generator at n=10, likelihood-center SM has delta +0.24261 at N=20, −0.04265 at N=100 and −0.06156 at N=500. Mean true-center Kendall error falls from 12.35 to 2.95 to 0.15. The center is exact in these n=10 fits. Even a correctly specified probability family can lose at small N when estimation and regularization dominate, so a finite-sample predictive winner does not identify the generating law.
+![Five-allocation Sushi curves](../figures/predictive/learning.png)
 
-All 240 S0 likelihood-center fits, including n=32, have exact objective certificates. The synthetic catalogue-size pattern below therefore does not arise from an uncertified center optimization result.
+S0 uses twenty independent generated training/test datasets per cell, not five shuffles of one dataset. With r=3 and fixed R=10, it varies N at n=10 and n at N=100. Under the SM generator the likelihood-center delta is +.24261 at N=20, −.04265 at N=100 and −.06156 at N=500; mean true-center Kendall errors are 12.35, 2.95 and .15. A correctly specified model family can lose at a small training budget. All 240 likelihood centers are certified. Under the PL generator, the likelihood-center comparison favors PL in every cell. [S0 definitions and tables](predictive_learning.md#s0-independent-data-with-fixed-r3-and-r10).
 
-The recovered n=10,N=100 Sharp results have mean delta +0.01712 under the SM generator, with 95% independent-repetition interval [−0.01117,+0.04540], and +0.08445 under the PL generator, with interval [+0.06678,+0.10212]. Mean center Kendall errors are 6.55 and 9.75 respectively; the latter is an ordering error under a PL law, not SM minimax risk.
+![Independent simulations: 95% Student-t mean intervals](../figures/predictive/synthetic.png)
 
-At fixed N=100 under the SM generator, the likelihood-center delta is −0.06870 at n=6, −0.04265 at n=10, approximately zero at n=16, and +0.20505 at n=32. Increasing catalogue size with a fixed data budget changes exposure and estimation difficulty. Under the PL generator, the recorded likelihood-center SM comparison favors PL in every S0 design cell. The PL generator keeps its total log-worth range fixed, so adjacent strength gaps decrease as n grows; this declared design choice qualifies the catalogue-size interpretation.
-
-![Independent controlled curves with fixed report length](../figures/predictive/synthetic.png)
-
-S0 bars are 95% Student-t intervals over twenty independent training/test draws; L0 bars are partition MCSEs of fixed data. Missing Sharp points are resource failures, not zero errors. [Supplementary L1/L2/S3](learning_curves.md) retain shrinkage, fixed-penalty and broader exposure controls without treating them as extra repetitions of L0/S0.
+L1 has five development permutations per budget for Beans and Sushi A/B, with one fixed test per task. Its [current tables](../results/regularized_learning/README.md) separate unshrunk SM, training-validation dispersion shrinkage and PL penalty controls. L1 test-only bootstrap intervals differ from L0 partition MCSEs. [L2/S3](learning_curves.md) supply small-budget and exposure controls.
 
 ## Full-data ranking characteristics
 
-[All three features beside primary NLL](../data/features/predictive_comparison.md) use unchanged full-data reference centers and frequencies. Dots 2013 and Puzzle have equal-gap pair-rate dispersion H of about 1.00–3.34 percentage points with dense repeated support; their eight P0 mean gaps favor SM. Sushi A has H=7.36 points and a PL-favorable mean. These related tasks do not establish a general feature-to-winner law.
+[All three characteristics beside P0 NLL](../data/features/predictive_comparison.md) use every eligible observation and a full-data descriptive reference center. They do not choose a fitted predictor. Dots 2013/Puzzle have equal-gap pair-rate dispersion about 1.00–3.34 percentage points and dense support; all eight P0 mean gaps favor SM. Sushi A has dispersion 7.36 points and a PL-favorable mean. This small, related collection does not establish a general feature-to-winner law.
 
-Within-display/shell variation must be read against support. Sushi A's mean TV is .99351, but its nominal iid-uniform sampling reference is already .99335 because the possible-order space is huge. Raw TV near one alone is uninformative about model violation. That nominal reference is not a calibrated test after data-dependent center estimation or repeated-assessor sampling.
-
-Changing-display features are likewise descriptive. Beans has a +2.66-point one-item replacement effect over 420 contrasts with repeated displays on both sides, yet its primary NLL favors PL. Wheat's +7.56-point effect has repeated support in only 70 of 2,022 contrasts. dots2024 B r=6 has large H=23.36 points with sparse cells and still favors SM in P0. Mixtures, center estimation and unequal sampling support prevent these features from being interpreted as isolated causal explanations. Fixed full displays have no same-pair changing-display contrast; r=2 has no nontrivial within-shell contrast.
+Sushi A's within-shell total variation .99351 is close to its nominal sampling reference .99335 because the order space is large. Beans has a +2.66-point one-item replacement contrast over 420 well-supported contrasts, yet its NLL mean favors PL. Wheat's +7.56-point contrast has repeated support on both sides in only 70/2,022 cases. Sparse cells, mixtures and estimated centers qualify all three characteristics; they are descriptions, not calibrated tests or causal explanations.
 
 ## Estimator risk and theorem correspondence
 
-[The theory chapter](theory_alignment.md) maps the manuscript's minimax regimes to these and the supplementary results. Real-data NLL and distance to an external objective order are not true-center Kendall risk. S0's correctly specified SM center errors are more directly relevant, but average random-center error on a finite grid is not a worst-case or asymptotic minimax verification. Its n=10 sample-size curve is numerically outside the lambda<=1 part of Corollary 2.15; fixing R is necessary for that statement, not sufficient.
-
-The active Sharp implementation keeps A=256 and W_star while removing the eight-item guard. Computability of the exact global sieve is a separate issue from its statistical rate. All successful efficient runs still have depth zero, so they do not test an active multilevel hierarchy. The supplementary complete-ranking results and [Theorem 2.17/Fotakis comparison](theory_alignment.md#theorem-217-versus-fotakis-posest) retain their tie-rule and target distinctions.
-
-The supplementary [P1 unpenalized comparison](repeated_holdout.md) records fit-existence failures and exact-certificate exclusions. P2 adds fixed-fit diagnostic and test-unit bootstrap results. Their data overlap with P0, and P0 changes both development size and regularization, so differences between the tables do not isolate a pure penalty effect or constitute independent replications.
+[The theory chapter](theory_alignment.md) distinguishes true-center Kendall risk, real-data predictive NLL and external objective-order distances. Finite grids of random-center simulations are not a supremum over centers or an asymptotic minimax verification. Fixed R alone does not verify lambda≤1 or uniform independent displays. Successful Efficient fits have depth zero and do not test an active multilevel hierarchy. Theorem 2.17 and Fotakis also retain their tie-rule differences.
 
 ## Trial and assessor heterogeneity
 
-At the same training count, local Puzzle fitting improves both SM and PL by approximately .11–.14 nats per report relative to matched pooled training. With the much larger full pooled training sample, that local advantage usually disappears. Relative SM–PL interactions change sign across Puzzle conditions and all their 70/30 split ranges include zero. Group information can improve prediction without establishing that one family is consistently more group-sensitive.
-
-The Sounds person-local setting has only 21 training pairs per assessor. A usable finite PL fit exists in 28 of 4,600 local contexts; SM also has missing-item exclusions and infinite test losses. The tiny finite intersection cannot support an overall personal-model winner. Pooled prediction for held-out people remains a meaningful separate target. [G1](group_sensitivity.md) provides per-condition tables, equal-budget controls, coverage and 5th–95th split ranges.
+[G1](group_sensitivity.md) compares local, fully pooled and matched-count pooled training with five allocations at each fraction. Its current tables include paired four-way finite coverage and observed min–max ranges. Group information and training count jointly affect prediction; local gains are not a causal board effect or evidence of a universally more group-sensitive family. Sounds' small per-person training sets frequently fail finite-MLE or finite-prediction checks, so its finite-only local comparisons cannot establish overall predictive risk.
 
 ## Controlled mechanisms
 

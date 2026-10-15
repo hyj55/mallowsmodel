@@ -41,10 +41,14 @@ def validate_public():
     frame=pd.read_csv(PUBLIC/'repeat_scores.csv.gz')
     with gzip.open(PUBLIC/'predictors.jsonl.gz','rt') as stream:
         records=[json.loads(line) for line in stream]
-    assert len(records)==1290 and len(frame)==7740
+    assert len(records)==415 and len(frame)==2490
+    for (study,dataset,n,N,method), g in frame.groupby(['study','dataset','n','N','method']):
+        assert set(g['repeat']) == set(range(20 if study == 'S0' else 5))
+    from src.fit_provenance import validate_producer
+    validate_producer(PUBLIC.parents[1], manifest, records)
     retried=[r for r in records if 'resource_retry' in r]
-    assert len(retried)==manifest['resource_retry']['attempts']==630
-    assert sum(r['models']['sm_sharp']['status']=='ok' for r in retried)==manifest['resource_retry']['recovered']==100
+    assert len(retried)==manifest['resource_retry']['attempts']==205
+    assert sum(r['models']['sm_sharp']['status']=='ok' for r in retried)==manifest['resource_retry']['recovered']==50
     for record in retried:
         assert record['resource_retry']['code_sha256']==retry_hashes()
         assert record['resource_retry']['original_sharp']['status']=='sieve_resource_budget'
@@ -61,7 +65,7 @@ def validate_public():
     joined=frame.merge(pl,on=key,suffixes=('','_pl'),validate='many_to_one')
     np.testing.assert_allclose(joined.delta,joined.nll-joined.nll_pl,rtol=2e-9,atol=2e-9,equal_nan=True)
     aliases=frame[frame.alias_of.eq('sm_sharp')].merge(frame[frame.method.eq('sm_sharp')],on=key,suffixes=('','_sharp'))
-    assert len(aliases)==1290
+    assert len(aliases)==415
     np.testing.assert_allclose(aliases.nll,aliases.nll_sharp,equal_nan=True)
     assert aliases.status.eq(aliases.status_sharp).all()
     assert frame.loc[frame.study.eq('S0'),'r'].eq(3).all()
@@ -73,7 +77,7 @@ def validate_public():
             ('synthetic.csv',summary[summary.study=='S0'])]:
         frames_equal(pd.read_csv(PUBLIC/name),expected)
     for record in records:
-        assert record['code_signature']==signature()
+        assert record['code_signature'] in manifest['record_code_signatures']
         models=record['models']; n=record['n']
         for method,saved in models.items():
             fit=restore_fit(saved)
@@ -96,7 +100,7 @@ def validate_public():
             if method=='sm_sharp':
                 assert fit.metadata['A']==256
                 assert fit.metadata['W_star']==int(np.ceil(2048*(n-1)/(record['r']-1)))
-    print('PUBLIC: 1,290 parameter records; 7,740 scores; hashes, aliases, finite fits and aggregates verified',flush=True)
+    print('PUBLIC: 415 parameter records; 2,490 scores; hashes, aliases, finite fits and aggregates verified',flush=True)
     return frame
 
 
@@ -114,7 +118,7 @@ def validate_features():
     assert len(joined)==33 and set(joined.index)==set(original.index)
     for name,row in primary.iterrows():
         assert np.isclose(joined.loc[name,'primary_delta'],row.delta_mean)
-        assert joined.loc[name,'primary_available']==30
+        assert joined.loc[name,'primary_available']==5
     for column in ('heterogeneity_sd','shell_tv','shell_excess_tv','context_display_sd','context_gap_slope','swap_gap_effect'):
         np.testing.assert_allclose(joined[column],original.loc[joined.index,column],equal_nan=True,rtol=2e-9,atol=2e-9)
     print('FEATURES: all three full-data characteristics unchanged; primary NLL join verified',flush=True)

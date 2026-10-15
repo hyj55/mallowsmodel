@@ -31,11 +31,11 @@ def main():
     for k,(_,row) in enumerate(p.iterrows()):
         color='#258576' if row.delta_mean<0 else '#cf6336'
         ax.errorbar(row.delta_mean,k,xerr=row.delta_mcse,fmt='o',color=color,capsize=3,
-            mfc=color if row.certified_centers==30 else 'white')
-    labels=[f'{task_label(r.dataset)}  (n={r.n}, r={r.r}; exact {r.certified_centers}/30)' for _,r in p.iterrows()]
+            mfc=color if row.certified_centers==5 else 'white')
+    labels=[f'{task_label(r.dataset)}  (n={r.n}, r={r.r}; exact {r.certified_centers}/5)' for _,r in p.iterrows()]
     ax.set_yticks(y,labels);ax.axvline(0,color='black',lw=.8);ax.invert_yaxis()
     ax.set_xlabel('Mean whole-ranking NLL: SM minus PL (nats/report)')
-    ax.set_title('Primary prediction: 30 grouped outer allocations\nBars: ±1 partition MCSE, not population confidence intervals',pad=15)
+    ax.set_title('Primary prediction: 5 grouped outer allocations\nBars: ±1 partition MCSE, not population confidence intervals',pad=15)
     ax.grid(axis='x',alpha=.2);save(fig,'primary')
     learning=pd.read_csv(ROOT/'results/predictive/learning.csv')
     fig,axes=plt.subplots(2,2,figsize=(12,8),sharex='col')
@@ -52,7 +52,7 @@ def main():
         axes[1,col].set_xlabel('Development reports N; fixed r=10 and R=10')
     axes[0,0].set_ylabel('Whole-ranking test NLL');axes[1,0].set_ylabel('SM minus PL NLL')
     handles,labels=axes[0,0].get_legend_handles_labels();fig.legend(handles,labels,loc='lower center',ncol=2)
-    fig.suptitle('Sushi learning curves: 30 aligned outer splits\nBars: ±1 partition MCSE; missing points indicate unavailable fits',y=1.02)
+    fig.suptitle('Sushi learning curves: 5 aligned outer splits\nBars: ±1 partition MCSE; missing points indicate unavailable fits',y=1.02)
     fig.tight_layout(rect=(0,.10,1,1));save(fig,'learning')
     sim=pd.read_csv(ROOT/'results/predictive/synthetic.csv')
     fig,axes=plt.subplots(2,2,figsize=(12,8))
