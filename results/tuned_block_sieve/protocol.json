@@ -1,0 +1,19 @@
+{
+  "name": "Borda-pilot tuned block-sieve supplement",
+  "created_date": "2026-10-15",
+  "base_commit": "80e246692d741eba54b06f380614f3396cb8d9f9",
+  "scope": "All 19 distinct unresolved active E0/L0/S0 cells; repeat/draw ID 0 only. B0 aliases are not counted twice. P1/P2 legacy implementation guards are not retried.",
+  "outer_allocation": "Reuse source ID 0 train/validation/test exactly; empirical allocation units preserved. No split reroll or additional shuffle.",
+  "grid": "sorted unique {2,3,4,ceil(n/10),ceil(n/8)}",
+  "pilot": "Global clipped normalized Borda (manuscript equation 3.4) on half of fitting-pool units, with fixed label tie priority. The other half supplies sieve pairs.",
+  "blocks": "Equal-size contiguous unpadded blocks in pilot order using numpy.array_split; concatenate fitted block orders.",
+  "local_estimator": "Unchanged canonical-label lexicographic maximal permutation packing and exact selected-pair disagreement minimizer; one uniformly selected unordered pair per eligible report/block.",
+  "beta": "Whole-ranking MLE on [0,10] using all reports in the current fitting pool.",
+  "selection": "Lowest mean whole-ranking validation NLL among completed candidates; ties prefer fewer blocks. Refit on development in that order; if a refit exceeds the prespecified resource budget, try the next validation-ranked candidate and report the failure.",
+  "resource_budget": "120 seconds per exact solver call/packing construction, 4 GiB estimated working arrays; incomplete packing never used. Reuse exact packing cache by size/radius/budget.",
+  "comparators": "Replay source PL, likelihood-center SM, eligible Fotakis and Efficient on exactly the same test data; additionally fit full-development Borda and pilot-half Borda with bounded dispersion.",
+  "uncertainty": "2000 paired test-unit percentile bootstrap replicates, conditional on fixed fitted models, for identified independent units and synthetic test reports. No population CI for anonymous Wheat reports; no split MCSE from one allocation.",
+  "interpretation": "This changes Sharp's pilot and block geometry and has no claimed manuscript Sharp risk guarantee. Successful fits do not complete original Sharp. Synthetic repeat 0 is illustrative, not a new Monte Carlo risk estimate.",
+  "seed": 202610150,
+  "test_access": "No test outcome selects grid, pilot fraction, blocks, resource settings, or model. Scope and ID zero selection use stored availability only."
+}

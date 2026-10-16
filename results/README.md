@@ -9,9 +9,10 @@ Read results by experiment, dataset, estimator, evaluation target and denominato
 | [main](main/README.md) | **P0 main experiment: Algorithm 4.1** | Independent likelihood-center SM versus PL table and analysis; all 115 paired comparisons; uncertainty and five-shuffle precision |
 | [estimator_comparison](estimator_comparison/README.md) | **E0 supplementary estimator comparison** | Sharp, Fotakis and Efficient outcomes and availability, separate from main completeness |
 | [global_sieve](global_sieve/README.md) | **B0 supplementary global sieve** | Exact identity with Sharp where applicable; aliases are not extra fits |
+| [tuned_block_sieve](../docs/tuned_block_sieve.md) | Single-allocation Borda-pilot variant | One report explains all 19 settings, validation candidates, exact local solver status, comparisons and conditional intervals |
 | [predictive](predictive/README.md) | Shared raw allocation records; L0/S0 supplementary curves | Stable raw keys, parameters and hashes; explicit mapping to P0/E0/B0 reader views |
 | [theory_alignment](theory_alignment/README.md) | Estimator interpretation across P1/G1/S1/S2/S3/C1 | Regime conditions, actual branches, same-partition estimator NLL and known-center risk; arithmetic reuse of saved outputs |
-| [repeated_holdout](repeated_holdout/README.md) | P1: 23 tasks ×30 refits | Mean loss, paired Δ, partition MCSE, all fit/finite counts |
+| [repeated_holdout](repeated_holdout/README.md) | P1: 23 tasks ×5 refits | Mean loss, paired Δ, partition MCSE, all fit/finite counts |
 | [baseline_replacement](baseline_replacement/README.md) | P2: Beans/Sushi | Fixed-fit prediction, certificates and supported test-unit intervals |
 | [strict_features](strict_features/README.md) | S1/S2/D1; P2 PrefLib/dots2024; tricot screen | Controlled laws, coverage, selectors, shells and context diagnostics |
 | [context_followup](context_followup/README.md) | P2 wheat; A1 SP-Rank | Point prediction, metadata-limited diagnostics and observation-design audit |
