@@ -2,7 +2,7 @@
 
 This repository studies how selective Mallows (SM) and Plackett–Luce (PL) predict a noisy ordering of a displayed set. Both models receive the same ranking reports. The study combines human preferences, objective ordering tasks, agricultural trials, tennis matches, and controlled simulations to examine prediction, sample size, item coverage, population heterogeneity, and model structure.
 
-**The main experiment is P0, the grouped predictive comparison in manuscript Algorithm 4.1.** It compares whole-ranking likelihood-center SM with tuned ridge PL. Sharp, Fotakis and Efficient are evaluated separately in E0; the global pair-sieve is B0. L0/S0 are supplementary learning/simulation experiments.
+**The main experiment is P0, the grouped predictive comparison in manuscript Algorithm 4.1.** It compares whole-ranking likelihood-center SM with tuned ridge PL. Sharp, Fotakis and Efficient are evaluated separately in E0; the global pair-sieve is B0. L0/S0 are supplementary learning/simulation experiments. The Borda-pilot tuned block-sieve experiment is a separately defined computational and predictive supplement, with its own results and limitations.
 
 The main score is the mean negative log probability of a held-out **whole ranking conditional on its displayed set**. Throughout, **$`\Delta=\mathrm{NLL}(\mathrm{SM})-\mathrm{NLL}(\mathrm{PL})`$**: a negative value favors SM. Years, seasons, locations, participant attributes, and numerical ratings are not fitted covariates. Where available, metadata support splitting, grouping, source checks, or explicitly identified diagnostics.
 
@@ -19,6 +19,8 @@ The main score is the mean negative log probability of a held-out **whole rankin
 | [Learning and catalogue size](docs/predictive_learning.md) | Five-repeat Sushi curves and independent fixed-r simulations, with R=10 throughout |
 | [Sieve computation](docs/sieve_computation.md) | Sharp without an eight-item guard, exact shortcuts, measured resource limits and the global-sieve supplement |
 | [Borda-pilot tuned block sieve](docs/tuned_block_sieve.md) | One allocation for every unresolved Sharp cell, validation-selected blocks, exact local sieves and paired comparisons with existing fits |
+| [Fixed-test learning and regularization (L1)](results/regularized_learning/README.md) | Beans and Sushi A/B: five training permutations per budget, dispersion shrinkage, ridge controls and conditional test intervals |
+| [Five-fit pair, shell and context diagnostics (C1)](results/regularized_diagnostics/README.md) | Diagnostics on the five saved L1 fits, including Sushi B; no extra outer allocation or ranking-model fit |
 | [Research questions and experiment map](docs/experiments.md) | How all analyses fit together; datasets, estimators, repetitions, and result locations |
 | [Models and estimators](docs/algorithms.md) | Probability laws, center and dispersion estimation, regularization variants, and admission requirements |
 | [Estimator theory and recorded results](docs/theory_alignment.md) | Minimax regimes, which saved comparisons meet their conditions, actual estimator branches, and Theorem 2.17 versus Fotakis |
@@ -30,14 +32,35 @@ The main score is the mean negative log probability of a held-out **whole rankin
 
 ## Experimental structure
 
-1. **Primary prediction (P0):** 23 empirical tasks and 5 grouped 80/20 outer allocations. PL is tuned within development data; final fits use all development reports. SM uses a prespecified finite dispersion bound. Only likelihood-center SM and PL belong to the main comparison; exactness status is explicit.
-2. **Supplementary estimator comparison (E0) and global sieve (B0):** E0 compares Sharp, Fotakis and eligible Efficient with the paired PL reference, using P0 allocations. B0 aliases Sharp where identical. These are separate from Algorithm 4.1 and never choose its estimator using test results.
-3. **Supplementary learning and catalogue size (L0/S0):** five-repeat Sushi A/B learning curves and 240 independent synthetic draws hold the report-size bound R=10 fixed. Sharp is tried before any eligible efficient fallback. The global pair-sieve supplement (B0) explicitly reuses Sharp where they coincide.
-4. **Group heterogeneity:** Puzzle and Dots trial groups and Sounds assessors compare pooled and local fitting, equal training budgets, and transfer to unseen groups.
-5. **Mechanism controls:** matched-noise mixtures and fixed-shell interventions separate overall noise from the allocation of probability among mistaken rankings. Calibration experiments test how center error and assessor/display confounding affect diagnostics.
-6. **Temporal prediction and structural controls:** Beans year transfer, ATP season forecasts, common-order comparisons, and optimization checks test specific alternative explanations.
+The table locates every experimental family. P0 alone is the main experiment; all other rows provide supplementary evidence.
 
-These are components of one study. The [supplementary guide](docs/supplementary.md) locates unpenalized P1/P2 controls and the additional questions they answer. Their data reuse does not create independent replications, and numerical outcomes from different fitting rules are not pooled. The [experiment map](docs/experiments.md) covers every component, including results stored at immutable implementation snapshots.
+| Component | Question, design and result location |
+|---|---|
+| **P0: primary prediction** | [Algorithm 4.1](docs/predictive_comparison.md): 23 empirical tasks, five grouped 80/20 outer allocations, training-only PL tuning and finite SM dispersion. Final fits use all development reports. [Main results](results/main/README.md) compare likelihood-center SM with PL and retain exactness status. |
+| **E0/B0: center estimators and global sieve** | [E0](docs/estimator_comparison.md) compares Sharp, admitted Fotakis and eligible Efficient fallback with the paired PL reference on P0 allocations. [B0](docs/sieve_computation.md) evaluates global pair-sieve under fixed R=10 and explicitly reuses Sharp results where the procedures coincide. |
+| **Borda-pilot tuned block sieve** | [Single-allocation supplement](docs/tuned_block_sieve.md): one allocation/draw for each of 19 unresolved Sharp settings; validation chooses smaller exact-sieve blocks. Compare with saved models on identical test reports and with two Borda controls. The procedure differs from manuscript Sharp. |
+| **L0/S0: sample and catalogue size** | [Learning design and results](docs/predictive_learning.md): five-repeat Sushi A/B curves and 240 independent synthetic draws, with report-size bound R=10 fixed. Likelihood-center SM and PL curves have explicitly labeled estimator supplements. |
+| **P1/P2: unpenalized prediction and fixed-fit diagnostics** | [P1](docs/repeated_holdout.md) uses five 60/20/20 allocations on all 23 tasks and records finite-MLE and solver availability. [P2](docs/baseline_replacement.md) evaluates specified fits and their diagnostics on one allocation per task. These fitting rules differ from P0. |
+| **L1/L2/S3: regularization and exposure** | [L1 results](results/regularized_learning/README.md) use five training permutations per budget and a fixed outer test for Beans and Sushi A/B. [L2 and S3](docs/learning_curves.md) add very small empirical budgets, penalty/shrinkage controls and independent simulation exposure grids. These broader grids include report sizes outside the fixed-R=10 study. |
+| **G1: group heterogeneity** | [Group results](docs/group_sensitivity.md): Puzzle/Dots trial groups and Sounds assessors; pooled versus local fits, matched training budgets, five within-group splits and transfer to unseen groups. |
+| **S1/S2: mechanism and coverage controls** | [Controlled simulations](docs/strict_feature_analysis.md): matched-noise mixtures, fixed-shell interventions and sparse coverage; independent training draws separate noise magnitude, ranking structure and fit availability. |
+| **D1/D2: diagnostic selection and calibration** | [D1](docs/strict_feature_analysis.md#discovery-based-selection) tests discovery-based choices among already fitted predictors. [D2](docs/validation_extension.md) and [context controls](docs/context_followup.md) examine center error, heterogeneous PL, assessor/display confounding and interval calibration. Neither selects P0's model family. |
+| **T1: temporal transfer** | [Temporal results](docs/temporal_prediction.md): Beans year transfer and chronological ATP season prediction, with calendar boundaries instead of random outer splits. |
+| **C1: structural and optimization controls** | [Structural controls](docs/structural_controls.md): common-order fits, center-objective benchmarks, optimization bounds and a five-fold allocation control. [Pair/shell/context diagnostics](results/regularized_diagnostics/README.md) use the five saved L1 fits and conditional bootstrap intervals. |
+
+[A1 source audits](docs/scientific_audit.md) document eligibility and observation-design checks; excluded sources are not fitted experiments. The [three full-data ranking characteristics](data/features/README.md) describe the complete observed datasets and are separate from predictive experiments and held-out diagnostics.
+
+These are components of one study. Shared data, saved fits and aliased computations do not create independent replications, and outcomes from different fitting rules are not pooled. The [experiment map](docs/experiments.md) gives dataset and estimator allocation; the [supplementary guide](docs/supplementary.md) and [implementation registry](docs/implementation_registry.md) locate detailed reports and outputs.
+
+## Borda-pilot tuned block-sieve supplement
+
+This experiment asks whether a global Borda pilot and validation-selected smaller blocks make the settings with unavailable Sharp fits computationally usable, and whether the resulting predictor improves test NLL. It covers **12 empirical tasks, three smaller Sushi B training budgets and four simulated settings**, using the existing allocation or draw ID 0 once in each setting. It does not add repeated outer shuffles.
+
+Within each fitting pool, disjoint report/participant pools supply the Borda pilot and exact local sieves. Candidate partitions use 2/3/4 blocks and predefined smaller-block options for larger catalogues. Validation NLL selects the block count; the selected procedure is refitted on train plus validation and evaluated on the unchanged test reports. The block geometry and pilot differ from manuscript Sharp, so its minimax guarantee does not transfer to this variant.
+
+**All 19 final fits complete; 39 of 68 training candidates complete.** Across the twelve empirical full-budget tasks, the variant has lower NLL than PL in **5/12**, likelihood-center SM in **6/12**, full-development Borda in **2/12**, and its own pilot-only Borda in **8/12**. These are descriptive task counts, not independent votes or significant-winner counts. Completion therefore does not establish a general predictive advantage over using all development reports for Borda.
+
+The [standalone report](docs/tuned_block_sieve.md) includes every dataset's scores, candidate availability, selected blocks, paired conditional bootstrap intervals, comparator exactness and interpretation. It also explains weakly informed singleton sieves and a source-label alignment effect in Dots. Intervals condition on the fitted models and supported test units; Wheat has no interval because farmer identities are unavailable. Original Sharp failures remain unavailable, and these results are separate from P0's main analysis.
 
 ## Reading the evidence
 
@@ -57,6 +80,10 @@ python validation_artifacts.py
 python -m pytest -q
 python validate_predictive_study.py --repository-only
 python build_study_reports.py --check
+python controls/tuned_sharp/validate.py
+python controls/tuned_sharp/report.py --check
+python controls/l1/validate.py
+python controls/l1/validate_diagnostics.py
 python validate_scientific_audit.py --repository-only
 python validate_validation_extension.py --repository-only
 python validate_group_sensitivity.py --repository-only
