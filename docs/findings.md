@@ -27,7 +27,9 @@ Identified test units support 2,000-draw paired bootstrap intervals inside each 
 
 Sharp completes five fits each for eleven tasks: Beans, Sushi A, Sounds and the eight Dots 2013/Puzzle conditions. The remaining twelve tasks have 60 explicit resource failures. B0's 55 available rows alias the same Sharp fits, because these schedules have no consumed pilot reports and one catalogue-wide terminal block. They are not additional independent fits.
 
-Fotakis is admitted in 71/115 empirical contexts; Efficient supplies 10 admitted fallback fits. Complete task-specific comparisons are in [E0](../results/estimator_comparison/README.md). No outer-test winner is promoted to P0.
+Fotakis is admitted in 71/115 empirical contexts. Efficient is assessed independently of Sharp in all 115 contexts, with ten admitted depth-zero fits on dots2024 A/B r2 and 105 exclusions outside the lambda<=1 schedule domain. Global clipped Borda completes all 115 fits. The ten admitted Efficient fits equal Borda in order, dispersion and test predictions under the common tie rule; no positive-depth hierarchy is observed.
+
+The [unified E0 comparison](../results/estimator_comparison/README.md) includes all methods, their availability and paired Borda contrasts. Against likelihood-center SM, Borda has lower five-allocation mean NLL in eleven tasks, equal mean in eight and higher mean in four. Dots 2024 B r2 has Borda-minus-likelihood delta -0.10832 (paired MCSE 0.01687); Wheat has +0.01894 (0.00765). Among the eleven tasks with complete Sharp results, Borda is lower in four and equal in seven. These are descriptive comparisons, not significance decisions or true-center risk tests. No outer-test winner is promoted to P0.
 
 There are 155 unavailable Sharp contexts across E0 (60), L0 (15) and S0 (80), without double-counting aliases or linked endpoints. None has n≤10; the smallest missing catalogue is n=16. Thus no tuned-width variant is needed to complete the specified n≤10 scope. A and W_star retain the manuscript construction. These missing supplementary fits do not remove any P0 main result. [Exact computation and limitations](sieve_computation.md).
 

@@ -11,7 +11,10 @@ import pandas as pd
 
 ROOT=Path(__file__).resolve().parent
 P=ROOT/'results/predictive'
-INPUTS=('results/predictive/primary.csv','results/predictive/repeat_scores.csv.gz','results/predictive/predictors.jsonl.gz')
+INPUTS=('results/predictive/primary.csv','results/predictive/repeat_scores.csv.gz',
+        'results/predictive/predictors.jsonl.gz','results/estimator_comparison/repeat_scores.csv.gz',
+        'results/estimator_comparison/predictors.jsonl.gz','results/estimator_comparison/manifest.json',
+        'src/estimator_reporting.py')
 REPETITIONS=5
 
 
@@ -64,12 +67,16 @@ def artifacts():
             delta_min=x.min(),delta_max=x.max()))
     precision=pd.DataFrame(precision)
     np.testing.assert_allclose(main.delta_mcse,main.dataset.map(precision.set_index('dataset').delta_mcse),atol=2e-9)
-    e0=summary[summary.method.isin(['sm_sharp','sm_fotakis','sm_efficient_fallback'])].copy()
+    from summarize_predictive_study import summarize
+    from src.estimator_reporting import report as estimator_report
+    e_scores=pd.read_csv(ROOT/'results/estimator_comparison/repeat_scores.csv.gz')
+    e0=summarize(e_scores)
+    e0.insert(0,'raw_study','P0')
     b0=summary[summary.method.eq('sm_global_sieve')].copy()
-    for label,frame in [('E0',e0),('B0',b0)]:
+    for label,frame in [('B0',b0)]:
         frame.insert(0,'raw_study',frame.study);frame['study']=label
-    assert len(e0)==69 and len(b0)==23
-    assert set(selected.method).isdisjoint(set(e0.method))
+    assert len(e0)==138 and len(b0)==23
+    assert set(e0.study)=={'E0'} and len(e_scores)==690
     out={}
     def put(path,content):out[path]=content.encode() if isinstance(content,str) else content
     def csv(path,frame):put(path,frame.to_csv(index=False,float_format='%.12g'))
@@ -151,25 +158,9 @@ Conditional on fixed data and independently randomized allocations, this estimat
 The 2,000 bootstrap draws **inside** an eligible P0/E0/L0 split are a different resampling operation and remain 2,000. Simulations generate fresh datasets and keep their independent-repetition designs. Fixed diagnostic allocations and chronological forecasts are not converted into random five-fold or five-shuffle experiments.
 
 '''+table(precision,[('task','Task'),('delta_mean','Mean delta'),('delta_mcse','MCSE'),('delta_min','Smallest split delta'),('delta_max','Largest split delta')])+'\n')
-    e_text='''# E0: supplementary center-estimator comparison
-
-[Design](../../docs/estimator_comparison.md) · [Summary CSV](summary.csv) · [P0 main results](../main/README.md) · [B0 global sieve](../global_sieve/README.md)
-
-E0 compares Sharp, Fotakis and eligible Efficient with the same tuned PL reference on five allocations per task. It is supplementary to Algorithm 4.1. The test scores never select a replacement for P0's likelihood center. Shared allocations and PL fits make E0 paired with P0, not an independent replication.
-
-A full mean/MCSE requires all five planned fits. Missing fits are neither zero loss nor replaced by another estimator; conditional means have explicit finite denominators. Delta is named SM estimator minus PL whole-ranking NLL.
-
-'''
-    for method,label in [('sm_sharp','Sharp'),('sm_fotakis','Fotakis / PosEst'),('sm_efficient_fallback','Efficient fallback')]:
-        q=e0[e0.method.eq(method)].copy();q['task']=q.dataset.map(task_label);q['availability']=q.available.astype(str)+'/5'
-        e_text+=f'## {label}\n\n'+table(q,[('task','Task'),('delta_mean','Mean delta'),('delta_mcse','MCSE'),('availability','Available'),('statuses','Statuses')])+'\n\n'
-    e_text+='''## Scope
-
-Sharp completes all five allocations for eleven empirical tasks and remains unavailable for twelve. There are 60 unavailable E0 fits, 15 L0 fits and 80 S0 fits: 155 distinct supplementary contexts. All current E0/L0/S0 Sharp contexts with n<=10 are available; no tuned-width variant is needed to complete that size range. Fotakis requires complete observed pair coverage. Efficient has its declared domain and fallback gate. Neither numerical exposure nor a completed fit certifies the manuscript's sampling assumptions.
-
-B0 aliases Sharp when the constructions coincide. Raw `study=P0` is an allocation-family key; these named views distinguish E0 from the main experiment. [Exact sieve construction and resources](../../docs/sieve_computation.md) explain computational limits and the role of W_star.
-'''
+    e_text,e_contrasts=estimator_report(e0,e_scores,table,task_label)
     put('results/estimator_comparison/README.md',e_text)
+    csv('results/estimator_comparison/borda_comparisons.csv',e_contrasts)
     put('results/global_sieve/README.md','''# B0: supplementary global pair-sieve comparison
 
 [Construction and theorem scope](../../docs/sieve_computation.md) · [Summary CSV](summary.csv) · [E0](../estimator_comparison/README.md) · [P0 main experiment](../main/README.md)
@@ -185,7 +176,7 @@ P0 is the main experiment: manuscript Algorithm 4.1, likelihood-center SM versus
 | Analysis | Results |
 |---|---|
 | P0 main | [Independent report and all 23 tasks](../main/README.md) |
-| E0 estimators | [Sharp, Fotakis and Efficient](../estimator_comparison/README.md) |
+| E0 estimators | [Sharp, Fotakis, Efficient and global Borda](../estimator_comparison/README.md) |
 | B0 global sieve | [Identity, theory scope and availability](../global_sieve/README.md) |
 | L0 Sushi learning | [Design](../../docs/predictive_learning.md), [numeric results](learning.csv) |
 | S0 independent simulations | [Design](../../docs/predictive_learning.md), [numeric results](synthetic.csv) |

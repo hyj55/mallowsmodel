@@ -2,7 +2,7 @@
 
 This repository studies how selective Mallows (SM) and Plackett–Luce (PL) predict a noisy ordering of a displayed set. Both models receive the same ranking reports. The study combines human preferences, objective ordering tasks, agricultural trials, tennis matches, and controlled simulations to examine prediction, sample size, item coverage, population heterogeneity, and model structure.
 
-**The main experiment is P0, the grouped predictive comparison in manuscript Algorithm 4.1.** It compares whole-ranking likelihood-center SM with tuned ridge PL. Sharp, Fotakis and Efficient are evaluated separately in E0; the global pair-sieve is B0. L0/S0 are supplementary learning/simulation experiments. The Borda-pilot tuned block-sieve experiment is a separately defined computational and predictive supplement, with its own results and limitations.
+**The main experiment is P0, the grouped predictive comparison in manuscript Algorithm 4.1.** It compares whole-ranking likelihood-center SM with tuned ridge PL. Sharp, Fotakis, Efficient and global clipped Borda are evaluated together in E0; the global pair-sieve is B0. L0/S0 are supplementary learning/simulation experiments. The Borda-pilot tuned block-sieve experiment is a separately defined computational and predictive supplement, with its own results and limitations.
 
 The main score is the mean negative log probability of a held-out **whole ranking conditional on its displayed set**. Throughout, **$`\Delta=\mathrm{NLL}(\mathrm{SM})-\mathrm{NLL}(\mathrm{PL})`$**: a negative value favors SM. Years, seasons, locations, participant attributes, and numerical ratings are not fitted covariates. Where available, metadata support splitting, grouping, source checks, or explicitly identified diagnostics.
 
@@ -14,7 +14,7 @@ The main score is the mean negative log probability of a held-out **whole rankin
 | [Full-data ranking characteristics](data/features/README.md) | Equal-gap pair rates, frequencies within the same display and Kendall shell, same-pair display effects, sampling support, and every dataset's existing SM–PL NLL gap |
 | [P0 main experiment: Algorithm 4.1](docs/predictive_comparison.md) | Algorithm 4.1, five grouped outer splits, finite SM dispersion, training-only PL tuning, exactness certificates and paired uncertainty |
 | [P0 main results and analysis](results/main/README.md) | Only likelihood-center SM versus PL: 23-task table, interpretation, 115 paired predictions, exactness and uncertainty |
-| [E0 supplementary estimator comparison](docs/estimator_comparison.md) | Separate Sharp, Fotakis and Efficient results; no selection of the main estimator on test outcomes |
+| [E0 supplementary estimator comparison](docs/estimator_comparison.md) | Unified Sharp/Fotakis/Efficient/global-Borda comparison with PL and likelihood-SM references; paired differences, depth and availability |
 | [Five-allocation precision](results/main/split_precision.md) | What the repetitions contribute, five-score means and ranges, MCSE versus CI, and computation tradeoffs |
 | [Learning and catalogue size](docs/predictive_learning.md) | Five-repeat Sushi curves and independent fixed-r simulations, with R=10 throughout |
 | [Sieve computation](docs/sieve_computation.md) | Sharp without an eight-item guard, exact shortcuts, measured resource limits and the global-sieve supplement |
@@ -37,7 +37,7 @@ The table locates every experimental family. P0 alone is the main experiment; al
 | Component | Question, design and result location |
 |---|---|
 | **P0: primary prediction** | [Algorithm 4.1](docs/predictive_comparison.md): 23 empirical tasks, five grouped 80/20 outer allocations, training-only PL tuning and finite SM dispersion. Final fits use all development reports. [Main results](results/main/README.md) compare likelihood-center SM with PL and retain exactness status. |
-| **E0/B0: center estimators and global sieve** | [E0](docs/estimator_comparison.md) compares Sharp, admitted Fotakis and eligible Efficient fallback with the paired PL reference on P0 allocations. [B0](docs/sieve_computation.md) evaluates global pair-sieve under fixed R=10 and explicitly reuses Sharp results where the procedures coincide. |
+| **E0/B0: center estimators and global sieve** | [E0](docs/estimator_comparison.md) compares Sharp, admitted Fotakis, independently admitted Efficient and global Borda with paired PL/likelihood-SM references on all five P0 allocations. [B0](docs/sieve_computation.md) evaluates global pair-sieve under fixed R=10 and explicitly reuses Sharp results where the procedures coincide. |
 | **Borda-pilot tuned block sieve** | [Single-allocation supplement](docs/tuned_block_sieve.md): one allocation/draw for each of 19 unresolved Sharp settings; validation chooses smaller exact-sieve blocks. Compare with saved models on identical test reports and with two Borda controls. The procedure differs from manuscript Sharp. |
 | **L0/S0: sample and catalogue size** | [Learning design and results](docs/predictive_learning.md): five-repeat Sushi A/B curves and 240 independent synthetic draws, with report-size bound R=10 fixed. Likelihood-center SM and PL curves have explicitly labeled estimator supplements. |
 | **P1/P2: unpenalized prediction and fixed-fit diagnostics** | [P1](docs/repeated_holdout.md) uses five 60/20/20 allocations on all 23 tasks and records finite-MLE and solver availability. [P2](docs/baseline_replacement.md) evaluates specified fits and their diagnostics on one allocation per task. These fitting rules differ from P0. |
@@ -68,7 +68,7 @@ Controlled simulations exhibit a reversal of the SM–PL predictive ranking whil
 
 P0 has five finite paired predictions for every task. Mean differences favor SM in ten tasks and PL in thirteen, without implying significant winners. Sushi B retains approximate centers in three of five fits and has a small gap relative to partition MCSE. The [main analysis](results/main/README.md) gives all task-level evidence and limitations.
 
-E0 computes Sharp for eleven tasks, including ten- and twelve-item catalogues. All active n≤10 Sharp/global-sieve cells are complete. The 155 unavailable supplementary contexts have n≥16; none is a missing P0 main result. [Exact-sieve computation](docs/sieve_computation.md) records their resource limits. [L1](results/regularized_learning/README.md) supplies five fixed-test training permutations per budget for Beans and Sushi A/B.
+E0 fits global Borda on all 23 tasks (115 allocations). Efficient is independently assessed but its lambda<=1 schedule admits only dots2024 A/B r2; all ten admitted fits have depth zero and equal Borda under a shared tie rule. Borda has lower mean NLL than likelihood-center SM in eleven tasks, equal NLL in eight and higher NLL in four; these descriptive counts are not significance tests. The [unified E0 results](results/estimator_comparison/README.md) compare every method on the same reports. Sharp completes eleven tasks, including ten- and twelve-item catalogues. All active n≤10 Sharp/global-sieve cells are complete. The 155 unavailable supplementary contexts have n≥16; none is a missing P0 main result. [Exact-sieve computation](docs/sieve_computation.md) records their resource limits. [L1](results/regularized_learning/README.md) supplies five fixed-test training permutations per budget for Beans and Sushi A/B.
 
 An error bar is not automatically a confidence interval. Empirical five-partition figures show **±1 partition Monte Carlo SE**; simulation means use independent-repetition t intervals. P0/L0 also save per-split conditional bootstrap intervals at identified test-unit level. Those intervals do not include training variability or form a population CI for the average over splits. All availability and exact-center counts remain explicit. Start with the [uncertainty guide](docs/uncertainty.md).
 
@@ -80,6 +80,7 @@ python validation_artifacts.py
 python -m pytest -q
 python validate_predictive_study.py --repository-only
 python build_study_reports.py --check
+python validate_estimator_comparison.py
 python controls/tuned_sharp/validate.py
 python controls/tuned_sharp/report.py --check
 python controls/l1/validate.py

@@ -24,7 +24,7 @@ The restoration command verifies ZIP parts and reconstructs the exact recorded D
 
 ## Rebuild named reports without fitting
 
-Run `python build_study_reports.py` to regenerate the independent P0 main report, E0 estimator report, B0 alias report and saved-split precision audit. Run it with `--check` for read-only verification. Inputs are the existing aggregate/per-repetition scores and predictor file; no source acquisition, randomization, fitting or bootstrap is performed. The result manifest records presentation hashes separately from the numerical inputs.
+Run `python build_study_reports.py` to regenerate the independent P0 main report, E0 estimator report, B0 alias report and saved-split precision audit. Run it with `--check` for read-only verification. Inputs are the shared aggregate/per-repetition scores, predictor file and complete E0 score-candidate records; no source acquisition, randomization, fitting or bootstrap is performed. The result manifest records presentation hashes separately from the numerical inputs.
 
 ## Reproduce the shared prediction runner
 
@@ -47,6 +47,20 @@ The completion command belongs to E0/L0/S0 supplements and is not needed to obta
 The public `results/predictive/` directory contains aggregate CSVs, compressed per-repetition scores and predictor parameters, plus source/code/resource manifests. Gzip files are ordinary standard-library-readable archives; no custom restoration is needed. Detailed empirical membership and per-report loss caches stay in `results/private/predictive/`. The full validator reconstructs memberships, checks group separation and source hashes, replays every saved probability and conditional bootstrap, and regenerates synthetic draws from recorded streams without refitting. Repository-only mode checks published parameters, all denominators, aliases, hashes and aggregate arithmetic without downloading source records.
 
 P0 main and L0 supplementary figures distinguish partition MCSE from independent-simulation confidence intervals. The feature-comparison script only joins the already computed whole-data features to the primary NLL summary; it neither refits a descriptive center nor uses full-data features for tuning.
+
+## Reproduce the E0 estimator comparison
+
+E0 fits global clipped Borda on all 23 tasks and assesses Efficient independently of Sharp, using the same five P0 allocations and existing PL/likelihood/Sharp/Fotakis references. After the shared predictions and source acquisition above:
+
+```bash
+python run_estimator_comparison.py
+python build_study_reports.py
+python validate_estimator_comparison.py --sources
+```
+
+The E0 runner reuses saved comparator parameters, checks source-array hashes, fits score candidates on complete development reports, and replays scores/conditional intervals. It adds no split or test-driven method selection. Its construction is in `src/estimator_comparison.py`; complete outputs and provenance are in `results/estimator_comparison/`. Efficient's lambda<=1 admission is independent of Sharp; depth-zero records explicitly alias global Borda under the same fixed tie rule. L0/S0 retain their own candidate policy.
+
+Read-only public verification omits `--sources`; it needs no respondent data. `--sources` reconstructs every allocation, recomputes score centers and bounded dispersion, and replays test losses and supported bootstrap endpoints. `build_study_reports.py --check` verifies all generated E0 summaries and the unified report without fitting. E0's model/score manifest and the report manifest have separate roles.
 
 ## Rebuild the estimator-theory comparison
 

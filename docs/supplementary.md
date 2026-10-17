@@ -6,7 +6,7 @@ The study uses one source catalogue and related analyses to answer several quest
 
 | Question | Evidence to read | What it adds |
 |---|---|---|
-| Does the SM center estimator change prediction? | [E0 estimator comparison](estimator_comparison.md) | Sharp, Fotakis and Efficient with distinct admission and resource counts; none is substituted into P0 based on test scores |
+| Does the SM center estimator change prediction? | [E0 estimator comparison](estimator_comparison.md) | Sharp, Fotakis, independently admitted Efficient and global Borda, with shared PL/likelihood-SM references and explicit depth/admission; none is substituted into P0 based on test scores |
 | What structure is present in the complete observed dataset? | [Three data characteristics](../data/features/README.md) | Equal-gap pair frequencies, within-shell frequencies and same-pair display changes; descriptive, not extra experiments |
 | How does prediction behave without finite regularization? | [P1 unpenalized repeated comparison](repeated_holdout.md) | Five 60/20/20 allocations, finite-MLE existence and exact-solver admission; different predictors from P0 |
 | What do particular fitted predictors get wrong? | [P2 fixed-fit diagnostics](baseline_replacement.md), [ranking diagnostics](strict_feature_analysis.md) | Conditional test-unit bootstrap, pair profiles, shell decomposition and context effects |
