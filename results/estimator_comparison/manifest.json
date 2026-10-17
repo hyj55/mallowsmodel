@@ -1,0 +1,42 @@
+{
+  "study": "E0",
+  "allocations": 115,
+  "repetitions": 5,
+  "tasks": 23,
+  "score_rows": 690,
+  "methods": [
+    "pl",
+    "sm_likelihood",
+    "sm_sharp",
+    "sm_fotakis",
+    "sm_efficient",
+    "sm_global_borda"
+  ],
+  "code_sha256": {
+    "src/estimator_comparison.py": "b9dc93040dd99d3a27e240d3f896036bcb2e7e137628c64c48d51e6e8040840d",
+    "run_estimator_comparison.py": "eee571a31f741e86fbab4fd12ba96539576dadc5e5b4c3d3bb8dc003e4bae56b",
+    "src/manuscript_estimators.py": "70894e6aed5236e7c0035beafa5533b7483051bc668cb69e687aee5dcb682f38",
+    "src/predictive_models.py": "531973aab5ad775dbb5ba966c75cf862e9ce6b543576fdb8032d915e507ec233",
+    "src/predictive_study.py": "b3cbf1976d5ad92377d97cd3caecab73507d58328784acd97b06e4f264ff1780",
+    "src/repeated_holdout.py": "35308283b12f502f8001dea80c8cc50649664eb9e26c87e15bd21a4c62c2309e",
+    "src/models.py": "ca4c989fe94b60fb5527f128a17175ddbc52092ff8892fe26d795e5e103cfe96",
+    "src/strict_models.py": "244c90978402da73879d4826fd09af71ef3bbff6d9f5b52290a304dee52d69a2"
+  },
+  "source_sha256": {
+    "results/predictive/predictors.jsonl.gz": "1f74eb9884bd0f4b61a915c49b865af4c282136a5d90502e767ab68863112adc",
+    "results/predictive/repeat_scores.csv.gz": "5aba6cf92538bb3df9ef96521807b048b9aa79cf2c0f31fac440aa2b870cd268"
+  },
+  "fitting": "Fit global Borda and independently admitted Efficient on unchanged development reports; reuse saved comparators.",
+  "efficient_admission": "lambda <= 1; independent of Sharp status; no domain extension",
+  "tie_seed": 93847,
+  "beta0": 0.1,
+  "beta_interval": [
+    0,
+    10
+  ],
+  "uncertainty": "Five-allocation means and paired MCSE; 2000 conditional test-unit bootstrap draws per identified split.",
+  "published_sha256": {
+    "repeat_scores.csv.gz": "449506b6e7a38845e14ec016959121a6b84774588b52668d3693f1f273be1ad9",
+    "predictors.jsonl.gz": "183d46246cc5bd8f35ba1dcbdf1cb43bc26656e9fcdbe96a5edfce11421ac996"
+  }
+}

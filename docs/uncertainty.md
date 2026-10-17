@@ -105,6 +105,8 @@ The [P1 figure](../figures/repeated_holdout/confirmation_means.png) plots **$`\b
 
 The [P0 precision report](../results/main/split_precision.md) lists the five-allocation estimates. Five is a computation/precision choice, not a theoretical minimum. Estimating SD from five values has only four degrees of freedom; small MCSE does not certify a model winner or population precision. Per-split test-unit bootstrap intervals remain conditional on their fits; mean-level population CI fields are empty.
 
+In [E0's Borda comparison](../results/estimator_comparison/README.md#global-borda-against-every-other-method), D is Borda NLL minus the comparator NLL **within the same allocation**. Its MCSE uses those five paired differences, preserving their covariance; it is not calculated from two independent standard errors. Incomplete comparisons retain their available count and conditional subset mean but have no full five-allocation mean/MCSE. Depth-zero Efficient and Borda share predictions and are aliases, not independent replications.
+
 P1 does not bootstrap within partitions, average bootstrap endpoints, or combine a P2 CI with a P1 mean. Its diagnostic records use zero bootstrap draws and aggregate descriptive point estimates only. Different bins/eligible diagnostics can contribute different numbers of repetitions.
 
 ## Group split percentiles

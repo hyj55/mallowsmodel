@@ -1,10 +1,14 @@
 {
   "producer": "build_study_reports.py",
-  "producer_sha256": "42c8a56297990154d3fad7ee5d6f1634c6b7557a6451a8d4770501c6a6846215",
+  "producer_sha256": "03e6c733ea3c1136b92e656b5e914403c1fe81b3fef258fad4559164fc567280",
   "source_sha256": {
     "results/predictive/primary.csv": "2e31ba7d0c17309314a97f463c838e5e4e8566831a62f20e97bf4d5f57ef424b",
     "results/predictive/repeat_scores.csv.gz": "5aba6cf92538bb3df9ef96521807b048b9aa79cf2c0f31fac440aa2b870cd268",
-    "results/predictive/predictors.jsonl.gz": "1f74eb9884bd0f4b61a915c49b865af4c282136a5d90502e767ab68863112adc"
+    "results/predictive/predictors.jsonl.gz": "1f74eb9884bd0f4b61a915c49b865af4c282136a5d90502e767ab68863112adc",
+    "results/estimator_comparison/repeat_scores.csv.gz": "449506b6e7a38845e14ec016959121a6b84774588b52668d3693f1f273be1ad9",
+    "results/estimator_comparison/predictors.jsonl.gz": "183d46246cc5bd8f35ba1dcbdf1cb43bc26656e9fcdbe96a5edfce11421ac996",
+    "results/estimator_comparison/manifest.json": "dfc4185b6250efada9e6bd821032f7b8e546eb27f965d842fb2a3ef90e3b888a",
+    "src/estimator_reporting.py": "04fb3eb9422ec495f0c35090dc3a7878b78e0f624832bb7e9a0351fb38df14d5"
   },
   "interpretation": "Named current result views; no fitting or resampling.",
   "main_selection": {
@@ -20,12 +24,13 @@
     "results/main/summary.csv": "9f642ffa283b8c401e7b436f65e963ee28fc4634e3828847d9762c333a01ef75",
     "results/main/repeat_scores.csv.gz": "73aec2f9aea34f677d24d2a25613141fea56bd4992ab9130fb10db57a8e812d0",
     "results/main/split_precision.csv": "8758157003ee9e802a63844dec2875f6dedd2cef1136a8478dcc5568537d31d7",
-    "results/estimator_comparison/summary.csv": "a59b4aaaa42c7ba470ec5ba1a97d7c5be0f3abbfdf5f28786efd5519185bc7f2",
+    "results/estimator_comparison/summary.csv": "1e9ba79f2382f4163befda8bbebc26068a28d083fb80b67da9ae2d8e9f10c1df",
     "results/global_sieve/summary.csv": "24894b9861fbb3cd417cf87be9ada537383ee2437afb2033b4b9f01554f84a34",
     "results/main/README.md": "e92ac371a9c0315289f1875bb7e1fd7c10ccf465c31e85648f13526d53b3bf28",
     "results/main/split_precision.md": "82d413495613d6b618a635ea4e0db19b24a68b01e23069eaee676f1415e8c7b1",
-    "results/estimator_comparison/README.md": "04e14c312d8e2e9d1ffbec04ac2882e2f56ab04b8710565a6d064eaeb9222a55",
+    "results/estimator_comparison/README.md": "a30755b9a25752f5c7ab5cbd9f77c7f57ee4bb04dd1701c2ac0b67ae23353dd1",
+    "results/estimator_comparison/borda_comparisons.csv": "2ae0891ec13bde278f21806396eca7f4846ca471029c292c393a0f462e29b065",
     "results/global_sieve/README.md": "85a15c1f894af84efeb3c084d22cccc789c738aef1ca3c03c3215e89051b0077",
-    "results/predictive/tables.md": "b7f03043e62fb056d1732942d1257d0f52618f375f65fe4ecf29900274b9307d"
+    "results/predictive/tables.md": "060735d8ad3fe7253f1e9b7cfecb992badcf3e979c8f7139814e214c127334f2"
   }
 }

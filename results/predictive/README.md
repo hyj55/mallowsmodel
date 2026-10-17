@@ -2,7 +2,7 @@
 
 [P0 main results](../main/README.md) · [E0 estimator results](../estimator_comparison/README.md) · [B0 global sieve](../global_sieve/README.md) · [Design and formulas](../../docs/predictive_comparison.md) · [Learning design](../../docs/predictive_learning.md) · [Exact sieve](../../docs/sieve_computation.md)
 
-**The main experiment is only P0: Algorithm 4.1, with methods `pl` and `sm_likelihood`.** E0 names Sharp/Fotakis/Efficient comparisons and B0 names the global sieve. The raw format predates this reading separation and retains `study=P0` as a shared empirical allocation-family key. It must not be used alone to identify main-experiment rows.
+**The main experiment is only P0: Algorithm 4.1, with methods `pl` and `sm_likelihood`.** E0 names Sharp/Fotakis/Efficient/global-Borda comparisons and B0 names the global sieve. The raw format predates this reading separation and retains `study=P0` as a shared empirical allocation-family key. It must not be used alone to identify main-experiment rows.
 
 These outputs cover 115 empirical training contexts, 60 Sushi learning contexts (L0), and 240 independent synthetic contexts (S0). Six method rows per context include all unavailable states and an explicitly reused global-sieve row. They do **not** represent 2,490 independent fits. P0 supplies L0's full-development endpoint without another fit; the intersecting S0 curve cell is fitted once.
 
@@ -24,7 +24,7 @@ Standard Python reads the compressed CSV with `pandas.read_csv(path)` and JSONL 
 
 ## Keys and method identity
 
-For raw `study=P0`, `pl`/`sm_likelihood` map to **P0 main**; `sm_sharp`/`sm_fotakis`/`sm_efficient_fallback` map to **E0**; and `sm_global_sieve` maps to **B0**. Named E0/B0 summaries preserve `raw_study=P0` while giving their own `study` label. `build_study_reports.py` creates these views and verifies their selections without changing raw fits or scores. The 60 unavailable empirical Sharp fits are E0 outcomes, not missing P0 results. The [presentation manifest](../study_reports_manifest.json) records input/output hashes.
+For raw `study=P0`, `pl`/`sm_likelihood` map to **P0 main**; `sm_sharp`/`sm_fotakis`/`sm_efficient_fallback` map to **E0**; and `sm_global_sieve` maps to **B0**. Named E0/B0 summaries preserve `raw_study=P0` while giving their own `study` label. `build_study_reports.py` creates the named views without changing these raw fits or scores. The complete E0 table additionally reads `results/estimator_comparison/repeat_scores.csv.gz`: it includes independently admitted `sm_efficient`, global Borda on every task, and unchanged saved PL/likelihood/Sharp/Fotakis references. This raw six-method export alone is not the complete E0 comparison. The 60 unavailable empirical Sharp fits are E0 outcomes, not missing P0 results. The [presentation manifest](../study_reports_manifest.json) records input/output hashes.
 
 The score key is `(study,dataset,n,N,repeat,method)`. `r` is report size and `N` is final development reports, including the inner-validation subset used for PL tuning. `n_test` counts complete ranking reports, and `test_units` counts the units available for cluster resampling. `repeat` starts at zero.
 
