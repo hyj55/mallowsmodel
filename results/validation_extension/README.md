@@ -1,6 +1,6 @@
 # Diagnostic calibration and Sounds/PatrasIQ files
 
-[D2 design](../../docs/validation_extension.md) · [P2 fixed prediction](../../docs/baseline_replacement.md) · [Sources](../../data/sounds_patras.md) · [Uncertainty](../../docs/uncertainty.md)
+[D2 design](../../docs/validation_extension.md) · [P2 fixed prediction](../../docs/baseline_replacement.md) · [Sounds source](../../data/sounds.md) · [PatrasIQ source](../../data/patras.md) · [Uncertainty](../../docs/uncertainty.md)
 
 This directory contains 1,400 independent synthetic training datasets for diagnostic calibration/confounding and fixed-partition prediction for Sounds and both PatrasIQ tasks. It also records Beaches' pre-fit exclusion. P1's five-partition estimates for these empirical tasks are in [repeated_holdout](../repeated_holdout/README.md).
 
