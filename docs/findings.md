@@ -2,7 +2,7 @@
 
 [Design](experiments.md) · [Data](../data/README.md) · [Criteria](criteria.md) · [Uncertainty](uncertainty.md) · [Complete tables](../results/README.md)
 
-Delta is SM minus PL whole-ranking NLL in nats/report; negative favors SM. Differences describe fitted procedures on specified evaluation populations. Neither a predictive advantage nor a descriptive feature identifies a generating model. Different ranking lengths are not on a common effect-size scale.
+Delta is SM minus PL whole-ranking NLL in nats/report; negative favors SM. Differences describe fitted procedures on specified evaluation populations. Neither a predictive advantage nor a descriptive feature identifies a generating model. Raw differences at different ranking lengths are not a universal effect-size scale. The [P0 table](../results/main/README.md), [E0 table](../results/estimator_comparison/README.md), [B0 table](../results/global_sieve/README.md) and [L0/S0 views](../results/predictive/scaled_curves.md) pair them with delta / log(r!), a dimensionless uniform-reference ratio. This adjusts for report length without equating populations or difficulty.
 
 ## Main experiment: Algorithm 4.1 (P0)
 
@@ -16,6 +16,8 @@ The mean favors SM in ten tasks and PL in thirteen. These directions are not sig
 - Sushi A: Δ=+0.02711 (partition MCSE 0.00870).
 - Sushi B: Δ=-0.00398 (partition MCSE 0.00657).
 - Dots 2024 B r6: Δ=-0.01824 (partition MCSE 0.04181).
+
+The scale matters for cross-task magnitude comparisons: PatrasIQ cost has raw delta +0.33462, compared with +0.13836 for Dots 2024 B r2, but their uniform-reference ratios are +0.05086 (5.09%) and +0.19961 (19.96%). Sushi A has +0.00179 (0.18%). These percentages refer to log(r!), not predictive accuracy; the paired uncertainty still needs to be read on the same scale.
 
 All five likelihood centers are certified for 22 tasks. Sushi B has 2/5 certificates; its other centers remain explicitly approximate. Its small loss difference cannot support a general family-winner conclusion. Optimization gaps bound training objectives, not test loss. Figures show ±1 partition MCSE, not population confidence intervals. Five values give only four degrees of freedom for estimating the split variance.
 

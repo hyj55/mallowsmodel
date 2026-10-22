@@ -4,6 +4,8 @@
 
 **L0 and S0 are supplementary experiments; P0 alone is the Algorithm 4.1 main experiment.** Their likelihood-center SM and PL curves use P0's finite fitting procedures: the fixed SM beta bound 10, inner-selected positive PL ridge, exact small-catalogue likelihood centers, and certified-or-explicitly-approximate integer optimization for larger catalogues. Separate estimator curves additionally attempt Sharp with the resource-accounted exact sieve; this does not make Sharp a P0 main method. Fotakis requires every pair to be observed. Efficient appears only as an admitted fallback after Sharp fails computationally. The global-sieve supplement reuses the identical Sharp fit when the two constructions coincide.
 
+The [combined result view](../results/predictive/scaled_curves.md) shows raw delta and delta / log(r!) together. Its [L0](../results/predictive/learning_comparison.csv) and [S0](../results/predictive/synthetic_comparison.csv) CSVs include every saved estimator, availability, MCSE and applicable interval on both scales. The fixed positive denominator preserves within-curve ordering and uncertainty interpretation; it does not change fits or create extra experiments.
+
 ## L0: Sushi A/B with five outer partitions
 
 Both tasks have 5,000 respondent rows and rank ten items per report. A has a fixed ten-item catalogue and display; B has a hundred-item catalogue and varying ten-item displays. This makes the two tasks informative about different exposure regimes, but they are different preference tasks and not a controlled intervention on catalogue size.

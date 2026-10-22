@@ -97,10 +97,15 @@ def validate(sources=False):
                     np.testing.assert_allclose(value, rows.loc[method,field], atol=2e-9, rtol=2e-9)
         print('REPLAY',*key,flush=True)
     from summarize_predictive_study import summarize
-    expected = summarize(frame); expected.insert(0,'raw_study','P0')
+    from src.reporting_metrics import uniform_scaled_differences
+    expected = uniform_scaled_differences(summarize(frame)); expected.insert(0,'raw_study','P0')
     pd.testing.assert_frame_equal(pd.read_csv(PUBLIC/'summary.csv'),expected,
                                  check_dtype=False,atol=2e-9,rtol=2e-9)
-    pd.testing.assert_frame_equal(pd.read_csv(PUBLIC/'borda_comparisons.csv'),borda_comparisons(frame),
+    pd.testing.assert_frame_equal(pd.read_csv(PUBLIC/'borda_comparisons.csv'),uniform_scaled_differences(
+        borda_comparisons(frame).assign(r=lambda x:x.dataset.map(frame.groupby('dataset').r.first()))),
+                                 check_dtype=False,atol=2e-9,rtol=2e-9)
+    pd.testing.assert_frame_equal(pd.read_csv(PUBLIC/'scaled_repeat_scores.csv.gz'),
+                                 uniform_scaled_differences(frame),
                                  check_dtype=False,atol=2e-9,rtol=2e-9)
     print('E0: 115 unchanged allocations; all six methods, admission, depth-zero aliases and paired summaries verified')
 

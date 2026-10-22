@@ -11,6 +11,8 @@ These outputs cover 115 empirical training contexts, 60 Sushi learning contexts 
 | [primary.csv](primary.csv) | Raw six-method allocation export for 23 tasks; contains P0 main, E0 supplement and B0 alias rows; use named views for interpretation |
 | [learning.csv](learning.csv) | Sushi A/B at N=20,50,100,300,1000,3000, plus P0's N=4000 endpoint; 5 allocations each |
 | [synthetic.csv](synthetic.csv) | Fixed-r sample-size and catalogue-size curves, two generators and 20 independent repetitions per cell |
+| [learning_comparison.csv](learning_comparison.csv), [synthetic_comparison.csv](synthetic_comparison.csv) | All saved curve estimators with raw/scaled differences side by side; [readable likelihood-center tables](scaled_curves.md) |
+| [scaled_curve_scores.csv.gz](scaled_curve_scores.csv.gz) | L0/S0 and linked Sushi endpoints, with per-repetition scaled differences and applicable scaled conditional intervals |
 | [repeat_scores.csv.gz](repeat_scores.csv.gz) | Every per-repetition score, paired difference, coverage measure, conditional bootstrap interval and availability flag |
 | [predictors.jsonl.gz](predictors.jsonl.gz) | Fitted orders, dispersion, log-worths, selected ridge, inner-validation scores, seeds, data fingerprints and solver/resource metadata; no raw empirical reports |
 | [sieve_resources.json](sieve_resources.json) | Complete cached packing receipts and explicit memory/time failures |
@@ -42,6 +44,8 @@ The score key is `(study,dataset,n,N,repeat,method)`. `r` is report size and `N`
 ## Score and interval fields
 
 `nll` is mean whole-ranking NLL in nats per report. `delta` is that method's NLL minus the paired PL NLL, on identical reports. PL's delta is zero. `kendall` is distance to a supplied source objective order on empirical tasks where one exists, or to the generating order in S0; these targets must not be conflated.
+
+Named P0/E0/B0 summaries and the L0/S0 comparison views append `uniform_nll=log(r!)` and `delta_uniform*` fields. Every such field is its raw `delta*` counterpart divided by this fixed positive reference: `delta_uniform_mean`, `delta_uniform_mcse`, `delta_uniform_ci_low/high`, and so on. CSV values are ratios, not percentages. The P0 per-partition view, E0 `scaled_repeat_scores.csv.gz` and L0/S0 `scaled_curve_scores.csv.gz` carry the corresponding per-repetition quantities. Raw producer files keep their recorded fields and hashes. [Metric definition](../../docs/criteria.md#uniform-reference-scaled-loss-difference).
 
 For each summary cell:
 

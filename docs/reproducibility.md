@@ -24,7 +24,7 @@ The restoration command verifies ZIP parts and reconstructs the exact recorded D
 
 ## Rebuild named reports without fitting
 
-Run `python build_study_reports.py` to regenerate the independent P0 main report, E0 estimator report, B0 alias report and saved-split precision audit. Run it with `--check` for read-only verification. Inputs are the shared aggregate/per-repetition scores, predictor file and complete E0 score-candidate records; no source acquisition, randomization, fitting or bootstrap is performed. The result manifest records presentation hashes separately from the numerical inputs.
+Run `python build_study_reports.py` to regenerate the independent P0 main report, E0 estimator report, B0 alias report, saved-split precision audit and raw/scaled L0/S0 comparison views. Run it with `--check` for read-only verification. Inputs are the shared aggregate/per-repetition scores, predictor file and complete E0 score-candidate records; no source acquisition, randomization, fitting or bootstrap is performed. The result manifest records presentation hashes separately from the numerical inputs.
 
 ## Reproduce the shared prediction runner
 
