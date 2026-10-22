@@ -28,6 +28,12 @@ All stated confidence levels are pointwise, without adjustment for the many task
 
 The [primary design](predictive_comparison.md#loss-averaging-and-intervals) specifies the P0 formulas and why its two uncertainty calculations have different targets. The [learning design](predictive_learning.md) describes dependence between nested budgets. Per-split bootstrap endpoints are never averaged into an interval for a five-split mean. P0's small known-group samples, including ten held-out Sounds assessors, retain the same small-cluster limitations described below.
 
+## Rescaling a difference and its uncertainty
+
+The [uniform-reference ratio](criteria.md#uniform-reference-scaled-loss-difference) uses the known positive constant c=log(r!) for each fixed-r task or curve cell. If the raw statistic is delta, its scaled statistic is delta/c. Divide its SD, MCSE, descriptive range or quantile endpoints by c as well. A raw interval [L,U] covers the raw target exactly when [L/c,U/c] covers the scaled target; no independence assumption or additional bootstrap is introduced by this deterministic transformation.
+
+Accordingly, P0/E0/L0 mean-level scaled CI fields remain empty. Their scaled MCSEs still describe random allocations of fixed data. Scaled per-split percentile intervals remain conditional on the fitted models and their identified test units. S0's scaled t intervals remain approximate pointwise intervals for an independent-simulation mean. A sign decision or zero-crossing cannot change under this positive scaling. It does not resolve any limitations of the original interval or provide simultaneous inference across tasks.
+
 ## Paired whole-report bootstrap
 
 Fix trained SM and PL models. For T test reports compute $`d_t=\ell_{\mathrm{SM},t}-\ell_{\mathrm{PL},t}`$ and $`\hat\Delta=\frac1T\sum_{t=1}^T d_t`$. For each $`b=1,\ldots,B`$:

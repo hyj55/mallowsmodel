@@ -29,6 +29,26 @@ Expected log loss is appropriate for probability prediction because, for a true 
 
 Thus differences compare predictive distributions under the evaluation population. Winning does not establish that the winning family generated the data. A zero probability assigned to a possible test observation gives infinite loss and cannot be replaced by a finite score without changing the procedure.
 
+## Uniform-reference-scaled loss difference
+
+The P0/E0/B0 result tables and L0/S0 comparison views show the raw paired difference alongside
+
+```math
+u_r=\log(r!),\qquad
+\Delta^{\mathrm{uniform}}=\frac{\Delta}{u_r},\qquad
+\overline{\Delta}^{\mathrm{uniform}}=\frac{\overline{\Delta}}{u_r}.
+```
+
+Each task or curve cell has a fixed report size r. Uniform probability over its r! complete orderings gives NLL u_r. Use the number of **displayed and ranked items**, not catalogue n: Sushi A and B both use log(10!), even though B's catalogue contains 100 items. S0's growing-n curve keeps r=3 and therefore always uses log(3!). This scale is conditional on the display and does not model how displays were selected.
+
+A ratio 0.05 means that SM's excess loss over PL equals 5% of the uniform-ranking reference loss; it is not a five-percentage-point accuracy difference, a relative percentage of PL's own NLL, or variance explained. Negative favors SM on both scales. The ratio need not lie in [-1,1], since a model's loss can exceed the uniform reference. For magnitude comparisons, retain the sign while comparing absolute values.
+
+The denominator adjusts one source of scale variation across report lengths. It does not remove differences in intrinsic noise, population, sample size, coverage, tuning or prediction target. This is an auxiliary descriptive scale, not a unique standardized effect size or a way to pool incompatible studies. When r is equal, ranking the gaps by magnitude is identical on both scales. When r differs, the ordering can change; report both.
+
+A fixed positive scale commutes with averaging, SD, standard errors and quantiles. Thus every `delta_uniform*` field is its raw `delta*` counterpart divided by `uniform_nll`; a 95% interval [L,U] becomes [L/u_r,U/u_r]. Its coverage event and inferential target are unchanged. No new bootstrap is needed, and unavailable intervals stay unavailable. See [uncertainty](uncertainty.md#rescaling-a-difference-and-its-uncertainty).
+
+These views use saved whole-ranking losses. They do not apply this denominator to extracted-pair diagnostics, center error or a mixed-size aggregate. A future task containing variable r would need an explicit report-weighting definition; substituting log of the factorial of its average r is not the definition above.
+
 ## Exact population loss and empirical test loss
 
 S1 and D2 enumerate the finite support of displayed sets and their orderings. For each fitted predictor,

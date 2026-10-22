@@ -23,28 +23,30 @@ Conditional on fixed data and independently randomized allocations, this estimat
 
 The 2,000 bootstrap draws **inside** an eligible P0/E0/L0 split are a different resampling operation and remain 2,000. Simulations generate fresh datasets and keep their independent-repetition designs. Fixed diagnostic allocations and chronological forecasts are not converted into random five-fold or five-shuffle experiments.
 
-| Task | Mean delta | MCSE | Smallest split delta | Largest split delta |
-|---|---|---|---|---|
-| Dots 2013, gap 3 | -0.02170 | 0.00576 | -0.03338 | -0.00066 |
-| Dots 2013, gap 5 | -0.00998 | 0.00413 | -0.01899 | 0.00544 |
-| Dots 2013, gap 7 | -0.00189 | 0.00541 | -0.01241 | 0.01803 |
-| Dots 2013, gap 9 | -0.04415 | 0.00337 | -0.05398 | -0.03505 |
-| Puzzle, minimum 11 steps | -0.01042 | 0.00294 | -0.01678 | -0.00197 |
-| Puzzle, minimum 5 steps | -0.06934 | 0.00523 | -0.08849 | -0.05774 |
-| Puzzle, minimum 7 steps | -0.02090 | 0.01363 | -0.07048 | 0.00933 |
-| Puzzle, minimum 9 steps | -0.01530 | 0.00906 | -0.04358 | 0.01294 |
-| Beans | 0.01333 | 0.01001 | -0.01041 | 0.04992 |
-| Dots 2024 A r2 | 0.04426 | 0.01430 | -0.00344 | 0.08493 |
-| Dots 2024 A r3 | 0.12868 | 0.02169 | 0.06809 | 0.19688 |
-| Dots 2024 A r5 | 0.04176 | 0.03857 | -0.06567 | 0.14993 |
-| Dots 2024 A r6 | 0.08479 | 0.04061 | -0.03252 | 0.19261 |
-| Dots 2024 B r2 | 0.13836 | 0.01780 | 0.09140 | 0.17874 |
-| Dots 2024 B r3 | 0.11545 | 0.01852 | 0.06331 | 0.17217 |
-| Dots 2024 B r5 | 0.05113 | 0.02977 | -0.04317 | 0.13347 |
-| Dots 2024 B r6 | -0.01824 | 0.04181 | -0.17815 | 0.05570 |
-| PatrasIQ cost | 0.33462 | 0.04120 | 0.23510 | 0.48620 |
-| PatrasIQ population | 0.10186 | 0.06354 | -0.10239 | 0.21020 |
-| Sounds | 0.00761 | 0.00724 | -0.00846 | 0.03151 |
-| Sushi A | 0.02711 | 0.00870 | 0.00606 | 0.05124 |
-| Sushi B | -0.00398 | 0.00657 | -0.02350 | 0.01349 |
-| Wheat | 0.14126 | 0.02133 | 0.09595 | 0.21042 |
+Raw and scaled differences appear together below. Scaling divides the difference, MCSE, SD and range endpoints by the task's fixed log(r!); it does not add repetitions or change the uncertainty target. Numeric CSV ratios are not multiplied by 100.
+
+| Task | Mean delta | Delta / log(r!) | MCSE | Scaled MCSE | Smallest split delta | Largest split delta |
+|---|---|---|---|---|---|---|
+| Dots 2013, gap 3 | -0.02170 | -0.00683 | 0.00576 | 0.00181 | -0.03338 | -0.00066 |
+| Dots 2013, gap 5 | -0.00998 | -0.00314 | 0.00413 | 0.00130 | -0.01899 | 0.00544 |
+| Dots 2013, gap 7 | -0.00189 | -0.00059 | 0.00541 | 0.00170 | -0.01241 | 0.01803 |
+| Dots 2013, gap 9 | -0.04415 | -0.01389 | 0.00337 | 0.00106 | -0.05398 | -0.03505 |
+| Puzzle, minimum 11 steps | -0.01042 | -0.00328 | 0.00294 | 0.00092 | -0.01678 | -0.00197 |
+| Puzzle, minimum 5 steps | -0.06934 | -0.02182 | 0.00523 | 0.00165 | -0.08849 | -0.05774 |
+| Puzzle, minimum 7 steps | -0.02090 | -0.00658 | 0.01363 | 0.00429 | -0.07048 | 0.00933 |
+| Puzzle, minimum 9 steps | -0.01530 | -0.00481 | 0.00906 | 0.00285 | -0.04358 | 0.01294 |
+| Beans | 0.01333 | 0.00744 | 0.01001 | 0.00559 | -0.01041 | 0.04992 |
+| Dots 2024 A r2 | 0.04426 | 0.06385 | 0.01430 | 0.02063 | -0.00344 | 0.08493 |
+| Dots 2024 A r3 | 0.12868 | 0.07182 | 0.02169 | 0.01210 | 0.06809 | 0.19688 |
+| Dots 2024 A r5 | 0.04176 | 0.00872 | 0.03857 | 0.00806 | -0.06567 | 0.14993 |
+| Dots 2024 A r6 | 0.08479 | 0.01289 | 0.04061 | 0.00617 | -0.03252 | 0.19261 |
+| Dots 2024 B r2 | 0.13836 | 0.19961 | 0.01780 | 0.02568 | 0.09140 | 0.17874 |
+| Dots 2024 B r3 | 0.11545 | 0.06443 | 0.01852 | 0.01034 | 0.06331 | 0.17217 |
+| Dots 2024 B r5 | 0.05113 | 0.01068 | 0.02977 | 0.00622 | -0.04317 | 0.13347 |
+| Dots 2024 B r6 | -0.01824 | -0.00277 | 0.04181 | 0.00636 | -0.17815 | 0.05570 |
+| PatrasIQ cost | 0.33462 | 0.05086 | 0.04120 | 0.00626 | 0.23510 | 0.48620 |
+| PatrasIQ population | 0.10186 | 0.01548 | 0.06354 | 0.00966 | -0.10239 | 0.21020 |
+| Sounds | 0.00761 | 0.01098 | 0.00724 | 0.01044 | -0.00846 | 0.03151 |
+| Sushi A | 0.02711 | 0.00179 | 0.00870 | 0.00058 | 0.00606 | 0.05124 |
+| Sushi B | -0.00398 | -0.00026 | 0.00657 | 0.00044 | -0.02350 | 0.01349 |
+| Wheat | 0.14126 | 0.07884 | 0.02133 | 0.01190 | 0.09595 | 0.21042 |

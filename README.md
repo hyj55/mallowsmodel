@@ -4,7 +4,7 @@ This repository studies how selective Mallows (SM) and Plackett–Luce (PL) pred
 
 **The main experiment is P0, the grouped predictive comparison in manuscript Algorithm 4.1.** It compares whole-ranking likelihood-center SM with tuned ridge PL. Sharp, Fotakis, Efficient and global clipped Borda are evaluated together in E0; the global pair-sieve is B0. L0/S0 are supplementary learning/simulation experiments. The Borda-pilot tuned block-sieve experiment is a separately defined computational and predictive supplement, with its own results and limitations.
 
-The main score is the mean negative log probability of a held-out **whole ranking conditional on its displayed set**. Throughout, **$`\Delta=\mathrm{NLL}(\mathrm{SM})-\mathrm{NLL}(\mathrm{PL})`$**: a negative value favors SM. Years, seasons, locations, participant attributes, and numerical ratings are not fitted covariates. Where available, metadata support splitting, grouping, source checks, or explicitly identified diagnostics.
+The main score is the mean negative log probability of a held-out **whole ranking conditional on its displayed set**. Throughout, **$`\Delta=\mathrm{NLL}(\mathrm{SM})-\mathrm{NLL}(\mathrm{PL})`$**: a negative value favors SM. P0/E0/B0 tables and the [L0/S0 result views](results/predictive/scaled_curves.md) show both raw delta and [delta / log(r!)](docs/criteria.md#uniform-reference-scaled-loss-difference), using the displayed/report size r to express the gap relative to uniform-ranking loss. Years, seasons, locations, participant attributes, and numerical ratings are not fitted covariates. Where available, metadata support splitting, grouping, source checks, or explicitly identified diagnostics.
 
 ## Read the study
 

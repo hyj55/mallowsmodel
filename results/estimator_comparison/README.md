@@ -34,6 +34,38 @@ The table gives whole-ranking test NLL, averaged equally across five allocations
 | Sushi B | 14.23999 | 14.23601 | NA | NA | NA | 14.23391 |
 | Wheat | 1.43954 | 1.58081 | NA | 1.56505 | NA | 1.59975 |
 
+## Paired SM–PL differences on both scales
+
+Each cell is **raw mean delta / scaled mean delta**: the first value is SM NLL minus PL NLL in nats/report; the second is that same difference divided by log(r!). For example, a scaled value 0.05 means 5% of the uniform-ranking loss, not a five-percentage-point accuracy gap. Negative favors the named SM estimator. This uses the same five paired allocations and requires all five fits. Scaling changes neither signs nor availability. r is the display/report size, not catalogue n; [limitations](../../docs/criteria.md#uniform-reference-scaled-loss-difference) still apply.
+
+| Task | Likelihood SM − PL: raw / scaled | Sharp − PL: raw / scaled | Fotakis − PL: raw / scaled | Efficient − PL: raw / scaled | Global Borda − PL: raw / scaled |
+|---|---|---|---|---|---|
+| Dots 2013, gap 3 | -0.02170 / -0.00683 | -0.02170 / -0.00683 | -0.02170 / -0.00683 | NA (0/5) | -0.02170 / -0.00683 |
+| Dots 2013, gap 5 | -0.00998 / -0.00314 | -0.00998 / -0.00314 | -0.00998 / -0.00314 | NA (0/5) | -0.00998 / -0.00314 |
+| Dots 2013, gap 7 | -0.00189 / -0.00059 | -0.00189 / -0.00059 | -0.00189 / -0.00059 | NA (0/5) | -0.00189 / -0.00059 |
+| Dots 2013, gap 9 | -0.04415 / -0.01389 | -0.04415 / -0.01389 | -0.04415 / -0.01389 | NA (0/5) | -0.04415 / -0.01389 |
+| Puzzle, minimum 11 steps | -0.01042 / -0.00328 | -0.01042 / -0.00328 | -0.01042 / -0.00328 | NA (0/5) | -0.01042 / -0.00328 |
+| Puzzle, minimum 5 steps | -0.06934 / -0.02182 | -0.06934 / -0.02182 | -0.06934 / -0.02182 | NA (0/5) | -0.06934 / -0.02182 |
+| Puzzle, minimum 7 steps | -0.02090 / -0.00658 | -0.02090 / -0.00658 | -0.02090 / -0.00658 | NA (0/5) | -0.02090 / -0.00658 |
+| Puzzle, minimum 9 steps | -0.01530 / -0.00481 | +0.01546 / +0.00486 | -0.01530 / -0.00481 | NA (0/5) | -0.01530 / -0.00481 |
+| Beans | +0.01333 / +0.00744 | +0.00978 / +0.00546 | +0.00383 / +0.00214 | NA (0/5) | +0.00209 / +0.00117 |
+| Dots 2024 A r2 | +0.04426 / +0.06385 | NA (0/5) | NA (0/5) | +0.03020 / +0.04358 | +0.03020 / +0.04358 |
+| Dots 2024 A r3 | +0.12868 / +0.07182 | NA (0/5) | NA (0/5) | NA (0/5) | +0.07872 / +0.04393 |
+| Dots 2024 A r5 | +0.04176 / +0.00872 | NA (0/5) | NA (0/5) | NA (0/5) | +0.03196 / +0.00667 |
+| Dots 2024 A r6 | +0.08479 / +0.01289 | NA (0/5) | +0.06320 / +0.00961 | NA (0/5) | +0.09695 / +0.01474 |
+| Dots 2024 B r2 | +0.13836 / +0.19961 | NA (0/5) | NA (0/5) | +0.03004 / +0.04333 | +0.03004 / +0.04333 |
+| Dots 2024 B r3 | +0.11545 / +0.06443 | NA (0/5) | NA (0/5) | NA (0/5) | +0.00938 / +0.00524 |
+| Dots 2024 B r5 | +0.05113 / +0.01068 | NA (0/5) | NA (2/5) | NA (0/5) | +0.07260 / +0.01516 |
+| Dots 2024 B r6 | -0.01824 / -0.00277 | NA (0/5) | NA (4/5) | NA (0/5) | -0.03205 / -0.00487 |
+| PatrasIQ cost | +0.33462 / +0.05086 | NA (0/5) | NA (0/5) | NA (0/5) | +0.31726 / +0.04822 |
+| PatrasIQ population | +0.10186 / +0.01548 | NA (0/5) | NA (0/5) | NA (0/5) | +0.04844 / +0.00736 |
+| Sounds | +0.00761 / +0.01098 | +0.00948 / +0.01367 | +0.00576 / +0.00831 | NA (0/5) | +0.00305 / +0.00440 |
+| Sushi A | +0.02711 / +0.00179 | +0.07153 / +0.00474 | +0.02711 / +0.00179 | NA (0/5) | +0.03348 / +0.00222 |
+| Sushi B | -0.00398 / -0.00026 | NA (0/5) | NA (0/5) | NA (0/5) | -0.00608 / -0.00040 |
+| Wheat | +0.14126 / +0.07884 | NA (0/5) | +0.12550 / +0.07005 | NA (0/5) | +0.16020 / +0.08941 |
+
+The [summary CSV](summary.csv) includes raw/scaled MCSEs and all other delta statistics. The [scaled per-partition view](scaled_repeat_scores.csv.gz) additionally gives raw/scaled conditional bootstrap endpoints. Divide each original difference, MCSE or endpoint by the same positive log(r!); unavailable intervals remain unavailable. These are derived views of saved scores, not refitted models or another experiment.
+
 ## Global Borda against every other method
 
 Each cell is **mean(Borda NLL − comparator NLL), with paired partition MCSE in parentheses**. Negative favors Borda. Compute each difference within the same allocation first, then average those five differences; the MCSE is their sample standard deviation divided by sqrt(5). It is not obtained by treating the two methods as independent. It is not a population confidence interval. Full differences and MCSEs require 5/5 paired fits.
@@ -127,9 +159,10 @@ Sharp has 60 unavailable E0 fits; the further 15 L0 and 80 S0 contexts give 155 
 
 | File | Contents |
 |---|---|
-| summary.csv | All six methods on 23 tasks; 138 rows, availability, mean NLL/delta, MCSE and explicitly conditional means |
+| summary.csv | All six methods on 23 tasks; 138 rows, availability, mean NLL, raw/scaled delta, MCSE and explicitly conditional means |
 | repeat_scores.csv.gz | 690 rows: six methods × 23 tasks × five unchanged allocations; depth, status, alias and conditional intervals |
-| borda_comparisons.csv | Borda-minus-comparator paired differences, complete/conditional denominators, MCSE and split ranges |
+| scaled_repeat_scores.csv.gz | Same 690 saved score rows, with log(r!), scaled differences and scaled conditional interval endpoints appended |
+| borda_comparisons.csv | Raw/scaled Borda-minus-comparator paired differences, complete/conditional denominators, MCSE and split ranges |
 | predictors.jsonl.gz | All six method records per allocation, source hashes, tie rules and Efficient depth/domain metadata |
 | manifest.json | Fitting/scoring code, input and output hashes; the report manifest separately verifies generated summaries |
 

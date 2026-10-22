@@ -2,6 +2,7 @@
 import numpy as np
 import pandas as pd
 from .estimator_comparison import METHODS, borda_comparisons
+from .reporting_metrics import uniform_scaled_differences
 
 
 LABELS = dict(pl='PL', sm_likelihood='Likelihood SM', sm_sharp='Sharp',
@@ -16,6 +17,14 @@ def report(summary, scores, table, task_label):
         g = summary[summary.method == method].set_index('dataset')
         wide[method] = wide.dataset.map(g.nll_mean)
     contrasts = borda_comparisons(scores)
+    assert scores.groupby('dataset').r.nunique().eq(1).all()
+    contrasts['r'] = contrasts.dataset.map(scores.groupby('dataset').r.first())
+    contrasts = uniform_scaled_differences(contrasts)
+    differences = pd.DataFrame({'dataset':datasets, 'task':[task_label(d) for d in datasets]})
+    for method in METHODS[1:]:
+        g = summary[summary.method == method].set_index('dataset')
+        differences[method] = [f'{g.loc[d,"delta_mean"]:+.5f} / {g.loc[d,"delta_uniform_mean"]:+.5f}'
+            if g.loc[d,'available'] == 5 else f'NA ({int(g.loc[d,"available"])}/5)' for d in datasets]
     paired = pd.DataFrame({'dataset':datasets})
     paired['task'] = paired.dataset.map(task_label)
     counts = []
@@ -58,6 +67,15 @@ The table gives whole-ranking test NLL, averaged equally across five allocations
 
 '''
     text += table(wide,[('task','Task')]+[(m,LABELS[m]+' NLL') for m in METHODS])+'\n\n'
+    text += '''## Paired SM–PL differences on both scales
+
+Each cell is **raw mean delta / scaled mean delta**: the first value is SM NLL minus PL NLL in nats/report; the second is that same difference divided by log(r!). For example, a scaled value 0.05 means 5% of the uniform-ranking loss, not a five-percentage-point accuracy gap. Negative favors the named SM estimator. This uses the same five paired allocations and requires all five fits. Scaling changes neither signs nor availability. r is the display/report size, not catalogue n; [limitations](../../docs/criteria.md#uniform-reference-scaled-loss-difference) still apply.
+
+'''
+    text += table(differences,[('task','Task')]+[(m,LABELS[m]+' − PL: raw / scaled') for m in METHODS[1:]])+'\n\n'
+    text += '''The [summary CSV](summary.csv) includes raw/scaled MCSEs and all other delta statistics. The [scaled per-partition view](scaled_repeat_scores.csv.gz) additionally gives raw/scaled conditional bootstrap endpoints. Divide each original difference, MCSE or endpoint by the same positive log(r!); unavailable intervals remain unavailable. These are derived views of saved scores, not refitted models or another experiment.
+
+'''
     text += '''## Global Borda against every other method
 
 Each cell is **mean(Borda NLL − comparator NLL), with paired partition MCSE in parentheses**. Negative favors Borda. Compute each difference within the same allocation first, then average those five differences; the MCSE is their sample standard deviation divided by sqrt(5). It is not obtained by treating the two methods as independent. It is not a population confidence interval. Full differences and MCSEs require 5/5 paired fits.
@@ -98,9 +116,10 @@ Sharp has 60 unavailable E0 fits; the further 15 L0 and 80 S0 contexts give 155 
 
 | File | Contents |
 |---|---|
-| summary.csv | All six methods on 23 tasks; 138 rows, availability, mean NLL/delta, MCSE and explicitly conditional means |
+| summary.csv | All six methods on 23 tasks; 138 rows, availability, mean NLL, raw/scaled delta, MCSE and explicitly conditional means |
 | repeat_scores.csv.gz | 690 rows: six methods × 23 tasks × five unchanged allocations; depth, status, alias and conditional intervals |
-| borda_comparisons.csv | Borda-minus-comparator paired differences, complete/conditional denominators, MCSE and split ranges |
+| scaled_repeat_scores.csv.gz | Same 690 saved score rows, with log(r!), scaled differences and scaled conditional interval endpoints appended |
+| borda_comparisons.csv | Raw/scaled Borda-minus-comparator paired differences, complete/conditional denominators, MCSE and split ranges |
 | predictors.jsonl.gz | All six method records per allocation, source hashes, tie rules and Efficient depth/domain metadata |
 | manifest.json | Fitting/scoring code, input and output hashes; the report manifest separately verifies generated summaries |
 

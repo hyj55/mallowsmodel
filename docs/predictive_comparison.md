@@ -78,7 +78,7 @@ For each outer-test report t, score the complete reported ranking:
 \overline\Delta=\frac1{5}\sum_{b=1}^{5}\Delta_b.
 ```
 
-Negative delta favors SM. Test pairs are never treated as independent observations. Report length affects the scale of whole-ranking loss; a larger numerical gap at r=10 is not automatically a stronger scientific effect than one at r=2.
+Negative delta favors SM. Test pairs are never treated as independent observations. Report length affects the scale of whole-ranking loss; a larger numerical gap at r=10 is not automatically a stronger scientific effect than one at r=2. The P0 table therefore also gives delta / log(r!) and its scaled MCSE beside the raw difference. This dimensionless uniform-reference ratio uses the fixed displayed/report size r, not catalogue n. [Definition and limits](criteria.md#uniform-reference-scaled-loss-difference).
 
 Two different kinds of uncertainty are saved:
 

@@ -2,6 +2,8 @@
 
 [Study guide](../README.md) · [Findings](../docs/findings.md) · [Criteria](../docs/criteria.md) · [Uncertainty](../docs/uncertainty.md)
 
+P0/E0/B0 result tables and [L0/S0 comparison views](predictive/scaled_curves.md) display raw SM-minus-PL delta beside delta / log(r!), with applicable uncertainty scaled by the same positive constant. CSV ratios are dimensionless; [definitions](../docs/criteria.md#uniform-reference-scaled-loss-difference) explain why this assists cross-report-length reading without making different prediction populations interchangeable.
+
 Read results by experiment, dataset, estimator, evaluation target and denominator. Filenames are stable artifact identifiers; several scientific components share a directory.
 
 | Location | Components | What to read |
