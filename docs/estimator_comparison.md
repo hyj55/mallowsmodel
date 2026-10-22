@@ -12,7 +12,7 @@ Every candidate uses P0's five grouped 80/20 outer allocations and the same deve
 |---|---|---|
 | PL | Training-only tuned positive ridge; **M**, Proposition 4.3 | Saved P0 reference, all 115 allocations |
 | Likelihood-center SM | Whole-ranking Kendall objective, DP/integer optimization; **M**, Proposition 4.1 | Saved P0 reference; retains exact/approximate status |
-| Sharp | **M**, Algorithm 2.1 and Lemma 2.11 | A=256 and W_star unchanged; no eight-item guard; only a complete exact construction is accepted |
+| Sharp | **M**, Algorithm 2.1 and Lemma 2.11 | $`A=256`$ and $`W_\star`$ unchanged; no eight-item guard; only a complete exact construction is accepted |
 | Fotakis / PosEst | Fotakis et al. (2021), Algorithm 1 | Every unordered pair must appear in development data, checked in each allocation |
 | Efficient | **M**, Algorithms 3.1/3.2, pp. 19 and 24–25; equation (3.23) | Independently assessed on every allocation; schedule requires lambda<=1. Depth and reason for exclusion are explicit |
 | Global clipped Borda | **M**, Proposition 2.14, p. 15, and equation (3.4), pp. 19–20 | Fitted on all 115 allocations, including outside Efficient's schedule domain; same tie rule as Efficient |
@@ -21,17 +21,17 @@ Every candidate uses P0's five grouped 80/20 outer allocations and the same deve
 
 ## What global Borda computes
 
-Let K_i count development reports displaying item i. For a strict report of size r, let rank_t(i) be its one-based position, with the preferred item first. Its full-catalogue score is
+Let $`K_i`$ count development reports displaying item $`i`$. For a strict report of size $`r`$, let $`\mathrm{rank}_t(i)`$ be its one-based position, with the preferred item first. Its full-catalogue score is
 
 ```math
 K_i=\sum_{t=1}^{N}\mathbf{1}\{i\in S_t\},\qquad
-s_i=\operatorname{clip}_{[-n,n]}\!\left[
+s_i=\mathrm{clip}_{[-n,n]}\!\left[
 \frac{n-1}{(r-1)K_i}
-\sum_{t:i\in S_t}\bigl(r+1-2\operatorname{rank}_t(i)\bigr)
+\sum_{t:i\in S_t}\bigl(r+1-2\mathrm{rank}_t(i)\bigr)
 \right].
 ```
 
-For K_i=0 use s_i=0. Sort descending; exact score ties use one fixed seeded label-priority array (seed 93847), shared with Efficient. No source objective order is used. This is appearance-normalized scoring: frequently displayed items do not gain merely from appearing in more reports. It is not an unnormalized sum of pair wins. Fit the common bounded dispersion on all development rankings after obtaining the center.
+For $`K_i=0`$ use $`s_i=0`$. Sort descending; exact score ties use one fixed seeded label-priority array (seed 93847), shared with Efficient. No source objective order is used. This is appearance-normalized scoring: frequently displayed items do not gain merely from appearing in more reports. It is not an unnormalized sum of pair wins. Fit the common bounded dispersion on all development rankings after obtaining the center.
 
 ## Efficient admission and depth-zero identity
 
@@ -42,7 +42,7 @@ Equation (3.23) defines the schedule for
 =\frac{Nr(r-1)}{n(n-1)}\le1.
 ```
 
-The fixed schedule inputs are beta_0=0.1 and A=256. Efficient has no Sharp-failure gate in E0. The current full-budget allocations satisfy lambda<=1 only for dots2024 A r2 and B r2 (lambda=480/870, five fits each). The remaining 21 tasks have 105 `outside_schedule_domain` records. Their depth is unavailable, not zero; Borda is still fitted and compared normally. The procedure does not cap lambda at one, thin reports, or silently extend the hierarchy beyond the stated schedule domain.
+The fixed schedule inputs are $`\beta_0=0.1`$ and $`A=256`$. Efficient has no Sharp-failure gate in E0. The current full-budget allocations satisfy lambda<=1 only for dots2024 A r2 and B r2 (lambda=480/870, five fits each). The remaining 21 tasks have 105 `outside_schedule_domain` records. Their depth is unavailable, not zero; Borda is still fitted and compared normally. The procedure does not cap lambda at one, thin reports, or silently extend the hierarchy beyond the stated schedule domain.
 
 All E0 catalogues have n<=100. For an admitted resolution, eta*n<=100<256=A, so the root already satisfies the stopping condition and T=0. Algorithm 3.2 still score-sorts its terminal block using all remaining reports; with no pilot stage consumed, that is the full catalogue and all development reports. It therefore equals global clipped Borda under the common tie rule. This identity is checked for order, training distance, dispersion, every test loss and conditional bootstrap endpoints. Efficient is labeled as an alias of Borda in these ten records; retaining both columns does not create independent evidence.
 
@@ -50,12 +50,12 @@ The same E0 implementation also keeps a separately fitted global Borda comparato
 
 ## Evaluation and uncertainty
 
-For each available estimator a and allocation b, compute whole-ranking test NLL L_ab on the unchanged displayed sets. The ordinary summary records Delta_ab=L_ab−L_PL,b. The Borda contrast table instead records d_ab=L_Borda,b−L_ab. Negative d favors Borda. For five complete paired allocations:
+For each available estimator $`a`$ and allocation $`b`$, compute whole-ranking test NLL $`L_{ab}`$ on the unchanged displayed sets. The ordinary summary records $`\Delta_{ab}=L_{ab}-L_{\mathrm{PL},b}`$. The Borda contrast table instead records $`d_{ab}=L_{\mathrm{Borda},b}-L_{ab}`$. Negative $`d_{ab}`$ favors Borda. For five complete paired allocations:
 
 ```math
-\overline d_a=\frac15\sum_{b=1}^{5}d_{ab},\qquad
-\widehat{\mathrm{MCSE}}(\overline d_a)
-=\frac{\operatorname{sd}(d_{a1},\ldots,d_{a5})}{\sqrt5}.
+\overline{d}_a=\frac{1}{5}\sum_{b=1}^{5}d_{ab},\qquad
+s_a=\sqrt{\frac{1}{4}\sum_{b=1}^{5}(d_{ab}-\overline{d}_a)^2},\qquad
+\widehat{\mathrm{MCSE}}(\overline{d}_a)=\frac{s_a}{\sqrt{5}}.
 ```
 
 Pairing is retained before calculating the variance; the two estimators' separate standard errors are not combined as independent quantities. This MCSE measures integration over randomly selected allocations of fixed observations. It is not a population CI. Complete means/MCSEs require all five planned fits. Available-subset means and their denominators are separately labeled; no partial fit is imputed. Split minima/maxima are descriptive.
