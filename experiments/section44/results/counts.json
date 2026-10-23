@@ -1,0 +1,12 @@
+{
+  "calibration_draws": 80,
+  "calibration_fits": 4880,
+  "confirmation_cells": 111,
+  "confirmation_draws": 11100,
+  "confirmation_fits": 52400,
+  "confirmation_status": {
+    "ok": 48766,
+    "resource_limit": 3634
+  },
+  "resource_profiles": 524
+}
