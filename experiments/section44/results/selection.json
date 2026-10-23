@@ -1,0 +1,39 @@
+{
+  "calibration_draws": 80,
+  "efficient": {
+    "active": 40,
+    "candidate": "anchor_K0.3",
+    "comparison": "batch_coefficient",
+    "complete": 80,
+    "config": {
+      "A": 4.0,
+      "K": 0.3,
+      "c_terminal": 0.001953125,
+      "c_width": 0.0625
+    },
+    "eligible": true,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "efficient",
+    "normalized_risk": 0.0928042772177825
+  },
+  "producer_sha256": "85203ee0f8c271a9a0925c09ebbea90957e2da08aabd21d4ba7a12f03e01becb",
+  "protocol_sha256": "5cb9ff816c605530baf258b9677e0ec88804900d6e8593da0e5b98c5dbaa7667",
+  "sharp": {
+    "active": 80,
+    "candidate": "anchor_K0.1",
+    "comparison": "batch_coefficient",
+    "complete": 80,
+    "config": {
+      "A": 4.0,
+      "K": 0.1,
+      "c_terminal": 0.001953125,
+      "c_width": 0.0625
+    },
+    "eligible": true,
+    "exact_sieve": 80,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": 0.2433234492647698
+  }
+}

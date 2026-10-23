@@ -4,7 +4,7 @@
 
 The recorded experiments partly illustrate the manuscript's information and coverage distinctions. They do **not** establish its minimax rates empirically across the stated parameter ranges. The most informative evidence is the center error in correctly specified SM simulations. Empirical held-out NLL answers a different question, and most empirical training designs are outside the intermediate-information region even before checking sampling assumptions.
 
-Theorem 2.17 and Fotakis et al.'s PosEst use the same majority-score idea. Their handling of tied pair counts differs, and their statistical conclusions concern different targets. In the implemented efficient estimator, every recorded hierarchy has depth zero; those observations describe global score sorting, not an active multilevel algorithm.
+Theorem 2.17 and Fotakis et al.'s PosEst use the same majority-score idea. Their handling of tied pair counts differs, and their statistical conclusions concern different targets. In E0 and the S0–S3 comparisons summarized here, every recorded efficient hierarchy has depth zero; those observations describe global score sorting. The independent [S4 Section 4.4 simulation](../experiments/section44/README.md) evaluates active hierarchies, smaller numerical constants, true-center risk and computation in its own report and result directory.
 
 The manuscript references below refer to the supplied 37-page *Selective Mallows Estimation from Uniform Partial Rankings: Minimax Kendall Risk, Efficient Algorithms, and Likelihood Comparisons*, SHA256 `400563b1789acbeea985e4b4c551162b64c87295ee3a7bf91037c8d4cc49e676`. It is unpublished and is not redistributed. [Source records](../results/theory_alignment/sources.json) identify the tables in the supplementary arithmetic appendix.
 
@@ -129,7 +129,7 @@ The appropriate description is **the same majority-score construction, with diff
 | `sm_fotakis` in G1 | Algorithm 1 predecessor count, with every-pair admission and profiled dispersion | Can be compared empirically with exact SM; the theorem assumptions still require separate assessment |
 | `posest` in C1/S3 center benchmarks | Same ≥ predecessor calculation, including zero-exposure ties, without G1's all-pair admission | Missing-pair rows have no p-frequent guarantee. The saved objective gap is not center risk or test NLL |
 
-The zero-depth result follows from the conservative construction, not a data-selected shortcut. A stage requires ηm>A with A=256. With n≤64 and η≤1 in the simulation grids, that condition cannot start a stage. The n=8 Sharp pilot similarly has η=(r−1)/(n−1), and its very wide terminal block contains all items. This identifies the executed estimators without changing their published parameters.
+The zero-depth result follows from the conservative construction, not a data-selected shortcut. A stage requires ηm>A with A=256. With n≤64 and η≤1 in the S1–S3 grids discussed here, that condition cannot start a stage. The n=8 Sharp pilot similarly has η=(r−1)/(n−1), and its very wide terminal block contains all items. This identifies the executed estimators without changing their published parameters.
 
 ## Correspondence in correctly specified simulations
 
@@ -229,15 +229,15 @@ The five 70% within-group repetitions compare local, pooled and matched-pool Fot
 
 The C1 Sushi A training-objective benchmark has PosEst and exact DP at D=686 for N=50 and D=45,938 for N=3,000. That is equality of the training Kemeny objective at two contexts, not equality of generating-center risk or a full-ranking exponential-rate experiment. The C1 `posest` comparisons on sparse incomplete data also lack G1's all-pair admission rule. [The saved benchmark](../results/theory_alignment/inputs/c1_algorithm_benchmark.csv) identifies the objective, certification and runtime separately.
 
-## What the existing evidence supports and what remains untested
+## What the E0 and S0–S3 comparisons establish
 
 | Question | Supported reading of the saved results |
 |---|---|
 | Do more informative samples improve center estimation? | Yes, the pure-SM slices show falling mean Kendall error; coverage-sensitive and complete-ranking cases should be interpreted in their own regimes |
 | Do the data exhibit a proved Q rate uniformly in r? | Not established: sparse grids are small, many budgets cross λ=1, and constants and dimensional scaling were not identified |
-| Has the efficient hierarchy's logarithmic tradeoff been measured? | No active hierarchy was executed; reported efficient-versus-Borda agreement is a depth-zero comparison |
-| Has the sharp full-ranking rate of Theorem 2.17 been tested for its stated estimator? | No saved majority-estimator risk series; existing average-position results relate directly to Corollary 3.13 instead |
+| Has the efficient hierarchy's logarithmic tradeoff been measured in these comparisons? | Their efficient-versus-Borda agreement is a depth-zero comparison; the independent S4 experiment evaluates active hierarchies and empirical calibration |
+| Do these full-ranking rows evaluate Theorem 2.17's stated estimator? | Their average-position results relate to Corollary 3.13; S4 separately includes the Theorem 2.17 majority estimator |
 | Can a real-data NLL winner confirm or refute a minimax Kendall theorem? | No. The target, population assumptions and available ground truth differ |
 | Is the critical coverage transition settled empirically or theoretically here? | No. The manuscript labels its uniform sharp claim a conjecture; the saved finite grids do not resolve it |
 
-A future direct rate study would need deliberately chosen sequences of n,r,N within each claimed region, known SM signal, the actual estimator named in each theorem, active hierarchy stages if that comparison is intended, and true-center Kendall risk with adequate independent repetitions. It would also need to vary coverage separately from pair exposure and audit pairwise/final tie rules for the full-ranking majority estimator. Those are missing tests identified by this analysis, not newly performed experiments.
+The independent [S4 study](../experiments/section44/README.md) addresses active hierarchies, empirical constants, information and coverage, full-ranking majority estimation, and computation using its own fresh simulations. Its report distinguishes original proof calibrations from empirical variants and finite-dimensional evidence from a uniform minimax claim. S4 results are not pooled with the comparisons on this page.

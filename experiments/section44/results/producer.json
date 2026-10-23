@@ -1,0 +1,23 @@
+{
+  "cpu_count": 8,
+  "numpy": "2.3.5",
+  "platform": "macOS-14.6.1-x86_64-i386-64bit-Mach-O",
+  "python": "3.13.7 (v3.13.7:bcee1c32211, Aug 14 2025, 19:10:51) [Clang 16.0.0 (clang-1600.0.26.6)]",
+  "signature": {
+    "code": {
+      "experiments/section44/core.py": "7fa06996f94c2d1f92a8ecfb4ec0351e7b11cab1fbc0e964e08cf18d5c4eea7a",
+      "experiments/section44/design.py": "26021df203592d3bcd17ba01a074a938673e6121f06a32644c37eeb1267949dd",
+      "experiments/section44/run.py": "9513ed524d0228d79ccc87ca76537ab0d491e1e01ad558ec8ba7cb42412a1bc3",
+      "src/manuscript_estimators.py": "70894e6aed5236e7c0035beafa5533b7483051bc668cb69e687aee5dcb682f38",
+      "src/models.py": "ca4c989fe94b60fb5527f128a17175ddbc52092ff8892fe26d795e5e103cfe96",
+      "src/resource_sieve.py": "934f2691fbe17105478ad6b4968646146e4d65bc206f0cbd55c27e310bd33941",
+      "src/sieve_budget_retry.py": "c738a8d774471c79b79a78c5bbb0e6b049a54b82ee61d5d0a9226bec4f078c18"
+    },
+    "protocol": "5cb9ff816c605530baf258b9677e0ec88804900d6e8593da0e5b98c5dbaa7667"
+  },
+  "threads": {
+    "MKL_NUM_THREADS": null,
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1"
+  }
+}

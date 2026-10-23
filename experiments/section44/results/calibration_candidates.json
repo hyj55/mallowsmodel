@@ -1,0 +1,1022 @@
+[
+  {
+    "active": 0,
+    "candidate": "proof",
+    "comparison": "manuscript",
+    "complete": 80,
+    "config": {
+      "A": 256.0,
+      "K": null,
+      "c_terminal": 8.0,
+      "c_width": 1.0
+    },
+    "eligible": false,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "efficient",
+    "normalized_risk": 0.08511056972504401
+  },
+  {
+    "active": 0,
+    "candidate": "proof_A128",
+    "comparison": "A_only_from_proof",
+    "complete": 80,
+    "config": {
+      "A": 128,
+      "K": null,
+      "c_terminal": 8.0,
+      "c_width": 1.0
+    },
+    "eligible": false,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "efficient",
+    "normalized_risk": 0.08511056972504401
+  },
+  {
+    "active": 0,
+    "candidate": "proof_A64",
+    "comparison": "A_only_from_proof",
+    "complete": 80,
+    "config": {
+      "A": 64,
+      "K": null,
+      "c_terminal": 8.0,
+      "c_width": 1.0
+    },
+    "eligible": false,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "efficient",
+    "normalized_risk": 0.08511056972504401
+  },
+  {
+    "active": 0,
+    "candidate": "proof_A32",
+    "comparison": "A_only_from_proof",
+    "complete": 80,
+    "config": {
+      "A": 32,
+      "K": null,
+      "c_terminal": 8.0,
+      "c_width": 1.0
+    },
+    "eligible": false,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "efficient",
+    "normalized_risk": 0.08511056972504401
+  },
+  {
+    "active": 0,
+    "candidate": "proof_A16",
+    "comparison": "A_only_from_proof",
+    "complete": 80,
+    "config": {
+      "A": 16,
+      "K": null,
+      "c_terminal": 8.0,
+      "c_width": 1.0
+    },
+    "eligible": false,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "efficient",
+    "normalized_risk": 0.08511056972504401
+  },
+  {
+    "active": 0,
+    "candidate": "proof_A8",
+    "comparison": "A_only_from_proof",
+    "complete": 80,
+    "config": {
+      "A": 8,
+      "K": null,
+      "c_terminal": 8.0,
+      "c_width": 1.0
+    },
+    "eligible": false,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "efficient",
+    "normalized_risk": 0.08511056972504401
+  },
+  {
+    "active": 80,
+    "candidate": "anchor",
+    "comparison": "anchor",
+    "complete": 80,
+    "config": {
+      "A": 4.0,
+      "K": 0.01,
+      "c_terminal": 0.001953125,
+      "c_width": 0.0625
+    },
+    "eligible": true,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "efficient",
+    "normalized_risk": 0.31149024471122405
+  },
+  {
+    "active": 0,
+    "candidate": "anchor_A1",
+    "comparison": "A_with_formula_terminal",
+    "complete": 80,
+    "config": {
+      "A": 1.0,
+      "K": 0.01,
+      "c_terminal": 0.001953125,
+      "c_width": 0.0625
+    },
+    "eligible": false,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "efficient",
+    "normalized_risk": 0.08511056972504401
+  },
+  {
+    "active": 80,
+    "candidate": "anchor_A2",
+    "comparison": "A_with_formula_terminal",
+    "complete": 80,
+    "config": {
+      "A": 2.0,
+      "K": 0.01,
+      "c_terminal": 0.001953125,
+      "c_width": 0.0625
+    },
+    "eligible": true,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "efficient",
+    "normalized_risk": 0.35558394706628066
+  },
+  {
+    "active": 80,
+    "candidate": "anchor_A8",
+    "comparison": "A_with_formula_terminal",
+    "complete": 80,
+    "config": {
+      "A": 8.0,
+      "K": 0.01,
+      "c_terminal": 0.001953125,
+      "c_width": 0.0625
+    },
+    "eligible": true,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "efficient",
+    "normalized_risk": 0.2691677132804086
+  },
+  {
+    "active": 80,
+    "candidate": "anchor_A16",
+    "comparison": "A_with_formula_terminal",
+    "complete": 80,
+    "config": {
+      "A": 16.0,
+      "K": 0.01,
+      "c_terminal": 0.001953125,
+      "c_width": 0.0625
+    },
+    "eligible": true,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "efficient",
+    "normalized_risk": 0.2685107791133343
+  },
+  {
+    "active": 40,
+    "candidate": "anchor_A64",
+    "comparison": "A_with_formula_terminal",
+    "complete": 80,
+    "config": {
+      "A": 64.0,
+      "K": 0.01,
+      "c_terminal": 0.001953125,
+      "c_width": 0.0625
+    },
+    "eligible": true,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "efficient",
+    "normalized_risk": 0.14461410799409918
+  },
+  {
+    "active": 20,
+    "candidate": "anchor_A128",
+    "comparison": "A_with_formula_terminal",
+    "complete": 80,
+    "config": {
+      "A": 128.0,
+      "K": 0.01,
+      "c_terminal": 0.001953125,
+      "c_width": 0.0625
+    },
+    "eligible": false,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "efficient",
+    "normalized_risk": 0.10789228220669762
+  },
+  {
+    "active": 20,
+    "candidate": "anchor_A256",
+    "comparison": "A_with_formula_terminal",
+    "complete": 80,
+    "config": {
+      "A": 256.0,
+      "K": 0.01,
+      "c_terminal": 0.001953125,
+      "c_width": 0.0625
+    },
+    "eligible": false,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "efficient",
+    "normalized_risk": 0.10789228220669762
+  },
+  {
+    "active": 80,
+    "candidate": "anchor_width0.03125",
+    "comparison": "stage_width",
+    "complete": 80,
+    "config": {
+      "A": 4.0,
+      "K": 0.01,
+      "c_terminal": 0.001953125,
+      "c_width": 0.03125
+    },
+    "eligible": true,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "efficient",
+    "normalized_risk": 0.3135050840913186
+  },
+  {
+    "active": 80,
+    "candidate": "anchor_width0.125",
+    "comparison": "stage_width",
+    "complete": 80,
+    "config": {
+      "A": 4.0,
+      "K": 0.01,
+      "c_terminal": 0.001953125,
+      "c_width": 0.125
+    },
+    "eligible": true,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "efficient",
+    "normalized_risk": 0.3091578231759718
+  },
+  {
+    "active": 0,
+    "candidate": "anchor_width0.25",
+    "comparison": "stage_width",
+    "complete": 80,
+    "config": {
+      "A": 4.0,
+      "K": 0.01,
+      "c_terminal": 0.001953125,
+      "c_width": 0.25
+    },
+    "eligible": false,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "efficient",
+    "normalized_risk": 0.08511056972504401
+  },
+  {
+    "active": 0,
+    "candidate": "anchor_width0.5",
+    "comparison": "stage_width",
+    "complete": 80,
+    "config": {
+      "A": 4.0,
+      "K": 0.01,
+      "c_terminal": 0.001953125,
+      "c_width": 0.5
+    },
+    "eligible": false,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "efficient",
+    "normalized_risk": 0.08511056972504401
+  },
+  {
+    "active": 0,
+    "candidate": "anchor_width1",
+    "comparison": "stage_width",
+    "complete": 80,
+    "config": {
+      "A": 4.0,
+      "K": 0.01,
+      "c_terminal": 0.001953125,
+      "c_width": 1.0
+    },
+    "eligible": false,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "efficient",
+    "normalized_risk": 0.08511056972504401
+  },
+  {
+    "active": 80,
+    "candidate": "anchor_K0.003",
+    "comparison": "batch_coefficient",
+    "complete": 80,
+    "config": {
+      "A": 4.0,
+      "K": 0.003,
+      "c_terminal": 0.001953125,
+      "c_width": 0.0625
+    },
+    "eligible": true,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "efficient",
+    "normalized_risk": 0.3799895680379956
+  },
+  {
+    "active": 80,
+    "candidate": "anchor_K0.03",
+    "comparison": "batch_coefficient",
+    "complete": 80,
+    "config": {
+      "A": 4.0,
+      "K": 0.03,
+      "c_terminal": 0.001953125,
+      "c_width": 0.0625
+    },
+    "eligible": true,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "efficient",
+    "normalized_risk": 0.19509517829829276
+  },
+  {
+    "active": 80,
+    "candidate": "anchor_K0.1",
+    "comparison": "batch_coefficient",
+    "complete": 80,
+    "config": {
+      "A": 4.0,
+      "K": 0.1,
+      "c_terminal": 0.001953125,
+      "c_width": 0.0625
+    },
+    "eligible": true,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "efficient",
+    "normalized_risk": 0.1491396903425118
+  },
+  {
+    "active": 40,
+    "candidate": "anchor_K0.3",
+    "comparison": "batch_coefficient",
+    "complete": 80,
+    "config": {
+      "A": 4.0,
+      "K": 0.3,
+      "c_terminal": 0.001953125,
+      "c_width": 0.0625
+    },
+    "eligible": true,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "efficient",
+    "normalized_risk": 0.0928042772177825
+  },
+  {
+    "active": 0,
+    "candidate": "anchor_K1.0",
+    "comparison": "batch_coefficient",
+    "complete": 80,
+    "config": {
+      "A": 4.0,
+      "K": 1.0,
+      "c_terminal": 0.001953125,
+      "c_width": 0.0625
+    },
+    "eligible": false,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "efficient",
+    "normalized_risk": 0.08511056972504401
+  },
+  {
+    "active": 0,
+    "candidate": "anchor_KNone",
+    "comparison": "batch_coefficient",
+    "complete": 80,
+    "config": {
+      "A": 4.0,
+      "K": null,
+      "c_terminal": 0.001953125,
+      "c_width": 0.0625
+    },
+    "eligible": false,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "efficient",
+    "normalized_risk": 0.08511056972504401
+  },
+  {
+    "active": 0,
+    "candidate": "proof",
+    "comparison": "manuscript",
+    "complete": 60,
+    "config": {
+      "A": 256.0,
+      "K": null,
+      "c_terminal": 8.0,
+      "c_width": 1.0
+    },
+    "eligible": false,
+    "exact_sieve": 60,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": null
+  },
+  {
+    "active": 0,
+    "candidate": "proof_A128",
+    "comparison": "A_only_from_proof",
+    "complete": 60,
+    "config": {
+      "A": 128,
+      "K": null,
+      "c_terminal": 8.0,
+      "c_width": 1.0
+    },
+    "eligible": false,
+    "exact_sieve": 60,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": null
+  },
+  {
+    "active": 0,
+    "candidate": "proof_A64",
+    "comparison": "A_only_from_proof",
+    "complete": 60,
+    "config": {
+      "A": 64,
+      "K": null,
+      "c_terminal": 8.0,
+      "c_width": 1.0
+    },
+    "eligible": false,
+    "exact_sieve": 60,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": null
+  },
+  {
+    "active": 0,
+    "candidate": "proof_A32",
+    "comparison": "A_only_from_proof",
+    "complete": 60,
+    "config": {
+      "A": 32,
+      "K": null,
+      "c_terminal": 8.0,
+      "c_width": 1.0
+    },
+    "eligible": false,
+    "exact_sieve": 60,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": null
+  },
+  {
+    "active": 0,
+    "candidate": "proof_A16",
+    "comparison": "A_only_from_proof",
+    "complete": 60,
+    "config": {
+      "A": 16,
+      "K": null,
+      "c_terminal": 8.0,
+      "c_width": 1.0
+    },
+    "eligible": false,
+    "exact_sieve": 20,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": null
+  },
+  {
+    "active": 0,
+    "candidate": "proof_A8",
+    "comparison": "A_only_from_proof",
+    "complete": 60,
+    "config": {
+      "A": 8,
+      "K": null,
+      "c_terminal": 8.0,
+      "c_width": 1.0
+    },
+    "eligible": false,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": null
+  },
+  {
+    "active": 80,
+    "candidate": "anchor",
+    "comparison": "anchor",
+    "complete": 80,
+    "config": {
+      "A": 4.0,
+      "K": 0.01,
+      "c_terminal": 0.001953125,
+      "c_width": 0.0625
+    },
+    "eligible": true,
+    "exact_sieve": 80,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": 0.42954970352057875
+  },
+  {
+    "active": 0,
+    "candidate": "anchor_A1",
+    "comparison": "A_with_formula_terminal",
+    "complete": 80,
+    "config": {
+      "A": 1.0,
+      "K": 0.01,
+      "c_terminal": 0.001953125,
+      "c_width": 0.0625
+    },
+    "eligible": false,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": 0.08511056972504401
+  },
+  {
+    "active": 80,
+    "candidate": "anchor_A2",
+    "comparison": "A_with_formula_terminal",
+    "complete": 80,
+    "config": {
+      "A": 2.0,
+      "K": 0.01,
+      "c_terminal": 0.001953125,
+      "c_width": 0.0625
+    },
+    "eligible": true,
+    "exact_sieve": 80,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": 0.4234703196012634
+  },
+  {
+    "active": 60,
+    "candidate": "anchor_A8",
+    "comparison": "A_with_formula_terminal",
+    "complete": 80,
+    "config": {
+      "A": 8.0,
+      "K": 0.01,
+      "c_terminal": 0.001953125,
+      "c_width": 0.0625
+    },
+    "eligible": true,
+    "exact_sieve": 80,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": 0.4359704097213662
+  },
+  {
+    "active": 40,
+    "candidate": "anchor_A16",
+    "comparison": "A_with_formula_terminal",
+    "complete": 80,
+    "config": {
+      "A": 16.0,
+      "K": 0.01,
+      "c_terminal": 0.001953125,
+      "c_width": 0.0625
+    },
+    "eligible": true,
+    "exact_sieve": 80,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": 0.4583600426578741
+  },
+  {
+    "active": 0,
+    "candidate": "anchor_A64",
+    "comparison": "A_with_formula_terminal",
+    "complete": 40,
+    "config": {
+      "A": 64.0,
+      "K": 0.01,
+      "c_terminal": 0.001953125,
+      "c_width": 0.0625
+    },
+    "eligible": false,
+    "exact_sieve": 40,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": null
+  },
+  {
+    "active": 0,
+    "candidate": "anchor_A128",
+    "comparison": "A_with_formula_terminal",
+    "complete": 40,
+    "config": {
+      "A": 128.0,
+      "K": 0.01,
+      "c_terminal": 0.001953125,
+      "c_width": 0.0625
+    },
+    "eligible": false,
+    "exact_sieve": 40,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": null
+  },
+  {
+    "active": 0,
+    "candidate": "anchor_A256",
+    "comparison": "A_with_formula_terminal",
+    "complete": 40,
+    "config": {
+      "A": 256.0,
+      "K": 0.01,
+      "c_terminal": 0.001953125,
+      "c_width": 0.0625
+    },
+    "eligible": false,
+    "exact_sieve": 40,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": null
+  },
+  {
+    "active": 80,
+    "candidate": "anchor_width0.03125",
+    "comparison": "stage_width",
+    "complete": 80,
+    "config": {
+      "A": 4.0,
+      "K": 0.01,
+      "c_terminal": 0.001953125,
+      "c_width": 0.03125
+    },
+    "eligible": true,
+    "exact_sieve": 80,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": 0.42385057794707387
+  },
+  {
+    "active": 80,
+    "candidate": "anchor_width0.125",
+    "comparison": "stage_width",
+    "complete": 80,
+    "config": {
+      "A": 4.0,
+      "K": 0.01,
+      "c_terminal": 0.001953125,
+      "c_width": 0.125
+    },
+    "eligible": true,
+    "exact_sieve": 80,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": 0.4311419877129282
+  },
+  {
+    "active": 0,
+    "candidate": "anchor_width0.25",
+    "comparison": "stage_width",
+    "complete": 80,
+    "config": {
+      "A": 4.0,
+      "K": 0.01,
+      "c_terminal": 0.001953125,
+      "c_width": 0.25
+    },
+    "eligible": false,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": 0.08511056972504401
+  },
+  {
+    "active": 0,
+    "candidate": "anchor_width0.5",
+    "comparison": "stage_width",
+    "complete": 80,
+    "config": {
+      "A": 4.0,
+      "K": 0.01,
+      "c_terminal": 0.001953125,
+      "c_width": 0.5
+    },
+    "eligible": false,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": 0.08511056972504401
+  },
+  {
+    "active": 0,
+    "candidate": "anchor_width1",
+    "comparison": "stage_width",
+    "complete": 80,
+    "config": {
+      "A": 4.0,
+      "K": 0.01,
+      "c_terminal": 0.001953125,
+      "c_width": 1.0
+    },
+    "eligible": false,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": 0.08511056972504401
+  },
+  {
+    "active": 80,
+    "candidate": "anchor_K0.003",
+    "comparison": "batch_coefficient",
+    "complete": 80,
+    "config": {
+      "A": 4.0,
+      "K": 0.003,
+      "c_terminal": 0.001953125,
+      "c_width": 0.0625
+    },
+    "eligible": true,
+    "exact_sieve": 80,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": 0.439069544666693
+  },
+  {
+    "active": 80,
+    "candidate": "anchor_K0.03",
+    "comparison": "batch_coefficient",
+    "complete": 80,
+    "config": {
+      "A": 4.0,
+      "K": 0.03,
+      "c_terminal": 0.001953125,
+      "c_width": 0.0625
+    },
+    "eligible": true,
+    "exact_sieve": 80,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": 0.3568752547773887
+  },
+  {
+    "active": 80,
+    "candidate": "anchor_K0.1",
+    "comparison": "batch_coefficient",
+    "complete": 80,
+    "config": {
+      "A": 4.0,
+      "K": 0.1,
+      "c_terminal": 0.001953125,
+      "c_width": 0.0625
+    },
+    "eligible": true,
+    "exact_sieve": 80,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": 0.2433234492647698
+  },
+  {
+    "active": 40,
+    "candidate": "anchor_K0.3",
+    "comparison": "batch_coefficient",
+    "complete": 80,
+    "config": {
+      "A": 4.0,
+      "K": 0.3,
+      "c_terminal": 0.001953125,
+      "c_width": 0.0625
+    },
+    "eligible": false,
+    "exact_sieve": 40,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": 0.13261750258596208
+  },
+  {
+    "active": 0,
+    "candidate": "anchor_K1.0",
+    "comparison": "batch_coefficient",
+    "complete": 80,
+    "config": {
+      "A": 4.0,
+      "K": 1.0,
+      "c_terminal": 0.001953125,
+      "c_width": 0.0625
+    },
+    "eligible": false,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": 0.08511056972504401
+  },
+  {
+    "active": 0,
+    "candidate": "anchor_KNone",
+    "comparison": "batch_coefficient",
+    "complete": 80,
+    "config": {
+      "A": 4.0,
+      "K": null,
+      "c_terminal": 0.001953125,
+      "c_width": 0.0625
+    },
+    "eligible": false,
+    "exact_sieve": 0,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": 0.08511056972504401
+  },
+  {
+    "active": 80,
+    "candidate": "anchor_terminal8",
+    "comparison": "terminal_coefficient",
+    "complete": 60,
+    "config": {
+      "A": 4.0,
+      "K": 0.01,
+      "c_terminal": 8.0,
+      "c_width": 0.0625
+    },
+    "eligible": false,
+    "exact_sieve": 60,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": null
+  },
+  {
+    "active": 80,
+    "candidate": "anchor_terminal1",
+    "comparison": "terminal_coefficient",
+    "complete": 60,
+    "config": {
+      "A": 4.0,
+      "K": 0.01,
+      "c_terminal": 1.0,
+      "c_width": 0.0625
+    },
+    "eligible": false,
+    "exact_sieve": 60,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": null
+  },
+  {
+    "active": 80,
+    "candidate": "anchor_terminal0.125",
+    "comparison": "terminal_coefficient",
+    "complete": 40,
+    "config": {
+      "A": 4.0,
+      "K": 0.01,
+      "c_terminal": 0.125,
+      "c_width": 0.0625
+    },
+    "eligible": false,
+    "exact_sieve": 40,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": null
+  },
+  {
+    "active": 80,
+    "candidate": "anchor_terminal0.015625",
+    "comparison": "terminal_coefficient",
+    "complete": 40,
+    "config": {
+      "A": 4.0,
+      "K": 0.01,
+      "c_terminal": 0.015625,
+      "c_width": 0.0625
+    },
+    "eligible": false,
+    "exact_sieve": 40,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": null
+  },
+  {
+    "active": 80,
+    "candidate": "anchor_terminal0.000244141",
+    "comparison": "terminal_coefficient",
+    "complete": 80,
+    "config": {
+      "A": 4.0,
+      "K": 0.01,
+      "c_terminal": 0.000244140625,
+      "c_width": 0.0625
+    },
+    "eligible": true,
+    "exact_sieve": 80,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": 0.42954970352057875
+  },
+  {
+    "active": 40,
+    "candidate": "wide_anchor_terminal8",
+    "comparison": "A_terminal_interaction",
+    "complete": 60,
+    "config": {
+      "A": 16,
+      "K": 0.03,
+      "c_terminal": 8.0,
+      "c_width": 0.125
+    },
+    "eligible": false,
+    "exact_sieve": 60,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": null
+  },
+  {
+    "active": 40,
+    "candidate": "wide_anchor_terminal0.125",
+    "comparison": "A_terminal_interaction",
+    "complete": 40,
+    "config": {
+      "A": 16,
+      "K": 0.03,
+      "c_terminal": 0.125,
+      "c_width": 0.125
+    },
+    "eligible": false,
+    "exact_sieve": 40,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": null
+  },
+  {
+    "active": 40,
+    "candidate": "wide_anchor_terminal0.015625",
+    "comparison": "A_terminal_interaction",
+    "complete": 40,
+    "config": {
+      "A": 16,
+      "K": 0.03,
+      "c_terminal": 0.015625,
+      "c_width": 0.125
+    },
+    "eligible": false,
+    "exact_sieve": 40,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": null
+  },
+  {
+    "active": 40,
+    "candidate": "wide_anchor_terminal0.00195312",
+    "comparison": "A_terminal_interaction",
+    "complete": 80,
+    "config": {
+      "A": 16,
+      "K": 0.03,
+      "c_terminal": 0.001953125,
+      "c_width": 0.125
+    },
+    "eligible": true,
+    "exact_sieve": 80,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": 0.4221534217937548
+  },
+  {
+    "active": 40,
+    "candidate": "wide_anchor_terminal0.000244141",
+    "comparison": "A_terminal_interaction",
+    "complete": 80,
+    "config": {
+      "A": 16,
+      "K": 0.03,
+      "c_terminal": 0.000244140625,
+      "c_width": 0.125
+    },
+    "eligible": true,
+    "exact_sieve": 80,
+    "expected": 80,
+    "family": "sharp",
+    "normalized_risk": 0.4221534217937548
+  }
+]
