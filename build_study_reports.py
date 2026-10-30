@@ -17,7 +17,10 @@ INPUTS=('results/predictive/primary.csv','results/predictive/repeat_scores.csv.g
         'results/predictive/predictors.jsonl.gz','results/estimator_comparison/repeat_scores.csv.gz',
         'results/estimator_comparison/predictors.jsonl.gz','results/estimator_comparison/manifest.json',
         'src/estimator_reporting.py','src/reporting_metrics.py',
-        'results/predictive/learning.csv','results/predictive/synthetic.csv')
+        'results/predictive/learning.csv','results/predictive/synthetic.csv',
+        'results/estimator_execution/snippets/E0.md',
+        'results/estimator_execution/snippets/L0.md',
+        'results/estimator_execution/snippets/S0.md')
 REPETITIONS=5
 
 
@@ -242,6 +245,13 @@ The table shows likelihood-center SM versus PL; the [all-estimator CSV](syntheti
         ('available','Available / 20'),('delta_mean','Mean delta'),('delta_uniform_mean','Delta / log(r!)'),
         ('delta_interval','Raw 95% interval'),('delta_uniform_interval','Scaled 95% interval')])+'\n'
     put('results/predictive/scaled_curves.md',curve_text)
+    for report,studies in [('results/estimator_comparison/README.md',['E0']),
+                           ('results/predictive/scaled_curves.md',['L0','S0'])]:
+        for study in studies:
+            snippet=(ROOT/f'results/estimator_execution/snippets/{study}.md').read_text()
+            snippet=snippet.replace('](../','](../estimator_execution/')
+            out[report]+=('\n'+snippet.replace('## Sharp/Efficient execution and stopping',f'## {study}: Sharp/Efficient execution and stopping')).encode()
+    out['results/global_sieve/README.md']+=b'\n## Execution and stopping\n\nB0 aliases the 115 E0 Sharp contexts: 55 complete terminal sieves and 60 resource exclusions, all with zero pilot depth. The [E0 per-task table](../estimator_execution/E0.md) gives n, N, r, first-round w/M, W*, actual blocks and the resource receipt for every case. These are the same fits, not additional experiments.\n'
     manifest=dict(producer='build_study_reports.py',producer_sha256=digest(Path(__file__).read_bytes()),
         source_sha256={p:digest((ROOT/p).read_bytes()) for p in INPUTS},
         interpretation='Named current result views; no fitting or resampling.',

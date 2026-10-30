@@ -33,3 +33,7 @@ The table pairs raw delta (sieve minus PL, nats/report) with delta / log(r!), a 
 | Wheat | 3 | 0 | NA | NA | NA | NA |
 
 The report-size bound alone does not establish uniform displays, independent reports, a true SM law or the corollary's lambda condition. Empirical predictive NLL differs from minimax Kendall center risk. The summary has `study=B0` and preserves `raw_study=P0` solely as the original allocation-family key.
+
+## Execution and stopping
+
+B0 aliases the 115 E0 Sharp contexts: 55 complete terminal sieves and 60 resource exclusions, all with zero pilot depth. The [E0 per-task table](../estimator_execution/E0.md) gives n, N, r, first-round w/M, W*, actual blocks and the resource receipt for every case. These are the same fits, not additional experiments.

@@ -62,3 +62,7 @@ Within a fixed exposure cell, saved mean-loss and center-error intervals use Stu
 The [estimator/theory comparison](theory_alignment.md#correspondence-in-correctly-specified-simulations) places these saved center errors in the manuscript's coverage, intermediate-information and full-ranking regimes. It distinguishes the actual depth-zero score estimator from an active hierarchy and from Theorem 2.17's majority estimator.
 
 Sample-size effects can arise from better center/strength estimation, more complete exposure, finite-MLE existence, solver certification or concentration tuning. Report those alongside loss. A persistent large-N gap may reflect model mismatch, but these finite grids do not identify the true family on an arbitrary empirical dataset. P1 supplies repeated-partition estimates at one budget per task; it is not a replacement for a multi-budget curve or evidence that L1/L2 used identical estimators.
+
+## Sharp/Efficient execution details
+
+The [L2 execution table](../results/estimator_execution/L2.md) lists each fitting sample, the initial window and batch requirement, selected resolution, actual/reconstructed depth, and the precise stop or exclusion reason. The [S3 execution table](../results/estimator_execution/S3.md) lists each fitting sample, the initial window and batch requirement, selected resolution, actual/reconstructed depth, and the precise stop or exclusion reason. 

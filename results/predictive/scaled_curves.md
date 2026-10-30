@@ -43,3 +43,25 @@ The table shows likelihood-center SM versus PL; the [all-estimator CSV](syntheti
 | synthetic_sm | 10 | 500 | 20 | -0.06156 | -0.03436 | [-0.06550, -0.05762] | [-0.03656, -0.03216] |
 | synthetic_sm | 16 | 100 | 20 | 0.00030 | 0.00017 | [-0.02132, +0.02191] | [-0.01190, +0.01223] |
 | synthetic_sm | 32 | 100 | 20 | 0.20505 | 0.11444 | [+0.13709, +0.27302] | [+0.07651, +0.15238] |
+
+## L0: Sharp/Efficient execution and stopping
+
+[Per-setting reasons and first-round parameters](../estimator_execution/L0.md) distinguish actual depth from a missing or unattempted fit. Counts below are fit contexts, not independent datasets. No predictor is refitted for this audit.
+
+| Execution category | Contexts |
+|---|---|
+| outside_schedule_domain | 15 |
+| root_A_stop | 45 |
+| root_A_stop;sieve_resource_budget | 15 |
+| sharp_available | 45 |
+
+## S0: Sharp/Efficient execution and stopping
+
+[Per-setting reasons and first-round parameters](../estimator_execution/S0.md) distinguish actual depth from a missing or unattempted fit. Counts below are fit contexts, not independent datasets. No predictor is refitted for this audit.
+
+| Execution category | Contexts |
+|---|---|
+| outside_schedule_domain | 40 |
+| root_A_stop | 200 |
+| root_A_stop;sieve_resource_budget | 80 |
+| sharp_available | 160 |

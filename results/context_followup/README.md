@@ -15,3 +15,14 @@ Wheat uses one specified P2 partition and all 493 source reports. CI fields and 
 | `validation.json` | Source, calculation and supported-interval checks |
 
 Reproduce with `python run_context_followup.py` under [the shared guide](../../docs/reproducibility.md). Raw inputs are verified against `data/context_followup_sources.json`; no source rankings are rehosted.
+
+## P2: Sharp/Efficient execution and stopping
+
+[Per-setting reasons and first-round parameters](../estimator_execution/P2.md) distinguish actual depth from a missing or unattempted fit. Counts below are fit contexts, not independent datasets. No predictor is refitted for this audit.
+
+| Execution category | Contexts |
+|---|---|
+| excluded_upstream_response_filtering | 2 |
+| outside_schedule_domain | 21 |
+| root_A_stop | 10 |
+| root_A_stop;n8_terminal_guard | 15 |

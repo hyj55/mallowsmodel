@@ -29,3 +29,31 @@ python validate_theory_alignment.py
 ```
 
 The first command reads saved tables and rejects changed source hashes. The second checks saved-output hashes, independently reconstructs the derived summaries, verifies regime identities and the stated complete-ranking/tie distinctions. Neither command downloads observations or runs an estimator on experimental data.
+
+## S3: Sharp/Efficient execution and stopping
+
+[Per-setting reasons and first-round parameters](../estimator_execution/S3.md) distinguish actual depth from a missing or unattempted fit. Counts below are fit contexts, not independent datasets. No predictor is refitted for this audit.
+
+| Execution category | Contexts |
+|---|---|
+| no_admissible_eta | 300 |
+| root_A_stop | 1980 |
+| root_A_stop;capped_lambda_extension | 2160 |
+
+## L2: Sharp/Efficient execution and stopping
+
+[Per-setting reasons and first-round parameters](../estimator_execution/L2.md) distinguish actual depth from a missing or unattempted fit. Counts below are fit contexts, not independent datasets. No predictor is refitted for this audit.
+
+| Execution category | Contexts |
+|---|---|
+| no_admissible_eta | 20 |
+| root_A_stop | 65 |
+| root_A_stop;capped_lambda_extension | 30 |
+
+## T1: Sharp/Efficient execution and stopping
+
+[Per-setting reasons and first-round parameters](../estimator_execution/T1.md) distinguish actual depth from a missing or unattempted fit. Counts below are fit contexts, not independent datasets. No predictor is refitted for this audit.
+
+| Execution category | Contexts |
+|---|---|
+| root_A_stop | 10 |

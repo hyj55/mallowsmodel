@@ -16,3 +16,14 @@ These files describe one fixed 60/20/20 allocation of each task under unbounded 
 | `validation.json` | Saved-fit and source-report replay receipt |
 
 Beans has no supported independent-person interval because farmer identities are absent. Sushi intervals resample whole respondents and condition on the fixed fits. No respondent rankings are distributed. Reproduce with `python run_baseline_replacement.py` in the matching checkout; see [reproduction](../../docs/reproducibility.md).
+
+## P2: Sharp/Efficient execution and stopping
+
+[Per-setting reasons and first-round parameters](../estimator_execution/P2.md) distinguish actual depth from a missing or unattempted fit. Counts below are fit contexts, not independent datasets. No predictor is refitted for this audit.
+
+| Execution category | Contexts |
+|---|---|
+| excluded_upstream_response_filtering | 2 |
+| outside_schedule_domain | 21 |
+| root_A_stop | 10 |
+| root_A_stop;n8_terminal_guard | 15 |

@@ -165,3 +165,7 @@ P1/P2 mechanically attempt Sharp where its sieve can be computed, including dens
 ## Status and reference conventions
 
 Read algorithm, branch/depth, solver certificate, boundary status and availability alongside the method label. A fallback is identified by its actual branch. External dot counts, solution steps and city answers are used only for reference diagnostics, not supplied as the fitted latent center. The study provides neither an active-hierarchy performance result nor a theorem certificate for arbitrary real-data sampling designs.
+
+## Per-fit execution and stopping
+
+The [execution tables](../results/estimator_execution/README.md) audit every result family involving Sharp or Efficient. They report initial n, N, r, m, w and M, A and the other calibration constants, resolution selection, actual depth, and terminal-sieve failure receipts. Formula-only first-round values are marked counterfactual when a root stops or a method is excluded. An unavailable depth is never interpreted as zero.

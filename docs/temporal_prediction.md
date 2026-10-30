@@ -21,3 +21,7 @@ The prespecified seen-player test evaluates matches with both players seen in tr
 A common-order control takes PL's fitted order as the SM center, profiles/shrinks β on training/validation, and compares predictions on the same seen-player test matches. Training PL-strength bins also show empirical and predicted win rates. These controls diagnose heterogeneous strength; they do not claim that temporal independence or uniform matchups holds.
 
 [Season results](https://github.com/hyj55/mallowsmodel/blob/89b21645d5f7eb463cc90c4e982c3a66ce805b41/results/exposure/tennis_by_year.csv), [aggregate results](https://github.com/hyj55/mallowsmodel/blob/89b21645d5f7eb463cc90c4e982c3a66ce805b41/results/exposure/tennis_summary.csv), [common-order results](https://github.com/hyj55/mallowsmodel/blob/89b21645d5f7eb463cc90c4e982c3a66ce805b41/results/exposure/tennis_same_order_summary.csv), [figure](https://github.com/hyj55/mallowsmodel/blob/89b21645d5f7eb463cc90c4e982c3a66ce805b41/figures/exposure_tennis.png), and [implementation](https://github.com/hyj55/mallowsmodel/blob/89b21645d5f7eb463cc90c4e982c3a66ce805b41/run_exposure.py) are retained at their matching snapshot. No new tennis calculation is implied by their inclusion in the study guide.
+
+## Sharp/Efficient execution details
+
+The [T1 execution table](../results/estimator_execution/T1.md) lists each fitting sample, the initial window and batch requirement, selected resolution, actual/reconstructed depth, and the precise stop or exclusion reason. 

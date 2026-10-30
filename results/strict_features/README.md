@@ -41,3 +41,32 @@ N means **training reports**. Value means mixture weight a, or shell tilt h. Del
 - Where respondent units are identified, context is a descriptive slope of correctly oriented outcomes on displayed-center gap with pair fixed effects. Only pairs with at least two gap levels, each observed at least twice, are eligible. Whole reports are bootstrapped; undefined resamples are counted through valid_bootstraps. Insufficient variation is unavailable, not a zero effect.
 - For shell d, define Q(Y|S)=P_PL(D=d|S)/|shell_d(S)| about the fixed training center. Then log(P_PL/P_SM)=log(Q/P_SM)+log(P_PL/Q). Q is an exact diagnostic, never a fitted replacement model.
 - Recovery uses the same seeds and sources after a workspace disconnect; it supplies no additional independent replication. Validation records agreement with rounded pre-disconnect summaries. Numerical differences would be disclosed rather than used to select a favorable run.
+
+## P2: Sharp/Efficient execution and stopping
+
+[Per-setting reasons and first-round parameters](../estimator_execution/P2.md) distinguish actual depth from a missing or unattempted fit. Counts below are fit contexts, not independent datasets. No predictor is refitted for this audit.
+
+| Execution category | Contexts |
+|---|---|
+| excluded_upstream_response_filtering | 2 |
+| outside_schedule_domain | 21 |
+| root_A_stop | 10 |
+| root_A_stop;n8_terminal_guard | 15 |
+
+## S1: Sharp/Efficient execution and stopping
+
+[Per-setting reasons and first-round parameters](../estimator_execution/S1.md) distinguish actual depth from a missing or unattempted fit. Counts below are fit contexts, not independent datasets. No predictor is refitted for this audit.
+
+| Execution category | Contexts |
+|---|---|
+| outside_schedule_domain | 2000 |
+| root_A_stop | 4400 |
+
+## S2: Sharp/Efficient execution and stopping
+
+[Per-setting reasons and first-round parameters](../estimator_execution/S2.md) distinguish actual depth from a missing or unattempted fit. Counts below are fit contexts, not independent datasets. No predictor is refitted for this audit.
+
+| Execution category | Contexts |
+|---|---|
+| outside_schedule_domain | 1320 |
+| root_A_stop | 1440 |

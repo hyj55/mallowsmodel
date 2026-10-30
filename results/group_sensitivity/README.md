@@ -28,3 +28,14 @@ python validate_group_sensitivity.py --repository-only
 ```
 
 Full local reproduction and prediction replay use `run_group_sensitivity.py` then `validate_group_sensitivity.py`; detailed fit parameters and training membership records are generated in ignored `results/private/group_sensitivity/`. No original ranking rows are in the files listed above.
+
+## G1: Sharp/Efficient execution and stopping
+
+[Per-setting reasons and first-round parameters](../estimator_execution/G1.md) distinguish actual depth from a missing or unattempted fit. Counts below are fit contexts, not independent datasets. No predictor is refitted for this audit.
+
+| Execution category | Contexts |
+|---|---|
+| excluded_outside_theorem_regime | 19560 |
+| n8_admission_guard | 1019 |
+| root_A_stop | 1019 |
+| unseen_catalog_items | 722 |

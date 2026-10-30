@@ -219,3 +219,49 @@ PYTHONINTMAXSTRDIGITS=0 permits exact factorial-size resource receipts for very 
 | results/manifest.json | Byte hashes for code, reports, figures and results |
 
 The manuscript is *Selective Mallows Estimation from Uniform Partial Rankings: Minimax Kendall Risk, Efficient Algorithms, and Likelihood Comparisons*, supplied 37-page version with SHA256 `400563b1789acbeea985e4b4c551162b64c87295ee3a7bf91037c8d4cc49e676`. Section 4.4 (p. 36) specifies this simulation agenda; Algorithm 2.1 (p. 5) defines Sharp; Lemma 2.11 defines the permutation sieve; equation (3.4) defines the Borda scores; Algorithms 3.1/3.2 and equations (3.22)–(3.23) define the efficient hierarchy and proof calibration; Section 3.6 discusses empirical constants and streaming cost; Theorem 2.17 gives the full-ranking majority estimator and rate. The supplied manuscript is not redistributed here. [Repository reference catalogue](../../docs/references.md).
+
+
+## S4-calibration: execution and stopping
+
+[Per-setting reasons and first-round parameters](../../results/estimator_execution/S4-calibration.md) distinguish actual depth from a missing or unattempted fit. Counts below are fit contexts, not independent datasets. No predictor is refitted for this audit.
+
+| Execution category | Contexts |
+|---|---|
+| noncontracting | 780 |
+| noncontracting+sample_budget | 60 |
+| positive_depth | 1980 |
+| positive_depth;resource_limit | 160 |
+| root_A_stop | 920 |
+| root_A_stop;earlier_candidates_rejected | 200 |
+| root_A_stop;resource_limit | 300 |
+| sample_budget | 400 |
+
+
+## S4-confirmation: execution and stopping
+
+[Per-setting reasons and first-round parameters](../../results/estimator_execution/S4-confirmation.md) distinguish actual depth from a missing or unattempted fit. Counts below are fit contexts, not independent datasets. No predictor is refitted for this audit.
+
+| Execution category | Contexts |
+|---|---|
+| no_admissible_eta | 5000 |
+| positive_depth | 5072 |
+| positive_depth;resource_limit | 228 |
+| root_A_stop | 15294 |
+| root_A_stop;earlier_candidates_rejected | 3200 |
+| root_A_stop;resource_limit | 3406 |
+| sample_budget | 3800 |
+
+
+## S4-resources: execution and stopping
+
+[Per-setting reasons and first-round parameters](../../results/estimator_execution/S4-resources.md) distinguish actual depth from a missing or unattempted fit. Counts below are fit contexts, not independent datasets. No predictor is refitted for this audit.
+
+| Execution category | Contexts |
+|---|---|
+| no_admissible_eta | 50 |
+| positive_depth | 51 |
+| positive_depth;resource_limit | 2 |
+| root_A_stop | 153 |
+| root_A_stop;earlier_candidates_rejected | 32 |
+| root_A_stop;resource_limit | 34 |
+| sample_budget | 38 |

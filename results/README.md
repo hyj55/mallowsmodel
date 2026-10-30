@@ -31,3 +31,7 @@ $`\Delta=\mathrm{NLL}(\mathrm{SM})-\mathrm{NLL}(\mathrm{PL})`$; negative favors 
 Three large D2 artifacts are restored with `python validation_artifacts.py`. Public empirical artifacts generally contain fitted parameters and aggregate results; detailed private membership/prediction caches are needed for some local replay. See [reproduction](../docs/reproducibility.md) for those distinctions.
 
 [L1 fixed-test learning](regularized_learning/README.md) and [C1 five-fit diagnostics](regularized_diagnostics/README.md) each use five saved fits per budget/task, with their own conditional bootstrap target.
+
+## Sharp/Efficient execution audit
+
+The [execution index](estimator_execution/README.md) provides per-setting tables for E0, L0/S0, P1/P2, G1, S1–S3, L2/T1, S4 calibration/confirmation/resource profiles and the tuned block-sieve supplement. Tables distinguish zero executed depth from a method that was not attempted, and pair the reason with first-round geometry, sample budgets and saved resource limits. B0 and other aliases link to the same originating fits. This is a derived result view; no scientific fits or losses change.
