@@ -1,5 +1,6 @@
 """Audit semantics: scheduling is not execution, and missing depth is not zero."""
 import math
+import pytest
 
 import build_estimator_execution as audit
 from experiments.section44.core import Calibration, plan
@@ -96,3 +97,11 @@ def test_sharp_pilot_leaf_size_is_not_terminal_sieve_size():
     row=audit.ROWS[-1]
     assert row['pilot_terminal_block_max']==40
     assert row['terminal_block_items']==8
+
+
+def test_cross_platform_plan_check_keeps_integer_decisions_exact():
+    audit.compare_plan_values({'ell':2.,'batch':10},{'ell':math.nextafter(2.,3.),'batch':10})
+    with pytest.raises(AssertionError):
+        audit.compare_plan_values({'ell':2.,'batch':10},{'ell':2.,'batch':11})
+    with pytest.raises(AssertionError):
+        audit.compare_plan_values({'ell':2.},{'ell':2.001})

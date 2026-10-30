@@ -435,7 +435,7 @@ def outputs():
                              positive=sum(r.get('actual_depth',0) is not None and r['actual_depth']>0 and r['status']=='ok' for r in allrows)))
         text=f'# {study}: Sharp/Efficient execution audit\n\n[Definitions and coverage](README.md) · [Every fit receipt](fits.csv.gz) · [Complete candidate/stage schedules](plans.jsonl.gz)\n\n'
         text+=f'{len(allrows)} recorded or explicitly reconstructed contexts; {len(selected)} have zero pilot depth, an admission exclusion, a fallback, an unavailable result, or a variant without hierarchical depth. They form {len(groups)} rows below. Identical parameter/reason rows are grouped across repetitions and, for G1, across anonymous group keys; no parameters are averaged. Fit-level group/repetition/source locators remain in the CSV. Positive-depth successful contexts remain in the CSV as coverage controls.\n\n'
-        text+='**Read the two tables together by row ID.** `w1, M1` refer to the initial candidate at `m0=n`; they are formula diagnostics, **not** evidence that a stage ran. For a stopped or excluded fit they are counterfactual. `eta selected` can differ after rejected candidate schedules; its first-stage values and every failed candidate are in the CSV/plan archive. `M1` is reports required for that round, while `N` is the actual fitting sample, not total dataset size. Resource numbers are saved estimates/limits, not measured RAM usage. `NA` means not applicable or not recorded, never zero.\n\n'
+        text+='**Read the tables together by row ID.** `w1, M1` refer to the initial candidate at `m0=n`; they are formula diagnostics, **not** evidence that a stage ran. For a stopped or excluded fit they are counterfactual. `eta selected` can differ after rejected candidate schedules; its first-stage values and every failed candidate are in the CSV/plan archive. `M1` is reports required for that round, while `N` is the actual fitting sample, not total dataset size. Resource numbers are saved estimates/limits, not measured RAM usage. `NA` means not applicable or not recorded, never zero.\n\n'
         text+='## Why the fit stopped or did not run\n\n'
         text+=table(groups,[('group_id','ID'),('context_label','Dataset / setting'),('phase','Fit phase'),('method','Estimator / configuration'),('contexts','Contexts'),('actual_depth','Executed depth'),('depth_basis','Depth evidence'),('status','Saved status'),('reason','Explanation')])
         text+='\n## Initial geometry and sample requirement\n\n'
@@ -502,14 +502,41 @@ S3 exposure, L2 and T1 retain their recorded producer from the [implementation s
 
 S4 calibration, confirmation and fresh-process resource profiles have separate tables. Resource profiles rerun existing datasets and are not independent simulation repetitions. Proof and calibrated configurations remain separate. The Borda-pilot tuned block-sieve table includes every validation candidate and development refit, including unsuccessful candidates; its Efficient reference table identifies reused predictors.
 
-The [CSV](fits.csv.gz) is the fit-level index with source locators and exact numeric values. [Plans](plans.jsonl.gz) contain all attempted resolutions and stages without storing ranks or losses. [Inputs](inputs/sources.json) identify immutable snapshot blobs and sanitized G1 receipts. Decimal display rounding and resource ranges apply only to Markdown; no averaging changes schedule parameters. Rebuild or verify with `python build_estimator_execution.py` or `python build_estimator_execution.py --check`. Neither runs a scientific fit.
+The [CSV](fits.csv.gz) is the fit-level index with source locators and exact numeric values. [Plans](plans.jsonl.gz) contain all attempted resolutions and stages without storing ranks or losses. [Inputs](inputs/sources.json) identify immutable snapshot blobs and sanitized G1 receipts. Decimal display rounding and resource ranges apply only to Markdown; no averaging changes schedule parameters. Rebuild or verify with `python build_estimator_execution.py` or `python build_estimator_execution.py --check`. Neither runs a scientific fit. The verifier checks every published byte against its manifest; schedule replay allows relative/absolute tolerance 1e-14 only for floating-point fields (such as logarithms), while integer widths, report budgets, depths, branches and status decisions must agree exactly across platforms.
 
 ## Tables by result family
 '''
 
 
+def compare_plan_values(saved, replayed, path='plan'):
+    """Keep integer decisions exact; libm logarithms may differ by an ulp."""
+    assert type(saved) is type(replayed),(path,type(saved),type(replayed))
+    if isinstance(saved,dict):
+        assert saved.keys()==replayed.keys(),path
+        for k in saved:compare_plan_values(saved[k],replayed[k],path+'.'+k)
+    elif isinstance(saved,list):
+        assert len(saved)==len(replayed),path
+        for i,(a,b) in enumerate(zip(saved,replayed)):compare_plan_values(a,b,path+f'[{i}]')
+    elif isinstance(saved,float):
+        assert math.isclose(saved,replayed,rel_tol=1e-14,abs_tol=1e-14),(path,saved,replayed)
+    else:
+        assert saved==replayed,(path,saved,replayed)
+
+
 def build(check=False):
     result=outputs()
+    if check:
+        stored=json.loads((OUT/'manifest.json').read_text())
+        for p,h in stored['outputs'].items():assert digest((ROOT/p).read_bytes())==h,p
+        plan_path='results/estimator_execution/plans.jsonl.gz'
+        saved=[json.loads(line) for line in gzip.decompress((ROOT/plan_path).read_bytes()).splitlines()]
+        replayed=[json.loads(line) for line in gzip.decompress(result[plan_path]).splitlines()]
+        compare_plan_values(saved,replayed)
+        # The archived bytes remain authoritative after a numerically equivalent replay.
+        result[plan_path]=(ROOT/plan_path).read_bytes()
+        manifest_path='results/estimator_execution/manifest.json'
+        expected=json.loads(result[manifest_path]);expected['outputs'][plan_path]=stored['outputs'][plan_path]
+        result[manifest_path]=(json.dumps(expected,indent=2)+'\n').encode()
     for p,b in result.items():
         file=ROOT/p
         if check:assert file.read_bytes()==b,p
