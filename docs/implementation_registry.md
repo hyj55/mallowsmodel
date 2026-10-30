@@ -31,3 +31,5 @@ Pre-fit design records and amendments are indexed in [protocols](protocols/READM
 The audit's `retired_paths.json` is a compatibility and integrity list for files absent from this checkout. It is not a scientific exclusion list: learning curves, regularized controls and ATP remain study components through the references above. Numerical outcomes are not pooled across incompatible estimators, and withdrawn inferential claims are not reinstated by including the corresponding point results.
 
 Generated datasets, saved fits, fixed-data repartitions, source recovery and replay have different roles. Replaying a source or an archived random stream adds no independent evidence. Public result dictionaries identify whether an artifact is a scientific output, a storage receipt or a verification record.
+
+The [execution audit](../results/estimator_execution/README.md), produced by `build_estimator_execution.py`, reconstructs schedules from saved parameters and checks them against recorded depths and S4 candidate traces. Its source inventory includes projected G1 fit receipts and immutable exposure-producer snapshots. It fits no models and changes no scientific output.

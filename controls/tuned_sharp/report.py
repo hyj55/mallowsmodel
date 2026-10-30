@@ -233,6 +233,10 @@ Run `python controls/tuned_sharp/validate.py` for public-artifact, selection and
 
 Public files under `results/tuned_block_sieve/` contain all candidate statuses, final scores, paired contrasts, fitted models, source/code hashes and the protocol. Per-person reports and allocations remain in the ignored private cache. The [main P0 analysis](../results/main/README.md), [E0 comparisons](../results/estimator_comparison/README.md) and [L0/S0 curves](predictive_learning.md) retain their original meanings and results.
 '''
+    for study in ['Tuned-block','Tuned-reference']:
+        snippet=(ROOT/f'results/estimator_execution/snippets/{study}.md').read_text()
+        snippet=snippet.replace('](../','](../results/estimator_execution/')
+        text+='\n'+snippet.replace('## Sharp/Efficient execution and stopping',f'## {study}: execution and unavailable candidates')
     return text,records
 
 

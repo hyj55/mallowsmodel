@@ -167,3 +167,13 @@ Sharp has 60 unavailable E0 fits; the further 15 L0 and 80 S0 contexts give 155 
 | manifest.json | Fitting/scoring code, input and output hashes; the report manifest separately verifies generated summaries |
 
 Run `python run_estimator_comparison.py` after acquiring the shared sources to fit the score candidates and replay saved references. Run `python build_study_reports.py` to rebuild E0's tables without fitting. Public verification is `python validate_estimator_comparison.py`; `--sources` additionally reconstructs all 115 partitions, the score estimators, test predictions and conditional bootstrap endpoints. `python build_study_reports.py --check` verifies the generated report. No separate experiment or new split is introduced.
+
+## E0: Sharp/Efficient execution and stopping
+
+[Per-setting reasons and first-round parameters](../estimator_execution/E0.md) distinguish actual depth from a missing or unattempted fit. Counts below are fit contexts, not independent datasets. No predictor is refitted for this audit.
+
+| Execution category | Contexts |
+|---|---|
+| outside_schedule_domain | 105 |
+| root_A_stop | 65 |
+| root_A_stop;sieve_resource_budget | 60 |

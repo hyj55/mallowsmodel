@@ -296,6 +296,10 @@ def main():
       'calibration; Section 3.6 discusses empirical constants and streaming cost; Theorem 2.17 '
       'gives the full-ranking majority estimator and rate. The supplied manuscript is not '
       'redistributed here. [Repository reference catalogue](../../docs/references.md).','']
+    for study in ['S4-calibration','S4-confirmation','S4-resources']:
+        snippet=(HERE.parent.parent/f'results/estimator_execution/snippets/{study}.md').read_text()
+        snippet=snippet.replace('](../','](../../results/estimator_execution/')
+        lines.extend(['',snippet.replace('## Sharp/Efficient execution and stopping',f'## {study}: execution and stopping')])
     (HERE/'README.md').write_text('\n'.join(lines))
 
 

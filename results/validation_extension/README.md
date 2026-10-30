@@ -50,3 +50,14 @@ Real sources are downloaded and checksum-verified automatically; original respon
 Full validation reconstructs the frozen splits from the original sources and recomputes aggregate losses/intervals from the saved fitted parameters. If the local per-report caches exist, it also checks those records. No empirical participant-level records are carried in the synthetic archive. Keeping these caches local changes publication scope only, not the experiment or its retained observations.
 
 Publication checking found that the parameter log ended after 1,390 records, although all 1,400 fit/diagnostic outcomes were present. The final ten records were recovered by replaying their original frozen seeds. Every stored fit and diagnostic value matched within 1e-12 before parameters were appended; summary/result tables were unchanged. The completed draw archive was then replayed from all 1,400 records. Earlier validation checked each available record but failed to assert completeness; both archival and validation now require exact equality of the full repetition identifier sets. This storage recovery is documented, not counted as new evidence.
+
+## P2: Sharp/Efficient execution and stopping
+
+[Per-setting reasons and first-round parameters](../estimator_execution/P2.md) distinguish actual depth from a missing or unattempted fit. Counts below are fit contexts, not independent datasets. No predictor is refitted for this audit.
+
+| Execution category | Contexts |
+|---|---|
+| excluded_upstream_response_filtering | 2 |
+| outside_schedule_domain | 21 |
+| root_A_stop | 10 |
+| root_A_stop;n8_terminal_guard | 15 |

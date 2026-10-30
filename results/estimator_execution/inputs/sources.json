@@ -1,0 +1,126 @@
+[
+  {
+    "input": "results/estimator_execution/inputs/snapshot_coverage_replicates.csv.gz",
+    "source_path": "results/exposure/coverage_replicates.csv",
+    "commit": "89b21645d5f7eb463cc90c4e982c3a66ce805b41",
+    "git_blob": "88e65ae723eb461bfc8f59f74e82591df05c6f6c",
+    "source_sha256": "cef482d709d96d145d0289e82b1a78301849235d5cdc4c0a0471369d055b2b3d",
+    "sha256": "ed8ac965b6b88829edf61aa1019bc1ac22dc9a7110fa6a5eb6eac035ad6351af",
+    "projection": "byte-exact source (gzip transport for CSV)"
+  },
+  {
+    "input": "results/estimator_execution/inputs/snapshot_small_replicates.csv.gz",
+    "source_path": "results/exposure/small_replicates.csv",
+    "commit": "89b21645d5f7eb463cc90c4e982c3a66ce805b41",
+    "git_blob": "010f721a6f46bd4fc6e6eda975f33d7c8388aa2b",
+    "source_sha256": "950da208f0a629d8b15e05beb3bb527dd5071f3ffbc52ee33fe6fa47712c1b4a",
+    "sha256": "3843bf1dd57a95f197cb648077135926380c998ca86dc1e9fa6fb7964f426380",
+    "projection": "byte-exact source (gzip transport for CSV)"
+  },
+  {
+    "input": "results/estimator_execution/inputs/snapshot_real_replicates.csv.gz",
+    "source_path": "results/exposure/real_replicates.csv",
+    "commit": "89b21645d5f7eb463cc90c4e982c3a66ce805b41",
+    "git_blob": "c051cedeb1dd8c8ddf510646d4c492bf159e0804",
+    "source_sha256": "3d038f1a3857a9401b7a53458f0b8b9e7b4b71da75e75c028d45c236f9921859",
+    "sha256": "7b756d5ed60eee40e40fb26b452c036ce66c938d1ad6e09d2fd13fbb363f237e",
+    "projection": "byte-exact source (gzip transport for CSV)"
+  },
+  {
+    "input": "results/estimator_execution/inputs/snapshot_tennis_by_year.csv.gz",
+    "source_path": "results/exposure/tennis_by_year.csv",
+    "commit": "89b21645d5f7eb463cc90c4e982c3a66ce805b41",
+    "git_blob": "9079c87837b8b56866e9c41e1eb2056d079bb93d",
+    "source_sha256": "a6661bf62f242c1ca8785e4b51d54c7a47764a09d8a57422c6a3eba153a2417e",
+    "sha256": "2fc3b4fdd98bf03b3717348309a36be62b2006e14daf242eaf3d6c80a6c989ce",
+    "projection": "byte-exact source (gzip transport for CSV)"
+  },
+  {
+    "input": "results/estimator_execution/inputs/snapshot_schedule_feasibility.csv.gz",
+    "source_path": "results/exposure/schedule_feasibility.csv",
+    "commit": "89b21645d5f7eb463cc90c4e982c3a66ce805b41",
+    "git_blob": "97e3c820297daba045ed55aa66aa9f7ecb16b3cd",
+    "source_sha256": "fb7abcb276d2463d8ee07a7ac3a0998a8f0b8c1b25c90ab6906d2600d20aa9c9",
+    "sha256": "66b881e80c1db3a946abcfe2344394c5d9fc601310170ddba8f6187939280e7e",
+    "projection": "byte-exact source (gzip transport for CSV)"
+  },
+  {
+    "input": "results/estimator_execution/inputs/snapshot_run_exposure.py.txt",
+    "source_path": "run_exposure.py",
+    "commit": "89b21645d5f7eb463cc90c4e982c3a66ce805b41",
+    "git_blob": "7cf3e3f0ddf6a697df51ac92802d9e7e751281d5",
+    "source_sha256": "e1f74f60c8b455f71d48dda751f23c943652524177c45b456683a60b7bcb2d2d",
+    "sha256": "e1f74f60c8b455f71d48dda751f23c943652524177c45b456683a60b7bcb2d2d",
+    "projection": "byte-exact source (gzip transport for CSV)"
+  },
+  {
+    "input": "results/estimator_execution/inputs/snapshot_manuscript_estimators.py.txt",
+    "source_path": "src/manuscript_estimators.py",
+    "commit": "89b21645d5f7eb463cc90c4e982c3a66ce805b41",
+    "git_blob": "3dc6b823d21319dbf61e7b6bc2787280ce37ab76",
+    "source_sha256": "beee8186276d4ea184392fe380cbc7c782548420708dedffd6a30e3bbd3860a0",
+    "sha256": "beee8186276d4ea184392fe380cbc7c782548420708dedffd6a30e3bbd3860a0",
+    "projection": "byte-exact source (gzip transport for CSV)"
+  },
+  {
+    "input": "results/estimator_execution/inputs/snapshot_real_parameters.json.gz",
+    "source_path": "results/exposure/real_parameters.json",
+    "commit": "89b21645d5f7eb463cc90c4e982c3a66ce805b41",
+    "git_blob": "5cbb8a21494fab2d86c3af4fabb3224689f264fb",
+    "source_sha256": "2d924780b375c9c7c857843384e6c2197e692d7ac73798a37b245b5885856573",
+    "sha256": "31d9373da134c10a4bd2df8a8fe1aff4ad173d000ea12e2bff01ca1b8dca40a0",
+    "projection": "efficient metadata only; no report/participant indices"
+  },
+  {
+    "input": "results/estimator_execution/inputs/snapshot_tennis_parameters.json.gz",
+    "source_path": "results/exposure/tennis_parameters.json",
+    "commit": "89b21645d5f7eb463cc90c4e982c3a66ce805b41",
+    "git_blob": "22e5c08960c2e71dab319996d0c3b60011bab5b8",
+    "source_sha256": "d24dfdd058ece645920a36b93250aaff6fccd47c842ffbe2bbe33e23b1d79029",
+    "sha256": "6438e2776688e6211e017b298cd467f20750f6072ab33ca2e16463e860952b06",
+    "projection": "efficient metadata only; no report/participant indices"
+  },
+  {
+    "input": "results/estimator_execution/inputs/group_fit_receipts.csv.gz",
+    "sha256": "24441f22c977070a9cef23f83a3ef459788644fff753ae86581c67badeacb42f",
+    "projection": "Sharp/Efficient rows, repetitions 0-4; counts, anonymous group key and fit statuses only",
+    "sources": [
+      {
+        "path": "results/private/group_sensitivity/dots-3/fit_audit.csv.gz",
+        "sha256": "e6df1004c1ee9b1949514bee8555e385e09fe42ad2d506312e7dfb1a4d738c0b"
+      },
+      {
+        "path": "results/private/group_sensitivity/dots-5/fit_audit.csv.gz",
+        "sha256": "0eb8ab15ab5c0f65aacab5122ffd0d815789b8bf34690b54709b2c91449bbb70"
+      },
+      {
+        "path": "results/private/group_sensitivity/dots-7/fit_audit.csv.gz",
+        "sha256": "5c89441f04873115d566022334a03ef9f794d8cb1d4f167bab5d83e753aaacac"
+      },
+      {
+        "path": "results/private/group_sensitivity/dots-9/fit_audit.csv.gz",
+        "sha256": "9df4ef0b9c5f0930b417e8d682d389b95c4e2784f4474347ffd3518501ad8203"
+      },
+      {
+        "path": "results/private/group_sensitivity/puzzle-11/fit_audit.csv.gz",
+        "sha256": "9fce0e275795ceb802a10b87a90aa93f075fc2d9df1d50922fb7ed32bb5b88fe"
+      },
+      {
+        "path": "results/private/group_sensitivity/puzzle-5/fit_audit.csv.gz",
+        "sha256": "fd7caecedec1f9b7e72d591f3d6367d87c6cca2ebc814cacc99ea291ab9066a5"
+      },
+      {
+        "path": "results/private/group_sensitivity/puzzle-7/fit_audit.csv.gz",
+        "sha256": "bb985a88ccb77ebafed970cfb0d16fa0e6b4fd9eb94913f861374e8a27aac95d"
+      },
+      {
+        "path": "results/private/group_sensitivity/puzzle-9/fit_audit.csv.gz",
+        "sha256": "af7d15d40cc4ac3a91b3aa8d4e0ef55be063bc30ff09c9929c395a595e784b8c"
+      },
+      {
+        "path": "results/private/group_sensitivity/sounds/fit_audit.csv.gz",
+        "sha256": "511b29aed809add73171d02e3c2a61e789a9d11e21f90ea7f4cc076ceed7d759"
+      }
+    ]
+  }
+]

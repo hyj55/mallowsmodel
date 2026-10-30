@@ -260,3 +260,21 @@ Run `python controls/tuned_sharp/run.py` after restoring the documented source d
 Run `python controls/tuned_sharp/validate.py` for public-artifact, selection and comparator checks; add `--replay` to reconstruct source data and verify every saved validation/test score, sampled-pair objective and bootstrap interval. Run `python controls/tuned_sharp/report.py` to regenerate this report and figure. The tests in `tests/test_tuned_block_sieve.py` independently check whole-unit separation, orientation-blind pair extraction, exact local objectives, boundary preservation and test-independent selection.
 
 Public files under `results/tuned_block_sieve/` contain all candidate statuses, final scores, paired contrasts, fitted models, source/code hashes and the protocol. Per-person reports and allocations remain in the ignored private cache. The [main P0 analysis](../results/main/README.md), [E0 comparisons](../results/estimator_comparison/README.md) and [L0/S0 curves](predictive_learning.md) retain their original meanings and results.
+
+## Tuned-block: execution and unavailable candidates
+
+[Per-setting reasons and first-round parameters](../results/estimator_execution/Tuned-block.md) distinguish actual depth from a missing or unattempted fit. Counts below are fit contexts, not independent datasets. No predictor is refitted for this audit.
+
+| Execution category | Contexts |
+|---|---|
+| fixed_borda_pilot | 58 |
+| fixed_borda_pilot;sieve_resource_budget | 29 |
+
+## Tuned-reference: execution and unavailable candidates
+
+[Per-setting reasons and first-round parameters](../results/estimator_execution/Tuned-reference.md) distinguish actual depth from a missing or unattempted fit. Counts below are fit contexts, not independent datasets. No predictor is refitted for this audit.
+
+| Execution category | Contexts |
+|---|---|
+| outside_schedule_domain | 15 |
+| root_A_stop | 4 |

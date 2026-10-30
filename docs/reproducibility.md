@@ -189,3 +189,7 @@ After generating or replaying all five-allocation caches, rebuild numerical summ
 `python refresh_feature_predictions.py` joins unchanged full-data descriptors to the current P1 results and regenerates their joint report. `python compare_predictive_features.py` builds the P0 counterpart. Neither recomputes the descriptive reference centers or fits prediction models. Regenerate the predictive, repeated-holdout and group figures with their respective `make_*_figures.py` scripts.
 
 Saved fits and reporting code can have different producer fingerprints. Use the [provenance registry](../results/provenance/README.md); do not rewrite a cached fit's code signature to make it appear freshly generated. A clean reproduction uses an empty cache. Time-limited optimization may produce different valid incumbents, so certificates and objective gaps must accompany any changed prediction.
+
+## Verify execution explanations
+
+Run `python build_estimator_execution.py --check` to verify all Sharp/Efficient stopping tables against the public receipts, original schedule constants and immutable exposure snapshots. The audit checks G1 receipt counts against eligibility totals and S4 draw receipts against per-fit exports. The check is read-only and does not rerun experiments. Rebuild this audit before `build_study_reports.py` when intentionally changing these derived reports.
