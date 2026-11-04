@@ -9,6 +9,7 @@ from experiments.section44_per_setting.design import cells, group_key, holdout_s
 from experiments.section44_per_setting.engine import (report_distances, normalizer,
     score, generate, computational_plan)
 from experiments.section44_per_setting.run import select_records
+from experiments.section44_per_setting.report import ci, adjusted
 from src.models import distances, logz_mean
 from src.predictive_models import bounded_beta
 
@@ -94,3 +95,17 @@ def test_group_selection_uses_validation_only_and_allows_zero_depth():
         for f in d['fits'].values():
             f['kendall']=-f['kendall'];f['test_nll']=np.random.default_rng(3).normal()
     assert select_records(draws)[0]==selected
+
+
+def test_paired_uncertainty_and_holm():
+    from scipy.stats import ttest_1samp
+    differences=np.array([-1.,0.,2.,1.,-.5])
+    got=ci(differences)
+    expected=ttest_1samp(differences,0.)
+    assert abs(got['p_value']-expected.pvalue)<1e-12
+    assert abs(got['mcse']-differences.std(ddof=1)/math.sqrt(5))<1e-12
+    assert ci(np.zeros(100))==dict(mean=0.,mcse=0.,ci_low=0.,ci_high=0.,p_value=1.)
+    rows=[dict(complete=True,method='sharp_per_setting',reference='global_borda',
+               metric='nll',p_value=p) for p in (.01,.04,.03)]
+    adjusted(rows)
+    np.testing.assert_allclose([r['holm_p'] for r in rows],[.03,.06,.06])

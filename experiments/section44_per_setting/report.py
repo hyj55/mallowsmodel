@@ -9,6 +9,9 @@ import math
 from pathlib import Path
 import sys
 
+# Exact resource receipts can contain factorial-sized byte estimates.
+sys.set_int_max_str_digits(0)
+
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT))
 import numpy as np
@@ -16,6 +19,7 @@ from scipy.stats import t
 
 from experiments.section44_per_setting.design import cells, group_key, holdout_size
 from experiments.section44_per_setting.run import PRIVATE, OUT, HERE, read_gzip, sha, write_json
+from src.manuscript_estimators import proof_constants
 
 
 def csv_write(path, rows):
@@ -51,7 +55,7 @@ def adjusted(rows):
 
 
 def extract():
-    rows=[]
+    rows=[];execution=Counter();execution_values={}
     for phase in ('calibration','confirmation'):
         dest=[]
         for path in sorted((PRIVATE/phase).glob('*/*.json.gz')):
@@ -66,8 +70,47 @@ def extract():
                          A=m['config']['A'],c_width=m['config']['c_width'],K=m['config']['K'],
                          c_terminal=m['config']['c_terminal'])
                 dest.append(row)
+                if phase=='confirmation' and m['family']!='borda':
+                    lam=c['N']*c['r']*(c['r']-1)/(c['n']*(c['n']-1))
+                    eta=lam if m['family']=='efficient' else (c['r']-1)/(c['n']-1)
+                    constants=proof_constants(c['beta0']);cfg=m['config']
+                    K=constants['K'] if cfg['K'] is None else cfg['K']
+                    w=max(1,math.ceil(cfg['c_width']*(math.sqrt(c['n']/eta)+1/eta)))
+                    ell=math.log(constants['CT'])+math.log(8)+math.log1p(lam*c['n'])
+                    M=math.ceil(K*eta*ell*c['n']*(c['n']-1)/(c['r']*(c['r']-1)))
+                    reason=m.get('fallback_reason') or ('root_A_stop' if m['depth']==0 else 'positive_depth')
+                    rejected=sorted({p['status'] for p in m['plan'].get('candidates',[]) if p['status']!='feasible'})
+                    if rejected:reason += '; rejected_candidates='+','.join(rejected)
+                    if m['plan']['status']=='no_feasible_resolution' and not m['plan'].get('candidates'):
+                        reason='no_admissible_eta'
+                    if f['status']!='ok':
+                        meta=f['metadata'];reason += '; '+str(meta.get('failed_block',{}).get('reason',meta.get('reason',f['status'])))
+                    audit={k:row[k] for k in ('cell','method','n','r','N','beta0','status','branch','depth')}
+                    audit.update(reason=reason,A=cfg['A'],c_width=cfg['c_width'],K=float(K),
+                                 c_terminal=cfg['c_terminal'],lambda_=lam,eta_initial=eta,
+                                 eta_selected=m['plan'].get('eta'),m0=c['n'],w1=w,eight_w1=8*w,
+                                 M1=M,half_sample=c['N']//2,pilot_reports=m['plan']['used'],
+                                 W_star=max(1,math.ceil(cfg['c_terminal']*cfg['A']*(c['n']-1)/(c['r']-1))) if m['family']=='sharp' else None)
+                    audit_key=json.dumps(audit,sort_keys=True)
+                    execution[audit_key]+=1;execution_values[audit_key]=audit
         csv_write(OUT/(phase+'_fits.csv.gz'),dest)
         if phase=='confirmation':rows=dest
+    audit=[dict(execution_values[k],contexts=count) for k,count in execution.items()]
+    csv_write(OUT/'execution.csv',audit)
+    lines=['# S4-T execution and first-round parameters','',
+           '[Main report](../README.md) · [All numeric parameters](execution.csv)','',
+           'Rows group identical signal setting, method, status, depth and reason across repetitions. '
+           'First-round w1 and M1 use the initial candidate resolution and are formula diagnostics; '
+           'they do not mean that a stopped round consumed reports. N is training count. '
+           'The CSV also gives beta0, A, K, both window coefficients, initial and selected eta, '
+           'lambda, pilot report budget, and Sharp W*. Full candidate schedules remain in draw archives. '
+           'Pilot depth and terminal-sieve success are separate: a resource failure can follow either '
+           'zero or positive pilot depth. Positive-depth controls are included for context.','',
+           '| Setting | Method | Contexts | Status | Depth | Reason | n=m0 | r | N | Initial w1 | Initial M1 | floor(N/2) |',
+           '|---|---|---:|---|---:|---|---:|---:|---:|---:|---:|---:|']
+    for a in audit:
+        lines.append('| '+' | '.join(str(a[k]) for k in ('cell','method','contexts','status','depth','reason','n','r','N','w1','M1','half_sample'))+' |')
+    (OUT/'execution.md').write_text('\n'.join(lines)+'\n')
     return rows
 
 
@@ -131,7 +174,8 @@ def report(summaries,comparisons):
     selection=json.loads((OUT/'selection.json').read_text())
     lines=['# S4-T: constants selected separately for each training setting','',
            '[Repository](../../README.md) · [Protocol](PROTOCOL.md) · [Original S4](../section44/README.md) · '
-           '[Every selected configuration](results/selection.json) · [All candidate scores](results/calibration_candidates.json)', '',
+           '[Every selected configuration](results/selection.json) · [All candidate scores](results/calibration_candidates.json) · '
+           '[Depth and stopping parameters](results/execution.md)', '',
            'This additional simulation asks whether choosing constants separately for each `(n,r,N)` changes '
            'the comparison with global Borda. Original S4 is preserved. Here N is **training** report count. '
            'The same group uses the same selected constants across repetitions and signal controls.', '',
@@ -195,8 +239,9 @@ def report(summaries,comparisons):
               'one. Each confirmation draw contains a fresh N-report training set and an independent '
               'ceil(N/3)-report test set, sharing that draw\'s latent center. Sampling roles are disjoint; '
               'there is no reuse of calibration observations in confirmation and no train-plus-validation '
-              'refit. Independent sampling gives approximately 60/20/20 roles at a common training budget; '
-              'it is not a random split of the old S4 observations. Tiny-N counts are rounded explicitly.', '',
+              'refit. The three roles have relative sizes N:ceil(N/3):ceil(N/3), but they are implemented '
+              'as separate calibration and confirmation phases, not one reused three-way partition. '
+              'No old S4 observations are split or reused. Tiny-N counts are rounded explicitly.', '',
               'The original 25 Efficient and 35 Sharp anchored candidates are unchanged. For each candidate, '
               'train-only beta is the constrained conditional MLE on [0,10]. Validation ranks candidates by '
               'mean whole-ranking NLL, giving each signal cell in a group equal weight. All 20 calibration '
@@ -221,6 +266,7 @@ def report(summaries,comparisons):
               'does not by itself establish lower prediction or center error.',
               '- The candidate grid is anchored rather than Cartesian. A failure to beat Borda does not '
               'exclude other constants or the separately proposed adaptive-eta algorithms.', '',
+              'The empirical constants do not automatically inherit the original uniform risk guarantees.', '',
               '## Reproduction and files','',
               'The preregistered [protocol commit](https://github.com/hyj55/mallowsmodel/commit/'
               '2d604ab212cdff13231fa02e56b2206ad474fcaa) predates outcome generation. '
@@ -234,6 +280,7 @@ def report(summaries,comparisons):
               'The verification program checks original S4 preservation, selection replay, summaries and '
               'a deterministic training/holdout replay sample.', '',
               '```bash',
+              'export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONINTMAXSTRDIGITS=0',
               'python -m pytest -q experiments/section44_per_setting/test_experiment.py',
               'python experiments/section44_per_setting/run.py calibrate',
               'python experiments/section44_per_setting/run.py confirm',
