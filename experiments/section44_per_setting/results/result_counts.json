@@ -1,0 +1,34 @@
+{
+  "efficient_kendall": {
+    "complete": 90,
+    "equal": 67,
+    "higher": 17,
+    "holm_higher": 16,
+    "holm_lower": 6,
+    "lower": 6
+  },
+  "efficient_nll": {
+    "complete": 90,
+    "equal": 67,
+    "higher": 3,
+    "holm_higher": 0,
+    "holm_lower": 17,
+    "lower": 20
+  },
+  "sharp_kendall": {
+    "complete": 90,
+    "equal": 46,
+    "higher": 44,
+    "holm_higher": 43,
+    "holm_lower": 0,
+    "lower": 0
+  },
+  "sharp_nll": {
+    "complete": 90,
+    "equal": 46,
+    "higher": 2,
+    "holm_higher": 0,
+    "holm_lower": 35,
+    "lower": 42
+  }
+}

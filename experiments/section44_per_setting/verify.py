@@ -2,6 +2,7 @@
 import csv
 import gzip
 import json
+import math
 from pathlib import Path
 import sys
 
@@ -14,7 +15,7 @@ import numpy as np
 from experiments.section44.core import digest_array,kendall_fast
 from experiments.section44_per_setting.run import OUT,HERE,sha,select_records
 from experiments.section44_per_setting.engine import generate,score
-from experiments.section44_per_setting.report import ci
+from experiments.section44_per_setting.report import ci,adjusted
 
 
 def records(phase):
@@ -80,13 +81,30 @@ def main():
             replayed+=1
         draws[key]={name:{k:f.get(k) for k in ('status','holdout_nll','kendall')} for name,f in draws[key].items()}
     assert len(seen)==9000
+    verified=[]
     with (OUT/'paired_comparisons.csv').open() as f:
-        for row in csv.DictReader(f):
+        reported=list(csv.DictReader(f))
+        assert len(reported)==1800
+        for row in reported:
+            paired=[rep for rep in range(100)
+                    if draws[(row['cell'],rep)][row['method']]['status']=='ok'
+                    and draws[(row['cell'],rep)][row['reference']]['status']=='ok']
+            assert int(row['available'])==len(paired)
+            assert (row['complete']=='True')==(len(paired)==100)
             if row['complete']!='True':continue
             metric='holdout_nll' if row['metric']=='nll' else 'kendall'
             values=[draws[(row['cell'],rep)][row['method']][metric]-
                     draws[(row['cell'],rep)][row['reference']][metric] for rep in range(100)]
-            for k,v in ci(values).items():np.testing.assert_allclose(v,float(row[k]),rtol=1e-11,atol=1e-10)
+            stats=ci(values)
+            for k,v in stats.items():np.testing.assert_allclose(v,float(row[k]),rtol=1e-11,atol=1e-10)
+            scale=math.lgamma(int(row['r'])+1) if metric=='holdout_nll' else int(row['n'])*(int(row['n'])-1)/2
+            np.testing.assert_allclose(stats['mean']/scale,float(row['scaled_mean']),rtol=1e-11,atol=1e-10)
+            verified.append(dict(row,complete=True,**stats))
+    adjusted(verified)
+    for row in verified:
+        if row['method'].endswith('_per_setting') and row['reference']=='global_borda':
+            original=next(r for r in reported if all(r[k]==row[k] for k in ('cell','method','reference','metric')))
+            np.testing.assert_allclose(row['holm_p'],float(original['holm_p']),rtol=1e-11,atol=1e-10)
     print(f'PASS: {len(old)} original S4 files unchanged; 1800 selection draws replayed; '
           f'9000 confirmation draws; all paired intervals; {replayed} report-stream replays.')
 

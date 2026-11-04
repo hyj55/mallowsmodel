@@ -89,7 +89,8 @@ def extract():
                     audit.update(reason=reason,A=cfg['A'],c_width=cfg['c_width'],K=float(K),
                                  c_terminal=cfg['c_terminal'],lambda_=lam,eta_initial=eta,
                                  eta_selected=m['plan'].get('eta'),m0=c['n'],w1=w,eight_w1=8*w,
-                                 M1=M,half_sample=c['N']//2,pilot_reports=m['plan']['used'],
+                                 M1=M,half_sample=c['N']//2,planned_pilot_reports=m['plan']['used'],
+                                 used_pilot_reports=0 if m['branch']=='borda_fallback' else m['plan']['used'],
                                  W_star=max(1,math.ceil(cfg['c_terminal']*cfg['A']*(c['n']-1)/(c['r']-1))) if m['family']=='sharp' else None)
                     audit_key=json.dumps(audit,sort_keys=True)
                     execution[audit_key]+=1;execution_values[audit_key]=audit
@@ -127,6 +128,8 @@ def build_tables(rows):
                    fallbacks=sum(v['branch']=='borda_fallback' for v in vals),
                    failures=json.dumps(dict(Counter(v['status'] for v in vals if v['status']!='ok')),sort_keys=True))
         if complete:
+            out['beta_fit_mean']=float(np.mean([v['beta_fit'] for v in good]))
+            out['beta_upper_bound_hits']=sum(v['beta_fit']==10. for v in good)
             for metric in ('nll','kendall'):
                 out.update({metric+'_'+k:v for k,v in ci([v[metric] for v in good]).items()})
         summaries.append(out)
@@ -172,9 +175,27 @@ def count_line(rows,method,ref,metric):
 
 def report(summaries,comparisons):
     selection=json.loads((OUT/'selection.json').read_text())
+    parameter_lines=['# Selected constants by training setting','',
+                     '[Main report](../README.md) · [Machine-readable selection](selection.json)','',
+                     'One choice per family and (n,r,N), fixed before confirmation. '
+                     'c_width multiplies sqrt(m/eta)+1/eta before rounding; c_terminal multiplies '
+                     'A/eta in Sharp terminal W* and is unused by Efficient. K=proof means the original beta0-dependent '
+                     'constant. Calibration depth and fallback counts are out of the listed draws; '
+                     'they are not confirmation outcomes. Signal controls with the same group '
+                     'share all four selected constants.', '',
+                     '| n,r,N | Family | Candidate | A | c_width | K | c_terminal | Validation NLL | Positive depth / draws | Borda fallback / draws |',
+                     '|---|---|---|---:|---:|---|---:|---:|---:|---:|']
+    for group,v in sorted(selection.items(),key=lambda z:tuple(int(x[1:]) for x in z[0].split('-'))):
+        for family in ('efficient','sharp'):
+            a=v[family];cfg=a['config'];K='proof' if cfg['K'] is None else fmt(cfg['K'])
+            parameter_lines.append(f"| {group} | {family} | {a['candidate']} | {fmt(cfg['A'])} | "
+                                   f"{fmt(cfg['c_width'])} | {K} | {fmt(cfg['c_terminal'])} | "
+                                   f"{fmt(a['validation_nll'])} | {a['positive_depth']}/{a['expected']} | "
+                                   f"{a['fallback']}/{a['expected']} |")
+    (OUT/'selected_parameters.md').write_text('\n'.join(parameter_lines)+'\n')
     lines=['# S4-T: constants selected separately for each training setting','',
            '[Repository](../../README.md) · [Protocol](PROTOCOL.md) · [Original S4](../section44/README.md) · '
-           '[Every selected configuration](results/selection.json) · [All candidate scores](results/calibration_candidates.json) · '
+           '[Every selected configuration](results/selected_parameters.md) · [All candidate scores](results/calibration_candidates.json) · '
            '[Depth and stopping parameters](results/execution.md)', '',
            'This additional simulation asks whether choosing constants separately for each `(n,r,N)` changes '
            'the comparison with global Borda. Original S4 is preserved. Here N is **training** report count. '
@@ -195,10 +216,59 @@ def report(summaries,comparisons):
             result_counts[family+'_'+metric]=count
             lines.append(f"| {family.title()}, per-setting | {metric} | {count['complete']}/90 | "
                          f"{count['lower']} / {count['equal']} / {count['higher']} | {count['holm_lower']} / {count['holm_higher']} |")
-    lines += ['', 'A lower test NLL and a lower center error are different claims. Validation NLL does not '
+    lines += ['', '**Global Borda is no longer uniformly best in these completed comparisons.** '
+              'Per-setting Efficient reduces true-center Kendall error in six large-catalogue settings '
+              '(n=512 or 2048), and also improves test NLL in all six. Both improvements survive the '
+              'stated Holm correction. These six choices all have A=4, c_width=1/16 and K=1, '
+              'and execute positive-depth hierarchies on every draw. Efficient still has higher mean '
+              'center error in 17 other settings; this is a setting-dependent improvement, not domination.', '',
+              '**For Sharp, the answer depends on the outcome.** The selected Sharp configurations '
+              'never have lower mean true-center Kendall error than Borda, but have lower mean test '
+              'NLL in 42 settings (35 after Holm correction). All 46 equal settings select an inherited '
+              'Borda fallback. Efficient has 23 positive-depth settings; its 67 equal settings consist '
+              'of 63 Borda fallbacks and four zero-depth hierarchies. Sharp has nine positive-depth settings; '
+              'its other 35 non-fallback settings run a terminal sieve without a pilot hierarchy.', '',
+              'A lower test NLL and a lower center error are different claims. Validation NLL does not '
               'use the true center and does not directly optimize the Kendall error reported by original S4. '
               'The NLL score includes a train-only fitted dispersion, so two different centers can have the '
               'same predictive loss when both fitted dispersions are zero.', '',
+              '## Where Efficient improves center recovery','',
+              'These are all six settings with lower mean Kendall error. Relative reduction divides the '
+              'paired mean reduction by the Borda mean error; it is descriptive. Every setting has beta=beta0=0.8.', '',
+              '| n,r,N | Borda mean Kendall error | Selected Efficient mean error | Relative reduction | Paired difference [95% CI] | Test NLL difference |',
+              '|---|---:|---:|---:|---|---:|']
+    sl={(a['cell'],a['method']):a for a in summaries}
+    for d in sorted(comparisons,key=lambda a:(a['n'],a['r'],a['N'])):
+        if (d['method']=='efficient_per_setting' and d['reference']=='global_borda'
+                and d['metric']=='kendall' and d['complete'] and d['mean'] < -1e-10):
+            b=sl[(d['cell'],'global_borda')];v=sl[(d['cell'],d['method'])]
+            nll=next(a for a in comparisons if a['cell']==d['cell'] and a['method']==d['method']
+                     and a['reference']=='global_borda' and a['metric']=='nll')
+            lines.append(f"| {d['n']},{d['r']},{d['N']} | {fmt(b['kendall_mean'])} | {fmt(v['kendall_mean'])} | "
+                         f"{-100*d['mean']/b['kendall_mean']:.2f}% | {interval(d)} | {fmt(nll['mean'])} |")
+    lines += ['', '## Why predictive and center-error conclusions differ','',
+              'The scored quantity is beta_hat times the test report inversion count plus log Z_r(beta_hat), '
+              'averaged over test reports. Full-center Kendall error instead counts all inverted catalogue '
+              'pairs once. The estimated dispersion and the displayed-set loss both matter; the two '
+              'metrics need not order estimators the same way.', '',
+              'The largest NLL gains include very small training sets. With N=1, Borda exactly fits '
+              'the observed report and the train-only dispersion estimate reaches the cap beta=10. '
+              'For n=512,r=128,N=1, the selected Sharp center is less accurate but produces nearly uniform '
+              'predictions: its mean fitted beta is about 0.002. The following saved-fit summaries expose '
+              'this distinction. They are descriptive diagnostics, not additional tuning or a controlled '
+              'dispersion ablation.', '',
+              '| n,r,N | Method | Mean fitted beta | beta=10 hits / 100 | Mean test NLL | Mean Kendall error |',
+              '|---|---|---:|---:|---:|---:|']
+    for cell in ('n12-r3-N4-b0.8-lo0.8','n512-r128-N1-b0.8-lo0.8','n2048-r32-N4226-b0.8-lo0.8'):
+        for method in ('global_borda','efficient_per_setting','sharp_per_setting'):
+            a=sl[(cell,method)]
+            lines.append(f"| {a['n']},{a['r']},{a['N']} | {method} | {fmt(a['beta_fit_mean'])} | "
+                         f"{a['beta_upper_bound_hits']} | {fmt(a['nll_mean'])} | {fmt(a['kendall_mean'])} |")
+    lines += ['', 'Predictive improvements are not confined to N=1: among the 53 settings with N>=20, '
+              'Efficient has 14 lower-NLL means (13 Holm-supported), and Sharp has 11 (seven Holm-supported). '
+              'These counts reuse the original 90-setting Holm adjustment. Nevertheless, the result is '
+              'specific to the declared train-only beta fit on [0,10]; it does not establish that Sharp '
+              'recovers the center better or remains preferable under another dispersion-fitting rule.', '',
               '## Comparisons with the proof and original S4 configurations','',
               'All references below are refitted on the same new training draws; these are paired comparisons '
               'within S4-T, not subtraction of unrelated means from the old report.', '',
@@ -210,6 +280,11 @@ def report(summaries,comparisons):
                 c=count_line(comparisons,family+'_per_setting',ref,metric)
                 lines.append(f"| {family} | {ref} | {metric} | {c['complete']}/90 | {c['lower']} / {c['equal']} / {c['higher']} |")
     lines += ['', '## What was selected','',
+              'The search reuses the original anchored grid; values are not combined in a full Cartesian product. '
+              'A controls the stopping threshold, c_width scales stage windows, K scales stage report batches, '
+              'and c_terminal scales Sharp terminal W*. The [parameter table](results/selected_parameters.md) '
+              'gives the numerical choices for all 82 groups. The unchanged [grid definition](../section44/design.py) '
+              'and [saved protocol](results/protocol.json) enumerate every candidate.', '',
               'Selection allows zero depth and explicitly recorded Borda fallbacks. Therefore a tuned method '
               'may equal Borda because it selected that branch, not because a multilevel hierarchy independently '
               'matched it. Exact-sieve resource failures are never replaced by Borda.', '',
@@ -270,6 +345,8 @@ def report(summaries,comparisons):
               '## Reproduction and files','',
               'The preregistered [protocol commit](https://github.com/hyj55/mallowsmodel/commit/'
               '2d604ab212cdff13231fa02e56b2206ad474fcaa) predates outcome generation. '
+              'The [parameter-selection commit](https://github.com/hyj55/mallowsmodel/commit/'
+              'ac2c1dd68f351870eafe3245f18b4c3f8fc30a93) predates confirmation generation. '
               '`results/protocol.json` gives every setting and candidate. `selection.json` records one '
               'choice per family/group. `calibration_candidates.json` retains rejected candidates. '
               '`calibration_fits.csv.gz` and `confirmation_fits.csv.gz` give logical method-level rows; '
