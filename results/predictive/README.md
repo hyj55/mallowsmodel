@@ -64,3 +64,9 @@ For each summary cell:
 The tables and figures include the [30-minute / 4-GiB completion pass](../../docs/sieve_computation.md#completion-results-and-remaining-limits). The 100 recovered Sharp fits fill existing L0/S0 cells; repetitions are not added. Predictor records retain each initial failure and the separate completion code fingerprint. All PL and likelihood-center parameters are unchanged.
 
 Use `python build_study_reports.py --check` to verify the named views and precision arithmetic. Use `python validate_predictive_study.py --repository-only` to verify public records and arithmetic. Full local replay additionally requires the source acquisition and private membership/loss caches described in the [reproduction guide](../../docs/reproducibility.md). Source reports and memberships are not redistributed in this directory.
+
+<!-- heldout-kendall:start -->
+## Held-out Kendall distance
+
+The [joint NLL / mean test-report Kendall table](../heldout_kendall/L0_S0.md) and [all numeric summaries](../heldout_kendall/summary.csv) report both outcomes for these fitted predictors. Distances are divided by the number of evaluation reports and do not depend on the fitted beta. [Beta/beta0 diagnostics](../../docs/dispersion_assumptions.md) distinguish estimated dispersion from the algorithm input.
+<!-- heldout-kendall:end -->

@@ -53,3 +53,9 @@ Use the pinned dependencies in a separate checkout. The recorded run uses Python
 | outside_schedule_domain | 105 |
 | root_A_stop | 50 |
 | root_A_stop;n8_terminal_guard | 75 |
+
+<!-- heldout-kendall:start -->
+## Held-out Kendall distance
+
+The [joint NLL / mean test-report Kendall table](../heldout_kendall/P1.md) and [all numeric summaries](../heldout_kendall/summary.csv) report both outcomes for these fitted predictors. Distances are divided by the number of evaluation reports and do not depend on the fitted beta. [Beta/beta0 diagnostics](../../docs/dispersion_assumptions.md) distinguish estimated dispersion from the algorithm input.
+<!-- heldout-kendall:end -->

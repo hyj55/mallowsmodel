@@ -24,4 +24,10 @@ A common-order control takes PL's fitted order as the SM center, profiles/shrink
 
 ## Sharp/Efficient execution details
 
-The [T1 execution table](../results/estimator_execution/T1.md) lists each fitting sample, the initial window and batch requirement, selected resolution, actual/reconstructed depth, and the precise stop or exclusion reason. 
+The [T1 execution table](../results/estimator_execution/T1.md) lists each fitting sample, the initial window and batch requirement, selected resolution, actual/reconstructed depth, and the precise stop or exclusion reason.
+
+<!-- heldout-kendall:start -->
+## Mean held-out Kendall distance
+
+The [joint NLL / report-distance table](../results/heldout_kendall/T1_C1.md) evaluates the same fitted orders on the same held-out reports. Each distance is divided by the number of evaluation reports. See the [metric definition](../results/heldout_kendall/README.md) and [dispersion audit](dispersion_assumptions.md).
+<!-- heldout-kendall:end -->

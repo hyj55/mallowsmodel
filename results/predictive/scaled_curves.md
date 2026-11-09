@@ -65,3 +65,9 @@ The table shows likelihood-center SM versus PL; the [all-estimator CSV](syntheti
 | root_A_stop | 200 |
 | root_A_stop;sieve_resource_budget | 80 |
 | sharp_available | 160 |
+
+<!-- heldout-kendall:start -->
+## Held-out Kendall distance
+
+The [joint NLL / mean test-report Kendall table](../heldout_kendall/L0_S0.md) and [all numeric summaries](../heldout_kendall/summary.csv) report both outcomes for these fitted predictors. Distances are divided by the number of evaluation reports and do not depend on the fitted beta. [Beta/beta0 diagnostics](../../docs/dispersion_assumptions.md) distinguish estimated dispersion from the algorithm input.
+<!-- heldout-kendall:end -->

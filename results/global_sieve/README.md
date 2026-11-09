@@ -37,3 +37,9 @@ The report-size bound alone does not establish uniform displays, independent rep
 ## Execution and stopping
 
 B0 aliases the 115 E0 Sharp contexts: 55 complete terminal sieves and 60 resource exclusions, all with zero pilot depth. The [E0 per-task table](../estimator_execution/E0.md) gives n, N, r, first-round w/M, W*, actual blocks and the resource receipt for every case. These are the same fits, not additional experiments.
+
+<!-- heldout-kendall:start -->
+## Held-out Kendall distance
+
+The [joint NLL / mean test-report Kendall table](../heldout_kendall/B0.md) and [all numeric summaries](../heldout_kendall/summary.csv) report both outcomes for these fitted predictors. Distances are divided by the number of evaluation reports and do not depend on the fitted beta. [Beta/beta0 diagnostics](../../docs/dispersion_assumptions.md) distinguish estimated dispersion from the algorithm input.
+<!-- heldout-kendall:end -->

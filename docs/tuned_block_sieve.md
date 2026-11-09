@@ -278,3 +278,9 @@ Public files under `results/tuned_block_sieve/` contain all candidate statuses, 
 |---|---|
 | outside_schedule_domain | 15 |
 | root_A_stop | 4 |
+
+<!-- heldout-kendall:start -->
+## Mean held-out Kendall distance
+
+The [joint NLL / report-distance table](../results/heldout_kendall/tuned_blocks.md) evaluates the same fitted orders on the same held-out reports. Each distance is divided by the number of evaluation reports. See the [metric definition](../results/heldout_kendall/README.md) and [dispersion audit](dispersion_assumptions.md).
+<!-- heldout-kendall:end -->

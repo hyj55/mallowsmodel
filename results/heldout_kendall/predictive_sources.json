@@ -1,0 +1,6 @@
+[
+  "results/estimator_comparison/predictors.jsonl.gz",
+  "results/estimator_comparison/repeat_scores.csv.gz",
+  "results/predictive/predictors.jsonl.gz",
+  "results/predictive/repeat_scores.csv.gz"
+]

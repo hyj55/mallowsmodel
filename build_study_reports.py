@@ -21,6 +21,7 @@ INPUTS=('results/predictive/primary.csv','results/predictive/repeat_scores.csv.g
         'results/estimator_execution/snippets/E0.md',
         'results/estimator_execution/snippets/L0.md',
         'results/estimator_execution/snippets/S0.md')
+INPUTS+=('results/heldout_kendall/report_sections.json','src/heldout_kendall_reporting.py')
 REPETITIONS=5
 
 
@@ -187,7 +188,9 @@ The 2,000 bootstrap draws **inside** an eligible P0/E0/L0 split are a different 
 Raw and scaled differences appear together below. Scaling divides the difference, MCSE, SD and range endpoints by the task's fixed log(r!); it does not add repetitions or change the uncertainty target. Numeric CSV ratios are not multiplied by 100.
 
 '''+table(precision,[('task','Task'),('delta_mean','Mean delta'),('delta_uniform_mean','Delta / log(r!)'),('delta_mcse','MCSE'),('delta_uniform_mcse','Scaled MCSE'),('delta_min','Smallest split delta'),('delta_max','Largest split delta')])+'\n')
-    e_text,e_contrasts=estimator_report(e0,e_scores,table,task_label)
+    with gzip.open(ROOT/'results/estimator_comparison/predictors.jsonl.gz', 'rt') as stream:
+        e_predictors = [json.loads(line) for line in stream]
+    e_text,e_contrasts=estimator_report(e0,e_scores,table,task_label,e_predictors)
     put('results/estimator_comparison/README.md',e_text)
     csv('results/estimator_comparison/borda_comparisons.csv',e_contrasts)
     put('results/global_sieve/README.md','''# B0: supplementary global pair-sieve comparison
@@ -252,6 +255,9 @@ The table shows likelihood-center SM versus PL; the [all-estimator CSV](syntheti
             snippet=snippet.replace('](../','](../estimator_execution/')
             out[report]+=('\n'+snippet.replace('## Sharp/Efficient execution and stopping',f'## {study}: Sharp/Efficient execution and stopping')).encode()
     out['results/global_sieve/README.md']+=b'\n## Execution and stopping\n\nB0 aliases the 115 E0 Sharp contexts: 55 complete terminal sieves and 60 resource exclusions, all with zero pilot depth. The [E0 per-task table](../estimator_execution/E0.md) gives n, N, r, first-round w/M, W*, actual blocks and the resource receipt for every case. These are the same fits, not additional experiments.\n'
+    from src.heldout_kendall_reporting import report_suffix
+    for path in list(out):
+        if path.endswith('.md'):out[path]+=report_suffix(path).encode()
     manifest=dict(producer='build_study_reports.py',producer_sha256=digest(Path(__file__).read_bytes()),
         source_sha256={p:digest((ROOT/p).read_bytes()) for p in INPUTS},
         interpretation='Named current result views; no fitting or resampling.',

@@ -39,3 +39,9 @@ Full local reproduction and prediction replay use `run_group_sensitivity.py` the
 | n8_admission_guard | 1019 |
 | root_A_stop | 1019 |
 | unseen_catalog_items | 722 |
+
+<!-- heldout-kendall:start -->
+## Held-out Kendall distance
+
+The [joint NLL / mean test-report Kendall table](../heldout_kendall/G1.md) and [all numeric summaries](../heldout_kendall/summary.csv) report both outcomes for these fitted predictors. Distances are divided by the number of evaluation reports and do not depend on the fitted beta. [Beta/beta0 diagnostics](../../docs/dispersion_assumptions.md) distinguish estimated dispersion from the algorithm input.
+<!-- heldout-kendall:end -->

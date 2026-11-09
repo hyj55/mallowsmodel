@@ -59,6 +59,24 @@ L_f^{\mathrm{pop}}=\sum_S p(S)\sum_{Y\in\mathfrak S(S)}p(Y\mid S)[-\log P_f(Y\mi
 
 This is exact finite-state summation, subject to numerical precision. Training fits still vary across independent repetitions. S2 instead averages 2,000 independently generated test reports per repetition. S3 uses 2,000 test reports in the n=8/n=10 grids and 1,000 in the n=64 grid. Empirical tasks use their specified held-out reports. A diagnostic sample is not substituted for the exact population test distribution.
 
+## Mean Kendall distance to held-out reports
+
+Every component that scores predictive whole-ranking NLL also reports agreement of its fitted order with the same evaluation reports:
+
+```math
+L_{K,\mathrm{test}}(\widehat\pi)
+=\frac{1}{N_{\mathrm{test}}}\sum_{t\in\mathrm{test}}
+d_K(Y_t,\widehat\pi|_{S_t}).
+```
+
+Restrict the fitted catalogue order to the items actually displayed in report t before counting discordant pairs. Divide the total by the number of reports, including repeated reports with their recorded multiplicities. This is a mean count per report, with range 0 to r(r-1)/2 for fixed r; it is not further divided by the number of pairs. Lower is better. PL's order sorts its saved worths using its original tie rule; common-order controls retain the imposed common order. A uniform probability reference alone identifies no particular center.
+
+This loss needs no dispersion parameter. Changing beta without changing the center leaves it unchanged. In contrast, SM NLL is beta times this distance plus the normalizing term, so an NLL improvement may reflect changed dispersion as well as changed order. This score compares an order with noisy reports, **not with the unknown population center**. A simulation's true-center error remains a separate metric below.
+
+Each allocation is scored first, then the original repetitions receive equal weight. G1 local/matched predictors first sum distances and report counts over their disjoint test groups within each allocation. Failed fits remain unavailable; complete comparisons are not replaced by means over whichever fits succeeded. For exact-population NLL in S1/D2, replace the finite average by the corresponding probability-weighted expectation of one new report; there is no invented test sample size. Infinite NLL does not prevent a finite distance when the fitted order exists.
+
+The [joint NLL / Kendall tables](../results/heldout_kendall/README.md) include every predictive study, and the P0/E0 reports display their five-allocation distances directly. Report-level Kendall MCSE uses the original independent simulation repetitions or conditional random allocations; it is not a new population CI. Original NLL selection rules, fitted centers, and tests are unchanged. The [dispersion audit](dispersion_assumptions.md) separately checks beta estimates against algorithm inputs and the proof's constant map.
+
 ## Center recovery and optimization
 
 With a known generating order $`\pi_0`$, the center error is

@@ -35,3 +35,9 @@ Beans and Sushi A also use one random permutation divided into five disjoint out
 Enumeration at small r verifies normalization, SM pair probabilities, Mahonian shell counts and the PL shell recursion. Generated known-parameter controls confirm the changing-gap SM probability and PL's pair invariance before fitted diagnostic interpretation. Solver/likelihood tests compare independent implementations and replay saved predictions. Such checks verify calculations; they are not independent evidence that either family describes an empirical population.
 
 The [five-fit diagnostic guide](../results/regularized_diagnostics/README.md) links all current C1 pair/shell/context outputs and their verification.
+
+<!-- heldout-kendall:start -->
+## Mean held-out Kendall distance
+
+The [joint NLL / report-distance table](../results/heldout_kendall/T1_C1.md) evaluates the same fitted orders on the same held-out reports. Each distance is divided by the number of evaluation reports. See the [metric definition](../results/heldout_kendall/README.md) and [dispersion audit](dispersion_assumptions.md).
+<!-- heldout-kendall:end -->

@@ -26,6 +26,7 @@ The main score is the mean negative log probability of a held-out **whole rankin
 | [Models and estimators](docs/algorithms.md) | Probability laws, center and dispersion estimation, regularization variants, and admission requirements |
 | [Estimator theory and recorded results](docs/theory_alignment.md) | Minimax regimes, which saved comparisons meet their conditions, actual estimator branches, and Theorem 2.17 versus Fotakis |
 | [S4: independent Section 4.4 simulation](experiments/section44/README.md) | True-center risk, active hierarchies, proof versus calibrated constants, exact sieve windows, coverage, full rankings, runtime and memory; all S4 code and results are isolated in one directory |
+| [S4-T: constants selected by training setting](experiments/section44_per_setting/README.md) | Separate validation-selected constants for each (n,r,N), shared across repetitions and signal controls; fresh held-out NLL and center-error comparisons with Borda, proof constants and S4's fixed calibration |
 | [Evaluation criteria](docs/criteria.md) | Mathematical definitions of prediction loss, center error, coverage, shell and context diagnostics, and model selection |
 | [Uncertainty and resampling](docs/uncertainty.md) | Exactly how each CI, bootstrap, split range, and Monte Carlo standard error is calculated, and the assumptions behind it |
 | [Findings](docs/findings.md) | Results organized by scientific question, with links to complete tables and figures |
@@ -47,6 +48,7 @@ The table locates every experimental family. P0 alone is the main experiment; al
 | **G1: group heterogeneity** | [Group results](docs/group_sensitivity.md): Puzzle/Dots trial groups and Sounds assessors; pooled versus local fits, matched training budgets, five within-group splits and transfer to unseen groups. |
 | **S1/S2: mechanism and coverage controls** | [Controlled simulations](docs/strict_feature_analysis.md): matched-noise mixtures, fixed-shell interventions and sparse coverage; independent training draws separate noise magnitude, ranking structure and fit availability. |
 | **S4: independent theory-facing simulation** | [Standalone experiment](experiments/section44/README.md): separate calibration and 100 fresh confirmation draws per setting; compare Efficient, Borda, Sharp and small-scale exact Kemeny, including smaller stopping/window/batch constants and a separate full-ranking endpoint. Its outputs are not pooled with any existing experiment. |
+| **S4-T: per-setting constant selection** | [Additional simulation](experiments/section44_per_setting/README.md): retain original S4; choose one Sharp/Efficient configuration per (n,r,N) using independent training/validation draws, then assess 100 fresh training/test draws per signal setting. Report test NLL and true-center Kendall error separately; permit depth-zero candidates and identify Borda-equivalent branches. |
 | **D1/D2: diagnostic selection and calibration** | [D1](docs/strict_feature_analysis.md#discovery-based-selection) tests discovery-based choices among already fitted predictors. [D2](docs/validation_extension.md) and [context controls](docs/context_followup.md) examine center error, heterogeneous PL, assessor/display confounding and interval calibration. Neither selects P0's model family. |
 | **T1: temporal transfer** | [Temporal results](docs/temporal_prediction.md): Beans year transfer and chronological ATP season prediction, with calendar boundaries instead of random outer splits. |
 | **C1: structural and optimization controls** | [Structural controls](docs/structural_controls.md): common-order fits, center-objective benchmarks, optimization bounds and a five-fold allocation control. [Pair/shell/context diagnostics](results/regularized_diagnostics/README.md) use the five saved L1 fits and conditional bootstrap intervals. |
@@ -101,3 +103,9 @@ python validate_repeated_holdout.py --repository-only
 ```
 
 These checks do not refit the models. The archive restoration command reconstructs recorded outputs and verifies their bytes. Some detailed empirical caches require local source acquisition and are not redistributed. See [reproduction](docs/reproducibility.md), [result dictionaries](results/README.md), [references](docs/references.md), and [third-party notices](THIRD_PARTY_NOTICES.md).
+
+<!-- heldout-kendall:start -->
+## Test-report agreement and dispersion assumptions
+
+All predictive components also report [mean Kendall distance from the fitted order to held-out reports](results/heldout_kendall/README.md), alongside NLL. The metric is report-normalized and separate from simulated true-center error. [Beta and beta0 checks](docs/dispersion_assumptions.md) explain the distinction between fitted dispersion, supplied algorithm bounds, and empirically calibrated constants.
+<!-- heldout-kendall:end -->

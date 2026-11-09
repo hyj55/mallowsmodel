@@ -20,6 +20,8 @@ Read results by experiment, dataset, estimator, evaluation target and denominato
 | [context_followup](context_followup/README.md) | P2 wheat; A1 SP-Rank | Point prediction, metadata-limited diagnostics and observation-design audit |
 | [validation_extension](validation_extension/README.md) | D2; P2 Sounds/PatrasIQ; Beaches screen | Calibration/confounding draws, rates and Wilson bars, identified-unit empirical intervals |
 | [group_sensitivity](group_sensitivity/README.md) | G1 | Pooled/local/matched controls, group transfer, common masks and split ranges |
+| [Section 4.4 simulation](../experiments/section44/README.md) | S4 | Proof constants and one calibrated configuration per family; known-center risk and hierarchy execution |
+| [Per-setting constant selection](../experiments/section44_per_setting/README.md) | S4-T, separate from S4 | One validation-selected configuration per (n,r,N); paired test NLL and center error, selected constants, depth and stopping reasons |
 | [audit](audit/README.md) | Calculation and evidence verification | Source/fit replay and integrity receipts; no additional scientific replicates |
 | [Regularized prediction artifacts](https://github.com/hyj55/mallowsmodel/tree/89b21645d5f7eb463cc90c4e982c3a66ce805b41/results) | L1, S3 n=10, T1 Beans, C1 | `real_*`, `synthetic_*`, `beans_transfer_*`, `same_order_*`, `outer_fold_*`, diagnostic and optimization tables |
 | [Exposure and ATP artifacts](https://github.com/hyj55/mallowsmodel/tree/89b21645d5f7eb463cc90c4e982c3a66ce805b41/results/exposure) | L2, S3 exposure, T1 ATP, C1 | `small_*`, `coverage_*`, `real_*`, `tennis_*`, penalty and feasibility controls |
@@ -35,3 +37,11 @@ Three large D2 artifacts are restored with `python validation_artifacts.py`. Pub
 ## Sharp/Efficient execution audit
 
 The [execution index](estimator_execution/README.md) provides per-setting tables for E0, L0/S0, P1/P2, G1, S1–S3, L2/T1, S4 calibration/confirmation/resource profiles and the tuned block-sieve supplement. Tables distinguish zero executed depth from a method that was not attempted, and pair the reason with first-round geometry, sample budgets and saved resource limits. B0 and other aliases link to the same originating fits. This is a derived result view; no scientific fits or losses change.
+
+S4-T retains its own [execution table](../experiments/section44_per_setting/results/execution.md) alongside its independent confirmation results.
+
+<!-- heldout-kendall:start -->
+## Held-out report distance
+
+[All NLL experiments: companion Kendall distances and coverage](heldout_kendall/README.md). The P0/E0 reports also display the five-allocation distances directly. [Dispersion assumptions and fitted-beta checks](../docs/dispersion_assumptions.md) accompany these results.
+<!-- heldout-kendall:end -->
