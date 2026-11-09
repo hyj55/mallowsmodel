@@ -9,13 +9,45 @@ LABELS = dict(pl='PL', sm_likelihood='Likelihood SM', sm_sharp='Sharp',
               sm_fotakis='Fotakis', sm_efficient='Efficient', sm_global_borda='Global Borda')
 
 
-def report(summary, scores, table, task_label):
+def sharp_execution(records):
+    """Describe the saved construction separately from successful completion."""
+    descriptions = {}
+    for dataset in sorted({record['dataset'] for record in records}):
+        group = [record for record in records if record['dataset'] == dataset]
+        assert sorted(record['repeat'] for record in group) == list(range(5))
+        fits = [record['models']['sm_sharp'] for record in group]
+        # This E0 release has one catalogue-wide terminal block in every fit.
+        # Check the receipt: depth zero alone would not establish a global sieve.
+        for record, fit in zip(group, fits):
+            meta = fit['metadata']
+            assert meta['global_sieve_identical'] is True
+            assert meta['depth'] == 0 and meta['pilot_reports'] == 0
+            if fit['status'] == 'ok':
+                assert meta['branch'] == 'exact_sieve'
+                assert len(meta['blocks']) == 1 and meta['blocks'][0]['m'] == record['n']
+                assert meta['blocks'][0]['complete'] is True
+            else:
+                assert fit['status'] == 'sieve_resource_budget'
+                assert meta['actual_block_items'] == record['n']
+                assert meta['reason'] == 'working_array_memory_budget'
+        complete = sum(fit['status'] == 'ok' for fit in fits)
+        label = f'Global pair-sieve; depth 0; {complete}/{len(fits)} complete'
+        if complete < len(fits):
+            label += f'; {len(fits)-complete}/{len(fits)} blocked by memory limit'
+        descriptions[dataset] = label
+    return descriptions
+
+
+def report(summary, scores, table, task_label, predictors):
     datasets = sorted(summary.dataset.unique())
     wide = pd.DataFrame({'dataset':datasets})
     wide['task'] = wide.dataset.map(task_label)
     for method in METHODS:
         g = summary[summary.method == method].set_index('dataset')
         wide[method] = wide.dataset.map(g.nll_mean)
+    execution = sharp_execution(predictors)
+    assert set(execution) == set(datasets)
+    wide['sharp_execution'] = wide.dataset.map(execution)
     contrasts = borda_comparisons(scores)
     assert scores.groupby('dataset').r.nunique().eq(1).all()
     contrasts['r'] = contrasts.dataset.map(scores.groupby('dataset').r.first())
@@ -65,8 +97,15 @@ E0 compares Sharp, Fotakis, independently admitted Efficient and global clipped 
 
 The table gives whole-ranking test NLL, averaged equally across five allocations; lower is better. All SM centers use the same development-data dispersion fit on [0,10]. A full mean requires all five planned fits. NA is an unavailable full comparison, not zero loss or a mean over the successful subset. The availability table below gives every denominator; conditional subset means remain explicitly labeled in the CSV.
 
+**Sharp form is stated for each task in the table.** All 23 tasks have zero pilot depth and one terminal block containing the full catalogue, so Sharp requires a **global pair-sieve**. Eleven tasks complete all five exact sieves; twelve complete none because of the memory limit. For an NA score, the execution column describes the required construction, not a completed fit or a Borda replacement. These labels are checked against the [saved fit records](predictors.jsonl.gz), including block size and completion status; depth zero by itself is not the classification rule. [Detailed execution parameters](../estimator_execution/E0.md) give W*, block size and resource receipts.
+
 '''
-    text += table(wide,[('task','Task')]+[(m,LABELS[m]+' NLL') for m in METHODS])+'\n\n'
+    columns = [('task','Task')]
+    for method in METHODS:
+        columns.append((method, LABELS[method]+' NLL'))
+        if method == 'sm_sharp':
+            columns.append(('sharp_execution','Sharp form and completion'))
+    text += table(wide,columns)+'\n\n'
     text += '''## Paired SM–PL differences on both scales
 
 Each cell is **raw mean delta / scaled mean delta**: the first value is SM NLL minus PL NLL in nats/report; the second is that same difference divided by log(r!). For example, a scaled value 0.05 means 5% of the uniform-ranking loss, not a five-percentage-point accuracy gap. Negative favors the named SM estimator. This uses the same five paired allocations and requires all five fits. Scaling changes neither signs nor availability. r is the display/report size, not catalogue n; [limitations](../../docs/criteria.md#uniform-reference-scaled-loss-difference) still apply.

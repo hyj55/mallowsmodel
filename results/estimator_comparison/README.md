@@ -8,31 +8,33 @@ E0 compares Sharp, Fotakis, independently admitted Efficient and global clipped 
 
 The table gives whole-ranking test NLL, averaged equally across five allocations; lower is better. All SM centers use the same development-data dispersion fit on [0,10]. A full mean requires all five planned fits. NA is an unavailable full comparison, not zero loss or a mean over the successful subset. The availability table below gives every denominator; conditional subset means remain explicitly labeled in the CSV.
 
-| Task | PL NLL | Likelihood SM NLL | Sharp NLL | Fotakis NLL | Efficient NLL | Global Borda NLL |
-|---|---|---|---|---|---|---|
-| Dots 2013, gap 3 | 3.13793 | 3.11623 | 3.11623 | 3.11623 | NA | 3.11623 |
-| Dots 2013, gap 5 | 3.09017 | 3.08019 | 3.08019 | 3.08019 | NA | 3.08019 |
-| Dots 2013, gap 7 | 2.90931 | 2.90742 | 2.90742 | 2.90742 | NA | 2.90742 |
-| Dots 2013, gap 9 | 2.85413 | 2.80998 | 2.80998 | 2.80998 | NA | 2.80998 |
-| Puzzle, minimum 11 steps | 3.11026 | 3.09985 | 3.09985 | 3.09985 | NA | 3.09985 |
-| Puzzle, minimum 5 steps | 2.84437 | 2.77503 | 2.77503 | 2.77503 | NA | 2.77503 |
-| Puzzle, minimum 7 steps | 2.87793 | 2.85703 | 2.85703 | 2.85703 | NA | 2.85703 |
-| Puzzle, minimum 9 steps | 3.01953 | 3.00423 | 3.03499 | 3.00423 | NA | 3.00423 |
-| Beans | 1.78969 | 1.80301 | 1.79947 | 1.79352 | NA | 1.79178 |
-| Dots 2024 A r2 | 0.58080 | 0.62505 | NA | NA | 0.61100 | 0.61100 |
-| Dots 2024 A r3 | 1.35561 | 1.48428 | NA | NA | NA | 1.43432 |
-| Dots 2024 A r5 | 4.11050 | 4.15226 | NA | NA | NA | 4.14245 |
-| Dots 2024 A r6 | 5.63734 | 5.72212 | NA | 5.70054 | NA | 5.73429 |
-| Dots 2024 B r2 | 0.67852 | 0.81687 | NA | NA | 0.70855 | 0.70855 |
-| Dots 2024 B r3 | 1.56516 | 1.68061 | NA | NA | NA | 1.57454 |
-| Dots 2024 B r5 | 4.33936 | 4.39048 | NA | NA | NA | 4.41195 |
-| Dots 2024 B r6 | 6.06293 | 6.04469 | NA | NA | NA | 6.03088 |
-| PatrasIQ cost | 4.98551 | 5.32014 | NA | NA | NA | 5.30278 |
-| PatrasIQ population | 5.52365 | 5.62551 | NA | NA | NA | 5.57209 |
-| Sounds | 0.67411 | 0.68172 | 0.68359 | 0.67987 | NA | 0.67716 |
-| Sushi A | 14.23722 | 14.26433 | 14.30875 | 14.26433 | NA | 14.27070 |
-| Sushi B | 14.23999 | 14.23601 | NA | NA | NA | 14.23391 |
-| Wheat | 1.43954 | 1.58081 | NA | 1.56505 | NA | 1.59975 |
+**Sharp form is stated for each task in the table.** All 23 tasks have zero pilot depth and one terminal block containing the full catalogue, so Sharp requires a **global pair-sieve**. Eleven tasks complete all five exact sieves; twelve complete none because of the memory limit. For an NA score, the execution column describes the required construction, not a completed fit or a Borda replacement. These labels are checked against the [saved fit records](predictors.jsonl.gz), including block size and completion status; depth zero by itself is not the classification rule. [Detailed execution parameters](../estimator_execution/E0.md) give W*, block size and resource receipts.
+
+| Task | PL NLL | Likelihood SM NLL | Sharp NLL | Sharp form and completion | Fotakis NLL | Efficient NLL | Global Borda NLL |
+|---|---|---|---|---|---|---|---|
+| Dots 2013, gap 3 | 3.13793 | 3.11623 | 3.11623 | Global pair-sieve; depth 0; 5/5 complete | 3.11623 | NA | 3.11623 |
+| Dots 2013, gap 5 | 3.09017 | 3.08019 | 3.08019 | Global pair-sieve; depth 0; 5/5 complete | 3.08019 | NA | 3.08019 |
+| Dots 2013, gap 7 | 2.90931 | 2.90742 | 2.90742 | Global pair-sieve; depth 0; 5/5 complete | 2.90742 | NA | 2.90742 |
+| Dots 2013, gap 9 | 2.85413 | 2.80998 | 2.80998 | Global pair-sieve; depth 0; 5/5 complete | 2.80998 | NA | 2.80998 |
+| Puzzle, minimum 11 steps | 3.11026 | 3.09985 | 3.09985 | Global pair-sieve; depth 0; 5/5 complete | 3.09985 | NA | 3.09985 |
+| Puzzle, minimum 5 steps | 2.84437 | 2.77503 | 2.77503 | Global pair-sieve; depth 0; 5/5 complete | 2.77503 | NA | 2.77503 |
+| Puzzle, minimum 7 steps | 2.87793 | 2.85703 | 2.85703 | Global pair-sieve; depth 0; 5/5 complete | 2.85703 | NA | 2.85703 |
+| Puzzle, minimum 9 steps | 3.01953 | 3.00423 | 3.03499 | Global pair-sieve; depth 0; 5/5 complete | 3.00423 | NA | 3.00423 |
+| Beans | 1.78969 | 1.80301 | 1.79947 | Global pair-sieve; depth 0; 5/5 complete | 1.79352 | NA | 1.79178 |
+| Dots 2024 A r2 | 0.58080 | 0.62505 | NA | Global pair-sieve; depth 0; 0/5 complete; 5/5 blocked by memory limit | NA | 0.61100 | 0.61100 |
+| Dots 2024 A r3 | 1.35561 | 1.48428 | NA | Global pair-sieve; depth 0; 0/5 complete; 5/5 blocked by memory limit | NA | NA | 1.43432 |
+| Dots 2024 A r5 | 4.11050 | 4.15226 | NA | Global pair-sieve; depth 0; 0/5 complete; 5/5 blocked by memory limit | NA | NA | 4.14245 |
+| Dots 2024 A r6 | 5.63734 | 5.72212 | NA | Global pair-sieve; depth 0; 0/5 complete; 5/5 blocked by memory limit | 5.70054 | NA | 5.73429 |
+| Dots 2024 B r2 | 0.67852 | 0.81687 | NA | Global pair-sieve; depth 0; 0/5 complete; 5/5 blocked by memory limit | NA | 0.70855 | 0.70855 |
+| Dots 2024 B r3 | 1.56516 | 1.68061 | NA | Global pair-sieve; depth 0; 0/5 complete; 5/5 blocked by memory limit | NA | NA | 1.57454 |
+| Dots 2024 B r5 | 4.33936 | 4.39048 | NA | Global pair-sieve; depth 0; 0/5 complete; 5/5 blocked by memory limit | NA | NA | 4.41195 |
+| Dots 2024 B r6 | 6.06293 | 6.04469 | NA | Global pair-sieve; depth 0; 0/5 complete; 5/5 blocked by memory limit | NA | NA | 6.03088 |
+| PatrasIQ cost | 4.98551 | 5.32014 | NA | Global pair-sieve; depth 0; 0/5 complete; 5/5 blocked by memory limit | NA | NA | 5.30278 |
+| PatrasIQ population | 5.52365 | 5.62551 | NA | Global pair-sieve; depth 0; 0/5 complete; 5/5 blocked by memory limit | NA | NA | 5.57209 |
+| Sounds | 0.67411 | 0.68172 | 0.68359 | Global pair-sieve; depth 0; 5/5 complete | 0.67987 | NA | 0.67716 |
+| Sushi A | 14.23722 | 14.26433 | 14.30875 | Global pair-sieve; depth 0; 5/5 complete | 14.26433 | NA | 14.27070 |
+| Sushi B | 14.23999 | 14.23601 | NA | Global pair-sieve; depth 0; 0/5 complete; 5/5 blocked by memory limit | NA | NA | 14.23391 |
+| Wheat | 1.43954 | 1.58081 | NA | Global pair-sieve; depth 0; 0/5 complete; 5/5 blocked by memory limit | 1.56505 | NA | 1.59975 |
 
 ## Paired SM–PL differences on both scales
 

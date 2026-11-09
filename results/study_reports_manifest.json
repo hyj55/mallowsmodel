@@ -1,6 +1,6 @@
 {
   "producer": "build_study_reports.py",
-  "producer_sha256": "8f337f8cc392dc0b57221bf1c450872c2f0eaeb9bee0d3ac140ce49d318e0334",
+  "producer_sha256": "194d74af0732b0124dbb3fd30ca3eaaeb9b2728c7800a0aad400bcc1548b86da",
   "source_sha256": {
     "results/predictive/primary.csv": "2e31ba7d0c17309314a97f463c838e5e4e8566831a62f20e97bf4d5f57ef424b",
     "results/predictive/repeat_scores.csv.gz": "5aba6cf92538bb3df9ef96521807b048b9aa79cf2c0f31fac440aa2b870cd268",
@@ -8,7 +8,7 @@
     "results/estimator_comparison/repeat_scores.csv.gz": "449506b6e7a38845e14ec016959121a6b84774588b52668d3693f1f273be1ad9",
     "results/estimator_comparison/predictors.jsonl.gz": "183d46246cc5bd8f35ba1dcbdf1cb43bc26656e9fcdbe96a5edfce11421ac996",
     "results/estimator_comparison/manifest.json": "dfc4185b6250efada9e6bd821032f7b8e546eb27f965d842fb2a3ef90e3b888a",
-    "src/estimator_reporting.py": "5423a4c7c4ab00d189086b7a10284a1ed3d3ca3e9bd615b6946f50394e25bd8a",
+    "src/estimator_reporting.py": "cdc5f61d9eed7ebb56f58e6ae7b338d5c578ef23d95076c0cde909e31b7b8f3a",
     "src/reporting_metrics.py": "e7c2f27e0cc50923b5f8ea06c7572f7a6197bf3e76ab5f4a664dc09520e400e5",
     "results/predictive/learning.csv": "9f4e6f163c9b0526a376a527e69901816226f7701cb63808aca0876c142943ad",
     "results/predictive/synthetic.csv": "e65e0aab0b7685612482bf65f8a4beb7b8cbbb1f2fca6ca1d4c3bcc375ac1f60",
@@ -40,7 +40,7 @@
     "results/predictive/scaled_curve_scores.csv.gz": "5504515d26e8a9a47b550e48cf1147550ff48a3c9b5a9b734f2d75e1bc820692",
     "results/main/README.md": "6485b54f0b52d2b6d6adae9fbf550f10da222dde65e069107912b3a5d82800cd",
     "results/main/split_precision.md": "9506c266fd95c9817a4bd75a08a137bb81368af554a40bdc49600b71bcd5237a",
-    "results/estimator_comparison/README.md": "b96d4aa9fe95e69be92941ba3c8eca6aac3733b56e99158ec80c4956adc4813e",
+    "results/estimator_comparison/README.md": "54b17caf34f5c219a93b3b4f06ea6cfd76206d4c68a81a1094cf2018d16cf75a",
     "results/estimator_comparison/borda_comparisons.csv": "295bcc7f2a39fc838a25dadedb3af73b6e87292ca29e1ce10e56764ed30d23f8",
     "results/global_sieve/README.md": "ea7da4636de88c0bd39a0bd31fb14a16b0d0aa9c330c02528e69b90108363473",
     "results/predictive/tables.md": "4fb0f284e7a304a724daddd88f4e1301b9e563fa50fa4607dfaef8593433df5d",

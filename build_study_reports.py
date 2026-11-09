@@ -188,7 +188,9 @@ The 2,000 bootstrap draws **inside** an eligible P0/E0/L0 split are a different 
 Raw and scaled differences appear together below. Scaling divides the difference, MCSE, SD and range endpoints by the task's fixed log(r!); it does not add repetitions or change the uncertainty target. Numeric CSV ratios are not multiplied by 100.
 
 '''+table(precision,[('task','Task'),('delta_mean','Mean delta'),('delta_uniform_mean','Delta / log(r!)'),('delta_mcse','MCSE'),('delta_uniform_mcse','Scaled MCSE'),('delta_min','Smallest split delta'),('delta_max','Largest split delta')])+'\n')
-    e_text,e_contrasts=estimator_report(e0,e_scores,table,task_label)
+    with gzip.open(ROOT/'results/estimator_comparison/predictors.jsonl.gz', 'rt') as stream:
+        e_predictors = [json.loads(line) for line in stream]
+    e_text,e_contrasts=estimator_report(e0,e_scores,table,task_label,e_predictors)
     put('results/estimator_comparison/README.md',e_text)
     csv('results/estimator_comparison/borda_comparisons.csv',e_contrasts)
     put('results/global_sieve/README.md','''# B0: supplementary global pair-sieve comparison
