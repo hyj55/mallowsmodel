@@ -237,7 +237,8 @@ Public files under `results/tuned_block_sieve/` contain all candidate statuses, 
         snippet=(ROOT/f'results/estimator_execution/snippets/{study}.md').read_text()
         snippet=snippet.replace('](../','](../results/estimator_execution/')
         text+='\n'+snippet.replace('## Sharp/Efficient execution and stopping',f'## {study}: execution and unavailable candidates')
-    return text,records
+    from src.heldout_kendall_reporting import report_suffix
+    return text+report_suffix('docs/tuned_block_sieve.md'),records
 
 
 def figure(records):

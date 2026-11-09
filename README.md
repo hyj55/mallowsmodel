@@ -103,3 +103,9 @@ python validate_repeated_holdout.py --repository-only
 ```
 
 These checks do not refit the models. The archive restoration command reconstructs recorded outputs and verifies their bytes. Some detailed empirical caches require local source acquisition and are not redistributed. See [reproduction](docs/reproducibility.md), [result dictionaries](results/README.md), [references](docs/references.md), and [third-party notices](THIRD_PARTY_NOTICES.md).
+
+<!-- heldout-kendall:start -->
+## Test-report agreement and dispersion assumptions
+
+All predictive components also report [mean Kendall distance from the fitted order to held-out reports](results/heldout_kendall/README.md), alongside NLL. The metric is report-normalized and separate from simulated true-center error. [Beta and beta0 checks](docs/dispersion_assumptions.md) explain the distinction between fitted dispersion, supplied algorithm bounds, and empirically calibrated constants.
+<!-- heldout-kendall:end -->

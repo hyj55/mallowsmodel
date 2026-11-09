@@ -18,3 +18,9 @@ python controls/l1/validate.py --write-manifest --sources
 The isolated `controls/l1/src` namespace preserves this control's fitting procedures. Public-only validation uses `python controls/l1/validate.py`; full source replay also checks all memberships, all four saved predictions, and 48 bootstrap intervals from the local ignored caches.
 
 ![L1 learning and shrinkage control](../../figures/regularized_learning.png)
+
+<!-- heldout-kendall:start -->
+## Held-out Kendall distance
+
+The [joint NLL / mean test-report Kendall table](../heldout_kendall/L1.md) and [all numeric summaries](../heldout_kendall/summary.csv) report both outcomes for these fitted predictors. Distances are divided by the number of evaluation reports and do not depend on the fitted beta. [Beta/beta0 diagnostics](../../docs/dispersion_assumptions.md) distinguish estimated dispersion from the algorithm input.
+<!-- heldout-kendall:end -->

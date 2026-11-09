@@ -11,3 +11,9 @@ All report contributions are first averaged across the five fixed fits. Shared r
 ![Five-fit shell and adjacent-pair diagnostics](../../figures/regularized_diagnostics.png)
 
 Reproduce with `python controls/l1/diagnostics.py`, then `python controls/l1/validate_diagnostics.py --write-manifest`. Read-only validation omits `--write-manifest`. Inputs are the [current L1 parameters](../regularized_learning/fitted_parameters.json); source data remain local. The common-order and fixed optimization benchmarks are separately identified in the C1 design.
+
+<!-- heldout-kendall:start -->
+## Held-out Kendall distance
+
+The [joint NLL / mean test-report Kendall table](../heldout_kendall/T1_C1.md) and [all numeric summaries](../heldout_kendall/summary.csv) report both outcomes for these fitted predictors. Distances are divided by the number of evaluation reports and do not depend on the fitted beta. [Beta/beta0 diagnostics](../../docs/dispersion_assumptions.md) distinguish estimated dispersion from the algorithm input.
+<!-- heldout-kendall:end -->

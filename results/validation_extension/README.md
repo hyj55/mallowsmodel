@@ -61,3 +61,9 @@ Publication checking found that the parameter log ended after 1,390 records, alt
 | outside_schedule_domain | 21 |
 | root_A_stop | 10 |
 | root_A_stop;n8_terminal_guard | 15 |
+
+<!-- heldout-kendall:start -->
+## Held-out Kendall distance
+
+The [joint NLL / mean test-report Kendall table](../heldout_kendall/D2.md) and [all numeric summaries](../heldout_kendall/summary.csv) report both outcomes for these fitted predictors. Distances are divided by the number of evaluation reports and do not depend on the fitted beta. [Beta/beta0 diagnostics](../../docs/dispersion_assumptions.md) distinguish estimated dispersion from the algorithm input.
+<!-- heldout-kendall:end -->

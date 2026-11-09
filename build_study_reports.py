@@ -21,6 +21,7 @@ INPUTS=('results/predictive/primary.csv','results/predictive/repeat_scores.csv.g
         'results/estimator_execution/snippets/E0.md',
         'results/estimator_execution/snippets/L0.md',
         'results/estimator_execution/snippets/S0.md')
+INPUTS+=('results/heldout_kendall/report_sections.json','src/heldout_kendall_reporting.py')
 REPETITIONS=5
 
 
@@ -252,6 +253,9 @@ The table shows likelihood-center SM versus PL; the [all-estimator CSV](syntheti
             snippet=snippet.replace('](../','](../estimator_execution/')
             out[report]+=('\n'+snippet.replace('## Sharp/Efficient execution and stopping',f'## {study}: Sharp/Efficient execution and stopping')).encode()
     out['results/global_sieve/README.md']+=b'\n## Execution and stopping\n\nB0 aliases the 115 E0 Sharp contexts: 55 complete terminal sieves and 60 resource exclusions, all with zero pilot depth. The [E0 per-task table](../estimator_execution/E0.md) gives n, N, r, first-round w/M, W*, actual blocks and the resource receipt for every case. These are the same fits, not additional experiments.\n'
+    from src.heldout_kendall_reporting import report_suffix
+    for path in list(out):
+        if path.endswith('.md'):out[path]+=report_suffix(path).encode()
     manifest=dict(producer='build_study_reports.py',producer_sha256=digest(Path(__file__).read_bytes()),
         source_sha256={p:digest((ROOT/p).read_bytes()) for p in INPUTS},
         interpretation='Named current result views; no fitting or resampling.',

@@ -177,3 +177,37 @@ Run `python run_estimator_comparison.py` after acquiring the shared sources to f
 | outside_schedule_domain | 105 |
 | root_A_stop | 65 |
 | root_A_stop;sieve_resource_budget | 60 |
+
+<!-- heldout-kendall:start -->
+## Held-out Kendall distance
+
+The [joint NLL / mean test-report Kendall table](../heldout_kendall/E0.md) and [all numeric summaries](../heldout_kendall/summary.csv) report both outcomes for these fitted predictors. Distances are divided by the number of evaluation reports and do not depend on the fitted beta. [Beta/beta0 diagnostics](../../docs/dispersion_assumptions.md) distinguish estimated dispersion from the algorithm input.
+
+Each entry below is the mean test-report Kendall distance across the five allocations. NA means the full five-fit comparison is unavailable.
+
+| Task | pl | sm_likelihood | sm_sharp | sm_fotakis | sm_efficient | sm_global_borda |
+|---|---|---|---|---|---|---|
+| Dots 2013, gap 3 | 2.47547 | 2.47547 | 2.47547 | 2.47547 | NA | 2.47547 |
+| Dots 2013, gap 5 | 2.33962 | 2.33962 | 2.33962 | 2.33962 | NA | 2.33962 |
+| Dots 2013, gap 7 | 1.92875 | 1.92875 | 1.92875 | 1.92875 | NA | 1.92875 |
+| Dots 2013, gap 9 | 1.76101 | 1.76101 | 1.76101 | 1.76101 | NA | 1.76101 |
+| Puzzle, minimum 11 steps | 2.40629 | 2.40629 | 2.40629 | 2.40629 | NA | 2.40629 |
+| Puzzle, minimum 5 steps | 1.70314 | 1.70314 | 1.70314 | 1.70314 | NA | 1.70314 |
+| Puzzle, minimum 7 steps | 1.83774 | 1.83774 | 1.83774 | 1.83774 | NA | 1.83774 |
+| Puzzle, minimum 9 steps | 2.13625 | 2.13625 | 2.21875 | 2.13625 | NA | 2.13625 |
+| Beans | 1.43432 | 1.47101 | 1.48876 | 1.44142 | NA | 1.43669 |
+| Dots 2024 A r2 | 0.273333 | 0.25 | NA | NA | 0.273333 | 0.273333 |
+| Dots 2024 A r3 | 0.666667 | 0.72 | NA | NA | NA | 0.706667 |
+| Dots 2024 A r5 | 2.64667 | 2.71667 | NA | NA | NA | 2.72667 |
+| Dots 2024 A r6 | 4 | 4.05667 | NA | 4.03667 | NA | 4.09333 |
+| Dots 2024 B r2 | 0.403333 | 0.426667 | NA | NA | 0.406667 | 0.406667 |
+| Dots 2024 B r3 | 0.9 | 0.97 | NA | NA | NA | 0.876667 |
+| Dots 2024 B r5 | 3.17333 | 3.16 | NA | NA | NA | 3.22667 |
+| Dots 2024 B r6 | 4.73667 | 4.78 | NA | NA | NA | 4.75667 |
+| PatrasIQ cost | 3.28861 | 3.39241 | NA | NA | NA | 3.39494 |
+| PatrasIQ population | 3.79747 | 3.90633 | NA | NA | NA | 3.84051 |
+| Sounds | 0.4 | 0.412667 | 0.416667 | 0.412 | NA | 0.398667 |
+| Sushi A | 15.54 | 15.3632 | 15.5496 | 15.3632 | NA | 15.3896 |
+| Sushi B | 15.33 | 15.242 | NA | NA | NA | 15.2374 |
+| Wheat | 0.886869 | 0.862626 | NA | 0.856566 | NA | 0.890909 |
+<!-- heldout-kendall:end -->

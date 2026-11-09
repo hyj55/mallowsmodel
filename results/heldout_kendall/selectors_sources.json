@@ -1,0 +1,13 @@
+[
+  "results/heldout_kendall/fixed_real_fits.csv.gz",
+  "results/heldout_kendall/repeated_fits.csv.gz",
+  "results/heldout_kendall/strict_bridge_fits.csv.gz",
+  "results/heldout_kendall/strict_coverage_fits.csv.gz",
+  "results/heldout_kendall/strict_shell_fits.csv.gz",
+  "results/repeated_holdout/repeat_selections.csv.gz",
+  "results/strict_features/bridge_selection_replicates.csv",
+  "results/strict_features/coverage_selection_replicates.csv",
+  "results/strict_features/followup_budget_replicates.csv",
+  "results/strict_features/real_selection.csv",
+  "results/strict_features/shell_selection_replicates.csv"
+]

@@ -65,4 +65,10 @@ Sample-size effects can arise from better center/strength estimation, more compl
 
 ## Sharp/Efficient execution details
 
-The [L2 execution table](../results/estimator_execution/L2.md) lists each fitting sample, the initial window and batch requirement, selected resolution, actual/reconstructed depth, and the precise stop or exclusion reason. The [S3 execution table](../results/estimator_execution/S3.md) lists each fitting sample, the initial window and batch requirement, selected resolution, actual/reconstructed depth, and the precise stop or exclusion reason. 
+The [L2 execution table](../results/estimator_execution/L2.md) lists each fitting sample, the initial window and batch requirement, selected resolution, actual/reconstructed depth, and the precise stop or exclusion reason. The [S3 execution table](../results/estimator_execution/S3.md) lists each fitting sample, the initial window and batch requirement, selected resolution, actual/reconstructed depth, and the precise stop or exclusion reason.
+
+<!-- heldout-kendall:start -->
+## Mean held-out Kendall distance
+
+The [joint NLL / report-distance table](../results/heldout_kendall/L2.md) evaluates the same fitted orders on the same held-out reports. Each distance is divided by the number of evaluation reports. See the [metric definition](../results/heldout_kendall/README.md) and [dispersion audit](dispersion_assumptions.md).
+<!-- heldout-kendall:end -->

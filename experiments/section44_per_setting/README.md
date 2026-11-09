@@ -321,3 +321,11 @@ python experiments/section44_per_setting/run.py confirm
 python experiments/section44_per_setting/report.py
 python experiments/section44_per_setting/verify.py
 ```
+
+<!-- heldout-kendall:start -->
+## Held-out report distance and beta0 checks
+
+The [joint confirmation table](../../results/heldout_kendall/S4-T.md) adds mean Kendall distance to the **noisy test reports**, separately from the true-center Kendall error above. It uses each saved integer holdout distance sum divided by ceil(N/3). Every validation candidate is also covered in the [numeric summaries](../../results/heldout_kendall/summary.csv).
+
+The [dispersion audit](../../docs/dispersion_assumptions.md) reports whether beta_hat is below the supplied beta0 and distinguishes this from the known simulation condition beta_true>=beta0. Calibrated A, K and window coefficients generally have no common inverse under the manuscript's explicit constant map; they do not establish a newly inferred beta0. The recorded validation selection used the declared [0,10] profile, not a beta0-constrained profile. These diagnostics do not retroactively change selection or remove unfavorable fits.
+<!-- heldout-kendall:end -->

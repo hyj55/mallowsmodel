@@ -67,3 +67,37 @@ Mean-level CI fields are empty. Figure bars are **±1 MCSE**, not 95% population
 Five random allocations do not enforce seasonal or demographic balance, establish independence of anonymous assessors, or validate future-year transfer. [G1](../../docs/group_sensitivity.md) and [T1](../../docs/temporal_prediction.md) address different targets. The [full-data characteristics](../../data/features/predictive_comparison.md) describe all observations; they do not choose these predictors or causally explain their performance.
 
 P0 does not require Sharp or a sieve. Missing supplementary E0/L0/S0 fits are not missing main comparisons. See their separate reports for availability and computation limits.
+
+<!-- heldout-kendall:start -->
+## Held-out Kendall distance
+
+The [joint NLL / mean test-report Kendall table](../heldout_kendall/P0.md) and [all numeric summaries](../heldout_kendall/summary.csv) report both outcomes for these fitted predictors. Distances are divided by the number of evaluation reports and do not depend on the fitted beta. [Beta/beta0 diagnostics](../../docs/dispersion_assumptions.md) distinguish estimated dispersion from the algorithm input.
+
+Each entry below is the mean test-report Kendall distance across the five allocations. NA means the full five-fit comparison is unavailable.
+
+| Task | pl | sm_likelihood |
+|---|---|---|
+| Dots 2013, gap 3 | 2.47547 | 2.47547 |
+| Dots 2013, gap 5 | 2.33962 | 2.33962 |
+| Dots 2013, gap 7 | 1.92875 | 1.92875 |
+| Dots 2013, gap 9 | 1.76101 | 1.76101 |
+| Puzzle, minimum 11 steps | 2.40629 | 2.40629 |
+| Puzzle, minimum 5 steps | 1.70314 | 1.70314 |
+| Puzzle, minimum 7 steps | 1.83774 | 1.83774 |
+| Puzzle, minimum 9 steps | 2.13625 | 2.13625 |
+| Beans | 1.43432 | 1.47101 |
+| Dots 2024 A r2 | 0.273333 | 0.25 |
+| Dots 2024 A r3 | 0.666667 | 0.72 |
+| Dots 2024 A r5 | 2.64667 | 2.71667 |
+| Dots 2024 A r6 | 4 | 4.05667 |
+| Dots 2024 B r2 | 0.403333 | 0.426667 |
+| Dots 2024 B r3 | 0.9 | 0.97 |
+| Dots 2024 B r5 | 3.17333 | 3.16 |
+| Dots 2024 B r6 | 4.73667 | 4.78 |
+| PatrasIQ cost | 3.28861 | 3.39241 |
+| PatrasIQ population | 3.79747 | 3.90633 |
+| Sounds | 0.4 | 0.412667 |
+| Sushi A | 15.54 | 15.3632 |
+| Sushi B | 15.33 | 15.242 |
+| Wheat | 0.886869 | 0.862626 |
+<!-- heldout-kendall:end -->

@@ -1,0 +1,9 @@
+[
+  "results/baseline_replacement/parameters.json",
+  "results/baseline_replacement/splits.csv",
+  "results/context_followup/parameters.json",
+  "results/context_followup/splits.csv",
+  "results/strict_features/real_parameters.json",
+  "results/strict_features/real_splits.csv",
+  "results/validation_extension/real_parameters.json"
+]

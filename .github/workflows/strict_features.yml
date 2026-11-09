@@ -45,3 +45,4 @@ jobs:
           python controls/tuned_sharp/validate.py
           python controls/tuned_sharp/report.py --check
           python experiments/section44_per_setting/verify.py
+          python verify_heldout_kendall.py
